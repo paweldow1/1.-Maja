@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>1 Maja – Berlin vs Warszawa 1990–2019</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js">
+function exportChart(canvasId, filename) {
+  const canvas = document.getElementById(canvasId);
+  // draw white background then chart on temp canvas
+  const tmp = document.createElement('canvas');
+  tmp.width  = canvas.width;
+  tmp.height = canvas.height;
+  const ctx = tmp.getContext('2d');
+  ctx.fillStyle = '#faf8f5';
+  ctx.fillRect(0, 0, tmp.width, tmp.height);
+  ctx.drawImage(canvas, 0, 0);
+  const link = document.createElement('a');
+  link.download = filename + '.png';
+  link.href = tmp.toDataURL('image/png');
+  link.click();
+}
+
+// ── CITY TOGGLE ──
+let showBerlin = true, showWarsaw = true;
+
+function toggleCity(city) {
+  if (city === 'berlin') {
+    // don't allow turning off both
+    if (showBerlin && !showWarsaw) return;
+    showBerlin = !showBerlin;
+    document.getElementById('btnBerlin').classList.toggle('inactive', !showBerlin);
+  } else {
+    if (showWarsaw && !showBerlin) return;
+    showWarsaw = !showWarsaw;
+    document.getElementById('btnWarsaw').classList.toggle('inactive', !showWarsaw);
+  }
+
+  // Update all registered charts
+  Object.values(_charts).forEach(chart => {
+    if (!chart || !chart.data) return;
+    chart.data.datasets.forEach(ds => {
+      const isBerlin = ds.label && (ds.label.toLowerCase().includes('berlin') || ds.label.toLowerCase().includes('trend b'));
+      const isWarsaw = ds.label && (ds.label.toLowerCase().includes('warszawa') || ds.label.toLowerCase().includes('trend w') || ds.label.toLowerCase().includes('warsaw'));
+      if (isBerlin) ds.hidden = !showBerlin;
+      if (isWarsaw) ds.hidden = !showWarsaw;
+    });
+    chart.update();
+  });
+}
+
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+  :root {
+    --bg:        #faf8f5;
+    --bg2:       #f3f0eb;
+    --bg3:       #ede9e2;
+    --border:    #d8d2c8;
+    --border2:   #c4bcb0;
+    --text:      #1a1714;
+    --text-dim:  #8a8178;
+    --text-mid:  #5a534a;
+    /* colours: crimson for Berlin (subtle red flag nod), slate-blue for Warsaw */
+    --berlin:    #b02a1e;
+    --berlin-lt: #c0392b;
+    --berlin-bg: rgba(176,42,30,0.06);
+    --warsaw:    #2c5278;
+    --warsaw-lt: #3a6a9e;
+    --warsaw-bg: rgba(44,82,120,0.06);
+    --accent:    #8b1a1a;
+    --pos:       #2e7d4f;
+    --neg:       #a03328;
+    --rule:      #8b1a1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    min-height: 100vh;
+    padding: 0 0 56px;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 1px solid var(--border);
+    padding: 28px 32px 20px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  /* single thin crimson rule above title — only tonal hint at 1 Mai */
+  .masthead::before {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--rule) 0%, transparent 100%);
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  .masthead-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .kicker {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: clamp(22px, 3.8vw, 42px);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  .b { color: var(--berlin-lt); }
+  .w { color: var(--warsaw-lt); }
+
+  .header-meta {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    font-style: italic;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  /* ── CONTENT WRAPPER ── */
+  .content { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    max-width: 100%;
+  }
+
+  .tab {
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--text-dim);
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .tab.active {
+    color: var(--text);
+    border-bottom-color: var(--berlin);
+  }
+  .tab:hover:not(.active) { color: var(--text-mid); }
+
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ── CHART CONTAINER ── */
+
+  .export-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    z-index: 10;
+  }
+
+  .city-toggles {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .city-btn {
+    padding: 6px 18px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .city-btn.active-berlin  { border-color: var(--berlin); color: var(--berlin); background: var(--berlin-bg); }
+  .city-btn.active-warsaw  { border-color: var(--warsaw); color: var(--warsaw); background: var(--warsaw-bg); }
+  .city-btn.inactive { opacity: 0.35; }
+
+  .export-btn:hover { border-color: var(--berlin); color: var(--berlin); }
+  .chart-wrap { position: relative; }
+
+  .chart-wrap {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 24px 24px 18px;
+    margin-bottom: 14px;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 22px;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .leg { display: flex; align-items: center; gap: 7px; font-size: 10px; color: var(--text-dim); letter-spacing: 0.05em; }
+  .leg-line { width: 20px; height: 2px; border-radius: 1px; }
+  .leg-dash { width: 20px; height: 0; border-top: 2px dashed; opacity: 0.55; }
+
+  /* ── CAPTION / NOTE ── */
+  .note {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 14px;
+    font-size: 11px;
+    line-height: 1.85;
+    color: var(--text-dim);
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+  }
+  .note strong { color: var(--text-mid); font-style: normal; font-weight: 600; }
+
+  /* ── PERIOD CARDS ── */
+  .periods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  @media(max-width:600px) { .periods { grid-template-columns: 1fr; } }
+
+  .period-card {
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    background: var(--bg2);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .period-card:hover { border-color: var(--border2); background: var(--bg3); }
+  .period-card.sel {
+    border-color: var(--berlin);
+    border-left-width: 2px;
+    background: var(--bg3);
+  }
+
+  .pc-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-mid);
+  }
+  .pc-r {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 2px;
+  }
+  .pc-desc { font-size: 9px; color: var(--text-dim); line-height: 1.5; letter-spacing: 0.05em; text-transform: uppercase; }
+  .pc-note { font-size: 10px; color: var(--text-dim); margin-top: 5px; line-height: 1.6; font-family: 'Source Serif 4', serif; font-style: italic; }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .stat {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 11px 13px;
+  }
+  .stat-l { font-size: 8px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .stat-v { font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 500; }
+  .stat-s { font-size: 9px; color: var(--text-dim); margin-top: 2px; font-family: 'Source Serif 4', serif; font-style: italic; }
+
+  /* ── EDITOR ── */
+  #editorBtn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  #editorBtn:hover { border-color: var(--border2); color: var(--text-mid); }
+
+  #editorPanel {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  #editorPanel textarea {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 10px;
+    outline: none;
+    resize: vertical;
+    line-height: 1.7;
+    width: 100%;
+    height: 240px;
+    border-radius: 0;
+  }
+  #editorPanel textarea:focus { border-color: var(--border2); }
+
+  #applyBtn {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    padding: 7px 20px;
+    cursor: pointer;
+  }
+  #applyBtn:hover { border-color: var(--berlin); }
+
+  .strong-pos { color: var(--pos); }
+  .mod-pos { color: #7ab89a; }
+  .weak-pos { color: var(--text-dim); }
+  .neg { color: var(--neg); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="kicker">Analiza danych · Historia ruchu pracowniczego</div>
+    <div class="header">
+      <h1>Demonstracje 1 Maja: <span class="b">Berlin</span> i <span class="w">Warszawa</span></h1>
+      <div class="header-meta">Frekwencja na marszach DGB i OPZZ/MKK · lata 1990–2019 · n = 30 obserwacji</div>
+    </div>
+  </div>
+</div>
+<div class="content">
+
+<!-- EDITOR TOGGLE -->
+<div style="margin-bottom:16px">
+  <button onclick="toggleEditor()" id="editorBtn"
+    style="background:var(--bg2);border:1px solid var(--border);color:var(--text-dim);font-family:'IBM Plex Mono',monospace;
+           font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:7px 18px;
+           border-radius:4px;cursor:pointer;">✎ edytuj dane</button>
+</div>
+<div id="editorPanel" style="display:none;background:var(--bg2);border:1px solid var(--border);padding:24px;margin-bottom:24px;">
+  <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">
+    Format: jedna wartość na linię · 0 = brak demonstracji · puste lub "-" = brak danych (Warszawa)
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
+    <div>
+      <div style="font-size:9px;color:var(--text-dim);margin-bottom:6px;letter-spacing:0.12em;text-transform:uppercase;">Lata</div>
+      <textarea id="edYears" spellcheck="false"
+        style="width:100%;height:240px;background:var(--bg);border:1px solid var(--border);color:var(--text);
+               font-family:'IBM Plex Mono',monospace;font-size:11px;padding:10px;border-radius:4px;
+               resize:vertical;line-height:1.7;outline:none;"></textarea>
+    </div>
+    <div>
+      <div style="font-size:10px;color:#f4a261;margin-bottom:6px;letter-spacing:0.08em;">BERLIN</div>
+      <textarea id="edBerlin" spellcheck="false"
+        style="width:100%;height:240px;background:var(--bg);border:1px solid var(--border);color:var(--berlin);
+               font-family:'IBM Plex Mono',monospace;font-size:11px;padding:10px;border-radius:4px;
+               resize:vertical;line-height:1.7;outline:none;"></textarea>
+    </div>
+    <div>
+      <div style="font-size:9px;color:var(--warsaw-lt);margin-bottom:6px;letter-spacing:0.12em;text-transform:uppercase;">Warszawa</div>
+      <textarea id="edWarsaw" spellcheck="false"
+        style="width:100%;height:240px;background:var(--bg);border:1px solid var(--border);color:var(--warsaw);
+               font-family:'IBM Plex Mono',monospace;font-size:11px;padding:10px;border-radius:4px;
+               resize:vertical;line-height:1.7;outline:none;"></textarea>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <button onclick="applyData()"
+      id="applyBtn">
+      ▶ Aktualizuj wykresy</button>
+    <span id="editorMsg" style="font-size:11px;color:#555;"></span>
+  </div>
+</div>
+
+<div class="city-toggles">
+  <button class="city-btn active-berlin" id="btnBerlin" onclick="toggleCity('berlin')">● Berlin</button>
+  <button class="city-btn active-warsaw" id="btnWarsaw" onclick="toggleCity('warsaw')">● Warszawa</button>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('shared', this)">Wspólna skala</button>
+  <button class="tab" onclick="switchTab('norm', this)">Trendy (z-score)</button>
+  <button class="tab" onclick="switchTab('periods', this)">Okresy</button>
+  <button class="tab" onclick="switchTab('rolling', this)">Korelacja krocząca</button>
+  <button class="tab" onclick="switchTab('trends', this)">Średnie i trendy</button>
+</div>
+
+<!-- SHARED SCALE -->
+<div class="view active" id="view-shared">
+  <div class="legend">
+    <div class="leg"><div class="leg-line" style="background:#f4a261"></div>Berlin</div>
+    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warszawa</div>
+  </div>
+  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cShared','berlin-warszawa-skala')">↓ PNG</button><canvas id="cShared"></canvas></div>
+  <div class="note">
+    Na wspólnej skali widać, że <strong>Berlin dominuje skalą we wczesnych latach 90.</strong> (56 667 w 1990). Warszawa ma wyraźnie niższe wartości przez cały okres — jej największy pik to 25 000 (1992). W latach 2011, 2015, 2019 w Warszawie <strong>nie odbyły się demonstracje</strong> (wartość = 0).
+  </div>
+</div>
+
+<!-- NORMALIZED -->
+<div class="view" id="view-norm">
+  <div class="legend">
+    <div class="leg"><div class="leg-line" style="background:#f4a261"></div>Berlin (z-score)</div>
+    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warszawa (z-score)</div>
+  </div>
+  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cNorm','berlin-warszawa-zscore')">↓ PNG</button><canvas id="cNorm"></canvas></div>
+  <div class="note">
+    Po standaryzacji porównujemy <strong>kształty trendów</strong>, nie poziomy. Obydwa miasta mają gwałtowny spadek w pierwszej połowie lat 90. Potem Berlin stabilizuje się na niskim poziomie aż do 2012–13, kiedy skacze (ruchy antyszczytowe). Warszawa trzyma się względnie stabilnie od ok. 2000, z niespodziewanym wzrostem w 2012–15.
+  </div>
+</div>
+
+<!-- PERIODS -->
+<div class="view" id="view-periods">
+  <div class="periods">
+    <div class="period-card sel" id="pc0" onclick="selectPeriod(0)">
+      <div class="pc-title">1990–1999</div>
+      <div class="pc-r" id="pr0">—</div>
+      <div class="pc-desc" id="pd0"></div>
+      <div class="pc-note" id="pn0"></div>
+    </div>
+    <div class="period-card" id="pc1" onclick="selectPeriod(1)">
+      <div class="pc-title">2000–2010</div>
+      <div class="pc-r" id="pr1">—</div>
+      <div class="pc-desc" id="pd1"></div>
+      <div class="pc-note" id="pn1"></div>
+    </div>
+    <div class="period-card" id="pc2" onclick="selectPeriod(2)">
+      <div class="pc-title">2011–2019</div>
+      <div class="pc-r" id="pr2">—</div>
+      <div class="pc-desc" id="pd2"></div>
+      <div class="pc-note" id="pn2"></div>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="leg"><div class="leg-line" style="background:#f4a261"></div>Berlin</div>
+    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warszawa</div>
+    <div class="leg"><div class="leg-dash" style="border-color:#f4a261"></div>trend Berlin</div>
+    <div class="leg"><div class="leg-dash" style="border-color:#60a5fa"></div>trend Warszawa</div>
+  </div>
+  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cPeriod','berlin-warszawa-okres')">↓ PNG</button><canvas id="cPeriod"></canvas></div>
+  <div class="note" id="period-note">Kliknij okres powyżej, by zobaczyć szczegóły.</div>
+</div>
+
+<!-- ROLLING CORRELATION -->
+<div class="view" id="view-rolling">
+  <div class="legend">
+    <div class="leg"><div class="leg-line" style="background:#a78bfa"></div>Korelacja Pearsona (okno 5 lat)</div>
+  </div>
+  <div class="chart-wrap" style="height:300px"><button class="export-btn" onclick="exportChart('cRolling','berlin-warszawa-korelacja')">↓ PNG</button><canvas id="cRolling"></canvas></div>
+  <div class="note" id="rolling-note">
+    <strong>Korelacja krocząca (okno 5-letnie)</strong> pokazuje, w których momentach szeregi były bardziej lub mniej zsynchronizowane. Wartości bliskie +1 = silne podobieństwo trendu, bliskie 0 lub ujemne = rozbieżność.
+  </div>
+</div>
+
+<!-- TRENDS & AVERAGES -->
+<div class="view" id="view-trends">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;align-items:start;">
+    <div style="background:var(--bg2);border:1px solid var(--border);padding:16px 20px;">
+      <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Średnie dekadowe</div>
+      <div style="position:relative;height:180px"><canvas id="cDecAvg"></canvas></div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);padding:16px 20px;">
+      <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Zmiana rok do roku (%)</div>
+      <div style="position:relative;height:180px"><canvas id="cYoY"></canvas></div>
+    </div>
+  </div>
+  <div class="legend" style="margin-bottom:12px;">
+    <div class="leg"><div class="leg-line" style="background:#f4a261"></div>Berlin</div>
+    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warszawa</div>
+    <div class="leg"><div class="leg-dash" style="border-color:#f4a261"></div>trend liniowy Berlin</div>
+    <div class="leg"><div class="leg-dash" style="border-color:#60a5fa"></div>trend liniowy Warszawa</div>
+  </div>
+  <div class="chart-wrap" style="height:280px"><button class="export-btn" onclick="exportChart('cTrend','berlin-warszawa-trend')">↓ PNG</button><canvas id="cTrend"></canvas></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;" id="trendStats"></div>
+  <div class="note" style="margin-top:12px;">
+    <strong>Trend liniowy</strong> pokazuje ogólny kierunek zmian w całym 30-leciu. Zmiana rok-do-roku (YoY) ujawnia lata przełomowe — gwałtowne wzrosty lub spadki. Średnie dekadowe agregują frekwencję w trzech przedziałach i pozwalają porównać skalę mobilizacji.
+  </div>
+</div>
+
+
+<div class="stats-row">
+  <div class="stat">
+    <div class="stat-l">Pearson r (całość)</div>
+    <div class="stat-v" style="color:#a78bfa">0.29</div>
+    <div class="stat-s">p = 0.14, n=27</div>
+  </div>
+  <div class="stat">
+    <div class="stat-l">Spearman ρ (całość)</div>
+    <div class="stat-v" style="color:#a78bfa">0.11</div>
+    <div class="stat-s">p = 0.60</div>
+  </div>
+  <div class="stat">
+    <div class="stat-l">Berlin — szczyt</div>
+    <div class="stat-v" style="color:#f4a261">56 667</div>
+    <div class="stat-s">1990</div>
+  </div>
+  <div class="stat">
+    <div class="stat-l">Warszawa — szczyt</div>
+    <div class="stat-v" style="color:#60a5fa">25 000</div>
+    <div class="stat-s">1992</div>
+  </div>
+  <div class="stat">
+    <div class="stat-l">Brak demonstracji (Warszawa)</div>
+    <div class="stat-v" style="color:#555">3×</div>
+    <div class="stat-s">2011, 2015, 2019 → 0</div>
+  </div>
+</div>
+
+<script>
+let years = [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,
+               2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,
+               2010,2011,2012,2013,2014,2015,2016,2017,2018,2019];
+
+let berlin = [56667,15000,30000,23333,6500,7750,16667,15000,13750,12500,
+                12000,10000,9000,9750,15000,12000,17000,9750,4000,11250,
+                6750,6333,9125,9750,5000,14000,14000,14000,14000,10500];
+
+let warsaw = [9000,10000,25000,3000,2000,6000,6000,2000,6000,6000,
+                3000,8000,2000,3000,700,400,2000,1500,2500,2000,
+                800,0,15000,20000,6000,0,3000,800,800,0];
+
+// Chart registry for cleanup
+let _charts = {};
+function _destroyAll() {
+  Object.values(_charts).forEach(c => { try { c.destroy(); } catch(e){} });
+  _charts = {};
+}
+function _reg(id, chart) { _charts[id] = chart; return chart; }
+
+
+// ── GLOBALS ──
+
+const gc = '#ddd8d0', tc = '#8a8178';
+const baseOpts = {
+  responsive: true, maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: '#ffffff', borderColor: '#c8c2b8', borderWidth: 1,
+      titleColor: '#8a8178', bodyColor: '#1a1714',
+      titleFont: { family:'IBM Plex Mono', size:10 },
+      bodyFont: { family:'IBM Plex Mono', size:11 },
+      callbacks: { title: ctx => ctx[0].label + ' · 1 Maja' }
+    }
+  },
+  scales: {
+    x: { ticks: { color: tc, font: { family:'IBM Plex Mono', size:10 }, maxRotation:45 }, grid: { color: gc } },
+    y: { ticks: { color: tc, font: { family:'IBM Plex Mono', size:10 }, callback: v => v>=1000?(v/1000).toFixed(0)+'k':v }, grid: { color: gc } }
+  }
+};
+
+// ── Stats helpers ──
+function pearson(a, b) {
+  const n = a.length;
+  const ma = a.reduce((s,v)=>s+v,0)/n, mb = b.reduce((s,v)=>s+v,0)/n;
+  let num=0, da=0, db=0;
+  for(let i=0;i<n;i++){num+=(a[i]-ma)*(b[i]-mb);da+=(a[i]-ma)**2;db+=(b[i]-mb)**2;}
+  return da===0||db===0 ? 0 : num/Math.sqrt(da*db);
+}
+function linreg(xs, ys) {
+  const n=xs.length, mx=xs.reduce((a,b)=>a+b,0)/n, my=ys.reduce((a,b)=>a+b,0)/n;
+  let num=0, den=0;
+  for(let i=0;i<n;i++){num+=(xs[i]-mx)*(ys[i]-my);den+=(xs[i]-mx)**2;}
+  const slope=den?num/den:0, intercept=my-slope*mx;
+  return xs.map(x=>slope*x+intercept);
+}
+function zScore(arr) {
+  const valid=arr.filter(v=>v!=null);
+  const m=valid.reduce((a,b)=>a+b,0)/valid.length;
+  const s=Math.sqrt(valid.reduce((a,b)=>a+(b-m)**2,0)/valid.length);
+  return arr.map(v=>v==null?null:+((v-m)/s).toFixed(3));
+}
+
+// ── SHARED SCALE ──
+
+// ── PERIOD HELPERS (global) ──
+// ── PERIODS ──
+const periods = [
+  { start:1990, end:1999, label:'1990–1999',
+    note:'Oba miasta silnie mobilizują się na początku dekady (transformacja, zjednoczenie), potem gwałtowny spadek. Zbieżny trend spadkowy.' },
+  { start:2000, end:2010, label:'2000–2010',
+    note:'Berlin utrzymuje umiarkowaną stabilność, Warszawa też — obydwa w podobnym wąskim przedziale. Najsilniejsza synchronizacja trendów.' },
+  { start:2011, end:2019, label:'2011–2019',
+    note:'Berlin skacze w 2012–13 (ruchy antyszczytowe), Warszawa też rośnie po 2015 (nowe mobilizacje). Pewna zbieżność, ale przesunięta w czasie.' }
+];
+
+let periodChart = null;
+
+function calcPeriodR(p) {
+  const idxs = years.reduce((a,y,i)=>{ if(y>=p.start&&y<=p.end) a.push(i); return a; },[]);
+  const b=[], w=[];
+  idxs.forEach(i=>{ b.push(berlin[i]);w.push(warsaw[i]); });
+  return b.length >= 3 ? pearson(b,w) : null;
+}
+
+function colorForR(r) {
+  if(r==null) return '#555';
+  if(r>=0.6) return '#5a9e72';
+  if(r>=0.3) return '#7ab89a';
+  if(r>=-0.1) return '#a3a3a3';
+  return '#b85c52';
+}
+function labelForR(r) {
+  if(r==null) return 'brak danych';
+  if(r>=0.6) return 'silna korelacja';
+  if(r>=0.3) return 'umiarkowana';
+  if(r>=-0.1) return 'słaba / brak';
+  return 'ujemna';
+}
+
+function selectPeriod(idx) {
+  document.querySelectorAll('.period-card').forEach((c,i)=>c.classList.toggle('sel',i===idx));
+  const p = periods[idx];
+  const pIdxs = years.reduce((a,y,i)=>{ if(y>=p.start&&y<=p.end) a.push(i); return a; },[]);
+  const pYears = pIdxs.map(i=>years[i]);
+  const pB = pIdxs.map(i=>berlin[i]);
+  const pW = pIdxs.map(i=>warsaw[i]);
+  const bValid = pIdxs.map(i=>berlin[i]);
+  const wValid = pIdxs.map(i=>warsaw[i]);
+  const xNum = pIdxs.map(i=>years[i]);
+  const bTrend = linreg(xNum, bValid);
+  const wTrend = linreg(xNum, wValid);
+  const bTrendFull = pYears.map((y,j) => { const k = xNum.indexOf(y); return k>=0?bTrend[k]:null; });
+  const wTrendFull = pYears.map((y,j) => { const k = xNum.indexOf(y); return k>=0?wTrend[k]:null; });
+
+  if(periodChart) periodChart.destroy();
+  periodChart = _reg('cPeriod', new Chart(document.getElementById('cPeriod'), {
+    type: 'line',
+    data: {
+      labels: pYears,
+      datasets: [
+        { label:'Berlin', data:pB, borderColor:'#e05a4a', borderWidth:2.5,
+          pointRadius:5, pointBackgroundColor:'#e05a4a', tension:0.2, fill:false },
+        { label:'Warszawa', data:pW, borderColor:'#5b8fb9', borderWidth:2.5,
+          pointRadius:5, pointBackgroundColor:'#5b8fb9', tension:0.2, fill:false, spanGaps:false },
+        { label:'trend B', data:bTrendFull, borderColor:'#e05a4a', borderWidth:1.5,
+          borderDash:[5,4], pointRadius:0, tension:0, fill:false },
+        { label:'trend W', data:wTrendFull, borderColor:'#5b8fb9', borderWidth:1.5,
+          borderDash:[5,4], pointRadius:0, tension:0, fill:false }
+      ]
+    },
+    options: {...baseOpts, scales: {...baseOpts.scales, y: {...baseOpts.scales.y, min: 0}}}
+  }));
+
+  const r = calcPeriodR(p);
+  document.getElementById('period-note').innerHTML =
+    `<strong>${p.label}</strong> · Pearson r = <strong style="color:var(--text-mid)">${r!=null?r.toFixed(2):'—'}</strong> (${labelForR(r)}, n=${xNum.length} par). ${p.note}`;
+}
+
+// ── RENDER FUNCTION ──
+function renderAll() {
+  _destroyAll();
+_reg('cShared', new Chart(document.getElementById('cShared'), {
+  type: 'line',
+  data: {
+    labels: years,
+    datasets: [
+      { label:'Berlin', data:berlin, borderColor:'#e05a4a', backgroundColor:'rgba(192,57,43,0.06)',
+        borderWidth:2.5, pointRadius:4, pointBackgroundColor:'#e05a4a', tension:0.25, fill:true },
+      { label:'Warszawa', data:warsaw, borderColor:'#5b8fb9', backgroundColor:'rgba(58,97,134,0.06)',
+        borderWidth:2.5, pointRadius:4, pointBackgroundColor:'#5b8fb9', tension:0.25, fill:true }
+    ]
+  },
+  options: baseOpts
+}));
+
+// ── NORMALIZED ──
+const bZ = zScore(berlin), wZ = zScore(warsaw);
+_reg('cNorm', new Chart(document.getElementById('cNorm'), {
+  type: 'line',
+  data: {
+    labels: years,
+    datasets: [
+      { label:'Berlin z', data:bZ, borderColor:'#e05a4a', borderWidth:2.5,
+        pointRadius:3, pointBackgroundColor:'#e05a4a', tension:0.3, fill:false },
+      { label:'Warszawa z', data:wZ, borderColor:'#5b8fb9', borderWidth:2.5,
+        pointRadius:3, pointBackgroundColor:'#5b8fb9', tension:0.3, fill:false }
+    ]
+  },
+  options: {
+    ...baseOpts,
+    scales: {
+      x: baseOpts.scales.x,
+      y: { ...baseOpts.scales.y, ticks: { ...baseOpts.scales.y.ticks, callback: v=>v.toFixed(1) },
+           title: { display:true, text:'z-score', color:'#444', font:{family:'IBM Plex Mono',size:9} } }
+    }
+  }
+}));
+
+
+periods.forEach((p,i)=>{
+  const r = calcPeriodR(p);
+  document.getElementById('pr'+i).textContent = r!=null ? 'r = '+r.toFixed(2) : '—';
+  document.getElementById('pr'+i).style.color = colorForR(r);
+  document.getElementById('pd'+i).textContent = labelForR(r);
+  document.getElementById('pn'+i).textContent = p.note;
+});
+
+
+selectPeriod(0);
+
+// ── ROLLING CORRELATION (window=5) ──
+const WIN = 5;
+const rollingR = [], rollingYears = [];
+for(let i=0; i<=years.length-WIN; i++){
+  const b=[], w=[];
+  for(let j=i;j<i+WIN;j++) { b.push(berlin[j]);w.push(warsaw[j]); }
+  if(b.length>=3) {
+    rollingR.push(+pearson(b,w).toFixed(3));
+    rollingYears.push(years[i]+'-'+(years[i+WIN-1]+'').slice(2));
+  } else {
+    rollingR.push(null);
+    rollingYears.push(years[i]+'-'+(years[i+WIN-1]+'').slice(2));
+  }
+}
+
+_reg('cRolling', new Chart(document.getElementById('cRolling'), {
+  type: 'bar',
+  data: {
+    labels: rollingYears,
+    datasets: [{
+      label: 'r (5-letnie okno)',
+      data: rollingR,
+      backgroundColor: rollingR.map(r => r==null?'#e8e4de': r>=0.5?'rgba(90,158,114,0.75)': r>=0.2?'rgba(90,158,114,0.4)': r>=-0.1?'rgba(130,133,140,0.35)':'rgba(184,92,82,0.75)'),
+      borderColor: rollingR.map(r => r==null?'#e8e4de': r>=0.5?'#5a9e72': r>=0.2?'#7ab89a': r>=-0.1?'#828590':'#b85c52'),
+      borderWidth: 1,
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display:false },
+      tooltip: {
+        backgroundColor:'#ffffff', borderColor:'#c8c2b8', borderWidth:1,
+        titleColor:'#777', bodyColor:'#e8e4dc',
+        titleFont:{family:'IBM Plex Mono',size:10},
+        bodyFont:{family:'IBM Plex Mono',size:11},
+        callbacks: { label: ctx => 'r = ' + (ctx.raw!=null?ctx.raw.toFixed(3):'brak danych') }
+      }
+    },
+    scales: {
+      x: { ticks:{color:tc,font:{family:'IBM Plex Mono',size:9},maxRotation:45}, grid:{color:gc} },
+      y: { min:-1, max:1,
+           ticks:{color:tc,font:{family:'IBM Plex Mono',size:10}},
+           grid:{color:gc},
+           title:{display:true,text:'Pearson r',color:'#444',font:{family:'IBM Plex Mono',size:9}} }
+    }
+  }
+}));
+
+
+// ── TRENDS & AVERAGES ──
+(function() {
+  // Decade averages
+  const decades = [
+    { label:'1990–1999', s:1990, e:1999 },
+    { label:'2000–2010', s:2000, e:2010 },
+    { label:'2011–2019', s:2011, e:2019 }
+  ];
+  function decAvg(arr, s, e) {
+    const vals = years.reduce((a,y,i)=>{ if(y>=s&&y<=e) a.push(arr[i]); return a; },[]).filter(v=>v!=null);
+    return vals.length ? Math.round(vals.reduce((a,b)=>a+b,0)/vals.length) : 0;
+  }
+  const bDecAvg = decades.map(d=>decAvg(berlin,d.s,d.e));
+  const wDecAvg = decades.map(d=>decAvg(warsaw,d.s,d.e));
+
+  _reg('cDecAvg', new Chart(document.getElementById('cDecAvg'), {
+    type: 'bar',
+    data: {
+      labels: decades.map(d=>d.label),
+      datasets: [
+        { label:'Berlin', data:bDecAvg, backgroundColor:'rgba(192,57,43,0.7)', borderColor:'#e05a4a', borderWidth:1, borderRadius:3 },
+        { label:'Warszawa', data:wDecAvg, backgroundColor:'rgba(58,97,134,0.7)', borderColor:'#5b8fb9', borderWidth:1, borderRadius:3 }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ backgroundColor:'#ffffff', borderColor:'#c8c2b8', borderWidth:1,
+        titleFont:{family:'IBM Plex Mono',size:10}, bodyFont:{family:'IBM Plex Mono',size:11},
+        titleColor:'#8a8178', bodyColor:'#1a1714',
+        callbacks:{ label: ctx => ctx.dataset.label+': '+ctx.raw.toLocaleString() } } },
+      scales:{ x:{ticks:{color:'#8a8178',font:{family:'IBM Plex Mono',size:9}},grid:{color:'#ddd8d0'}},
+               y:{min:0, ticks:{color:'#8a8178',font:{family:'IBM Plex Mono',size:9},callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v},grid:{color:'#ddd8d0'}} } }
+  }));
+
+  // YoY change
+  function yoy(arr) {
+    return arr.map((v,i)=>{
+      if(i===0||arr[i-1]==null||arr[i-1]===0||v==null) return null;
+      return +((v-arr[i-1])/arr[i-1]*100).toFixed(1);
+    });
+  }
+  const bYoY = yoy(berlin), wYoY = yoy(warsaw);
+
+  _reg('cYoY', new Chart(document.getElementById('cYoY'), {
+    type: 'bar',
+    data: {
+      labels: years,
+      datasets: [
+        { label:'Berlin YoY%', data:bYoY, backgroundColor: bYoY.map(v=>v==null?'transparent':v>=0?'rgba(192,57,43,0.65)':'rgba(192,57,43,0.25)'), borderColor:'#e05a4a', borderWidth:1, borderRadius:2 },
+        { label:'Warszawa YoY%', data:wYoY, backgroundColor: wYoY.map(v=>v==null?'transparent':v>=0?'rgba(58,97,134,0.65)':'rgba(58,97,134,0.25)'), borderColor:'#5b8fb9', borderWidth:1, borderRadius:2 }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ backgroundColor:'#ffffff', borderColor:'#c8c2b8', borderWidth:1,
+        titleFont:{family:'IBM Plex Mono',size:10}, bodyFont:{family:'IBM Plex Mono',size:11},
+        titleColor:'#8a8178', bodyColor:'#1a1714',
+        callbacks:{ label: ctx => ctx.dataset.label.split(' ')[0]+': '+(ctx.raw!=null?ctx.raw.toFixed(1)+'%':'—') } } },
+      scales:{ x:{ticks:{color:'#8a8178',font:{family:'IBM Plex Mono',size:9},maxRotation:45},grid:{color:'#ddd8d0'}},
+               y:{ticks:{color:'#8a8178',font:{family:'IBM Plex Mono',size:9},callback:v=>v+'%'},grid:{color:'#ddd8d0'}} } }
+  }));
+
+  // Full trend with linear regression overlay
+  const xNum = years;
+  const bTrend = linreg(xNum, berlin);
+  const wTrend = linreg(xNum, warsaw.map(v=>v==null?0:v));
+
+  _reg('cTrend', new Chart(document.getElementById('cTrend'), {
+    type: 'line',
+    data: {
+      labels: years,
+      datasets: [
+        { label:'Berlin', data:berlin, borderColor:'#e05a4a', backgroundColor:'rgba(192,57,43,0.07)',
+          borderWidth:2, pointRadius:3, pointBackgroundColor:'#e05a4a', tension:0.25, fill:true },
+        { label:'Warszawa', data:warsaw, borderColor:'#5b8fb9', backgroundColor:'rgba(58,97,134,0.07)',
+          borderWidth:2, pointRadius:3, pointBackgroundColor:'#5b8fb9', tension:0.25, fill:true },
+        { label:'trend B', data:bTrend, borderColor:'#e05a4a', borderWidth:2,
+          borderDash:[6,4], pointRadius:0, tension:0, fill:false },
+        { label:'trend W', data:wTrend, borderColor:'#5b8fb9', borderWidth:2,
+          borderDash:[6,4], pointRadius:0, tension:0, fill:false }
+      ]
+    },
+    options: {...baseOpts, scales:{...baseOpts.scales, y:{...baseOpts.scales.y, min:0}}}
+  }));
+
+  // Summary stats cards
+  function avg(arr) { const v=arr.filter(x=>x!=null&&x>0); return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):0; }
+  function med(arr) { const v=[...arr.filter(x=>x!=null)].sort((a,b)=>a-b); return v.length?v[Math.floor(v.length/2)]:0; }
+  function slope(arr) { const t=linreg(years,arr.map(v=>v==null?0:v)); return t[t.length-1]-t[0]; }
+
+  const stats = [
+    { label:'Śr. Berlin (bez 0)', val: avg(berlin).toLocaleString(), sub:'os./rok', col:'#e05a4a' },
+    { label:'Śr. Warszawa (bez 0)', val: avg(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
+    { label:'Mediana Berlin', val: med(berlin).toLocaleString(), sub:'os./rok', col:'#e05a4a' },
+    { label:'Mediana Warszawa', val: med(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
+    { label:'Trend Berlin', val: (slope(berlin)>0?'+':'')+Math.round(slope(berlin)/1000)+'k', sub:'łączna zmiana 30 lat', col: slope(berlin)>0?'#5a9e72':'#b85c52' },
+    { label:'Trend Warszawa', val: (slope(warsaw.map(v=>v==null?0:v))>0?'+':'')+Math.round(slope(warsaw.map(v=>v==null?0:v))/1000)+'k', sub:'łączna zmiana 30 lat', col: slope(warsaw.map(v=>v==null?0:v))>0?'#5a9e72':'#b85c52' },
+    { label:'Najlepszy rok Berlin', val: years[berlin.indexOf(Math.max(...berlin))].toString(), sub: Math.max(...berlin).toLocaleString()+' os.', col:'#e05a4a' },
+    { label:'Najlepszy rok Warszawa', val: years[warsaw.indexOf(Math.max(...warsaw.filter(v=>v!=null)))].toString(), sub: Math.max(...warsaw.filter(v=>v!=null)).toLocaleString()+' os.', col:'#5b8fb9' },
+  ];
+  const container = document.getElementById('trendStats');
+  if(container) {
+    container.innerHTML = stats.map(s=>`
+      <div style="background:var(--bg2);border:1px solid var(--border);padding:12px 14px;">
+        <div style="font-size:9px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">${s.label}</div>
+        <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:${s.col}">${s.val}</div>
+        <div style="font-size:10px;color:#555;margin-top:2px;">${s.sub}</div>
+      </div>`).join('');
+  }
+})();
+
+
+} // end renderAll
+
+
+// Init textareas then render
+function initEditor() {
+  document.getElementById('edYears').value = years.join('\n');
+  document.getElementById('edBerlin').value = berlin.join('\n');
+  document.getElementById('edWarsaw').value = warsaw.join('\n');
+}
+
+function toggleEditor() {
+  const p = document.getElementById('editorPanel');
+  const btn = document.getElementById('editorBtn');
+  if(p.style.display === 'none') {
+    p.style.display = 'block';
+    btn.style.color = '#e8e4dc';
+    initEditor();
+  } else {
+    p.style.display = 'none';
+    btn.style.color = '#888';
+  }
+}
+
+function parseVal(s) {
+  s = s.trim();
+  if(s === '' || s === '-') return null;
+  const n = Number(s.replace(/\s/g,'').replace(',','.'));
+  return isNaN(n) ? null : n;
+}
+
+function applyData() {
+  const ys = document.getElementById('edYears').value.split('\n').map(s=>parseInt(s)).filter(v=>!isNaN(v));
+  const bs = document.getElementById('edBerlin').value.split('\n').map(parseVal);
+  const ws = document.getElementById('edWarsaw').value.split('\n').map(parseVal);
+  const n = Math.min(ys.length, bs.length, ws.length);
+  if(n < 2) {
+    document.getElementById('editorMsg').textContent = '⚠ za mało danych';
+    return;
+  }
+  years = ys.slice(0, n);
+  berlin = bs.slice(0, n);
+  warsaw = ws.slice(0, n);
+  // update null → keep null for warsaw (means no demo if 0, no data if null)
+  // re-render
+  renderAll();
+  // re-select current period
+  const selPc = document.querySelector('.period-card.sel');
+  if(selPc) {
+    const idx = [...document.querySelectorAll('.period-card')].indexOf(selPc);
+    selectPeriod(idx);
+  }
+  document.getElementById('editorMsg').textContent = '✓ zaktualizowano (' + n + ' lat)';
+  setTimeout(()=>document.getElementById('editorMsg').textContent='', 3000);
+}
+
+renderAll();
+
+function switchTab(id, btn) {
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function exportChart(canvasId, filename) {
+  const canvas = document.getElementById(canvasId);
+  // draw white background then chart on temp canvas
+  const tmp = document.createElement('canvas');
+  tmp.width  = canvas.width;
+  tmp.height = canvas.height;
+  const ctx = tmp.getContext('2d');
+  ctx.fillStyle = '#faf8f5';
+  ctx.fillRect(0, 0, tmp.width, tmp.height);
+  ctx.drawImage(canvas, 0, 0);
+  const link = document.createElement('a');
+  link.download = filename + '.png';
+  link.href = tmp.toDataURL('image/png');
+  link.click();
+}
+
+// ── CITY TOGGLE ──
+let showBerlin = true, showWarsaw = true;
+
+function toggleCity(city) {
+  if (city === 'berlin') {
+    // don't allow turning off both
+    if (showBerlin && !showWarsaw) return;
+    showBerlin = !showBerlin;
+    document.getElementById('btnBerlin').classList.toggle('inactive', !showBerlin);
+  } else {
+    if (showWarsaw && !showBerlin) return;
+    showWarsaw = !showWarsaw;
+    document.getElementById('btnWarsaw').classList.toggle('inactive', !showWarsaw);
+  }
+
+  // Update all registered charts
+  Object.values(_charts).forEach(chart => {
+    if (!chart || !chart.data) return;
+    chart.data.datasets.forEach(ds => {
+      const isBerlin = ds.label && (ds.label.toLowerCase().includes('berlin') || ds.label.toLowerCase().includes('trend b'));
+      const isWarsaw = ds.label && (ds.label.toLowerCase().includes('warszawa') || ds.label.toLowerCase().includes('trend w') || ds.label.toLowerCase().includes('warsaw'));
+      if (isBerlin) ds.hidden = !showBerlin;
+      if (isWarsaw) ds.hidden = !showWarsaw;
+    });
+    chart.update();
+  });
+}
+
+</script>
+</div>
+</body>
+</html>
