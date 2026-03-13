@@ -883,14 +883,14 @@ _reg('cRolling', new Chart(document.getElementById('cRolling'), {
   function slope(arr) { const t=linreg(years,arr.map(v=>v==null?0:v)); return t[t.length-1]-t[0]; }
 
   const stats = [
-    { label:'Śr. Berlin (bez 0)', val: avg(berlin).toLocaleString(), sub:'os./rok', col:'#e05a4a' },
-    { label:'Śr. Warsaw (bez 0)', val: avg(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
-    { label:'Mediana Berlin', val: med(berlin).toLocaleString(), sub:'os./rok', col:'#e05a4a' },
-    { label:'Mediana Warsaw', val: med(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
-    { label:'Trend Berlin', val: (slope(berlin)>0?'+':'')+Math.round(slope(berlin)/1000)+'k', sub:'łączna zmiana 30 lat', col: slope(berlin)>0?'#5a9e72':'#b85c52' },
-    { label:'Trend Warsaw', val: (slope(warsaw.map(v=>v==null?0:v))>0?'+':'')+Math.round(slope(warsaw.map(v=>v==null?0:v))/1000)+'k', sub:'łączna zmiana 30 lat', col: slope(warsaw.map(v=>v==null?0:v))>0?'#5a9e72':'#b85c52' },
-    { label:'Najlepszy rok Berlin', val: years[berlin.indexOf(Math.max(...berlin))].toString(), sub: Math.max(...berlin).toLocaleString()+' os.', col:'#e05a4a' },
-    { label:'Najlepszy rok Warsaw', val: years[warsaw.indexOf(Math.max(...warsaw.filter(v=>v!=null)))].toString(), sub: Math.max(...warsaw.filter(v=>v!=null)).toLocaleString()+' os.', col:'#5b8fb9' },
+    { label:'Avg. Berlin (bez 0)', val: avg(berlin).toLocaleString(), sub:'os./rok', col:'#e05a4a' },
+    { label:'Avg. Warsaw (bez 0)', val: avg(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
+    { label:'Median Berlin', val: med(berlin).toLocaleString(), sub:'os./rok', col:'#e05a4a' },
+    { label:'Median Warsaw', val: med(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
+    { label:'Trend Berlin', val: (slope(berlin)>0?'+':'')+Math.round(slope(berlin)/1000)+'k', sub:'total change over 30 years', col: slope(berlin)>0?'#5a9e72':'#b85c52' },
+    { label:'Trend Warsaw', val: (slope(warsaw.map(v=>v==null?0:v))>0?'+':'')+Math.round(slope(warsaw.map(v=>v==null?0:v))/1000)+'k', sub:'total change over 30 years', col: slope(warsaw.map(v=>v==null?0:v))>0?'#5a9e72':'#b85c52' },
+    { label:'Best year Berlin', val: years[berlin.indexOf(Math.max(...berlin))].toString(), sub: Math.max(...berlin).toLocaleString()+' os.', col:'#e05a4a' },
+    { label:'Best year Warsaw', val: years[warsaw.indexOf(Math.max(...warsaw.filter(v=>v!=null)))].toString(), sub: Math.max(...warsaw.filter(v=>v!=null)).toLocaleString()+' os.', col:'#5b8fb9' },
   ];
   const container = document.getElementById('trendStats');
   if(container) {
@@ -940,7 +940,7 @@ function applyData() {
   const ws = document.getElementById('edWarsaw').value.split('\n').map(parseVal);
   const n = Math.min(ys.length, bs.length, ws.length);
   if(n < 2) {
-    document.getElementById('editorMsg').textContent = '⚠ za mało danych';
+    document.getElementById('editorMsg').textContent = '⚠ Insufficient data';
     return;
   }
   years = ys.slice(0, n);
