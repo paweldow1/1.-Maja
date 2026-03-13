@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>1 Maja – Berlin vs Warszawa 1990–2019</title>
@@ -367,8 +367,8 @@ function toggleCity(city) {
 <div class="masthead">
   <div class="masthead-inner">
     <div class="header">
-      <h1>Frekwencja na związkowych obchodach 1. Maja: <span class="b">Berlin (DGB)</span> i <span class="w">Warszawa (OPZZ)</span></h1>
-      <div class="header-meta">Frekwencja DGB i OPZZ · lata 1990–2019 · n = 30 obserwacji</div>
+      <h1>Attendance at the trade union’s May Day celebrations: <span class="b">Berlin (DGB)</span> and <span class="w">Warsaw (OPZZ)</span></h1>
+      <div class="header-meta">Years 1990–2019</div>
     </div>
   </div>
 </div>
@@ -379,7 +379,7 @@ function toggleCity(city) {
   <button onclick="toggleEditor()" id="editorBtn"
     style="background:var(--bg2);border:1px solid var(--border);color:var(--text-dim);font-family:'IBM Plex Mono',monospace;
            font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:7px 18px;
-           border-radius:4px;cursor:pointer;">✎ edytuj dane</button>
+           border-radius:4px;cursor:pointer;">✎ Edit the data </button>
 </div>
 <div id="editorPanel" style="display:none;background:var(--bg2);border:1px solid var(--border);padding:24px;margin-bottom:24px;">
   <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">
@@ -401,7 +401,7 @@ function toggleCity(city) {
                resize:vertical;line-height:1.7;outline:none;"></textarea>
     </div>
     <div>
-      <div style="font-size:9px;color:var(--warsaw-lt);margin-bottom:6px;letter-spacing:0.12em;text-transform:uppercase;">Warszawa</div>
+      <div style="font-size:9px;color:var(--warsaw-lt);margin-bottom:6px;letter-spacing:0.12em;text-transform:uppercase;">Warsaw</div>
       <textarea id="edWarsaw" spellcheck="false"
         style="width:100%;height:240px;background:var(--bg);border:1px solid var(--border);color:var(--warsaw);
                font-family:'IBM Plex Mono',monospace;font-size:11px;padding:10px;border-radius:4px;
@@ -422,11 +422,11 @@ function toggleCity(city) {
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="switchTab('shared', this)">Wspólna skala</button>
-  <button class="tab" onclick="switchTab('norm', this)">Trendy (z-score)</button>
-  <button class="tab" onclick="switchTab('periods', this)">Okresy</button>
-  <button class="tab" onclick="switchTab('rolling', this)">Korelacja krocząca</button>
-  <button class="tab" onclick="switchTab('trends', this)">Średnie i trendy</button>
+  <button class="tab active" onclick="switchTab('shared', this)">Common scale</button>
+  <button class="tab" onclick="switchTab('norm', this)">Trends (z-score)</button>
+  <button class="tab" onclick="switchTab('periods', this)">Periods</button>
+  <button class="tab" onclick="switchTab('rolling', this)">Rolling correlation</button>
+  <button class="tab" onclick="switchTab('trends', this)">Averages and trends</button>
 </div>
 
 <!-- SHARED SCALE -->
@@ -437,7 +437,7 @@ function toggleCity(city) {
   </div>
   <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cShared','berlin-warszawa-skala')">↓ PNG</button><canvas id="cShared"></canvas></div>
   <div class="note">
-    Na wspólnej skali widać, że <strong>frekwencja w Berlinie jest wyższa dla niemal wszystkich lat</strong> (szczyt 56 667 w 1990). Warszawa ma wyraźnie niższe wartości przez cały okres — szczyt to 25 000 (1992). W latach 2011, 2015, 2019 w Warszawie <strong>nie odbyły się demonstracje</strong>.
+    On a common scale, it can be seen that <strong>attendance in Berlin is higher for almost every year </strong> (peaking at 56,667 in 1990). Warsaw has significantly lower figures throughout the period — the peak is 25,000 (1992). In 2011, 2015 and 2019, <strong>no demonstrations took place in Warsaw</strong>.
   </div>
 </div>
 
@@ -449,7 +449,7 @@ function toggleCity(city) {
   </div>
   <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cNorm','berlin-warszawa-zscore')">↓ PNG</button><canvas id="cNorm"></canvas></div>
   <div class="note">
-    Po roku 1991 frekwencja na berlińskich obchodach 1. Maja DGB jest na stabilnym poziomie. Pierwsza fala mobilizacji w obu miastach przypada na pierwsze lata po transformacji – 1990-1992 w Warszawie i 1990-1993 w Berlinie. W następnych latach (1994-2001) trendy się rozmijają. O ile w Warszawie frekwencja oscyluje średniej dla okresu, w Berlinie po wzroście frekwencji w 1995 roku następuje stopniowy spadek. W okresie 2002-2010 w Warszawie trend spadkowy przerwany jest ..., Warszawa ze znaczącym wzrostem w latach 2012-2014 wywołanym polityczną mobilizacją organizowaną przez SLD
+    Since 1991, attendance at the DGB’s May Day celebrations in Berlin has remained stable. The first wave of mobilisation in both cities occurred in the early years following the transition – 1990–1992 in Warsaw and 1990–1993 in Berlin. In the following years (1994–2001), the trends diverged. Whilst attendance in Warsaw hovered around the average for the period, in Berlin a rise in attendance in 1995 was followed by a gradual decline. Between 2002 and 2010, the downward trend in Warsaw is interrupted by …, with Warsaw seeing a significant increase in 2012–2014 driven by political mobilisation organised by the SLD
   </div>
 </div>
 
@@ -477,12 +477,12 @@ function toggleCity(city) {
   </div>
   <div class="legend">
     <div class="leg"><div class="leg-line" style="background:#f4a261"></div>Berlin</div>
-    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warszawa</div>
+    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warsaw</div>
     <div class="leg"><div class="leg-dash" style="border-color:#f4a261"></div>trend Berlin</div>
-    <div class="leg"><div class="leg-dash" style="border-color:#60a5fa"></div>trend Warszawa</div>
+    <div class="leg"><div class="leg-dash" style="border-color:#60a5fa"></div>trend Warsaw</div>
   </div>
   <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cPeriod','berlin-warszawa-okres')">↓ PNG</button><canvas id="cPeriod"></canvas></div>
-  <div class="note" id="period-note">Kliknij okres powyżej, by zobaczyć szczegóły.</div>
+  <div class="note" id="period-note">Click on the period above to view the details.</div>
 </div>
 
 <!-- ROLLING CORRELATION -->
@@ -492,7 +492,7 @@ function toggleCity(city) {
   </div>
   <div class="chart-wrap" style="height:300px"><button class="export-btn" onclick="exportChart('cRolling','berlin-warszawa-korelacja')">↓ PNG</button><canvas id="cRolling"></canvas></div>
   <div class="note" id="rolling-note">
-    <strong>Korelacja krocząca (okno 5-letnie)</strong>
+    <strong>Rolling correlation (5-year window)</strong>
   </div>
 </div>
 
@@ -510,41 +510,41 @@ function toggleCity(city) {
   </div>
   <div class="legend" style="margin-bottom:12px;">
     <div class="leg"><div class="leg-line" style="background:#f4a261"></div>Berlin</div>
-    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warszawa</div>
-    <div class="leg"><div class="leg-dash" style="border-color:#f4a261"></div>trend liniowy Berlin</div>
-    <div class="leg"><div class="leg-dash" style="border-color:#60a5fa"></div>trend liniowy Warszawa</div>
+    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warsaw</div>
+    <div class="leg"><div class="leg-dash" style="border-color:#f4a261"></div> linear trend Berlin</div>
+    <div class="leg"><div class="leg-dash" style="border-color:#60a5fa"></div>linear trend Warsaw</div>
   </div>
   <div class="chart-wrap" style="height:280px"><button class="export-btn" onclick="exportChart('cTrend','berlin-warszawa-trend')">↓ PNG</button><canvas id="cTrend"></canvas></div>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;" id="trendStats"></div>
   <div class="note" style="margin-top:12px;">
-    <strong>Trend liniowy</strong> pokazuje ogólny kierunek zmian w całym 30-leciu. Zmiana rok-do-roku (YoY) ujawnia lata przełomowe — gwałtowne wzrosty lub spadki. Średnie dekadowe agregują frekwencję w trzech przedziałach i pozwalają porównać skalę mobilizacji.
+    <strong>Linear trend</strong> shows the general trend over the entire 30-year period. Year-on-year (YoY) changes reveal pivotal years — periods of sharp rises or falls. Decadal averages aggregate turnout across three time periods and allow for a comparison of the scale of mobilisation.
   </div>
 </div>
 
 
 <div class="stats-row">
   <div class="stat">
-    <div class="stat-l">Pearson r (całość)</div>
+    <div class="stat-l">Pearson r (whole period)</div>
     <div class="stat-v" style="color:#a78bfa">0.29</div>
     <div class="stat-s">p = 0.14, n=27</div>
   </div>
   <div class="stat">
-    <div class="stat-l">Spearman ρ (całość)</div>
+    <div class="stat-l">Spearman ρ (whole period)</div>
     <div class="stat-v" style="color:#a78bfa">0.11</div>
     <div class="stat-s">p = 0.60</div>
   </div>
   <div class="stat">
-    <div class="stat-l">Berlin — szczyt</div>
+    <div class="stat-l">Berlin — peak</div>
     <div class="stat-v" style="color:#f4a261">56 667</div>
     <div class="stat-s">1990</div>
   </div>
   <div class="stat">
-    <div class="stat-l">Warszawa — szczyt</div>
+    <div class="stat-l">Warszawa — peak</div>
     <div class="stat-v" style="color:#60a5fa">25 000</div>
     <div class="stat-s">1992</div>
   </div>
   <div class="stat">
-    <div class="stat-l">Brak demonstracji (Warszawa)</div>
+    <div class="stat-l">No demonstration (Warsaw)</div>
     <div class="stat-v" style="color:#555">3×</div>
     <div class="stat-s">2011, 2015, 2019 → 0</div>
   </div>
