@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>1 Maja – Berlin vs Warszawa 1990–2019</title>
+<title>1 Maja – Berlin vs Warsaw 1990–2019</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js">
 function exportChart(canvasId, filename) {
   const canvas = document.getElementById(canvasId);
@@ -40,7 +40,7 @@ function toggleCity(city) {
     if (!chart || !chart.data) return;
     chart.data.datasets.forEach(ds => {
       const isBerlin = ds.label && (ds.label.toLowerCase().includes('berlin') || ds.label.toLowerCase().includes('trend b'));
-      const isWarsaw = ds.label && (ds.label.toLowerCase().includes('warszawa') || ds.label.toLowerCase().includes('trend w') || ds.label.toLowerCase().includes('warsaw'));
+      const isWarsaw = ds.label && (ds.label.toLowerCase().includes('Warsaw') || ds.label.toLowerCase().includes('trend w') || ds.label.toLowerCase().includes('warsaw'));
       if (isBerlin) ds.hidden = !showBerlin;
       if (isWarsaw) ds.hidden = !showWarsaw;
     });
@@ -383,7 +383,7 @@ function toggleCity(city) {
 </div>
 <div id="editorPanel" style="display:none;background:var(--bg2);border:1px solid var(--border);padding:24px;margin-bottom:24px;">
   <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">
-    Format: jedna wartość na linię · 0 = brak demonstracji · puste lub "-" = brak danych (Warszawa)
+    Format: jedna wartość na linię · 0 = brak demonstracji · puste lub "-" = brak danych (Warsaw)
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
     <div>
@@ -418,7 +418,7 @@ function toggleCity(city) {
 
 <div class="city-toggles">
   <button class="city-btn active-berlin" id="btnBerlin" onclick="toggleCity('berlin')">● Berlin</button>
-  <button class="city-btn active-warsaw" id="btnWarsaw" onclick="toggleCity('warsaw')">● Warszawa</button>
+  <button class="city-btn active-warsaw" id="btnWarsaw" onclick="toggleCity('warsaw')">● Warsaw</button>
 </div>
 
 <div class="tabs">
@@ -433,9 +433,9 @@ function toggleCity(city) {
 <div class="view active" id="view-shared">
   <div class="legend">
     <div class="leg"><div class="leg-line" style="background:#f4a261"></div>Berlin</div>
-    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warszawa</div>
+    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warsaw</div>
   </div>
-  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cShared','berlin-warszawa-skala')">↓ PNG</button><canvas id="cShared"></canvas></div>
+  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cShared','berlin-Warsaw-skala')">↓ PNG</button><canvas id="cShared"></canvas></div>
   <div class="note">
     On a common scale, it can be seen that <strong>attendance in Berlin is higher for almost every year </strong> (peaking at 56,667 in 1990). Warsaw has significantly lower figures throughout the period — the peak is 25,000 (1992). In 2011, 2015 and 2019, <strong>no demonstrations took place in Warsaw</strong>.
   </div>
@@ -445,9 +445,9 @@ function toggleCity(city) {
 <div class="view" id="view-norm">
   <div class="legend">
     <div class="leg"><div class="leg-line" style="background:#f4a261"></div>Berlin (z-score)</div>
-    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warszawa (z-score)</div>
+    <div class="leg"><div class="leg-line" style="background:#60a5fa"></div>Warsaw (z-score)</div>
   </div>
-  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cNorm','berlin-warszawa-zscore')">↓ PNG</button><canvas id="cNorm"></canvas></div>
+  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cNorm','berlin-Warsaw-zscore')">↓ PNG</button><canvas id="cNorm"></canvas></div>
   <div class="note">
     Since 1991, attendance at the DGB’s May Day celebrations in Berlin has remained stable. The first wave of mobilisation in both cities occurred in the early years following the transition – 1990–1992 in Warsaw and 1990–1993 in Berlin. In the following years (1994–2001), the trends diverged. Whilst attendance in Warsaw hovered around the average for the period, in Berlin a rise in attendance in 1995 was followed by a gradual decline. Between 2002 and 2010, the downward trend in Warsaw is interrupted by …, with Warsaw seeing a significant increase in 2012–2014 driven by political mobilisation organised by the SLD
   </div>
@@ -481,7 +481,7 @@ function toggleCity(city) {
     <div class="leg"><div class="leg-dash" style="border-color:#f4a261"></div>trend Berlin</div>
     <div class="leg"><div class="leg-dash" style="border-color:#60a5fa"></div>trend Warsaw</div>
   </div>
-  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cPeriod','berlin-warszawa-okres')">↓ PNG</button><canvas id="cPeriod"></canvas></div>
+  <div class="chart-wrap" style="height:320px"><button class="export-btn" onclick="exportChart('cPeriod','berlin-Warsaw-okres')">↓ PNG</button><canvas id="cPeriod"></canvas></div>
   <div class="note" id="period-note">Click on the period above to view the details.</div>
 </div>
 
@@ -490,7 +490,7 @@ function toggleCity(city) {
   <div class="legend">
     <div class="leg"><div class="leg-line" style="background:#a78bfa"></div>Korelacja Pearsona (okno 5 lat)</div>
   </div>
-  <div class="chart-wrap" style="height:300px"><button class="export-btn" onclick="exportChart('cRolling','berlin-warszawa-korelacja')">↓ PNG</button><canvas id="cRolling"></canvas></div>
+  <div class="chart-wrap" style="height:300px"><button class="export-btn" onclick="exportChart('cRolling','berlin-Warsaw-korelacja')">↓ PNG</button><canvas id="cRolling"></canvas></div>
   <div class="note" id="rolling-note">
     <strong>Rolling correlation (5-year window)</strong>
   </div>
@@ -514,7 +514,7 @@ function toggleCity(city) {
     <div class="leg"><div class="leg-dash" style="border-color:#f4a261"></div> linear trend Berlin</div>
     <div class="leg"><div class="leg-dash" style="border-color:#60a5fa"></div>linear trend Warsaw</div>
   </div>
-  <div class="chart-wrap" style="height:280px"><button class="export-btn" onclick="exportChart('cTrend','berlin-warszawa-trend')">↓ PNG</button><canvas id="cTrend"></canvas></div>
+  <div class="chart-wrap" style="height:280px"><button class="export-btn" onclick="exportChart('cTrend','berlin-Warsaw-trend')">↓ PNG</button><canvas id="cTrend"></canvas></div>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;" id="trendStats"></div>
   <div class="note" style="margin-top:12px;">
     <strong>Linear trend</strong> shows the general trend over the entire 30-year period. Year-on-year (YoY) changes reveal pivotal years — periods of sharp rises or falls. Decadal averages aggregate turnout across three time periods and allow for a comparison of the scale of mobilisation.
@@ -539,7 +539,7 @@ function toggleCity(city) {
     <div class="stat-s">1990</div>
   </div>
   <div class="stat">
-    <div class="stat-l">Warszawa — peak</div>
+    <div class="stat-l">Warsaw — peak</div>
     <div class="stat-v" style="color:#60a5fa">25 000</div>
     <div class="stat-s">1992</div>
   </div>
@@ -675,7 +675,7 @@ function selectPeriod(idx) {
       datasets: [
         { label:'Berlin', data:pB, borderColor:'#e05a4a', borderWidth:2.5,
           pointRadius:5, pointBackgroundColor:'#e05a4a', tension:0.2, fill:false },
-        { label:'Warszawa', data:pW, borderColor:'#5b8fb9', borderWidth:2.5,
+        { label:'Warsaw', data:pW, borderColor:'#5b8fb9', borderWidth:2.5,
           pointRadius:5, pointBackgroundColor:'#5b8fb9', tension:0.2, fill:false, spanGaps:false },
         { label:'trend B', data:bTrendFull, borderColor:'#e05a4a', borderWidth:1.5,
           borderDash:[5,4], pointRadius:0, tension:0, fill:false },
@@ -701,7 +701,7 @@ _reg('cShared', new Chart(document.getElementById('cShared'), {
     datasets: [
       { label:'Berlin', data:berlin, borderColor:'#e05a4a', backgroundColor:'rgba(192,57,43,0.06)',
         borderWidth:2.5, pointRadius:4, pointBackgroundColor:'#e05a4a', tension:0.25, fill:true },
-      { label:'Warszawa', data:warsaw, borderColor:'#5b8fb9', backgroundColor:'rgba(58,97,134,0.06)',
+      { label:'Warsaw', data:warsaw, borderColor:'#5b8fb9', backgroundColor:'rgba(58,97,134,0.06)',
         borderWidth:2.5, pointRadius:4, pointBackgroundColor:'#5b8fb9', tension:0.25, fill:true }
     ]
   },
@@ -717,7 +717,7 @@ _reg('cNorm', new Chart(document.getElementById('cNorm'), {
     datasets: [
       { label:'Berlin z', data:bZ, borderColor:'#e05a4a', borderWidth:2.5,
         pointRadius:3, pointBackgroundColor:'#e05a4a', tension:0.3, fill:false },
-      { label:'Warszawa z', data:wZ, borderColor:'#5b8fb9', borderWidth:2.5,
+      { label:'Warsaw z', data:wZ, borderColor:'#5b8fb9', borderWidth:2.5,
         pointRadius:3, pointBackgroundColor:'#5b8fb9', tension:0.3, fill:false }
     ]
   },
@@ -815,7 +815,7 @@ _reg('cRolling', new Chart(document.getElementById('cRolling'), {
       labels: decades.map(d=>d.label),
       datasets: [
         { label:'Berlin', data:bDecAvg, backgroundColor:'rgba(192,57,43,0.7)', borderColor:'#e05a4a', borderWidth:1, borderRadius:3 },
-        { label:'Warszawa', data:wDecAvg, backgroundColor:'rgba(58,97,134,0.7)', borderColor:'#5b8fb9', borderWidth:1, borderRadius:3 }
+        { label:'Warsaw', data:wDecAvg, backgroundColor:'rgba(58,97,134,0.7)', borderColor:'#5b8fb9', borderWidth:1, borderRadius:3 }
       ]
     },
     options: { responsive:true, maintainAspectRatio:false,
@@ -842,7 +842,7 @@ _reg('cRolling', new Chart(document.getElementById('cRolling'), {
       labels: years,
       datasets: [
         { label:'Berlin YoY%', data:bYoY, backgroundColor: bYoY.map(v=>v==null?'transparent':v>=0?'rgba(192,57,43,0.65)':'rgba(192,57,43,0.25)'), borderColor:'#e05a4a', borderWidth:1, borderRadius:2 },
-        { label:'Warszawa YoY%', data:wYoY, backgroundColor: wYoY.map(v=>v==null?'transparent':v>=0?'rgba(58,97,134,0.65)':'rgba(58,97,134,0.25)'), borderColor:'#5b8fb9', borderWidth:1, borderRadius:2 }
+        { label:'Warsaw YoY%', data:wYoY, backgroundColor: wYoY.map(v=>v==null?'transparent':v>=0?'rgba(58,97,134,0.65)':'rgba(58,97,134,0.25)'), borderColor:'#5b8fb9', borderWidth:1, borderRadius:2 }
       ]
     },
     options: { responsive:true, maintainAspectRatio:false,
@@ -866,7 +866,7 @@ _reg('cRolling', new Chart(document.getElementById('cRolling'), {
       datasets: [
         { label:'Berlin', data:berlin, borderColor:'#e05a4a', backgroundColor:'rgba(192,57,43,0.07)',
           borderWidth:2, pointRadius:3, pointBackgroundColor:'#e05a4a', tension:0.25, fill:true },
-        { label:'Warszawa', data:warsaw, borderColor:'#5b8fb9', backgroundColor:'rgba(58,97,134,0.07)',
+        { label:'Warsaw', data:warsaw, borderColor:'#5b8fb9', backgroundColor:'rgba(58,97,134,0.07)',
           borderWidth:2, pointRadius:3, pointBackgroundColor:'#5b8fb9', tension:0.25, fill:true },
         { label:'trend B', data:bTrend, borderColor:'#e05a4a', borderWidth:2,
           borderDash:[6,4], pointRadius:0, tension:0, fill:false },
@@ -884,13 +884,13 @@ _reg('cRolling', new Chart(document.getElementById('cRolling'), {
 
   const stats = [
     { label:'Śr. Berlin (bez 0)', val: avg(berlin).toLocaleString(), sub:'os./rok', col:'#e05a4a' },
-    { label:'Śr. Warszawa (bez 0)', val: avg(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
+    { label:'Śr. Warsaw (bez 0)', val: avg(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
     { label:'Mediana Berlin', val: med(berlin).toLocaleString(), sub:'os./rok', col:'#e05a4a' },
-    { label:'Mediana Warszawa', val: med(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
+    { label:'Mediana Warsaw', val: med(warsaw).toLocaleString(), sub:'os./rok', col:'#5b8fb9' },
     { label:'Trend Berlin', val: (slope(berlin)>0?'+':'')+Math.round(slope(berlin)/1000)+'k', sub:'łączna zmiana 30 lat', col: slope(berlin)>0?'#5a9e72':'#b85c52' },
-    { label:'Trend Warszawa', val: (slope(warsaw.map(v=>v==null?0:v))>0?'+':'')+Math.round(slope(warsaw.map(v=>v==null?0:v))/1000)+'k', sub:'łączna zmiana 30 lat', col: slope(warsaw.map(v=>v==null?0:v))>0?'#5a9e72':'#b85c52' },
+    { label:'Trend Warsaw', val: (slope(warsaw.map(v=>v==null?0:v))>0?'+':'')+Math.round(slope(warsaw.map(v=>v==null?0:v))/1000)+'k', sub:'łączna zmiana 30 lat', col: slope(warsaw.map(v=>v==null?0:v))>0?'#5a9e72':'#b85c52' },
     { label:'Najlepszy rok Berlin', val: years[berlin.indexOf(Math.max(...berlin))].toString(), sub: Math.max(...berlin).toLocaleString()+' os.', col:'#e05a4a' },
-    { label:'Najlepszy rok Warszawa', val: years[warsaw.indexOf(Math.max(...warsaw.filter(v=>v!=null)))].toString(), sub: Math.max(...warsaw.filter(v=>v!=null)).toLocaleString()+' os.', col:'#5b8fb9' },
+    { label:'Najlepszy rok Warsaw', val: years[warsaw.indexOf(Math.max(...warsaw.filter(v=>v!=null)))].toString(), sub: Math.max(...warsaw.filter(v=>v!=null)).toLocaleString()+' os.', col:'#5b8fb9' },
   ];
   const container = document.getElementById('trendStats');
   if(container) {
@@ -1004,7 +1004,7 @@ function toggleCity(city) {
     if (!chart || !chart.data) return;
     chart.data.datasets.forEach(ds => {
       const isBerlin = ds.label && (ds.label.toLowerCase().includes('berlin') || ds.label.toLowerCase().includes('trend b'));
-      const isWarsaw = ds.label && (ds.label.toLowerCase().includes('warszawa') || ds.label.toLowerCase().includes('trend w') || ds.label.toLowerCase().includes('warsaw'));
+      const isWarsaw = ds.label && (ds.label.toLowerCase().includes('Warsaw') || ds.label.toLowerCase().includes('trend w') || ds.label.toLowerCase().includes('warsaw'));
       if (isBerlin) ds.hidden = !showBerlin;
       if (isWarsaw) ds.hidden = !showWarsaw;
     });
