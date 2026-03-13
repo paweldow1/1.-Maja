@@ -500,11 +500,11 @@ function toggleCity(city) {
 <div class="view" id="view-trends">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;align-items:start;">
     <div style="background:var(--bg2);border:1px solid var(--border);padding:16px 20px;">
-      <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Średnie dekadowe</div>
+      <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">10-year averages</div>
       <div style="position:relative;height:180px"><canvas id="cDecAvg"></canvas></div>
     </div>
     <div style="background:var(--bg2);border:1px solid var(--border);padding:16px 20px;">
-      <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Zmiana rok do roku (%)</div>
+      <div style="font-size:10px;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">YoY change (%)</div>
       <div style="position:relative;height:180px"><canvas id="cYoY"></canvas></div>
     </div>
   </div>
@@ -621,11 +621,11 @@ function zScore(arr) {
 // ── PERIODS ──
 const periods = [
   { start:1990, end:1999, label:'1990–1999',
-    note:'Najwyższa frewkencja występuje w latach 90. Zbieżny trend spadkowy.' },
+    note:'Attendance peaked in the 1990s. A corresponding downward trend.' },
   { start:2000, end:2010, label:'2000–2010',
-    note:'Tempo spadku zwalnia w obu miastach. Frekwencja w Berlinie wyraźnie wyższa niż w Warszawie.' },
+    note:'TThe rate of decline is slowing in both cities. Turnout in Berlin is significantly higher than in Warsaw.' },
   { start:2011, end:2019, label:'2011–2019',
-    note:'Wyjątkowo wysoka frekwencja w Warszawie w latach 2012-2014 związana z mobilizacją SLD. W Berlinie trend wzrostowy pomiędzy 2011 a 2019.' }
+    note:'Attendance in Warsaw was exceptionally high between 2012 and 2014, linked to the mobilisation of the SLD. In Berlin, there was an upward trend between 2011 and 2019.' }
 ];
 
 let periodChart = null;
@@ -645,11 +645,11 @@ function colorForR(r) {
   return '#b85c52';
 }
 function labelForR(r) {
-  if(r==null) return 'brak danych';
-  if(r>=0.6) return 'silna korelacja';
-  if(r>=0.3) return 'umiarkowana';
-  if(r>=-0.1) return 'słaba / brak';
-  return 'ujemna';
+  if(r==null) return 'no data';
+  if(r>=0.6) return 'strong correlation';
+  if(r>=0.3) return 'Mild';
+  if(r>=-0.1) return 'weak / none';
+  return 'negative';
 }
 
 function selectPeriod(idx) {
@@ -780,7 +780,7 @@ _reg('cRolling', new Chart(document.getElementById('cRolling'), {
         titleColor:'#777', bodyColor:'#e8e4dc',
         titleFont:{family:'IBM Plex Mono',size:10},
         bodyFont:{family:'IBM Plex Mono',size:11},
-        callbacks: { label: ctx => 'r = ' + (ctx.raw!=null?ctx.raw.toFixed(3):'brak danych') }
+        callbacks: { label: ctx => 'r = ' + (ctx.raw!=null?ctx.raw.toFixed(3):'no data') }
       }
     },
     scales: {
