@@ -345,6 +345,8 @@
   <button class="tab" onclick="switchTab('rolling', this)">Rolling correlation</button>
   <button class="tab" onclick="switchTab('mavg', this)">Moving average</button>
   <button class="tab" onclick="switchTab('trends', this)">Averages &amp; trends</button>
+  <button class="tab" onclick="switchTab('context', this)">Calendar &amp; weather</button>
+  <button class="tab" onclick="switchTab('table', this)">Tabela</button>
 </div>
 
 <!-- SHARED SCALE -->
@@ -472,6 +474,43 @@
     <strong>Linear trend</strong> shows the general direction over 30 years. YoY changes reveal pivotal years. Decadal averages allow comparison of mobilisation scale across three sub-periods.
   </div>
 </div>
+
+<!-- CALENDAR & WEATHER CONTEXT -->
+<div class="view" id="view-context">
+  <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+    <div style="font-size:9px;color:var(--text-dim);letter-spacing:0.12em;text-transform:uppercase;margin-right:4px;">City:</div>
+    <button class="city-btn active-berlin" id="ctxBtnBerlin" onclick="ctxSelectCity('berlin')">● Berlin</button>
+    <button class="city-btn" id="ctxBtnWarsaw" onclick="ctxSelectCity('warsaw')">● Warsaw</button>
+    <div style="margin-left:auto;display:flex;gap:14px;flex-wrap:wrap;align-items:center;" id="ctxLegend">
+      <span style="font-size:12px;">☀</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">≥15°C, dry</span>
+      <span style="font-size:12px;">🌤</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">10–14°C, dry</span>
+      <span style="font-size:12px;">🌧</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">rain</span>
+      <span style="font-size:12px;">🥶</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">&lt;10°C, dry</span>
+      <span style="font-size:12px;">✕</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">brak demon.</span>
+      <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text-dim);">
+        <div style="width:22px;height:10px;background:rgba(184,92,82,0.15);border:1px solid rgba(184,92,82,0.3)"></div>★★ long May holiday
+      </div>
+      <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text-dim);">
+        <div style="width:22px;height:10px;background:rgba(200,160,80,0.12);border:1px solid rgba(200,160,80,0.25)"></div>★ extended
+      </div>
+    </div>
+  </div>
+  <div class="chart-wrap" style="height:340px">
+    <button class="export-btn" onclick="exportChart('cContext','context-chart')">↓ PNG</button>
+    <canvas id="cContext"></canvas>
+  </div>
+  <div class="note" id="ctxNote">
+    <strong>Point colour</strong> = morning weather 06:00–12:00: 🟢 green = ≥15°C, dry; 🟡 yellow = 12–16°C, dry; 🔴 red = rain (&gt;0.5mm) or &lt;10°C. <strong>Background shading</strong>: red tint = long weekend ★★ (5–6d, tends to disperse crowd), orange = extended ★ (3–4d), no shading = 1–2 days.
+  </div>
+</div>
+
+
+
+<!-- TABLE VIEW -->
+<div class="view" id="view-table">
+  <div id="tableContainer"></div>
+</div>
+
 
 <!-- STATS -->
 <div class="stats-row" id="statsRow"></div>
@@ -655,6 +694,224 @@ function selectPeriod(idx) {
   renderYearChips(p);
   renderPeriodNote(p, excludedYears);
 }
+
+// ── CONTEXT TAB DATA ──
+// Morning data 06:00–12:00 on May 1st (avg temp, sum precip)
+const ctxWeather = {
+  warsaw: {
+    1990:{t:11.1,p:0.0},1991:{t:8.8,p:0.0},1992:{t:10.5,p:0.0},1993:{t:16.9,p:0.0},
+    1994:{t:10.0,p:0.1},1995:{t:8.2,p:0.0},1996:{t:13.4,p:0.6},1997:{t:9.2,p:0.0},
+    1998:{t:15.2,p:0.0},1999:{t:10.8,p:0.0},2000:{t:19.9,p:0.0},2001:{t:18.9,p:0.0},
+    2002:{t:13.2,p:0.0},2003:{t:15.4,p:1.8},2004:{t:12.8,p:0.0},2005:{t:13.2,p:0.0},
+    2006:{t:12.7,p:0.0},2007:{t:4.3,p:0.0},2008:{t:14.2,p:0.0},2009:{t:11.0,p:0.0},
+    2010:{t:15.4,p:2.4},2011:{t:11.1,p:2.2},2012:{t:21.1,p:0.0},2013:{t:10.2,p:0.0},
+    2014:{t:15.0,p:0.0},2015:{t:12.2,p:0.0},2016:{t:9.8,p:0.0},2017:{t:8.6,p:0.0},
+    2018:{t:20.2,p:0.0},2019:{t:13.9,p:0.0}
+  },
+  berlin: {
+    1990:{t:13.2,p:0.0},1991:{t:6.7,p:3.2},1992:{t:12.6,p:0.0},1993:{t:18.8,p:0.0},
+    1994:{t:7.8,p:0.0},1995:{t:11.2,p:0.0},1996:{t:11.6,p:0.0},1997:{t:10.3,p:0.1},
+    1998:{t:15.8,p:0.0},1999:{t:9.1,p:0.0},2000:{t:18.1,p:0.0},2001:{t:16.3,p:0.0},
+    2002:{t:14.6,p:0.0},2003:{t:13.3,p:0.5},2004:{t:16.4,p:0.0},2005:{t:16.5,p:0.0},
+    2006:{t:9.0,p:0.0},2007:{t:7.9,p:0.0},2008:{t:10.9,p:3.9},2009:{t:14.1,p:0.0},
+    2010:{t:13.0,p:0.0},2011:{t:9.3,p:0.0},2012:{t:16.0,p:0.0},2013:{t:10.3,p:0.0},
+    2014:{t:14.6,p:0.0},2015:{t:9.2,p:0.1},2016:{t:11.7,p:0.0},2017:{t:10.0,p:0.0},
+    2018:{t:13.2,p:0.0},2019:{t:11.8,p:0.1}
+  }
+};
+
+// exact free day count per year
+const ctxDays = {
+  warsaw: {1990:1,1991:1,1992:3,1993:3,1994:3,1995:4,1996:5,1997:4,1998:3,1999:3,2000:3,2001:6,2002:5,2003:4,2004:3,2005:2,2006:3,2007:6,2008:4,2009:3,2010:3,2011:2,2012:6,2013:5,2014:4,2015:3,2016:2,2017:3,2018:6,2019:5},
+  berlin: {1990:1,1991:1,1992:3,1993:2,1994:2,1995:3,1996:1,1997:4,1998:3,1999:2,2000:3,2001:1,2002:1,2003:4,2004:2,2005:2,2006:3,2007:1,2008:4,2009:3,2010:2,2011:2,2012:1,2013:1,2014:4,2015:3,2016:2,2017:3,2018:1,2019:1}
+};
+// ctxChain removed — use ctxDays directly
+
+let ctxCity = 'berlin';
+
+// thresholds: <12°C = bad, ≥17°C + dry = good, else middling
+// rain >0.5mm always bad regardless of temp
+function wxColor(p, alpha, t) {
+  if (p > 0.5)            return `rgba(184,92,82,${alpha})`;   // rain → red
+  if (t !== undefined && t < 10) return `rgba(184,92,82,${alpha})`;   // cold → red
+  if (t !== undefined && t >= 15 && p === 0) return `rgba(90,158,114,${alpha})`;  // warm+dry → green
+  return `rgba(200,170,80,${alpha})`;                           // middling → yellow
+}
+
+function wxBorder(p, t) {
+  if (p > 0.5)            return '#903040';
+  if (t !== undefined && t < 10) return '#903040';
+  if (t !== undefined && t >= 15 && p === 0) return '#3d7a52';
+  return '#9a8030';
+}
+
+function wxIcon(w, attendance) {
+  if (attendance === 0) return '✕';
+  if (!w) return '?';
+  if (w.p > 0.5) return '🌧';
+  if (w.t < 10)  return '🥶';
+  if (w.t >= 15) return '☀';
+  return '🌤';
+}
+
+function wxIconColor(w, attendance) {
+  if (attendance === 0) return '#b85c52';
+  if (!w) return '#aaa';
+  if (w.p > 0.5) return '#3a6fa8';  // rain: blue
+  if (w.t < 10)  return '#7a4a9a';  // cold: purple
+  if (w.t >= 15) return '#3d7a52';  // warm dry: green
+  return '#8a7030';                  // mild dry: amber
+}
+
+function chainDays(year, city) {
+  const d = ctxDays[city][year];
+  if (!d || d <= 2) return '';
+  return d + 'd';
+}
+
+function renderContextChart() {
+  if (_charts['cContext']) { _charts['cContext'].destroy(); delete _charts['cContext']; }
+
+  const data = ctxCity === 'berlin' ? berlin : warsaw;
+  const wx   = ctxWeather[ctxCity];
+  const ch   = ctxDays[ctxCity];
+
+  // Icon plugin — draws emoji above each bar and chain label in band
+  const iconPlugin = {
+    id: 'weatherIcons',
+    afterDraw(chart) {
+      const {ctx, scales, chartArea} = chart;
+      ctx.save();
+      ctx.font = '13px sans-serif';
+      ctx.textAlign = 'center';
+
+      years.forEach((y, i) => {
+        const meta = chart.getDatasetMeta(0);
+        if (!meta.data[i]) return;
+        const bar   = meta.data[i];
+        const bx    = bar.x;
+        const top   = bar.y - 6;
+        const icon  = wxIcon(wx[y], data[i]);
+        ctx.fillText(icon, bx, Math.max(top, chartArea.top + 16));
+
+        // chain label above the icon, white outline + black text
+        const chain = ch[y] || 1;
+        if (chain > 1) {
+          const label = chainDays(y, ctxCity);
+          ctx.font = 'bold 8px IBM Plex Mono, monospace';
+          ctx.textAlign = 'center';
+          // position just above the weather icon
+          const labelY = Math.max(top - 14, chartArea.top + 4);
+          ctx.strokeStyle = 'white';
+          ctx.lineWidth = 3;
+          ctx.lineJoin = 'round';
+          ctx.strokeText(label, bx, labelY);
+          ctx.fillStyle = '#1a1714';
+          ctx.fillText(label, bx, labelY);
+          ctx.font = '13px sans-serif';
+        }
+      });
+      ctx.restore();
+    }
+  };
+
+  const bandPlugin = {
+    id: 'weekendBands',
+    beforeDraw(chart) {
+      const {ctx, scales, chartArea} = chart;
+      if (!scales.x) return;
+      ctx.save();
+      years.forEach((y, i) => {
+        const chain = ch[y] || 1;
+        if (chain === 1) return;
+        const meta = chart.getDatasetMeta(0);
+        if (!meta.data[i]) return;
+        const bar = meta.data[i];
+        const bw = bar.width || 20;
+        const x = bar.x - bw/2 - 1;
+        const w = bw + 2;
+        if (chain === 3) {
+          ctx.fillStyle = 'rgba(184,92,82,0.10)';
+          ctx.strokeStyle = 'rgba(184,92,82,0.25)';
+        } else {
+          ctx.fillStyle = 'rgba(200,160,80,0.08)';
+          ctx.strokeStyle = 'rgba(200,160,80,0.18)';
+        }
+        ctx.lineWidth = 1;
+        ctx.fillRect(x, chartArea.top, w, chartArea.height);
+        ctx.strokeRect(x, chartArea.top, w, chartArea.height);
+      });
+      ctx.restore();
+    }
+  };
+
+  // Bar colors: uniform per city, dimmed for zero years
+  const color = ctxCity === 'berlin' ? '#e05a4a' : '#5b8fb9';
+  const bgColors  = data.map(v => v === 0 ? 'rgba(150,150,150,0.2)' : ctxCity === 'berlin' ? 'rgba(192,57,43,0.65)' : 'rgba(58,97,134,0.65)');
+  const brdColors = data.map(v => v === 0 ? '#aaa' : color);
+
+  _reg('cContext', new Chart(document.getElementById('cContext'), {
+    type: 'bar',
+    plugins: [bandPlugin, iconPlugin],
+    data: {
+      labels: years,
+      datasets: [{
+        label: ctxCity === 'berlin' ? 'Berlin' : 'Warsaw',
+        data: data,
+        backgroundColor: bgColors,
+        borderColor: brdColors,
+        borderWidth: 1.5,
+        borderRadius: 2,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      layout: { padding: { top: 24, bottom: 14 } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#ffffff', borderColor: '#c8c2b8', borderWidth: 1,
+          titleColor: '#8a8178', bodyColor: '#1a1714',
+          titleFont: { family:'IBM Plex Mono', size:10 },
+          bodyFont:  { family:'IBM Plex Mono', size:11 },
+          callbacks: {
+            title: ctx => ctx[0].label + ' · 1 May',
+            afterBody: ctx => {
+              const y  = parseInt(ctx[0].label);
+              const w  = wx[y];
+              const chain = ch[y] || 1;
+              const days = ctxDays[ctxCity][y] || 1;
+              const chainStr = chain === 3 ? days+'d ★★ (long weekend)' : chain === 2 ? days+'d ★ (extended)' : days+'d';
+              const att = data[years.indexOf(y)];
+              if (att === 0) return ['', `Weekend: ${chainStr}`, '✕ no demonstration'];
+              const icon = wxIcon(w, att);
+              const wStr = w
+                ? `${icon} ${w.t}°C, ${w.p > 0 ? w.p+'mm' : 'dry'} (06–12h)`
+                : '? brak danych';
+              return ['', `Weekend: ${chainStr}`, `Pogoda: ${wStr}`];
+            }
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: tc, font:{ family:'IBM Plex Mono', size:10 }, maxRotation:45 }, grid: { color: gc } },
+        y: { min: 0, ticks: { color: tc, font:{ family:'IBM Plex Mono', size:10 }, callback: v => v>=1000?(v/1000).toFixed(0)+'k':v }, grid: { color: gc } }
+      }
+    }
+  }));
+}
+
+
+function ctxSelectCity(city) {
+  ctxCity = city;
+  document.getElementById('ctxBtnBerlin').className = 'city-btn' + (city==='berlin'?' active-berlin':'');
+  document.getElementById('ctxBtnWarsaw').className = 'city-btn' + (city==='warsaw'?' active-warsaw':'');
+  renderContextChart();
+}
+
+
+  renderContextChart();
+
 
 // ── RENDER ALL ──
 function renderAll() {
@@ -862,6 +1119,107 @@ function renderAll() {
     <div class="stat"><div class="stat-l">Berlin — peak</div><div class="stat-v" style="color:#e05a4a">${Math.max(...berlin).toLocaleString()}</div><div class="stat-s">${years[berlin.indexOf(Math.max(...berlin))]}</div></div>
     <div class="stat"><div class="stat-l">Warsaw — peak</div><div class="stat-v" style="color:#5b8fb9">${Math.max(...warsaw.filter(v=>v!=null)).toLocaleString()}</div><div class="stat-s">${years[warsaw.indexOf(Math.max(...warsaw.filter(v=>v!=null)))]}</div></div>
     <div class="stat"><div class="stat-l">No demonstration (Warsaw)</div><div class="stat-v" style="color:var(--text-dim)">${warsaw.filter(v=>v===0).length}×</div><div class="stat-s">${years.filter((_,i)=>warsaw[i]===0).join(', ')}</div></div>`;
+
+
+
+  renderContextChart();
+
+
+// ── TABLE VIEW ──
+function renderTable() {
+  const waw_wx = ctxWeather.warsaw;
+  const ber_wx = ctxWeather.berlin;
+  const waw_ch = ctxDays.warsaw;
+  const ber_ch = ctxDays.berlin;
+
+  const DN = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+  function icon(wx, att) {
+    if (att === 0) return '✕';
+    if (!wx) return '?';
+    if (wx.p > 0.5) return '🌧';
+    if (wx.t < 10)  return '🥶';
+    if (wx.t >= 15) return '☀';
+    return '🌤';
+  }
+
+  function chainLabel(ch, year, city) {
+    const d = ctxDays[city] ? ctxDays[city][year] : null;
+    if (!d || d <= 1) return '1d';
+    return d + 'd';
+  }
+
+  function tempCell(wx, att) {
+    if (att === 0) return '<span style="color:var(--text-dim)">—</span>';
+    if (!wx) return '?';
+    return wx.t + '°C' + (wx.p > 0 ? ' · ' + wx.p + 'mm' : '');
+  }
+
+  // day of week for May 1st
+  function dow(year) {
+    return DN[new Date(year, 4, 1).getDay() === 0 ? 6 : new Date(year, 4, 1).getDay() - 1];
+  }
+
+  let rows = '';
+  for (let i = 0; i < years.length; i++) {
+    const y    = years[i];
+    const watt = warsaw[i];
+    const batt = berlin[i];
+    const wch  = waw_ch[y] || 1;
+    const bch  = ber_ch[y] || 1;
+    const wdays = ctxDays.warsaw[y];
+    const bdays = ctxDays.berlin[y];
+    const wwx  = waw_wx[y];
+    const bwx  = ber_wx[y];
+    const d    = dow(y);
+
+    const wChainCls = wdays >= 5 ? 'background:rgba(184,92,82,0.08)' : wdays >= 3 ? 'background:rgba(200,160,80,0.07)' : '';
+    const bChainCls = bdays >= 5 ? 'background:rgba(184,92,82,0.08)' : bdays >= 3 ? 'background:rgba(200,160,80,0.07)' : '';
+
+    rows += `<tr>
+      <td style="font-weight:500;color:var(--text)">${y}</td>
+      <td style="color:var(--text-dim)">${d}</td>
+      <td style="${wChainCls}">${chainLabel(wch, y, "warsaw")}</td>
+      <td>${icon(wwx, watt)} ${tempCell(wwx, watt)}</td>
+      <td style="text-align:right;color:var(--berlin-lt);font-weight:500">${watt > 0 ? watt.toLocaleString() : "—"}</td>
+      <td style="${bChainCls}">${chainLabel(bch, y, "berlin")}</td>
+      <td>${icon(bwx, batt)} ${tempCell(bwx, batt)}</td>
+      <td style="text-align:right;color:var(--warsaw-lt);font-weight:500">${batt > 0 ? batt.toLocaleString() : "—"}</td>
+    </tr>`;
+  }
+
+  document.getElementById('tableContainer').innerHTML = `
+    <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'IBM Plex Mono',monospace;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--berlin);text-align:left;">
+          <th rowspan="2" style="padding:8px 10px;color:var(--text-dim);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;vertical-align:bottom;">Year</th>
+          <th rowspan="2" style="padding:8px 10px;color:var(--text-dim);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;vertical-align:bottom;">Day</th>
+          <th colspan="3" style="padding:8px 10px;color:var(--berlin-lt);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);text-align:center;">Warszawa</th>
+          <th colspan="3" style="padding:8px 10px;color:var(--warsaw-lt);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);text-align:center;">Berlin</th>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <th style="padding:6px 10px;color:var(--text-dim);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:400;">Weekend</th>
+          <th style="padding:6px 10px;color:var(--text-dim);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:400;">Weather 06–12h</th>
+          <th style="padding:6px 10px;color:var(--text-dim);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:400;text-align:right;">Attendance</th>
+          <th style="padding:6px 10px;color:var(--text-dim);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:400;">Weekend</th>
+          <th style="padding:6px 10px;color:var(--text-dim);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:400;">Weather 06–12h</th>
+          <th style="padding:6px 10px;color:var(--text-dim);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:400;text-align:right;">Attendance</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+    </div>
+    <div style="font-family:'Source Serif 4',serif;font-style:italic;font-size:11px;color:var(--text-dim);border-top:1px solid var(--border);padding-top:10px;margin-top:4px;line-height:1.8;">
+      ☀ ≥15°C dry · 🌤 10–14°C dry · 🌧 rain · 🥶 &lt;10°C dry · ✕ no demonstration ·
+      <span style="background:rgba(184,92,82,0.10);padding:1px 4px;">★★ long</span> ·
+      <span style="background:rgba(200,160,80,0.09);padding:1px 4px;">★ extended</span>
+    </div>
+  `;
+}
+
+
+  renderTable();
 
 } // end renderAll
 
