@@ -1181,10 +1181,10 @@ function renderTable() {
       <td style="color:var(--text-dim)">${d}</td>
       <td style="${wChainCls}">${chainLabel(wch, y, "warsaw")}</td>
       <td>${icon(wwx, watt)} ${tempCell(wwx, watt)}</td>
-      <td style="text-align:right;color:var(--berlin-lt);font-weight:500">${watt > 0 ? watt.toLocaleString() : "—"}</td>
+      <td style="text-align:center;color:var(--berlin-lt);font-weight:500">${watt > 0 ? watt.toLocaleString() : "—"}</td>
       <td style="${bChainCls}">${chainLabel(bch, y, "berlin")}</td>
       <td>${icon(bwx, batt)} ${tempCell(bwx, batt)}</td>
-      <td style="text-align:right;color:var(--warsaw-lt);font-weight:500">${batt > 0 ? batt.toLocaleString() : "—"}</td>
+      <td style="text-align:center;color:var(--warsaw-lt);font-weight:500">${batt > 0 ? batt.toLocaleString() : "—"}</td>
     </tr>`;
   }
 
