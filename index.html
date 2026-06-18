@@ -626,9 +626,14 @@
         Revolutionäre 13
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
-        <input type="checkbox" id="bs_pds" checked onchange="renderBerlinTable()">
-        <div style="width:10px;height:10px;border-radius:2px;background:rgba(122,143,168,0.70);border:1px solid #7a8fa8"></div>
-        PDS/Ost
+        <input type="checkbox" id="bs_pds_u" checked onchange="renderBerlinTable()">
+        <div style="width:10px;height:10px;border-radius:2px;background:rgba(155,90,75,0.75);border:1px solid #9b5a4b"></div>
+        PDS/Ost 1990–94 (związkowe)
+      </label>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
+        <input type="checkbox" id="bs_pds_a" checked onchange="renderBerlinTable()">
+        <div style="width:10px;height:10px;border-radius:2px;background:rgba(122,143,168,0.75);border:1px solid #7a8fa8"></div>
+        PDS/Ost 1995–02 (alt.)
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="bs_euro" checked onchange="renderBerlinTable()">
@@ -749,11 +754,7 @@
         <div style="width:10px;height:10px;border-radius:2px;background:rgba(180,80,160,0.75);border:1px solid #b450a0"></div>
         Parada Równości
       </label>
-      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
-        <input type="checkbox" id="ws_walp"  onchange="renderWarsawTable()">
-        <div style="width:10px;height:10px;border-radius:2px;background:rgba(140,140,140,0.4);border:1px solid #888"></div>
-        Walpurgisnacht (Berlin)&nbsp;⚠
-      </label>
+
     </div>
     <div>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--text);margin-bottom:5px;">
@@ -1264,8 +1265,8 @@ const berlinSeries = {
   revo_j:   [12500,12667,13500,7750,900,2250,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
   revo18:   [null,null,null,null,null,null,10000,9000,6667,14000,13333,5500,8000,3500,3500,null,null,7667,11000,8500,12500,11333,18500,11667,22000,25500,16500,15000,12500,10000],
   revo13:   [null,null,null,null,null,null,3000,2000,1750,1500,1500,2250,4000,6750,5000,500,50,900,300,300,50,null,null,null,null,null,250,250,200,200],
-  pds_u:    [15500,null,6000,6000,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], // 1990-1993 union
-  pds_a:    [null,null,null,null,1000,null,4000,8500,6500,10000,7000,7000,2250,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], // 1994-2002 alt
+  pds_u:    [15500,null,6000,6000,1000,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], // 1990-1994 union
+  pds_a:    [null,null,null,null,null,null,4000,8500,6500,10000,7000,7000,2250,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], // 1995-2002 alt
   euro:     [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4000,7000,6500,3500,null,null,null,null,null,null,null,null,null,null],
   antinazi: [null,null,200,null,450,null,40,null,null,null,10000,350,1000,250,3400,null,null,null,null,3500,10000,null,null,2000,null,500,900,600,null,null],
   nazi:     [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
@@ -1276,8 +1277,8 @@ const berlinSeries = {
 const berlinMeta = [
   // Union / związkowe
   {key:'dgb',     label:'DGB Berlin',          group:'union', stub:false, color:'rgba(192,58,43,0.80)',  border:'#c03a2b'},
-  {key:'pds_u',   label:'PDS/Ost (1990–93)',   group:'union', stub:false, color:'rgba(155,90,75,0.75)', border:'#9b5a4b'},
-  {key:'pds_a',   label:'PDS/Ost (1994–02)',   group:'alt',   stub:false, color:'rgba(122,143,168,0.75)',border:'#7a8fa8'},
+  {key:'pds_u',   label:'PDS/Ost (1990–94)',   group:'union', stub:false, color:'rgba(155,90,75,0.75)', border:'#9b5a4b'},
+  {key:'pds_a',   label:'PDS/Ost (1995–02)',   group:'alt',   stub:false, color:'rgba(122,143,168,0.75)',border:'#7a8fa8'},
   // Alternative demos
   {key:'revo_j',  label:'Revo joint (1990–95)',group:'alt',   stub:false, color:'rgba(30,30,30,0.80)',   border:'#1a1a1a'},
   {key:'revo18',  label:'Revolutionäre 18',    group:'alt',   stub:false, color:'rgba(55,55,55,0.75)',   border:'#333'},
@@ -1292,8 +1293,8 @@ const berlinMeta = [
 
 // Grouped view: 3 colors
 const berlinGroupColors = {
-  union: {color:'rgba(192,58,43,0.75)',  border:'#c03a2b', label:'Związkowe (DGB, PDS)'},
-  alt:   {color:'rgba(40,40,40,0.75)',   border:'#1a1a1a', label:'Alternatywne demo'},
+  union: {color:'rgba(192,58,43,0.75)',  border:'#c03a2b', label:'Związkowe (DGB + PDS do 1994)'},
+  alt:   {color:'rgba(40,40,40,0.75)',   border:'#1a1a1a', label:'Alternatywne (Revo, PDS 1995+, Euro, Antinazi)'},
   fest:  {color:'rgba(50,138,70,0.75)',  border:'#328a46', label:'Festyny'},
 };
 
@@ -1358,6 +1359,7 @@ function updateTableRange(prefix) {
   else                  { wawYrFrom = f; wawYrTo = t; renderWarsawTable(); }
 }
 
+
 function renderBerlinTable() {
   const mono = "'IBM Plex Mono', monospace";
   const demoKeys = ['dgb','revo_j','revo18','revo13','pds_u','pds_a','euro','antinazi','nazi'];
@@ -1370,7 +1372,8 @@ function renderBerlinTable() {
   // Header
   const thStyle = (m) =>
     `padding:5px 6px;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;` +
-    `font-weight:400;color:${m.stub?'var(--text-dim)':'var(--text-mid)'};` +
+    `font-weight:600;color:${m.stub?'rgba(255,255,255,0.5)':'rgba(255,255,255,0.95)'};` +
+    `text-shadow:-1px -1px 0 rgba(0,0,0,0.7),1px -1px 0 rgba(0,0,0,0.7),-1px 1px 0 rgba(0,0,0,0.7),1px 1px 0 rgba(0,0,0,0.7);` +
     `white-space:nowrap;border-bottom:2px solid ${m.border};` +
     `background:${m.color};writing-mode:vertical-rl;height:70px;vertical-align:bottom;`;
 
@@ -1408,7 +1411,7 @@ function renderBerlinTable() {
       const v = berlinSeries[k][i];
       const m = getMeta(k);
       if (v!=null && !m.stub) { sumDemo+=v; hasDemo=true; }
-      const isOverlap = (k==='pds' && y===1990);
+      const isOverlap = (k==='pds_u' && y===1990);
       const disp = v!=null ? v.toLocaleString()+(isOverlap?'*':'') : (m.stub?'⚠':'—');
       const color = m.stub ? 'var(--text-dim)' : (v!=null ? 'var(--text)' : 'var(--text-dim)');
       row += `<td style="padding:4px 8px;text-align:center;font-size:10px;color:${color};" title="${isOverlap?'* Możliwe podwójne liczenie z DGB':''}">${disp}</td>`;
@@ -1436,6 +1439,8 @@ function renderBerlinTable() {
 
   // ── Chart ──
   if (_charts['cBerTab']) { _charts['cBerTab'].destroy(); delete _charts['cBerTab']; }
+  const berFilteredYears = years.filter(y => y >= berYrFrom && y <= berYrTo);
+  const berFi = (k) => berlinSeries[k] ? berFilteredYears.map(y => berlinSeries[k][y-1990]) : berFilteredYears.map(()=>null);
 
   const demoKeys2 = ['dgb','revo_j','revo18','revo13','pds_u','pds_a','euro','antinazi','nazi'];
   const festKeys2 = ['myfest','marian'];
@@ -1447,8 +1452,9 @@ function renderBerlinTable() {
       const gc2 = berlinGroupColors[grp];
       const keys = berlinMeta.filter(m=>m.group===grp && isChecked(m.key));
       if (!keys.length) return;
-      const data = years.map((_,i) => {
-        const sum = keys.reduce((s,m)=>s+(berlinSeries[m.key][i]||0),0);
+      const data = berFilteredYears.map(y => {
+        const i = y - 1990;
+        const sum = keys.reduce((s,m)=>s+(berlinSeries[m.key]?.[i]||0),0);
         return sum > 0 ? sum : null;
       });
       chartDatasets.push({
@@ -1570,13 +1576,16 @@ function renderWarsawTable() {
 
   // ── Chart ──
   if (_charts['cWawTab']) { _charts['cWawTab'].destroy(); delete _charts['cWawTab']; }
+  const wawFilteredYears = years.filter(y => y >= wawYrFrom && y <= wawYrTo);
+  const wawFi = (k) => warsawSeries[k] ? wawFilteredYears.map(y => warsawSeries[k][y-1990]) : wawFilteredYears.map(()=>null);
   let chartDs = [];
   if (warsawViewMode === 'grouped') {
     Object.keys(warsawGroupColors).forEach(grp => {
       const gc = warsawGroupColors[grp];
       const keys = warsawMeta.filter(m=>m.group===grp && isChecked(m.key));
       if (!keys.length) return;
-      const data = years.map((_,i) => {
+      const data = wawFilteredYears.map(y => {
+        const i = y - 1990;
         const sum = keys.reduce((s,m) => s + (warsawSeries[m.key]?.[i]||0), 0);
         return sum > 0 ? sum : null;
       });
@@ -1589,7 +1598,7 @@ function renderWarsawTable() {
       const m = getMeta(k);
       chartDs.push({
         label: m.label+(m.stub?' ⚠':''),
-        data: warsawSeries[k] ? warsawSeries[k].map(v=>v) : years.map(()=>null),
+        data: wawFi(k),
         backgroundColor: m.color, borderColor: m.border,
         borderWidth:1, borderRadius:0, stack:'total'
       });
@@ -1598,7 +1607,7 @@ function renderWarsawTable() {
 
   _reg('cWawTab', new Chart(document.getElementById('cWawTab'), {
     type: 'bar',
-    data: { labels: years, datasets: chartDs },
+    data: { labels: wawFilteredYears, datasets: chartDs },
     options: {
       responsive:true, maintainAspectRatio:false,
       plugins: {
@@ -1630,7 +1639,7 @@ function renderWarsawTable() {
   head += '<th style="padding:5px 8px;font-size:9px;color:var(--text-dim);font-weight:400;border-bottom:2px solid var(--border);">Rok</th>';
   visKeys.forEach(k => {
     const m = getMeta(k);
-    head += `<th style="padding:5px 6px;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;font-weight:400;color:${m.stub?'var(--text-dim)':'var(--text-mid)'};white-space:nowrap;border-bottom:2px solid ${m.border};background:${m.color};writing-mode:vertical-rl;height:70px;vertical-align:bottom;">${m.label}${m.stub?' ⚠':''}</th>`;
+    head += `<th style="padding:5px 6px;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:${m.stub?'rgba(255,255,255,0.5)':'rgba(255,255,255,0.95)'};text-shadow:-1px -1px 0 rgba(0,0,0,0.7),1px -1px 0 rgba(0,0,0,0.7),-1px 1px 0 rgba(0,0,0,0.7),1px 1px 0 rgba(0,0,0,0.7);white-space:nowrap;border-bottom:2px solid ${m.border};background:${m.color};writing-mode:vertical-rl;height:70px;vertical-align:bottom;">${m.label}${m.stub?' ⚠':''}</th>`;
   });
   head += '<th style="padding:5px 8px;font-size:8px;text-transform:uppercase;font-weight:700;color:var(--text);border-bottom:2px solid var(--text);white-space:nowrap;writing-mode:vertical-rl;height:70px;vertical-align:bottom;">Σ Ogółem</th>';
   head += '</tr>';
