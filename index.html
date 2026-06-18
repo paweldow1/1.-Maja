@@ -1270,7 +1270,7 @@ const berlinSeries = {
   euro:     [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4000,7000,6500,3500,null,null,null,null,null,null,null,null,null,null],
   antinazi: [null,null,200,null,450,null,40,null,null,null,10000,350,1000,250,3400,null,null,null,null,3500,10000,null,null,2000,null,500,900,600,null,null],
   nazi:     [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-  myfest:   [null,null,null,null,null,null,null,null,null,null,null,null,null,null,30000,15000,11000,16000,20000,35000,29000,27000,29500,40000,40000,45000,30000,45000,45000,45000],
+  myfest:   [null,null,null,null,null,null,null,null,null,null,null,null,null,null,30000,15000,11000,16000,20000,35000,29000,27000,29500,40000,40000,45000,30000,122500,null,null],
   marian:   [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
 };
 
@@ -1412,27 +1412,27 @@ function renderBerlinTable() {
       const m = getMeta(k);
       if (v!=null && !m.stub) { sumDemo+=v; hasDemo=true; }
       const isOverlap = (k==='pds_u' && y===1990);
-      const disp = v!=null ? v.toLocaleString()+(isOverlap?'*':'') : (m.stub?'⚠':'—');
+      const disp = v!=null ? fmt(v)+(isOverlap?'*':'') : (m.stub?'⚠':'—');
       const color = m.stub ? 'var(--text-dim)' : (v!=null ? 'var(--text)' : 'var(--text-dim)');
       row += `<td style="padding:4px 8px;text-align:center;font-size:10px;color:${color};" title="${isOverlap?'* Możliwe podwójne liczenie z DGB':''}">${disp}</td>`;
     }
     if (visDemo.length) {
-      row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:600;color:var(--berlin);">${hasDemo?sumDemo.toLocaleString():'—'}</td>`;
+      row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:600;color:var(--berlin);">${hasDemo?fmt(sumDemo):'—'}</td>`;
     }
     for (const k of festKeys) {
       if (!isChecked(k)) continue;
       const v = berlinSeries[k][i];
       const m = getMeta(k);
       if (v!=null && !m.stub) { sumFest+=v; hasFest=true; }
-      const disp = v!=null ? v.toLocaleString() : (m.stub?'⚠':'—');
+      const disp = v!=null ? fmt(v) : (m.stub?'⚠':'—');
       const color = m.stub ? 'var(--text-dim)' : (v!=null ? 'var(--text)' : 'var(--text-dim)');
       row += `<td style="padding:4px 8px;text-align:center;font-size:10px;color:${color};">${disp}</td>`;
     }
     if (visFest.length) {
-      row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:600;color:#3a7ab0;">${hasFest?sumFest.toLocaleString():'—'}</td>`;
+      row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:600;color:#3a7ab0;">${hasFest?fmt(sumFest):'—'}</td>`;
     }
     const sumTot = sumDemo+sumFest;
-    row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:700;color:var(--text);">${sumTot>0?sumTot.toLocaleString():'—'}</td>`;
+    row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:700;color:var(--text);">${sumTot>0?fmt(sumTot):'—'}</td>`;
     row += '</tr>';
     rows += row;
   }
@@ -1494,7 +1494,7 @@ function renderBerlinTable() {
           bodyFont:{family:"IBM Plex Mono",size:11},
           callbacks: {
             title: ctx => ctx[0].label + ' · Berlin 1 Mai',
-            label: ctx => ctx.raw != null ? ' '+ctx.dataset.label+': '+ctx.raw.toLocaleString() : null,
+            label: ctx => ctx.raw != null ? ' '+ctx.dataset.label+': '+ctx.fmt(raw) : null,
           },
           filter: item => item.raw != null && item.raw > 0,
         }
@@ -1619,7 +1619,7 @@ function renderWarsawTable() {
           titleFont:{family:"IBM Plex Mono",size:10}, bodyFont:{family:"IBM Plex Mono",size:11},
           callbacks: {
             title: ctx => ctx[0].label + ' · Warszawa 1 Maja',
-            label: ctx => ctx.raw!=null ? ' '+ctx.dataset.label+': '+ctx.raw.toLocaleString() : null,
+            label: ctx => ctx.raw!=null ? ' '+ctx.dataset.label+': '+ctx.fmt(raw) : null,
           },
           filter: item => item.raw!=null && item.raw>0,
         }
@@ -1654,11 +1654,11 @@ function renderWarsawTable() {
       const m = getMeta(k);
       const v = warsawSeries[k]?.[i];
       if (v!=null && !m.stub) sum += v;
-      const disp = v!=null ? v.toLocaleString() : (m.stub?'⚠':'—');
+      const disp = v!=null ? fmt(v) : (m.stub?'⚠':'—');
       const color = m.stub?'var(--text-dim)': (v!=null?'var(--text)':'var(--text-dim)');
       row += `<td style="padding:4px 8px;text-align:center;font-size:10px;color:${color};">${disp}</td>`;
     });
-    row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:700;color:var(--text);">${sum>0?sum.toLocaleString():'—'}</td>`;
+    row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:700;color:var(--text);">${sum>0?fmt(sum):'—'}</td>`;
     row += '</tr>';
     rows += row;
   });
@@ -1684,6 +1684,13 @@ function exportWarsawTableData() {
   a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent([header,...rows].join('\n'));
   a.download = 'warsaw-events.csv';
   a.click();
+}
+
+
+// Number formatter: Polish style (space as thousands separator)
+function fmt(n) {
+  if (n == null) return '—';
+  return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
 // ── RENDER ALL ──
@@ -1813,7 +1820,7 @@ function renderAll() {
       plugins:{legend:{display:false},tooltip:{backgroundColor:'#ffffff',borderColor:'#c8c2b8',borderWidth:1,
         titleFont:{family:'IBM Plex Mono',size:10},bodyFont:{family:'IBM Plex Mono',size:11},
         titleColor:'#8a8178',bodyColor:'#1a1714',
-        callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.raw.toLocaleString()}}},
+        callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.fmt(raw)}}},
       scales:{x:{ticks:{color:tc,font:{family:'IBM Plex Mono',size:9}},grid:{color:gc}},
               y:{min:0,ticks:{color:tc,font:{family:'IBM Plex Mono',size:9},callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v},grid:{color:gc}}}}
   }));
@@ -1864,14 +1871,14 @@ function renderAll() {
   function med(arr){const v=[...arr.filter(x=>x!=null)].sort((a,b)=>a-b);return v.length?v[Math.floor(v.length/2)]:0;}
   function slopeVal(arr){const t=linreg(years,arr.map(v=>v==null?0:v));return t[t.length-1]-t[0];}
   const tStats=[
-    {label:'Avg. Berlin',val:avg(berlin).toLocaleString(),sub:'people/year (excl. 0)',col:'#e05a4a'},
-    {label:'Avg. Warsaw',val:avg(warsaw).toLocaleString(),sub:'people/year (excl. 0)',col:'#5b8fb9'},
-    {label:'Median Berlin',val:med(berlin).toLocaleString(),sub:'people/year',col:'#e05a4a'},
-    {label:'Median Warsaw',val:med(warsaw).toLocaleString(),sub:'people/year',col:'#5b8fb9'},
+    {label:'Avg. Berlin',val:fmt(avg(berlin)),sub:'people/year (excl. 0)',col:'#e05a4a'},
+    {label:'Avg. Warsaw',val:fmt(avg(warsaw)),sub:'people/year (excl. 0)',col:'#5b8fb9'},
+    {label:'Median Berlin',val:fmt(med(berlin)),sub:'people/year',col:'#e05a4a'},
+    {label:'Median Warsaw',val:fmt(med(warsaw)),sub:'people/year',col:'#5b8fb9'},
     {label:'Trend Berlin',val:(slopeVal(berlin)>0?'+':'')+Math.round(slopeVal(berlin)/1000)+'k',sub:'total change 30 yrs',col:slopeVal(berlin)>0?'#5a9e72':'#b85c52'},
     {label:'Trend Warsaw',val:(slopeVal(warsaw.map(v=>v==null?0:v))>0?'+':'')+Math.round(slopeVal(warsaw.map(v=>v==null?0:v))/1000)+'k',sub:'total change 30 yrs',col:slopeVal(warsaw.map(v=>v==null?0:v))>0?'#5a9e72':'#b85c52'},
-    {label:'Best year Berlin',val:years[berlin.indexOf(Math.max(...berlin))].toString(),sub:Math.max(...berlin).toLocaleString()+' people',col:'#e05a4a'},
-    {label:'Best year Warsaw',val:years[warsaw.indexOf(Math.max(...warsaw.filter(v=>v!=null)))].toString(),sub:Math.max(...warsaw.filter(v=>v!=null)).toLocaleString()+' people',col:'#5b8fb9'},
+    {label:'Best year Berlin',val:years[berlin.indexOf(Math.max(...berlin))].toString(),sub:fmt(Math.max(...berlin))+' people',col:'#e05a4a'},
+    {label:'Best year Warsaw',val:years[warsaw.indexOf(Math.max(...warsaw.filter(v=>v!=null)))].toString(),sub:Math.max(...warsaw.filter(v=>v!=fmt(null)))+' people',col:'#5b8fb9'},
   ];
   const tc2=document.getElementById('trendStats');
   if(tc2) tc2.innerHTML=tStats.map(s=>`<div style="background:var(--bg2);border:1px solid var(--border);padding:12px 14px;"><div style="font-size:9px;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">${s.label}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:500;color:${s.col}">${s.val}</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;">${s.sub}</div></div>`).join('');
@@ -1939,10 +1946,10 @@ function renderTable() {
       <td style="color:var(--text-dim)">${d}</td>
       <td style="${wChainCls}">${chainLabel(wch, y, "warsaw")}</td>
       <td>${icon(wwx, watt)} ${tempCell(wwx, watt)}</td>
-      <td style="text-align:center;color:var(--berlin-lt);font-weight:500">${watt > 0 ? watt.toLocaleString() : "—"}</td>
+      <td style="text-align:center;color:var(--berlin-lt);font-weight:500">${watt > 0 ? fmt(watt) : "—"}</td>
       <td style="${bChainCls}">${chainLabel(bch, y, "berlin")}</td>
       <td>${icon(bwx, batt)} ${tempCell(bwx, batt)}</td>
-      <td style="text-align:center;color:var(--warsaw-lt);font-weight:500">${batt > 0 ? batt.toLocaleString() : "—"}</td>
+      <td style="text-align:center;color:var(--warsaw-lt);font-weight:500">${batt > 0 ? fmt(batt) : "—"}</td>
     </tr>`;
   }
 
@@ -2257,7 +2264,7 @@ function renderWestChart() {
           bodyFont:  { family:'IBM Plex Mono', size:11 },
           callbacks: {
             title: ctx => ctx[0].label + ' · Berlin Zachodni',
-            label: ctx => ctx.raw != null ? ' ' + ctx.dataset.label + ': ' + ctx.raw.toLocaleString() : null,
+            label: ctx => ctx.raw != null ? ' ' + ctx.dataset.label + ': ' + ctx.fmt(raw) : null,
           },
           filter: item => item.raw != null
         }
