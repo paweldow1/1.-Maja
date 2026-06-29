@@ -348,8 +348,8 @@
   <button class="tab" onclick="switchTab('west', this)">Berlin &amp; Warsaw 1950–2019</button>
   <button class="tab" onclick="switchTab('context', this)">Calendar &amp; weather</button>
   <button class="tab" onclick="switchTab('table', this)">Tabela</button>
-  <button class="tab" onclick="switchTab('berTab', this)">Tabela Berlin</button>
-  <button class="tab" onclick="switchTab('wawTab', this)">Tabela Warszawa</button>
+  <button class="tab" onclick="switchTab('berTab', this)">Berlin table</button>
+  <button class="tab" onclick="switchTab('wawTab', this)">Warsaw table</button>
 </div>
 
 <!-- SHARED SCALE -->
@@ -489,7 +489,7 @@
       <span style="font-size:12px;">🌤</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">10–14°C, dry</span>
       <span style="font-size:12px;">🌧</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">rain</span>
       <span style="font-size:12px;">🥶</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">&lt;10°C, dry</span>
-      <span style="font-size:12px;">✕</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">brak demon.</span>
+      <span style="font-size:12px;">✕</span><span style="font-size:10px;color:var(--text-dim);margin-left:-8px;">no demo.</span>
       <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text-dim);">
         <div style="width:22px;height:10px;background:rgba(184,92,82,0.15);border:1px solid rgba(184,92,82,0.3)"></div>★★ long May holiday
       </div>
@@ -527,7 +527,7 @@
         <span style="color:var(--text-dim);font-size:9px;">|</span>
         <button onclick="setWestPeriod('berlin','pre')" style="padding:1px 7px;font-size:9px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);cursor:pointer;font-family:'IBM Plex Mono';">1950–89</button>
         <button onclick="setWestPeriod('berlin','post')" style="padding:1px 7px;font-size:9px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);cursor:pointer;font-family:'IBM Plex Mono';">1990–2019</button>
-        <button onclick="setWestPeriod('berlin','all')" style="padding:1px 7px;font-size:9px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);cursor:pointer;font-family:'IBM Plex Mono';">oba</button>
+        <button onclick="setWestPeriod('berlin','all')" style="padding:1px 7px;font-size:9px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);cursor:pointer;font-family:'IBM Plex Mono';">both</button>
       </div>
       <label style="display:flex;align-items:center;gap:5px;cursor:pointer;padding-left:12px;margin-bottom:2px;">
         <input type="checkbox" id="cbEast" checked onchange="renderWestChart()">
@@ -535,7 +535,7 @@
       </label>
       <label style="display:flex;align-items:center;gap:5px;cursor:pointer;padding-left:12px;margin-bottom:2px;">
         <input type="checkbox" id="cbRucht" checked onchange="renderWestChart()">
-        <div style="width:11px;height:11px;border-radius:2px;background:#7a8fa8;"></div>Zach. – Rucht
+        <div style="width:11px;height:11px;border-radius:2px;background:#7a8fa8;"></div>West – Rucht
       </label>
       <label style="display:flex;align-items:center;gap:5px;cursor:pointer;padding-left:12px;margin-bottom:2px;">
         <input type="checkbox" id="cbOwn" checked onchange="renderWestChart()">
@@ -543,7 +543,7 @@
       </label>
       <label style="display:flex;align-items:center;gap:5px;cursor:pointer;padding-left:12px;">
         <input type="checkbox" id="cbBerEv" checked onchange="renderWestChart()">
-        <div style="width:11px;height:11px;border-radius:2px;background:rgba(40,40,40,0.6);border:1px solid #333;"></div>Inne serie 1990–2019
+        <div style="width:11px;height:11px;border-radius:2px;background:rgba(40,40,40,0.6);border:1px solid #333;"></div>Other series 1990–2019
       </label>
     </div>
     <!-- Warsaw group -->
@@ -555,7 +555,7 @@
         <span style="color:var(--text-dim);font-size:9px;">|</span>
         <button onclick="setWestPeriod('warsaw','pre')" style="padding:1px 7px;font-size:9px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);cursor:pointer;font-family:'IBM Plex Mono';">1950–89</button>
         <button onclick="setWestPeriod('warsaw','post')" style="padding:1px 7px;font-size:9px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);cursor:pointer;font-family:'IBM Plex Mono';">1990–2019</button>
-        <button onclick="setWestPeriod('warsaw','all')" style="padding:1px 7px;font-size:9px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);cursor:pointer;font-family:'IBM Plex Mono';">oba</button>
+        <button onclick="setWestPeriod('warsaw','all')" style="padding:1px 7px;font-size:9px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);cursor:pointer;font-family:'IBM Plex Mono';">both</button>
       </div>
       <label style="display:flex;align-items:center;gap:5px;cursor:pointer;padding-left:12px;margin-bottom:2px;">
         <input type="checkbox" id="cbWawHist" checked onchange="renderWestChart()">
@@ -567,7 +567,7 @@
       </label>
       <label style="display:flex;align-items:center;gap:5px;cursor:pointer;padding-left:12px;">
         <input type="checkbox" id="cbWawOther" checked onchange="renderWestChart()">
-        <div style="width:11px;height:11px;border-radius:2px;background:rgba(90,144,190,0.35);border:1px solid #5b8fb9;"></div>Inne serie ⚠
+        <div style="width:11px;height:11px;border-radius:2px;background:rgba(90,144,190,0.35);border:1px solid #5b8fb9;"></div>Other series ⚠
       </label>
     </div>
   </div>
@@ -603,7 +603,7 @@
     <!-- Demo group -->
     <div>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--text);margin-bottom:5px;">
-        <input type="checkbox" id="bg_demo" checked onchange="toggleBerlinGroup('demo',this.checked);"> Demonstracje
+        <input type="checkbox" id="bg_demo" checked onchange="toggleBerlinGroup('demo',this.checked);"> Demonstrations
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="bs_dgb" checked onchange="renderBerlinTable()">
@@ -654,7 +654,7 @@
     <!-- Fest group -->
     <div>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--text);margin-bottom:5px;">
-        <input type="checkbox" id="bg_fest" checked onchange="toggleBerlinGroup('fest',this.checked);"> Festyny
+        <input type="checkbox" id="bg_fest" checked onchange="toggleBerlinGroup('fest',this.checked);"> Festivals
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="bs_myfest" checked onchange="renderBerlinTable()">
@@ -669,7 +669,7 @@
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;flex-wrap:wrap;">
-    <span style="color:var(--text-dim);">Lata:</span>
+    <span style="color:var(--text-dim);">Years:</span>
     <span id="berYrFrom" style="min-width:32px;">1990</span>
     <div style="flex:1;min-width:140px;display:flex;flex-direction:column;gap:3px;">
       <input type="range" id="berSlFrom" min="1990" max="2019" value="1990" step="1"
@@ -680,11 +680,11 @@
     <span id="berYrTo" style="min-width:32px;text-align:right;">2019</span>
   </div>
   <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:10px;flex-wrap:wrap;">
-    <span style="color:var(--text-dim);">Widok:</span>
+    <span style="color:var(--text-dim);">View:</span>
     <button id="btnDetail" onclick="berlinViewMode='detail';this.style.fontWeight='700';document.getElementById('btnGrouped').style.fontWeight='400';renderBerlinTable();"
-      style="padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;font-weight:700;">Szczegółowy</button>
+      style="padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;font-weight:700;">Detailed</button>
     <button id="btnGrouped" onclick="berlinViewMode='grouped';this.style.fontWeight='700';document.getElementById('btnDetail').style.fontWeight='400';renderBerlinTable();"
-      style="padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;font-weight:400;">Zbiorczy</button>
+      style="padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;font-weight:400;">Grouped</button>
     <button onclick="exportBerlinTableData();"
       style="margin-left:auto;padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;">↓ PNG + CSV</button>
   </div>
@@ -694,10 +694,10 @@
   </div>
   <div style="overflow-x:auto;" id="berTabContainer"></div>
   <div style="font-family:'Source Serif 4',serif;font-style:italic;font-size:10px;color:var(--text-dim);margin-top:8px;line-height:1.7;">
-    ⚠ = dane do uzupełnienia &nbsp;·&nbsp; Wartości: średnia metoda alt (Rucht/DGB archiwum) &nbsp;·&nbsp;
+    ⚠ = data to be added &nbsp;·&nbsp; Wartości: średnia metoda alt (Rucht/DGB archiwum) &nbsp;·&nbsp;
     MyFest 2017: 200 000 = os. przyciągniętych do dzielnicy; 45 000 wpuszczonych na teren eventu &nbsp;·&nbsp;
-    * 1990 PDS/Ost: możliwe podwójne liczenie z DGB &nbsp;·&nbsp; Σ Demo, Σ Festyny, Σ Ogółem obliczane dla zaznaczonych serii &nbsp;·&nbsp;
-    Σ Polityczne = Σ Demo + Σ Festyny
+    * 1990 PDS/Ost: possible double-count with DGB &nbsp;·&nbsp; Σ Demo, Σ Festivals, Σ Total obliczane dla zaznaczonych serii &nbsp;·&nbsp;
+    Σ Polityczne = Σ Demo + Σ Festivals
   </div>
 </div>
 
@@ -707,7 +707,7 @@
   <div style="display:flex;gap:28px;flex-wrap:wrap;margin-bottom:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;">
     <div>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--text);margin-bottom:5px;">
-        <input type="checkbox" id="wg_union" checked onchange="toggleWarsawGroup('union',this.checked);"> Związkowe
+        <input type="checkbox" id="wg_union" checked onchange="toggleWarsawGroup('union',this.checked);"> Trade union
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="ws_opzz" checked onchange="renderWarsawTable()">
@@ -717,7 +717,7 @@
     </div>
     <div>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--text);margin-bottom:5px;">
-        <input type="checkbox" id="wg_left" checked onchange="toggleWarsawGroup('left',this.checked);"> Lewica
+        <input type="checkbox" id="wg_left" checked onchange="toggleWarsawGroup('left',this.checked);"> Left
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="ws_pps" checked onchange="renderWarsawTable()">
@@ -727,48 +727,48 @@
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="ws_lew_alt" checked onchange="renderWarsawTable()">
         <div style="width:10px;height:10px;border-radius:2px;background:rgba(60,60,60,0.75);border:1px solid #333"></div>
-        Lewica alt. (W4)
+        Left alt. (W4)
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="ws_anarchi" checked onchange="renderWarsawTable()">
         <div style="width:10px;height:10px;border-radius:2px;background:rgba(110,110,110,0.70);border:1px solid #666"></div>
-        Anarchiści (W8)
+        Anarchists (W8)
       </label>
     </div>
     <div>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--text);margin-bottom:5px;">
-        <input type="checkbox" id="wg_right" checked onchange="toggleWarsawGroup('right',this.checked);"> Prawica
+        <input type="checkbox" id="wg_right" checked onchange="toggleWarsawGroup('right',this.checked);"> Right
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="ws_prawica" checked onchange="renderWarsawTable()">
         <div style="width:10px;height:10px;border-radius:2px;background:rgba(139,94,60,0.80);border:1px solid #8b5e3c"></div>
-        Prawica/Nacjonaliści
+        Right/Nationalists
       </label>
     </div>
     <div>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--text);margin-bottom:5px;">
-        <input type="checkbox" id="wg_other" checked onchange="toggleWarsawGroup('other',this.checked);"> Inne
+        <input type="checkbox" id="wg_other" checked onchange="toggleWarsawGroup('other',this.checked);"> Other
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="ws_parada" checked onchange="renderWarsawTable()">
         <div style="width:10px;height:10px;border-radius:2px;background:rgba(180,80,160,0.75);border:1px solid #b450a0"></div>
-        Parada Równości
+        Equality Parade
       </label>
 
     </div>
     <div>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--text);margin-bottom:5px;">
-        <input type="checkbox" id="wg_fest" checked onchange="toggleWarsawGroup('fest',this.checked);"> Festyny
+        <input type="checkbox" id="wg_fest" checked onchange="toggleWarsawGroup('fest',this.checked);"> Festivals
       </label>
       <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-left:14px;margin-bottom:3px;">
         <input type="checkbox" id="ws_fest_eu" checked onchange="renderWarsawTable()">
         <div style="width:10px;height:10px;border-radius:2px;background:rgba(50,138,70,0.75);border:1px solid #328a46"></div>
-        Festiwal Europejski
+        European Festival
       </label>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;flex-wrap:wrap;">
-    <span style="color:var(--text-dim);">Lata:</span>
+    <span style="color:var(--text-dim);">Years:</span>
     <span id="wawYrFrom" style="min-width:32px;">1990</span>
     <div style="flex:1;min-width:140px;display:flex;flex-direction:column;gap:3px;">
       <input type="range" id="wawSlFrom" min="1990" max="2019" value="1990" step="1"
@@ -779,11 +779,11 @@
     <span id="wawYrTo" style="min-width:32px;text-align:right;">2019</span>
   </div>
   <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:10px;flex-wrap:wrap;">
-    <span style="color:var(--text-dim);">Widok:</span>
+    <span style="color:var(--text-dim);">View:</span>
     <button id="wBtnDetail" onclick="warsawViewMode='detail';this.style.fontWeight='700';document.getElementById('wBtnGrouped').style.fontWeight='400';renderWarsawTable();"
-      style="padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;font-weight:700;">Szczegółowy</button>
+      style="padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;font-weight:700;">Detailed</button>
     <button id="wBtnGrouped" onclick="warsawViewMode='grouped';this.style.fontWeight='700';document.getElementById('wBtnDetail').style.fontWeight='400';renderWarsawTable();"
-      style="padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;font-weight:400;">Zbiorczy</button>
+      style="padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;font-weight:400;">Grouped</button>
     <button onclick="exportWarsawTableData();"
       style="margin-left:auto;padding:3px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text);cursor:pointer;font-family:'IBM Plex Mono';font-size:10px;">↓ PNG + CSV</button>
   </div>
@@ -792,8 +792,8 @@
   </div>
   <div style="overflow-x:auto;" id="wawTabContainer"></div>
   <div style="font-family:'Source Serif 4',serif;font-style:italic;font-size:10px;color:var(--text-dim);margin-top:8px;line-height:1.7;">
-    Źródło: umap 1-maja_warszawa; Festiwal Europejski 2015 = dane własne &nbsp;·&nbsp;
-    ⚠ = stub (brak danych) &nbsp;·&nbsp; Walpurgisnacht: Berlin, 30 IV — dane do uzupełnienia
+    Source: umap 1-maja_warszawa; European Festival 2015 = dane własne &nbsp;·&nbsp;
+    ⚠ = stub (no data) &nbsp;·&nbsp; Walpurgisnacht: Berlin, 30 IV — data to be added
   </div>
 </div>
 
@@ -1171,8 +1171,8 @@ function renderContextChart() {
               const icon = wxIcon(w, att);
               const wStr = w
                 ? `${icon} ${w.t}°C, ${w.p > 0 ? w.p+'mm' : 'dry'} (06–12h)`
-                : '? brak danych';
-              return ['', `Weekend: ${chainStr}`, `Pogoda: ${wStr}`];
+                : '? no data';
+              return ['', `Weekend: ${chainStr}`, `Weather: ${wStr}`];
             }
           }
         }
@@ -1266,14 +1266,13 @@ const berlinSeries = {
   revo18:   [null,null,null,null,null,null,10000, 9000, 6667, 14000, 13333, 5500, 9500, 3500, 3500, 0, 0, 7667, 11000, 8500, 12500, 11333, 18500, 11667, 22000, 25500, 16500, 15000, 12500, 10000],
   revo13:   [null,null,null,null,null,null,3000,2000,1750,1500,1500,2250,4000,6750,5000,500,50,900,300,300,50,null,null,null,null,null,250,250,200,200],
   pds_u:    [15500,null,6000,6000,1000,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], // 1990-1994 union
-  pds_a:    [null, null, null, null, null, null, 4000, 7333,333333, 6500, 10000, 7000, 7250, 2250, null, null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], // 1995-2002 alt
+  pds_a:    [null, null, null, null, null, null, 4000, 7333,3333, 6500, 10000, 7000, 7250, 2250, null, null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], // 1995-2002 alt
   euro:     [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4000,7000,6500,3500,null,null,null,null,null,null,null,null,null,null],
   antinazi: [null,null,200,null,450,null,40,null,null,null,10000,350,1000,250,3400,null,null,null,null,3500,10000,null,null,2000,null,500,900,600,null,null],
   nazi:     [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
   myfest:   [null,null,null,null,null,null,null,null,null,null,null,null,null,20000,30000,15000,11000,16000,20000,35000,29000,27000,29500,40000,40000,45000,30000,45000,52000,45000],
   marian:   [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
 };
-
 const berlinMeta = [
   // Union / związkowe
   {key:'dgb',     label:'DGB Berlin',          group:'union', stub:false, color:'rgba(192,58,43,0.80)',  border:'#c03a2b'},
@@ -1293,9 +1292,9 @@ const berlinMeta = [
 
 // Grouped view: 3 colors
 const berlinGroupColors = {
-  union: {color:'rgba(192,58,43,0.75)',  border:'#c03a2b', label:'Związkowe (DGB + PDS do 1994)'},
-  alt:   {color:'rgba(40,40,40,0.75)',   border:'#1a1a1a', label:'Alternatywne (Revo, PDS 1995+, Euro, Antinazi)'},
-  fest:  {color:'rgba(50,138,70,0.75)',  border:'#328a46', label:'Festyny'},
+  union: {color:'rgba(192,58,43,0.75)',  border:'#c03a2b', label:'Trade union (DGB + PDS to 1994)'},
+  alt:   {color:'rgba(40,40,40,0.75)',   border:'#1a1a1a', label:'Alternative (Revo, PDS 1995+, Euro, Antinazi)'},
+  fest:  {color:'rgba(50,138,70,0.75)',  border:'#328a46', label:'Festivals'},
 };
 
 function berlinChecked(key) {
@@ -1327,7 +1326,7 @@ function exportBerlinTableData() {
   const getMeta2   = key => berlinMeta.find(m=>m.key===key);
 
   const visKeys = [...demoKeys2,...festKeys2].filter(isChecked2);
-  const header = ['Rok', ...visKeys.map(k=>getMeta2(k).label), 'Σ Demo', 'Σ Festyny', 'Σ Polityczne'].join(',');
+  const header = ['Rok', ...visKeys.map(k=>getMeta2(k).label), 'Σ Demo', 'Σ Festivals', 'Σ Polityczne'].join(',');
 
   const rows = years.map((y,i) => {
     const vals = visKeys.map(k => berlinSeries[k][i] ?? '');
@@ -1378,7 +1377,7 @@ function renderBerlinTable() {
     `background:${m.color};writing-mode:vertical-rl;height:70px;vertical-align:bottom;`;
 
   let head = '<tr>';
-  head += '<th style="padding:5px 8px;font-size:9px;color:var(--text-dim);font-weight:400;border-bottom:2px solid var(--border);">Rok</th>';
+  head += '<th style="padding:5px 8px;font-size:9px;color:var(--text-dim);font-weight:400;border-bottom:2px solid var(--border);">Year</th>';
   // Demo group header
   const visDemo = demoKeys.filter(isChecked);
   const visFest = festKeys.filter(isChecked);
@@ -1393,8 +1392,8 @@ function renderBerlinTable() {
     const m = getMeta(k);
     head += `<th style="${thStyle(m)}">${m.label}${m.stub?' ⚠':''}</th>`;
   }
-  if (visFest.length) head += `<th style="padding:5px 8px;font-size:8px;text-transform:uppercase;font-weight:600;color:var(--text);border-bottom:2px solid #3a7ab0;white-space:nowrap;writing-mode:vertical-rl;height:70px;vertical-align:bottom;">Σ Festyny</th>`;
-  head += `<th style="padding:5px 8px;font-size:8px;text-transform:uppercase;font-weight:700;color:var(--text);border-bottom:2px solid var(--text);white-space:nowrap;writing-mode:vertical-rl;height:70px;vertical-align:bottom;">Σ Ogółem</th>`;
+  if (visFest.length) head += `<th style="padding:5px 8px;font-size:8px;text-transform:uppercase;font-weight:600;color:var(--text);border-bottom:2px solid #3a7ab0;white-space:nowrap;writing-mode:vertical-rl;height:70px;vertical-align:bottom;">Σ Festivals</th>`;
+  head += `<th style="padding:5px 8px;font-size:8px;text-transform:uppercase;font-weight:700;color:var(--text);border-bottom:2px solid var(--text);white-space:nowrap;writing-mode:vertical-rl;height:70px;vertical-align:bottom;">Σ Total</th>`;
   head += '</tr>';
 
   // Rows
@@ -1414,7 +1413,7 @@ function renderBerlinTable() {
       const isOverlap = (k==='pds_u' && y===1990);
       const disp = v!=null ? fmt(v)+(isOverlap?'*':'') : (m.stub?'⚠':'—');
       const color = m.stub ? 'var(--text-dim)' : (v!=null ? 'var(--text)' : 'var(--text-dim)');
-      row += `<td style="padding:4px 8px;text-align:center;font-size:10px;color:${color};" title="${isOverlap?'* Możliwe podwójne liczenie z DGB':''}">${disp}</td>`;
+      row += `<td style="padding:4px 8px;text-align:center;font-size:10px;color:${color};" title="${isOverlap?'* Possible double-count with DGB':''}">${disp}</td>`;
     }
     if (visDemo.length) {
       row += `<td style="padding:4px 8px;text-align:center;font-size:10px;font-weight:600;color:var(--berlin);">${hasDemo?fmt(sumDemo):'—'}</td>`;
@@ -1471,7 +1470,7 @@ function renderBerlinTable() {
       if (!isChecked(k)) continue;
       chartDatasets.push({
         label: m.label + (m.stub?' ⚠':''),
-        data: berlinSeries[k].map(v => v),
+        data: berFi(k),
         backgroundColor: m.color,
         borderColor: m.border,
         borderWidth: 1, borderRadius: 0, stack: 'total',
@@ -1481,7 +1480,7 @@ function renderBerlinTable() {
 
   _reg('cBerTab', new Chart(document.getElementById('cBerTab'), {
     type: 'bar',
-    data: { labels: years, datasets: chartDatasets },
+    data: { labels: berFilteredYears, datasets: chartDatasets },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: {
@@ -1493,8 +1492,8 @@ function renderBerlinTable() {
           titleFont:{family:"IBM Plex Mono",size:10},
           bodyFont:{family:"IBM Plex Mono",size:11},
           callbacks: {
-            title: ctx => ctx[0].label + ' · Berlin 1 Mai',
-            label: ctx => ctx.raw != null ? ' '+ctx.dataset.label+': '+ctx.fmt(raw) : null,
+            title: ctx => ctx[0].label + ' · Berlin 1st May',
+            label: ctx => ctx.raw != null ? ' '+ctx.dataset.label+': '+fmt(ctx.raw) : null,
           },
           filter: item => item.raw != null && item.raw > 0,
         }
@@ -1518,7 +1517,7 @@ function renderBerlinTable() {
 
 
 // ── WARSAW MULTI-EVENT SERIES (1990–2019, index 0=1990) ──
-// Sources: umap backup 1-maja_warszawa (GeoJSON), Festiwal Europejski 2015 = user data
+// Sources: umap backup 1-maja_warszawa (GeoJSON), European Festival 2015 = user data
 const warsawSeries = {
   opzz:    null, // reference to existing `warsaw` array — filled in renderWarsawTable
   pps:     [null,200,200,null,100,80,100,150,150,150,150,150,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
@@ -1532,19 +1531,19 @@ const warsawSeries = {
 const warsawMeta = [
   {key:'opzz',    label:'OPZZ/ZZ',             group:'union', stub:false, color:'rgba(58,97,134,0.80)',  border:'#3a6186'},
   {key:'pps',     label:'PPS',                  group:'left',  stub:false, color:'rgba(30,30,30,0.80)',   border:'#1a1a1a'},
-  {key:'lew_alt', label:'Lewica alt. (W4)',      group:'left',  stub:false, color:'rgba(60,60,60,0.75)',   border:'#333'},
-  {key:'anarchi', label:'Anarchiści (W8)',        group:'left',  stub:false, color:'rgba(110,110,110,0.70)', border:'#666'},
-  {key:'prawica', label:'Prawica/Nacjonaliści',  group:'right', stub:false, color:'rgba(139,94,60,0.80)',  border:'#8b5e3c'},
-  {key:'parada',  label:'Parada Równości',       group:'other', stub:false, color:'rgba(180,80,160,0.75)', border:'#b450a0'},
-  {key:'fest_eu', label:'Festiwal Europejski',   group:'fest',  stub:false, color:'rgba(50,138,70,0.75)',  border:'#328a46'},
+  {key:'lew_alt', label:'Left alt. (W4)',      group:'left',  stub:false, color:'rgba(60,60,60,0.75)',   border:'#333'},
+  {key:'anarchi', label:'Anarchists (W8)',        group:'left',  stub:false, color:'rgba(110,110,110,0.70)', border:'#666'},
+  {key:'prawica', label:'Right/Nationalists',  group:'right', stub:false, color:'rgba(139,94,60,0.80)',  border:'#8b5e3c'},
+  {key:'parada',  label:'Equality Parade',       group:'other', stub:false, color:'rgba(180,80,160,0.75)', border:'#b450a0'},
+  {key:'fest_eu', label:'European Festival',   group:'fest',  stub:false, color:'rgba(50,138,70,0.75)',  border:'#328a46'},
 ];
 
 const warsawGroupColors = {
-  union: {color:'rgba(58,97,134,0.80)',  border:'#3a6186', label:'Związkowe (OPZZ)'},
-  left:  {color:'rgba(40,40,40,0.80)',   border:'#1a1a1a', label:'Lewica (PPS + alt.)'},
-  right: {color:'rgba(139,94,60,0.80)',  border:'#8b5e3c', label:'Prawica/Nacjonaliści'},
-  other: {color:'rgba(180,80,160,0.75)', border:'#b450a0', label:'Inne (Parada, Walp.)'},
-  fest:  {color:'rgba(50,138,70,0.75)',  border:'#328a46', label:'Festyny'},
+  union: {color:'rgba(58,97,134,0.80)',  border:'#3a6186', label:'Trade union (OPZZ)'},
+  left:  {color:'rgba(40,40,40,0.80)',   border:'#1a1a1a', label:'Left (PPS + alt.)'},
+  right: {color:'rgba(139,94,60,0.80)',  border:'#8b5e3c', label:'Right/Nationalists'},
+  other: {color:'rgba(180,80,160,0.75)', border:'#b450a0', label:'Other (Parade, Walp.)'},
+  fest:  {color:'rgba(50,138,70,0.75)',  border:'#328a46', label:'Festivals'},
 };
 
 function warsawChecked(key) {
@@ -1618,8 +1617,8 @@ function renderWarsawTable() {
           titleColor:'#8a8178', bodyColor:'#1a1714',
           titleFont:{family:"IBM Plex Mono",size:10}, bodyFont:{family:"IBM Plex Mono",size:11},
           callbacks: {
-            title: ctx => ctx[0].label + ' · Warszawa 1 Maja',
-            label: ctx => ctx.raw!=null ? ' '+ctx.dataset.label+': '+ctx.fmt(raw) : null,
+            title: ctx => ctx[0].label + ' · Warsaw 1st May',
+            label: ctx => ctx.raw!=null ? ' '+ctx.dataset.label+': '+fmt(ctx.raw) : null,
           },
           filter: item => item.raw!=null && item.raw>0,
         }
@@ -1636,12 +1635,12 @@ function renderWarsawTable() {
   // ── Table ──
   const visKeys = allKeys.filter(isChecked);
   let head = '<tr>';
-  head += '<th style="padding:5px 8px;font-size:9px;color:var(--text-dim);font-weight:400;border-bottom:2px solid var(--border);">Rok</th>';
+  head += '<th style="padding:5px 8px;font-size:9px;color:var(--text-dim);font-weight:400;border-bottom:2px solid var(--border);">Year</th>';
   visKeys.forEach(k => {
     const m = getMeta(k);
     head += `<th style="padding:5px 6px;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:${m.stub?'rgba(255,255,255,0.5)':'rgba(255,255,255,0.95)'};text-shadow:-1px -1px 0 rgba(0,0,0,0.7),1px -1px 0 rgba(0,0,0,0.7),-1px 1px 0 rgba(0,0,0,0.7),1px 1px 0 rgba(0,0,0,0.7);white-space:nowrap;border-bottom:2px solid ${m.border};background:${m.color};writing-mode:vertical-rl;height:70px;vertical-align:bottom;">${m.label}${m.stub?' ⚠':''}</th>`;
   });
-  head += '<th style="padding:5px 8px;font-size:8px;text-transform:uppercase;font-weight:700;color:var(--text);border-bottom:2px solid var(--text);white-space:nowrap;writing-mode:vertical-rl;height:70px;vertical-align:bottom;">Σ Ogółem</th>';
+  head += '<th style="padding:5px 8px;font-size:8px;text-transform:uppercase;font-weight:700;color:var(--text);border-bottom:2px solid var(--text);white-space:nowrap;writing-mode:vertical-rl;height:70px;vertical-align:bottom;">Σ Total</th>';
   head += '</tr>';
 
   let rows = '';
@@ -1674,7 +1673,7 @@ function exportWarsawTableData() {
   const allKeys = warsawMeta.map(m=>m.key);
   const isChecked = key => { const el=document.getElementById('ws_'+key); return el&&el.checked; };
   const visKeys = allKeys.filter(isChecked);
-  const header = ['Rok',...visKeys.map(k=>warsawMeta.find(m=>m.key===k).label),'Σ Ogółem'].join(',');
+  const header = ['Rok',...visKeys.map(k=>warsawMeta.find(m=>m.key===k).label),'Σ Total'].join(',');
   const rows = years.map((y,i) => {
     const vals = visKeys.map(k => warsawSeries[k]?.[i] ?? '');
     const sum = visKeys.reduce((s,k)=>s+(warsawSeries[k]?.[i]||0),0);
@@ -1820,7 +1819,7 @@ function renderAll() {
       plugins:{legend:{display:false},tooltip:{backgroundColor:'#ffffff',borderColor:'#c8c2b8',borderWidth:1,
         titleFont:{family:'IBM Plex Mono',size:10},bodyFont:{family:'IBM Plex Mono',size:11},
         titleColor:'#8a8178',bodyColor:'#1a1714',
-        callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.fmt(raw)}}},
+        callbacks:{label:ctx=>ctx.dataset.label+': '+fmt(ctx.raw)}}},
       scales:{x:{ticks:{color:tc,font:{family:'IBM Plex Mono',size:9}},grid:{color:gc}},
               y:{min:0,ticks:{color:tc,font:{family:'IBM Plex Mono',size:9},callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v},grid:{color:gc}}}}
   }));
@@ -2190,7 +2189,7 @@ function renderWestChart() {
           hidden: document.getElementById('cbEast') ? !document.getElementById('cbEast').checked : false,
         },
         {
-          label: 'Berlin Zach. – Rucht',
+          label: 'Berlin West – Rucht',
           data: rucht,
           backgroundColor: 'rgba(122,143,168,0.70)',
           borderColor: '#7a8fa8',
@@ -2222,7 +2221,7 @@ function renderWestChart() {
             stack: 'berlin',
           })),
         {
-          label: 'Warszawa 1950–1989',
+          label: 'Warsaw 1950–1989',
           data: warsawHist,
           backgroundColor: 'rgba(58,97,134,0.70)',
           borderColor: '#3a6186',
@@ -2232,7 +2231,7 @@ function renderWestChart() {
           hidden: document.getElementById('cbWawHist') ? !document.getElementById('cbWawHist').checked : false,
         },
         {
-          label: 'Warszawa 1990–2019',
+          label: 'Warsaw 1990–2019',
           data: warsawMod,
           backgroundColor: 'rgba(91,143,185,0.70)',
           borderColor: '#5b8fb9',
@@ -2242,7 +2241,7 @@ function renderWestChart() {
           hidden: document.getElementById('cbWawMod') ? !document.getElementById('cbWawMod').checked : false,
         },
         {
-          label: 'Warszawa inne serie',
+          label: 'Warsaw other series',
           data: warsawOther,
           backgroundColor: 'rgba(90,144,190,0.35)',
           borderColor: '#5b8fb9',
@@ -2263,8 +2262,8 @@ function renderWestChart() {
           titleFont: { family:'IBM Plex Mono', size:10 },
           bodyFont:  { family:'IBM Plex Mono', size:11 },
           callbacks: {
-            title: ctx => ctx[0].label + ' · Berlin Zachodni',
-            label: ctx => ctx.raw != null ? ' ' + ctx.dataset.label + ': ' + ctx.fmt(raw) : null,
+            title: ctx => ctx[0].label + ' · West Berlin',
+            label: ctx => ctx.raw != null ? ' ' + ctx.dataset.label + ': ' + fmt(ctx.raw) : null,
           },
           filter: item => item.raw != null
         }
