@@ -646,20 +646,22 @@ const warsawHistoric = [
   null, null, 240000, 240000, null                                            // 1985-1989
 ];
 
-// West Berlin 1950–2019 — index 0 = 1950. Rucht digitised two separate West Berlin
-// May Day traditions: DGB (mainstream union march) and the alternative/left demos.
+// West Berlin 1950–2019 — index 0 = 1950
+// Two distinct traditions before 1989: DGB (mainstream) and Linke (alternative/left).
+// In 1970/1971/1977 the DGB held no street march (only a closed SFB-hall event, ~500);
+// the alternative left carried May Day. Source: Rucht + user correction (CSV).
 const westYears = Array.from({length: 70}, (_, i) => 1950 + i);
 const westRucht = [
   550000,550000,400000,600000,250000,100000,100000,60000,45000,550000, // 1950-1959
   750000,700000,700000,500000,300000,400000,225000,137500,80000,20000, // 1960-1969
-  null,null,null,null,30000,20000,null,12500,22500,27500,              // 1970-1979 (DGB street march absent 1970-73)
+  null,500,null,null,30000,20000,null,500,22500,27500,                 // 1970-1979 (1971,1977: DGB hall-only ~500)
   17500,20000,35000,12500,15000,9000,40000,30000,50000,50000           // 1980-1989 (1985 = West trough)
 ];
-// West Berlin alternative / left — Rucht's second column (non-DGB demos, corrected series, CSV)
+// West Berlin alternative / left (corrected series, CSV)
 const westLinke = [
   null,null,null,null,null,null,null,null,null,null,   // 1950-1959
   null,null,null,null,null,null,null,null,27000,10000, // 1968=27000, 1969=10000
-  13000,24000,23000,37000,null,null,null,15000,null,null, // 1970-73 left carried the march; 1973 K-groups apogee; 1977 Mai-Komitee 15k
+  13000,24000,23000,37000,null,null,null,15000,null,null, // 1970-73 carried by the left; 1973 K-groups apogee; 1977 Mai-Komitee 15k
   null,null,null,null,null,null,null,null,11000,11000  // 1988-1989 = 11000
 ];
 
