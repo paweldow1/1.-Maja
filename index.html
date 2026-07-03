@@ -329,7 +329,7 @@
     <div class="leg"><div class="leg-dash" style="border-color:#5b8fb9"></div>Warsaw MA-3</div>
   </div>
   <label style="display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-dim);cursor:pointer;">
-    <input type="checkbox" id="cbSharedMA" checked onchange="renderSharedChart()"> Show MA-3
+    <input type="checkbox" id="cbSharedMA" checked onchange="renderCompare()"> Show MA-3
   </label>
 </div>
   <div class="chart-wrap" style="height:340px">
@@ -799,30 +799,34 @@ function setCompareMode(m) {
 }
 function renderCompare() {
   if (_charts['cCompare']) { _charts['cCompare'].destroy(); delete _charts['cCompare']; }
+  const showMA    = document.getElementById('cbSharedMA') ? document.getElementById('cbSharedMA').checked : true;
   const showTrend = document.getElementById('cmpTrend') && document.getElementById('cmpTrend').checked;
-  let datasets;
-  if (compareMode === 'ma') {
-    const bMA = movAvg(berlin,3), wMA = movAvg(warsaw,3);
-    datasets = [
-      { label:'Berlin raw', data:berlin, borderColor:PAL.berlinFaint, borderWidth:1.5, pointRadius:0, tension:0.2, fill:false },
-      { label:'Berlin',     data:bMA,    borderColor:PAL.berlin, borderWidth:2.5, pointRadius:3, pointBackgroundColor:PAL.berlin, tension:0.3, fill:false },
-      { label:'Warsaw raw', data:warsaw, borderColor:PAL.warsawFaint, borderWidth:1.5, pointRadius:0, tension:0.2, fill:false },
-      { label:'Warsaw',     data:wMA,    borderColor:PAL.warsaw, borderWidth:2.5, pointRadius:3, pointBackgroundColor:PAL.warsaw, tension:0.3, fill:false },
-    ];
-  } else {
-    datasets = [
-      { label:'Berlin', data:berlin, borderColor:PAL.berlin, backgroundColor:PAL.berlinFill, borderWidth:2.5, pointRadius:4, pointBackgroundColor:PAL.berlin, tension:0.25, fill:true },
-      { label:'Warsaw', data:warsaw, borderColor:PAL.warsaw, backgroundColor:PAL.warsawFill, borderWidth:2.5, pointRadius:4, pointBackgroundColor:PAL.warsaw, tension:0.25, fill:true },
-    ];
+  const bMA = movAvg(berlin,3), wMA = movAvg(warsaw,3);
+  const datasets = [
+    { type:'bar',  label:'Berlin', data:berlin, backgroundColor:PAL.berlinBar, borderColor:PAL.berlin, borderWidth:1, borderRadius:2, order:2 },
+    { type:'bar',  label:'Warsaw', data:warsaw, backgroundColor:PAL.warsawBar, borderColor:PAL.warsaw, borderWidth:1, borderRadius:2, order:2 },
+  ];
+  if (showMA) {
+    datasets.push(
+      { type:'line', label:'Berlin MA-3', data:bMA, borderColor:PAL.berlin, borderWidth:2.5,
+        pointRadius:0, pointHoverRadius:6, hoverBorderWidth:5, tension:0.35, fill:false, order:1 },
+      { type:'line', label:'Warsaw MA-3', data:wMA, borderColor:PAL.warsaw, borderWidth:2.5,
+        pointRadius:0, pointHoverRadius:6, hoverBorderWidth:5, tension:0.35, fill:false, order:1 }
+    );
   }
   if (showTrend) {
-    datasets.push({ label:'trend B', data:linreg(years,berlin), borderColor:PAL.berlin, borderWidth:1.5, borderDash:[6,4], pointRadius:0, fill:false });
-    datasets.push({ label:'trend W', data:linreg(years,warsaw.map(v=>v==null?0:v)), borderColor:PAL.warsaw, borderWidth:1.5, borderDash:[6,4], pointRadius:0, fill:false });
+    datasets.push(
+      { type:'line', label:'trend B', data:linreg(years,berlin), borderColor:PAL.berlin, borderWidth:1.5, borderDash:[6,4], pointRadius:0, fill:false, order:1 },
+      { type:'line', label:'trend W', data:linreg(years,warsaw.map(v=>v==null?0:v)), borderColor:PAL.warsaw, borderWidth:1.5, borderDash:[6,4], pointRadius:0, fill:false, order:1 }
+    );
   }
   _reg('cCompare', new Chart(document.getElementById('cCompare'), {
-    type:'line',
+    type:'bar',
     data:{ labels:years, datasets },
-    options:{ ...baseOpts, scales:{ ...baseOpts.scales, y:{ ...baseOpts.scales.y, min:0 } } }
+    options:{ ...baseOpts,
+      interaction:{ mode:'index', intersect:false },
+      scales:{ ...baseOpts.scales, y:{ ...baseOpts.scales.y, min:0 } }
+    }
   }));
   applyCityVisibility();
 }
