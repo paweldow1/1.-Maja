@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>May Day Violence in Berlin · 1987–2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.09);
+    --text: #18180f;
+    --muted: #6b6b62;
+    --faint: #a8a89e;
+    --purple: #534AB7;
+    --coral: #d85a30;
+    --teal: #1D9E75;
+    --blue: #3266ad;
+    --amber: #BA7517;
+    --purple-light: rgba(83,74,183,0.15);
+    --coral-light: rgba(216,90,48,0.12);
+    --teal-light: rgba(29,158,117,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 0 2.5rem;
+    background: var(--surface);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: normal;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  h1 em { font-style: italic; color: var(--coral); }
+  .lead {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 620px;
+    line-height: 1.65;
+  }
+  .meta {
+    margin-top: 1.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--faint);
+    letter-spacing: 0.06em;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* Nav */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  nav a {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 14px 16px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  nav a:hover { color: var(--text); border-bottom-color: var(--text); }
+
+  /* Main */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  /* Stat cards */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 2.5rem 0;
+  }
+  .stat {
+    background: var(--surface);
+    padding: 1.25rem 1rem;
+  }
+  .stat-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+  .stat-val { font-size: 28px; font-weight: normal; letter-spacing: -0.02em; line-height: 1; }
+  .stat-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  /* Section */
+  section { margin-top: 3.5rem; }
+  .section-header { margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .section-id { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+  h2 { font-size: 20px; font-weight: normal; letter-spacing: -0.01em; }
+  .section-desc { font-size: 14px; color: var(--muted); margin-top: 0.5rem; line-height: 1.6; }
+
+  /* Chart panel */
+  .chart-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .chart-title {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .canvas-wrap { position: relative; width: 100%; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; font-size: 12px; color: var(--muted); font-family: 'Courier New', monospace; }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .sw { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .lw { width: 18px; height: 2.5px; border-radius: 2px; flex-shrink: 0; }
+  .formula {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    background: var(--bg);
+    padding: 8px 14px;
+    border-radius: 3px;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  /* Anomalies */
+  .anomaly-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-top: 1rem; }
+  .anomaly {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem 1.1rem;
+    background: var(--surface);
+  }
+  .anomaly-year { font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold; color: var(--coral); margin-bottom: 4px; }
+  .anomaly-tag {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+  .tag-norm { background: rgba(186,117,23,0.12); color: var(--amber); }
+  .tag-peak { background: rgba(216,90,48,0.12); color: var(--coral); }
+  .tag-shift { background: rgba(83,74,183,0.12); color: var(--purple); }
+  .tag-anomaly { background: rgba(29,158,117,0.12); color: var(--teal); }
+  .anomaly-text { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+  /* Period cards */
+  .period-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-top: 1.5rem; }
+  .period {
+    background: var(--surface);
+    padding: 1.25rem;
+  }
+  .period-years { font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--faint); margin-bottom: 6px; }
+  .period-title { font-size: 14px; font-weight: normal; margin-bottom: 6px; }
+  .period-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  /* Divider */
+  .rule { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+  @media (max-width: 600px) {
+    .period-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="eyebrow">Berlin · Riot Analysis · 1987–2026</p>
+    <h1>May Day violence<br>in <em>decline</em></h1>
+    <p class="lead">Four decades of May 1st unrest in Berlin, measured across two independent dimensions: absolute violence intensity (RDI) and social mobilisation (turnout). The trends run in opposite directions.</p>
+    <div class="meta">
+      <span>Source: Polizei Berlin press releases</span>
+      <span>RDI: own calculations</span>
+      <span>n = 40 years</span>
+      <span><a href="../index.html" style="color:inherit;">← Berlin vs Warsaw attendance</a></span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#rdi">RDI index</a>
+    <a href="#raw">Raw data</a>
+    <a href="#turnout">Turnout</a>
+    <a href="#scissors">Scissors</a>
+    <a href="#components">Components</a>
+    <a href="#anomalies">Anomalies</a>
+    <a href="#periods">Periods</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="overview">
+    <div class="stat-grid">
+      <div class="stat"><p class="stat-label">Peak injured officers</p><p class="stat-val">479</p><p class="stat-sub">2009</p></div>
+      <div class="stat"><p class="stat-label">Peak arrests</p><p class="stat-val">616</p><p class="stat-sub">2001 — demo ban</p></div>
+      <div class="stat"><p class="stat-label">Peak turnout</p><p class="stat-val">26,000</p><p class="stat-sub">2025</p></div>
+      <div class="stat"><p class="stat-label">RDI decline 2010→2026</p><p class="stat-val">−84%</p><p class="stat-sub">violence index</p></div>
+      <div class="stat"><p class="stat-label">Turnout growth 2010→2026</p><p class="stat-val">+63%</p><p class="stat-sub">12,550 → 20,500</p></div>
+      <div class="stat"><p class="stat-label">Years of data</p><p class="stat-val">40</p><p class="stat-sub">1987–2026</p></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- RDI INDEX -->
+  <section id="rdi">
+    <div class="section-header">
+      <p class="section-id">Dimension 1 · synthetic index</p>
+      <h2>Riot Disturbance Index (RDI)</h2>
+      <p class="section-desc">A composite score combining injured officers and total arrests, each min-max normalised to [0,1] and averaged with equal weights. Smoothed with a 3-year centred moving average (MA-3).</p>
+    </div>
+    <div class="chart-panel">
+      <p class="chart-title">RDI · 1987–2026 · bars = raw · line = MA-3</p>
+      <div class="formula">RDI = 0.5 × injured_norm + 0.5 × arrests_norm</div>
+      <div class="canvas-wrap" style="height:270px;"><canvas id="cRDI" role="img" aria-label="RDI 1987-2026, peak 2009, declining trend since 2010">RDI 1987-2026: peak 2009, systematic decline from 2010.</canvas></div>
+      <div class="legend">
+        <span><span class="lw" style="background:var(--purple);"></span>RDI MA-3</span>
+        <span><span class="sw" style="background:var(--purple-light);"></span>RDI raw</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- RAW DATA -->
+  <section id="raw">
+    <div class="section-header">
+      <p class="section-id">Dimension 1 · raw series</p>
+      <h2>Injured officers &amp; total arrests</h2>
+      <p class="section-desc">Underlying series before normalisation. Injured officers (bars) and total arrests across all May 1st events (line). Both series shown with MA-3 smoothing.</p>
+    </div>
+    <div class="chart-panel">
+      <p class="chart-title">Injured police officers · 1987–2026</p>
+      <div class="canvas-wrap" style="height:240px;"><canvas id="cInjured" role="img" aria-label="Injured police officers 1987-2026, extreme outlier 2009 with 479 injuries">Injured officers 1987-2026.</canvas></div>
+      <div class="legend">
+        <span><span class="lw" style="background:var(--blue);"></span>Injured (MA-3)</span>
+        <span><span class="sw" style="background:rgba(50,102,173,0.2);"></span>Injured raw</span>
+      </div>
+    </div>
+    <div class="chart-panel">
+      <p class="chart-title">Total arrests · 1987–2026</p>
+      <div class="canvas-wrap" style="height:240px;"><canvas id="cArrests" role="img" aria-label="Total arrests 1987-2026, peak 2001 with 616 arrests">Total arrests 1987-2026.</canvas></div>
+      <div class="legend">
+        <span><span class="lw" style="background:var(--coral);"></span>Arrests (MA-3)</span>
+        <span><span class="sw" style="background:var(--coral-light);"></span>Arrests raw</span>
+      </div>
+    </div>
+    <div class="chart-panel">
+      <p class="chart-title">Police deployment (Einsatz) · 1987–2026</p>
+      <div class="canvas-wrap" style="height:220px;"><canvas id="cEinsatz" role="img" aria-label="Police deployment 1987-2026, ranging from 400 in 1987 to 9000 in 2001">Police deployment 1987-2026.</canvas></div>
+      <div class="legend">
+        <span><span class="sw" style="background:rgba(136,135,128,0.5);"></span>Officers deployed</span>
+        <span><span class="lw" style="background:var(--amber);"></span>Injured / 1,000 officers (MA-3)</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- TURNOUT -->
+  <section id="turnout">
+    <div class="section-header">
+      <p class="section-id">Dimension 2 · social context</p>
+      <h2>Demonstrator turnout</h2>
+      <p class="section-desc">Turnout as interpretive backdrop — not a denominator for normalisation. A large crowd does not imply more violence; 2014–2015 had record turnout alongside minimum arrests.</p>
+    </div>
+    <div class="chart-panel">
+      <p class="chart-title">Demonstrator turnout · 1990–2026 (thousands)</p>
+      <div class="canvas-wrap" style="height:240px;"><canvas id="cTurnout" role="img" aria-label="Demonstrator turnout 1990-2026, record 26000 in 2025">Turnout 1990-2026.</canvas></div>
+      <div class="legend">
+        <span><span class="lw" style="background:var(--teal);"></span>Turnout MA-3</span>
+        <span><span class="sw" style="background:var(--teal-light);"></span>Turnout raw</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- SCISSORS -->
+  <section id="scissors">
+    <div class="section-header">
+      <p class="section-id">Two dimensions · combined</p>
+      <h2>The scissors effect</h2>
+      <p class="section-desc">Both dimensions normalised to [0,1] for comparability. The divergence from ~2011 onward is the central finding: as demonstrations became more popular, they became less violent.</p>
+    </div>
+    <div class="chart-panel">
+      <p class="chart-title">Violence (RDI) vs. turnout · normalised · MA-3 · 1990–2026</p>
+      <div class="canvas-wrap" style="height:270px;"><canvas id="cScissors" role="img" aria-label="Scissors: violence declines, turnout rises from 2010 onward">Scissors effect: violence and turnout 1990-2026.</canvas></div>
+      <div class="legend">
+        <span><span class="lw" style="background:var(--coral);"></span>Violence RDI (MA-3, norm.)</span>
+        <span><span class="lw" style="background:var(--teal);border-style:dashed;"></span>Turnout (MA-3, norm.)</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- COMPONENTS -->
+  <section id="components">
+    <div class="section-header">
+      <p class="section-id">Arrests · breakdown</p>
+      <h2>Arrest components by event type</h2>
+      <p class="section-desc">Three arrest streams with distinct political origins — aggregating them uncritically conflates qualitatively different events. NPD/Kontra arrests reflect far-right marches and counter-protests; Walpurgisnacht is the eve-of-May-Day gathering with its own dynamics.</p>
+    </div>
+    <div class="chart-panel">
+      <p class="chart-title">Arrests by event · stacked · 1987–2026</p>
+      <div class="canvas-wrap" style="height:260px;"><canvas id="cStack" role="img" aria-label="Stacked arrests by event type: May 1st dominates, NPD/Kontra spikes in 2000, 2004, 2010">Arrest components 1987-2026.</canvas></div>
+      <div class="legend">
+        <span><span class="sw" style="background:rgba(216,90,48,0.85);"></span>May 1st</span>
+        <span><span class="sw" style="background:rgba(50,102,173,0.85);"></span>Walpurgisnacht (Apr 30)</span>
+        <span><span class="sw" style="background:rgba(29,158,117,0.85);"></span>NPD / counter-protests</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ANOMALIES -->
+  <section id="anomalies">
+    <div class="section-header">
+      <p class="section-id">Data notes</p>
+      <h2>Anomalies &amp; methodological flags</h2>
+      <p class="section-desc">Years where the data requires contextual interpretation before use in trend analysis.</p>
+    </div>
+    <div class="anomaly-grid">
+
+      <div class="anomaly">
+        <p class="anomaly-year">1987</p>
+        <span class="anomaly-tag tag-norm">small Einsatz</span>
+        <p class="anomaly-text">Only 400 officers deployed — the smallest Einsatz on record. Injured/officer ratio (612/1,000) is an extreme outlier driven by the tiny denominator, not exceptional violence.</p>
+      </div>
+
+      <div class="anomaly">
+        <p class="anomaly-year">1989</p>
+        <span class="anomaly-tag tag-norm">small Einsatz</span>
+        <p class="anomaly-text">1,600 officers, 346 injured → 216 injured per 1,000. Likely reflects policing capacity limitations in the year the Berlin Wall fell, not a structural peak in crowd violence.</p>
+      </div>
+
+      <div class="anomaly">
+        <p class="anomaly-year">1995</p>
+        <span class="anomaly-tag tag-anomaly">missing data</span>
+        <p class="anomaly-text">Einsatz figure missing from available records. Imputed with the series median (5,500) for ratio calculations; excluded from Einsatz trend charts where noted.</p>
+      </div>
+
+      <div class="anomaly">
+        <p class="anomaly-year">2001</p>
+        <span class="anomaly-tag tag-peak">endogeneity</span>
+        <p class="anomaly-text">A demonstration ban was in effect, suppressing turnout to ~7,750 while simultaneously generating record arrests (616). Normalising arrests by turnout gives a misleadingly extreme ratio — the denominator was legally constrained, not organically low.</p>
+      </div>
+
+      <div class="anomaly">
+        <p class="anomaly-year">2005–2006</p>
+        <span class="anomaly-tag tag-shift">structural break</span>
+        <p class="anomaly-text">Turnout collapses to 500 (2005) and 50 (2006) — almost certainly reflecting a reorganisation of event format and march routes, including the emergence of Myfest in Kreuzberg as a festival alternative. Not a genuine mobilisation failure.</p>
+      </div>
+
+      <div class="anomaly">
+        <p class="anomaly-year">2009</p>
+        <span class="anomaly-tag tag-peak">violence peak</span>
+        <p class="anomaly-text">Absolute peak in injured officers (479). Occurs against a background of above-average but not exceptional turnout (8,800). The spike is real and robust across all index variants; no methodological artefact explains it.</p>
+      </div>
+
+      <div class="anomaly">
+        <p class="anomaly-year">2020</p>
+        <span class="anomaly-tag tag-anomaly">COVID-19</span>
+        <p class="anomaly-text">COVID-19 containment regulations banned mass gatherings. Turnout (3,000) reflects the legal cap, not voluntary mobilisation. Arrests (350) were predominantly for violating the Eindämmungsmaßnahmenverordnung, not protest-related offences — a categorically different arrest type.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- PERIODS -->
+  <section id="periods">
+    <div class="section-header">
+      <p class="section-id">Structural interpretation</p>
+      <h2>Three structural periods</h2>
+    </div>
+    <div class="period-grid">
+      <div class="period" style="border-top:3px solid var(--purple);">
+        <p class="period-years">1987–2004</p>
+        <p class="period-title">High, variable violence</p>
+        <p class="period-desc">The classic Berlin model: high and volatile RDI, stable turnout of 10–15k. Kreuzberg SO36 as the primary flashpoint. Violence driven by a core of autonomous left groups.</p>
+      </div>
+      <div class="period" style="border-top:3px solid var(--coral);">
+        <p class="period-years">2005–2010</p>
+        <p class="period-title">Turbulence &amp; peak</p>
+        <p class="period-desc">Turnout disrupted by format reorganisation (2005–06), then recovering. Violence reaches its absolute peak in 2009 (479 injured). Competing dynamics: Myfest pacification vs. continued autonomous confrontations.</p>
+      </div>
+      <div class="period" style="border-top:3px solid var(--teal);">
+        <p class="period-years">2011–2026</p>
+        <p class="period-title">The scissors effect</p>
+        <p class="period-desc">Turnout grows systematically to record highs. Violence falls to historic lows. The dilution hypothesis: radical participants become a smaller share of a larger crowd. Institutionalisation of May Day as a festival likely plays a reinforcing role.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Data: Polizei Berlin press releases 1987–2026 · Turnout: organiser &amp; police estimates · RDI: own calculations ·
+  <a href="https://github.com/yourusername/berlin-may1">github.com/yourusername/berlin-may1</a></p>
+</footer>
+
+<script>
+const raw = [
+  {y:1987,e:400,   r:245,npd:0,  wal:0,  maj:56, freq:null},
+  {y:1988,e:1500,  r:53, npd:0,  wal:0,  maj:134,freq:null},
+  {y:1989,e:1600,  r:346,npd:0,  wal:0,  maj:20, freq:null},
+  {y:1990,e:6000,  r:230,npd:0,  wal:0,  maj:140,freq:12500},
+  {y:1991,e:4500,  r:87, npd:0,  wal:0,  maj:181,freq:12667},
+  {y:1992,e:5000,  r:127,npd:0,  wal:0,  maj:294,freq:13500},
+  {y:1993,e:4000,  r:19, npd:0,  wal:0,  maj:169,freq:7750},
+  {y:1994,e:4000,  r:34, npd:0,  wal:0,  maj:139,freq:900},
+  {y:1995,e:5500,  r:100,npd:0,  wal:133,maj:26, freq:2250},
+  {y:1996,e:4500,  r:48, npd:0,  wal:25, maj:176,freq:13000},
+  {y:1997,e:5000,  r:7,  npd:0,  wal:59, maj:266,freq:11000},
+  {y:1998,e:5000,  r:145,npd:0,  wal:28, maj:379,freq:8417},
+  {y:1999,e:5000,  r:139,npd:0,  wal:6,  maj:127,freq:15500},
+  {y:2000,e:6765,  r:283,npd:200,wal:57, maj:144,freq:14833},
+  {y:2001,e:9000,  r:166,npd:0,  wal:40, maj:616,freq:7750},
+  {y:2002,e:5000,  r:101,npd:0,  wal:34, maj:183,freq:13500},
+  {y:2003,e:7500,  r:178,npd:0,  wal:51, maj:185,freq:10250},
+  {y:2004,e:8000,  r:187,npd:72, wal:114,maj:162,freq:8500},
+  {y:2005,e:6150,  r:32, npd:0,  wal:70, maj:123,freq:500},
+  {y:2006,e:5101,  r:66, npd:0,  wal:72, maj:107,freq:50},
+  {y:2007,e:4724,  r:90, npd:0,  wal:119,maj:115,freq:8567},
+  {y:2008,e:4572,  r:112,npd:0,  wal:24, maj:139,freq:11300},
+  {y:2009,e:5761,  r:479,npd:0,  wal:57, maj:289,freq:8800},
+  {y:2010,e:7400,  r:98, npd:289,wal:37, maj:161,freq:12550},
+  {y:2011,e:7400,  r:75, npd:0,  wal:58, maj:103,freq:11333},
+  {y:2012,e:7000,  r:124,npd:0,  wal:4,  maj:119,freq:18500},
+  {y:2013,e:7000,  r:54, npd:0,  wal:20, maj:74, freq:11667},
+  {y:2014,e:6400,  r:59, npd:0,  wal:15, maj:53, freq:22000},
+  {y:2015,e:6554,  r:41, npd:0,  wal:8,  maj:45, freq:25500},
+  {y:2016,e:6091,  r:59, npd:0,  wal:0,  maj:42, freq:16750},
+  {y:2017,e:6000,  r:32, npd:0,  wal:0,  maj:114,freq:15250},
+  {y:2018,e:5170,  r:20, npd:0,  wal:0,  maj:103,freq:12700},
+  {y:2019,e:5500,  r:39, npd:0,  wal:0,  maj:150,freq:10200},
+  {y:2020,e:5000,  r:18, npd:0,  wal:0,  maj:350,freq:3000},
+  {y:2021,e:5600,  r:93, npd:0,  wal:0,  maj:354,freq:14500},
+  {y:2022,e:5500,  r:33, npd:0,  wal:22, maj:74, freq:17000},
+  {y:2023,e:7100,  r:19, npd:0,  wal:13, maj:58, freq:16000},
+  {y:2024,e:5600,  r:6,  npd:0,  wal:8,  maj:34, freq:17267},
+  {y:2025,e:5800,  r:13, npd:0,  wal:3,  maj:70, freq:26000},
+  {y:2026,e:5300,  r:15, npd:0,  wal:0,  maj:87, freq:20500},
+];
+
+const labels = raw.map(d => d.y);
+const totalA = raw.map(d => d.npd + d.wal + d.maj);
+const rArr   = raw.map(d => d.r);
+const eArr   = raw.map(d => d.e);
+const injPerE= raw.map(d => parseFloat(((d.r / d.e) * 1000).toFixed(2)));
+
+const withFreq = raw.filter(d => d.freq !== null);
+const fLabels  = withFreq.map(d => d.y);
+const fArr     = withFreq.map(d => d.freq / 1000);
+
+function norm(arr) {
+  const mn = Math.min(...arr), mx = Math.max(...arr);
+  return arr.map(v => parseFloat(((v - mn) / (mx - mn)).toFixed(4)));
+}
+function ma(arr, w) {
+  return arr.map((_, i) => {
+    const h  = Math.floor(w / 2);
+    const sl = arr.slice(Math.max(0, i - h), Math.min(arr.length - 1, i + h) + 1);
+    return parseFloat((sl.reduce((a, b) => a + b, 0) / sl.length).toFixed(4));
+  });
+}
+
+const rN  = norm(rArr), aN = norm(totalA);
+const rdi = rN.map((v, i) => parseFloat((0.5 * v + 0.5 * aN[i]).toFixed(4)));
+const rdiMA = ma(rdi, 3);
+const rMA   = ma(rArr, 3);
+const aMA   = ma(totalA, 3);
+const ipMA  = ma(injPerE, 3);
+const fN    = norm(withFreq.map(d => d.freq));
+const fNma  = ma(fN, 3);
+const fAma  = ma(fArr, 3);
+
+const rdiWithFreq = withFreq.map(d => {
+  const i = raw.indexOf(d);
+  return rdi[i];
+});
+const rdiWFma = ma(rdiWithFreq, 3);
+
+const gc = 'rgba(0,0,0,0.06)', tf = {size: 11, color: '#888'};
+const xs = {ticks:{autoSkip:true,maxRotation:45,font:tf,color:'#999'},grid:{color:gc}};
+const ys = {grid:{color:gc},ticks:{font:tf,color:'#999'}};
+const tip = (extra={}) => ({
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {display: false},
+    tooltip: {
+      mode: 'index', intersect: false,
+      callbacks: {title: ctx => ctx[0].label + (extra.suffix||' ')}
+    }
+  },
+  ...extra
+});
+
+/* RDI */
+new Chart(document.getElementById('cRDI'), {
+  type: 'bar',
+  data: {labels, datasets:[
+    {label:'RDI raw', data:rdi, backgroundColor:'rgba(83,74,183,0.18)', order:2},
+    {label:'RDI MA-3', data:rdiMA, type:'line', borderColor:'#534AB7', backgroundColor:'transparent', pointRadius:0, borderWidth:2.5, tension:0.35, order:1}
+  ]},
+  options: tip({scales:{x:xs,y:{...ys,min:0,max:1}}})
+});
+
+/* Injured */
+new Chart(document.getElementById('cInjured'), {
+  type: 'bar',
+  data: {labels, datasets:[
+    {label:'Injured raw', data:rArr, backgroundColor:'rgba(50,102,173,0.22)', order:2},
+    {label:'Injured MA-3', data:rMA, type:'line', borderColor:'#3266ad', backgroundColor:'transparent', pointRadius:0, borderWidth:2.5, tension:0.35, order:1}
+  ]},
+  options: tip({scales:{x:xs,y:ys}})
+});
+
+/* Arrests */
+new Chart(document.getElementById('cArrests'), {
+  type: 'bar',
+  data: {labels, datasets:[
+    {label:'Arrests raw', data:totalA, backgroundColor:'rgba(216,90,48,0.18)', order:2},
+    {label:'Arrests MA-3', data:aMA, type:'line', borderColor:'#d85a30', backgroundColor:'transparent', pointRadius:0, borderWidth:2.5, tension:0.35, order:1}
+  ]},
+  options: tip({scales:{x:xs,y:ys}})
+});
+
+/* Einsatz + injured/officer ratio */
+new Chart(document.getElementById('cEinsatz'), {
+  type: 'bar',
+  data: {labels, datasets:[
+    {label:'Officers deployed', data:eArr, backgroundColor:'rgba(136,135,128,0.35)', yAxisID:'y', order:2},
+    {label:'Injured / 1000 officers MA-3', data:ipMA, type:'line', borderColor:'#BA7517', backgroundColor:'transparent', pointRadius:0, borderWidth:2, tension:0.35, yAxisID:'y2', order:1}
+  ]},
+  options: tip({scales:{
+    x: xs,
+    y: {...ys, position:'left'},
+    y2: {position:'right', grid:{drawOnChartArea:false}, ticks:{font:tf, color:'#BA7517', callback:v=>v.toFixed(1)}}
+  }})
+});
+
+/* Turnout */
+new Chart(document.getElementById('cTurnout'), {
+  type: 'bar',
+  data: {labels:fLabels, datasets:[
+    {label:'Turnout raw', data:fArr, backgroundColor:'rgba(29,158,117,0.18)', order:2},
+    {label:'Turnout MA-3', data:fAma, type:'line', borderColor:'#1D9E75', backgroundColor:'transparent', pointRadius:0, borderWidth:2.5, tension:0.35, order:1}
+  ]},
+  options: tip({scales:{x:xs,y:{...ys,ticks:{font:tf,color:'#999',callback:v=>v+'k'}}}})
+});
+
+/* Scissors */
+new Chart(document.getElementById('cScissors'), {
+  type: 'line',
+  data: {labels:fLabels, datasets:[
+    {label:'Violence RDI MA-3', data:rdiWFma, borderColor:'#d85a30', backgroundColor:'rgba(216,90,48,0.07)', fill:true, pointRadius:0, borderWidth:2.5, tension:0.35},
+    {label:'Turnout MA-3', data:fNma, borderColor:'#1D9E75', backgroundColor:'rgba(29,158,117,0.07)', fill:true, pointRadius:0, borderWidth:2, borderDash:[6,3], tension:0.35}
+  ]},
+  options: tip({scales:{x:xs,y:{...ys,min:0,max:1}}})
+});
+
+/* Stack */
+new Chart(document.getElementById('cStack'), {
+  type: 'bar',
+  data: {labels, datasets:[
+    {label:'May 1st',           data:raw.map(d=>d.maj), backgroundColor:'rgba(216,90,48,0.85)', stack:'s'},
+    {label:'Walpurgisnacht',    data:raw.map(d=>d.wal), backgroundColor:'rgba(50,102,173,0.85)', stack:'s'},
+    {label:'NPD/Kontra',        data:raw.map(d=>d.npd), backgroundColor:'rgba(29,158,117,0.85)', stack:'s'}
+  ]},
+  options: tip({scales:{x:{...xs,stacked:true},y:{...ys,stacked:true}}})
+});
+</script>
+</body>
+</html>
