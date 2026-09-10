@@ -455,6 +455,29 @@ class TestGrzecznosc(unittest.TestCase):
         self.assertTrue(any("credentials" in u for u in konfig.sprawdz()))
 
 
+class TestSerwer(unittest.TestCase):
+    def test_zajety_port_nie_wywala_programu(self):
+        """Double-clicking the icon twice must not end in a stack trace."""
+        import socket
+        from http.server import BaseHTTPRequestHandler
+        from kwerenda.serwer import zwiaz_serwer
+
+        zajety = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        zajety.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        zajety.bind(("127.0.0.1", 0))
+        zajety.listen(1)
+        port = zajety.getsockname()[1]
+        try:
+            serwer = zwiaz_serwer(BaseHTTPRequestHandler, "127.0.0.1", port)
+            try:
+                self.assertNotEqual(serwer.server_address[1], port)
+                self.assertLess(serwer.server_address[1], port + 12)
+            finally:
+                serwer.server_close()
+        finally:
+            zajety.close()
+
+
 class TestEksport(unittest.TestCase):
     def setUp(self):
         self.rekord = Rekord(

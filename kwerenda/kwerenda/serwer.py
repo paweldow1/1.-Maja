@@ -8,6 +8,7 @@ a single HTML file talking to this JSON API.
 from __future__ import annotations
 
 import json
+import sys
 import threading
 import time
 import traceback
@@ -386,10 +387,32 @@ class Obsluga(BaseHTTPRequestHandler):
                            "message": f"Saved {len(rekordy)} records to {nazwa}."})
 
 
+def zwiaz_serwer(klasa, host: str, port: int, ile_prob: int = 12) -> ThreadingHTTPServer:
+    """Bind the first free port at or after `port`.
+
+    The port may well be taken — by a second copy of Kwerenda, or by anything
+    else on the machine. Sliding to the next one beats greeting somebody who
+    just double-clicked an icon with a stack trace.
+    """
+    for kandydat in range(port, port + ile_prob):
+        try:
+            return ThreadingHTTPServer((host, kandydat), klasa)
+        except OSError:
+            continue
+    print(f"Ports {port}–{port + ile_prob - 1} are all busy. Close whatever is using "
+          f"them, or start on a different one:  python -m kwerenda gui --port 9000",
+          file=sys.stderr)
+    raise SystemExit(1)
+
+
 def uruchom_serwer(magazyn: Magazyn, katalog_eksportu: Path, port: int = 8765,
                    host: str = "127.0.0.1", otworz: bool = True) -> None:
     klasa = type("ObslugaZeStanem", (Obsluga,), {"stan": Stan(magazyn, katalog_eksportu)})
-    serwer = ThreadingHTTPServer((host, port), klasa)
+
+    serwer = zwiaz_serwer(klasa, host, port)
+    if serwer.server_address[1] != port:
+        print(f"Port {port} was busy — using {serwer.server_address[1]} instead.")
+
     adres = f"http://{host}:{serwer.server_address[1]}"
     print(f"Kwerenda {__wersja__} — interface at {adres}")
     print("Stop with Ctrl+C")
