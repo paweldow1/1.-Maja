@@ -14,6 +14,7 @@ import time
 import traceback
 import zipfile
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 from urllib.parse import parse_qs, unquote, urlparse
@@ -34,12 +35,15 @@ KATALOG_WEB = Path(__file__).parent / "web"
 
 
 class Stan:
-    """Shared server state: database, current run, export directory."""
+    """Shared server state: database, current run, export and preset directories."""
 
-    def __init__(self, magazyn: Magazyn, katalog_eksportu: Path):
+    def __init__(self, magazyn: Magazyn, katalog_eksportu: Path,
+                 katalog_presetow: Optional[Path] = None):
         self.magazyn = magazyn
         self.katalog_eksportu = katalog_eksportu
         self.katalog_eksportu.mkdir(parents=True, exist_ok=True)
+        self.katalog_presetow = Path(katalog_presetow or "presets")
+        self.katalog_presetow.mkdir(parents=True, exist_ok=True)
         self.silnik: Optional[Silnik] = None
         self.watek: Optional[threading.Thread] = None
         self.ostatni_przebieg: Optional[int] = None
@@ -83,6 +87,54 @@ def _przebieg_en(wiersz: dict) -> dict:
     return {"id": wiersz.get("id"), "name": wiersz.get("nazwa", ""),
             "query": wiersz.get("zapytanie", ""), "status": wiersz.get("status", ""),
             "hits": wiersz.get("trafien", 0), "started": wiersz.get("start")}
+
+
+def _slug(nazwa: str) -> str:
+    from .cytowania import ascii_slug
+    czesci = [ascii_slug(k).lower() for k in re.split(r"[\s_]+", nazwa or "") if k.strip()]
+    return "-".join(c for c in czesci if c)[:60] or "preset"
+
+
+def presety_z_plikow(katalog: Path) -> List[dict]:
+    """Every configuration file in the presets directory.
+
+    A preset is a file, not a hidden row in a database: you can read it, put it
+    in version control, mail it to somebody, and run it from the command line.
+    """
+    wynik = []
+    for wzorzec in ("*.yaml", "*.yml", "*.json"):
+        for plik in sorted(katalog.glob(wzorzec)):
+            try:
+                konfig = Konfiguracja.wczytaj(plik)
+            except Exception as exc:
+                wynik.append({"name": plik.stem, "file": plik.name, "source": "file",
+                              "error": str(exc)[:200], "config": {}})
+                continue
+            wynik.append({"name": konfig.nazwa or plik.stem, "file": plik.name,
+                          "source": "file", "config": konfig.jako_dict()})
+    return wynik
+
+
+def lista_presetow(stan: Stan) -> List[dict]:
+    """Files first, then anything saved into the database by older versions."""
+    z_plikow = presety_z_plikow(stan.katalog_presetow)
+    nazwy = {p["name"] for p in z_plikow}
+    z_bazy = [{"name": p["nazwa"], "config": p["konfig"], "source": "database"}
+              for p in stan.magazyn.presety() if p["nazwa"] not in nazwy]
+    return z_plikow + z_bazy
+
+
+def zapisz_preset_do_pliku(stan: Stan, nazwa: str, konfig: dict) -> Path:
+    konfiguracja = Konfiguracja.z_dict(konfig)
+    konfiguracja.nazwa = nazwa or konfiguracja.nazwa
+    rozszerzenie = ".yaml"
+    try:
+        import yaml  # noqa: F401
+    except ImportError:
+        rozszerzenie = ".json"
+    sciezka = stan.katalog_presetow / f"{_slug(konfiguracja.nazwa)}{rozszerzenie}"
+    konfiguracja.zapisz(sciezka)
+    return sciezka
 
 
 def _rekordy(stan: Stan, dane: dict) -> List[Rekord]:
@@ -174,8 +226,8 @@ class Obsluga(BaseHTTPRequestHandler):
                               for j in JEZYKI.values()],
                 "corpus": [{"host": k["host"], "pages": k["ile"], "last": k["ostatnio"]}
                            for k in stan.magazyn.statystyki_korpusu()],
-                "presets": [{"name": p["nazwa"], "config": p["konfig"]}
-                            for p in stan.magazyn.presety()],
+                "presets": lista_presetow(stan),
+                "presets_dir": str(stan.katalog_presetow.resolve()),
                 "runs": [_przebieg_en(p) for p in stan.magazyn.przebiegi(30)],
                 "last_run": stan.ostatni_przebieg,
                 "settings": stan.magazyn.ustawienie("interface", {}),
@@ -289,11 +341,20 @@ class Obsluga(BaseHTTPRequestHandler):
                                "message": wynik.get("komunikat", "")})
 
         if zasob == "preset":
-            stan.magazyn.zapisz_preset(dane["name"], dane.get("config") or {})
-            return self._json({"ok": True})
+            sciezka = zapisz_preset_do_pliku(stan, dane.get("name", ""),
+                                             dane.get("config") or {})
+            return self._json({"ok": True, "file": sciezka.name,
+                               "message": f"Saved as {sciezka}"})
 
         if zasob == "preset/delete":
-            stan.magazyn.usun_preset(dane["name"])
+            plik = dane.get("file")
+            if plik:
+                cel = (stan.katalog_presetow / plik).resolve()
+                if str(cel).startswith(str(stan.katalog_presetow.resolve())) and cel.is_file():
+                    cel.unlink()
+                    return self._json({"ok": True})
+                return self._json({"error": "no such preset file"}, 404)
+            stan.magazyn.usun_preset(dane.get("name", ""))
             return self._json({"ok": True})
 
         if zasob == "corpus/clear":
@@ -406,8 +467,10 @@ def zwiaz_serwer(klasa, host: str, port: int, ile_prob: int = 12) -> ThreadingHT
 
 
 def uruchom_serwer(magazyn: Magazyn, katalog_eksportu: Path, port: int = 8765,
-                   host: str = "127.0.0.1", otworz: bool = True) -> None:
-    klasa = type("ObslugaZeStanem", (Obsluga,), {"stan": Stan(magazyn, katalog_eksportu)})
+                   host: str = "127.0.0.1", otworz: bool = True,
+                   katalog_presetow: Optional[Path] = None) -> None:
+    klasa = type("ObslugaZeStanem", (Obsluga,),
+                 {"stan": Stan(magazyn, katalog_eksportu, katalog_presetow)})
 
     serwer = zwiaz_serwer(klasa, host, port)
     if serwer.server_address[1] != port:

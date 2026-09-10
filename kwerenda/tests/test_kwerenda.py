@@ -455,6 +455,62 @@ class TestGrzecznosc(unittest.TestCase):
         self.assertTrue(any("credentials" in u for u in konfig.sprawdz()))
 
 
+class TestPresety(unittest.TestCase):
+    """A preset is a file: readable, editable, shareable, runnable from the CLI."""
+
+    def test_czyta_pliki_i_zapisuje_z_powrotem(self):
+        from kwerenda.serwer import Stan, lista_presetow, zapisz_preset_do_pliku
+
+        with tempfile.TemporaryDirectory() as katalog:
+            katalog = Path(katalog)
+            (katalog / "eksport").mkdir()
+            stan = Stan(Magazyn(":memory:"), katalog / "eksport", katalog / "presets")
+
+            konfig = Konfiguracja(nazwa="May Day — Mazowsze", zapytanie='"1 maja"*',
+                                  jezyki=["pl"], zrodla=[Zrodlo(url="https://a.pl")])
+            sciezka = zapisz_preset_do_pliku(stan, konfig.nazwa, konfig.jako_dict())
+            self.assertEqual(sciezka.name, "may-day-mazowsze.yaml")
+
+            presety = lista_presetow(stan)
+            self.assertEqual(len(presety), 1)
+            self.assertEqual(presety[0]["name"], "May Day — Mazowsze")
+            self.assertEqual(presety[0]["source"], "file")
+            wczytany = Konfiguracja.z_dict(presety[0]["config"])
+            self.assertEqual(wczytany.zapytanie, '"1 maja"*')
+            self.assertEqual(wczytany.zrodla[0].url, "https://a.pl")
+
+    def test_zepsuty_plik_nie_wywala_listy(self):
+        from kwerenda.serwer import presety_z_plikow
+
+        with tempfile.TemporaryDirectory() as katalog:
+            katalog = Path(katalog)
+            (katalog / "dobry.json").write_text('{"name": "Fine", "query": "x"}',
+                                                encoding="utf-8")
+            (katalog / "zepsuty.json").write_text("{ this is not json", encoding="utf-8")
+            presety = {p["name"]: p for p in presety_z_plikow(katalog)}
+        self.assertEqual(presety["Fine"]["config"]["query"], "x")
+        self.assertIn("error", presety["zepsuty"])
+
+    def test_cli_znajduje_preset_po_nazwie(self):
+        from kwerenda.__main__ import _znajdz_preset
+
+        class Args:
+            pass
+
+        with tempfile.TemporaryDirectory() as katalog:
+            katalog = Path(katalog)
+            (katalog / "moja-kwerenda.yaml").write_text("name: Mine\nquery: x\n",
+                                                        encoding="utf-8")
+            args = Args()
+            args.presets = str(katalog)
+            self.assertEqual(_znajdz_preset(args, "moja-kwerenda").name,
+                             "moja-kwerenda.yaml")
+            self.assertEqual(_znajdz_preset(args, str(katalog / "moja-kwerenda.yaml")).name,
+                             "moja-kwerenda.yaml")
+            with self.assertRaises(SystemExit):
+                _znajdz_preset(args, "nie-ma-takiego")
+
+
 class TestSerwer(unittest.TestCase):
     def test_zajety_port_nie_wywala_programu(self):
         """Double-clicking the icon twice must not end in a stack trace."""

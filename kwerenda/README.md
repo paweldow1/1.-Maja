@@ -177,16 +177,31 @@ python -m kwerenda corpus
 python -m kwerenda languages
 ```
 
-## Configuration
+## Presets
 
-Jobs are YAML or JSON with English keys — see `presets/`:
+**A preset is a file.** Everything in the `presets/` folder — YAML or JSON, with
+English keys — shows up in the interface's *load a preset* list and can be run
+from the command line. Nothing is hidden in a database, so a query can go into
+version control, be mailed to a colleague, or edited in any text editor.
 
 | file | what it shows |
 |---|---|
 | `may-day-solidarnosc.yaml` | the WordPress case, fully commented |
 | `may-day-three-countries.yaml` | one question in Polish, German and Ukrainian |
-| `newspaper-archive.yaml` | a bad archive search, walked by listing template; signing in with your own subscription |
+| `newspaper-archive.yaml` | a bad archive search, walked by a listing template; signing in with your own subscription |
 | `offline-corpus.yaml` | new keywords against already-downloaded material |
+
+In the interface: pick one from the dropdown to fill the whole form, or press
+**Save as preset** to write the current form back out as a new file.
+
+From the command line, by name or by path:
+
+```bash
+python -m kwerenda presets                        # what is available
+python -m kwerenda run may-day-solidarnosc        # by name
+python -m kwerenda run presets/offline-corpus.yaml --format ris
+python -m kwerenda --presets ~/my-queries run whatever
+```
 
 Configurations written by earlier Polish-language versions still load.
 

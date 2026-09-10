@@ -280,9 +280,10 @@ tr.unselected td{opacity:.42}
         <button class="btn primary" id="start">▶ Run the search</button>
         <button class="btn stop" id="stop" disabled>⏹ Stop</button>
         <button class="btn" id="save-preset">Save as preset</button>
-        <select id="presets" style="max-width:210px"><option value="">— load a preset —</option></select>
+        <select id="presets" style="max-width:230px"><option value="">— load a preset —</option></select>
         <button class="btn mini" id="delete-preset">delete</button>
       </div>
+      <div class="hint" id="presets-dir" style="margin-top:6px"></div>
     </div>
   </div>
 
@@ -425,7 +426,7 @@ const esc = t => String(t == null ? "" : t).replace(/[&<>"]/g, z =>
   ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[z]));
 
 let HITS = [], UNSELECTED = new Set(), RUN = null, LOG_READ = 0;
-let EXCLUDED = new Set(), POLL = null, LANGUAGES = [], LANG_ON = new Set();
+let EXCLUDED = new Set(), POLL = null, LANGUAGES = [], LANG_ON = new Set(), PRESETS = [];
 
 async function api(path, body) {
   const opts = body === undefined ? {} :
@@ -896,15 +897,17 @@ $("#fetch-collections").onclick = async () => {
 $("#save-preset").onclick = async () => {
   const name = prompt("Preset name:", $("#name").value);
   if (!name) return;
-  await api("preset", {name, config: collectConfig()});
+  const out = await api("preset", {name, config: collectConfig()});
   await loadState();
-  toast("Preset saved.", "ok");
+  toast(out.message || "Preset saved.", "ok");
 };
 $("#delete-preset").onclick = async () => {
-  const name = $("#presets").value;
-  if (!name || !confirm(`Delete preset “${name}”?`)) return;
-  await api("preset/delete", {name});
+  const p = PRESETS[parseInt($("#presets").value)];
+  if (!p) return toast("Pick a preset in the list first.", "err");
+  if (!confirm(`Delete preset “${p.name}”${p.file ? " (" + p.file + ")" : ""}?`)) return;
+  await api("preset/delete", p.file ? {file: p.file} : {name: p.name});
   await loadState();
+  toast("Deleted.", "ok");
 };
 
 /* ---------------------------------------------------------------- state */
@@ -925,11 +928,21 @@ async function loadState() {
     drawLanguages();
   }
 
-  $("#presets").innerHTML = '<option value="">— load a preset —</option>' +
-    (s.presets || []).map(p => `<option value="${esc(p.name)}">${esc(p.name)}</option>`).join("");
+  PRESETS = s.presets || [];
+  const grupa = (label, lista) => !lista.length ? "" :
+    `<optgroup label="${esc(label)}">` + lista.map(p =>
+      `<option value="${PRESETS.indexOf(p)}"${p.error ? " disabled" : ""}>${esc(p.name)}${
+        p.error ? " (cannot be read)" : ""}</option>`).join("") + "</optgroup>";
+  $("#presets").innerHTML = '<option value="">— load a preset —</option>'
+    + grupa("Files in presets/", PRESETS.filter(p => p.source === "file"))
+    + grupa("Saved earlier", PRESETS.filter(p => p.source !== "file"));
+  $("#presets-dir").textContent = s.presets_dir
+    ? `Preset files live in ${s.presets_dir}` : "";
   $("#presets").onchange = e => {
-    const p = (s.presets || []).find(x => x.name === e.target.value);
-    if (p) { applyConfig(p.config); toast(`Loaded preset “${p.name}”.`); }
+    const p = PRESETS[parseInt(e.target.value)];
+    if (!p) return;
+    applyConfig(p.config);
+    toast(`Loaded “${p.name}”${p.file ? " from " + p.file : ""}.`, "ok");
   };
 
   const current = $("#run-picker").value;
