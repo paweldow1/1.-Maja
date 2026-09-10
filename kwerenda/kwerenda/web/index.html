@@ -895,8 +895,16 @@ $("#fetch-collections").onclick = async () => {
 
 /* ------------------------------------------------------------- presets */
 $("#save-preset").onclick = async () => {
-  const name = prompt("Preset name:", $("#name").value);
+  const name = prompt("Save as preset — give it a name:", $("#name").value);
   if (!name) return;
+  // Saving under a name that already exists overwrites that file. Loading an
+  // example, tweaking it and saving is exactly how somebody would lose the
+  // original, so say so before it happens.
+  const clash = PRESETS.find(p => (p.name || "").trim().toLowerCase()
+                                  === name.trim().toLowerCase());
+  if (clash && !confirm(`A preset called “${clash.name}” already exists`
+      + (clash.file ? ` (${clash.file})` : "")
+      + `.\n\nOverwrite it? Cancel and use a different name to keep both.`)) return;
   const out = await api("preset", {name, config: collectConfig()});
   await loadState();
   toast(out.message || "Preset saved.", "ok");
@@ -938,6 +946,9 @@ async function loadState() {
     + grupa("Saved earlier", PRESETS.filter(p => p.source !== "file"));
   $("#presets-dir").textContent = s.presets_dir
     ? `Preset files live in ${s.presets_dir}` : "";
+  // Files may be edited by hand while the interface is open; pick the list up
+  // again whenever somebody is about to use it.
+  $("#presets").onfocus = () => loadState();
   $("#presets").onchange = e => {
     const p = PRESETS[parseInt(e.target.value)];
     if (!p) return;
