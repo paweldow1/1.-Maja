@@ -1,0 +1,59 @@
+# Kwerenda: obchody 1 maja na stronach regionalnych struktur NSZZ „Solidarność”.
+# Uruchomienie:  python -m kwerenda uruchom presety/solidarnosc-1-maja.yaml --format ris
+nazwa: Obchody 1 maja — NSZZ „Solidarność”
+
+# Operatory: I / LUB / NIE, nawiasy, "fraza", BLISKO/n, pole:termin,
+# =bez_odmiany, ^rdzeń, wildcard*
+zapytanie: >-
+  ("1 maja" LUB "Święto Pracy" LUB pierwszomaj* LUB "1-go maja")
+  I (Żoliborz LUB "Józef Robotnik" LUB msza LUB pochód LUB manifestacja)
+
+domyslny_operator: I
+tryb_fleksji: fleksja        # dokladnie | fleksja | rdzen
+bez_ogonkow: false           # true, gdy serwis pisze bez polskich znaków
+
+# Formy, które wzorzec łapie, a które są dla Ciebie szumem — wpisz je tutaj.
+wykluczone_formy: []
+
+kontakt: Pawel Downarowicz (badania doktoranckie)   # trafia do User-Agent
+opoznienie: 0.5              # sekundy między żądaniami do tego samego serwera
+watki: 2
+respektuj_robots: true
+uzyj_cache: true             # pobrane strony zostają w korpusie do dalszych kwerend
+
+typ_zotero: blogPost
+tagi_dodatkowe: [doktorat, "1 maja", Polska]
+tag_z_terminow: true
+tag_z_roku: true
+tag_z_domeny: true
+tagi_z_wp: true              # kategorie i tagi z WordPressa jako tagi Zotero
+
+od_roku: 1989
+do_roku: 2024
+
+zrodla:
+  - url: https://solidarnosc.mazowsze.pl
+    nazwa: Region Mazowsze NSZZ „Solidarność”
+    tryb: auto               # REST API → sitemap → RSS → wyszukiwarka HTML
+    tagi: [Mazowsze]
+    max_stron: 40
+
+  - url: https://www.solidarnosckatowice.pl
+    nazwa: Zarząd Regionu Śląsko-Dąbrowskiego NSZZ „Solidarność”
+    tryb: auto
+    tagi: [Śląsk]
+
+  - url: https://www.solidarnosc.gda.pl
+    nazwa: Region Gdański NSZZ „Solidarność”
+    tryb: auto
+    tagi: [Pomorze]
+
+  # Wariant „przemieć majowe archiwum”: zamiast ufać wyszukiwarce serwisu,
+  # pobierz wszystko, co ukazało się w okolicach 1 maja każdego roku.
+  # - url: https://solidarnosc.mazowsze.pl
+  #   nazwa: Region Mazowsze — archiwum majowe
+  #   tryb: wordpress
+  #   pelne_przemiatanie: true
+  #   od_roku: 1998
+  #   do_roku: 2024
+  #   okno_dat: "04-25:05-10"

@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kwerenda — scraper stron i eksport do Zotero</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#faf8f5; --bg2:#f3f0eb; --bg3:#ece8e1; --linia:#d8d2c8; --linia2:#bdb5a8;
+  --tekst:#1a1714; --tekst2:#5a534a; --tekst3:#8a8178;
+  --akcent:#8b1a1a; --akcent2:#a83232; --zieleń:#3f7d54; --żółty:#a67c00; --niebieski:#3d6d99;
+  --cień:0 1px 2px rgba(26,23,20,.06), 0 4px 14px rgba(26,23,20,.05);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+  --serif:ui-serif,Georgia,"Iowan Old Style","Source Serif 4",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#16151a;--bg2:#1e1d24;--bg3:#26252e;--linia:#33313c;--linia2:#474553;
+        --tekst:#eceaf2;--tekst2:#b3aec0;--tekst3:#807b8c;--akcent:#e0685a;--akcent2:#f0857a;
+        --zieleń:#63b083;--żółty:#d6a83c;--niebieski:#6da3d6;
+        --cień:0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tekst);font-family:var(--sans);font-size:14px;line-height:1.5}
+a{color:var(--niebieski)}
+button,input,select,textarea{font:inherit;color:inherit}
+
+/* ---------- układ ---------- */
+header{border-bottom:1px solid var(--linia);background:var(--bg2);position:sticky;top:0;z-index:20}
+.pasek{max-width:1500px;margin:0 auto;padding:12px 20px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em}
+.logo span{color:var(--akcent)}
+.podtytul{color:var(--tekst3);font-size:12.5px;font-family:var(--mono)}
+.chipy{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border:1px solid var(--linia);
+      border-radius:999px;background:var(--bg);color:var(--tekst2);white-space:nowrap}
+.chip.ok{border-color:var(--zieleń);color:var(--zieleń)}
+.chip.zle{border-color:var(--linia2);color:var(--tekst3)}
+nav{max-width:1500px;margin:0 auto;padding:0 20px;display:flex;gap:2px}
+nav button{background:none;border:none;border-bottom:2px solid transparent;padding:9px 14px;
+           cursor:pointer;color:var(--tekst2);font-size:13.5px}
+nav button:hover{color:var(--tekst)}
+nav button.aktywna{border-bottom-color:var(--akcent);color:var(--tekst);font-weight:600}
+main{max-width:1500px;margin:0 auto;padding:20px}
+.panel{display:none}
+.panel.widoczny{display:block}
+.dwie{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:1080px){.dwie{grid-template-columns:1fr}}
+
+/* ---------- karty ---------- */
+.karta{background:var(--bg2);border:1px solid var(--linia);border-radius:10px;padding:16px;
+       margin-bottom:16px;box-shadow:var(--cień)}
+.karta h2{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:3px}
+.karta h2 .num{color:var(--akcent);font-family:var(--mono);font-size:12px;margin-right:7px}
+.karta .opis{color:var(--tekst3);font-size:12.5px;margin-bottom:13px}
+.pole{margin-bottom:12px}
+.pole>label{display:block;font-size:12.5px;color:var(--tekst2);margin-bottom:4px;font-weight:500}
+.pole .pomoc{font-size:11.5px;color:var(--tekst3);margin-top:4px;line-height:1.45}
+input[type=text],input[type=number],input[type=password],select,textarea{
+  width:100%;background:var(--bg);border:1px solid var(--linia);border-radius:7px;
+  padding:8px 10px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--akcent);box-shadow:0 0 0 3px rgba(139,26,26,.09)}
+textarea{font-family:var(--mono);font-size:13px;resize:vertical;min-height:76px;line-height:1.55}
+.rzad{display:flex;gap:10px;flex-wrap:wrap}
+.rzad>*{flex:1;min-width:120px}
+label.check{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--tekst2);cursor:pointer;
+            padding:4px 0}
+label.check input{width:auto;margin:0}
+fieldset{border:1px solid var(--linia);border-radius:8px;padding:10px 12px;margin-bottom:12px}
+legend{font-size:12px;color:var(--tekst3);padding:0 6px;font-family:var(--mono)}
+details summary{cursor:pointer;color:var(--tekst2);font-size:12.5px;padding:5px 0;user-select:none}
+details summary:hover{color:var(--tekst)}
+
+/* ---------- przyciski ---------- */
+.btn{background:var(--bg3);border:1px solid var(--linia);border-radius:7px;padding:8px 14px;
+     cursor:pointer;font-size:13px;transition:.12s;white-space:nowrap}
+.btn:hover{border-color:var(--linia2);background:var(--bg)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.glowny{background:var(--akcent);border-color:var(--akcent);color:#fff;font-weight:600}
+.btn.glowny:hover{background:var(--akcent2);border-color:var(--akcent2)}
+.btn.mini{padding:4px 9px;font-size:12px}
+.btn.stop{border-color:var(--akcent);color:var(--akcent)}
+.przyciski{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* ---------- źródła ---------- */
+.zrodlo{border:1px solid var(--linia);border-radius:8px;padding:11px;margin-bottom:9px;background:var(--bg)}
+.zrodlo .glowa{display:flex;gap:8px;align-items:center}
+.zrodlo .glowa input{flex:1}
+.zrodlo .glowa select{flex:0 0 140px}
+
+/* ---------- podgląd fleksji ---------- */
+.termin{border:1px solid var(--linia);border-radius:8px;padding:10px;margin-bottom:8px;background:var(--bg)}
+.termin .naglowek{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.termin b{font-family:var(--mono);font-size:13px}
+.formy{display:flex;flex-wrap:wrap;gap:4px;max-height:120px;overflow:auto}
+.forma{font-family:var(--mono);font-size:11.5px;padding:2px 7px;background:var(--bg3);
+       border-radius:5px;color:var(--tekst2);cursor:pointer;border:1px solid transparent}
+.forma:hover{border-color:var(--akcent);color:var(--akcent)}
+.forma.wykluczona{text-decoration:line-through;opacity:.45}
+code.wzorzec{display:block;font-family:var(--mono);font-size:10.5px;color:var(--tekst3);
+             word-break:break-all;margin-top:6px;max-height:76px;overflow:auto;
+             background:var(--bg3);padding:6px;border-radius:6px}
+
+/* ---------- dziennik ---------- */
+.dziennik{font-family:var(--mono);font-size:11.5px;line-height:1.6;background:var(--bg);
+          border:1px solid var(--linia);border-radius:8px;padding:10px;height:260px;overflow:auto;
+          white-space:pre-wrap;word-break:break-word}
+.dziennik .traf{color:var(--zieleń)}
+.dziennik .uwaga{color:var(--żółty)}
+.dziennik .blad{color:var(--akcent)}
+.liczniki{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin-bottom:10px}
+.licznik{background:var(--bg);border:1px solid var(--linia);border-radius:8px;padding:8px 10px;text-align:center}
+.licznik .wartosc{font-family:var(--mono);font-size:19px;font-weight:600}
+.licznik .etykieta{font-size:10.5px;color:var(--tekst3);text-transform:uppercase;letter-spacing:.04em}
+
+/* ---------- tabela wyników ---------- */
+.narzedzia{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.narzedzia input[type=text]{max-width:240px}
+.narzedzia select{max-width:190px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--tekst3);
+   border-bottom:1px solid var(--linia2);padding:7px 8px;position:sticky;top:0;background:var(--bg2);z-index:2}
+td{border-bottom:1px solid var(--linia);padding:9px 8px;vertical-align:top}
+tr:hover td{background:var(--bg3)}
+tr.odznaczony td{opacity:.42}
+.tytul-kom{font-weight:600;max-width:420px}
+.tytul-kom a{color:inherit;text-decoration:none}
+.tytul-kom a:hover{color:var(--akcent);text-decoration:underline}
+.cytat{color:var(--tekst2);font-size:12px;margin-top:5px;font-family:var(--serif);line-height:1.5;
+       max-width:560px}
+.cytat mark{background:rgba(166,124,0,.22);color:inherit;padding:0 2px;border-radius:2px}
+.meta-kom{font-family:var(--mono);font-size:11px;color:var(--tekst3);white-space:nowrap}
+.tagi{display:flex;flex-wrap:wrap;gap:3px;max-width:260px}
+.tag{font-size:11px;padding:1px 6px;background:var(--bg3);border:1px solid var(--linia);
+     border-radius:4px;color:var(--tekst2)}
+.pusto{text-align:center;color:var(--tekst3);padding:44px 20px;font-family:var(--serif);font-size:15px}
+
+/* ---------- komunikaty ---------- */
+#toast{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:99}
+.toast{background:var(--bg2);border:1px solid var(--linia2);border-left:3px solid var(--akcent);
+       border-radius:7px;padding:10px 14px;box-shadow:var(--cień);max-width:420px;font-size:13px}
+.toast.ok{border-left-color:var(--zieleń)}
+.toast.blad{border-left-color:var(--akcent)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;
+       justify-content:center;z-index:50;padding:20px}
+.modal.widoczny{display:flex}
+.modal .tresc{background:var(--bg2);border:1px solid var(--linia2);border-radius:10px;padding:18px;
+              max-width:560px;width:100%;max-height:82vh;overflow:auto}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="pasek">
+    <div class="logo">Kwerenda<span>.</span></div>
+    <div class="podtytul">scraper stron WWW → przypis, tagi, Zotero</div>
+    <div class="chipy">
+      <span class="chip" id="chip-zotero">Zotero: sprawdzam…</span>
+      <span class="chip" id="chip-korpus">korpus: —</span>
+      <span class="chip" id="chip-wersja">v—</span>
+    </div>
+  </div>
+  <nav>
+    <button data-panel="kwerenda" class="aktywna">Kwerenda</button>
+    <button data-panel="wyniki">Wyniki <span id="licznik-wynikow"></span></button>
+    <button data-panel="eksport">Eksport</button>
+    <button data-panel="archiwum">Korpus i przebiegi</button>
+    <button data-panel="pomoc">Ściąga</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============================ KWERENDA ============================ -->
+<section class="panel widoczny" id="panel-kwerenda">
+<div class="dwie">
+  <div>
+    <div class="karta">
+      <h2><span class="num">1</span>Czego szukamy</h2>
+      <div class="opis">Operatory: <code>I</code> <code>LUB</code> <code>NIE</code>, nawiasy,
+        „fraza w cudzysłowie”, <code>BLISKO/10</code> (sąsiedztwo), <code>pole:termin</code>.</div>
+      <div class="pole">
+        <label for="nazwa">Nazwa kwerendy</label>
+        <input type="text" id="nazwa" value="Obchody 1 maja">
+      </div>
+      <div class="pole">
+        <label for="zapytanie">Zapytanie</label>
+        <textarea id="zapytanie" spellcheck="false">"1 maja" I (Żoliborz LUB "Józef Robotnik")</textarea>
+        <div class="pomoc" id="opis-zapytania"></div>
+      </div>
+      <div class="rzad">
+        <div class="pole">
+          <label for="tryb_fleksji">Fleksja</label>
+          <select id="tryb_fleksji">
+            <option value="fleksja">odmiana (domyślnie)</option>
+            <option value="dokladnie">dokładnie tak, jak wpisano</option>
+            <option value="rdzen">luźno – rdzeń i derywaty</option>
+          </select>
+        </div>
+        <div class="pole">
+          <label for="domyslny_operator">Operator domyślny</label>
+          <select id="domyslny_operator">
+            <option value="I">I – wszystkie terminy naraz</option>
+            <option value="LUB">LUB – którykolwiek</option>
+          </select>
+        </div>
+      </div>
+      <label class="check"><input type="checkbox" id="bez_ogonkow">
+        Ignoruj polskie znaki („Zoliborz” = „Żoliborz”)</label>
+      <div class="rzad">
+        <div class="pole"><label for="od_roku">Rok od</label>
+          <input type="number" id="od_roku" placeholder="np. 1989"></div>
+        <div class="pole"><label for="do_roku">Rok do</label>
+          <input type="number" id="do_roku" placeholder="np. 2024"></div>
+      </div>
+    </div>
+
+    <div class="karta">
+      <h2><span class="num">2</span>Gdzie szukamy</h2>
+      <div class="opis">Tryb <b>auto</b> sam wykrywa REST API WordPressa, mapę strony, RSS,
+        wyszukiwarkę HTML — w tej kolejności. Trafienie zawsze potwierdzamy na pełnym tekście.</div>
+      <div id="zrodla"></div>
+      <div class="przyciski">
+        <button class="btn mini" id="dodaj-zrodlo">+ dodaj źródło</button>
+        <button class="btn mini" id="dodaj-korpus">+ szukaj tylko w pobranym korpusie</button>
+      </div>
+    </div>
+
+    <div class="karta">
+      <h2><span class="num">3</span>Metadane, tagi, uprzejmość</h2>
+      <div class="rzad">
+        <div class="pole"><label for="typ_zotero">Typ dokumentu w Zotero</label>
+          <select id="typ_zotero">
+            <option value="blogPost">wpis na blogu / aktualność</option>
+            <option value="webpage">strona internetowa</option>
+            <option value="newspaperArticle">artykuł prasowy</option>
+            <option value="magazineArticle">artykuł w czasopiśmie</option>
+            <option value="document">dokument</option>
+            <option value="report">raport</option>
+          </select></div>
+        <div class="pole"><label for="tagi_dodatkowe">Tagi doklejane do każdego rekordu</label>
+          <input type="text" id="tagi_dodatkowe" placeholder="doktorat, 1 maja, Polska"></div>
+      </div>
+      <div class="rzad">
+        <label class="check"><input type="checkbox" id="tag_z_terminow" checked> tag = trafiony termin</label>
+        <label class="check"><input type="checkbox" id="tag_z_roku" checked> tag = rok publikacji</label>
+        <label class="check"><input type="checkbox" id="tag_z_domeny" checked> tag = domena</label>
+        <label class="check"><input type="checkbox" id="tagi_z_wp" checked> tagi i kategorie z WordPressa</label>
+      </div>
+      <details>
+        <summary>Ustawienia sieci (grzeczność wobec serwerów)</summary>
+        <div class="rzad" style="margin-top:10px">
+          <div class="pole"><label for="kontakt">Kontakt w User-Agent</label>
+            <input type="text" id="kontakt" placeholder="imię nazwisko / e-mail"></div>
+          <div class="pole"><label for="opoznienie">Odstęp [s]</label>
+            <input type="number" id="opoznienie" value="0.4" step="0.1" min="0"></div>
+          <div class="pole"><label for="watki">Wątki</label>
+            <input type="number" id="watki" value="2" min="1" max="8"></div>
+        </div>
+        <div class="rzad">
+          <div class="pole"><label for="limit_kandydatow">Limit kandydatów</label>
+            <input type="number" id="limit_kandydatow" value="4000"></div>
+          <div class="pole"><label for="limit_trafien">Limit trafień</label>
+            <input type="number" id="limit_trafien" value="1000"></div>
+          <div class="pole"><label for="okno_cytatu">Cytat: znaków wokół</label>
+            <input type="number" id="okno_cytatu" value="220"></div>
+        </div>
+        <label class="check"><input type="checkbox" id="respektuj_robots" checked>
+          Respektuj robots.txt</label>
+        <label class="check"><input type="checkbox" id="uzyj_cache" checked>
+          Zapisuj pobrane strony w korpusie (kolejne kwerendy bez ruchu w sieci)</label>
+      </details>
+      <div class="przyciski" style="margin-top:12px">
+        <button class="btn glowny" id="start">▶ Uruchom kwerendę</button>
+        <button class="btn stop" id="stop" disabled>⏹ Zatrzymaj</button>
+        <button class="btn" id="zapisz-preset">Zapisz jako preset</button>
+        <select id="presety" style="max-width:210px"><option value="">— wczytaj preset —</option></select>
+        <button class="btn mini" id="usun-preset">usuń</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="karta">
+      <h2>Podgląd dopasowania</h2>
+      <div class="opis">Zanim ruszysz w sieć: sprawdź, jakie formy złapie każdy termin.
+        Kliknij formę, żeby ją wykluczyć.</div>
+      <div id="podglad-terminow"></div>
+      <div class="pole" style="margin-top:10px">
+        <label for="probka">Wklej próbkę tekstu i sprawdź, czy zapytanie ją łapie</label>
+        <textarea id="probka" placeholder="np. akapit z artykułu…" style="min-height:64px"></textarea>
+        <div class="pomoc" id="wynik-probki"></div>
+      </div>
+    </div>
+    <div class="karta">
+      <h2>Przebieg</h2>
+      <div class="liczniki">
+        <div class="licznik"><div class="wartosc" id="l-kandydatow">0</div><div class="etykieta">kandydatów</div></div>
+        <div class="licznik"><div class="wartosc" id="l-sprawdzonych">0</div><div class="etykieta">sprawdzonych</div></div>
+        <div class="licznik"><div class="wartosc" id="l-trafien">0</div><div class="etykieta">trafień</div></div>
+        <div class="licznik"><div class="wartosc" id="l-pobran">0</div><div class="etykieta">pobrań</div></div>
+        <div class="licznik"><div class="wartosc" id="l-cache">0</div><div class="etykieta">z korpusu</div></div>
+        <div class="licznik"><div class="wartosc" id="l-czas">0s</div><div class="etykieta">czas</div></div>
+      </div>
+      <div class="dziennik" id="dziennik">Gotowe do pracy.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================ WYNIKI ============================ -->
+<section class="panel" id="panel-wyniki">
+  <div class="karta">
+    <div class="narzedzia">
+      <select id="wybor-przebiegu" title="przebieg"></select>
+      <input type="text" id="filtr" placeholder="filtruj: tytuł, cytat, tag…">
+      <select id="filtr-host"><option value="">wszystkie domeny</option></select>
+      <select id="filtr-rok"><option value="">wszystkie lata</option></select>
+      <button class="btn mini" id="zaznacz-wszystkie">zaznacz wszystkie</button>
+      <button class="btn mini" id="odznacz-wszystkie">odznacz</button>
+      <button class="btn mini" id="usun-zaznaczone">usuń zaznaczone</button>
+      <span class="podtytul" id="podsumowanie-wynikow" style="margin-left:auto"></span>
+    </div>
+    <div style="overflow:auto;max-height:calc(100vh - 260px)">
+      <table id="tabela">
+        <thead><tr>
+          <th style="width:28px"><input type="checkbox" id="check-wszystkie"></th>
+          <th>Tytuł, cytat i tagi</th><th style="width:104px">Data</th>
+          <th style="width:150px">Serwis / autor</th><th style="width:120px">Citekey</th>
+          <th style="width:74px"></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pusto" id="pusto-wyniki">Brak wyników — uruchom kwerendę.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EKSPORT ============================ -->
+<section class="panel" id="panel-eksport">
+  <div class="dwie">
+    <div class="karta">
+      <h2>Prosto do Zotero</h2>
+      <div class="opis">Jeśli Zotero jest otwarte na tym komputerze, rekordy trafią do biblioteki
+        od razu — z przypisem, tagami i notatką z cytatami.</div>
+      <div class="przyciski">
+        <button class="btn glowny" id="do-zotero">Wyślij zaznaczone do Zotero</button>
+        <span id="stan-zotero" class="podtytul"></span>
+      </div>
+      <details style="margin-top:14px">
+        <summary>Albo przez Web API (Zotero zamknięte, inny komputer, wybór kolekcji)</summary>
+        <div class="rzad" style="margin-top:10px">
+          <div class="pole"><label for="zot-uzytkownik">Numer użytkownika</label>
+            <input type="text" id="zot-uzytkownik" placeholder="z zotero.org/settings/keys"></div>
+          <div class="pole"><label for="zot-klucz">Klucz API</label>
+            <input type="password" id="zot-klucz"></div>
+        </div>
+        <div class="pole"><label for="zot-kolekcja">Kolekcja</label>
+          <div class="rzad">
+            <select id="zot-kolekcja"><option value="">— biblioteka główna —</option></select>
+            <button class="btn mini" id="pobierz-kolekcje" style="flex:0 0 auto">pobierz listę</button>
+          </div></div>
+        <button class="btn" id="do-zotero-api">Wyślij przez Web API</button>
+      </details>
+    </div>
+    <div class="karta">
+      <h2>Pliki</h2>
+      <div class="opis">RIS jest najpewniejszy przy imporcie do Zotero: słowa kluczowe stają się
+        tagami, a notatka z cytatami wchodzi jako notatka rekordu.</div>
+      <div class="przyciski">
+        <button class="btn" data-format="ris">RIS (import do Zotero)</button>
+        <button class="btn" data-format="csl">CSL-JSON</button>
+        <button class="btn" data-format="bibtex">BibTeX / Better BibTeX</button>
+        <button class="btn" data-format="csv">CSV (arkusz)</button>
+        <button class="btn" data-format="md">Notatki Obsidiana (.zip)</button>
+        <button class="btn" data-format="zotero-json">Zotero JSON</button>
+      </div>
+      <div class="pomoc" style="margin-top:12px" id="sciezka-eksportu"></div>
+      <div id="ostatni-plik" style="margin-top:8px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ARCHIWUM ============================ -->
+<section class="panel" id="panel-archiwum">
+  <div class="dwie">
+    <div class="karta">
+      <h2>Korpus pobranych stron</h2>
+      <div class="opis">Raz pobrane strony zostają lokalnie. Kolejne kwerendy możesz puszczać
+        na korpusie — bez jednego zapytania do cudzego serwera.</div>
+      <div id="tabela-korpusu"></div>
+    </div>
+    <div class="karta">
+      <h2>Historia przebiegów</h2>
+      <div id="tabela-przebiegow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ POMOC ============================ -->
+<section class="panel" id="panel-pomoc">
+  <div class="karta" style="max-width:860px">
+    <h2>Ściąga ze składni</h2>
+    <table>
+      <tbody id="tabela-sciagi"></tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<div id="toast"></div>
+<div class="modal" id="modal"><div class="tresc" id="modal-tresc"></div></div>
+
+<script>
+"use strict";
+const $ = (s, k) => (k || document).querySelector(s);
+const $$ = (s, k) => Array.from((k || document).querySelectorAll(s));
+const esc = t => String(t == null ? "" : t).replace(/[&<>"]/g, z =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[z]));
+
+let TRAFIENIA = [], ODZNACZONE = new Set(), PRZEBIEG = null, ODCZYTANO_DZIENNIK = 0;
+let WYKLUCZONE = new Set(), SONDA = null;
+
+/* ---------------------------------------------------------------- API */
+async function api(sciezka, dane) {
+  const opcje = dane === undefined ? {} :
+    {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(dane)};
+  const odp = await fetch("/api/" + sciezka, opcje);
+  const wynik = await odp.json().catch(() => ({blad: "błędna odpowiedź serwera"}));
+  if (wynik.blad) throw new Error(wynik.blad);
+  return wynik;
+}
+function toast(tekst, rodzaj) {
+  const el = document.createElement("div");
+  el.className = "toast " + (rodzaj || "");
+  el.textContent = tekst;
+  $("#toast").appendChild(el);
+  setTimeout(() => el.remove(), rodzaj === "blad" ? 9000 : 4500);
+}
+
+/* ------------------------------------------------------------ zakładki */
+$$("nav button").forEach(b => b.onclick = () => {
+  $$("nav button").forEach(x => x.classList.remove("aktywna"));
+  b.classList.add("aktywna");
+  $$(".panel").forEach(p => p.classList.remove("widoczny"));
+  $("#panel-" + b.dataset.panel).classList.add("widoczny");
+});
+
+/* -------------------------------------------------------------- źródła */
+const TRYBY = [["auto","auto — wykryj sam"],["wordpress","REST API WordPressa"],
+  ["sitemap","mapa strony (sitemap)"],["rss","kanał RSS"],["szukajka","wyszukiwarka HTML"],
+  ["crawl","przejście po linkach"],["lista","konkretne adresy"],["korpus","pobrany korpus"]];
+
+function dodajZrodlo(z) {
+  z = z || {};
+  const el = document.createElement("div");
+  el.className = "zrodlo";
+  el.innerHTML = `
+    <div class="glowa">
+      <input type="text" class="z-url" placeholder="https://solidarnosc.przyklad.pl" value="${esc(z.url||"")}">
+      <select class="z-tryb">${TRYBY.map(([w,o]) =>
+        `<option value="${w}"${(z.tryb||"auto")===w?" selected":""}>${o}</option>`).join("")}</select>
+      <button class="btn mini z-usun" title="usuń">✕</button>
+    </div>
+    <details style="margin-top:6px"><summary>szczegóły źródła</summary>
+      <div class="rzad" style="margin-top:8px">
+        <div class="pole"><label>Nazwa (do przypisu)</label>
+          <input type="text" class="z-nazwa" value="${esc(z.nazwa||"")}" placeholder="np. Region Mazowsze NSZZ „S”"></div>
+        <div class="pole"><label>Tagi tego źródła</label>
+          <input type="text" class="z-tagi" value="${esc((z.tagi||[]).join(", "))}" placeholder="Mazowsze, Polska"></div>
+      </div>
+      <div class="rzad">
+        <div class="pole"><label>Rok od</label><input type="number" class="z-od" value="${z.od_roku||""}"></div>
+        <div class="pole"><label>Rok do</label><input type="number" class="z-do" value="${z.do_roku||""}"></div>
+        <div class="pole"><label>Okno w roku (MM-DD:MM-DD)</label>
+          <input type="text" class="z-okno" value="${esc(z.okno_dat||"")}" placeholder="04-25:05-05"></div>
+      </div>
+      <div class="rzad">
+        <div class="pole"><label>Maks. stron paginacji</label>
+          <input type="number" class="z-maxstron" value="${z.max_stron||30}"></div>
+        <div class="pole"><label>Maks. adresów</label>
+          <input type="number" class="z-maxurl" value="${z.max_url||1500}"></div>
+        <div class="pole"><label>Adresy muszą pasować (regex)</label>
+          <input type="text" class="z-wzorzec" value="${esc(z.wzorzec_url||"")}" placeholder="/20\\d\\d/"></div>
+      </div>
+      <label class="check"><input type="checkbox" class="z-pelne"${z.pelne_przemiatanie?" checked":""}>
+        Przemieć całe archiwum zamiast ufać wyszukiwarce serwisu (wolniej, pewniej)</label>
+      <div class="pole" style="margin-top:6px"><label>Konkretne adresy (tryb „lista”), po jednym w wierszu</label>
+        <textarea class="z-lista" style="min-height:52px">${esc((z.lista_url||[]).join("\n"))}</textarea></div>
+    </details>`;
+  $(".z-usun", el).onclick = () => el.remove();
+  $("#zrodla").appendChild(el);
+  return el;
+}
+$("#dodaj-zrodlo").onclick = () => dodajZrodlo({});
+$("#dodaj-korpus").onclick = () => dodajZrodlo({tryb: "korpus", nazwa: "Pobrany korpus"});
+
+function czytajZrodla() {
+  return $$(".zrodlo").map(el => ({
+    url: $(".z-url", el).value.trim(),
+    nazwa: $(".z-nazwa", el).value.trim(),
+    tryb: $(".z-tryb", el).value,
+    tagi: $(".z-tagi", el).value.split(",").map(t => t.trim()).filter(Boolean),
+    od_roku: parseInt($(".z-od", el).value) || null,
+    do_roku: parseInt($(".z-do", el).value) || null,
+    okno_dat: $(".z-okno", el).value.trim(),
+    max_stron: parseInt($(".z-maxstron", el).value) || 30,
+    max_url: parseInt($(".z-maxurl", el).value) || 1500,
+    wzorzec_url: $(".z-wzorzec", el).value.trim(),
+    pelne_przemiatanie: $(".z-pelne", el).checked,
+    lista_url: $(".z-lista", el).value.split("\n").map(t => t.trim()).filter(Boolean),
+  })).filter(z => z.url || z.tryb === "korpus" || z.lista_url.length);
+}
+
+/* --------------------------------------------------------- konfiguracja */
+function zbierzKonfig() {
+  const licz = id => parseFloat($("#" + id).value) || 0;
+  return {
+    nazwa: $("#nazwa").value || "Kwerenda",
+    zapytanie: $("#zapytanie").value,
+    domyslny_operator: $("#domyslny_operator").value,
+    tryb_fleksji: $("#tryb_fleksji").value,
+    bez_ogonkow: $("#bez_ogonkow").checked,
+    wykluczone_formy: Array.from(WYKLUCZONE),
+    zrodla: czytajZrodla(),
+    kontakt: $("#kontakt").value,
+    opoznienie: licz("opoznienie"),
+    watki: licz("watki") || 2,
+    respektuj_robots: $("#respektuj_robots").checked,
+    uzyj_cache: $("#uzyj_cache").checked,
+    limit_kandydatow: licz("limit_kandydatow") || 4000,
+    limit_trafien: licz("limit_trafien") || 1000,
+    okno_cytatu: licz("okno_cytatu") || 220,
+    typ_zotero: $("#typ_zotero").value,
+    tagi_dodatkowe: $("#tagi_dodatkowe").value.split(",").map(t => t.trim()).filter(Boolean),
+    tag_z_terminow: $("#tag_z_terminow").checked,
+    tag_z_roku: $("#tag_z_roku").checked,
+    tag_z_domeny: $("#tag_z_domeny").checked,
+    tagi_z_wp: $("#tagi_z_wp").checked,
+    od_roku: parseInt($("#od_roku").value) || null,
+    do_roku: parseInt($("#do_roku").value) || null,
+  };
+}
+function wstawKonfig(k) {
+  if (!k || !Object.keys(k).length) return;
+  const ustaw = (id, w) => { if (w !== undefined && w !== null && $("#" + id)) $("#" + id).value = w; };
+  const znacz = (id, w) => { if ($("#" + id)) $("#" + id).checked = !!w; };
+  ustaw("nazwa", k.nazwa); ustaw("zapytanie", k.zapytanie);
+  ustaw("domyslny_operator", k.domyslny_operator); ustaw("tryb_fleksji", k.tryb_fleksji);
+  ustaw("kontakt", k.kontakt); ustaw("opoznienie", k.opoznienie); ustaw("watki", k.watki);
+  ustaw("limit_kandydatow", k.limit_kandydatow); ustaw("limit_trafien", k.limit_trafien);
+  ustaw("okno_cytatu", k.okno_cytatu); ustaw("typ_zotero", k.typ_zotero);
+  ustaw("tagi_dodatkowe", (k.tagi_dodatkowe || []).join(", "));
+  ustaw("od_roku", k.od_roku || ""); ustaw("do_roku", k.do_roku || "");
+  znacz("bez_ogonkow", k.bez_ogonkow); znacz("respektuj_robots", k.respektuj_robots !== false);
+  znacz("uzyj_cache", k.uzyj_cache !== false); znacz("tag_z_terminow", k.tag_z_terminow !== false);
+  znacz("tag_z_roku", k.tag_z_roku !== false); znacz("tag_z_domeny", k.tag_z_domeny !== false);
+  znacz("tagi_z_wp", k.tagi_z_wp !== false);
+  WYKLUCZONE = new Set(k.wykluczone_formy || []);
+  $("#zrodla").innerHTML = "";
+  (k.zrodla && k.zrodla.length ? k.zrodla : [{}]).forEach(dodajZrodlo);
+  podgladZDebounce();
+}
+
+/* ------------------------------------------------------------- podgląd */
+let czasomierz = null;
+const podgladZDebounce = () => { clearTimeout(czasomierz); czasomierz = setTimeout(podglad, 350); };
+
+async function podglad() {
+  let wynik;
+  try {
+    wynik = await api("podglad", {
+      zapytanie: $("#zapytanie").value,
+      tryb_fleksji: $("#tryb_fleksji").value,
+      bez_ogonkow: $("#bez_ogonkow").checked,
+      domyslny_operator: $("#domyslny_operator").value,
+      wykluczone_formy: Array.from(WYKLUCZONE),
+      probka: $("#probka").value,
+    });
+  } catch (e) {
+    $("#opis-zapytania").innerHTML = `<span style="color:var(--akcent)">✕ ${esc(e.message)}</span>`;
+    $("#podglad-terminow").innerHTML = "";
+    return;
+  }
+  $("#opis-zapytania").textContent = "Zrozumiałem jako: " + wynik.opis;
+  $("#podglad-terminow").innerHTML = wynik.terminy.length ? wynik.terminy.map(t => `
+    <div class="termin">
+      <div class="naglowek"><b>${esc(t.tekst)}</b>
+        <span class="chip">${t.pole === "tresc" ? "treść" : esc(t.pole)}</span>
+        <span class="chip">${esc(t.tryb)}</span>
+        <span class="podtytul" style="margin-left:auto">${t.formy.length} form</span></div>
+      <div class="formy">${t.formy.map(f =>
+        `<span class="forma${WYKLUCZONE.has(f) ? " wykluczona" : ""}" data-forma="${esc(f)}">${esc(f)}</span>`
+        ).join("")}</div>
+      <details><summary>wyrażenie regularne</summary>
+        <code class="wzorzec">${esc(t.wzorzec)}</code></details>
+    </div>`).join("") : '<div class="podtytul">Puste zapytanie — zbiorę wszystko, co znajdę.</div>';
+  $$(".forma").forEach(el => el.onclick = () => {
+    const f = el.dataset.forma;
+    WYKLUCZONE.has(f) ? WYKLUCZONE.delete(f) : WYKLUCZONE.add(f);
+    podglad();
+  });
+  const p = wynik.probka;
+  $("#wynik-probki").innerHTML = !p ? "" : p.pasuje
+    ? `<span style="color:var(--zieleń)">✓ pasuje</span> — formy: ${esc(p.formy.join(", "))}`
+    : `<span style="color:var(--akcent)">✕ ta próbka nie spełnia zapytania</span>`;
+}
+["zapytanie","tryb_fleksji","bez_ogonkow","domyslny_operator","probka"].forEach(id =>
+  $("#" + id).addEventListener("input", podgladZDebounce));
+
+/* --------------------------------------------------------------- start */
+$("#start").onclick = async () => {
+  const konfig = zbierzKonfig();
+  if (!konfig.zrodla.length) return toast("Dodaj przynajmniej jedno źródło.", "blad");
+  try {
+    const wynik = await api("start", {konfig});
+    PRZEBIEG = wynik.przebieg;
+    ODCZYTANO_DZIENNIK = 0;
+    $("#dziennik").innerHTML = "";
+    (wynik.uwagi || []).forEach(u => toast("⚠ " + u));
+    $("#start").disabled = true; $("#stop").disabled = false;
+    if (!SONDA) SONDA = setInterval(sonduj, 700);
+    toast("Kwerenda ruszyła.", "ok");
+  } catch (e) { toast(e.message, "blad"); }
+};
+$("#stop").onclick = () => api("stop", {}).then(() => toast("Zatrzymuję…"));
+
+async function sonduj() {
+  let s;
+  try { s = await api("postep?od=" + ODCZYTANO_DZIENNIK); } catch (e) { return; }
+  const p = s.postep || {};
+  const ustaw = (id, w) => $("#" + id).textContent = w == null ? "0" : w;
+  ustaw("l-kandydatow", p.kandydatow); ustaw("l-sprawdzonych", p.sprawdzonych);
+  ustaw("l-trafien", p.trafien); ustaw("l-pobran", p.pobran); ustaw("l-cache", p.z_cache);
+  $("#l-czas").textContent = Math.round(p.sekundy || 0) + "s";
+  if (s.dziennik && s.dziennik.length) {
+    ODCZYTANO_DZIENNIK = s.razem_dziennik;
+    const dz = $("#dziennik");
+    const przyKoncu = dz.scrollTop + dz.clientHeight >= dz.scrollHeight - 30;
+    dz.innerHTML += s.dziennik.map(w => {
+      const klasa = w.includes("✓") ? "traf" : w.includes("⚠") ? "uwaga" :
+                    (w.includes("!") || w.includes("✕")) ? "blad" : "";
+      return `<div class="${klasa}">${esc(w)}</div>`;
+    }).join("");
+    if (przyKoncu) dz.scrollTop = dz.scrollHeight;
+  }
+  if (!s.trwa) {
+    clearInterval(SONDA); SONDA = null;
+    $("#start").disabled = false; $("#stop").disabled = true;
+    await wczytajStan();
+    await wczytajTrafienia(s.przebieg || PRZEBIEG);
+    toast(`Gotowe: ${p.trafien || 0} trafień.`, "ok");
+  }
+}
+
+/* -------------------------------------------------------------- wyniki */
+async function wczytajTrafienia(przebieg) {
+  const wynik = await api("trafienia" + (przebieg ? "?przebieg=" + przebieg : ""));
+  TRAFIENIA = wynik.trafienia;
+  ODZNACZONE = new Set(TRAFIENIA.filter(t => !t.wybrane).map(t => t.id));
+  const hosty = Array.from(new Set(TRAFIENIA.map(t => t.host))).sort();
+  const lata = Array.from(new Set(TRAFIENIA.map(t => (t.data || "").slice(0, 4)).filter(Boolean))).sort();
+  $("#filtr-host").innerHTML = '<option value="">wszystkie domeny</option>' +
+    hosty.map(h => `<option>${esc(h)}</option>`).join("");
+  $("#filtr-rok").innerHTML = '<option value="">wszystkie lata</option>' +
+    lata.map(r => `<option>${esc(r)}</option>`).join("");
+  rysujTabele();
+}
+
+function widoczne() {
+  const szukaj = $("#filtr").value.toLowerCase();
+  const host = $("#filtr-host").value, rok = $("#filtr-rok").value;
+  return TRAFIENIA.filter(t => {
+    if (host && t.host !== host) return false;
+    if (rok && (t.data || "").slice(0, 4) !== rok) return false;
+    if (!szukaj) return true;
+    const kupa = [t.tytul, t.serwis, (t.tagi || []).join(" "), (t.autorzy || []).join(" "),
+                  (t.cytaty || []).map(c => c.fragment).join(" ")].join(" ").toLowerCase();
+    return kupa.includes(szukaj);
+  });
+}
+
+function podswietl(fragment, formy) {
+  let html = esc(fragment);
+  (formy || []).forEach(f => {
+    if (!f) return;
+    html = html.replace(new RegExp("(" + f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi"),
+                        "<mark>$1</mark>");
+  });
+  return html;
+}
+
+function rysujTabele() {
+  const lista = widoczne();
+  const ciało = $("#tabela tbody");
+  $("#pusto-wyniki").style.display = lista.length ? "none" : "block";
+  $("#tabela").style.display = lista.length ? "table" : "none";
+  $("#licznik-wynikow").textContent = TRAFIENIA.length ? `(${TRAFIENIA.length})` : "";
+  $("#podsumowanie-wynikow").textContent =
+    `${lista.length} z ${TRAFIENIA.length} • zaznaczonych: ${lista.filter(t => !ODZNACZONE.has(t.id)).length}`;
+  ciało.innerHTML = lista.map(t => `
+    <tr data-id="${t.id}" class="${ODZNACZONE.has(t.id) ? "odznaczony" : ""}">
+      <td><input type="checkbox" class="wybor" ${ODZNACZONE.has(t.id) ? "" : "checked"}></td>
+      <td class="tytul-kom">
+        <a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.tytul || t.url)}</a>
+        ${(t.cytaty || []).slice(0, 2).map(c =>
+          `<div class="cytat">${c.pole && c.pole !== "tekst"
+            ? `<span class="tag">${esc(c.pole)}</span> ` : ""}${podswietl(c.fragment, c.formy)}</div>`
+          ).join("")}
+        <div class="tagi" style="margin-top:6px">${(t.tagi || []).map(g =>
+          `<span class="tag">${esc(g)}</span>`).join("")}</div>
+      </td>
+      <td class="meta-kom">${esc(t.data || "—")}</td>
+      <td class="meta-kom">${esc(t.serwis || "")}<br>${esc((t.autorzy || []).join(", "))}</td>
+      <td class="meta-kom">${esc(t.citekey || "")}</td>
+      <td><button class="btn mini edytuj">edytuj</button></td>
+    </tr>`).join("");
+  $$("#tabela tbody .wybor").forEach(el => el.onchange = async () => {
+    const id = parseInt(el.closest("tr").dataset.id);
+    el.checked ? ODZNACZONE.delete(id) : ODZNACZONE.add(id);
+    el.closest("tr").classList.toggle("odznaczony", !el.checked);
+    await api("trafienie", {id, wybrane: el.checked ? 1 : 0});
+    $("#podsumowanie-wynikow").textContent =
+      `${lista.length} z ${TRAFIENIA.length} • zaznaczonych: ${lista.filter(t => !ODZNACZONE.has(t.id)).length}`;
+  });
+  $$("#tabela tbody .edytuj").forEach(el => el.onclick = () =>
+    edytuj(parseInt(el.closest("tr").dataset.id)));
+}
+["filtr","filtr-host","filtr-rok"].forEach(id => $("#" + id).addEventListener("input", rysujTabele));
+$("#wybor-przebiegu").onchange = e => wczytajTrafienia(e.target.value);
+$("#check-wszystkie").onchange = e =>
+  e.target.checked ? $("#zaznacz-wszystkie").click() : $("#odznacz-wszystkie").click();
+$("#zaznacz-wszystkie").onclick = async () => {
+  for (const t of widoczne()) { ODZNACZONE.delete(t.id); await api("trafienie", {id: t.id, wybrane: 1}); }
+  rysujTabele();
+};
+$("#odznacz-wszystkie").onclick = async () => {
+  for (const t of widoczne()) { ODZNACZONE.add(t.id); await api("trafienie", {id: t.id, wybrane: 0}); }
+  rysujTabele();
+};
+$("#usun-zaznaczone").onclick = async () => {
+  const ids = widoczne().filter(t => !ODZNACZONE.has(t.id)).map(t => t.id);
+  if (!ids.length || !confirm(`Usunąć ${ids.length} rekordów z wyników?`)) return;
+  await api("usun-trafienia", {ids});
+  await wczytajTrafienia($("#wybor-przebiegu").value);
+};
+
+function edytuj(id) {
+  const t = TRAFIENIA.find(x => x.id === id);
+  if (!t) return;
+  $("#modal-tresc").innerHTML = `
+    <h2 style="font-family:var(--serif);margin-bottom:12px">Popraw przypis</h2>
+    <div class="pole"><label>Tytuł</label><input type="text" id="e-tytul" value="${esc(t.tytul)}"></div>
+    <div class="rzad">
+      <div class="pole"><label>Data (RRRR-MM-DD)</label><input type="text" id="e-data" value="${esc(t.data)}"></div>
+      <div class="pole"><label>Citekey</label><input type="text" id="e-citekey" value="${esc(t.citekey)}"></div>
+    </div>
+    <div class="rzad">
+      <div class="pole"><label>Autorzy (po przecinku)</label>
+        <input type="text" id="e-autorzy" value="${esc((t.autorzy||[]).join(", "))}"></div>
+      <div class="pole"><label>Serwis</label><input type="text" id="e-serwis" value="${esc(t.serwis)}"></div>
+    </div>
+    <div class="pole"><label>Tagi (po przecinku)</label>
+      <input type="text" id="e-tagi" value="${esc((t.tagi||[]).join(", "))}"></div>
+    <div class="pole"><label>Notatka własna</label>
+      <textarea id="e-notatka">${esc(t.notatka||"")}</textarea></div>
+    <div class="przyciski"><button class="btn glowny" id="e-zapisz">Zapisz</button>
+      <button class="btn" id="e-anuluj">Anuluj</button>
+      <a class="btn" href="${esc(t.url)}" target="_blank" rel="noopener">otwórz stronę ↗</a></div>`;
+  $("#modal").classList.add("widoczny");
+  $("#e-anuluj").onclick = () => $("#modal").classList.remove("widoczny");
+  $("#e-zapisz").onclick = async () => {
+    await api("trafienie", {id,
+      tytul: $("#e-tytul").value, data: $("#e-data").value, citekey: $("#e-citekey").value,
+      serwis: $("#e-serwis").value,
+      autorzy: $("#e-autorzy").value.split(",").map(s => s.trim()).filter(Boolean),
+      tagi: $("#e-tagi").value.split(",").map(s => s.trim()).filter(Boolean),
+      notatka: $("#e-notatka").value});
+    $("#modal").classList.remove("widoczny");
+    await wczytajTrafienia($("#wybor-przebiegu").value);
+    toast("Zapisano.", "ok");
+  };
+}
+$("#modal").onclick = e => { if (e.target.id === "modal") $("#modal").classList.remove("widoczny"); };
+
+/* ------------------------------------------------------------- eksport */
+function wybraneIds() {
+  return widoczne().filter(t => !ODZNACZONE.has(t.id)).map(t => t.id);
+}
+$$("[data-format]").forEach(b => b.onclick = async () => {
+  const ids = wybraneIds();
+  if (!ids.length) return toast("Nie zaznaczono żadnych rekordów.", "blad");
+  try {
+    const w = await api("eksport", {format: b.dataset.format, ids,
+                                    typ_zotero: $("#typ_zotero").value});
+    if (!w.ok) return toast(w.komunikat, "blad");
+    toast(w.komunikat, "ok");
+    $("#ostatni-plik").innerHTML =
+      `<a class="btn" href="/api/plik?nazwa=${encodeURIComponent(w.nazwa)}" download>⬇ pobierz ${esc(w.nazwa)}</a>`;
+  } catch (e) { toast(e.message, "blad"); }
+});
+$("#do-zotero").onclick = async () => {
+  const ids = wybraneIds();
+  if (!ids.length) return toast("Nie zaznaczono żadnych rekordów.", "blad");
+  toast("Wysyłam do Zotero…");
+  const w = await api("zotero", {tryb: "konektor", ids, typ_zotero: $("#typ_zotero").value});
+  toast(w.komunikat, w.ok ? "ok" : "blad");
+  (w.bledy || []).slice(0, 3).forEach(b => toast(b, "blad"));
+};
+$("#do-zotero-api").onclick = async () => {
+  const ids = wybraneIds();
+  if (!ids.length) return toast("Nie zaznaczono żadnych rekordów.", "blad");
+  const w = await api("zotero", {tryb: "api", ids, klucz: $("#zot-klucz").value,
+    uzytkownik: $("#zot-uzytkownik").value, kolekcja: $("#zot-kolekcja").value,
+    typ_zotero: $("#typ_zotero").value});
+  toast(w.komunikat, w.ok ? "ok" : "blad");
+};
+$("#pobierz-kolekcje").onclick = async () => {
+  try {
+    const w = await api(`zotero/kolekcje?klucz=${encodeURIComponent($("#zot-klucz").value)}` +
+                        `&uzytkownik=${encodeURIComponent($("#zot-uzytkownik").value)}`);
+    $("#zot-kolekcja").innerHTML = '<option value="">— biblioteka główna —</option>' +
+      w.kolekcje.map(k => `<option value="${esc(k.klucz)}">${esc(k.nazwa)}</option>`).join("");
+    toast(`Wczytano ${w.kolekcje.length} kolekcji.`, "ok");
+  } catch (e) { toast(e.message, "blad"); }
+};
+
+/* ------------------------------------------------------------- presety */
+$("#zapisz-preset").onclick = async () => {
+  const nazwa = prompt("Nazwa presetu:", $("#nazwa").value);
+  if (!nazwa) return;
+  await api("preset", {nazwa, konfig: zbierzKonfig()});
+  await wczytajStan();
+  toast("Preset zapisany.", "ok");
+};
+$("#usun-preset").onclick = async () => {
+  const nazwa = $("#presety").value;
+  if (!nazwa || !confirm(`Usunąć preset „${nazwa}”?`)) return;
+  await api("preset/usun", {nazwa});
+  await wczytajStan();
+};
+
+/* ---------------------------------------------------------------- stan */
+async function wczytajStan() {
+  const s = await api("stan");
+  $("#chip-wersja").textContent = "v" + s.wersja;
+  const z = s.zotero || {};
+  $("#chip-zotero").textContent = z.konektor ? "Zotero: połączone" : "Zotero: nieuruchomione";
+  $("#chip-zotero").className = "chip " + (z.konektor ? "ok" : "zle");
+  $("#stan-zotero").textContent = z.komunikat || "";
+  const stron = (s.korpus || []).reduce((a, k) => a + k.ile, 0);
+  $("#chip-korpus").textContent = `korpus: ${stron} stron`;
+  $("#sciezka-eksportu").textContent = "Pliki lądują w: " + s.katalog_eksportu;
+
+  $("#presety").innerHTML = '<option value="">— wczytaj preset —</option>' +
+    (s.presety || []).map(p => `<option value="${esc(p.nazwa)}">${esc(p.nazwa)}</option>`).join("");
+  $("#presety").onchange = e => {
+    const p = (s.presety || []).find(x => x.nazwa === e.target.value);
+    if (p) { wstawKonfig(p.konfig); toast(`Wczytano preset „${p.nazwa}”.`); }
+  };
+
+  const biezacy = $("#wybor-przebiegu").value;
+  $("#wybor-przebiegu").innerHTML = (s.przebiegi || []).map(p =>
+    `<option value="${p.id}">#${p.id} ${esc(p.nazwa)} — ${p.trafien} traf. (${esc(p.status)})</option>`
+    ).join("");
+  if (biezacy) $("#wybor-przebiegu").value = biezacy;
+
+  $("#tabela-korpusu").innerHTML = (s.korpus || []).length ? `<table><tbody>${
+    s.korpus.map(k => `<tr><td>${esc(k.host)}</td><td class="meta-kom">${k.ile} stron</td>
+      <td><button class="btn mini" data-host="${esc(k.host)}">wyczyść</button></td></tr>`).join("")
+    }</tbody></table>` : '<div class="podtytul">Korpus pusty.</div>';
+  $$("#tabela-korpusu button").forEach(b => b.onclick = async () => {
+    if (!confirm(`Usunąć pobrane strony z ${b.dataset.host}?`)) return;
+    await api("korpus/wyczysc", {host: b.dataset.host});
+    await wczytajStan();
+  });
+
+  $("#tabela-przebiegow").innerHTML = (s.przebiegi || []).length ? `<table><tbody>${
+    s.przebiegi.map(p => `<tr><td><b>#${p.id}</b> ${esc(p.nazwa)}<br>
+      <span class="meta-kom">${esc(p.zapytanie || "")}</span></td>
+      <td class="meta-kom">${p.trafien} traf.<br>${esc(p.status)}</td>
+      <td><button class="btn mini pokaz" data-id="${p.id}">pokaż</button>
+          <button class="btn mini usun" data-id="${p.id}">usuń</button></td></tr>`).join("")
+    }</tbody></table>` : '<div class="podtytul">Brak przebiegów.</div>';
+  $$("#tabela-przebiegow .pokaz").forEach(b => b.onclick = () => {
+    $("#wybor-przebiegu").value = b.dataset.id;
+    wczytajTrafienia(b.dataset.id);
+    $$("nav button").find(x => x.dataset.panel === "wyniki").click();
+  });
+  $$("#tabela-przebiegow .usun").forEach(b => b.onclick = async () => {
+    if (!confirm("Usunąć ten przebieg wraz z trafieniami?")) return;
+    await api("usun-przebieg", {przebieg: parseInt(b.dataset.id)});
+    await wczytajStan();
+  });
+
+  if (s.trwa && !SONDA) { SONDA = setInterval(sonduj, 700); $("#start").disabled = true;
+                          $("#stop").disabled = false; }
+  return s;
+}
+
+/* --------------------------------------------------------------- ściąga */
+const SCIAGA = [
+  ['"1 maja"', "fraza dokładnie w tej kolejności (ale z odmianą każdego słowa)"],
+  ["Żoliborz", "jedno słowo — z odmianą: Żoliborza, Żoliborzu, żoliborski…"],
+  ["A I B / A AND B", "oba terminy muszą wystąpić (to samo daje zwykła spacja)"],
+  ["A LUB B / A OR B", "wystarczy jeden z terminów"],
+  ["NIE A / -A", "wyklucz strony zawierające A"],
+  ["( … )", "grupowanie: <code>\"1 maja\" I (Żoliborz LUB Bielany)</code>"],
+  ["A BLISKO/10 B", "A i B nie dalej niż 10 słów od siebie (można też <code>A ~10 B</code>)"],
+  ["tytuł:pochód", "szukaj tylko w tytule (także: tekst:, autor:, url:, tagi:)"],
+  ["(domyślnie)", "bez przedrostka szukamy w treści: tytuł + tekst + autor"],
+  ["tagi:\"1 maja\"", "tagi i kategorie WordPressa — trzeba o nie poprosić wprost"],
+  ["wszystko:Mazowsze", "treść razem z tagami i adresem"],
+  ["=Solidarność", "bez odmiany — dokładnie ta forma"],
+  ["~msza", "wymuś odmianę, gdy tryb globalny to „dokładnie”"],
+  ["^prac", "tryb rdzenia: prac, pracownik, pracował, pracowniczy…"],
+  ["solidarn*", "wildcard: dowolne zakończenie"],
+  ["1 maja", "liczebnik złapie też „1-go maja”, „1. maja”"],
+];
+$("#tabela-sciagi").innerHTML = SCIAGA.map(([s, o]) =>
+  `<tr><td style="width:190px"><code class="wzorzec" style="max-height:none">${esc(s)}</code></td>
+       <td>${o}</td></tr>`).join("");
+
+/* ---------------------------------------------------------------- start */
+(async () => {
+  const s = await wczytajStan();
+  if (s.ustawienia && Object.keys(s.ustawienia).length) wstawKonfig(s.ustawienia);
+  else dodajZrodlo({url: "", tryb: "auto"});
+  if (s.ostatni_przebieg) { $("#wybor-przebiegu").value = s.ostatni_przebieg;
+                            await wczytajTrafienia(s.ostatni_przebieg); }
+  podglad();
+})();
+</script>
+</body>
+</html>
