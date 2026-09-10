@@ -1,3 +1,7 @@
 requests>=2.28
 beautifulsoup4>=4.11
-PyYAML>=6.0          # tylko dla konfiguracji w .yaml (JSON działa bez tego)
+PyYAML>=6.0            # only for .yaml configurations (JSON works without it)
+
+# Optional, never required:
+# browser-cookie3      # read cookies straight from your browser profile
+# morfeusz2            # a real Polish morphological analyser, for the preview

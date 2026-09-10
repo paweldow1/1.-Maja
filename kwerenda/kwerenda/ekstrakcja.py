@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Wyciąganie z HTML-a treści artykułu i metadanych bibliograficznych.
+"""Pulling the article text and the bibliographic metadata out of HTML.
 
-Metadane zbieramy kaskadowo, od najbardziej wiarygodnych do najsłabszych:
-JSON-LD (schema.org) → OpenGraph → <meta name=…> → Dublin Core → heurystyki HTML.
-Dzięki temu przypis w Zotero powstaje od razu, bez ręcznego uzupełniania.
+Metadata is collected in a cascade, from the most to the least reliable source:
+JSON-LD (schema.org) → OpenGraph → <meta name=…> → Dublin Core → HTML heuristics.
+That is what lets a Zotero citation appear complete without hand-filling.
+
+Dates are recognised in Polish, English, German, Russian and Ukrainian.
 """
 
 from __future__ import annotations
@@ -28,6 +30,12 @@ MIESIACE_DE = {
     "januar": 1, "februar": 2, "märz": 3, "maerz": 3, "april": 4, "mai": 5, "juni": 6,
     "juli": 7, "august": 8, "september": 9, "oktober": 10, "november": 11, "dezember": 12,
 }
+MIESIACE_RU = {
+    "января": 1, "январь": 1, "февраля": 2, "февраль": 2, "марта": 3, "март": 3,
+    "апреля": 4, "апрель": 4, "мая": 5, "май": 5, "июня": 6, "июнь": 6,
+    "июля": 7, "июль": 7, "августа": 8, "август": 8, "сентября": 9, "сентябрь": 9,
+    "октября": 10, "октябрь": 10, "ноября": 11, "ноябрь": 11, "декабря": 12, "декабрь": 12,
+}
 MIESIACE_UA = {
     "січня": 1, "лютого": 2, "березня": 3, "квітня": 4, "травня": 5, "червня": 6,
     "липня": 7, "серпня": 8, "вересня": 9, "жовтня": 10, "листопада": 11, "грудня": 12,
@@ -38,7 +46,7 @@ MIESIACE_EN = {
     "august": 8, "aug": 8, "september": 9, "sep": 9, "sept": 9, "october": 10,
     "oct": 10, "november": 11, "nov": 11, "december": 12, "dec": 12,
 }
-_MIESIACE = {**MIESIACE_PL, **MIESIACE_DE, **MIESIACE_UA, **MIESIACE_EN}
+_MIESIACE = {**MIESIACE_PL, **MIESIACE_DE, **MIESIACE_UA, **MIESIACE_RU, **MIESIACE_EN}
 
 _SMIECI = ("script", "style", "noscript", "nav", "footer", "header", "aside",
            "form", "iframe", "svg", "button", "template")
@@ -78,7 +86,7 @@ class Metadane:
 # --------------------------------------------------------------------------
 
 def normalizuj_date(surowa: Optional[str]) -> str:
-    """Sprowadza rozmaite zapisy daty do ISO. Zwraca '' gdy się nie da."""
+    """Reduce assorted date spellings to ISO. Returns '' when nothing fits."""
     if not surowa:
         return ""
     s = str(surowa).strip()
@@ -138,7 +146,7 @@ def _gestosc(element) -> int:
 
 
 def wyciagnij_tekst(html: str, zupa: Optional[BeautifulSoup] = None) -> str:
-    """Tekst artykułu: preferujemy typowe kontenery WP, w razie czego heurystyka."""
+    """Article text: prefer the usual content containers, fall back to density."""
     zupa = zupa or BeautifulSoup(html or "", "html.parser")
     kopia = BeautifulSoup(str(zupa), "html.parser")
     _wyczysc(kopia)
@@ -162,7 +170,7 @@ def wyciagnij_tekst(html: str, zupa: Optional[BeautifulSoup] = None) -> str:
 
 
 def html_na_tekst(html: str) -> str:
-    """Płaski tekst z fragmentu HTML (np. z pola REST API)."""
+    """Flat text out of an HTML fragment (e.g. a REST API field)."""
     return re.sub(r"\s+", " ", BeautifulSoup(html or "", "html.parser").get_text(" ", strip=True)).strip()
 
 

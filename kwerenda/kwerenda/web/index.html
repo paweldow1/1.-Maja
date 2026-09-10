@@ -1,417 +1,421 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kwerenda — scraper stron i eksport do Zotero</title>
+<title>Kwerenda — web search to Zotero</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
 <style>
 :root{
-  --bg:#faf8f5; --bg2:#f3f0eb; --bg3:#ece8e1; --linia:#d8d2c8; --linia2:#bdb5a8;
-  --tekst:#1a1714; --tekst2:#5a534a; --tekst3:#8a8178;
-  --akcent:#8b1a1a; --akcent2:#a83232; --zieleń:#3f7d54; --żółty:#a67c00; --niebieski:#3d6d99;
-  --cień:0 1px 2px rgba(26,23,20,.06), 0 4px 14px rgba(26,23,20,.05);
+  --bg:#faf8f5; --bg2:#f3f0eb; --bg3:#ece8e1; --line:#d8d2c8; --line2:#bdb5a8;
+  --ink:#1a1714; --ink2:#5a534a; --ink3:#8a8178;
+  --accent:#8b1a1a; --accent2:#a83232; --green:#3f7d54; --amber:#a67c00; --blue:#3d6d99;
+  --shadow:0 1px 2px rgba(26,23,20,.06), 0 4px 14px rgba(26,23,20,.05);
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,"DejaVu Sans Mono",monospace;
-  --serif:ui-serif,Georgia,"Iowan Old Style","Source Serif 4",serif;
+  --serif:ui-serif,Georgia,"Iowan Old Style",serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
 }
 @media (prefers-color-scheme: dark){
-  :root{--bg:#16151a;--bg2:#1e1d24;--bg3:#26252e;--linia:#33313c;--linia2:#474553;
-        --tekst:#eceaf2;--tekst2:#b3aec0;--tekst3:#807b8c;--akcent:#e0685a;--akcent2:#f0857a;
-        --zieleń:#63b083;--żółty:#d6a83c;--niebieski:#6da3d6;
-        --cień:0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);}
+  :root{--bg:#16151a;--bg2:#1e1d24;--bg3:#26252e;--line:#33313c;--line2:#474553;
+        --ink:#eceaf2;--ink2:#b3aec0;--ink3:#807b8c;--accent:#e0685a;--accent2:#f0857a;
+        --green:#63b083;--amber:#d6a83c;--blue:#6da3d6;
+        --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);}
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--tekst);font-family:var(--sans);font-size:14px;line-height:1.5}
-a{color:var(--niebieski)}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5}
+a{color:var(--blue)}
 button,input,select,textarea{font:inherit;color:inherit}
 
-/* ---------- układ ---------- */
-header{border-bottom:1px solid var(--linia);background:var(--bg2);position:sticky;top:0;z-index:20}
-.pasek{max-width:1500px;margin:0 auto;padding:12px 20px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+header{border-bottom:1px solid var(--line);background:var(--bg2);position:sticky;top:0;z-index:20}
+.bar{max-width:1500px;margin:0 auto;padding:12px 20px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
 .logo{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em}
-.logo span{color:var(--akcent)}
-.podtytul{color:var(--tekst3);font-size:12.5px;font-family:var(--mono)}
-.chipy{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
-.chip{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border:1px solid var(--linia);
-      border-radius:999px;background:var(--bg);color:var(--tekst2);white-space:nowrap}
-.chip.ok{border-color:var(--zieleń);color:var(--zieleń)}
-.chip.zle{border-color:var(--linia2);color:var(--tekst3)}
-nav{max-width:1500px;margin:0 auto;padding:0 20px;display:flex;gap:2px}
+.logo span{color:var(--accent)}
+.sub{color:var(--ink3);font-size:12.5px;font-family:var(--mono)}
+.chips{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border:1px solid var(--line);
+      border-radius:999px;background:var(--bg);color:var(--ink2);white-space:nowrap}
+.chip.ok{border-color:var(--green);color:var(--green)}
+.chip.off{border-color:var(--line2);color:var(--ink3)}
+nav{max-width:1500px;margin:0 auto;padding:0 20px;display:flex;gap:2px;flex-wrap:wrap}
 nav button{background:none;border:none;border-bottom:2px solid transparent;padding:9px 14px;
-           cursor:pointer;color:var(--tekst2);font-size:13.5px}
-nav button:hover{color:var(--tekst)}
-nav button.aktywna{border-bottom-color:var(--akcent);color:var(--tekst);font-weight:600}
+           cursor:pointer;color:var(--ink2);font-size:13.5px}
+nav button:hover{color:var(--ink)}
+nav button.active{border-bottom-color:var(--accent);color:var(--ink);font-weight:600}
 main{max-width:1500px;margin:0 auto;padding:20px}
 .panel{display:none}
-.panel.widoczny{display:block}
-.dwie{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
-@media(max-width:1080px){.dwie{grid-template-columns:1fr}}
+.panel.visible{display:block}
+.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:1080px){.two{grid-template-columns:1fr}}
 
-/* ---------- karty ---------- */
-.karta{background:var(--bg2);border:1px solid var(--linia);border-radius:10px;padding:16px;
-       margin-bottom:16px;box-shadow:var(--cień)}
-.karta h2{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:3px}
-.karta h2 .num{color:var(--akcent);font-family:var(--mono);font-size:12px;margin-right:7px}
-.karta .opis{color:var(--tekst3);font-size:12.5px;margin-bottom:13px}
-.pole{margin-bottom:12px}
-.pole>label{display:block;font-size:12.5px;color:var(--tekst2);margin-bottom:4px;font-weight:500}
-.pole .pomoc{font-size:11.5px;color:var(--tekst3);margin-top:4px;line-height:1.45}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:16px;
+      margin-bottom:16px;box-shadow:var(--shadow)}
+.card h2{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:3px}
+.card h2 .num{color:var(--accent);font-family:var(--mono);font-size:12px;margin-right:7px}
+.card .desc{color:var(--ink3);font-size:12.5px;margin-bottom:13px}
+.field{margin-bottom:12px}
+.field>label{display:block;font-size:12.5px;color:var(--ink2);margin-bottom:4px;font-weight:500}
+.field .hint{font-size:11.5px;color:var(--ink3);margin-top:4px;line-height:1.45}
 input[type=text],input[type=number],input[type=password],select,textarea{
-  width:100%;background:var(--bg);border:1px solid var(--linia);border-radius:7px;
+  width:100%;background:var(--bg);border:1px solid var(--line);border-radius:7px;
   padding:8px 10px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--akcent);box-shadow:0 0 0 3px rgba(139,26,26,.09)}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,26,26,.09)}
 textarea{font-family:var(--mono);font-size:13px;resize:vertical;min-height:76px;line-height:1.55}
-.rzad{display:flex;gap:10px;flex-wrap:wrap}
-.rzad>*{flex:1;min-width:120px}
-label.check{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--tekst2);cursor:pointer;
-            padding:4px 0}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1;min-width:120px}
+label.check{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink2);
+            cursor:pointer;padding:4px 0}
 label.check input{width:auto;margin:0}
-fieldset{border:1px solid var(--linia);border-radius:8px;padding:10px 12px;margin-bottom:12px}
-legend{font-size:12px;color:var(--tekst3);padding:0 6px;font-family:var(--mono)}
-details summary{cursor:pointer;color:var(--tekst2);font-size:12.5px;padding:5px 0;user-select:none}
-details summary:hover{color:var(--tekst)}
+details summary{cursor:pointer;color:var(--ink2);font-size:12.5px;padding:5px 0;user-select:none}
+details summary:hover{color:var(--ink)}
+.langs{display:flex;gap:12px;flex-wrap:wrap;padding:4px 0}
 
-/* ---------- przyciski ---------- */
-.btn{background:var(--bg3);border:1px solid var(--linia);border-radius:7px;padding:8px 14px;
+.btn{background:var(--bg3);border:1px solid var(--line);border-radius:7px;padding:8px 14px;
      cursor:pointer;font-size:13px;transition:.12s;white-space:nowrap}
-.btn:hover{border-color:var(--linia2);background:var(--bg)}
+.btn:hover{border-color:var(--line2);background:var(--bg)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-.btn.glowny{background:var(--akcent);border-color:var(--akcent);color:#fff;font-weight:600}
-.btn.glowny:hover{background:var(--akcent2);border-color:var(--akcent2)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn.primary:hover{background:var(--accent2);border-color:var(--accent2)}
 .btn.mini{padding:4px 9px;font-size:12px}
-.btn.stop{border-color:var(--akcent);color:var(--akcent)}
-.przyciski{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn.stop{border-color:var(--accent);color:var(--accent)}
+.buttons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
-/* ---------- źródła ---------- */
-.zrodlo{border:1px solid var(--linia);border-radius:8px;padding:11px;margin-bottom:9px;background:var(--bg)}
-.zrodlo .glowa{display:flex;gap:8px;align-items:center}
-.zrodlo .glowa input{flex:1}
-.zrodlo .glowa select{flex:0 0 140px}
+.source{border:1px solid var(--line);border-radius:8px;padding:11px;margin-bottom:9px;background:var(--bg)}
+.source .head{display:flex;gap:8px;align-items:center}
+.source .head input{flex:1}
+.source .head select{flex:0 0 150px}
 
-/* ---------- podgląd fleksji ---------- */
-.termin{border:1px solid var(--linia);border-radius:8px;padding:10px;margin-bottom:8px;background:var(--bg)}
-.termin .naglowek{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
-.termin b{font-family:var(--mono);font-size:13px}
-.formy{display:flex;flex-wrap:wrap;gap:4px;max-height:120px;overflow:auto}
-.forma{font-family:var(--mono);font-size:11.5px;padding:2px 7px;background:var(--bg3);
-       border-radius:5px;color:var(--tekst2);cursor:pointer;border:1px solid transparent}
-.forma:hover{border-color:var(--akcent);color:var(--akcent)}
-.forma.wykluczona{text-decoration:line-through;opacity:.45}
-code.wzorzec{display:block;font-family:var(--mono);font-size:10.5px;color:var(--tekst3);
+.term{border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:8px;background:var(--bg)}
+.term .head{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.term b{font-family:var(--mono);font-size:13px}
+.lang-row{margin-top:6px}
+.lang-name{font-family:var(--mono);font-size:10.5px;color:var(--ink3);text-transform:uppercase;
+           letter-spacing:.04em;margin-bottom:3px}
+.forms{display:flex;flex-wrap:wrap;gap:4px}
+.form{font-family:var(--mono);font-size:11.5px;padding:2px 7px;background:var(--bg3);
+      border-radius:5px;color:var(--ink2);cursor:pointer;border:1px solid transparent}
+.form:hover{border-color:var(--accent);color:var(--accent)}
+.form.excluded{text-decoration:line-through;opacity:.45}
+code.pattern{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink3);
              word-break:break-all;margin-top:6px;max-height:76px;overflow:auto;
              background:var(--bg3);padding:6px;border-radius:6px}
 
-/* ---------- dziennik ---------- */
-.dziennik{font-family:var(--mono);font-size:11.5px;line-height:1.6;background:var(--bg);
-          border:1px solid var(--linia);border-radius:8px;padding:10px;height:260px;overflow:auto;
-          white-space:pre-wrap;word-break:break-word}
-.dziennik .traf{color:var(--zieleń)}
-.dziennik .uwaga{color:var(--żółty)}
-.dziennik .blad{color:var(--akcent)}
-.liczniki{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin-bottom:10px}
-.licznik{background:var(--bg);border:1px solid var(--linia);border-radius:8px;padding:8px 10px;text-align:center}
-.licznik .wartosc{font-family:var(--mono);font-size:19px;font-weight:600}
-.licznik .etykieta{font-size:10.5px;color:var(--tekst3);text-transform:uppercase;letter-spacing:.04em}
+.log{font-family:var(--mono);font-size:11.5px;line-height:1.6;background:var(--bg);
+     border:1px solid var(--line);border-radius:8px;padding:10px;height:260px;overflow:auto;
+     white-space:pre-wrap;word-break:break-word}
+.log .hit{color:var(--green)}
+.log .warn{color:var(--amber)}
+.log .err{color:var(--accent)}
+.counters{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin-bottom:10px}
+.counter{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;text-align:center}
+.counter .value{font-family:var(--mono);font-size:19px;font-weight:600}
+.counter .label{font-size:10.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em}
 
-/* ---------- tabela wyników ---------- */
-.narzedzia{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
-.narzedzia input[type=text]{max-width:240px}
-.narzedzia select{max-width:190px}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.tools input[type=text]{max-width:240px}
+.tools select{max-width:190px}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--tekst3);
-   border-bottom:1px solid var(--linia2);padding:7px 8px;position:sticky;top:0;background:var(--bg2);z-index:2}
-td{border-bottom:1px solid var(--linia);padding:9px 8px;vertical-align:top}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);
+   border-bottom:1px solid var(--line2);padding:7px 8px;position:sticky;top:0;background:var(--bg2);z-index:2}
+td{border-bottom:1px solid var(--line);padding:9px 8px;vertical-align:top}
 tr:hover td{background:var(--bg3)}
-tr.odznaczony td{opacity:.42}
-.tytul-kom{font-weight:600;max-width:420px}
-.tytul-kom a{color:inherit;text-decoration:none}
-.tytul-kom a:hover{color:var(--akcent);text-decoration:underline}
-.cytat{color:var(--tekst2);font-size:12px;margin-top:5px;font-family:var(--serif);line-height:1.5;
-       max-width:560px}
-.cytat mark{background:rgba(166,124,0,.22);color:inherit;padding:0 2px;border-radius:2px}
-.meta-kom{font-family:var(--mono);font-size:11px;color:var(--tekst3);white-space:nowrap}
-.tagi{display:flex;flex-wrap:wrap;gap:3px;max-width:260px}
-.tag{font-size:11px;padding:1px 6px;background:var(--bg3);border:1px solid var(--linia);
-     border-radius:4px;color:var(--tekst2)}
-.pusto{text-align:center;color:var(--tekst3);padding:44px 20px;font-family:var(--serif);font-size:15px}
+tr.unselected td{opacity:.42}
+.title-cell{font-weight:600;max-width:420px}
+.title-cell a{color:inherit;text-decoration:none}
+.title-cell a:hover{color:var(--accent);text-decoration:underline}
+.quote{color:var(--ink2);font-size:12px;margin-top:5px;font-family:var(--serif);line-height:1.5;max-width:560px}
+.quote mark{background:rgba(166,124,0,.22);color:inherit;padding:0 2px;border-radius:2px}
+.meta-cell{font-family:var(--mono);font-size:11px;color:var(--ink3);white-space:nowrap}
+.tags{display:flex;flex-wrap:wrap;gap:3px;max-width:260px}
+.tag{font-size:11px;padding:1px 6px;background:var(--bg3);border:1px solid var(--line);
+     border-radius:4px;color:var(--ink2)}
+.empty{text-align:center;color:var(--ink3);padding:44px 20px;font-family:var(--serif);font-size:15px}
 
-/* ---------- komunikaty ---------- */
 #toast{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:99}
-.toast{background:var(--bg2);border:1px solid var(--linia2);border-left:3px solid var(--akcent);
-       border-radius:7px;padding:10px 14px;box-shadow:var(--cień);max-width:420px;font-size:13px}
-.toast.ok{border-left-color:var(--zieleń)}
-.toast.blad{border-left-color:var(--akcent)}
+.toast{background:var(--bg2);border:1px solid var(--line2);border-left:3px solid var(--accent);
+       border-radius:7px;padding:10px 14px;box-shadow:var(--shadow);max-width:420px;font-size:13px}
+.toast.ok{border-left-color:var(--green)}
+.toast.err{border-left-color:var(--accent)}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;
        justify-content:center;z-index:50;padding:20px}
-.modal.widoczny{display:flex}
-.modal .tresc{background:var(--bg2);border:1px solid var(--linia2);border-radius:10px;padding:18px;
+.modal.visible{display:flex}
+.modal .inner{background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:18px;
               max-width:560px;width:100%;max-height:82vh;overflow:auto}
+.note{border-left:3px solid var(--amber);background:var(--bg);padding:9px 12px;border-radius:6px;
+      font-size:12.5px;color:var(--ink2);margin-top:10px}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="pasek">
+  <div class="bar">
     <div class="logo">Kwerenda<span>.</span></div>
-    <div class="podtytul">scraper stron WWW → przypis, tagi, Zotero</div>
-    <div class="chipy">
-      <span class="chip" id="chip-zotero">Zotero: sprawdzam…</span>
-      <span class="chip" id="chip-korpus">korpus: —</span>
-      <span class="chip" id="chip-wersja">v—</span>
+    <div class="sub">search websites → citation, tags, Zotero</div>
+    <div class="chips">
+      <span class="chip" id="chip-zotero">Zotero: checking…</span>
+      <span class="chip" id="chip-corpus">corpus: —</span>
+      <span class="chip" id="chip-version">v—</span>
     </div>
   </div>
   <nav>
-    <button data-panel="kwerenda" class="aktywna">Kwerenda</button>
-    <button data-panel="wyniki">Wyniki <span id="licznik-wynikow"></span></button>
-    <button data-panel="eksport">Eksport</button>
-    <button data-panel="archiwum">Korpus i przebiegi</button>
-    <button data-panel="pomoc">Ściąga</button>
+    <button data-panel="search" class="active">Search</button>
+    <button data-panel="results">Results <span id="result-count"></span></button>
+    <button data-panel="export">Export</button>
+    <button data-panel="archive">Corpus &amp; runs</button>
+    <button data-panel="help">Syntax</button>
   </nav>
 </header>
 
 <main>
 
-<!-- ============================ KWERENDA ============================ -->
-<section class="panel widoczny" id="panel-kwerenda">
-<div class="dwie">
+<!-- ============================ SEARCH ============================ -->
+<section class="panel visible" id="panel-search">
+<div class="two">
   <div>
-    <div class="karta">
-      <h2><span class="num">1</span>Czego szukamy</h2>
-      <div class="opis">Operatory: <code>I</code> <code>LUB</code> <code>NIE</code>, nawiasy,
-        „fraza w cudzysłowie”, <code>BLISKO/10</code> (sąsiedztwo), <code>pole:termin</code>.</div>
-      <div class="pole">
-        <label for="nazwa">Nazwa kwerendy</label>
-        <input type="text" id="nazwa" value="Obchody 1 maja">
+    <div class="card">
+      <h2><span class="num">1</span>What to look for</h2>
+      <div class="desc">Operators: <code>AND</code> <code>OR</code> <code>NOT</code>,
+        parentheses, <code>"phrases"</code>, <code>NEAR/10</code>, <code>field:term</code>.
+        A trailing <code>*</code> matches inflected forms, <code>**</code> truncates.</div>
+      <div class="field">
+        <label for="name">Search name</label>
+        <input type="text" id="name" value="May Day observances">
       </div>
-      <div class="pole">
-        <label for="zapytanie">Zapytanie</label>
-        <textarea id="zapytanie" spellcheck="false">"1 maja" I (Żoliborz LUB "Józef Robotnik")</textarea>
-        <div class="pomoc" id="opis-zapytania"></div>
+      <div class="field">
+        <label for="query">Query</label>
+        <textarea id="query" spellcheck="false">"1 maja"* AND (Żoliborz* OR "Józef Robotnik"*)</textarea>
+        <div class="hint" id="query-desc"></div>
       </div>
-      <div class="rzad">
-        <div class="pole">
-          <label for="tryb_fleksji">Fleksja</label>
-          <select id="tryb_fleksji">
-            <option value="fleksja">odmiana (domyślnie)</option>
-            <option value="dokladnie">dokładnie tak, jak wpisano</option>
-            <option value="rdzen">luźno – rdzeń i derywaty</option>
+      <div class="field">
+        <label>Languages used for inflection</label>
+        <div class="langs" id="languages"></div>
+        <div class="hint">The script decides: a Cyrillic term is never expanded with
+          German endings. Fewer languages means less noise.</div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="default_operator">Default operator between terms</label>
+          <select id="default_operator">
+            <option value="AND">AND — all terms</option>
+            <option value="OR">OR — any term</option>
           </select>
         </div>
-        <div class="pole">
-          <label for="domyslny_operator">Operator domyślny</label>
-          <select id="domyslny_operator">
-            <option value="I">I – wszystkie terminy naraz</option>
-            <option value="LUB">LUB – którykolwiek</option>
-          </select>
+        <div class="field">
+          <label for="year_from">Year from</label>
+          <input type="number" id="year_from" placeholder="e.g. 1989">
+        </div>
+        <div class="field">
+          <label for="year_to">Year to</label>
+          <input type="number" id="year_to" placeholder="e.g. 2024">
         </div>
       </div>
-      <label class="check"><input type="checkbox" id="bez_ogonkow">
-        Ignoruj polskie znaki („Zoliborz” = „Żoliborz”)</label>
-      <div class="rzad">
-        <div class="pole"><label for="od_roku">Rok od</label>
-          <input type="number" id="od_roku" placeholder="np. 1989"></div>
-        <div class="pole"><label for="do_roku">Rok do</label>
-          <input type="number" id="do_roku" placeholder="np. 2024"></div>
-      </div>
+      <label class="check"><input type="checkbox" id="expand_all">
+        Inflect every term, even without a star</label>
+      <label class="check"><input type="checkbox" id="ignore_diacritics">
+        Ignore diacritics (“Zoliborz” = “Żoliborz”, “Munchen” = “München”)</label>
     </div>
 
-    <div class="karta">
-      <h2><span class="num">2</span>Gdzie szukamy</h2>
-      <div class="opis">Tryb <b>auto</b> sam wykrywa REST API WordPressa, mapę strony, RSS,
-        wyszukiwarkę HTML — w tej kolejności. Trafienie zawsze potwierdzamy na pełnym tekście.</div>
-      <div id="zrodla"></div>
-      <div class="przyciski">
-        <button class="btn mini" id="dodaj-zrodlo">+ dodaj źródło</button>
-        <button class="btn mini" id="dodaj-korpus">+ szukaj tylko w pobranym korpusie</button>
+    <div class="card">
+      <h2><span class="num">2</span>Where to look</h2>
+      <div class="desc"><b>auto</b> walks down the ladder: WordPress REST API → Drupal
+        JSON:API → sitemap → RSS → the site's own search → link crawl. Every hit is then
+        confirmed against the full article text.</div>
+      <div id="sources"></div>
+      <div class="buttons">
+        <button class="btn mini" id="add-source">+ add a site</button>
+        <button class="btn mini" id="add-corpus">+ search the downloaded corpus only</button>
       </div>
+      <div class="note">If a site's own search is bad, don't fight it: give a
+        <b>listing template</b> (an archive page with <code>{page}</code>, optionally
+        <code>{year}</code>) and the whole archive gets walked instead.</div>
     </div>
 
-    <div class="karta">
-      <h2><span class="num">3</span>Metadane, tagi, uprzejmość</h2>
-      <div class="rzad">
-        <div class="pole"><label for="typ_zotero">Typ dokumentu w Zotero</label>
-          <select id="typ_zotero">
-            <option value="blogPost">wpis na blogu / aktualność</option>
-            <option value="webpage">strona internetowa</option>
-            <option value="newspaperArticle">artykuł prasowy</option>
-            <option value="magazineArticle">artykuł w czasopiśmie</option>
-            <option value="document">dokument</option>
-            <option value="report">raport</option>
+    <div class="card">
+      <h2><span class="num">3</span>Citation, tags, manners</h2>
+      <div class="row">
+        <div class="field"><label for="zotero_type">Zotero item type</label>
+          <select id="zotero_type">
+            <option value="blogPost">blog post / news item</option>
+            <option value="webpage">web page</option>
+            <option value="newspaperArticle">newspaper article</option>
+            <option value="magazineArticle">magazine article</option>
+            <option value="document">document</option>
+            <option value="report">report</option>
           </select></div>
-        <div class="pole"><label for="tagi_dodatkowe">Tagi doklejane do każdego rekordu</label>
-          <input type="text" id="tagi_dodatkowe" placeholder="doktorat, 1 maja, Polska"></div>
+        <div class="field"><label for="extra_tags">Tags added to every record</label>
+          <input type="text" id="extra_tags" placeholder="dissertation, May Day"></div>
       </div>
-      <div class="rzad">
-        <label class="check"><input type="checkbox" id="tag_z_terminow" checked> tag = trafiony termin</label>
-        <label class="check"><input type="checkbox" id="tag_z_roku" checked> tag = rok publikacji</label>
-        <label class="check"><input type="checkbox" id="tag_z_domeny" checked> tag = domena</label>
-        <label class="check"><input type="checkbox" id="tagi_z_wp" checked> tagi i kategorie z WordPressa</label>
+      <div class="row">
+        <label class="check"><input type="checkbox" id="tag_from_terms" checked> tag = matched term</label>
+        <label class="check"><input type="checkbox" id="tag_from_year" checked> tag = year</label>
+        <label class="check"><input type="checkbox" id="tag_from_domain" checked> tag = domain</label>
+        <label class="check"><input type="checkbox" id="tag_from_cms" checked> tags from the CMS</label>
+        <label class="check"><input type="checkbox" id="tag_from_language" checked> tag = language</label>
       </div>
       <details>
-        <summary>Ustawienia sieci (grzeczność wobec serwerów)</summary>
-        <div class="rzad" style="margin-top:10px">
-          <div class="pole"><label for="kontakt">Kontakt w User-Agent</label>
-            <input type="text" id="kontakt" placeholder="imię nazwisko / e-mail"></div>
-          <div class="pole"><label for="opoznienie">Odstęp [s]</label>
-            <input type="number" id="opoznienie" value="0.4" step="0.1" min="0"></div>
-          <div class="pole"><label for="watki">Wątki</label>
-            <input type="number" id="watki" value="2" min="1" max="8"></div>
+        <summary>Network settings (being a good guest)</summary>
+        <div class="row" style="margin-top:10px">
+          <div class="field"><label for="contact">Contact in the User-Agent</label>
+            <input type="text" id="contact" placeholder="your name / e-mail"></div>
+          <div class="field"><label for="delay">Delay [s]</label>
+            <input type="number" id="delay" value="0.4" step="0.1" min="0"></div>
+          <div class="field"><label for="threads">Threads</label>
+            <input type="number" id="threads" value="2" min="1" max="8"></div>
         </div>
-        <div class="rzad">
-          <div class="pole"><label for="limit_kandydatow">Limit kandydatów</label>
-            <input type="number" id="limit_kandydatow" value="4000"></div>
-          <div class="pole"><label for="limit_trafien">Limit trafień</label>
-            <input type="number" id="limit_trafien" value="1000"></div>
-          <div class="pole"><label for="okno_cytatu">Cytat: znaków wokół</label>
-            <input type="number" id="okno_cytatu" value="220"></div>
+        <div class="row">
+          <div class="field"><label for="max_candidates">Candidate limit</label>
+            <input type="number" id="max_candidates" value="4000"></div>
+          <div class="field"><label for="max_hits">Hit limit</label>
+            <input type="number" id="max_hits" value="1000"></div>
+          <div class="field"><label for="snippet_window">Quote: characters around</label>
+            <input type="number" id="snippet_window" value="220"></div>
         </div>
-        <label class="check"><input type="checkbox" id="respektuj_robots" checked>
-          Respektuj robots.txt</label>
-        <label class="check"><input type="checkbox" id="uzyj_cache" checked>
-          Zapisuj pobrane strony w korpusie (kolejne kwerendy bez ruchu w sieci)</label>
+        <label class="check"><input type="checkbox" id="respect_robots" checked>
+          Respect robots.txt</label>
+        <label class="check"><input type="checkbox" id="use_cache" checked>
+          Keep fetched pages in the corpus (later searches need no network)</label>
+        <label class="check"><input type="checkbox" id="detect_language" checked>
+          Detect the language of each page</label>
       </details>
-      <div class="przyciski" style="margin-top:12px">
-        <button class="btn glowny" id="start">▶ Uruchom kwerendę</button>
-        <button class="btn stop" id="stop" disabled>⏹ Zatrzymaj</button>
-        <button class="btn" id="zapisz-preset">Zapisz jako preset</button>
-        <select id="presety" style="max-width:210px"><option value="">— wczytaj preset —</option></select>
-        <button class="btn mini" id="usun-preset">usuń</button>
+      <div class="buttons" style="margin-top:12px">
+        <button class="btn primary" id="start">▶ Run the search</button>
+        <button class="btn stop" id="stop" disabled>⏹ Stop</button>
+        <button class="btn" id="save-preset">Save as preset</button>
+        <select id="presets" style="max-width:210px"><option value="">— load a preset —</option></select>
+        <button class="btn mini" id="delete-preset">delete</button>
       </div>
     </div>
   </div>
 
   <div>
-    <div class="karta">
-      <h2>Podgląd dopasowania</h2>
-      <div class="opis">Zanim ruszysz w sieć: sprawdź, jakie formy złapie każdy termin.
-        Kliknij formę, żeby ją wykluczyć.</div>
-      <div id="podglad-terminow"></div>
-      <div class="pole" style="margin-top:10px">
-        <label for="probka">Wklej próbkę tekstu i sprawdź, czy zapytanie ją łapie</label>
-        <textarea id="probka" placeholder="np. akapit z artykułu…" style="min-height:64px"></textarea>
-        <div class="pomoc" id="wynik-probki"></div>
+    <div class="card">
+      <h2>Match preview</h2>
+      <div class="desc">Before touching the network: see what each term will catch.
+        Click a form to exclude it.</div>
+      <div id="term-preview"></div>
+      <div class="field" style="margin-top:10px">
+        <label for="sample">Paste a sample of text and check whether the query passes it</label>
+        <textarea id="sample" placeholder="e.g. a paragraph from an article…" style="min-height:64px"></textarea>
+        <div class="hint" id="sample-result"></div>
       </div>
     </div>
-    <div class="karta">
-      <h2>Przebieg</h2>
-      <div class="liczniki">
-        <div class="licznik"><div class="wartosc" id="l-kandydatow">0</div><div class="etykieta">kandydatów</div></div>
-        <div class="licznik"><div class="wartosc" id="l-sprawdzonych">0</div><div class="etykieta">sprawdzonych</div></div>
-        <div class="licznik"><div class="wartosc" id="l-trafien">0</div><div class="etykieta">trafień</div></div>
-        <div class="licznik"><div class="wartosc" id="l-pobran">0</div><div class="etykieta">pobrań</div></div>
-        <div class="licznik"><div class="wartosc" id="l-cache">0</div><div class="etykieta">z korpusu</div></div>
-        <div class="licznik"><div class="wartosc" id="l-czas">0s</div><div class="etykieta">czas</div></div>
+    <div class="card">
+      <h2>Run</h2>
+      <div class="counters">
+        <div class="counter"><div class="value" id="c-candidates">0</div><div class="label">candidates</div></div>
+        <div class="counter"><div class="value" id="c-checked">0</div><div class="label">checked</div></div>
+        <div class="counter"><div class="value" id="c-hits">0</div><div class="label">hits</div></div>
+        <div class="counter"><div class="value" id="c-fetched">0</div><div class="label">fetched</div></div>
+        <div class="counter"><div class="value" id="c-corpus">0</div><div class="label">from corpus</div></div>
+        <div class="counter"><div class="value" id="c-time">0s</div><div class="label">time</div></div>
       </div>
-      <div class="dziennik" id="dziennik">Gotowe do pracy.</div>
+      <div class="log" id="log">Ready.</div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- ============================ WYNIKI ============================ -->
-<section class="panel" id="panel-wyniki">
-  <div class="karta">
-    <div class="narzedzia">
-      <select id="wybor-przebiegu" title="przebieg"></select>
-      <input type="text" id="filtr" placeholder="filtruj: tytuł, cytat, tag…">
-      <select id="filtr-host"><option value="">wszystkie domeny</option></select>
-      <select id="filtr-rok"><option value="">wszystkie lata</option></select>
-      <button class="btn mini" id="zaznacz-wszystkie">zaznacz wszystkie</button>
-      <button class="btn mini" id="odznacz-wszystkie">odznacz</button>
-      <button class="btn mini" id="usun-zaznaczone">usuń zaznaczone</button>
-      <span class="podtytul" id="podsumowanie-wynikow" style="margin-left:auto"></span>
+<!-- ============================ RESULTS ============================ -->
+<section class="panel" id="panel-results">
+  <div class="card">
+    <div class="tools">
+      <select id="run-picker" title="run"></select>
+      <input type="text" id="filter" placeholder="filter: title, quote, tag…">
+      <select id="filter-host"><option value="">all domains</option></select>
+      <select id="filter-year"><option value="">all years</option></select>
+      <select id="filter-language"><option value="">all languages</option></select>
+      <button class="btn mini" id="select-all">select all</button>
+      <button class="btn mini" id="deselect-all">deselect</button>
+      <button class="btn mini" id="delete-selected">delete selected</button>
+      <span class="sub" id="results-summary" style="margin-left:auto"></span>
     </div>
     <div style="overflow:auto;max-height:calc(100vh - 260px)">
-      <table id="tabela">
+      <table id="table">
         <thead><tr>
-          <th style="width:28px"><input type="checkbox" id="check-wszystkie"></th>
-          <th>Tytuł, cytat i tagi</th><th style="width:104px">Data</th>
-          <th style="width:150px">Serwis / autor</th><th style="width:120px">Citekey</th>
+          <th style="width:28px"><input type="checkbox" id="check-all"></th>
+          <th>Title, quotation and tags</th><th style="width:104px">Date</th>
+          <th style="width:150px">Site / author</th><th style="width:120px">Citekey</th>
           <th style="width:74px"></th>
         </tr></thead>
         <tbody></tbody>
       </table>
-      <div class="pusto" id="pusto-wyniki">Brak wyników — uruchom kwerendę.</div>
+      <div class="empty" id="results-empty">No results yet — run a search.</div>
     </div>
   </div>
 </section>
 
-<!-- ============================ EKSPORT ============================ -->
-<section class="panel" id="panel-eksport">
-  <div class="dwie">
-    <div class="karta">
-      <h2>Prosto do Zotero</h2>
-      <div class="opis">Jeśli Zotero jest otwarte na tym komputerze, rekordy trafią do biblioteki
-        od razu — z przypisem, tagami i notatką z cytatami.</div>
-      <div class="przyciski">
-        <button class="btn glowny" id="do-zotero">Wyślij zaznaczone do Zotero</button>
-        <span id="stan-zotero" class="podtytul"></span>
+<!-- ============================ EXPORT ============================ -->
+<section class="panel" id="panel-export">
+  <div class="two">
+    <div class="card">
+      <h2>Straight into Zotero</h2>
+      <div class="desc">If Zotero is open on this machine, records land in the library
+        right away — citation, tags and a note holding the quotations.</div>
+      <div class="buttons">
+        <button class="btn primary" id="to-zotero">Send selected to Zotero</button>
+        <span id="zotero-state" class="sub"></span>
       </div>
       <details style="margin-top:14px">
-        <summary>Albo przez Web API (Zotero zamknięte, inny komputer, wybór kolekcji)</summary>
-        <div class="rzad" style="margin-top:10px">
-          <div class="pole"><label for="zot-uzytkownik">Numer użytkownika</label>
-            <input type="text" id="zot-uzytkownik" placeholder="z zotero.org/settings/keys"></div>
-          <div class="pole"><label for="zot-klucz">Klucz API</label>
-            <input type="password" id="zot-klucz"></div>
+        <summary>Or through the Web API (Zotero closed, another machine, pick a collection)</summary>
+        <div class="row" style="margin-top:10px">
+          <div class="field"><label for="zot-user">User id</label>
+            <input type="text" id="zot-user" placeholder="from zotero.org/settings/keys"></div>
+          <div class="field"><label for="zot-key">API key</label>
+            <input type="password" id="zot-key"></div>
         </div>
-        <div class="pole"><label for="zot-kolekcja">Kolekcja</label>
-          <div class="rzad">
-            <select id="zot-kolekcja"><option value="">— biblioteka główna —</option></select>
-            <button class="btn mini" id="pobierz-kolekcje" style="flex:0 0 auto">pobierz listę</button>
+        <div class="field"><label for="zot-collection">Collection</label>
+          <div class="row">
+            <select id="zot-collection"><option value="">— main library —</option></select>
+            <button class="btn mini" id="fetch-collections" style="flex:0 0 auto">fetch list</button>
           </div></div>
-        <button class="btn" id="do-zotero-api">Wyślij przez Web API</button>
+        <button class="btn" id="to-zotero-api">Send through the Web API</button>
       </details>
     </div>
-    <div class="karta">
-      <h2>Pliki</h2>
-      <div class="opis">RIS jest najpewniejszy przy imporcie do Zotero: słowa kluczowe stają się
-        tagami, a notatka z cytatami wchodzi jako notatka rekordu.</div>
-      <div class="przyciski">
-        <button class="btn" data-format="ris">RIS (import do Zotero)</button>
+    <div class="card">
+      <h2>Files</h2>
+      <div class="desc">RIS is the safest import into Zotero: keywords become tags and the
+        quotation note comes across as a child note.</div>
+      <div class="buttons">
+        <button class="btn" data-format="ris">RIS (Zotero import)</button>
         <button class="btn" data-format="csl">CSL-JSON</button>
         <button class="btn" data-format="bibtex">BibTeX / Better BibTeX</button>
-        <button class="btn" data-format="csv">CSV (arkusz)</button>
-        <button class="btn" data-format="md">Notatki Obsidiana (.zip)</button>
+        <button class="btn" data-format="csv">CSV (spreadsheet)</button>
+        <button class="btn" data-format="md">Obsidian notes (.zip)</button>
         <button class="btn" data-format="zotero-json">Zotero JSON</button>
       </div>
-      <div class="pomoc" style="margin-top:12px" id="sciezka-eksportu"></div>
-      <div id="ostatni-plik" style="margin-top:8px"></div>
+      <div class="hint" style="margin-top:12px" id="export-dir"></div>
+      <div id="last-file" style="margin-top:8px"></div>
     </div>
   </div>
 </section>
 
-<!-- ============================ ARCHIWUM ============================ -->
-<section class="panel" id="panel-archiwum">
-  <div class="dwie">
-    <div class="karta">
-      <h2>Korpus pobranych stron</h2>
-      <div class="opis">Raz pobrane strony zostają lokalnie. Kolejne kwerendy możesz puszczać
-        na korpusie — bez jednego zapytania do cudzego serwera.</div>
-      <div id="tabela-korpusu"></div>
+<!-- ============================ ARCHIVE ============================ -->
+<section class="panel" id="panel-archive">
+  <div class="two">
+    <div class="card">
+      <h2>Downloaded corpus</h2>
+      <div class="desc">Pages you have fetched stay here. Later searches can run against
+        the corpus — without a single request to anybody's server.</div>
+      <div id="corpus-table"></div>
     </div>
-    <div class="karta">
-      <h2>Historia przebiegów</h2>
-      <div id="tabela-przebiegow"></div>
+    <div class="card">
+      <h2>Previous runs</h2>
+      <div id="runs-table"></div>
     </div>
   </div>
 </section>
 
-<!-- ============================ POMOC ============================ -->
-<section class="panel" id="panel-pomoc">
-  <div class="karta" style="max-width:860px">
-    <h2>Ściąga ze składni</h2>
-    <table>
-      <tbody id="tabela-sciagi"></tbody>
-    </table>
+<!-- ============================ HELP ============================ -->
+<section class="panel" id="panel-help">
+  <div class="card" style="max-width:900px">
+    <h2>Query syntax</h2>
+    <table><tbody id="cheatsheet"></tbody></table>
   </div>
 </section>
 
 </main>
 
 <div id="toast"></div>
-<div class="modal" id="modal"><div class="tresc" id="modal-tresc"></div></div>
+<div class="modal" id="modal"><div class="inner" id="modal-inner"></div></div>
 
 <script>
 "use strict";
@@ -420,271 +424,334 @@ const $$ = (s, k) => Array.from((k || document).querySelectorAll(s));
 const esc = t => String(t == null ? "" : t).replace(/[&<>"]/g, z =>
   ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[z]));
 
-let TRAFIENIA = [], ODZNACZONE = new Set(), PRZEBIEG = null, ODCZYTANO_DZIENNIK = 0;
-let WYKLUCZONE = new Set(), SONDA = null;
+let HITS = [], UNSELECTED = new Set(), RUN = null, LOG_READ = 0;
+let EXCLUDED = new Set(), POLL = null, LANGUAGES = [], LANG_ON = new Set();
 
-/* ---------------------------------------------------------------- API */
-async function api(sciezka, dane) {
-  const opcje = dane === undefined ? {} :
-    {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(dane)};
-  const odp = await fetch("/api/" + sciezka, opcje);
-  const wynik = await odp.json().catch(() => ({blad: "błędna odpowiedź serwera"}));
-  if (wynik.blad) throw new Error(wynik.blad);
-  return wynik;
+async function api(path, body) {
+  const opts = body === undefined ? {} :
+    {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)};
+  const res = await fetch("/api/" + path, opts);
+  const out = await res.json().catch(() => ({error: "bad server response"}));
+  if (out.error) throw new Error(out.error);
+  return out;
 }
-function toast(tekst, rodzaj) {
+function toast(text, kind) {
   const el = document.createElement("div");
-  el.className = "toast " + (rodzaj || "");
-  el.textContent = tekst;
+  el.className = "toast " + (kind || "");
+  el.textContent = text;
   $("#toast").appendChild(el);
-  setTimeout(() => el.remove(), rodzaj === "blad" ? 9000 : 4500);
+  setTimeout(() => el.remove(), kind === "err" ? 9000 : 4500);
 }
 
-/* ------------------------------------------------------------ zakładki */
 $$("nav button").forEach(b => b.onclick = () => {
-  $$("nav button").forEach(x => x.classList.remove("aktywna"));
-  b.classList.add("aktywna");
-  $$(".panel").forEach(p => p.classList.remove("widoczny"));
-  $("#panel-" + b.dataset.panel).classList.add("widoczny");
+  $$("nav button").forEach(x => x.classList.remove("active"));
+  b.classList.add("active");
+  $$(".panel").forEach(p => p.classList.remove("visible"));
+  $("#panel-" + b.dataset.panel).classList.add("visible");
 });
 
-/* -------------------------------------------------------------- źródła */
-const TRYBY = [["auto","auto — wykryj sam"],["wordpress","REST API WordPressa"],
-  ["sitemap","mapa strony (sitemap)"],["rss","kanał RSS"],["szukajka","wyszukiwarka HTML"],
-  ["crawl","przejście po linkach"],["lista","konkretne adresy"],["korpus","pobrany korpus"]];
+/* -------------------------------------------------------------- sources */
+const MODES = [["auto","auto — detect"],["wordpress","WordPress REST API"],
+  ["drupal","Drupal JSON:API"],["sitemap","sitemap"],["rss","RSS feed"],
+  ["search","site search"],["listing","archive listing"],["crawl","follow links"],
+  ["urls","specific addresses"],["corpus","downloaded corpus"]];
 
-function dodajZrodlo(z) {
-  z = z || {};
+function addSource(s) {
+  s = s || {};
   const el = document.createElement("div");
-  el.className = "zrodlo";
+  el.className = "source";
   el.innerHTML = `
-    <div class="glowa">
-      <input type="text" class="z-url" placeholder="https://solidarnosc.przyklad.pl" value="${esc(z.url||"")}">
-      <select class="z-tryb">${TRYBY.map(([w,o]) =>
-        `<option value="${w}"${(z.tryb||"auto")===w?" selected":""}>${o}</option>`).join("")}</select>
-      <button class="btn mini z-usun" title="usuń">✕</button>
+    <div class="head">
+      <input type="text" class="s-url" placeholder="https://example.com" value="${esc(s.url||"")}">
+      <select class="s-mode">${MODES.map(([v,l]) =>
+        `<option value="${v}"${(s.mode||"auto")===v?" selected":""}>${l}</option>`).join("")}</select>
+      <button class="btn mini s-del" title="remove">✕</button>
     </div>
-    <details style="margin-top:6px"><summary>szczegóły źródła</summary>
-      <div class="rzad" style="margin-top:8px">
-        <div class="pole"><label>Nazwa (do przypisu)</label>
-          <input type="text" class="z-nazwa" value="${esc(z.nazwa||"")}" placeholder="np. Region Mazowsze NSZZ „S”"></div>
-        <div class="pole"><label>Tagi tego źródła</label>
-          <input type="text" class="z-tagi" value="${esc((z.tagi||[]).join(", "))}" placeholder="Mazowsze, Polska"></div>
+    <details style="margin-top:6px"><summary>site details</summary>
+      <div class="row" style="margin-top:8px">
+        <div class="field"><label>Name (used in the citation)</label>
+          <input type="text" class="s-name" value="${esc(s.name||"")}" placeholder="e.g. Gazeta Wyborcza"></div>
+        <div class="field"><label>Tags for this site</label>
+          <input type="text" class="s-tags" value="${esc((s.tags||[]).join(", "))}" placeholder="Poland, press"></div>
+        <div class="field"><label>Language hint</label>
+          <input type="text" class="s-lang" value="${esc(s.language||"")}" placeholder="pl / en / de / ru / uk"></div>
       </div>
-      <div class="rzad">
-        <div class="pole"><label>Rok od</label><input type="number" class="z-od" value="${z.od_roku||""}"></div>
-        <div class="pole"><label>Rok do</label><input type="number" class="z-do" value="${z.do_roku||""}"></div>
-        <div class="pole"><label>Okno w roku (MM-DD:MM-DD)</label>
-          <input type="text" class="z-okno" value="${esc(z.okno_dat||"")}" placeholder="04-25:05-05"></div>
+      <div class="row">
+        <div class="field"><label>Year from</label><input type="number" class="s-from" value="${s.year_from||""}"></div>
+        <div class="field"><label>Year to</label><input type="number" class="s-to" value="${s.year_to||""}"></div>
+        <div class="field"><label>Window each year (MM-DD:MM-DD)</label>
+          <input type="text" class="s-window" value="${esc(s.date_window||"")}" placeholder="04-25:05-05"></div>
       </div>
-      <div class="rzad">
-        <div class="pole"><label>Maks. stron paginacji</label>
-          <input type="number" class="z-maxstron" value="${z.max_stron||30}"></div>
-        <div class="pole"><label>Maks. adresów</label>
-          <input type="number" class="z-maxurl" value="${z.max_url||1500}"></div>
-        <div class="pole"><label>Adresy muszą pasować (regex)</label>
-          <input type="text" class="z-wzorzec" value="${esc(z.wzorzec_url||"")}" placeholder="/20\\d\\d/"></div>
+      <div class="row">
+        <div class="field"><label>Max pages of pagination</label>
+          <input type="number" class="s-maxpages" value="${s.max_pages||30}"></div>
+        <div class="field"><label>Max addresses</label>
+          <input type="number" class="s-maxurls" value="${s.max_urls||1500}"></div>
+        <div class="field"><label>Addresses must match (regex)</label>
+          <input type="text" class="s-pattern" value="${esc(s.url_pattern||"")}" placeholder="/20\\d\\d/"></div>
       </div>
-      <label class="check"><input type="checkbox" class="z-pelne"${z.pelne_przemiatanie?" checked":""}>
-        Przemieć całe archiwum zamiast ufać wyszukiwarce serwisu (wolniej, pewniej)</label>
-      <div class="pole" style="margin-top:6px"><label>Konkretne adresy (tryb „lista”), po jednym w wierszu</label>
-        <textarea class="z-lista" style="min-height:52px">${esc((z.lista_url||[]).join("\n"))}</textarea></div>
+      <label class="check"><input type="checkbox" class="s-sweep"${s.full_sweep?" checked":""}>
+        Sweep the whole archive instead of trusting the site's search (slower, surer)</label>
+
+      <div class="row" style="margin-top:8px">
+        <div class="field"><label>Search template — <code>{q}</code>, <code>{page}</code></label>
+          <input type="text" class="s-search" value="${esc(s.search_url||"")}"
+                 placeholder="https://example.com/search?q={q}&amp;page={page}"></div>
+        <div class="field"><label>Listing template — <code>{page}</code>, <code>{year}</code></label>
+          <input type="text" class="s-listing" value="${esc(s.listing_url||"")}"
+                 placeholder="https://example.com/archive/{year}/{page}"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>CSS selector for result links</label>
+          <input type="text" class="s-linksel" value="${esc(s.link_selector||"")}" placeholder="article h2 a"></div>
+        <div class="field"><label>CSS selector for “next page”</label>
+          <input type="text" class="s-nextsel" value="${esc(s.next_selector||"")}" placeholder="a.next"></div>
+        <div class="field"><label>First page number</label>
+          <input type="number" class="s-firstpage" value="${s.first_page==null?1:s.first_page}"></div>
+      </div>
+      <div class="field"><label>Specific addresses (mode “specific addresses”), one per line</label>
+        <textarea class="s-urls" style="min-height:52px">${esc((s.urls||[]).join("\n"))}</textarea></div>
+
+      <details><summary>Sign in with your own account</summary>
+        <div class="note">For material your own subscription covers. Kwerenda does not
+          get past paywalls, and nothing here disguises the client. Keep to the site's terms.</div>
+        <div class="row" style="margin-top:8px">
+          <div class="field"><label>Cookie header (copied from the browser)</label>
+            <input type="text" class="s-cookies" value="${esc(s.cookies||"")}" placeholder="sid=…; user=…"></div>
+          <div class="field"><label>cookies.txt file</label>
+            <input type="text" class="s-cookiefile" value="${esc(s.cookies_file||"")}" placeholder="/path/cookies.txt"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Read cookies from browser</label>
+            <input type="text" class="s-browser" value="${esc(s.browser_cookies||"")}" placeholder="firefox / chrome"></div>
+          <div class="field"><label>HTTP basic auth</label>
+            <input type="text" class="s-basic" value="${esc(s.basic_auth||"")}" placeholder="user:password"></div>
+        </div>
+      </details>
     </details>`;
-  $(".z-usun", el).onclick = () => el.remove();
-  $("#zrodla").appendChild(el);
+  $(".s-del", el).onclick = () => el.remove();
+  $("#sources").appendChild(el);
   return el;
 }
-$("#dodaj-zrodlo").onclick = () => dodajZrodlo({});
-$("#dodaj-korpus").onclick = () => dodajZrodlo({tryb: "korpus", nazwa: "Pobrany korpus"});
+$("#add-source").onclick = () => addSource({});
+$("#add-corpus").onclick = () => addSource({mode: "corpus", name: "Downloaded corpus"});
 
-function czytajZrodla() {
-  return $$(".zrodlo").map(el => ({
-    url: $(".z-url", el).value.trim(),
-    nazwa: $(".z-nazwa", el).value.trim(),
-    tryb: $(".z-tryb", el).value,
-    tagi: $(".z-tagi", el).value.split(",").map(t => t.trim()).filter(Boolean),
-    od_roku: parseInt($(".z-od", el).value) || null,
-    do_roku: parseInt($(".z-do", el).value) || null,
-    okno_dat: $(".z-okno", el).value.trim(),
-    max_stron: parseInt($(".z-maxstron", el).value) || 30,
-    max_url: parseInt($(".z-maxurl", el).value) || 1500,
-    wzorzec_url: $(".z-wzorzec", el).value.trim(),
-    pelne_przemiatanie: $(".z-pelne", el).checked,
-    lista_url: $(".z-lista", el).value.split("\n").map(t => t.trim()).filter(Boolean),
-  })).filter(z => z.url || z.tryb === "korpus" || z.lista_url.length);
+function readSources() {
+  return $$(".source").map(el => {
+    const v = s => ($(s, el) ? $(s, el).value.trim() : "");
+    const n = s => parseInt(v(s)) || null;
+    return {
+      url: v(".s-url"), name: v(".s-name"), mode: $(".s-mode", el).value,
+      language: v(".s-lang"),
+      tags: v(".s-tags").split(",").map(t => t.trim()).filter(Boolean),
+      year_from: n(".s-from"), year_to: n(".s-to"), date_window: v(".s-window"),
+      max_pages: n(".s-maxpages") || 30, max_urls: n(".s-maxurls") || 1500,
+      url_pattern: v(".s-pattern"), full_sweep: $(".s-sweep", el).checked,
+      search_url: v(".s-search"), listing_url: v(".s-listing"),
+      link_selector: v(".s-linksel"), next_selector: v(".s-nextsel"),
+      first_page: n(".s-firstpage") || 1,
+      urls: $(".s-urls", el).value.split("\n").map(t => t.trim()).filter(Boolean),
+      cookies: v(".s-cookies"), cookies_file: v(".s-cookiefile"),
+      browser_cookies: v(".s-browser"), basic_auth: v(".s-basic"),
+    };
+  }).filter(s => s.url || s.mode === "corpus" || s.urls.length);
 }
 
-/* --------------------------------------------------------- konfiguracja */
-function zbierzKonfig() {
-  const licz = id => parseFloat($("#" + id).value) || 0;
+/* --------------------------------------------------------- configuration */
+function collectConfig() {
+  const num = id => parseFloat($("#" + id).value) || 0;
   return {
-    nazwa: $("#nazwa").value || "Kwerenda",
-    zapytanie: $("#zapytanie").value,
-    domyslny_operator: $("#domyslny_operator").value,
-    tryb_fleksji: $("#tryb_fleksji").value,
-    bez_ogonkow: $("#bez_ogonkow").checked,
-    wykluczone_formy: Array.from(WYKLUCZONE),
-    zrodla: czytajZrodla(),
-    kontakt: $("#kontakt").value,
-    opoznienie: licz("opoznienie"),
-    watki: licz("watki") || 2,
-    respektuj_robots: $("#respektuj_robots").checked,
-    uzyj_cache: $("#uzyj_cache").checked,
-    limit_kandydatow: licz("limit_kandydatow") || 4000,
-    limit_trafien: licz("limit_trafien") || 1000,
-    okno_cytatu: licz("okno_cytatu") || 220,
-    typ_zotero: $("#typ_zotero").value,
-    tagi_dodatkowe: $("#tagi_dodatkowe").value.split(",").map(t => t.trim()).filter(Boolean),
-    tag_z_terminow: $("#tag_z_terminow").checked,
-    tag_z_roku: $("#tag_z_roku").checked,
-    tag_z_domeny: $("#tag_z_domeny").checked,
-    tagi_z_wp: $("#tagi_z_wp").checked,
-    od_roku: parseInt($("#od_roku").value) || null,
-    do_roku: parseInt($("#do_roku").value) || null,
+    name: $("#name").value || "Search",
+    query: $("#query").value,
+    default_operator: $("#default_operator").value,
+    languages: Array.from(LANG_ON),
+    expand_all: $("#expand_all").checked,
+    ignore_diacritics: $("#ignore_diacritics").checked,
+    excluded_forms: Array.from(EXCLUDED),
+    sources: readSources(),
+    contact: $("#contact").value,
+    delay: num("delay"),
+    threads: num("threads") || 2,
+    respect_robots: $("#respect_robots").checked,
+    use_cache: $("#use_cache").checked,
+    detect_language: $("#detect_language").checked,
+    max_candidates: num("max_candidates") || 4000,
+    max_hits: num("max_hits") || 1000,
+    snippet_window: num("snippet_window") || 220,
+    zotero_type: $("#zotero_type").value,
+    extra_tags: $("#extra_tags").value.split(",").map(t => t.trim()).filter(Boolean),
+    tag_from_terms: $("#tag_from_terms").checked,
+    tag_from_year: $("#tag_from_year").checked,
+    tag_from_domain: $("#tag_from_domain").checked,
+    tag_from_cms: $("#tag_from_cms").checked,
+    tag_from_language: $("#tag_from_language").checked,
+    year_from: parseInt($("#year_from").value) || null,
+    year_to: parseInt($("#year_to").value) || null,
   };
 }
-function wstawKonfig(k) {
-  if (!k || !Object.keys(k).length) return;
-  const ustaw = (id, w) => { if (w !== undefined && w !== null && $("#" + id)) $("#" + id).value = w; };
-  const znacz = (id, w) => { if ($("#" + id)) $("#" + id).checked = !!w; };
-  ustaw("nazwa", k.nazwa); ustaw("zapytanie", k.zapytanie);
-  ustaw("domyslny_operator", k.domyslny_operator); ustaw("tryb_fleksji", k.tryb_fleksji);
-  ustaw("kontakt", k.kontakt); ustaw("opoznienie", k.opoznienie); ustaw("watki", k.watki);
-  ustaw("limit_kandydatow", k.limit_kandydatow); ustaw("limit_trafien", k.limit_trafien);
-  ustaw("okno_cytatu", k.okno_cytatu); ustaw("typ_zotero", k.typ_zotero);
-  ustaw("tagi_dodatkowe", (k.tagi_dodatkowe || []).join(", "));
-  ustaw("od_roku", k.od_roku || ""); ustaw("do_roku", k.do_roku || "");
-  znacz("bez_ogonkow", k.bez_ogonkow); znacz("respektuj_robots", k.respektuj_robots !== false);
-  znacz("uzyj_cache", k.uzyj_cache !== false); znacz("tag_z_terminow", k.tag_z_terminow !== false);
-  znacz("tag_z_roku", k.tag_z_roku !== false); znacz("tag_z_domeny", k.tag_z_domeny !== false);
-  znacz("tagi_z_wp", k.tagi_z_wp !== false);
-  WYKLUCZONE = new Set(k.wykluczone_formy || []);
-  $("#zrodla").innerHTML = "";
-  (k.zrodla && k.zrodla.length ? k.zrodla : [{}]).forEach(dodajZrodlo);
-  podgladZDebounce();
+function applyConfig(c) {
+  if (!c || !Object.keys(c).length) return;
+  const set = (id, v) => { if (v !== undefined && v !== null && $("#" + id)) $("#" + id).value = v; };
+  const chk = (id, v) => { if ($("#" + id)) $("#" + id).checked = !!v; };
+  set("name", c.name); set("query", c.query); set("default_operator", c.default_operator);
+  set("contact", c.contact); set("delay", c.delay); set("threads", c.threads);
+  set("max_candidates", c.max_candidates); set("max_hits", c.max_hits);
+  set("snippet_window", c.snippet_window); set("zotero_type", c.zotero_type);
+  set("extra_tags", (c.extra_tags || []).join(", "));
+  set("year_from", c.year_from || ""); set("year_to", c.year_to || "");
+  chk("expand_all", c.expand_all); chk("ignore_diacritics", c.ignore_diacritics);
+  chk("respect_robots", c.respect_robots !== false); chk("use_cache", c.use_cache !== false);
+  chk("detect_language", c.detect_language !== false);
+  chk("tag_from_terms", c.tag_from_terms !== false); chk("tag_from_year", c.tag_from_year !== false);
+  chk("tag_from_domain", c.tag_from_domain !== false); chk("tag_from_cms", c.tag_from_cms !== false);
+  chk("tag_from_language", c.tag_from_language !== false);
+  EXCLUDED = new Set(c.excluded_forms || []);
+  if (c.languages && c.languages.length) { LANG_ON = new Set(c.languages); drawLanguages(); }
+  $("#sources").innerHTML = "";
+  (c.sources && c.sources.length ? c.sources : [{}]).forEach(addSource);
+  previewSoon();
 }
 
-/* ------------------------------------------------------------- podgląd */
-let czasomierz = null;
-const podgladZDebounce = () => { clearTimeout(czasomierz); czasomierz = setTimeout(podglad, 350); };
+function drawLanguages() {
+  $("#languages").innerHTML = LANGUAGES.map(l =>
+    `<label class="check"><input type="checkbox" data-lang="${l.code}"${
+      LANG_ON.has(l.code) ? " checked" : ""}> ${esc(l.name)}</label>`).join("");
+  $$("#languages input").forEach(el => el.onchange = () => {
+    el.checked ? LANG_ON.add(el.dataset.lang) : LANG_ON.delete(el.dataset.lang);
+    previewSoon();
+  });
+}
 
-async function podglad() {
-  let wynik;
+/* ------------------------------------------------------------- preview */
+let timer = null;
+const previewSoon = () => { clearTimeout(timer); timer = setTimeout(preview, 350); };
+
+async function preview() {
+  let out;
   try {
-    wynik = await api("podglad", {
-      zapytanie: $("#zapytanie").value,
-      tryb_fleksji: $("#tryb_fleksji").value,
-      bez_ogonkow: $("#bez_ogonkow").checked,
-      domyslny_operator: $("#domyslny_operator").value,
-      wykluczone_formy: Array.from(WYKLUCZONE),
-      probka: $("#probka").value,
+    out = await api("preview", {
+      query: $("#query").value,
+      languages: Array.from(LANG_ON),
+      expand_all: $("#expand_all").checked,
+      ignore_diacritics: $("#ignore_diacritics").checked,
+      default_operator: $("#default_operator").value,
+      excluded_forms: Array.from(EXCLUDED),
+      sample: $("#sample").value,
     });
   } catch (e) {
-    $("#opis-zapytania").innerHTML = `<span style="color:var(--akcent)">✕ ${esc(e.message)}</span>`;
-    $("#podglad-terminow").innerHTML = "";
+    $("#query-desc").innerHTML = `<span style="color:var(--accent)">✕ ${esc(e.message)}</span>`;
+    $("#term-preview").innerHTML = "";
     return;
   }
-  $("#opis-zapytania").textContent = "Zrozumiałem jako: " + wynik.opis;
-  $("#podglad-terminow").innerHTML = wynik.terminy.length ? wynik.terminy.map(t => `
-    <div class="termin">
-      <div class="naglowek"><b>${esc(t.tekst)}</b>
-        <span class="chip">${t.pole === "tresc" ? "treść" : esc(t.pole)}</span>
-        <span class="chip">${esc(t.tryb)}</span>
-        <span class="podtytul" style="margin-left:auto">${t.formy.length} form</span></div>
-      <div class="formy">${t.formy.map(f =>
-        `<span class="forma${WYKLUCZONE.has(f) ? " wykluczona" : ""}" data-forma="${esc(f)}">${esc(f)}</span>`
-        ).join("")}</div>
-      <details><summary>wyrażenie regularne</summary>
-        <code class="wzorzec">${esc(t.wzorzec)}</code></details>
-    </div>`).join("") : '<div class="podtytul">Puste zapytanie — zbiorę wszystko, co znajdę.</div>';
-  $$(".forma").forEach(el => el.onclick = () => {
-    const f = el.dataset.forma;
-    WYKLUCZONE.has(f) ? WYKLUCZONE.delete(f) : WYKLUCZONE.add(f);
-    podglad();
+  $("#query-desc").textContent = "Read as: " + out.description;
+  const LNAME = Object.fromEntries(LANGUAGES.map(l => [l.code, l.name]));
+  $("#term-preview").innerHTML = out.terms.length ? out.terms.map(t => {
+    const langs = Object.entries(t.forms || {});
+    const total = langs.reduce((a, [, f]) => a + f.length, 0);
+    return `<div class="term">
+      <div class="head"><b>${esc(t.text)}</b>
+        <span class="chip">${esc(t.field)}</span>
+        <span class="chip">${t.mode === "exact" ? "exact" : t.mode === "stem" ? "truncated **" : "inflected *"}</span>
+        <span class="sub" style="margin-left:auto">${total} forms</span></div>
+      ${t.mode === "exact" ? '<div class="hint">Exact match — add <code>*</code> to inflect it.</div>' :
+        langs.map(([code, forms]) => `<div class="lang-row">
+          <div class="lang-name">${esc(LNAME[code] || code)}</div>
+          <div class="forms">${forms.map(f =>
+            `<span class="form${EXCLUDED.has(f) ? " excluded" : ""}" data-form="${esc(f)}">${esc(f)}</span>`
+            ).join("")}</div></div>`).join("")}
+      <details><summary>regular expression</summary>
+        <code class="pattern">${esc(t.pattern)}</code></details>
+    </div>`;
+  }).join("") : '<div class="sub">Empty query — everything found will be collected.</div>';
+  $$(".form").forEach(el => el.onclick = () => {
+    const f = el.dataset.form;
+    EXCLUDED.has(f) ? EXCLUDED.delete(f) : EXCLUDED.add(f);
+    preview();
   });
-  const p = wynik.probka;
-  $("#wynik-probki").innerHTML = !p ? "" : p.pasuje
-    ? `<span style="color:var(--zieleń)">✓ pasuje</span> — formy: ${esc(p.formy.join(", "))}`
-    : `<span style="color:var(--akcent)">✕ ta próbka nie spełnia zapytania</span>`;
+  const s = out.sample;
+  $("#sample-result").innerHTML = !s ? "" : s.matches
+    ? `<span style="color:var(--green)">✓ matches</span> — forms: ${esc(s.forms.join(", "))}`
+       + (s.language ? ` · language guess: ${esc(s.language)}` : "")
+    : `<span style="color:var(--accent)">✕ this sample does not satisfy the query</span>`
+       + (s.language ? ` · language guess: ${esc(s.language)}` : "");
 }
-["zapytanie","tryb_fleksji","bez_ogonkow","domyslny_operator","probka"].forEach(id =>
-  $("#" + id).addEventListener("input", podgladZDebounce));
+["query","expand_all","ignore_diacritics","default_operator","sample"].forEach(id =>
+  $("#" + id).addEventListener("input", previewSoon));
 
-/* --------------------------------------------------------------- start */
+/* --------------------------------------------------------------- run */
 $("#start").onclick = async () => {
-  const konfig = zbierzKonfig();
-  if (!konfig.zrodla.length) return toast("Dodaj przynajmniej jedno źródło.", "blad");
+  const config = collectConfig();
+  if (!config.sources.length) return toast("Add at least one site.", "err");
   try {
-    const wynik = await api("start", {konfig});
-    PRZEBIEG = wynik.przebieg;
-    ODCZYTANO_DZIENNIK = 0;
-    $("#dziennik").innerHTML = "";
-    (wynik.uwagi || []).forEach(u => toast("⚠ " + u));
+    const out = await api("start", {config});
+    RUN = out.run; LOG_READ = 0;
+    $("#log").innerHTML = "";
+    (out.warnings || []).forEach(w => toast("⚠ " + w));
     $("#start").disabled = true; $("#stop").disabled = false;
-    if (!SONDA) SONDA = setInterval(sonduj, 700);
-    toast("Kwerenda ruszyła.", "ok");
-  } catch (e) { toast(e.message, "blad"); }
+    if (!POLL) POLL = setInterval(poll, 700);
+    toast("Search started.", "ok");
+  } catch (e) { toast(e.message, "err"); }
 };
-$("#stop").onclick = () => api("stop", {}).then(() => toast("Zatrzymuję…"));
+$("#stop").onclick = () => api("stop", {}).then(() => toast("Stopping…"));
 
-async function sonduj() {
+async function poll() {
   let s;
-  try { s = await api("postep?od=" + ODCZYTANO_DZIENNIK); } catch (e) { return; }
-  const p = s.postep || {};
-  const ustaw = (id, w) => $("#" + id).textContent = w == null ? "0" : w;
-  ustaw("l-kandydatow", p.kandydatow); ustaw("l-sprawdzonych", p.sprawdzonych);
-  ustaw("l-trafien", p.trafien); ustaw("l-pobran", p.pobran); ustaw("l-cache", p.z_cache);
-  $("#l-czas").textContent = Math.round(p.sekundy || 0) + "s";
-  if (s.dziennik && s.dziennik.length) {
-    ODCZYTANO_DZIENNIK = s.razem_dziennik;
-    const dz = $("#dziennik");
-    const przyKoncu = dz.scrollTop + dz.clientHeight >= dz.scrollHeight - 30;
-    dz.innerHTML += s.dziennik.map(w => {
-      const klasa = w.includes("✓") ? "traf" : w.includes("⚠") ? "uwaga" :
-                    (w.includes("!") || w.includes("✕")) ? "blad" : "";
-      return `<div class="${klasa}">${esc(w)}</div>`;
+  try { s = await api("progress?from=" + LOG_READ); } catch (e) { return; }
+  const p = s.progress || {};
+  const set = (id, v) => $("#" + id).textContent = v == null ? "0" : v;
+  set("c-candidates", p.candidates); set("c-checked", p.checked); set("c-hits", p.hits);
+  set("c-fetched", p.fetched); set("c-corpus", p.from_corpus);
+  $("#c-time").textContent = Math.round(p.seconds || 0) + "s";
+  if (s.log && s.log.length) {
+    LOG_READ = s.log_total;
+    const box = $("#log");
+    const atEnd = box.scrollTop + box.clientHeight >= box.scrollHeight - 30;
+    box.innerHTML += s.log.map(line => {
+      const cls = line.includes("✓") ? "hit" : line.includes("⚠") ? "warn" :
+                  (line.includes("!") || line.includes("✕")) ? "err" : "";
+      return `<div class="${cls}">${esc(line)}</div>`;
     }).join("");
-    if (przyKoncu) dz.scrollTop = dz.scrollHeight;
+    if (atEnd) box.scrollTop = box.scrollHeight;
   }
-  if (!s.trwa) {
-    clearInterval(SONDA); SONDA = null;
+  if (!s.running) {
+    clearInterval(POLL); POLL = null;
     $("#start").disabled = false; $("#stop").disabled = true;
-    await wczytajStan();
-    await wczytajTrafienia(s.przebieg || PRZEBIEG);
-    toast(`Gotowe: ${p.trafien || 0} trafień.`, "ok");
+    await loadState();
+    await loadHits(s.run || RUN);
+    toast(`Done: ${p.hits || 0} hits.`, "ok");
   }
 }
 
-/* -------------------------------------------------------------- wyniki */
-async function wczytajTrafienia(przebieg) {
-  const wynik = await api("trafienia" + (przebieg ? "?przebieg=" + przebieg : ""));
-  TRAFIENIA = wynik.trafienia;
-  ODZNACZONE = new Set(TRAFIENIA.filter(t => !t.wybrane).map(t => t.id));
-  const hosty = Array.from(new Set(TRAFIENIA.map(t => t.host))).sort();
-  const lata = Array.from(new Set(TRAFIENIA.map(t => (t.data || "").slice(0, 4)).filter(Boolean))).sort();
-  $("#filtr-host").innerHTML = '<option value="">wszystkie domeny</option>' +
-    hosty.map(h => `<option>${esc(h)}</option>`).join("");
-  $("#filtr-rok").innerHTML = '<option value="">wszystkie lata</option>' +
-    lata.map(r => `<option>${esc(r)}</option>`).join("");
-  rysujTabele();
+/* ------------------------------------------------------------- results */
+async function loadHits(run) {
+  const out = await api("hits" + (run ? "?run=" + run : ""));
+  HITS = out.hits;
+  UNSELECTED = new Set(HITS.filter(h => !h.selected).map(h => h.id));
+  const fill = (id, values, label) => $("#" + id).innerHTML =
+    `<option value="">${label}</option>` + values.map(v => `<option>${esc(v)}</option>`).join("");
+  fill("filter-host", Array.from(new Set(HITS.map(h => h.host))).sort(), "all domains");
+  fill("filter-year", Array.from(new Set(HITS.map(h => (h.date||"").slice(0,4)).filter(Boolean))).sort(), "all years");
+  fill("filter-language", Array.from(new Set(HITS.map(h => h.language).filter(Boolean))).sort(), "all languages");
+  drawTable();
 }
 
-function widoczne() {
-  const szukaj = $("#filtr").value.toLowerCase();
-  const host = $("#filtr-host").value, rok = $("#filtr-rok").value;
-  return TRAFIENIA.filter(t => {
-    if (host && t.host !== host) return false;
-    if (rok && (t.data || "").slice(0, 4) !== rok) return false;
-    if (!szukaj) return true;
-    const kupa = [t.tytul, t.serwis, (t.tagi || []).join(" "), (t.autorzy || []).join(" "),
-                  (t.cytaty || []).map(c => c.fragment).join(" ")].join(" ").toLowerCase();
-    return kupa.includes(szukaj);
+function visible() {
+  const q = $("#filter").value.toLowerCase();
+  const host = $("#filter-host").value, year = $("#filter-year").value,
+        lang = $("#filter-language").value;
+  return HITS.filter(h => {
+    if (host && h.host !== host) return false;
+    if (year && (h.date || "").slice(0, 4) !== year) return false;
+    if (lang && h.language !== lang) return false;
+    if (!q) return true;
+    return [h.title, h.site, (h.tags||[]).join(" "), (h.authors||[]).join(" "),
+            (h.quotes||[]).map(c => c.text).join(" ")].join(" ").toLowerCase().includes(q);
   });
 }
 
-function podswietl(fragment, formy) {
-  let html = esc(fragment);
-  (formy || []).forEach(f => {
+function highlight(text, forms) {
+  let html = esc(text);
+  (forms || []).forEach(f => {
     if (!f) return;
     html = html.replace(new RegExp("(" + f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi"),
                         "<mark>$1</mark>");
@@ -692,245 +759,248 @@ function podswietl(fragment, formy) {
   return html;
 }
 
-function rysujTabele() {
-  const lista = widoczne();
-  const ciało = $("#tabela tbody");
-  $("#pusto-wyniki").style.display = lista.length ? "none" : "block";
-  $("#tabela").style.display = lista.length ? "table" : "none";
-  $("#licznik-wynikow").textContent = TRAFIENIA.length ? `(${TRAFIENIA.length})` : "";
-  $("#podsumowanie-wynikow").textContent =
-    `${lista.length} z ${TRAFIENIA.length} • zaznaczonych: ${lista.filter(t => !ODZNACZONE.has(t.id)).length}`;
-  ciało.innerHTML = lista.map(t => `
-    <tr data-id="${t.id}" class="${ODZNACZONE.has(t.id) ? "odznaczony" : ""}">
-      <td><input type="checkbox" class="wybor" ${ODZNACZONE.has(t.id) ? "" : "checked"}></td>
-      <td class="tytul-kom">
-        <a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.tytul || t.url)}</a>
-        ${(t.cytaty || []).slice(0, 2).map(c =>
-          `<div class="cytat">${c.pole && c.pole !== "tekst"
-            ? `<span class="tag">${esc(c.pole)}</span> ` : ""}${podswietl(c.fragment, c.formy)}</div>`
+function drawTable() {
+  const list = visible();
+  $("#results-empty").style.display = list.length ? "none" : "block";
+  $("#table").style.display = list.length ? "table" : "none";
+  $("#result-count").textContent = HITS.length ? `(${HITS.length})` : "";
+  const summary = () => $("#results-summary").textContent =
+    `${list.length} of ${HITS.length} • selected: ${list.filter(h => !UNSELECTED.has(h.id)).length}`;
+  summary();
+  $("#table tbody").innerHTML = list.map(h => `
+    <tr data-id="${h.id}" class="${UNSELECTED.has(h.id) ? "unselected" : ""}">
+      <td><input type="checkbox" class="pick" ${UNSELECTED.has(h.id) ? "" : "checked"}></td>
+      <td class="title-cell">
+        <a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.title || h.url)}</a>
+        ${(h.quotes || []).slice(0, 2).map(c =>
+          `<div class="quote">${c.field && c.field !== "text"
+            ? `<span class="tag">${esc(c.field)}</span> ` : ""}${highlight(c.text, c.forms)}</div>`
           ).join("")}
-        <div class="tagi" style="margin-top:6px">${(t.tagi || []).map(g =>
-          `<span class="tag">${esc(g)}</span>`).join("")}</div>
+        <div class="tags" style="margin-top:6px">${(h.tags || []).map(t =>
+          `<span class="tag">${esc(t)}</span>`).join("")}</div>
       </td>
-      <td class="meta-kom">${esc(t.data || "—")}</td>
-      <td class="meta-kom">${esc(t.serwis || "")}<br>${esc((t.autorzy || []).join(", "))}</td>
-      <td class="meta-kom">${esc(t.citekey || "")}</td>
-      <td><button class="btn mini edytuj">edytuj</button></td>
+      <td class="meta-cell">${esc(h.date || "—")}</td>
+      <td class="meta-cell">${esc(h.site || "")}<br>${esc((h.authors || []).join(", "))}</td>
+      <td class="meta-cell">${esc(h.citekey || "")}</td>
+      <td><button class="btn mini edit">edit</button></td>
     </tr>`).join("");
-  $$("#tabela tbody .wybor").forEach(el => el.onchange = async () => {
+  $$("#table tbody .pick").forEach(el => el.onchange = async () => {
     const id = parseInt(el.closest("tr").dataset.id);
-    el.checked ? ODZNACZONE.delete(id) : ODZNACZONE.add(id);
-    el.closest("tr").classList.toggle("odznaczony", !el.checked);
-    await api("trafienie", {id, wybrane: el.checked ? 1 : 0});
-    $("#podsumowanie-wynikow").textContent =
-      `${lista.length} z ${TRAFIENIA.length} • zaznaczonych: ${lista.filter(t => !ODZNACZONE.has(t.id)).length}`;
+    el.checked ? UNSELECTED.delete(id) : UNSELECTED.add(id);
+    el.closest("tr").classList.toggle("unselected", !el.checked);
+    await api("hit", {id, selected: el.checked});
+    summary();
   });
-  $$("#tabela tbody .edytuj").forEach(el => el.onclick = () =>
-    edytuj(parseInt(el.closest("tr").dataset.id)));
+  $$("#table tbody .edit").forEach(el => el.onclick = () =>
+    edit(parseInt(el.closest("tr").dataset.id)));
 }
-["filtr","filtr-host","filtr-rok"].forEach(id => $("#" + id).addEventListener("input", rysujTabele));
-$("#wybor-przebiegu").onchange = e => wczytajTrafienia(e.target.value);
-$("#check-wszystkie").onchange = e =>
-  e.target.checked ? $("#zaznacz-wszystkie").click() : $("#odznacz-wszystkie").click();
-$("#zaznacz-wszystkie").onclick = async () => {
-  for (const t of widoczne()) { ODZNACZONE.delete(t.id); await api("trafienie", {id: t.id, wybrane: 1}); }
-  rysujTabele();
+["filter","filter-host","filter-year","filter-language"].forEach(id =>
+  $("#" + id).addEventListener("input", drawTable));
+$("#run-picker").onchange = e => loadHits(e.target.value);
+$("#check-all").onchange = e =>
+  e.target.checked ? $("#select-all").click() : $("#deselect-all").click();
+$("#select-all").onclick = async () => {
+  for (const h of visible()) { UNSELECTED.delete(h.id); await api("hit", {id: h.id, selected: true}); }
+  drawTable();
 };
-$("#odznacz-wszystkie").onclick = async () => {
-  for (const t of widoczne()) { ODZNACZONE.add(t.id); await api("trafienie", {id: t.id, wybrane: 0}); }
-  rysujTabele();
+$("#deselect-all").onclick = async () => {
+  for (const h of visible()) { UNSELECTED.add(h.id); await api("hit", {id: h.id, selected: false}); }
+  drawTable();
 };
-$("#usun-zaznaczone").onclick = async () => {
-  const ids = widoczne().filter(t => !ODZNACZONE.has(t.id)).map(t => t.id);
-  if (!ids.length || !confirm(`Usunąć ${ids.length} rekordów z wyników?`)) return;
-  await api("usun-trafienia", {ids});
-  await wczytajTrafienia($("#wybor-przebiegu").value);
+$("#delete-selected").onclick = async () => {
+  const ids = visible().filter(h => !UNSELECTED.has(h.id)).map(h => h.id);
+  if (!ids.length || !confirm(`Delete ${ids.length} records from the results?`)) return;
+  await api("delete-hits", {ids});
+  await loadHits($("#run-picker").value);
 };
 
-function edytuj(id) {
-  const t = TRAFIENIA.find(x => x.id === id);
-  if (!t) return;
-  $("#modal-tresc").innerHTML = `
-    <h2 style="font-family:var(--serif);margin-bottom:12px">Popraw przypis</h2>
-    <div class="pole"><label>Tytuł</label><input type="text" id="e-tytul" value="${esc(t.tytul)}"></div>
-    <div class="rzad">
-      <div class="pole"><label>Data (RRRR-MM-DD)</label><input type="text" id="e-data" value="${esc(t.data)}"></div>
-      <div class="pole"><label>Citekey</label><input type="text" id="e-citekey" value="${esc(t.citekey)}"></div>
+function edit(id) {
+  const h = HITS.find(x => x.id === id);
+  if (!h) return;
+  $("#modal-inner").innerHTML = `
+    <h2 style="font-family:var(--serif);margin-bottom:12px">Correct the citation</h2>
+    <div class="field"><label>Title</label><input type="text" id="e-title" value="${esc(h.title)}"></div>
+    <div class="row">
+      <div class="field"><label>Date (YYYY-MM-DD)</label><input type="text" id="e-date" value="${esc(h.date)}"></div>
+      <div class="field"><label>Citekey</label><input type="text" id="e-citekey" value="${esc(h.citekey)}"></div>
+      <div class="field"><label>Language</label><input type="text" id="e-language" value="${esc(h.language)}"></div>
     </div>
-    <div class="rzad">
-      <div class="pole"><label>Autorzy (po przecinku)</label>
-        <input type="text" id="e-autorzy" value="${esc((t.autorzy||[]).join(", "))}"></div>
-      <div class="pole"><label>Serwis</label><input type="text" id="e-serwis" value="${esc(t.serwis)}"></div>
+    <div class="row">
+      <div class="field"><label>Authors (comma separated)</label>
+        <input type="text" id="e-authors" value="${esc((h.authors||[]).join(", "))}"></div>
+      <div class="field"><label>Site</label><input type="text" id="e-site" value="${esc(h.site)}"></div>
     </div>
-    <div class="pole"><label>Tagi (po przecinku)</label>
-      <input type="text" id="e-tagi" value="${esc((t.tagi||[]).join(", "))}"></div>
-    <div class="pole"><label>Notatka własna</label>
-      <textarea id="e-notatka">${esc(t.notatka||"")}</textarea></div>
-    <div class="przyciski"><button class="btn glowny" id="e-zapisz">Zapisz</button>
-      <button class="btn" id="e-anuluj">Anuluj</button>
-      <a class="btn" href="${esc(t.url)}" target="_blank" rel="noopener">otwórz stronę ↗</a></div>`;
-  $("#modal").classList.add("widoczny");
-  $("#e-anuluj").onclick = () => $("#modal").classList.remove("widoczny");
-  $("#e-zapisz").onclick = async () => {
-    await api("trafienie", {id,
-      tytul: $("#e-tytul").value, data: $("#e-data").value, citekey: $("#e-citekey").value,
-      serwis: $("#e-serwis").value,
-      autorzy: $("#e-autorzy").value.split(",").map(s => s.trim()).filter(Boolean),
-      tagi: $("#e-tagi").value.split(",").map(s => s.trim()).filter(Boolean),
-      notatka: $("#e-notatka").value});
-    $("#modal").classList.remove("widoczny");
-    await wczytajTrafienia($("#wybor-przebiegu").value);
-    toast("Zapisano.", "ok");
+    <div class="field"><label>Tags (comma separated)</label>
+      <input type="text" id="e-tags" value="${esc((h.tags||[]).join(", "))}"></div>
+    <div class="field"><label>My note</label><textarea id="e-note">${esc(h.note||"")}</textarea></div>
+    <div class="buttons"><button class="btn primary" id="e-save">Save</button>
+      <button class="btn" id="e-cancel">Cancel</button>
+      <a class="btn" href="${esc(h.url)}" target="_blank" rel="noopener">open the page ↗</a></div>`;
+  $("#modal").classList.add("visible");
+  $("#e-cancel").onclick = () => $("#modal").classList.remove("visible");
+  $("#e-save").onclick = async () => {
+    await api("hit", {id,
+      title: $("#e-title").value, date: $("#e-date").value, citekey: $("#e-citekey").value,
+      site: $("#e-site").value, language: $("#e-language").value,
+      authors: $("#e-authors").value.split(",").map(s => s.trim()).filter(Boolean),
+      tags: $("#e-tags").value.split(",").map(s => s.trim()).filter(Boolean),
+      note: $("#e-note").value});
+    $("#modal").classList.remove("visible");
+    await loadHits($("#run-picker").value);
+    toast("Saved.", "ok");
   };
 }
-$("#modal").onclick = e => { if (e.target.id === "modal") $("#modal").classList.remove("widoczny"); };
+$("#modal").onclick = e => { if (e.target.id === "modal") $("#modal").classList.remove("visible"); };
 
-/* ------------------------------------------------------------- eksport */
-function wybraneIds() {
-  return widoczne().filter(t => !ODZNACZONE.has(t.id)).map(t => t.id);
-}
+/* ------------------------------------------------------------- export */
+const selectedIds = () => visible().filter(h => !UNSELECTED.has(h.id)).map(h => h.id);
 $$("[data-format]").forEach(b => b.onclick = async () => {
-  const ids = wybraneIds();
-  if (!ids.length) return toast("Nie zaznaczono żadnych rekordów.", "blad");
+  const ids = selectedIds();
+  if (!ids.length) return toast("No records selected.", "err");
   try {
-    const w = await api("eksport", {format: b.dataset.format, ids,
-                                    typ_zotero: $("#typ_zotero").value});
-    if (!w.ok) return toast(w.komunikat, "blad");
-    toast(w.komunikat, "ok");
-    $("#ostatni-plik").innerHTML =
-      `<a class="btn" href="/api/plik?nazwa=${encodeURIComponent(w.nazwa)}" download>⬇ pobierz ${esc(w.nazwa)}</a>`;
-  } catch (e) { toast(e.message, "blad"); }
+    const out = await api("export", {format: b.dataset.format, ids,
+                                     zotero_type: $("#zotero_type").value});
+    if (!out.ok) return toast(out.message, "err");
+    toast(out.message, "ok");
+    $("#last-file").innerHTML =
+      `<a class="btn" href="/api/file?name=${encodeURIComponent(out.name)}" download>⬇ download ${esc(out.name)}</a>`;
+  } catch (e) { toast(e.message, "err"); }
 });
-$("#do-zotero").onclick = async () => {
-  const ids = wybraneIds();
-  if (!ids.length) return toast("Nie zaznaczono żadnych rekordów.", "blad");
-  toast("Wysyłam do Zotero…");
-  const w = await api("zotero", {tryb: "konektor", ids, typ_zotero: $("#typ_zotero").value});
-  toast(w.komunikat, w.ok ? "ok" : "blad");
-  (w.bledy || []).slice(0, 3).forEach(b => toast(b, "blad"));
+$("#to-zotero").onclick = async () => {
+  const ids = selectedIds();
+  if (!ids.length) return toast("No records selected.", "err");
+  toast("Sending to Zotero…");
+  const out = await api("zotero", {mode: "connector", ids, zotero_type: $("#zotero_type").value});
+  toast(out.message, out.ok ? "ok" : "err");
+  (out.errors || []).slice(0, 3).forEach(e => toast(e, "err"));
 };
-$("#do-zotero-api").onclick = async () => {
-  const ids = wybraneIds();
-  if (!ids.length) return toast("Nie zaznaczono żadnych rekordów.", "blad");
-  const w = await api("zotero", {tryb: "api", ids, klucz: $("#zot-klucz").value,
-    uzytkownik: $("#zot-uzytkownik").value, kolekcja: $("#zot-kolekcja").value,
-    typ_zotero: $("#typ_zotero").value});
-  toast(w.komunikat, w.ok ? "ok" : "blad");
+$("#to-zotero-api").onclick = async () => {
+  const ids = selectedIds();
+  if (!ids.length) return toast("No records selected.", "err");
+  const out = await api("zotero", {mode: "api", ids, key: $("#zot-key").value,
+    user: $("#zot-user").value, collection: $("#zot-collection").value,
+    zotero_type: $("#zotero_type").value});
+  toast(out.message, out.ok ? "ok" : "err");
 };
-$("#pobierz-kolekcje").onclick = async () => {
+$("#fetch-collections").onclick = async () => {
   try {
-    const w = await api(`zotero/kolekcje?klucz=${encodeURIComponent($("#zot-klucz").value)}` +
-                        `&uzytkownik=${encodeURIComponent($("#zot-uzytkownik").value)}`);
-    $("#zot-kolekcja").innerHTML = '<option value="">— biblioteka główna —</option>' +
-      w.kolekcje.map(k => `<option value="${esc(k.klucz)}">${esc(k.nazwa)}</option>`).join("");
-    toast(`Wczytano ${w.kolekcje.length} kolekcji.`, "ok");
-  } catch (e) { toast(e.message, "blad"); }
+    const out = await api(`zotero/collections?key=${encodeURIComponent($("#zot-key").value)}` +
+                          `&user=${encodeURIComponent($("#zot-user").value)}`);
+    $("#zot-collection").innerHTML = '<option value="">— main library —</option>' +
+      out.collections.map(c => `<option value="${esc(c.klucz)}">${esc(c.nazwa)}</option>`).join("");
+    toast(`Loaded ${out.collections.length} collections.`, "ok");
+  } catch (e) { toast(e.message, "err"); }
 };
 
-/* ------------------------------------------------------------- presety */
-$("#zapisz-preset").onclick = async () => {
-  const nazwa = prompt("Nazwa presetu:", $("#nazwa").value);
-  if (!nazwa) return;
-  await api("preset", {nazwa, konfig: zbierzKonfig()});
-  await wczytajStan();
-  toast("Preset zapisany.", "ok");
+/* ------------------------------------------------------------- presets */
+$("#save-preset").onclick = async () => {
+  const name = prompt("Preset name:", $("#name").value);
+  if (!name) return;
+  await api("preset", {name, config: collectConfig()});
+  await loadState();
+  toast("Preset saved.", "ok");
 };
-$("#usun-preset").onclick = async () => {
-  const nazwa = $("#presety").value;
-  if (!nazwa || !confirm(`Usunąć preset „${nazwa}”?`)) return;
-  await api("preset/usun", {nazwa});
-  await wczytajStan();
+$("#delete-preset").onclick = async () => {
+  const name = $("#presets").value;
+  if (!name || !confirm(`Delete preset “${name}”?`)) return;
+  await api("preset/delete", {name});
+  await loadState();
 };
 
-/* ---------------------------------------------------------------- stan */
-async function wczytajStan() {
-  const s = await api("stan");
-  $("#chip-wersja").textContent = "v" + s.wersja;
+/* ---------------------------------------------------------------- state */
+async function loadState() {
+  const s = await api("state");
+  $("#chip-version").textContent = "v" + s.version;
   const z = s.zotero || {};
-  $("#chip-zotero").textContent = z.konektor ? "Zotero: połączone" : "Zotero: nieuruchomione";
-  $("#chip-zotero").className = "chip " + (z.konektor ? "ok" : "zle");
-  $("#stan-zotero").textContent = z.komunikat || "";
-  const stron = (s.korpus || []).reduce((a, k) => a + k.ile, 0);
-  $("#chip-korpus").textContent = `korpus: ${stron} stron`;
-  $("#sciezka-eksportu").textContent = "Pliki lądują w: " + s.katalog_eksportu;
+  $("#chip-zotero").textContent = z.connector ? "Zotero: connected" : "Zotero: not running";
+  $("#chip-zotero").className = "chip " + (z.connector ? "ok" : "off");
+  $("#zotero-state").textContent = z.message || "";
+  const pages = (s.corpus || []).reduce((a, c) => a + c.pages, 0);
+  $("#chip-corpus").textContent = `corpus: ${pages} pages`;
+  $("#export-dir").textContent = "Files are written to: " + s.export_dir;
 
-  $("#presety").innerHTML = '<option value="">— wczytaj preset —</option>' +
-    (s.presety || []).map(p => `<option value="${esc(p.nazwa)}">${esc(p.nazwa)}</option>`).join("");
-  $("#presety").onchange = e => {
-    const p = (s.presety || []).find(x => x.nazwa === e.target.value);
-    if (p) { wstawKonfig(p.konfig); toast(`Wczytano preset „${p.nazwa}”.`); }
+  if (!LANGUAGES.length) {
+    LANGUAGES = s.languages || [];
+    if (!LANG_ON.size) LANGUAGES.forEach(l => LANG_ON.add(l.code));
+    drawLanguages();
+  }
+
+  $("#presets").innerHTML = '<option value="">— load a preset —</option>' +
+    (s.presets || []).map(p => `<option value="${esc(p.name)}">${esc(p.name)}</option>`).join("");
+  $("#presets").onchange = e => {
+    const p = (s.presets || []).find(x => x.name === e.target.value);
+    if (p) { applyConfig(p.config); toast(`Loaded preset “${p.name}”.`); }
   };
 
-  const biezacy = $("#wybor-przebiegu").value;
-  $("#wybor-przebiegu").innerHTML = (s.przebiegi || []).map(p =>
-    `<option value="${p.id}">#${p.id} ${esc(p.nazwa)} — ${p.trafien} traf. (${esc(p.status)})</option>`
+  const current = $("#run-picker").value;
+  $("#run-picker").innerHTML = (s.runs || []).map(r =>
+    `<option value="${r.id}">#${r.id} ${esc(r.name)} — ${r.hits} hits (${esc(r.status)})</option>`
     ).join("");
-  if (biezacy) $("#wybor-przebiegu").value = biezacy;
+  if (current) $("#run-picker").value = current;
 
-  $("#tabela-korpusu").innerHTML = (s.korpus || []).length ? `<table><tbody>${
-    s.korpus.map(k => `<tr><td>${esc(k.host)}</td><td class="meta-kom">${k.ile} stron</td>
-      <td><button class="btn mini" data-host="${esc(k.host)}">wyczyść</button></td></tr>`).join("")
-    }</tbody></table>` : '<div class="podtytul">Korpus pusty.</div>';
-  $$("#tabela-korpusu button").forEach(b => b.onclick = async () => {
-    if (!confirm(`Usunąć pobrane strony z ${b.dataset.host}?`)) return;
-    await api("korpus/wyczysc", {host: b.dataset.host});
-    await wczytajStan();
+  $("#corpus-table").innerHTML = (s.corpus || []).length ? `<table><tbody>${
+    s.corpus.map(c => `<tr><td>${esc(c.host)}</td><td class="meta-cell">${c.pages} pages</td>
+      <td><button class="btn mini" data-host="${esc(c.host)}">clear</button></td></tr>`).join("")
+    }</tbody></table>` : '<div class="sub">Corpus is empty.</div>';
+  $$("#corpus-table button").forEach(b => b.onclick = async () => {
+    if (!confirm(`Remove downloaded pages from ${b.dataset.host}?`)) return;
+    await api("corpus/clear", {host: b.dataset.host});
+    await loadState();
   });
 
-  $("#tabela-przebiegow").innerHTML = (s.przebiegi || []).length ? `<table><tbody>${
-    s.przebiegi.map(p => `<tr><td><b>#${p.id}</b> ${esc(p.nazwa)}<br>
-      <span class="meta-kom">${esc(p.zapytanie || "")}</span></td>
-      <td class="meta-kom">${p.trafien} traf.<br>${esc(p.status)}</td>
-      <td><button class="btn mini pokaz" data-id="${p.id}">pokaż</button>
-          <button class="btn mini usun" data-id="${p.id}">usuń</button></td></tr>`).join("")
-    }</tbody></table>` : '<div class="podtytul">Brak przebiegów.</div>';
-  $$("#tabela-przebiegow .pokaz").forEach(b => b.onclick = () => {
-    $("#wybor-przebiegu").value = b.dataset.id;
-    wczytajTrafienia(b.dataset.id);
-    $$("nav button").find(x => x.dataset.panel === "wyniki").click();
+  $("#runs-table").innerHTML = (s.runs || []).length ? `<table><tbody>${
+    s.runs.map(r => `<tr><td><b>#${r.id}</b> ${esc(r.name)}<br>
+      <span class="meta-cell">${esc(r.query || "")}</span></td>
+      <td class="meta-cell">${r.hits} hits<br>${esc(r.status)}</td>
+      <td><button class="btn mini show" data-id="${r.id}">show</button>
+          <button class="btn mini del" data-id="${r.id}">delete</button></td></tr>`).join("")
+    }</tbody></table>` : '<div class="sub">No runs yet.</div>';
+  $$("#runs-table .show").forEach(b => b.onclick = () => {
+    $("#run-picker").value = b.dataset.id;
+    loadHits(b.dataset.id);
+    $$("nav button").find(x => x.dataset.panel === "results").click();
   });
-  $$("#tabela-przebiegow .usun").forEach(b => b.onclick = async () => {
-    if (!confirm("Usunąć ten przebieg wraz z trafieniami?")) return;
-    await api("usun-przebieg", {przebieg: parseInt(b.dataset.id)});
-    await wczytajStan();
+  $$("#runs-table .del").forEach(b => b.onclick = async () => {
+    if (!confirm("Delete this run and its hits?")) return;
+    await api("delete-run", {run: parseInt(b.dataset.id)});
+    await loadState();
   });
 
-  if (s.trwa && !SONDA) { SONDA = setInterval(sonduj, 700); $("#start").disabled = true;
-                          $("#stop").disabled = false; }
+  if (s.running && !POLL) { POLL = setInterval(poll, 700); $("#start").disabled = true;
+                            $("#stop").disabled = false; }
   return s;
 }
 
-/* --------------------------------------------------------------- ściąga */
-const SCIAGA = [
-  ['"1 maja"', "fraza dokładnie w tej kolejności (ale z odmianą każdego słowa)"],
-  ["Żoliborz", "jedno słowo — z odmianą: Żoliborza, Żoliborzu, żoliborski…"],
-  ["A I B / A AND B", "oba terminy muszą wystąpić (to samo daje zwykła spacja)"],
-  ["A LUB B / A OR B", "wystarczy jeden z terminów"],
-  ["NIE A / -A", "wyklucz strony zawierające A"],
-  ["( … )", "grupowanie: <code>\"1 maja\" I (Żoliborz LUB Bielany)</code>"],
-  ["A BLISKO/10 B", "A i B nie dalej niż 10 słów od siebie (można też <code>A ~10 B</code>)"],
-  ["tytuł:pochód", "szukaj tylko w tytule (także: tekst:, autor:, url:, tagi:)"],
-  ["(domyślnie)", "bez przedrostka szukamy w treści: tytuł + tekst + autor"],
-  ["tagi:\"1 maja\"", "tagi i kategorie WordPressa — trzeba o nie poprosić wprost"],
-  ["wszystko:Mazowsze", "treść razem z tagami i adresem"],
-  ["=Solidarność", "bez odmiany — dokładnie ta forma"],
-  ["~msza", "wymuś odmianę, gdy tryb globalny to „dokładnie”"],
-  ["^prac", "tryb rdzenia: prac, pracownik, pracował, pracowniczy…"],
-  ["solidarn*", "wildcard: dowolne zakończenie"],
-  ["1 maja", "liczebnik złapie też „1-go maja”, „1. maja”"],
+/* --------------------------------------------------------------- syntax */
+const CHEATSHEET = [
+  ["strike", "exact word — nothing else"],
+  ["strike*", "inflected forms in every enabled language: <i>strikes, Streiks, страйку, strajkujących</i>"],
+  ["strike**", "truncation: the stem plus anything — also catches derivatives"],
+  ['"May Day"', "a phrase in that order"],
+  ['"May Day"*', "the whole phrase inflected, in agreement: <i>Józefa Robotnika</i>"],
+  ["A AND B", "both terms (a plain space does the same)"],
+  ["A OR B", "either term"],
+  ["NOT A / -A", "exclude pages containing A"],
+  ["( … )", "grouping: <code>\"1 May\"* AND (Berlin OR Warsaw)</code>"],
+  ["A NEAR/10 B", "A and B no more than 10 words apart (also <code>A ~10 B</code>)"],
+  ["title:march*", "search one field only (also text:, author:, url:, tags:)"],
+  ["(no prefix)", "searches the content: title + text + author"],
+  ['tags:"May Day"', "the CMS's own tags and categories — ask for them explicitly"],
+  ["all:Berlin", "content together with tags and the address"],
+  ["1 maja", "a numeral also catches <i>1-go maja</i>, <i>1. Mai</i>, <i>1st May</i>"],
+  ["Polish aliases", "<code>I</code>, <code>LUB</code>, <code>NIE</code>, <code>BLISKO/10</code> still work"],
 ];
-$("#tabela-sciagi").innerHTML = SCIAGA.map(([s, o]) =>
-  `<tr><td style="width:190px"><code class="wzorzec" style="max-height:none">${esc(s)}</code></td>
-       <td>${o}</td></tr>`).join("");
+$("#cheatsheet").innerHTML = CHEATSHEET.map(([s, d]) =>
+  `<tr><td style="width:190px"><code class="pattern" style="max-height:none">${esc(s)}</code></td>
+       <td>${d}</td></tr>`).join("");
 
-/* ---------------------------------------------------------------- start */
+/* ---------------------------------------------------------------- boot */
 (async () => {
-  const s = await wczytajStan();
-  if (s.ustawienia && Object.keys(s.ustawienia).length) wstawKonfig(s.ustawienia);
-  else dodajZrodlo({url: "", tryb: "auto"});
-  if (s.ostatni_przebieg) { $("#wybor-przebiegu").value = s.ostatni_przebieg;
-                            await wczytajTrafienia(s.ostatni_przebieg); }
-  podglad();
+  const s = await loadState();
+  if (s.settings && Object.keys(s.settings).length) applyConfig(s.settings);
+  else addSource({url: "", mode: "auto"});
+  if (s.last_run) { $("#run-picker").value = s.last_run; await loadHits(s.last_run); }
+  preview();
 })();
 </script>
 </body>

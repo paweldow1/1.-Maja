@@ -1,0 +1,37 @@
+# The same question in three languages: Poland, Germany, Ukraine.
+# Each source names its own language, so morphology and tags stay clean.
+name: May Day — Poland, Germany, Ukraine
+
+query: >-
+  ("1 maja"* OR "Święto Pracy"* OR "1. Mai"* OR Maifeiertag* OR "Tag der Arbeit"*
+   OR "1 травня"* OR "День праці"*)
+  AND (pochód* OR manifestacja* OR Demonstration* OR Kundgebung* OR Umzug*
+       OR демонстрац** OR хода*)
+
+default_operator: AND
+languages: [pl, de, uk]
+contact: Pawel Downarowicz (doctoral research)
+delay: 0.5
+zotero_type: newspaperArticle
+extra_tags: [dissertation, "1 May", comparative]
+year_from: 1990
+year_to: 2019
+
+sources:
+  - url: https://solidarnosc.mazowsze.pl
+    name: Region Mazowsze NSZZ "Solidarność"
+    language: pl
+    tags: [Poland]
+
+  - url: https://www.dgb.de
+    name: Deutscher Gewerkschaftsbund
+    language: de
+    tags: [Germany]
+    # A German site with no usable REST API: point at its own search instead.
+    # mode: search
+    # search_url: https://www.dgb.de/suche?search={q}&page={page}
+
+  - url: https://www.fpsu.org.ua
+    name: Федерація професійних спілок України
+    language: uk
+    tags: [Ukraine]

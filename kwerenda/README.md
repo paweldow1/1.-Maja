@@ -1,176 +1,246 @@
 # Kwerenda
 
-Narzędzie do przeszukiwania stron internetowych pod kątem treści i przenoszenia
-trafień prosto do **Zotero** — od razu z przypisem bibliograficznym, tagami
-i notatką zawierającą cytat z kontekstem.
+<img src="zasoby/kwerenda.png" width="96" align="right" alt="">
 
-Powstało pod konkretny warsztat: badanie obchodów 1 maja po 1989 r. na stronach
-regionalnych struktur NSZZ „Solidarność” (WordPress, każdy region inny motyw),
-ale nie jest zaszyte pod te strony — działa na dowolnym serwisie.
+Search websites for content and move what you find straight into **Zotero** —
+with the bibliographic citation, tags and a note holding the quotation in context.
+
+Built for a working historian: sources in several languages, sites on every
+imaginable CMS, and site search engines that cannot be trusted. It began as a
+scraper for the regional sites of NSZZ „Solidarność"; nothing about it is tied
+to them any more.
 
 ```
-python -m kwerenda gui           # interfejs graficzny w przeglądarce
+python -m kwerenda gui              # the interface, in your browser
+python install_desktop_icon.py      # …or an icon on your desktop
 ```
 
 ---
 
-## Co potrafi
+## What it does
 
-**Wyszukiwanie**
-- Zapytania boolowskie: `I` / `LUB` / `NIE`, nawiasy, `"frazy w cudzysłowie"`.
-- Sąsiedztwo: `Wałęsa BLISKO/10 msza` (albo `Wałęsa ~10 msza`).
-- Pola: `tytuł:pochód`, `tekst:`, `autor:`, `url:`, `tagi:`. Bez przedrostka
-  szukamy w **treści** (tytuł + tekst + autor) — sam tag WordPressa czy słowo
-  w adresie nie robi jeszcze trafienia; po nie trzeba poprosić wprost
-  (`tagi:"1 maja"`, `url:2015`) albo użyć `wszystko:`.
-- **Fleksja** — `Żoliborz` łapie *Żoliborza, Żoliborzu, żoliborski*; `święto`
-  łapie *święta, świąt, święcie*; `1 maja` łapie *1-go maja*, *1. maja*.
-  Trzy tryby: `dokładnie` / `fleksja` (domyślny) / `rdzeń` (łapie też derywaty:
-  `praca` → *pracownik*, *pracował*).
-- Modyfikatory pojedynczych terminów: `=Solidarność` (bez odmiany),
-  `~msza` (wymuś odmianę), `^prac` (rdzeń), `solidarn*` (wildcard).
-- Opcjonalne ignorowanie polskich znaków: `Zoliborz` = `Żoliborz`.
-- **Podgląd przed startem**: interfejs pokazuje, jakie formy złapie każdy termin,
-  i pozwala kliknięciem wykluczyć te, które są dla Ciebie szumem. Można też
-  wkleić próbkę tekstu i sprawdzić, czy zapytanie ją przepuszcza.
+### Finding things
 
-**Zbieranie materiału**
-- Tryb `auto` sam wykrywa, jak dostać się do treści serwisu:
-  **REST API WordPressa → mapa strony (sitemap) → kanał RSS → wyszukiwarka HTML → przejście po linkach**.
-  Gdy jedna droga zawodzi, schodzi piętro niżej.
-- **Wyniki wyszukiwarki serwisu to tylko lista kandydatów.** Każde trafienie jest
-  potwierdzane na pełnym tekście artykułu, własnym zapytaniem — bo wbudowane
-  wyszukiwarki WP bywają niewiarygodne (na `solidarnosc.mazowsze.pl` samo `?s=`
-  losowo przekierowuje, poprawne wyniki dają dopiero jawne `&paged=N`).
-- `pelne_przemiatanie: true` całkiem pomija wyszukiwarkę serwisu i przegląda
-  całe archiwum — wolniej, ale bez zdawania się na cudzą indeksację.
-- **Okna dat**: `okno_dat: "04-25:05-10"` z zakresem lat pobiera tylko to, co
-  ukazało się w okolicach 1 maja każdego roku. Przy badaniu jednego święta to
-  różnica między setką a dziesiątkami tysięcy stron.
+* Boolean queries: `AND` / `OR` / `NOT`, parentheses, `"phrases"`.
+* Proximity: `Wałęsa NEAR/10 mass` (or `Wałęsa ~10 mass`).
+* Fields: `title:`, `text:`, `author:`, `url:`, `tags:`. With no prefix the
+  **content** is searched (title + text + author), so a bare CMS tag or a word in
+  the address is not by itself a hit — ask for those explicitly.
+* **The asterisk is truncation**, as in any library catalogue:
 
-**Metadane i przypis**
-- Autor, data, nazwa serwisu, język, wydawca — z JSON-LD (schema.org), OpenGraph,
-  `<meta>`, Dublin Core i heurystyk HTML, kaskadowo.
-- Daty rozpoznawane po polsku, niemiecku, ukraińsku i angielsku
-  (`2 maja 2015`, `1. Mai 2019`, `9 травня 2020`, `May 3, 2001`).
-- Klucz cytowania w stylu Better BibTeX: `nowak2015obchody` (z odsuwaniem kolizji).
-- Tagi budowane automatycznie z: trafionych terminów, roku publikacji, domeny,
-  kategorii i tagów WordPressa oraz Twoich własnych.
-- Cytat z kontekstem (KWIC) wokół każdego trafienia, z zaznaczoną formą.
+  | you write | it matches |
+  |---|---|
+  | `strike` | that word exactly |
+  | `strike*` | inflected forms in every enabled language — *strikes, Streiks, страйку, strajkujących* |
+  | `strike**` | the stem plus anything at all — also derivatives |
+  | `"May Day"*` | the whole phrase inflected, in agreement: *Józefa Robotnika* |
 
-**Eksport**
-- **Prosto do otwartego Zotero** (lokalny konektor, port 23119) — rekord ląduje
-  w bibliotece z przypisem, tagami i notatką.
-- **Zotero Web API** — klucz + numer użytkownika, z wyborem kolekcji.
-- **RIS** (najpewniejszy import do Zotero: `KW` → tagi, `N1` → notatka),
-  **CSL-JSON**, **BibTeX/Better BibTeX**, **CSV**, **Zotero JSON**.
-- **Notatki do Obsidiana** (.zip) z frontmatterem i linkiem `[[@citekey]]`,
-  zgodnie z tym, jak działa Better BibTeX.
+  A checkbox turns inflection on for every term at once, if you would rather not
+  type stars. Polish operators (`I`, `LUB`, `NIE`, `BLISKO/10`) still work.
+* Optional diacritic-blindness: `Zoliborz` = `Żoliborz`, `Munchen` = `München`.
+* **A preview before you touch the network**: the interface lists the forms each
+  term will catch, language by language, and one click excludes any of them.
+  Paste a sample paragraph to check whether your query passes it.
 
-**Uprzejmość wobec serwerów**
-- Odstęp między żądaniami do jednego hosta (z losowym rozrzutem), retry z
-  backoffem przy 429/5xx z uwzględnieniem `Retry-After`, respektowanie
-  `robots.txt`, `User-Agent` z Twoim kontaktem.
-- Strona wymagająca logowania albo blokująca dostęp (401/403) jest **pomijana**
-  z jasnym komunikatem. Narzędzie nie omija żadnych zabezpieczeń ani CAPTCH.
+### Languages
 
-**Korpus**
-- Każda pobrana strona ląduje w lokalnej bazie SQLite. Kolejne kwerendy można
-  puszczać w trybie `korpus` — **bez ani jednego zapytania do cudzego serwera**.
-  Materiał zbierasz raz, hipotezy testujesz dowolnie długo.
+Polish, English, German, Russian and Ukrainian out of the box, with the script of
+the term deciding what applies — a Cyrillic word is never expanded with German
+endings.
+
+| | catches |
+|---|---|
+| Polish | *Żoliborz → Żoliborzu, żoliborski*; *święto → świąt, święcie* |
+| English | *strike → strikes, striking*; *city → cities*; *stop → stopped* |
+| German | *Mann → Männer*; *Buch → Bücher*; *Gewerkschaft → Gewerkschaften* |
+| Russian | *забастовка → забастовках*; *праздник → празднике* |
+| Ukrainian | *страйк → страйку*; *свято → свята* |
+
+Dates are read in all five: *2 maja 2015*, *1. Mai 2019*, *9 травня 2020*,
+*9 мая 2020*, *May 1, 2001*. Each page's language is detected and can become a tag.
+
+Adding a language means adding a table in `kwerenda/morfologia/jezyki.py` — a list
+of endings and a table of stem alternations. No code changes.
+
+### Collecting the material
+
+`auto` walks down a ladder until something works:
+
+**WordPress REST API → Drupal JSON:API → sitemap → RSS → the site's own search → link crawl**
+
+Whatever the source, **it only produces candidates**. Every hit is then confirmed
+against the full article text with your query, so results are reproducible and do
+not depend on how well a site indexes itself.
+
+When a site's own search is hopeless — and newspaper archives often are — do not
+fight it:
+
+* `listing_url` — a template for a paginated archive, e.g.
+  `https://paper.com/archive/{year}/page/{page}`. Kwerenda walks it and ignores
+  the search entirely.
+* `search_url` — a template for the site's search, e.g.
+  `https://site.com/search?q={q}&page={page}`, when it works but is not one of
+  the shapes detected automatically.
+* `full_sweep: true` — take the whole archive and match locally.
+* `date_window: "04-25:05-10"` with a year range — fetch only what appeared
+  around 1 May in each year. Studying one single day, that is the difference
+  between a hundred pages and tens of thousands.
+
+CSS selectors (`link_selector`, `next_selector`) are there when the guessing needs
+help; leaving them empty is usually fine.
+
+### Signing in as yourself
+
+Some material sits behind your own subscription. A source can carry your
+credentials: a `Cookie` header copied from the browser, a `cookies.txt` exported
+from it, cookies read straight from a local Firefox/Chrome profile (optional
+`browser-cookie3`), or HTTP basic auth.
+
+**This is not a way past a paywall.** Nothing here disguises the client, defeats
+bot detection or circumvents any protection — a 401/403 ends with the page being
+skipped and a clear message. It reaches what your own account already opens, and
+whether automated reading is allowed is between you and the site's terms.
+
+### The citation
+
+* Author, date, site name, language and publisher, taken in a cascade from
+  JSON-LD (schema.org) → OpenGraph → `<meta>` → Dublin Core → HTML heuristics.
+* Citation keys in Better BibTeX style: `nowak2015obchody`, collisions resolved.
+* Tags assembled from the matched terms, the year, the domain, the detected
+  language, the CMS's own categories and tags, and whatever you add yourself.
+* A keyword-in-context quotation for every hit, with the matched form marked.
+  Quotations are clipped to their field, so a citation never bleeds into
+  concatenated metadata.
+
+### Getting it out
+
+* **Straight into an open Zotero** through the local connector — citation, tags
+  and the quotation note land in the library at once.
+* **Zotero Web API** — key plus user id, with a collection picker.
+* Files: **RIS** (the safest import: keywords become tags, the note comes across),
+  **CSL-JSON**, **BibTeX / Better BibTeX**, **CSV**, **Zotero JSON**.
+* **Obsidian notes** (.zip) with YAML front matter and a `[[@citekey]]` link, the
+  way Better BibTeX makes them.
+
+### Manners, and the corpus
+
+Per-host throttling with jitter, backoff on 429/5xx honouring `Retry-After`,
+`robots.txt` respected, a User-Agent carrying your contact details.
+
+Every page fetched is kept in a local SQLite corpus. Later searches can run in
+`corpus` mode — **without a single request to anybody's server**. Collect once,
+test hypotheses for as long as you like.
 
 ---
 
-## Instalacja
+## Installing
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Albo bez myślenia: `./start.sh` (macOS/Linux) lub dwuklik w `start.bat` (Windows)
-— same zbudują środowisko i otworzą interfejs.
+Or don't think about it: `python install_desktop_icon.py` prepares a private
+environment, draws the icon and puts a shortcut on your desktop
+(Linux `.desktop`, a macOS `.app`, a Windows `.lnk`). `./start.sh` and
+`start.bat` do the same without the icon.
 
-## Użycie
+## Using it
 
-### Interfejs graficzny
+### The interface
+
 ```bash
-python -m kwerenda gui              # otwiera http://127.0.0.1:8765
-```
-Serwer słucha wyłącznie na `127.0.0.1` — nic nie wychodzi na zewnątrz.
-
-Zakładki: **Kwerenda** (co i gdzie szukać, podgląd fleksji, dziennik na żywo) →
-**Wyniki** (tabela z cytatami, edycja przypisu i tagów, zaznaczanie) →
-**Eksport** (Zotero i pliki) → **Korpus i przebiegi** → **Ściąga** ze składnią.
-
-### Wiersz poleceń
-```bash
-# sprawdź, co złapie zapytanie, zanim ruszysz w sieć
-python -m kwerenda podglad '"1 maja" I (Żoliborz LUB "Józef Robotnik")' \
-       --probka "Na Żoliborzu 1-go maja odprawiono mszę."
-
-# wykonaj kwerendę z pliku i od razu zapisz RIS
-python -m kwerenda uruchom presety/solidarnosc-1-maja.yaml --format ris
-
-# wyślij trafienia do otwartego Zotero
-python -m kwerenda zotero --przebieg 3
-
-# eksporty i przeglądanie
-python -m kwerenda eksport --przebieg 3 --format bibtex
-python -m kwerenda przebiegi
-python -m kwerenda korpus
+python -m kwerenda gui              # http://127.0.0.1:8765
 ```
 
-## Konfiguracja
+It listens on 127.0.0.1 only; nothing is exposed to the outside world.
 
-Zadanie da się zapisać jako YAML/JSON i uruchamiać wsadowo — patrz
-`presety/solidarnosc-1-maja.yaml` (opisany komentarzami) i
-`presety/korpus-offline.yaml`. W interfejsie te same zadania zapisują się jako
-presety w bazie.
+Tabs: **Search** (what and where, the form preview, a live log) → **Results**
+(a table with quotations, editable citations and tags) → **Export** →
+**Corpus & runs** → **Syntax**.
 
-## Jak działa fleksja
+### The command line
 
-Nie ma tu słownika ani zewnętrznego analizatora. Ze słowa wyznaczany jest rdzeń
-(odcięcie znanej końcówki), a potem budowane wyrażenie regularne:
-rdzeń **z obocznościami** (`t`→`ć/ci`, `k`→`c/cz`, `r`→`rz`, `ó`↔`o`, `ą`↔`ę`,
-e ruchome) + **zamknięta lista końcówek** fleksyjnych.
+```bash
+# see what a query will catch, before going near the network
+python -m kwerenda preview '"1 maja"* AND (Żoliborz* OR "Józef Robotnik"*)' \
+       --languages pl --sample "Na Żoliborzu 1-go maja odprawiono mszę."
 
-Dzięki temu `Gdańsk` łapie *Gdańsku* i *Gdańska*, ale nie *gdakanie*;
-`praca` łapie *pracy* i *pracach*, ale nie *prawo*.
+# run a saved job and write RIS straight away
+python -m kwerenda run presets/may-day-solidarnosc.yaml --format ris
 
-Cena: wzorzec bywa nadmiarowy (`maj` przepuści też czasownik *mają*). Dlatego
-podgląd w interfejsie pokazuje wszystkie formy, a kliknięcie w formę wyklucza ją
-z dopasowania. Jeśli masz zainstalowany `morfeusz2`, funkcja `fleksja.lematyzuj`
-z niego skorzysta, ale nie jest do niczego wymagany.
+# send hits to a running Zotero
+python -m kwerenda zotero --run 3
 
-## Czego narzędzie nie robi
+python -m kwerenda export --run 3 --format bibtex
+python -m kwerenda runs
+python -m kwerenda corpus
+python -m kwerenda languages
+```
 
-- Nie omija zabezpieczeń, CAPTCH ani logowania — publiczne strony, i tyle.
-- Nie zakłada, że wszystkie serwisy mają ten sam motyw czy strukturę HTML.
-- Nie ufa wynikom cudzej wyszukiwarki bez sprawdzenia treści.
+## Configuration
 
-## Testy
+Jobs are YAML or JSON with English keys — see `presets/`:
+
+| file | what it shows |
+|---|---|
+| `may-day-solidarnosc.yaml` | the WordPress case, fully commented |
+| `may-day-three-countries.yaml` | one question in Polish, German and Ukrainian |
+| `newspaper-archive.yaml` | a bad archive search, walked by listing template; signing in with your own subscription |
+| `offline-corpus.yaml` | new keywords against already-downloaded material |
+
+Configurations written by earlier Polish-language versions still load.
+
+## How the morphology works
+
+No dictionary, no external analyser, nothing to download. A stem is found by
+stripping a known ending, and a regular expression is built from
+**the stem with its alternations** (`t→ć/ci`, `k→c/cz`, `r→rz`, `ó↔o`, `ą↔ę`,
+fleeting *e*; umlaut for German; `к→ч`, `г→ж` for Russian) plus **a closed list of
+inflectional endings**.
+
+So `Gdańsk*` catches *Gdańsku* and *Gdańska* but not *gdakanie*; `praca*` catches
+*pracy* and *pracach* but not *prawo*.
+
+The price is that the pattern is sometimes over-generous (`maj*` will also let
+through the verb *mają*). That is why the preview lists every form and a click
+excludes it. If `morfeusz2` happens to be installed, `morfologia.lematyzuj` will
+use it, but nothing depends on it.
+
+## What it will not do
+
+* Get past paywalls, CAPTCHAs or logins, or disguise itself as a browser.
+* Assume every site has the same CMS, theme or HTML.
+* Trust somebody else's search engine without reading the text itself.
+
+## Tests
 
 ```bash
 python -m unittest discover -s tests -t .
 ```
 
-45 testów: fleksja, parser zapytań, ekstrakcja metadanych, adaptery źródeł,
-silnik i eksport. Silnik testowany jest end-to-end na **lokalnej atrapie
-WordPressa** (`tests/atrapa_wordpressa.py`) — z REST API, paginacją,
-wyszukiwarką HTML, sitemapą, RSS i `robots.txt` — więc testy nie wysyłają
-żadnego żądania do cudzych serwerów.
+61 tests: morphology in five languages, the query parser, metadata extraction,
+source adapters, the engine end to end and every export format. The engine is
+tested against a **local fake WordPress site** (`tests/atrapa_wordpressa.py`) —
+REST API with pagination, a title-only search, an archive listing, a sitemap, an
+RSS feed, `robots.txt` and one article behind a subscriber cookie — so the suite
+never sends a request to anybody else's server.
 
-## Układ kodu
+## Layout
 
-| plik | rola |
+| file | role |
 |---|---|
-| `fleksja.py` | odmiana polska → wyrażenia regularne |
-| `zapytania.py` | parser operatorów, ocena dokumentu, cytaty KWIC |
-| `siec.py` | grzeczny klient HTTP (throttling, retry, robots.txt) |
-| `ekstrakcja.py` | treść artykułu i metadane bibliograficzne z HTML |
-| `zrodla.py` | adaptery: WordPress REST, sitemap, RSS, wyszukiwarka, crawl |
-| `silnik.py` | orkiestracja: kandydaci → weryfikacja → trafienia |
-| `cytowania.py` | rekord → RIS / CSL-JSON / BibTeX / CSV / Markdown / Zotero |
-| `zotero.py` | lokalny konektor i Web API |
-| `magazyn.py` | SQLite: korpus, przebiegi, trafienia, presety |
-| `serwer.py` + `web/index.html` | interfejs graficzny |
+| `morfologia/` | inflection → regular expressions; one table per language |
+| `zapytania.py` | the operator parser, document scoring, KWIC quotations |
+| `siec.py` | the polite HTTP client (throttling, backoff, robots.txt, your credentials) |
+| `ekstrakcja.py` | article text and bibliographic metadata out of HTML |
+| `zrodla.py` | adapters: WordPress, Drupal, sitemap, RSS, search, listing, crawl |
+| `silnik.py` | orchestration: candidates → verification → hits |
+| `cytowania.py` | record → RIS / CSL-JSON / BibTeX / CSV / Markdown / Zotero |
+| `zotero.py` | the local connector and the Web API |
+| `magazyn.py` | SQLite: corpus, runs, hits, presets |
+| `serwer.py` + `web/index.html` | the interface |
+| `zasoby/ikona.py` | draws the application icon, in pure Python |
+
+The interface, the configuration keys and the command line are English;
+identifiers inside the code are Polish, from the first version. They can be
+renamed if it ever gets in the way.

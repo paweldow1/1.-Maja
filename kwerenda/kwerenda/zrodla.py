@@ -1,29 +1,55 @@
 # -*- coding: utf-8 -*-
-"""Adaptery źródeł: skąd brać listę kandydatów do sprawdzenia.
+"""Source adapters: where the list of candidate pages comes from.
 
-Kolejność w trybie ``auto`` (zgodnie z doświadczeniem z solidarnosc.mazowsze.pl,
-gdzie wbudowana wyszukiwarka WP bywa niewiarygodna):
+In ``auto`` mode the engine walks down this ladder until something works:
 
-    REST API WordPressa → mapa strony (sitemap) → kanał RSS → wyszukiwarka HTML → crawl
+    WordPress REST API → Drupal JSON:API → sitemap → RSS feed
+    → the site's own search page → plain link crawl
 
-Żadne z tych źródeł nie jest traktowane jako dowód trafienia: to tylko lista
-kandydatów, których treść i tak weryfikujemy lokalnie zapytaniem.
+None of these is treated as proof of a hit: they only produce candidates, whose
+full text is then verified locally against the query. Site search engines are
+frequently unreliable — the archive search of a large newspaper may miss half of
+what it holds — so the two escape hatches that matter are:
+
+* ``search_url`` — a template for the site's own search, e.g.
+  ``https://example.com/search?q={q}&page={page}``;
+* ``listing_url`` — a template for a paginated archive/index,
+  e.g. ``https://example.com/archive/{year}/page/{page}``,
+  which sidesteps the site's search entirely.
 """
 
 from __future__ import annotations
 
 import re
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass, field
-from typing import Callable, Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
-from urllib.parse import urljoin, urlparse
+from dataclasses import asdict, dataclass, field
+from typing import Callable, Dict, Iterator, List, Optional, Sequence, Tuple
+from urllib.parse import quote_plus, urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
 from .ekstrakcja import html_na_tekst, normalizuj_date
 from .siec import KlientHTTP, host_z_url, korzen, normalizuj_url
 
-TRYBY = ("auto", "wordpress", "sitemap", "rss", "szukajka", "crawl", "lista", "korpus")
+TRYBY = ("auto", "wordpress", "drupal", "sitemap", "rss", "search", "listing",
+         "crawl", "urls", "corpus")
+
+#: External (English) key -> internal attribute.
+KLUCZE: Dict[str, str] = {
+    "url": "url", "name": "nazwa", "mode": "tryb",
+    "max_pages": "max_stron", "max_urls": "max_url", "tags": "tagi",
+    "url_pattern": "wzorzec_url", "url_exclude": "pomin_url",
+    "full_sweep": "pelne_przemiatanie", "wp_types": "typy_wp",
+    "year_from": "od_roku", "year_to": "do_roku", "date_window": "okno_dat",
+    "depth": "glebokosc", "urls": "lista_url",
+    "search_url": "szablon_szukania", "listing_url": "szablon_listy",
+    "link_selector": "selektor_linkow", "next_selector": "selektor_dalej",
+    "first_page": "pierwsza_strona", "language": "jezyk",
+    "cookies": "ciasteczka", "cookies_file": "plik_ciasteczek",
+    "browser_cookies": "ciasteczka_z_przegladarki",
+    "basic_auth": "basic_auth", "headers": "naglowki",
+}
+_ODWROTNE = {v: k for k, v in KLUCZE.items()}
 
 
 @dataclass
@@ -31,27 +57,64 @@ class Zrodlo:
     url: str = ""
     nazwa: str = ""
     tryb: str = "auto"
-    max_stron: int = 30              # limit paginacji wyszukiwarki/API
-    max_url: int = 1500              # twardy limit kandydatów z jednego źródła
+    max_stron: int = 30                 # pagination limit
+    max_url: int = 1500                 # hard cap on candidates from one source
     tagi: List[str] = field(default_factory=list)
-    wzorzec_url: str = ""            # regex – tylko pasujące adresy
-    pomin_url: str = ""              # regex – adresy do pominięcia
-    pelne_przemiatanie: bool = False # pobierz wszystko zamiast ufać wyszukiwarce
+    wzorzec_url: str = ""               # regex — only addresses that match
+    pomin_url: str = ""                 # regex — addresses to skip
+    pelne_przemiatanie: bool = False    # sweep the archive instead of trusting search
     typy_wp: List[str] = field(default_factory=lambda: ["posts"])
     od_roku: Optional[int] = None
     do_roku: Optional[int] = None
-    okno_dat: str = ""               # "MM-DD:MM-DD", np. "04-20:05-10" – co roku
-    glebokosc: int = 2               # dla trybu crawl
+    okno_dat: str = ""                  # "MM-DD:MM-DD", repeated every year
+    glebokosc: int = 2                  # crawl depth
     lista_url: List[str] = field(default_factory=list)
+    jezyk: str = ""                     # language hint for this source
+
+    # universal templates
+    szablon_szukania: str = ""          # ".../search?q={q}&page={page}"
+    szablon_listy: str = ""             # ".../archive/{year}/page/{page}"
+    selektor_linkow: str = ""           # CSS for result links
+    selektor_dalej: str = ""            # CSS for the "next page" link
+    pierwsza_strona: int = 1
+
+    # access with your own credentials (never a paywall bypass)
+    ciasteczka: str = ""                # raw Cookie header
+    plik_ciasteczek: str = ""           # Netscape cookies.txt exported from a browser
+    ciasteczka_z_przegladarki: str = "" # "firefox" / "chrome" (needs browser_cookie3)
+    basic_auth: str = ""                # "user:password"
+    naglowki: Dict[str, str] = field(default_factory=dict)
 
     @property
     def etykieta(self) -> str:
-        return self.nazwa or host_z_url(self.url) or self.url
+        return self.nazwa or host_z_url(self.url) or self.url or "source"
+
+    def ma_dane_logowania(self) -> bool:
+        return bool(self.ciasteczka or self.plik_ciasteczek
+                    or self.ciasteczka_z_przegladarki or self.basic_auth)
+
+    def jako_dict(self) -> dict:
+        return {_ODWROTNE.get(k, k): v for k, v in asdict(self).items()}
 
     @classmethod
     def z_dict(cls, dane: dict) -> "Zrodlo":
-        znane = {p for p in cls.__dataclass_fields__}          # type: ignore[attr-defined]
-        return cls(**{k: v for k, v in (dane or {}).items() if k in znane})
+        znane = set(cls.__dataclass_fields__)       # type: ignore[attr-defined]
+        czyste = {}
+        for klucz, wartosc in (dane or {}).items():
+            nazwa = KLUCZE.get(klucz, klucz)
+            if nazwa in znane:
+                czyste[nazwa] = wartosc
+        czyste["tryb"] = _NORMALIZUJ_TRYB.get(str(czyste.get("tryb", "auto")).lower(),
+                                              str(czyste.get("tryb", "auto")).lower())
+        return cls(**czyste)
+
+
+_NORMALIZUJ_TRYB = {
+    "auto": "auto", "wordpress": "wordpress", "wp": "wordpress", "drupal": "drupal",
+    "sitemap": "sitemap", "mapa": "sitemap", "rss": "rss", "feed": "rss",
+    "search": "search", "szukajka": "search", "listing": "listing", "lista": "urls",
+    "crawl": "crawl", "urls": "urls", "corpus": "corpus", "korpus": "corpus",
+}
 
 
 @dataclass
@@ -60,10 +123,10 @@ class Kandydat:
     tytul: str = ""
     data: str = ""
     autorzy: List[str] = field(default_factory=list)
-    tresc_html: str = ""             # gdy źródło dało pełną treść (REST API)
+    tresc_html: str = ""                # when the source already gave us full text
     zajawka: str = ""
     tagi_zrodla: List[str] = field(default_factory=list)
-    skad: str = ""                   # api / sitemap / rss / szukajka / crawl / lista
+    skad: str = ""                      # api / sitemap / rss / search / listing / crawl
     zrodlo: str = ""
 
 
@@ -71,26 +134,25 @@ Log = Callable[[str], None]
 
 
 # --------------------------------------------------------------------------
-# Pomocnicze
+# Helpers
 # --------------------------------------------------------------------------
 
 def _okna_dat(zrodlo: Zrodlo) -> List[Tuple[str, str]]:
-    """Zamienia „okno_dat” + zakres lat na listę par (po, przed) w ISO."""
+    """Turn "date_window" plus a year range into (after, before) ISO pairs."""
     if not (zrodlo.od_roku or zrodlo.do_roku):
         return []
     od = zrodlo.od_roku or 1996
     do = zrodlo.do_roku or 2100
-    if not zrodlo.okno_dat:
-        return [(f"{od}-01-01T00:00:00", f"{do}-12-31T23:59:59")]
-    m = re.match(r"^\s*(\d{2})-(\d{2})\s*:\s*(\d{2})-(\d{2})\s*$", zrodlo.okno_dat)
-    if not m:
+    dopasowanie = re.match(r"^\s*(\d{2})-(\d{2})\s*:\s*(\d{2})-(\d{2})\s*$",
+                           zrodlo.okno_dat or "")
+    if not dopasowanie:
         return [(f"{od}-01-01T00:00:00", f"{do}-12-31T23:59:59")]
     okna = []
     for rok in range(od, do + 1):
-        start = f"{rok}-{m.group(1)}-{m.group(2)}T00:00:00"
-        koniec_rok = rok if (m.group(3), m.group(4)) >= (m.group(1), m.group(2)) else rok + 1
-        koniec = f"{koniec_rok}-{m.group(3)}-{m.group(4)}T23:59:59"
-        okna.append((start, koniec))
+        start = f"{rok}-{dopasowanie.group(1)}-{dopasowanie.group(2)}T00:00:00"
+        koniec_rok = rok if (dopasowanie.group(3), dopasowanie.group(4)) >= \
+            (dopasowanie.group(1), dopasowanie.group(2)) else rok + 1
+        okna.append((start, f"{koniec_rok}-{dopasowanie.group(3)}-{dopasowanie.group(4)}T23:59:59"))
     return okna
 
 
@@ -106,16 +168,73 @@ _NIE_TRESC = re.compile(
     r"\.(?:jpe?g|png|gif|webp|svg|pdf|docx?|xlsx?|pptx?|zip|rar|mp[34]|avi|mov|css|js)(?:$|\?)",
     re.I)
 
+_SCIEZKI_SLUZBOWE = re.compile(
+    r"/(?:tag|tags|kategoria|category|categories|rubryka|thema|themen|tema|"
+    r"author|autor|avtor|page|strona|seite|search|szukaj|suche|poisk|poshuk|"
+    r"login|signin|register|subscribe|prenumerata|abo|cart|koszyk|wp-admin|"
+    r"wp-login|wp-content|feed|rss|amp)(?:/|$)", re.I)
+
 
 def _wyglada_na_tresc(url: str) -> bool:
+    """Rough filter: is this an article rather than an index or an asset?"""
     if _NIE_TRESC.search(url):
         return False
     sciezka = urlparse(url).path.lower()
-    if any(sciezka.startswith(p) for p in ("/wp-admin", "/wp-login", "/wp-content", "/feed")):
+    if not sciezka or sciezka == "/":
         return False
-    if re.search(r"/(tag|kategoria|category|author|autor|page|strona)/", sciezka):
+    if _SCIEZKI_SLUZBOWE.search(sciezka):
         return False
     return True
+
+
+def _wyglada_na_artykul(url: str) -> bool:
+    """Stronger heuristic used when we have to guess without any selector."""
+    if not _wyglada_na_tresc(url):
+        return False
+    sciezka = urlparse(url).path
+    if re.search(r"/(?:19|20)\d{2}[/-]\d{1,2}", sciezka):       # /2015/05/...
+        return True
+    if re.search(r"[/-]\d{5,}", sciezka):                       # id in the address
+        return True
+    ostatni = sciezka.rstrip("/").rsplit("/", 1)[-1]
+    if ostatni.count("-") >= 2 and len(ostatni) > 12:           # slug-with-words
+        return True
+    return len([c for c in sciezka.split("/") if c]) >= 3
+
+
+def _link_absolutny(baza: str, href: str) -> str:
+    return normalizuj_url(urljoin(baza, (href or "").strip()))
+
+
+# --------------------------------------------------------------------------
+# CMS detection
+# --------------------------------------------------------------------------
+
+def wykryj_cms(klient: KlientHTTP, baza: str, log: Log = lambda *_: None) -> str:
+    """Best-effort guess. Only affects which adapter is tried first."""
+    baza = korzen(baza)
+    dane, odp = klient.pobierz_json(f"{baza}/wp-json/wp/v2/posts", params={"per_page": 1})
+    if isinstance(dane, list) and odp.ok:
+        return "wordpress"
+    dane, odp = klient.pobierz_json(f"{baza}/jsonapi")
+    if isinstance(dane, dict) and odp.ok and "data" in {*dane.keys(), "data"}:
+        return "drupal"
+
+    odp = klient.pobierz(baza)
+    if odp.ok:
+        tekst = odp.tekst[:200000].lower()
+        naglowek = " ".join(f"{k}:{v}" for k, v in (odp.naglowki or {}).items()).lower()
+        for nazwa, slady in (
+            ("wordpress", ("wp-content", "wp-includes", "wp-json")),
+            ("drupal", ("drupal-settings-json", "/sites/default/files", "x-generator: drupal")),
+            ("joomla", ("/media/jui/", "joomla", "com_content")),
+            ("ghost", ("ghost-sdk", "/ghost/api/")),
+            ("typo3", ("typo3temp", "typo3conf")),
+            ("blogger", ("blogger.com", "blogspot")),
+        ):
+            if any(slad in tekst or slad in naglowek for slad in slady):
+                return nazwa
+    return "unknown"
 
 
 # --------------------------------------------------------------------------
@@ -133,8 +252,8 @@ def _taksonomie_wp(klient: KlientHTTP, baza: str, log: Log) -> Dict[str, Dict[in
     for taksonomia in ("categories", "tags"):
         strona = 1
         while strona <= 5:
-            dane, odp = klient.pobierz_json(f"{korzen(baza)}/wp-json/wp/v2/{taksonomia}",
-                                            params={"per_page": 100, "page": strona})
+            dane, _ = klient.pobierz_json(f"{korzen(baza)}/wp-json/wp/v2/{taksonomia}",
+                                          params={"per_page": 100, "page": strona})
             if not isinstance(dane, list) or not dane:
                 break
             for wpis in dane:
@@ -144,22 +263,20 @@ def _taksonomie_wp(klient: KlientHTTP, baza: str, log: Log) -> Dict[str, Dict[in
                 break
             strona += 1
     if mapy["categories"] or mapy["tags"]:
-        log(f"    kategorie/tagi WP: {len(mapy['categories'])}+{len(mapy['tags'])} nazw")
+        log(f"    WordPress taxonomies: {len(mapy['categories'])}+{len(mapy['tags'])} names")
     return mapy
 
 
 def _post_na_kandydata(post: dict, mapy: Dict[str, Dict[int, str]], zrodlo: Zrodlo) -> Kandydat:
     tagi = list(zrodlo.tagi)
-    for pole, taksonomia in (("categories", "categories"), ("tags", "tags")):
+    for pole in ("categories", "tags"):
         for ident in post.get(pole) or []:
-            nazwa = mapy.get(taksonomia, {}).get(int(ident))
+            nazwa = mapy.get(pole, {}).get(int(ident))
             if nazwa:
                 tagi.append(nazwa)
-    autorzy = []
-    osadzone = (post.get("_embedded") or {}).get("author") or []
-    for autor in osadzone:
-        if isinstance(autor, dict) and autor.get("name"):
-            autorzy.append(html_na_tekst(str(autor["name"])))
+    autorzy = [html_na_tekst(str(a["name"]))
+               for a in ((post.get("_embedded") or {}).get("author") or [])
+               if isinstance(a, dict) and a.get("name")]
     return Kandydat(
         url=normalizuj_url(post.get("link") or ""),
         tytul=html_na_tekst((post.get("title") or {}).get("rendered", "")),
@@ -167,10 +284,7 @@ def _post_na_kandydata(post: dict, mapy: Dict[str, Dict[int, str]], zrodlo: Zrod
         autorzy=autorzy,
         tresc_html=(post.get("content") or {}).get("rendered", ""),
         zajawka=html_na_tekst((post.get("excerpt") or {}).get("rendered", "")),
-        tagi_zrodla=tagi,
-        skad="api",
-        zrodlo=zrodlo.etykieta,
-    )
+        tagi_zrodla=tagi, skad="api", zrodlo=zrodlo.etykieta)
 
 
 def z_wordpress(klient: KlientHTTP, zrodlo: Zrodlo, hasla: Sequence[str],
@@ -178,14 +292,11 @@ def z_wordpress(klient: KlientHTTP, zrodlo: Zrodlo, hasla: Sequence[str],
     baza = korzen(zrodlo.url)
     mapy = _taksonomie_wp(klient, baza, log)
     okna = _okna_dat(zrodlo)
-    wydane = 0
+    wydane, widziane = 0, set()
 
     def zapytania() -> Iterator[dict]:
-        podstawa: List[dict] = []
-        if zrodlo.pelne_przemiatanie or not hasla:
-            podstawa = [{}]
-        else:
-            podstawa = [{"search": h} for h in hasla]
+        podstawa = [{}] if (zrodlo.pelne_przemiatanie or not hasla) \
+            else [{"search": h} for h in hasla]
         for typ in zrodlo.typy_wp or ["posts"]:
             for parametry in podstawa:
                 if okna:
@@ -194,12 +305,11 @@ def z_wordpress(klient: KlientHTTP, zrodlo: Zrodlo, hasla: Sequence[str],
                 else:
                     yield {"_typ": typ, **parametry}
 
-    widziane = set()
     for parametry in zapytania():
         if przerwij() or wydane >= zrodlo.max_url:
             return
         typ = parametry.pop("_typ", "posts")
-        etykieta = parametry.get("search") or parametry.get("after", "")[:7] or "wszystko"
+        etykieta = parametry.get("search") or parametry.get("after", "")[:7] or "everything"
         strona = 1
         while strona <= zrodlo.max_stron:
             if przerwij() or wydane >= zrodlo.max_url:
@@ -210,7 +320,7 @@ def z_wordpress(klient: KlientHTTP, zrodlo: Zrodlo, hasla: Sequence[str],
                         "_embed": "author", **parametry})
             if not isinstance(dane, list):
                 if strona == 1:
-                    log(f"    [API] {typ}/{etykieta}: brak odpowiedzi ({odp.status}) – pomijam")
+                    log(f"    [api] {typ}/{etykieta}: no answer ({odp.status}) — skipping")
                 break
             if not dane:
                 break
@@ -227,18 +337,57 @@ def z_wordpress(klient: KlientHTTP, zrodlo: Zrodlo, hasla: Sequence[str],
                 nowe += 1
                 wydane += 1
                 yield kandydat
-            wszystkich = odp.naglowki.get("X-WP-TotalPages") or odp.naglowki.get("x-wp-totalpages") or "1"
+            naglowek = odp.naglowki.get("X-WP-TotalPages") \
+                or odp.naglowki.get("x-wp-totalpages") or "1"
             try:
-                stron_ogolem = int(wszystkich)
+                stron_ogolem = int(naglowek)
             except ValueError:
                 stron_ogolem = 1
-            log(f"    [API] {typ}/{etykieta}: strona {strona}/{stron_ogolem}, +{nowe} nowych")
-            # O końcu paginacji decyduje wyłącznie X-WP-TotalPages: część serwisów
-            # przycina per_page poniżej żądanej wartości i krótsza strona nie
-            # oznacza wcale, że to ostatnia.
+            log(f"    [api] {typ}/{etykieta}: page {strona}/{stron_ogolem}, +{nowe} new")
+            # Only X-WP-TotalPages ends the pagination: some sites cap per_page
+            # below what we asked for, so a short page is not the last one.
             if strona >= stron_ogolem:
                 break
             strona += 1
+
+
+# --------------------------------------------------------------------------
+# Drupal JSON:API
+# --------------------------------------------------------------------------
+
+def z_drupala(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
+              przerwij: Callable[[], bool]) -> Iterator[Kandydat]:
+    baza = korzen(zrodlo.url)
+    adres = f"{baza}/jsonapi/node/article"
+    wydane, offset = 0, 0
+    while wydane < zrodlo.max_url and offset < zrodlo.max_stron * 50:
+        if przerwij():
+            return
+        dane, odp = klient.pobierz_json(adres, params={
+            "page[limit]": 50, "page[offset]": offset, "sort": "-created"})
+        if not isinstance(dane, dict) or not isinstance(dane.get("data"), list):
+            if offset == 0:
+                log(f"    [drupal] JSON:API unavailable ({odp.status})")
+            return
+        wpisy = dane["data"]
+        if not wpisy:
+            return
+        nowe = 0
+        for wpis in wpisy:
+            atrybuty = wpis.get("attributes") or {}
+            alias = ((atrybuty.get("path") or {}) or {}).get("alias") or ""
+            url = normalizuj_url(baza + alias) if alias else ""
+            if not url or not _pasuje_url(zrodlo, url):
+                continue
+            tresc = (atrybuty.get("body") or {}).get("processed") or ""
+            nowe += 1
+            wydane += 1
+            yield Kandydat(url=url, tytul=html_na_tekst(atrybuty.get("title", "")),
+                           data=normalizuj_date(atrybuty.get("created", "")),
+                           tresc_html=tresc, tagi_zrodla=list(zrodlo.tagi),
+                           skad="drupal", zrodlo=zrodlo.etykieta)
+        log(f"    [drupal] offset {offset}: +{nowe} new")
+        offset += 50
 
 
 # --------------------------------------------------------------------------
@@ -250,7 +399,6 @@ def _tag_bez_ns(element) -> str:
 
 
 def _parsuj_sitemap(xml: str) -> Tuple[List[str], List[Tuple[str, str]]]:
-    """Zwraca (linki do zagnieżdżonych map, [(url, lastmod)])."""
     try:
         korzen_xml = ET.fromstring(xml.encode("utf-8", "ignore"))
     except ET.ParseError:
@@ -268,10 +416,8 @@ def _parsuj_sitemap(xml: str) -> Tuple[List[str], List[Tuple[str, str]]]:
                 lastmod = (wnuk.text or "").strip()
         if not loc:
             continue
-        if nazwa == "sitemap":
-            mapy.append(loc)
-        else:
-            adresy.append((loc, lastmod))
+        (mapy if nazwa == "sitemap" else adresy).append(
+            loc if nazwa == "sitemap" else (loc, lastmod))
     return mapy, adresy
 
 
@@ -280,12 +426,13 @@ def z_sitemap(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
     baza = korzen(zrodlo.url)
     kandydaci_map = list(klient.mapy_z_robots(baza)) + [
         f"{baza}/wp-sitemap.xml", f"{baza}/sitemap_index.xml", f"{baza}/sitemap.xml",
-        f"{baza}/sitemap-index.xml", f"{baza}/sitemap.xml.gz",
+        f"{baza}/sitemap-index.xml", f"{baza}/sitemap/sitemap-index.xml",
+        f"{baza}/sitemap.xml.gz", f"{baza}/news-sitemap.xml",
     ]
-    do_odwiedzenia, odwiedzone, wydane = list(dict.fromkeys(kandydaci_map)), set(), 0
-    lata = None
-    if zrodlo.od_roku or zrodlo.do_roku:
-        lata = range(zrodlo.od_roku or 1990, (zrodlo.do_roku or 2100) + 1)
+    do_odwiedzenia = list(dict.fromkeys(kandydaci_map))
+    odwiedzone, wydane = set(), 0
+    lata = range(zrodlo.od_roku or 1990, (zrodlo.do_roku or 2100) + 1) \
+        if (zrodlo.od_roku or zrodlo.do_roku) else None
 
     while do_odwiedzenia and not przerwij() and wydane < zrodlo.max_url:
         adres = do_odwiedzenia.pop(0)
@@ -297,10 +444,10 @@ def z_sitemap(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
             continue
         mapy, adresy = _parsuj_sitemap(xml)
         if mapy:
-            log(f"    [sitemap] {adres} → {len(mapy)} podmap")
+            log(f"    [sitemap] {adres} → {len(mapy)} nested maps")
             do_odwiedzenia.extend(m for m in mapy if m not in odwiedzone)
         if adresy:
-            log(f"    [sitemap] {adres} → {len(adresy)} adresów")
+            log(f"    [sitemap] {adres} → {len(adresy)} addresses")
         for url, lastmod in adresy:
             url = normalizuj_url(url)
             if host_z_url(url) != host_z_url(baza):
@@ -309,9 +456,9 @@ def z_sitemap(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
                 continue
             data = normalizuj_date(lastmod)
             if lata and data[:4].isdigit() and int(data[:4]) not in lata:
-                # data z URL-a bywa wiarygodniejsza niż lastmod
-                m = re.search(r"/((?:19|20)\d{2})/", url)
-                if not (m and int(m.group(1)) in lata):
+                # the year in the address is often more reliable than lastmod
+                rok_z_url = re.search(r"/((?:19|20)\d{2})/", url)
+                if not (rok_z_url and int(rok_z_url.group(1)) in lata):
                     continue
             wydane += 1
             yield Kandydat(url=url, data=data, tagi_zrodla=list(zrodlo.tagi),
@@ -327,14 +474,14 @@ def z_sitemap(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
 def z_rss(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
           przerwij: Callable[[], bool]) -> Iterator[Kandydat]:
     baza = korzen(zrodlo.url)
-    kanaly = [f"{baza}/feed", f"{baza}/?feed=rss2", f"{baza}/rss", f"{baza}/atom.xml",
-              f"{baza}/feed/atom"]
+    kanaly = [f"{baza}/feed", f"{baza}/?feed=rss2", f"{baza}/rss", f"{baza}/rss.xml",
+              f"{baza}/atom.xml", f"{baza}/feed/atom", f"{baza}/index.xml"]
     odp = klient.pobierz(baza)
     if odp.ok:
         zupa = BeautifulSoup(odp.tekst, "html.parser")
         for link in zupa.find_all("link", type=re.compile(r"rss|atom", re.I)):
             if link.get("href"):
-                kanaly.insert(0, urljoin(baza, link["href"]))
+                kanaly.insert(0, _link_absolutny(baza, link["href"]))
 
     wydane = 0
     for kanal in dict.fromkeys(kanaly):
@@ -350,7 +497,7 @@ def z_rss(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
         wpisy = [e for e in korzen_xml.iter() if _tag_bez_ns(e) in ("item", "entry")]
         if not wpisy:
             continue
-        log(f"    [rss] {kanal} → {len(wpisy)} wpisów")
+        log(f"    [rss] {kanal} → {len(wpisy)} entries")
         for wpis in wpisy:
             url, tytul, data, kategorie, autor = "", "", "", [], ""
             for pole in wpis:
@@ -378,61 +525,154 @@ def z_rss(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
 
 
 # --------------------------------------------------------------------------
-# Wyszukiwarka HTML (?s=…&paged=N)
+# Result-link extraction (used by search and listing adapters)
 # --------------------------------------------------------------------------
 
 _SELEKTORY_WYNIKOW = (
     "article a[rel='bookmark']", "h2.entry-title a", "h3.entry-title a", "h1.entry-title a",
-    "h2.post-title a", ".entry-title a", ".post-title a", "article h2 a", "article h3 a",
-    ".search-results a[href]", "main article a[href]")
+    "h2.post-title a", ".entry-title a", ".post-title a", ".search-result a[href]",
+    "article h2 a", "article h3 a", "li.result a[href]", ".teaser a[href]",
+    "main article a[href]", "[class*='result'] a[href]", "[class*='teaser'] h2 a")
+
+
+def _linki_wynikow(zupa: BeautifulSoup, baza: str, selektor: str = "") -> List:
+    """Article links from a results/listing page, from the most to the least specific."""
+    if selektor:
+        znalezione = zupa.select(selektor)
+        if znalezione:
+            return znalezione
+    for kandydat in _SELEKTORY_WYNIKOW:
+        znalezione = zupa.select(kandydat)
+        if znalezione:
+            return znalezione
+    znalezione = [a for a in zupa.find_all("a", href=re.compile(r"[?&]p=\d+"))]
+    if znalezione:
+        return znalezione
+    for artykul in zupa.find_all("article"):
+        link = artykul.find("a", href=True)
+        if link:
+            znalezione.append(link)
+    if znalezione:
+        return znalezione
+    # last resort: everything that looks like an article address
+    return [a for a in zupa.find_all("a", href=True)
+            if _wyglada_na_artykul(_link_absolutny(baza, a["href"]))]
+
+
+def _wypelnij(szablon: str, haslo: str, strona: int, rok: Optional[int] = None) -> str:
+    return (szablon.replace("{q}", quote_plus(haslo))
+                   .replace("{query}", quote_plus(haslo))
+                   .replace("{page}", str(strona))
+                   .replace("{year}", str(rok or "")))
+
+
+def _zbierz_ze_strony(klient: KlientHTTP, zrodlo: Zrodlo, adres: str, baza: str,
+                      widziane: set, skad: str) -> Tuple[List[Kandydat], bool, str]:
+    """Fetch one results page. Returns (candidates, has-next-page, message)."""
+    odp = klient.pobierz(adres, uzyj_cache=False, zrodlo=zrodlo)
+    if not odp.ok:
+        return [], False, f"HTTP {odp.status} {odp.blad}".strip()
+    zupa = BeautifulSoup(odp.tekst, "html.parser")
+    kandydaci: List[Kandydat] = []
+    for link in _linki_wynikow(zupa, baza, zrodlo.selektor_linkow):
+        url = _link_absolutny(baza, link.get("href") or "")
+        if not url or url in widziane or host_z_url(url) != host_z_url(baza):
+            continue
+        if not (_pasuje_url(zrodlo, url) and _wyglada_na_tresc(url)):
+            continue
+        widziane.add(url)
+        kandydaci.append(Kandydat(url=url, tytul=link.get_text(" ", strip=True),
+                                  tagi_zrodla=list(zrodlo.tagi), skad=skad,
+                                  zrodlo=zrodlo.etykieta))
+    if zrodlo.selektor_dalej:
+        ma_dalej = bool(zupa.select_one(zrodlo.selektor_dalej))
+    else:
+        ma_dalej = bool(zupa.select_one(
+            "a[rel='next'], a.next, .next a, .pagination a.next, .nav-previous a,"
+            "[class*='pager'] a[class*='next']"))
+    return kandydaci, ma_dalej, ""
+
+
+#: Search-page templates tried when the user has not supplied one.
+SZABLONY_SZUKANIA = (
+    "{baza}/?s={q}&paged={page}",          # WordPress
+    "{baza}/search?q={q}&page={page}",
+    "{baza}/search/?q={q}&page={page}",
+    "{baza}/szukaj?q={q}&page={page}",
+    "{baza}/suche?q={q}&seite={page}",
+    "{baza}/search?query={q}&page={page}",
+    "{baza}/?s={q}",
+)
 
 
 def z_szukajki(klient: KlientHTTP, zrodlo: Zrodlo, hasla: Sequence[str], log: Log,
                przerwij: Callable[[], bool]) -> Iterator[Kandydat]:
+    """The site's own search — via a supplied template or a discovered one."""
     baza = korzen(zrodlo.url)
+    szablony = [zrodlo.szablon_szukania] if zrodlo.szablon_szukania else \
+        [s.replace("{baza}", baza) for s in SZABLONY_SZUKANIA]
+
+    dzialajacy = ""
     widziane, wydane = set(), 0
     for haslo in hasla or [""]:
-        strona = 1
-        while strona <= zrodlo.max_stron and not przerwij() and wydane < zrodlo.max_url:
-            parametry = {"s": haslo}
-            if strona > 1:
-                parametry["paged"] = strona
-            odp = klient.pobierz(f"{baza}/", params=parametry, uzyj_cache=False)
-            if not odp.ok:
-                log(f"    [szukajka] '{haslo}' strona {strona}: HTTP {odp.status} {odp.blad}")
-                break
-            zupa = BeautifulSoup(odp.tekst, "html.parser")
-
-            linki = []
-            for selektor in _SELEKTORY_WYNIKOW:
-                znalezione = zupa.select(selektor)
-                if znalezione:
-                    linki = znalezione
+        if przerwij() or wydane >= zrodlo.max_url:
+            return
+        szablony_do_proby = [dzialajacy] if dzialajacy else szablony
+        for szablon in szablony_do_proby:
+            strona = zrodlo.pierwsza_strona
+            znalezione_dla_szablonu = 0
+            while strona < zrodlo.pierwsza_strona + zrodlo.max_stron:
+                if przerwij() or wydane >= zrodlo.max_url:
+                    return
+                adres = _wypelnij(szablon, haslo, strona)
+                kandydaci, ma_dalej, blad = _zbierz_ze_strony(
+                    klient, zrodlo, adres, baza, widziane, "search")
+                if blad:
+                    log(f"    [search] {adres}: {blad}")
                     break
-            if not linki:
-                linki = [a for a in zupa.find_all("a", href=re.compile(r"[?&]p=\d+"))]
-            if not linki:
-                for artykul in zupa.find_all("article"):
-                    a = artykul.find("a", href=True)
-                    if a:
-                        linki.append(a)
+                for kandydat in kandydaci:
+                    wydane += 1
+                    znalezione_dla_szablonu += 1
+                    yield kandydat
+                log(f"    [search] '{haslo}' page {strona}: +{len(kandydaci)}")
+                if not kandydaci or not ma_dalej or "{page}" not in szablon:
+                    break
+                strona += 1
+            if znalezione_dla_szablonu:
+                if not dzialajacy:
+                    dzialajacy = szablon
+                    log(f"    [search] using template {szablon}")
+                break
 
-            nowe = 0
-            for a in linki:
-                url = normalizuj_url(urljoin(baza, a.get("href") or ""))
-                if not url or url in widziane or host_z_url(url) != host_z_url(baza):
-                    continue
-                if not (_pasuje_url(zrodlo, url) and _wyglada_na_tresc(url)):
-                    continue
-                widziane.add(url)
-                nowe += 1
+
+def z_listy(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
+            przerwij: Callable[[], bool]) -> Iterator[Kandydat]:
+    """A paginated archive/index page — bypasses the site's search entirely."""
+    baza = korzen(zrodlo.url)
+    szablon = zrodlo.szablon_listy
+    if not szablon:
+        log("    [listing] no listing_url template given")
+        return
+    lata = list(range(zrodlo.od_roku, zrodlo.do_roku + 1)) \
+        if (zrodlo.od_roku and zrodlo.do_roku and "{year}" in szablon) else [None]
+
+    widziane, wydane = set(), 0
+    for rok in lata:
+        strona = zrodlo.pierwsza_strona
+        while strona < zrodlo.pierwsza_strona + zrodlo.max_stron:
+            if przerwij() or wydane >= zrodlo.max_url:
+                return
+            adres = _wypelnij(szablon, "", strona, rok)
+            kandydaci, ma_dalej, blad = _zbierz_ze_strony(
+                klient, zrodlo, adres, baza, widziane, "listing")
+            if blad:
+                log(f"    [listing] {adres}: {blad}")
+                break
+            for kandydat in kandydaci:
                 wydane += 1
-                yield Kandydat(url=url, tytul=a.get_text(" ", strip=True),
-                               tagi_zrodla=list(zrodlo.tagi), skad="szukajka",
-                               zrodlo=zrodlo.etykieta)
-            log(f"    [szukajka] '{haslo}' strona {strona}: +{nowe}")
-            ma_dalej = bool(zupa.select_one(f"a[href*='paged={strona + 1}'], a.next, .nav-previous a"))
-            if nowe == 0 or not ma_dalej:
+                yield kandydat
+            log(f"    [listing] {rok or ''} page {strona}: +{len(kandydaci)}")
+            if not kandydaci or "{page}" not in szablon:
                 break
             strona += 1
 
@@ -444,15 +684,14 @@ def z_szukajki(klient: KlientHTTP, zrodlo: Zrodlo, hasla: Sequence[str], log: Lo
 def z_crawl(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
             przerwij: Callable[[], bool]) -> Iterator[Kandydat]:
     baza = korzen(zrodlo.url)
-    start = normalizuj_url(zrodlo.url)
-    kolejka: List[Tuple[str, int]] = [(start, 0)]
+    kolejka: List[Tuple[str, int]] = [(normalizuj_url(zrodlo.url), 0)]
     odwiedzone, wydane = set(), 0
     while kolejka and not przerwij() and wydane < zrodlo.max_url:
         url, glebokosc = kolejka.pop(0)
         if url in odwiedzone:
             continue
         odwiedzone.add(url)
-        odp = klient.pobierz(url)
+        odp = klient.pobierz(url, zrodlo=zrodlo)
         if not odp.ok:
             continue
         if _wyglada_na_tresc(url) and _pasuje_url(zrodlo, url):
@@ -462,76 +701,71 @@ def z_crawl(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
         if glebokosc >= zrodlo.glebokosc:
             continue
         zupa = BeautifulSoup(odp.tekst, "html.parser")
-        for a in zupa.find_all("a", href=True):
-            nowy = normalizuj_url(urljoin(url, a["href"]))
-            if nowy and nowy not in odwiedzone and host_z_url(nowy) == host_z_url(baza):
-                if not _NIE_TRESC.search(nowy):
-                    kolejka.append((nowy, glebokosc + 1))
+        for link in zupa.find_all("a", href=True):
+            nowy = _link_absolutny(url, link["href"])
+            if nowy and nowy not in odwiedzone and host_z_url(nowy) == host_z_url(baza) \
+                    and not _NIE_TRESC.search(nowy):
+                kolejka.append((nowy, glebokosc + 1))
         if len(odwiedzone) % 25 == 0:
-            log(f"    [crawl] odwiedzono {len(odwiedzone)}, w kolejce {len(kolejka)}")
+            log(f"    [crawl] visited {len(odwiedzone)}, queued {len(kolejka)}")
 
 
 # --------------------------------------------------------------------------
-# Dyspozytor
+# Dispatcher
 # --------------------------------------------------------------------------
 
 def kandydaci(klient: KlientHTTP, zrodlo: Zrodlo, hasla: Sequence[str], log: Log,
               przerwij: Callable[[], bool] = lambda: False) -> Iterator[Kandydat]:
-    tryb = (zrodlo.tryb or "auto").lower()
+    tryb = _NORMALIZUJ_TRYB.get((zrodlo.tryb or "auto").lower(), "auto")
 
-    if tryb == "lista" or (tryb == "auto" and zrodlo.lista_url):
+    if tryb == "urls" or (tryb == "auto" and zrodlo.lista_url):
         for url in zrodlo.lista_url or [zrodlo.url]:
             url = normalizuj_url(url)
             if url and _pasuje_url(zrodlo, url):
-                yield Kandydat(url=url, tagi_zrodla=list(zrodlo.tagi), skad="lista",
+                yield Kandydat(url=url, tagi_zrodla=list(zrodlo.tagi), skad="urls",
                                zrodlo=zrodlo.etykieta)
         return
 
-    if tryb == "wordpress":
-        yield from z_wordpress(klient, zrodlo, hasla, log, przerwij)
-        return
-    if tryb == "sitemap":
-        yield from z_sitemap(klient, zrodlo, log, przerwij)
-        return
-    if tryb == "rss":
-        yield from z_rss(klient, zrodlo, log, przerwij)
-        return
-    if tryb == "szukajka":
-        yield from z_szukajki(klient, zrodlo, hasla, log, przerwij)
-        return
-    if tryb == "crawl":
-        yield from z_crawl(klient, zrodlo, log, przerwij)
+    proste = {"wordpress": lambda: z_wordpress(klient, zrodlo, hasla, log, przerwij),
+              "drupal": lambda: z_drupala(klient, zrodlo, log, przerwij),
+              "sitemap": lambda: z_sitemap(klient, zrodlo, log, przerwij),
+              "rss": lambda: z_rss(klient, zrodlo, log, przerwij),
+              "search": lambda: z_szukajki(klient, zrodlo, hasla, log, przerwij),
+              "listing": lambda: z_listy(klient, zrodlo, log, przerwij),
+              "crawl": lambda: z_crawl(klient, zrodlo, log, przerwij)}
+    if tryb in proste:
+        yield from proste[tryb]()
         return
 
     # ---- auto ----
-    log(f"  wykrywanie sposobu dostępu dla {zrodlo.etykieta}…")
-    if wykryj_wordpress(klient, zrodlo.url):
-        log("    → REST API WordPressa działa, używam go")
+    if zrodlo.szablon_listy:
+        log(f"  {zrodlo.etykieta}: using the supplied listing template")
+        yield from z_listy(klient, zrodlo, log, przerwij)
+        return
+
+    log(f"  detecting how to reach {zrodlo.etykieta}…")
+    cms = wykryj_cms(klient, zrodlo.url, log)
+    log(f"    → looks like: {cms}")
+
+    kolejnosc: List[Tuple[str, Callable[[], Iterator[Kandydat]]]] = []
+    if cms == "wordpress":
+        kolejnosc.append(("WordPress REST API",
+                          lambda: z_wordpress(klient, zrodlo, hasla, log, przerwij)))
+    elif cms == "drupal":
+        kolejnosc.append(("Drupal JSON:API", lambda: z_drupala(klient, zrodlo, log, przerwij)))
+    kolejnosc += [
+        ("sitemap", lambda: z_sitemap(klient, zrodlo, log, przerwij)),
+        ("RSS feed", lambda: z_rss(klient, zrodlo, log, przerwij)),
+        ("site search", lambda: z_szukajki(klient, zrodlo, hasla, log, przerwij)),
+        ("link crawl", lambda: z_crawl(klient, zrodlo, log, przerwij)),
+    ]
+
+    for nazwa, funkcja in kolejnosc:
         cokolwiek = False
-        for kandydat in z_wordpress(klient, zrodlo, hasla, log, przerwij):
+        for kandydat in funkcja():
             cokolwiek = True
             yield kandydat
         if cokolwiek:
+            log(f"    → {nazwa} was enough")
             return
-        log("    → API nic nie zwróciło, próbuję dalej")
-    else:
-        log("    → brak REST API (404/wyłączone)")
-
-    for nazwa, funkcja in (("mapa strony", z_sitemap), ("kanał RSS", z_rss)):
-        cokolwiek = False
-        for kandydat in funkcja(klient, zrodlo, log, przerwij):
-            cokolwiek = True
-            yield kandydat
-        if cokolwiek:
-            log(f"    → {nazwa} wystarczył")
-            return
-        log(f"    → {nazwa}: pusto")
-
-    log("    → zostaje wyszukiwarka HTML")
-    cokolwiek = False
-    for kandydat in z_szukajki(klient, zrodlo, hasla, log, przerwij):
-        cokolwiek = True
-        yield kandydat
-    if not cokolwiek:
-        log("    → wyszukiwarka nic nie dała, przechodzę na crawl")
-        yield from z_crawl(klient, zrodlo, log, przerwij)
+        log(f"    → {nazwa}: nothing")

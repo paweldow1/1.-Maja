@@ -1,0 +1,51 @@
+# A newspaper whose own archive search is bad — so we do not use it.
+#
+# Two ways round it, in order of preference:
+#   1. listing_url — walk the paginated archive/index yourself;
+#   2. full_sweep over the sitemap — take every address the paper publishes
+#      and check the text locally.
+#
+# Where an article needs your subscription, sign in as yourself: export
+# cookies.txt from the browser where you are already logged in, or paste the
+# Cookie header. Kwerenda does not get past paywalls and does not disguise
+# itself; this only reaches what your own account already opens. Check that the
+# paper's terms allow automated reading before you run it.
+name: Newspaper archive — May Day
+
+query: ("1 maja"* OR pierwszomaj**) AND (pochód* OR wiec* OR manifestacja*)
+languages: [pl]
+contact: Pawel Downarowicz (doctoral research)
+delay: 1.5                     # a commercial site deserves a wider berth
+threads: 1
+respect_robots: true
+zotero_type: newspaperArticle
+extra_tags: [dissertation, press]
+year_from: 1990
+year_to: 2005
+
+sources:
+  - url: https://example-newspaper.pl
+    name: Example Newspaper
+    mode: listing
+    language: pl
+    tags: [press]
+    # {page} is required, {year} optional — both are filled in for you
+    listing_url: https://example-newspaper.pl/archive/{year}/page/{page}
+    year_from: 1990
+    year_to: 2005
+    max_pages: 60
+    link_selector: "article h2 a"        # leave empty to let Kwerenda guess
+    next_selector: "a.next"
+    first_page: 1
+    # Your own subscription, one of these:
+    # cookies: "sid=…; user=…"
+    # cookies_file: /home/you/cookies.txt
+    # browser_cookies: firefox           # needs: pip install browser-cookie3
+
+  # Fallback when there is no usable archive index at all:
+  # - url: https://example-newspaper.pl
+  #   name: Example Newspaper — sitemap sweep
+  #   mode: sitemap
+  #   year_from: 1990
+  #   year_to: 2005
+  #   url_pattern: "/(19|20)\\d{2}/"

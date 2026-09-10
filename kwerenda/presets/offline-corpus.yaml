@@ -1,0 +1,11 @@
+# Search what you have already downloaded — not a single network request.
+# Useful for trying new keywords against material you collected earlier.
+name: New keywords, old corpus
+query: (sztandar* OR transparent* OR banner*) NEAR/25 (kościół* OR msza* OR church*)
+languages: [pl, en]
+zotero_type: blogPost
+extra_tags: [dissertation, iconography]
+sources:
+  - url: ""          # empty = the whole corpus; give a domain to narrow it
+    name: Downloaded corpus
+    mode: corpus

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Konfiguracja kwerendy – jeden obiekt opisujący całe zadanie.
+"""One object describing a whole search job.
 
-Da się go zapisać/wczytać jako YAML albo JSON, więc to samo zadanie można
-uruchomić z interfejsu graficznego i z wiersza poleceń.
+Saved and loaded as YAML or JSON with **English keys**, so the same job runs
+from the graphical interface and from the command line. Keys from earlier
+Polish-language configurations are still accepted.
 """
 
 from __future__ import annotations
@@ -12,26 +13,60 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .fleksja import FlexOptions
+from .morfologia import DOMYSLNE, JEZYKI, Opcje
 from .zrodla import Zrodlo
+
+#: External (English) key  ->  internal attribute name.
+KLUCZE: Dict[str, str] = {
+    "name": "nazwa",
+    "query": "zapytanie",
+    "default_operator": "domyslny_operator",
+    "languages": "jezyki",
+    "expand_all": "rozszerzaj_wszystko",
+    "ignore_diacritics": "bez_ogonkow",
+    "excluded_forms": "wykluczone_formy",
+    "sources": "zrodla",
+    "contact": "kontakt",
+    "delay": "opoznienie",
+    "retries": "proby",
+    "respect_robots": "respektuj_robots",
+    "threads": "watki",
+    "use_cache": "uzyj_cache",
+    "cache_max_age_days": "maks_wiek_cache_dni",
+    "max_candidates": "limit_kandydatow",
+    "max_hits": "limit_trafien",
+    "snippet_window": "okno_cytatu",
+    "max_snippets": "maks_cytatow",
+    "zotero_type": "typ_zotero",
+    "extra_tags": "tagi_dodatkowe",
+    "tag_from_domain": "tag_z_domeny",
+    "tag_from_year": "tag_z_roku",
+    "tag_from_terms": "tag_z_terminow",
+    "tag_from_cms": "tagi_z_wp",
+    "tag_from_language": "tag_z_jezyka",
+    "year_from": "od_roku",
+    "year_to": "do_roku",
+    "detect_language": "wykrywaj_jezyk",
+}
+_ODWROTNE = {v: k for k, v in KLUCZE.items()}
 
 
 @dataclass
 class Konfiguracja:
-    nazwa: str = "Kwerenda"
+    nazwa: str = "Search"
     zapytanie: str = ""
-    domyslny_operator: str = "I"          # I albo LUB między sąsiednimi terminami
+    domyslny_operator: str = "AND"          # AND or OR between adjacent terms
 
-    # fleksja
-    tryb_fleksji: str = "fleksja"          # dokladnie | fleksja | rdzen
-    bez_ogonkow: bool = False              # „Zoliborz” ma trafiać w „Żoliborz”
-    warianty_reczne: Dict[str, List[str]] = field(default_factory=dict)
+    # morphology
+    jezyki: List[str] = field(default_factory=lambda: list(DOMYSLNE))
+    rozszerzaj_wszystko: bool = False       # treat every term as if it ended with *
+    bez_ogonkow: bool = False               # "Zoliborz" matches "Żoliborz"
     wykluczone_formy: List[str] = field(default_factory=list)
 
-    # źródła
+    # where to look
     zrodla: List[Zrodlo] = field(default_factory=list)
 
-    # sieć i grzeczność
+    # network manners
     kontakt: str = ""
     opoznienie: float = 0.4
     proby: int = 3
@@ -40,11 +75,11 @@ class Konfiguracja:
     uzyj_cache: bool = True
     maks_wiek_cache_dni: float = 30.0
 
-    # limity
+    # limits
     limit_kandydatow: int = 4000
     limit_trafien: int = 1000
 
-    # wynik
+    # output
     okno_cytatu: int = 220
     maks_cytatow: int = 4
     typ_zotero: str = "blogPost"
@@ -53,28 +88,48 @@ class Konfiguracja:
     tag_z_roku: bool = True
     tag_z_terminow: bool = True
     tagi_z_wp: bool = True
+    tag_z_jezyka: bool = True
+    wykrywaj_jezyk: bool = True
     od_roku: Optional[int] = None
     do_roku: Optional[int] = None
 
     # ---------------------------------------------------------------
-    def opcje_fleksji(self) -> FlexOptions:
-        return FlexOptions(mode=self.tryb_fleksji, fold_diacritics=self.bez_ogonkow,
-                           wyklucz=tuple(self.wykluczone_formy))
+    def opcje_morfologii(self) -> Opcje:
+        jezyki = tuple(k for k in (self.jezyki or DOMYSLNE) if k in JEZYKI)
+        return Opcje(jezyki=jezyki or tuple(DOMYSLNE),
+                     rozszerzaj_wszystko=self.rozszerzaj_wszystko,
+                     bez_ogonkow=self.bez_ogonkow,
+                     wyklucz=tuple(self.wykluczone_formy))
 
+    # ---------------------------------------------------------------
     def jako_dict(self) -> dict:
-        dane = asdict(self)
-        dane["zrodla"] = [asdict(z) if not isinstance(z, dict) else z for z in self.zrodla]
-        return dane
+        surowe = asdict(self)
+        wynik = {_ODWROTNE.get(k, k): v for k, v in surowe.items() if k != "zrodla"}
+        wynik["sources"] = [z.jako_dict() if isinstance(z, Zrodlo) else z
+                            for z in self.zrodla]
+        return wynik
 
     @classmethod
     def z_dict(cls, dane: dict) -> "Konfiguracja":
         dane = dict(dane or {})
-        zrodla = [Zrodlo.z_dict(z) if isinstance(z, dict) else z
-                  for z in dane.pop("zrodla", []) or []]
-        znane = {p for p in cls.__dataclass_fields__}       # type: ignore[attr-defined]
-        czyste = {k: v for k, v in dane.items() if k in znane}
+        zrodla_surowe = dane.pop("sources", None)
+        if zrodla_surowe is None:
+            zrodla_surowe = dane.pop("zrodla", []) or []
+        zrodla = [Zrodlo.z_dict(z) if isinstance(z, dict) else z for z in zrodla_surowe]
+
+        znane = set(cls.__dataclass_fields__)          # type: ignore[attr-defined]
+        czyste: Dict[str, Any] = {}
+        for klucz, wartosc in dane.items():
+            nazwa = KLUCZE.get(klucz, klucz)
+            if nazwa in znane:
+                czyste[nazwa] = wartosc
+
         konfig = cls(**czyste)
         konfig.zrodla = zrodla
+        if isinstance(konfig.jezyki, str):
+            konfig.jezyki = [k.strip() for k in konfig.jezyki.split(",") if k.strip()]
+        konfig.domyslny_operator = {"I": "AND", "LUB": "OR"}.get(
+            (konfig.domyslny_operator or "AND").upper(), (konfig.domyslny_operator or "AND").upper())
         return konfig
 
     # ---------------------------------------------------------------
@@ -85,8 +140,8 @@ class Konfiguracja:
             try:
                 import yaml  # type: ignore
             except ImportError as exc:  # pragma: no cover
-                raise SystemExit("Do plików YAML potrzebny jest pakiet PyYAML "
-                                 "(pip install pyyaml) albo użyj formatu JSON.") from exc
+                raise SystemExit("YAML files need PyYAML (pip install pyyaml); "
+                                 "or use JSON instead.") from exc
             dane = yaml.safe_load(tekst) or {}
         else:
             dane = json.loads(tekst)
@@ -100,22 +155,27 @@ class Konfiguracja:
             sciezka.write_text(yaml.safe_dump(dane, allow_unicode=True, sort_keys=False),
                                encoding="utf-8")
         else:
-            sciezka.write_text(json.dumps(dane, ensure_ascii=False, indent=2), encoding="utf-8")
+            sciezka.write_text(json.dumps(dane, ensure_ascii=False, indent=2),
+                               encoding="utf-8")
 
     # ---------------------------------------------------------------
     def sprawdz(self) -> List[str]:
-        """Zwraca listę zastrzeżeń do pokazania użytkownikowi przed startem."""
+        """Warnings shown to the user before the run starts."""
         uwagi: List[str] = []
         if not self.zrodla:
-            uwagi.append("Nie podano żadnego źródła (adresu strony).")
+            uwagi.append("No source given — add at least one website address.")
         if not self.zapytanie.strip():
-            uwagi.append("Puste zapytanie – zbiorę wszystko, co znajdę (to może być dużo).")
+            uwagi.append("Empty query: everything found will be collected. "
+                         "That can be a lot.")
         if not self.kontakt:
-            uwagi.append("Brak adresu kontaktowego w User-Agent — wypada się przedstawiać "
-                         "administratorom przeszukiwanych serwisów.")
+            uwagi.append("No contact address in the User-Agent. It is good manners to "
+                         "let site administrators know who is crawling them.")
         if self.opoznienie < 0.2:
-            uwagi.append("Odstęp między zapytaniami poniżej 0,2 s bywa uznawany za nieuprzejmy.")
+            uwagi.append("A delay below 0.2 s between requests is widely considered rude.")
         if not self.respektuj_robots:
-            uwagi.append("Wyłączono respektowanie robots.txt — rób tak tylko dla stron, "
-                         "co do których masz pewność, że wolno.")
+            uwagi.append("robots.txt is being ignored — only do this for sites where "
+                         "you know you are allowed to.")
+        if any(z.ma_dane_logowania() for z in self.zrodla):
+            uwagi.append("Some sources use your own credentials. Only access content "
+                         "your subscription actually covers, and keep to the site's terms.")
         return uwagi

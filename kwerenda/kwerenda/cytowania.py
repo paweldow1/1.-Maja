@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Przypis bibliograficzny: rekord → Zotero / RIS / CSL-JSON / BibTeX / CSV / Obsidian.
+"""The citation: one record → Zotero / RIS / CSL-JSON / BibTeX / CSV / Obsidian.
 
-Jeden wspólny rekord (:class:`Rekord`) jest tłumaczony na wszystkie formaty, żeby
-przypis, tagi i notatka z cytatem były wszędzie takie same.
+A single :class:`Rekord` is translated into every format, so the citation, the
+tags and the quotation note come out identical wherever they land.
 """
 
 from __future__ import annotations
@@ -157,18 +157,18 @@ def _twórcy_zotero(autorzy: Sequence[str]) -> List[dict]:
 
 def notatka_html(rekord: Rekord) -> str:
     """Notatka do Zotero: cytaty z kontekstem + ślad kwerendy."""
-    czesci = ["<h2>Kwerenda — dopasowane fragmenty</h2>"]
+    czesci = ["<h2>Search hits in context</h2>"]
     if rekord.terminy:
-        czesci.append("<p><b>Trafione terminy:</b> " + ", ".join(
+        czesci.append("<p><b>Matched terms:</b> " + ", ".join(
             _escape(t) for t in rekord.terminy) + "</p>")
     for cytat in rekord.cytaty:
         formy = ", ".join(cytat.get("formy", []))
         czesci.append(f"<blockquote><p>{_escape(cytat.get('fragment', ''))}</p>"
-                      f"<p><i>formy: {_escape(formy)}</i></p></blockquote>")
+                      f"<p><i>forms: {_escape(formy)}</i></p></blockquote>")
     if rekord.notatka:
-        czesci.append(f"<p><b>Notatka własna:</b> {_escape(rekord.notatka)}</p>")
+        czesci.append(f"<p><b>My note:</b> {_escape(rekord.notatka)}</p>")
     czesci.append(f'<p><a href="{_escape(rekord.url)}">{_escape(rekord.url)}</a> '
-                  f"(dostęp: {rekord.data_dostepu})</p>")
+                  f"(accessed {rekord.data_dostepu})</p>")
     return "\n".join(czesci)
 
 
@@ -284,11 +284,11 @@ def _jedna_linia(tekst: str) -> str:
 def _notatka_plaska(rekord: Rekord) -> str:
     czesci = []
     if rekord.terminy:
-        czesci.append("Trafione terminy: " + ", ".join(rekord.terminy))
+        czesci.append("Matched terms: " + ", ".join(rekord.terminy))
     for cytat in rekord.cytaty:
-        czesci.append("„" + _jedna_linia(cytat.get("fragment", "")) + "”")
+        czesci.append("“" + _jedna_linia(cytat.get("fragment", "")) + "”")
     if rekord.notatka:
-        czesci.append("Notatka: " + _jedna_linia(rekord.notatka))
+        czesci.append("Note: " + _jedna_linia(rekord.notatka))
     return " | ".join(czesci)
 
 
@@ -380,8 +380,8 @@ def do_bibtex(rekordy: Sequence[Rekord]) -> str:
 # CSV i Markdown (Obsidian)
 # --------------------------------------------------------------------------
 
-KOLUMNY_CSV = ["citekey", "tytul", "autorzy", "data", "serwis", "url", "typ", "jezyk",
-               "tagi", "terminy", "cytat", "data_dostepu", "notatka"]
+KOLUMNY_CSV = ["citekey", "title", "authors", "date", "site", "url", "type", "language",
+               "tags", "terms", "quotation", "accessed", "note"]
 
 
 def do_csv(rekordy: Sequence[Rekord]) -> str:
@@ -391,45 +391,46 @@ def do_csv(rekordy: Sequence[Rekord]) -> str:
     for rekord in rekordy:
         zapis.writerow({
             "citekey": rekord.citekey,
-            "tytul": rekord.tytul,
-            "autorzy": "; ".join(rekord.autorzy),
-            "data": rekord.data,
-            "serwis": rekord.serwis,
+            "title": rekord.tytul,
+            "authors": "; ".join(rekord.autorzy),
+            "date": rekord.data,
+            "site": rekord.serwis,
             "url": rekord.url,
-            "typ": rekord.typ,
-            "jezyk": rekord.jezyk,
-            "tagi": "; ".join(rekord.tagi),
-            "terminy": "; ".join(rekord.terminy),
-            "cytat": " || ".join(_jedna_linia(c.get("fragment", "")) for c in rekord.cytaty),
-            "data_dostepu": rekord.data_dostepu,
-            "notatka": rekord.notatka,
+            "type": rekord.typ,
+            "language": rekord.jezyk,
+            "tags": "; ".join(rekord.tagi),
+            "terms": "; ".join(rekord.terminy),
+            "quotation": " || ".join(_jedna_linia(c.get("fragment", "")) for c in rekord.cytaty),
+            "accessed": rekord.data_dostepu,
+            "note": rekord.notatka,
         })
     return bufor.getvalue()
 
 
 def do_markdown(rekord: Rekord) -> str:
-    """Notatka źródłowa do Obsidiana, z linkiem [[@citekey]] jak w Better BibTeX."""
+    """A source note for Obsidian, with a [[@citekey]] link as Better BibTeX makes."""
     tagi_yaml = "\n".join(f"  - {t}" for t in dict.fromkeys(rekord.tagi) if t)
     linie = [
         "---",
         f'title: "{rekord.tytul.replace(chr(34), chr(39))}"',
         f"citekey: {rekord.citekey}",
         f"url: {rekord.url}",
-        f"data: {rekord.data}",
-        f"serwis: {rekord.serwis}",
-        f"autorzy: [{', '.join(rekord.autorzy)}]",
-        f"dostep: {rekord.data_dostepu}",
+        f"date: {rekord.data}",
+        f"site: {rekord.serwis}",
+        f"authors: [{', '.join(rekord.autorzy)}]",
+        f"accessed: {rekord.data_dostepu}",
         "tags:" if tagi_yaml else "tags: []",
     ]
     if tagi_yaml:
         linie.append(tagi_yaml)
-    linie += ["---", "", f"# {rekord.tytul}", "", f"Źródło: [[@{rekord.citekey}]] — <{rekord.url}>", ""]
+    linie += ["---", "", f"# {rekord.tytul}", "",
+              f"Source: [[@{rekord.citekey}]] — <{rekord.url}>", ""]
     if rekord.terminy:
-        linie += [f"**Trafione terminy:** {', '.join(rekord.terminy)}", ""]
+        linie += [f"**Matched terms:** {', '.join(rekord.terminy)}", ""]
     for cytat in rekord.cytaty:
         linie += ["> " + _jedna_linia(cytat.get("fragment", "")), ""]
     if rekord.notatka:
-        linie += ["## Notatka", "", rekord.notatka, ""]
+        linie += ["## Note", "", rekord.notatka, ""]
     return "\n".join(linie)
 
 

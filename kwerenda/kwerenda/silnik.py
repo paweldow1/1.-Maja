@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Silnik kwerendy: źródła → kandydaci → weryfikacja treści → trafienia w bazie.
+"""The search engine: sources → candidates → text verification → stored hits.
 
-Najważniejsza zasada: wyszukiwarka serwisu (WP, RSS, sitemap) jest tylko
-listą kandydatów. Dopasowanie zawsze potwierdzamy na pełnym tekście artykułu
-własnym zapytaniem — dzięki temu wynik jest powtarzalny i niezależny od tego,
-jak dana strona ma skonfigurowane wyszukiwanie.
+The rule that matters: a site's own search (WordPress, RSS, sitemap, an archive
+listing) only produces *candidates*. Every match is confirmed against the full
+article text with your query, so the result is reproducible and independent of
+how well that particular site indexes itself.
 """
 
 from __future__ import annotations
@@ -18,6 +18,7 @@ from typing import Callable, Dict, List, Optional, Sequence
 from .cytowania import Rekord, nadaj_citekeys, zbuduj_citekey
 from .ekstrakcja import (Metadane, dzis_iso, html_na_tekst, rok_z_daty,
                          wyciagnij_metadane, wyciagnij_tekst)
+from .morfologia import JEZYKI, wykryj_jezyk_tekstu
 from .konfiguracja import Konfiguracja
 from .magazyn import Magazyn
 from .siec import KlientHTTP, host_z_url, normalizuj_url
@@ -27,7 +28,7 @@ from .zrodla import Kandydat, Zrodlo, kandydaci
 
 @dataclass
 class Postep:
-    status: str = "przygotowanie"
+    status: str = "preparing"
     zrodlo: str = ""
     kandydatow: int = 0
     sprawdzonych: int = 0
@@ -77,17 +78,17 @@ class Silnik:
 
     def przerwij(self) -> None:
         self._stop.set()
-        self.log("⏹ przerwane przez użytkownika")
+        self.log("⏹ stopped by the user")
 
     def czy_stop(self) -> bool:
         return self._stop.is_set()
 
     # ------------------------------------------------------------------
     def hasla_dla_wyszukiwarek(self, drzewo: Wezel) -> List[str]:
-        """Słowa, którymi warto zaczepić wyszukiwarkę serwisu (bez NOT-ów)."""
+        """Words worth feeding to a site's own search box (excluded terms left out)."""
         hasla: List[str] = []
         for termin in drzewo.terminy():
-            tekst = termin.tekst.strip().strip("*")
+            tekst = termin.tekst.strip().strip("*").strip()
             if tekst and tekst not in hasla:
                 hasla.append(tekst)
         return hasla[:12]
@@ -95,18 +96,20 @@ class Silnik:
     # ------------------------------------------------------------------
     def uruchom(self, przebieg_id: Optional[int] = None) -> int:
         konfig = self.konfig
-        drzewo = parsuj(konfig.zapytanie, konfig.opcje_fleksji(), konfig.domyslny_operator)
+        drzewo = parsuj(konfig.zapytanie, konfig.opcje_morfologii(), konfig.domyslny_operator)
         hasla = self.hasla_dla_wyszukiwarek(drzewo)
 
         if przebieg_id is None:
             przebieg_id = self.magazyn.nowy_przebieg(konfig.nazwa, konfig.zapytanie,
                                                      konfig.jako_dict())
         self.przebieg_id = przebieg_id
-        self.postep.status = "zbieranie"
+        self.postep.status = "running"
         self.log(f"▶ start: {konfig.nazwa}")
-        self.log(f"  zapytanie: {drzewo.opis()}")
+        self.log(f"  query: {drzewo.opis()}")
+        jezyki = [JEZYKI[k].nazwa for k in konfig.jezyki if k in JEZYKI]
+        self.log(f"  morphology: {', '.join(jezyki) or 'default set'}")
         if hasla:
-            self.log(f"  hasła dla wyszukiwarek serwisów: {', '.join(hasla)}")
+            self.log(f"  words handed to site search engines: {', '.join(hasla)}")
         for uwaga in konfig.sprawdz():
             self.log("  ⚠ " + uwaga)
 
@@ -120,28 +123,28 @@ class Silnik:
                     # Awaria jednego serwisu nie może przerwać całej kwerendy:
                     # zapisujemy ją w dzienniku i idziemy do następnego źródła.
                     self.postep.bledow += 1
-                    self.log(f"  ✕ źródło {zrodlo.etykieta} przerwane błędem: "
+                    self.log(f"  ✕ source {zrodlo.etykieta} failed: "
                              f"{type(exc).__name__}: {exc}")
                     import traceback as _tb
                     self.log("    " + _tb.format_exc(limit=2).replace("\n", " ")[:400])
         finally:
-            self.postep.status = "przerwane" if self.czy_stop() else "gotowe"
+            self.postep.status = "stopped" if self.czy_stop() else "done"
             self.magazyn.aktualizuj_przebieg(
                 przebieg_id, status=self.postep.status, koniec=time.time(),
                 statystyki=_json(self.postep.jako_dict()),
                 dziennik="\n".join(self.dziennik[-800:]))
-            self.log(f"■ koniec: {self.postep.trafien} trafień "
-                     f"z {self.postep.sprawdzonych} sprawdzonych stron "
-                     f"({self.postep.pobran} pobrań, {self.postep.z_cache} z pamięci podręcznej)")
+            self.log(f"■ finished: {self.postep.trafien} hits "
+                     f"from {self.postep.sprawdzonych} pages checked "
+                     f"({self.postep.pobran} fetched, {self.postep.z_cache} from the corpus)")
         return przebieg_id
 
     # ------------------------------------------------------------------
     def _przetworz_zrodlo(self, zrodlo: Zrodlo, drzewo: Wezel, hasla: Sequence[str],
                           przebieg_id: int) -> None:
         self.postep.zrodlo = zrodlo.etykieta
-        self.log(f"► źródło: {zrodlo.etykieta} (tryb: {zrodlo.tryb})")
+        self.log(f"► source: {zrodlo.etykieta} (mode: {zrodlo.tryb})")
 
-        if (zrodlo.tryb or "").lower() == "korpus":
+        if (zrodlo.tryb or "").lower() in ("corpus", "korpus"):
             self._z_korpusu(zrodlo, drzewo, przebieg_id)
             return
 
@@ -160,7 +163,7 @@ class Silnik:
                 self._sprawdz_paczke(paczka, drzewo, przebieg_id, zrodlo)
                 paczka = []
             if self.postep.kandydatow >= self.konfig.limit_kandydatow:
-                self.log("  osiągnięto limit kandydatów – kończę to źródło")
+                self.log("  candidate limit reached — moving on from this source")
                 break
         if paczka and not self.czy_stop():
             self._sprawdz_paczke(paczka, drzewo, przebieg_id, zrodlo)
@@ -181,10 +184,10 @@ class Silnik:
         if self.czy_stop() or self.postep.trafien >= self.konfig.limit_trafien:
             return
         try:
-            tekst, meta = self._tresc_i_meta(kandydat)
-        except Exception as exc:                      # nie przerywamy całej kwerendy
+            tekst, meta = self._tresc_i_meta(kandydat, zrodlo)
+        except Exception as exc:                      # one page must not stop the run
             self.postep.bledow += 1
-            self.log(f"  ! błąd przy {kandydat.url}: {exc}")
+            self.log(f"  ! error at {kandydat.url}: {exc}")
             return
         self.postep.sprawdzonych += 1
 
@@ -199,6 +202,11 @@ class Silnik:
             if self.konfig.do_roku and wartosc > self.konfig.do_roku:
                 return
 
+        jezyk = (meta.jezyk or zrodlo.jezyk or "")[:2].lower()
+        if self.konfig.wykrywaj_jezyk and (not jezyk or jezyk not in JEZYKI):
+            jezyk = wykryj_jezyk_tekstu(tekst, jezyk)
+        meta.jezyk = jezyk or meta.jezyk
+
         tagi_wejsciowe = list(kandydat.tagi_zrodla) if self.konfig.tagi_z_wp else list(zrodlo.tagi)
         dokument = Dokument(
             tytul=meta.tytul or kandydat.tytul,
@@ -206,6 +214,7 @@ class Silnik:
             url=kandydat.url,
             autor="; ".join(meta.autorzy or kandydat.autorzy),
             tagi=tagi_wejsciowe,
+            jezyk=jezyk,
         )
         pasuje, trafienia = drzewo.ocen(dokument)
         if not pasuje:
@@ -217,11 +226,11 @@ class Silnik:
             self.magazyn.dodaj_trafienie(przebieg_id, rekord)
             self.postep.trafien += 1
         formy = ", ".join(sorted({t.forma for t in trafienia})[:6])
-        self.log(f"  ✓ {rekord['tytul'][:70]} [{rekord['data'] or 'bez daty'}] — {formy}")
+        self.log(f"  ✓ {rekord['tytul'][:70]} [{rekord['data'] or 'no date'}] — {formy}")
 
     # ------------------------------------------------------------------
-    def _tresc_i_meta(self, kandydat: Kandydat) -> tuple:
-        """Tekst artykułu i metadane – z REST API, z pamięci podręcznej albo z sieci."""
+    def _tresc_i_meta(self, kandydat: Kandydat, zrodlo: Optional[Zrodlo] = None) -> tuple:
+        """Article text and metadata — from the API, from the corpus or from the network."""
         if kandydat.tresc_html:
             tekst = html_na_tekst(kandydat.tresc_html)
             meta = Metadane(tytul=kandydat.tytul, autorzy=list(kandydat.autorzy),
@@ -250,11 +259,11 @@ class Silnik:
             html = zapisane["html"]
             self.postep.z_cache += 1
         else:
-            odp = self.klient.pobierz(kandydat.url, uzyj_cache=False)
+            odp = self.klient.pobierz(kandydat.url, uzyj_cache=False, zrodlo=zrodlo)
             self.postep.pobran += 1
             if not odp.ok:
                 if odp.blad:
-                    self.log(f"  – pomijam {kandydat.url}: {odp.blad}")
+                    self.log(f"  – skipping {kandydat.url}: {odp.blad}")
                 return "", Metadane()
             html = odp.tekst
 
@@ -288,6 +297,8 @@ class Silnik:
             rok = rok_z_daty(data)
             if rok:
                 tagi.append(rok)
+        if konfig.tag_z_jezyka and meta.jezyk:
+            tagi.append(JEZYKI[meta.jezyk].nazwa if meta.jezyk in JEZYKI else meta.jezyk)
         tagi = [t.strip() for t in dict.fromkeys(tagi) if t and t.strip()]
 
         rekord = Rekord(
@@ -318,10 +329,10 @@ class Silnik:
 
     # ------------------------------------------------------------------
     def _z_korpusu(self, zrodlo: Zrodlo, drzewo: Wezel, przebieg_id: int) -> None:
-        """Przeszukuje wyłącznie to, co już mamy w bazie – bez ruchu w sieci."""
+        """Searches only what the corpus already holds — no network traffic at all."""
         hosty = [host_z_url(zrodlo.url)] if zrodlo.url else None
         strony = self.magazyn.korpus(hosty)
-        self.log(f"  korpus lokalny: {len(strony)} stron")
+        self.log(f"  local corpus: {len(strony)} pages")
         for strona in strony:
             if self.czy_stop():
                 return
@@ -342,8 +353,12 @@ class Silnik:
                                 tagi_zrodla=list(zrodlo.tagi), skad="korpus",
                                 zrodlo=zrodlo.etykieta)
             self.postep.sprawdzonych += 1
+            jezyk = (meta.jezyk or zrodlo.jezyk or "")[:2].lower()
+            if self.konfig.wykrywaj_jezyk and (not jezyk or jezyk not in JEZYKI):
+                jezyk = wykryj_jezyk_tekstu(tekst, jezyk)
+            meta.jezyk = jezyk or meta.jezyk
             dokument = Dokument(tytul=meta.tytul, tekst=tekst, url=strona["url"],
-                                autor="; ".join(meta.autorzy), tagi=zrodlo.tagi)
+                                autor="; ".join(meta.autorzy), tagi=zrodlo.tagi, jezyk=jezyk)
             pasuje, trafienia = drzewo.ocen(dokument)
             if not pasuje:
                 continue
@@ -353,7 +368,7 @@ class Silnik:
                                          list(zrodlo.tagi), zrodlo)
             self.magazyn.dodaj_trafienie(przebieg_id, rekord)
             self.postep.trafien += 1
-            self.log(f"  ✓ {rekord['tytul'][:70]} (korpus)")
+            self.log(f"  ✓ {rekord['tytul'][:70]} (corpus)")
 
 
 def _json(dane) -> str:

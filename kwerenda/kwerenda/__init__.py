@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Kwerenda — wyszukiwanie treści na stronach WWW i eksport do Zotero."""
+"""Kwerenda — search websites for content and export citations to Zotero."""
 
-__wersja__ = "1.0"
+__wersja__ = "2.0"
 __all__ = ["__wersja__"]

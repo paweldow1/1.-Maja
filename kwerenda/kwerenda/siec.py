@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
-"""Grzeczny klient HTTP: throttling per host, retry z backoffem, robots.txt, cache.
+"""A well-mannered HTTP client: per-host throttling, backoff, robots.txt, cache.
 
-Zasady, których pilnuje ten moduł:
-* jeden request na hosta naraz nie częściej niż co ``opoznienie`` sekund (+ jitter),
-* nagłówek User-Agent z kontaktem do badacza (wymóg dobrych obyczajów),
-* respektowanie robots.txt (można wyłączyć świadomie, np. dla własnego serwisu),
-* 429/503 → czekamy tyle, ile każe Retry-After, potem backoff 2·, maks. N prób,
-* żadnego omijania zabezpieczeń: 401/403 kończy się jasnym komunikatem i pominięciem.
+What this module guarantees:
+
+* one request per host at a time, no more often than ``opoznienie`` seconds
+  (plus jitter);
+* a User-Agent carrying the researcher's contact details — basic courtesy;
+* robots.txt is respected (it can be switched off deliberately, e.g. for a site
+  you run yourself);
+* 429/503 → wait as long as Retry-After says, then back off, up to N attempts;
+* **no circumvention of anything.** A 401/403 ends in a clear message and the
+  page is skipped.
+
+A source may carry *your own* credentials — a cookie header, a ``cookies.txt``
+exported from your browser, or HTTP basic auth. That is how you reach material
+your own subscription covers. It is not a way past a paywall you have no right
+to, and nothing here tries to disguise the client or defeat bot detection.
 """
 
 from __future__ import annotations
@@ -29,12 +38,12 @@ DOMYSLNY_UA = (
 
 
 def naglowek_ascii(tekst: str) -> str:
-    """Nagłówki HTTP muszą być latin-1, a nazwiska bywają z ogonkami.
+    """HTTP headers must be latin-1, and names often are not.
 
-    „Paweł Downarowicz” → „Pawel Downarowicz”; reszta znaków spoza latin-1 znika,
-    zamiast wywalać całe żądanie wyjątkiem UnicodeEncodeError.
+    "Paweł Downarowicz" → "Pawel Downarowicz"; anything else outside latin-1 is
+    dropped instead of blowing up the whole request with UnicodeEncodeError.
     """
-    from .fleksja import bez_ogonkow
+    from .morfologia import bez_ogonkow
     tekst = bez_ogonkow(str(tekst or ""))
     return tekst.encode("ascii", "ignore").decode("ascii").strip()
 
@@ -57,8 +66,43 @@ class BlokadaRobots(Exception):
     pass
 
 
+def ciasteczka_z_naglowka(naglowek: str) -> Dict[str, str]:
+    """Parse a raw ``Cookie:`` header copied from the browser's dev tools."""
+    wynik: Dict[str, str] = {}
+    for kawalek in (naglowek or "").split(";"):
+        nazwa, _, wartosc = kawalek.strip().partition("=")
+        if nazwa and wartosc:
+            wynik[nazwa.strip()] = wartosc.strip()
+    return wynik
+
+
+def ciasteczka_z_pliku(sciezka: str) -> Dict[str, str]:
+    """Read a Netscape-format cookies.txt exported from a browser."""
+    import http.cookiejar
+    sloik = http.cookiejar.MozillaCookieJar()
+    try:
+        sloik.load(sciezka, ignore_discard=True, ignore_expires=True)
+    except Exception as exc:
+        raise ValueError(f"cannot read cookies file {sciezka}: {exc}") from exc
+    return {c.name: c.value for c in sloik if c.value}
+
+
+def ciasteczka_z_przegladarki(nazwa: str, domena: str = "") -> Dict[str, str]:
+    """Read cookies straight from a local browser profile (needs browser_cookie3)."""
+    try:
+        import browser_cookie3  # type: ignore
+    except ImportError as exc:
+        raise ValueError("reading cookies from the browser needs the optional package "
+                         "browser_cookie3 (pip install browser-cookie3)") from exc
+    funkcja = getattr(browser_cookie3, (nazwa or "firefox").lower(), None)
+    if funkcja is None:
+        raise ValueError(f"unknown browser: {nazwa}")
+    sloik = funkcja(domain_name=domena or "")
+    return {c.name: c.value for c in sloik if c.value}
+
+
 def normalizuj_url(url: str) -> str:
-    """Ucina fragment (#...) i porządkuje adres, żeby deduplikacja działała."""
+    """Drop the #fragment and tidy the address so that de-duplication works."""
     url = (url or "").strip()
     if not url:
         return ""
@@ -104,7 +148,39 @@ class KlientHTTP:
         self._zamki: Dict[str, threading.Lock] = {}
         self._robots: Dict[str, Optional[urllib.robotparser.RobotFileParser]] = {}
         self._robots_lock = threading.Lock()
+        self._konteksty: Dict[int, dict] = {}
         self.licznik_zadan = 0
+
+    # ---------------- credentials of a single source ----------------
+    def kontekst_zrodla(self, zrodlo) -> dict:
+        """Cookies / auth / extra headers of one source, built once and cached."""
+        if zrodlo is None:
+            return {}
+        klucz = id(zrodlo)
+        if klucz in self._konteksty:
+            return self._konteksty[klucz]
+
+        kontekst: dict = {"cookies": {}, "headers": {}, "auth": None}
+        try:
+            if getattr(zrodlo, "ciasteczka", ""):
+                kontekst["cookies"].update(ciasteczka_z_naglowka(zrodlo.ciasteczka))
+            if getattr(zrodlo, "plik_ciasteczek", ""):
+                kontekst["cookies"].update(ciasteczka_z_pliku(zrodlo.plik_ciasteczek))
+            if getattr(zrodlo, "ciasteczka_z_przegladarki", ""):
+                kontekst["cookies"].update(ciasteczka_z_przegladarki(
+                    zrodlo.ciasteczka_z_przegladarki, host_z_url(zrodlo.url)))
+        except ValueError as exc:
+            self.log(f"credentials for {getattr(zrodlo, 'url', '?')}: {exc}")
+        if getattr(zrodlo, "naglowki", None):
+            kontekst["headers"].update({str(k): str(v) for k, v in zrodlo.naglowki.items()})
+        if getattr(zrodlo, "basic_auth", ""):
+            uzytkownik, _, haslo = zrodlo.basic_auth.partition(":")
+            kontekst["auth"] = (uzytkownik, haslo)
+        if kontekst["cookies"] or kontekst["auth"]:
+            self.log(f"using your own credentials for {host_z_url(getattr(zrodlo, 'url', ''))} "
+                     f"({len(kontekst['cookies'])} cookies)")
+        self._konteksty[klucz] = kontekst
+        return kontekst
 
     # ---------------- throttling ----------------
     def _zamek(self, host: str) -> threading.Lock:
@@ -165,7 +241,7 @@ class KlientHTTP:
 
     # ---------------- pobieranie ----------------
     def pobierz(self, url: str, *, params=None, uzyj_cache: bool = True,
-                naglowki: Optional[dict] = None) -> Odpowiedz:
+                naglowki: Optional[dict] = None, zrodlo=None) -> Odpowiedz:
         url = normalizuj_url(url)
         if params:
             from urllib.parse import urlencode
@@ -179,8 +255,8 @@ class KlientHTTP:
                                  {}, z_cache=True)
 
         if not self.wolno(url):
-            self.log(f"robots.txt zabrania pobrania: {url}")
-            return Odpowiedz(url, 999, blad="robots.txt zabrania pobierania tego adresu")
+            self.log(f"robots.txt disallows: {url}")
+            return Odpowiedz(url, 999, blad="robots.txt disallows fetching this address")
 
         host = host_z_url(url)
         opoznienie_kary = 0.0
@@ -189,13 +265,19 @@ class KlientHTTP:
                 self._poczekaj(host)
                 if opoznienie_kary:
                     time.sleep(opoznienie_kary)
+                kontekst = self.kontekst_zrodla(zrodlo)
+                laczne_naglowki = dict(kontekst.get("headers") or {})
+                laczne_naglowki.update(naglowki or {})
                 try:
-                    r = self.sesja.get(url, timeout=self.timeout, headers=naglowki or {},
+                    r = self.sesja.get(url, timeout=self.timeout,
+                                       headers=laczne_naglowki,
+                                       cookies=kontekst.get("cookies") or None,
+                                       auth=kontekst.get("auth"),
                                        allow_redirects=True)
                     self.licznik_zadan += 1
                 except requests.RequestException as exc:
                     if proba == self.proby:
-                        return Odpowiedz(url, 0, blad=f"błąd sieci: {exc}")
+                        return Odpowiedz(url, 0, blad=f"network error: {exc}")
                     opoznienie_kary = 2.0 * proba
                     continue
 
@@ -204,13 +286,14 @@ class KlientHTTP:
                     czekaj = 2.0 * proba
                     if retry_after and retry_after.strip().isdigit():
                         czekaj = min(60.0, float(retry_after.strip()))
-                    self.log(f"HTTP {r.status_code} przy {url} – czekam {czekaj:.0f}s i ponawiam")
+                    self.log(f"HTTP {r.status_code} at {url} — waiting {czekaj:.0f}s and retrying")
                     opoznienie_kary = czekaj
                     continue
 
                 if r.status_code in (401, 403):
                     return Odpowiedz(r.url, r.status_code,
-                                     blad="strona wymaga logowania/blokuje dostęp – pomijam")
+                                     blad="the page requires signing in or refuses access "
+                                          "— skipping")
 
                 tekst = ""
                 typ = r.headers.get("Content-Type", "")
@@ -221,7 +304,7 @@ class KlientHTTP:
                 if odp.ok and self.cache is not None and tekst:
                     self.cache.zapisz_strone(url, r.status_code, tekst, r.url)
                 return odp
-        return Odpowiedz(url, 0, blad="wyczerpano próby")
+        return Odpowiedz(url, 0, blad="all attempts exhausted")
 
     def pobierz_json(self, url: str, *, params=None, uzyj_cache: bool = False):
         odp = self.pobierz(url, params=params, uzyj_cache=uzyj_cache)

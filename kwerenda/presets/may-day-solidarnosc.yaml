@@ -1,0 +1,59 @@
+# May Day observances on the regional sites of NSZZ "Solidarność" (WordPress).
+# Run:  python -m kwerenda run presets/may-day-solidarnosc.yaml --format ris
+name: May Day — NSZZ "Solidarność"
+
+# A trailing * inflects the term in every enabled language; ** truncates.
+# Operators: AND / OR / NOT, parentheses, "phrases", NEAR/n, field:term
+query: >-
+  ("1 maja"* OR "Święto Pracy"* OR pierwszomaj**)
+  AND (Żoliborz* OR "Józef Robotnik"* OR msza* OR pochód* OR manifestacja*)
+
+default_operator: AND
+languages: [pl]                # only Polish endings — less noise
+expand_all: false              # true = inflect everything, star or not
+ignore_diacritics: false       # true when a site writes without diacritics
+excluded_forms: []             # forms the preview showed you and you do not want
+
+contact: Pawel Downarowicz (doctoral research)   # goes into the User-Agent
+delay: 0.5                     # seconds between requests to the same server
+threads: 2
+respect_robots: true
+use_cache: true                # fetched pages stay in the corpus for later queries
+detect_language: true
+
+zotero_type: blogPost
+extra_tags: [dissertation, "1 maja", Poland]
+tag_from_terms: true
+tag_from_year: true
+tag_from_domain: true
+tag_from_cms: true             # CMS categories and tags become Zotero tags
+tag_from_language: true
+
+year_from: 1989
+year_to: 2024
+
+sources:
+  - url: https://solidarnosc.mazowsze.pl
+    name: Region Mazowsze NSZZ "Solidarność"
+    mode: auto                 # REST API → sitemap → RSS → site search → crawl
+    tags: [Mazowsze]
+    max_pages: 40
+
+  - url: https://www.solidarnosckatowice.pl
+    name: Region Śląsko-Dąbrowski NSZZ "Solidarność"
+    mode: auto
+    tags: [Silesia]
+
+  - url: https://www.solidarnosc.gda.pl
+    name: Region Gdański NSZZ "Solidarność"
+    mode: auto
+    tags: [Pomerania]
+
+  # Sweep the May archive instead of trusting the site's search:
+  # - url: https://solidarnosc.mazowsze.pl
+  #   name: Region Mazowsze — May archive
+  #   mode: wordpress
+  #   full_sweep: true
+  #   year_from: 1998
+  #   year_to: 2024
+  #   date_window: "04-25:05-10"

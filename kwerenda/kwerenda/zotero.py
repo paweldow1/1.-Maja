@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Dwie drogi do Zotero: lokalny konektor (Zotero otwarte na tym komputerze)
-oraz Web API (klucz + identyfikator użytkownika).
+"""Two roads into Zotero: the local connector (Zotero open on this machine)
+and the Web API (an API key plus the user id).
 
-Konektor jest wygodniejszy — rekordy lądują w bibliotece od razu, bez plików.
-Web API działa też zdalnie i pozwala wskazać kolekcję.
+The connector is the convenient one — records land in the library straight away,
+with no files in between. The Web API also works remotely and lets you pick a
+collection.
 """
 
 from __future__ import annotations
@@ -35,15 +36,15 @@ def konektor_dziala(timeout: float = 2.0) -> Tuple[bool, str]:
                             headers=_NAGLOWKI_KONEKTORA, timeout=timeout,
                             proxies={"http": None, "https": None})
         if odp.status_code < 400:
-            return True, "Zotero działa i przyjmie rekordy."
-        return False, f"Zotero odpowiada, ale kodem {odp.status_code}."
+            return True, "Zotero is running and will accept records."
+        return False, f"Zotero answered with status {odp.status_code}."
     except requests.RequestException:
-        return False, ("Nie widzę uruchomionego Zotero na tym komputerze "
-                       "(port 23119). Uruchom Zotero albo użyj eksportu do pliku RIS.")
+        return False, ("No running Zotero found on this machine (port 23119). "
+                       "Start Zotero, or export a RIS file instead.")
 
 
 def wyslij_do_konektora(rekordy: Sequence[Rekord], timeout: float = 30.0) -> dict:
-    """Wysyła rekordy do otwartego Zotero. Zwraca podsumowanie."""
+    """Send records to a running Zotero. Returns a summary."""
     dziala, komunikat = konektor_dziala()
     if not dziala:
         return {"ok": False, "wyslane": 0, "komunikat": komunikat}
@@ -72,8 +73,8 @@ def wyslij_do_konektora(rekordy: Sequence[Rekord], timeout: float = 30.0) -> dic
         "ok": wyslane > 0,
         "wyslane": wyslane,
         "bledy": bledy,
-        "komunikat": f"Wysłano do Zotero: {wyslane} z {len(rekordy)}."
-                     + (f" Problemy: {len(bledy)}." if bledy else ""),
+        "komunikat": f"Sent to Zotero: {wyslane} of {len(rekordy)}."
+                     + (f" Problems: {len(bledy)}." if bledy else ""),
     }
 
 
@@ -101,10 +102,10 @@ def kolekcje(klucz: str, uzytkownik: str, timeout: float = 20.0) -> List[dict]:
 def wyslij_przez_api(rekordy: Sequence[Rekord], klucz: str, uzytkownik: str,
                      kolekcja: str = "", z_notatkami: bool = True,
                      timeout: float = 40.0) -> dict:
-    """Tworzy rekordy przez Web API, a następnie dopina notatki jako elementy potomne."""
+    """Create records through the Web API, then attach notes as child items."""
     if not (klucz and uzytkownik):
         return {"ok": False, "wyslane": 0,
-                "komunikat": "Podaj klucz API i numer użytkownika Zotero."}
+                "komunikat": "Give both the Zotero API key and the user id."}
 
     wyslane, bledy, klucze = 0, [], []
     for poczatek in range(0, len(rekordy), 50):
@@ -128,7 +129,7 @@ def wyslij_przez_api(rekordy: Sequence[Rekord], klucz: str, uzytkownik: str,
             wyslane += 1
             klucze.append((int(indeks), element.get("key")))
         for indeks, powod in (wynik.get("failed", {}) or {}).items():
-            bledy.append(f"pozycja {indeks}: {powod.get('message', powod)}")
+            bledy.append(f"item {indeks}: {powod.get('message', powod)}")
 
         if z_notatkami and klucze:
             notatki = []
@@ -144,7 +145,7 @@ def wyslij_przez_api(rekordy: Sequence[Rekord], klucz: str, uzytkownik: str,
                                   data=json.dumps(notatki, ensure_ascii=False).encode("utf-8"),
                                   timeout=timeout)
                 except requests.RequestException as exc:
-                    bledy.append(f"notatki: {exc}")
+                    bledy.append(f"notes: {exc}")
         klucze = []
 
     return {"ok": wyslane > 0, "wyslane": wyslane, "bledy": bledy,

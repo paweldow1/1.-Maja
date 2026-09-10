@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Atrapa serwisu na WordPressie – do testów bez ruszania cudzych serwerów.
+"""A fake WordPress site — so tests never touch anybody else's server.
 
-Udostępnia to, co realne strony regionów „Solidarności”: REST API z paginacją
-i nagłówkiem X-WP-TotalPages, wyszukiwarkę HTML (?s=…&paged=N), mapę strony,
-robots.txt oraz strony artykułów z JSON-LD.
+It serves what real sites do: a REST API with pagination and X-WP-TotalPages,
+an HTML search (?s=…&paged=N) that — like many real ones — only looks at titles,
+a paginated archive listing, a sitemap, an RSS feed, robots.txt, and article
+pages carrying JSON-LD. One article sits behind a subscriber cookie, so the
+"sign in with your own account" path can be tested too.
 """
 
 from __future__ import annotations
@@ -34,6 +36,10 @@ POSTY = [
      "title": "Komunikat organizacyjny",
      "content": "<p>Zebranie zarządu regionu. Sprawy składek i szkoleń.</p>",
      "author": "", "categories": [2], "tags": []},
+    {"id": 6, "slug": "tylko-dla-prenumeratorow", "date": "2020-05-01T07:00:00",
+     "title": "Relacja z pochodu — tylko dla prenumeratorów",
+     "content": "<p>Pełna relacja dostępna w prenumeracie. Pochód, sztandary, msza.</p>",
+     "author": "Redakcja", "categories": [1], "tags": [10], "prenumerata": True},
     {"id": 5, "slug": "pochod-pierwszomajowy-1998", "date": "1998-05-01T11:00:00",
      "title": "Pochód pierwszomajowy w Warszawie",
      "content": "<p>Pierwszomajowy pochód ruszył sprzed kościoła świętego Józefa Robotnika. "
@@ -53,6 +59,13 @@ class _Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
     baza = ""
     wylacz_api = False
+    wymagaj_ciasteczka = ""      # e.g. "sid=secret" — guards the subscriber article
+
+    @classmethod
+    def posty(cls):
+        """The subscriber-only article exists only when the guard is switched on,
+        so the other tests keep working against a stable set of five posts."""
+        return [p for p in POSTY if not p.get("prenumerata") or cls.wymagaj_ciasteczka]
 
     def log_message(self, *args):  # cisza w testach
         pass
@@ -86,7 +99,7 @@ class _Handler(BaseHTTPRequestHandler):
         if sciezka == "/wp-sitemap.xml":
             wpisy = "".join(
                 f"<url><loc>{self.baza}{_sciezka(p)}</loc>"
-                f"<lastmod>{p['date'][:10]}</lastmod></url>" for p in POSTY)
+                f"<lastmod>{p['date'][:10]}</lastmod></url>" for p in self.posty())
             return self._odpowiedz(
                 '<?xml version="1.0" encoding="UTF-8"?>'
                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
@@ -95,19 +108,26 @@ class _Handler(BaseHTTPRequestHandler):
         if sciezka == "/feed":
             wpisy = "".join(
                 f"<item><title>{p['title']}</title><link>{self.baza}{_sciezka(p)}</link>"
-                f"<pubDate>{p['date']}</pubDate></item>" for p in POSTY[:3])
+                f"<pubDate>{p['date']}</pubDate></item>" for p in self.posty()[:3])
             return self._odpowiedz(f"<rss version='2.0'><channel>{wpisy}</channel></rss>",
                                    "application/xml")
 
         if sciezka == "/" and "s" in zapytanie:
             return self._szukajka(zapytanie)
 
-        for post in POSTY:
+        if sciezka.startswith("/archiwum"):
+            return self._archiwum(sciezka)
+
+        for post in self.posty():
             if sciezka == _sciezka(post):
+                if post.get("prenumerata") and self.wymagaj_ciasteczka:
+                    if self.wymagaj_ciasteczka not in (self.headers.get("Cookie") or ""):
+                        return self._odpowiedz("<html><body>Zaloguj się</body></html>",
+                                               status=403)
                 return self._odpowiedz(self._html_posta(post))
 
         if sciezka == "/":
-            linki = "".join(f'<a href="{_sciezka(p)}">{p["title"]}</a>' for p in POSTY)
+            linki = "".join(f'<a href="{_sciezka(p)}">{p["title"]}</a>' for p in self.posty())
             return self._odpowiedz(f"<html><body><h1>Strona główna</h1>{linki}</body></html>")
 
         return self._odpowiedz("<html><body>404</body></html>", status=404)
@@ -126,7 +146,7 @@ class _Handler(BaseHTTPRequestHandler):
             return self._odpowiedz("[]", "application/json", 200,
                                    {"X-WP-TotalPages": "1"})
 
-        wybrane = list(POSTY)
+        wybrane = list(self.posty())
         szukane = (zapytanie.get("search") or [""])[0].lower()
         if szukane:
             # celowo „niedoskonała” wyszukiwarka: tylko tytuł, bez odmiany
@@ -164,7 +184,8 @@ class _Handler(BaseHTTPRequestHandler):
     def _szukajka(self, zapytanie: dict):
         szukane = (zapytanie.get("s") or [""])[0].lower()
         strona = int((zapytanie.get("paged") or ["1"])[0])
-        pasujace = [p for p in POSTY if szukane in (p["title"] + p["content"]).lower()]
+        # like many real site searches, this one only looks at titles
+        pasujace = [p for p in self.posty() if szukane in p["title"].lower()]
         na_strone = 2
         kawalek = pasujace[(strona - 1) * na_strone: strona * na_strone]
         wyniki = "".join(
@@ -175,6 +196,22 @@ class _Handler(BaseHTTPRequestHandler):
         if strona * na_strone < len(pasujace):
             dalej = f'<a href="/?s={szukane}&paged={strona + 1}">»</a>'
         return self._odpowiedz(f"<html><body>{wyniki}{dalej}</body></html>")
+
+    # ---------------- archiwum z paginacją ----------------
+    def _archiwum(self, sciezka: str):
+        """A paginated index — the way past a hopeless site search."""
+        czesci = [c for c in sciezka.split("/") if c]
+        strona = int(czesci[1]) if len(czesci) > 1 and czesci[1].isdigit() else 1
+        na_strone = 2
+        wszystkie = self.posty()
+        kawalek = wszystkie[(strona - 1) * na_strone: strona * na_strone]
+        wpisy = "".join(
+            f'<article><h2 class="entry-title">'
+            f'<a rel="bookmark" href="{_sciezka(p)}">{p["title"]}</a></h2></article>'
+            for p in kawalek)
+        dalej = f'<a class="next" href="/archiwum/{strona + 1}">next</a>' \
+            if strona * na_strone < len(wszystkie) else ""
+        return self._odpowiedz(f"<html><body>{wpisy}{dalej}</body></html>")
 
     # ---------------- strona artykułu ----------------
     def _html_posta(self, post: dict) -> str:
@@ -197,14 +234,16 @@ class _Handler(BaseHTTPRequestHandler):
 class AtrapaWordPressa:
     """Kontekstowy serwer testowy: ``with AtrapaWordPressa() as baza: …``"""
 
-    def __init__(self, wylacz_api: bool = False):
+    def __init__(self, wylacz_api: bool = False, wymagaj_ciasteczka: str = ""):
         self.wylacz_api = wylacz_api
+        self.wymagaj_ciasteczka = wymagaj_ciasteczka
         self.serwer = None
         self.watek = None
         self.baza = ""
 
     def __enter__(self) -> str:
-        klasa = type("H", (_Handler,), {"wylacz_api": self.wylacz_api})
+        klasa = type("H", (_Handler,), {"wylacz_api": self.wylacz_api,
+                                        "wymagaj_ciasteczka": self.wymagaj_ciasteczka})
         self.serwer = ThreadingHTTPServer(("127.0.0.1", 0), klasa)
         port = self.serwer.server_address[1]
         self.baza = f"http://127.0.0.1:{port}"
