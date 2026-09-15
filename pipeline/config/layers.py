@@ -99,11 +99,50 @@ TYP_SLOWA = [
                       "sponti", "spontandemo"]),
 ]
 
+# Commemoration layers hold acts, not pins: a delegation laying wreaths at
+# the Brama Stracen or the Robotnik plaque did so year after year. The place
+# stays a single row in miejsca.csv -- it is not twelve places -- while each
+# year of use also becomes an upamietnienie event.
+WARSTWY_UPAMIETNIENIA = {"Upamiętnienia"}
+
+# Fixed objects sitting inside event layers. Their `Lata` list is the years
+# the place was used, so splitting them per year invents an event for every
+# year a building stood there. Buildings and venues belong in miejsca.csv;
+# things that genuinely recurred (the president's picnic, the Humannplatz
+# Maifest, the counter-demo at the basilica) stay events.
+OBIEKTY_MIEJSCA = {
+    "warszawa": {
+        "OPZZ Headquarters",
+        "Sejm RP",
+        "Siedziba SdRP/SLD",
+        "Brama Uniwersytetu Warszawskiego",
+        "Park im. Edwarda Rydza-Śmigłego",
+    },
+    "berlin": {
+        "IG Metall HQ",
+        "DGB-Haus",
+        "DGB Main headquarters (1999-2019)",
+        "Haus des Deutschen Verkehrsbunds",
+        "ÖTV trade union headquarters",
+        "Wallstrasse 61-65 (former HQ of Berlin FDGB and pre-war ADGB)",
+        "Mariannenplatz",
+        "Viktoriapark",
+        "Oranienplatz",
+        "Kollwitzplatz",
+        "Lausitzer Platz",
+        "Lustgarten",
+        "Brandenburger Tor",
+        "Bergmannstraße",
+        "Mauerpark Walpurgisplatz",
+    },
+}
+
 # Layers where the layer name carries no distinguishing information, so the
 # id discriminator is taken from the object's own name instead. Walpurgisnacht
 # is the case: the layer is one label over parties, women's marches and riots
 # in a dozen different parks, and only the name tells them apart.
-WARSTWY_ID_Z_NAZWY = {"Walpurgisnacht", "Other events", "Inne wydarzenia"}
+WARSTWY_ID_Z_NAZWY = {"Walpurgisnacht", "Other events", "Inne wydarzenia",
+                      "Upamiętnienia"}
 
 # Known actor keywords for best-effort FROM_NAME guessing (section 9).
 ACTOR_KEYWORDS_PL = [

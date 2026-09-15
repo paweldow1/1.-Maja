@@ -7,7 +7,7 @@ from pathlib import Path
 from config.layers import (
     ACTOR_KEYWORDS_DE, ACTOR_KEYWORDS_PL, CITY_CODE, DROP_FIELD_PREFIXES,
     DROP_FIELDS, FIELD_MAP, FROM_NAME, LAYER_META, LAYERS_IGNORE,
-    LAYERS_MIEJSCA, TYP_SLOWA, WARSTWY_ID_Z_NAZWY,
+    LAYERS_MIEJSCA, OBIEKTY_MIEJSCA, TYP_SLOWA, WARSTWY_ID_Z_NAZWY,
 )
 
 YEAR_RE = re.compile(r"(?:19|20)\d{2}")
@@ -108,8 +108,9 @@ MIEJSCA_COLUMNS = [
 ]
 
 
-def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters, bez_lat_rows):
-    typ_default, aktor_default, charakter = LAYER_META[city][layer_name]
+def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters,
+                     bez_lat_rows, typ_wymuszony=None, meta=None):
+    typ_default, aktor_default, charakter = meta or LAYER_META[city][layer_name]
     field_map = FIELD_MAP[city]
     city_code = CITY_CODE[city]
     rows = []
@@ -142,7 +143,9 @@ def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters, bez
             aktor = aktor_default
 
         nazwany_typ = typ_z_nazwy(name)
-        if nazwany_typ:
+        if typ_wymuszony:
+            typ, typ_zrodlo = typ_wymuszony, "warstwa"
+        elif nazwany_typ:
             typ, typ_zrodlo = nazwany_typ, "name"
         elif typ_default != FROM_NAME:
             typ, typ_zrodlo = typ_default, "warstwa"
@@ -220,6 +223,16 @@ def build_miejsce_rows(layer_name, features, city, plik_zrodlowy):
             "zrodlo": plik_zrodlowy,
         })
     return rows
+
+
+def podziel_obiekty(features, city):
+    """-> (wydarzenia, obiekty_stale). Fixed objects are named in config."""
+    stale_nazwy = OBIEKTY_MIEJSCA.get(city, set())
+    wydarzenia, stale = [], []
+    for f in features:
+        nazwa = (f.get("properties", {}).get("name") or "").strip()
+        (stale if nazwa in stale_nazwy else wydarzenia).append(f)
+    return wydarzenia, stale
 
 
 def write_csv(path, rows, columns):
