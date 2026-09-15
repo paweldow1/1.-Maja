@@ -1,70 +1,70 @@
-rok,miasto,aktor,aktor_znany,typ,trasa,trasa_alt,haslo,frekwencja_lista,frekwencja_sr,frekwencja_uwagi,klucze_zrodlowe,plik_zrodlowy,wymaga_weryfikacji
-1989,PL,OPZZ,True,,,,-,,,,Hasło,PL_1990-2019.md,True
-1996,PL,SLD,True,,,,"Dwa główne hasła SdRP to: ""Warszawa musi być miastem bezpiecznym"" oraz hasło podkreślające, że SLD jest ""płaszczyzną porozumienia lewicy"" (RP)",,,,Hasła_SLD,PL_1990-2019.md,True
-1998,PL,,False,demonstracja,spod siedziby OPZZ – ul. Krakowskie Przedmieście – ul. Królewska – pl. Grzybowski,PPS Ikonowicza: de Gaulle'a- Nowy Świat i spotkanie z OPZZ pod jej siedzibą,"Dzień walki o solidarność ludzi pracy i pakt dla polskiej rodziny. 1 maja naszym świętem
+rok,miasto,aktor,aktor_znany,typ,trasa,trasa_alt,miejsce_wiecu,miejsce_wiecu_zrodlo,haslo,frekwencja_lista,frekwencja_sr,frekwencja_uwagi,klucze_zrodlowe,plik_zrodlowy,wymaga_weryfikacji
+1989,PL,OPZZ,True,,,,,,-,,,,Hasło,PL_1990-2019.md,True
+1996,PL,SLD,True,,,,,,"Dwa główne hasła SdRP to: ""Warszawa musi być miastem bezpiecznym"" oraz hasło podkreślające, że SLD jest ""płaszczyzną porozumienia lewicy"" (RP)",,,,Hasła_SLD,PL_1990-2019.md,True
+1998,PL,,False,demonstracja,spod siedziby OPZZ – ul. Krakowskie Przedmieście – ul. Królewska – pl. Grzybowski,PPS Ikonowicza: de Gaulle'a- Nowy Świat i spotkanie z OPZZ pod jej siedzibą,pl. Grzybowski,koniec trasy,"Dzień walki o solidarność ludzi pracy i pakt dla polskiej rodziny. 1 maja naszym świętem
 Chcemy Paktu dla polskiej rodziny
 Tanie Leki do Apteki
 Władza wasza, bieda nasza
 1 Maja naszym świętem
 Zwolnić rząd zamiast górników
 Ryszard Kukliński naszym przyjacielem jest, za pieniądze z CIA",6000@TPZ;3000@ŻW;3000@RP,4000,bez liczby: DT,Hasło;Trasa;Trasa_alt;Hasła;Hasła_radykalne;Frekwencja,PL_1990-2019.md,True
-2008,PL,SLD,True,,,,"Niech się tarcza w dziurę schowa, nas obroni Częstochowa (Gadzinowski, spiker)
+2008,PL,SLD,True,,,,,,"Niech się tarcza w dziurę schowa, nas obroni Częstochowa (Gadzinowski, spiker)
 Dawać na płacę, nie na tacę!",,,,Hasła_SLD,PL_1990-2019.md,True
-2011,PL,OPZZ,True,demonstracja,nie było pochodu (beatyfikacja Jana Pawła II) – odbył się centralny pochód w Szczecinie,de Gaulle'a-plac Grzybowski,Chcemy socjalnej Polski w  socjalnej Europie,200@GW;100@Wprost;100@RP,133,,Hasło;Trasa;Trasa_alt;Frekwencja,PL_1990-2019.md,False
-2012,PL,SLD,True,,,,"*Praca Tymczasowa, wyzysk stały*
+2011,PL,OPZZ,True,demonstracja,nie było pochodu (beatyfikacja Jana Pawła II) – odbył się centralny pochód w Szczecinie,de Gaulle'a-plac Grzybowski,,,Chcemy socjalnej Polski w  socjalnej Europie,200@GW;100@Wprost;100@RP,133,,Hasło;Trasa;Trasa_alt;Frekwencja,PL_1990-2019.md,False
+2012,PL,SLD,True,,,,,,"*Praca Tymczasowa, wyzysk stały*
 *Precz z umowami śmieciowymi młodzi",,,,Hasła_SLD,PL_1990-2019.md,True
-2013,PL,SLD,True,,,,"*Praca Tymczasowa, wyzysk stały*",,,,Hasła_SLD,PL_1990-2019.md,True
+2013,PL,SLD,True,,,,,,"*Praca Tymczasowa, wyzysk stały*",,,,Hasła_SLD,PL_1990-2019.md,True
 2015,PL,OPZZ,True,demonstracja,"- manifestacja się nie odbywała ze względu na odbytą 18.04. wielką manifestację OPZZ w Warszawie. W parku im. Rydza Śmigłego przy ul. Rozbrat odbył się zorganizowany przez Lewicę piknik europejski. OPZZ złożył jak co roku kwiaty w Cytadeli Warszawskiej – Brama Straceń i pod pomnikiem upamiętniającym pierwszą manifestację P.P.S. – Warszawa, Plac Grzybowski","- Partia Zmiana oranizuje pochód rozpoczynający się na placu Osterwy (OPZZ)-Nowy Świat-Krakowskie Przedmieście-Pałac Prezydencki
-- ""Ikonowicz na rondzie de Gaulle'a wiecuje, nie mam informacji dokąd idzie""","nowe, lepsze miejsca pracy, godziwe wynagrodzenia i zmniejszenie nierówności społecznych(Szumlewicz)
+- ""Ikonowicz na rondzie de Gaulle'a wiecuje, nie mam informacji dokąd idzie""","Warszawa, Plac Grzybowski",koniec trasy,"nowe, lepsze miejsca pracy, godziwe wynagrodzenia i zmniejszenie nierówności społecznych(Szumlewicz)
 nowe, lepsze miejsca pracy, godziwe wynagrodzenia i zmniejszenie nierówności społecznych.",,,bez liczby: pochód OPZZ nie odbywa się,Hasło;Trasa;Trasa_alt;Hasła_OPZZ;Frekwencja,PL_1990-2019.md,False
-2017,PL,Razem,True,,,,"Razem z lokatorami
+2017,PL,Razem,True,,,,,,"Razem z lokatorami
 Polska dla milionów, nie dla milionerów
 Wolne związki zawodowe",,,,Hasła_Razem,PL_1990-2019.md,True
-2018,PL,Razem,True,,,,"Mieszkanie prawem nie towarem
+2018,PL,Razem,True,,,,,,"Mieszkanie prawem nie towarem
 Umowy Śmieciowe do kosza
 Najpierw ludzie, potem zyski",,,,Hasła_Razem,PL_1990-2019.md,True
 2019,PL,OPZZ,True,demonstracja,"Nie było pochodu odbył się piknik przy pomniku I. Daszyńskiego pl. Na Rozdrożu. Składano wieńce na Cytadeli Warszawskiej – Brama Straceń
-i pod pomnikiem upamiętniającym pierwszą manifestację P.P.S. – Warszawa, Plac Grzybowski","- O godz. 11 na rondzie de Gaulle’a Społeczne Forum Wymiany Myśli, Studencki Komitet Antyfaszystowski, Historia Czerwona, Fundacja Naprzód, Uniwersytet Zaangażowany oraz redakcja Portalu Strajk organizuje demonstrację z okazji Święta Pracy. Uczestnicy przejdą na plac Bankowy.- O godz. 12.30 Polska Partia Socjalistyczna organizuje na placu Grzybowskim Międzynarodowy Dzień Solidarności Ludzi Pracy, który - jak zapowiadają organizatorzy - ma być ""wspólną manifestacją lewicy"". (strajk. eu)",-,,,bez liczby: pochód OPZZ nie odbywa się,Hasło;Trasa;Trasa_alt;Frekwencja,PL_1990-2019.md,False
+i pod pomnikiem upamiętniającym pierwszą manifestację P.P.S. – Warszawa, Plac Grzybowski","- O godz. 11 na rondzie de Gaulle’a Społeczne Forum Wymiany Myśli, Studencki Komitet Antyfaszystowski, Historia Czerwona, Fundacja Naprzód, Uniwersytet Zaangażowany oraz redakcja Portalu Strajk organizuje demonstrację z okazji Święta Pracy. Uczestnicy przejdą na plac Bankowy.- O godz. 12.30 Polska Partia Socjalistyczna organizuje na placu Grzybowskim Międzynarodowy Dzień Solidarności Ludzi Pracy, który - jak zapowiadają organizatorzy - ma być ""wspólną manifestacją lewicy"". (strajk. eu)",Brama Straceń,koniec trasy,-,,,bez liczby: pochód OPZZ nie odbywa się,Hasło;Trasa;Trasa_alt;Frekwencja,PL_1990-2019.md,False
 2020,PL,OPZZ,True,demonstracja,"Pochodów nie było z powodu COVID-19. Składano wieńce na w Cytadeli Warszawskiej – Brama Straceń
-i pod pomnikiem upamiętniającym pierwszą manifestację P.P.S. – Warszawa, Plac Grzybowski i pod pomnikiem I. Daszyńskiego",,,,,,Hasło;Trasa,PL_1990-2019.md,False
+i pod pomnikiem upamiętniającym pierwszą manifestację P.P.S. – Warszawa, Plac Grzybowski i pod pomnikiem I. Daszyńskiego",,Brama Straceń,koniec trasy,,,,,Hasło;Trasa,PL_1990-2019.md,False
 2021,PL,OPZZ,True,demonstracja,"Pochodów nie było z powodu COVID-19. Składano wieńce na w Cytadeli Warszawskiej – Brama Straceń
-i pod pomnikiem upamiętniającym pierwszą manifestację P.P.S. – Warszawa, Plac Grzybowski i pod pomnikiem I. Daszyńskiego",,,,,,Hasło;Trasa,PL_1990-2019.md,False
-2022,PL,OPZZ,True,demonstracja,spod siedziby OPZZ – ul. Świętokrzyska - ul. Nowy Świat – rondo de Gaull’ea - pl. Trzech Krzyży – A. Ujazdowskie – pl. Na Rozdrożu – Al. Szucha – pomnik I. Daszyńskiego,,Godna praca=godne życie. Niech się święci 1. maja!,,,,Hasło;Trasa,PL_1990-2019.md,False
-2023,PL,OPZZ,True,demonstracja,pochód spod Pałacu Kultury i Nauki (park Świętokrzyski) – ul. Świętokrzyską - pod siedzibę OPZZ.,,Godna praca=godne życie. Niech się święci 1. maja!,,,,Hasło;Trasa,PL_1990-2019.md,False
-2024,PL,OPZZ,True,demonstracja,pochód spod Pałacu Kultury i Nauki (park Świętokrzyski) – ul. Świętokrzyską - pod siedzibę OPZZ.,,Chcemy Europy Socjalnej,,,,Hasło;Trasa,PL_1990-2019.md,False
-1990,DE,FDGB,True,,,,,,,,Apel_FDGB,DE_1990-2019.md,True
+i pod pomnikiem upamiętniającym pierwszą manifestację P.P.S. – Warszawa, Plac Grzybowski i pod pomnikiem I. Daszyńskiego",,Brama Straceń,koniec trasy,,,,,Hasło;Trasa,PL_1990-2019.md,False
+2022,PL,OPZZ,True,demonstracja,spod siedziby OPZZ – ul. Świętokrzyska - ul. Nowy Świat – rondo de Gaull’ea - pl. Trzech Krzyży – A. Ujazdowskie – pl. Na Rozdrożu – Al. Szucha – pomnik I. Daszyńskiego,,pomnik I. Daszyńskiego,koniec trasy,Godna praca=godne życie. Niech się święci 1. maja!,,,,Hasło;Trasa,PL_1990-2019.md,False
+2023,PL,OPZZ,True,demonstracja,pochód spod Pałacu Kultury i Nauki (park Świętokrzyski) – ul. Świętokrzyską - pod siedzibę OPZZ.,,pod siedzibę OPZZ,koniec trasy,Godna praca=godne życie. Niech się święci 1. maja!,,,,Hasło;Trasa,PL_1990-2019.md,False
+2024,PL,OPZZ,True,demonstracja,pochód spod Pałacu Kultury i Nauki (park Świętokrzyski) – ul. Świętokrzyską - pod siedzibę OPZZ.,,pod siedzibę OPZZ,koniec trasy,Chcemy Europy Socjalnej,,,,Hasło;Trasa,PL_1990-2019.md,False
+1990,DE,FDGB,True,,,,,,,,,,Apel_FDGB,DE_1990-2019.md,True
 1990,DE,,False,demonstracja,"FDGB: Lustgarten - Unter den Linden - Brandenburger Tor - Platz der Republik
 IG Metall: Alten Jakobstrasse – Brandenburger Tor - Platz der Republik
 ÖTV i GBW: Joachimsthaler Straße – Brandenburger Tor - Platz der Republik
 DGB: Keithstrasse - Brandenburger Tor - Platz der Republik
-1. DGB; 2. ÖTV i GEW: Joachimsthalerstrasse - Brama Brandenburska - Reichstag",,,,,,Trasa;Trasa_zachod,DE_1990-2019.md,True
-1990,DE,ÖTV,True,demonstracja,"Joachimstaler Straße, Ecke Lietzenburger Strasse – Joachimstaler Straße – Lietzenburger Strasse – Schlüsterstrasse – Kantstrasse – Breitschiedtplatz – Budapester Strasse – Stülerstrasse – Hofjägerallee – Großer Stern – Spreeweg – John-Forster-Dulles-Alle – Platz der Republik (DGBB 651)",,,,,,Trasa_ÖTV,DE_1990-2019.md,False
-1990,DE,IG Metall,True,demonstracja,Alte Jacobstrasse – Lindenstrasse – Gitschner Strasse – Mehringdamm – Yorckstrasse – Yorkbrücken – Goebenstrasse – Kulmer Strasse – Bülowstr. – Postdamer Str. – Entlastungsstr. – Platz der Republik (DGBB 651),,,,,,TrasaIGM,DE_1990-2019.md,False
-1991,DE,FDGB,True,,,,,,,,Apel_FDGB,DE_1990-2019.md,True
+1. DGB; 2. ÖTV i GEW: Joachimsthalerstrasse - Brama Brandenburska - Reichstag",,Platz der Republik,koniec trasy,,,,,Trasa;Trasa_zachod,DE_1990-2019.md,True
+1990,DE,ÖTV,True,demonstracja,"Joachimstaler Straße, Ecke Lietzenburger Strasse – Joachimstaler Straße – Lietzenburger Strasse – Schlüsterstrasse – Kantstrasse – Breitschiedtplatz – Budapester Strasse – Stülerstrasse – Hofjägerallee – Großer Stern – Spreeweg – John-Forster-Dulles-Alle – Platz der Republik (DGBB 651)",,Platz der Republik (DGBB 651),koniec trasy,,,,,Trasa_ÖTV,DE_1990-2019.md,False
+1990,DE,IG Metall,True,demonstracja,Alte Jacobstrasse – Lindenstrasse – Gitschner Strasse – Mehringdamm – Yorckstrasse – Yorkbrücken – Goebenstrasse – Kulmer Strasse – Bülowstr. – Postdamer Str. – Entlastungsstr. – Platz der Republik (DGBB 651),,Platz der Republik (DGBB 651),koniec trasy,,,,,TrasaIGM,DE_1990-2019.md,False
+1991,DE,FDGB,True,,,,,,,,,,Apel_FDGB,DE_1990-2019.md,True
 1991,DE,,False,demonstracja,"Geplant ist ein Sternmarsch zum Platz der Republik vor dem Reichstagsgebäude mit vier Demonstrationszügen, die von verschiedenen Punkten der Berliner Innenstadt starten werden, teilte der DGB gestern mit. (taz 30.04.1991). Metaller with the critical trade unionists march from Lindnerstrasse/Gittigerstrasse ecke. Other 3, I guess as a year before and after
-Märkisches Ufer – Brückenstrasse – Stralauer Strasse – Spandauer Strasse – Karl-Liebknecht–Strasse – Unter den Linden – Brandenburger Tor – Strasse der 17. Juni – Entlastungsstrasse – Platz der Republik (DGBB 653)",,,15000@DGB;25;30000@DGBG000721;10000@rbb,13756,bez liczby: TAZ,Frekwencja;Trasa;Trasa_Ost,DE_1990-2019.md,True
-1991,DE,IG Metall,True,demonstracja,Alte Jacobstrasse – Oranienstrasse – Kochstrasse – Friedrichstrasse – Unter den Linden – Brandenburger Tor – Strasse der 17. Juni – Entlastungsstrasse – Platz der Republik (DGBB 653),,,,,,TrasaIGM,DE_1990-2019.md,False
-1991,DE,ÖTV,True,demonstracja,Lietzenburger Strasse – Nürnburger Strasse – Budapester Strasse – Stülerstrasse – Hofjägerallee – Großer Stern – Spreeweg – John-Forster-Dulles-Alle – Platz der Republik (DGBB 653),,,,,,Trasa_ÖTV,DE_1990-2019.md,False
+Märkisches Ufer – Brückenstrasse – Stralauer Strasse – Spandauer Strasse – Karl-Liebknecht–Strasse – Unter den Linden – Brandenburger Tor – Strasse der 17. Juni – Entlastungsstrasse – Platz der Republik (DGBB 653)",,,,,15000@DGB;25;30000@DGBG000721;10000@rbb,13756,bez liczby: TAZ,Frekwencja;Trasa;Trasa_Ost,DE_1990-2019.md,True
+1991,DE,IG Metall,True,demonstracja,Alte Jacobstrasse – Oranienstrasse – Kochstrasse – Friedrichstrasse – Unter den Linden – Brandenburger Tor – Strasse der 17. Juni – Entlastungsstrasse – Platz der Republik (DGBB 653),,Platz der Republik (DGBB 653),koniec trasy,,,,,TrasaIGM,DE_1990-2019.md,False
+1991,DE,ÖTV,True,demonstracja,Lietzenburger Strasse – Nürnburger Strasse – Budapester Strasse – Stülerstrasse – Hofjägerallee – Großer Stern – Spreeweg – John-Forster-Dulles-Alle – Platz der Republik (DGBB 653),,Platz der Republik (DGBB 653),koniec trasy,,,,,Trasa_ÖTV,DE_1990-2019.md,False
 1992,DE,,False,demonstracja,"Overall, there will be 5 different marches towards the main event in Lustgarten: 1) the DGB building on Keithstraße (8:30 a.m.); 2) the IG Metall building on Alte Jakobstraße (9:00 a.m.) and 3) the ÖTV building on Joachimsthaler Straße 20 (8:30 a.m.). In the east, the march will begin in front of the trade union building on 4) Wallstraße 61-65 (9:30 a.m.). Moreover, Bündnis kritischer GewerkschafterInnen Ost/ West organise their own march from Alexanderplatz to Lustgarten (taz 29.04)
-Wallstraße – Märkisches Ufer – Brückenstrasse – Stralauer Strasse – Spandauer Strasse – Karl-Liebknecht-Strasse – Lustgarten (DGBB 657)",,,,,,Hasło_D;Trasa;Trasa_Ost,DE_1990-2019.md,True
-1992,DE,ÖTV,True,demonstracja,Lietzenburger Strasse – An der Urania – Schillstrasse – Lützowufer – Schöneberger Ufer – Potsdamer Strasse – Potsdamer Platz – Leipziger Platz – Leipziger Strasse – Friedrichstrasse – Unter den Linden – Lustgarten (DGBB 653),,,,,,Trasa_ÖTV,DE_1990-2019.md,False
-1992,DE,IG Metall,True,demonstracja,Alte Jakobstrasse/Lindenstrasse – Oranienstrasse – Moritzplatz – Heinrich-Heine-Strasse – Brückenstrasse – Jannowitzbrücke – Stalauer Strasse – Molkenmarkt – Spandauer Strasse – Karl-Liebknechtstrasse – Lustgarten (DGBG656). IG Metall joins the Wallstrasse demonstration at Märkisches Ufer/Brückenstrasse (DGBB 657),,,,,,TrasaIGM,DE_1990-2019.md,False
-1994,DE,DGB Berlin-Brandenburg,True,,,,,,,,Apel_DGB_BB,DE_1990-2019.md,True
-1995,DE,,False,demonstracja,"Das Berliner Gewerkschaftsfest umfaßt einen Fahrradkorso ab DGB-Haus in der Keithstraße 9.30 Uhr, eine Demonstration am Moritzplatz um 10 Uhr, eine Kundgebung am Köllnischen Park in Mitte um 11 Uhr sowie anschließend ein Maifest an gleicher Stelle.  (ND 28.04.1995)",,,,,,Trasa,DE_1990-2019.md,True
-1995,DE,ÖTV,True,demonstracja,9:30 Engeldamm 70 – Kölnischer Park,,,,,,Trasa_ÖTV,DE_1990-2019.md,False
-1996,DE,BKG,True,,,,"Bündnis von Unten, statt Bündnis für Arbeit!; Neunter Mai: Protesttag in Berlin!; Umverteilen! Von Oben nach Unten!; Bei Uns wird nicht gespart!; Euer Bündnis ist Beschiß!; Da wird's Kohl und Zwickel mau - Kampf dem Sozialabbau! Kampf dem Sozialabbau!; Zwickels Bündnis ist unser Ruin!; Schultes Vorstoß ist ein Hohn! Bei Krankheit woll'n wir vollen Lohn!; Kämpfen statt Kriechen!; Basiskampf statt Vorstandskrampf!; Aufruhr! Widerstand! Schulte hat kein Hinterland!; Dreißig Stunden! Personal - und Lohnausgleich!; Fünfzehnhundert M für Alle! Sonst pausenlos Krawalle! (BKG 244)",,,,Hasła_BKG,DE_1990-2019.md,True
-2001,DE,ÖTV,True,demonstracja,Annenstraße – Heinrich-Heine-Strasse – Brückenstrasse – Alexanderstrasse – rechts in die Grunerstrasse – Alexanderplatz – links in der Karl-Liebknecht-Strasse – links in die Spandauer Strasse – Berliner Rathaus (DGBGB 668),,,,,,Trasa_ÖTV,DE_1990-2019.md,False
-2002,DE,DGB Berlin-Brandenburg,True,,,,Stoppt den Arbeitsplatzabbau – für ein lebenswertes Berlin.,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2003,DE,,False,,,,,,,,Frekwencja,DE_1990-2019.md,True
-2003,DE,DGB Berlin-Brandenburg,True,,,,"Schaut auf diese Stadt, macht sie nicht platt - Berlin braucht Arbeit, Bildung, Zukunft",,,,Hasło_DGBBB,DE_1990-2019.md,True
-2004,DE,FDJ,True,,,,"Lieber raus mit der BRD, als nur  weiter Sozialabgebaut werden! Fabriken und Land zurück in Arbeiterhand! Zurück in die Zukunft: [GDR state emblem]
+Wallstraße – Märkisches Ufer – Brückenstrasse – Stralauer Strasse – Spandauer Strasse – Karl-Liebknecht-Strasse – Lustgarten (DGBB 657)",,,,,,,,Hasło_D;Trasa;Trasa_Ost,DE_1990-2019.md,True
+1992,DE,ÖTV,True,demonstracja,Lietzenburger Strasse – An der Urania – Schillstrasse – Lützowufer – Schöneberger Ufer – Potsdamer Strasse – Potsdamer Platz – Leipziger Platz – Leipziger Strasse – Friedrichstrasse – Unter den Linden – Lustgarten (DGBB 653),,Lustgarten (DGBB 653),koniec trasy,,,,,Trasa_ÖTV,DE_1990-2019.md,False
+1992,DE,IG Metall,True,demonstracja,Alte Jakobstrasse/Lindenstrasse – Oranienstrasse – Moritzplatz – Heinrich-Heine-Strasse – Brückenstrasse – Jannowitzbrücke – Stalauer Strasse – Molkenmarkt – Spandauer Strasse – Karl-Liebknechtstrasse – Lustgarten (DGBG656). IG Metall joins the Wallstrasse demonstration at Märkisches Ufer/Brückenstrasse (DGBB 657),,,,,,,,TrasaIGM,DE_1990-2019.md,False
+1994,DE,DGB Berlin-Brandenburg,True,,,,,,,,,,Apel_DGB_BB,DE_1990-2019.md,True
+1995,DE,,False,demonstracja,"Das Berliner Gewerkschaftsfest umfaßt einen Fahrradkorso ab DGB-Haus in der Keithstraße 9.30 Uhr, eine Demonstration am Moritzplatz um 10 Uhr, eine Kundgebung am Köllnischen Park in Mitte um 11 Uhr sowie anschließend ein Maifest an gleicher Stelle.  (ND 28.04.1995)",,,,,,,,Trasa,DE_1990-2019.md,True
+1995,DE,ÖTV,True,demonstracja,9:30 Engeldamm 70 – Kölnischer Park,,Kölnischer Park,koniec trasy,,,,,Trasa_ÖTV,DE_1990-2019.md,False
+1996,DE,BKG,True,,,,,,"Bündnis von Unten, statt Bündnis für Arbeit!; Neunter Mai: Protesttag in Berlin!; Umverteilen! Von Oben nach Unten!; Bei Uns wird nicht gespart!; Euer Bündnis ist Beschiß!; Da wird's Kohl und Zwickel mau - Kampf dem Sozialabbau! Kampf dem Sozialabbau!; Zwickels Bündnis ist unser Ruin!; Schultes Vorstoß ist ein Hohn! Bei Krankheit woll'n wir vollen Lohn!; Kämpfen statt Kriechen!; Basiskampf statt Vorstandskrampf!; Aufruhr! Widerstand! Schulte hat kein Hinterland!; Dreißig Stunden! Personal - und Lohnausgleich!; Fünfzehnhundert M für Alle! Sonst pausenlos Krawalle! (BKG 244)",,,,Hasła_BKG,DE_1990-2019.md,True
+2001,DE,ÖTV,True,demonstracja,Annenstraße – Heinrich-Heine-Strasse – Brückenstrasse – Alexanderstrasse – rechts in die Grunerstrasse – Alexanderplatz – links in der Karl-Liebknecht-Strasse – links in die Spandauer Strasse – Berliner Rathaus (DGBGB 668),,Berliner Rathaus (DGBGB 668),koniec trasy,,,,,Trasa_ÖTV,DE_1990-2019.md,False
+2002,DE,DGB Berlin-Brandenburg,True,,,,,,Stoppt den Arbeitsplatzabbau – für ein lebenswertes Berlin.,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2003,DE,,False,,,,,,,,,,Frekwencja,DE_1990-2019.md,True
+2003,DE,DGB Berlin-Brandenburg,True,,,,,,"Schaut auf diese Stadt, macht sie nicht platt - Berlin braucht Arbeit, Bildung, Zukunft",,,,Hasło_DGBBB,DE_1990-2019.md,True
+2004,DE,FDJ,True,,,,,,"Lieber raus mit der BRD, als nur  weiter Sozialabgebaut werden! Fabriken und Land zurück in Arbeiterhand! Zurück in die Zukunft: [GDR state emblem]
 Europa, Frei, Gleich, Gerecht, wird erst möglich mit der Reslosen Vernichtung des Deutschen Militarismus!",,,,Hasła_FDJ,DE_1990-2019.md,True
-2004,DE,DGB Berlin-Brandenburg,True,,,,Nichts ist gut so – schon gar nicht in Berlin! Gemeinsam gestalten nur mit uns!,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2005,DE,DGB Berlin-Brandenburg,True,,,,Innovation statt Billiglohn,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2006,DE,DGB Berlin-Brandenburg,True,,,,Berlin braucht seine Plätze – Arbeits- und Ausbildungsplätze,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2007,DE,DGB Berlin-Brandenburg,True,,,,Fair statt prekär – Gute Arbeit für Berlin!,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2008,DE,DGB Berlin-Brandenburg,True,,,,Gute Bezahlung muss drin sein!,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2009,DE,DGB Berlin-Brandenburg,True,,,,-,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2010,DE,DGB Berlin-Brandenburg,True,,,,-,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2011,DE,DGB Berlin-Brandenburg,True,,,,Berlin braucht sozial Sicherheit,,,,Hasło_DGBBB,DE_1990-2019.md,True
-2013,DE,DGB Berlin-Brandenburg,True,,,,Berlin. Haputstadt (der prekaren Beschäftigung und der Altersarmut) im Herzen,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2004,DE,DGB Berlin-Brandenburg,True,,,,,,Nichts ist gut so – schon gar nicht in Berlin! Gemeinsam gestalten nur mit uns!,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2005,DE,DGB Berlin-Brandenburg,True,,,,,,Innovation statt Billiglohn,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2006,DE,DGB Berlin-Brandenburg,True,,,,,,Berlin braucht seine Plätze – Arbeits- und Ausbildungsplätze,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2007,DE,DGB Berlin-Brandenburg,True,,,,,,Fair statt prekär – Gute Arbeit für Berlin!,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2008,DE,DGB Berlin-Brandenburg,True,,,,,,Gute Bezahlung muss drin sein!,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2009,DE,DGB Berlin-Brandenburg,True,,,,,,-,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2010,DE,DGB Berlin-Brandenburg,True,,,,,,-,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2011,DE,DGB Berlin-Brandenburg,True,,,,,,Berlin braucht sozial Sicherheit,,,,Hasło_DGBBB,DE_1990-2019.md,True
+2013,DE,DGB Berlin-Brandenburg,True,,,,,,Berlin. Haputstadt (der prekaren Beschäftigung und der Altersarmut) im Herzen,,,,Hasło_DGBBB,DE_1990-2019.md,True

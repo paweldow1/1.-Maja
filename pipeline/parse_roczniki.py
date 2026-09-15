@@ -174,6 +174,28 @@ def normalizuj_aktora(aktor, miasto, nieznani, rok):
     return aktor, False
 
 
+def koniec_trasy(trasa):
+    """Where the march ended, which is where the rally was held.
+
+    Only for a route written as a chain of stops ("spod OPZZ - Krakowskie
+    Przedmiescie - pl. Grzybowski"). Berlin's route fields are press prose,
+    so nothing is guessed from them -- there the venue has its own key.
+    """
+    if not trasa:
+        return ""
+    pierwsza = trasa.split("\n")[0]
+    czesci = [c.strip(" .") for c in re.split(r"\s[–—-]\s", pierwsza) if c.strip(" .")]
+    if len(czesci) < 2:
+        return ""
+    ostatni = czesci[-1]
+    # The tail can carry a clause after the place ("... gdzie odbywal sie
+    # piknik"), or be a sentence saying the march happened elsewhere.
+    ostatni = re.split(r"\s+(?:gdzie|na którym|po czym|w którym)\s+", ostatni)[0].strip(" .,")
+    if re.search(r"\bodby(?:l|ł)|nie było|zamiast\b", ostatni, re.IGNORECASE):
+        return ""
+    return ostatni if len(ostatni) <= 60 else ""
+
+
 def iter_scalars(value):
     """Yield non-empty scalars, flattening nested lists."""
     if value is None:
@@ -266,6 +288,7 @@ def main(pl_path, de_path):
                     aktor_norm, znany = normalizuj_aktora(aktor, miasto, nieznani_aktorzy, rok)
                 lista, srednia, uwagi = parse_frekwencja(pola.get("frekwencja"))
                 trasa = flatten(pola.get("trasa")) or flatten(pola.get("trasa_ost"))
+                miejsce = flatten(pola.get("miejsce_wiecu")) or koniec_trasy(trasa)
                 typ = "demonstracja" if trasa else ""
                 wydarzenia.append({
                     "rok": rok,
@@ -275,6 +298,9 @@ def main(pl_path, de_path):
                     "typ": typ,
                     "trasa": trasa,
                     "trasa_alt": flatten(pola.get("trasa_alt")),
+                    "miejsce_wiecu": miejsce,
+                    "miejsce_wiecu_zrodlo": ("pole wiec" if pola.get("miejsce_wiecu")
+                                             else ("koniec trasy" if miejsce else "")),
                     "haslo": flatten(pola.get("haslo")),
                     "frekwencja_lista": lista,
                     "frekwencja_sr": srednia,
@@ -289,7 +315,7 @@ def main(pl_path, de_path):
 
     write_csv(OUT_DIR / "roczniki_wydarzenia.csv", wydarzenia, [
         "rok", "miasto", "aktor", "aktor_znany", "typ", "trasa", "trasa_alt",
-        "haslo", "frekwencja_lista", "frekwencja_sr", "frekwencja_uwagi",
+        "miejsce_wiecu", "miejsce_wiecu_zrodlo", "haslo", "frekwencja_lista", "frekwencja_sr", "frekwencja_uwagi",
         "klucze_zrodlowe", "plik_zrodlowy", "wymaga_weryfikacji"])
     write_csv(OUT_DIR / "roczniki_kontekst.csv", kontekst_rows, kontekst_cols)
     write_csv(OUT_DIR / "roczniki_proza.csv", proza_rows,

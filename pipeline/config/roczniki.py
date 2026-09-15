@@ -66,6 +66,10 @@ AKTOR_KEYS = {
         "Apel_FDGB": ("FDGB", "apel"),
         "Hasła_BKG": ("BKG", "haslo"),
         "Hasła_FDJ": ("FDJ", "haslo"),
+        # In Berlin `wiec` is the venue of the central DGB rally ("Lustgarten",
+        # "Rotes Rathaus"), not narration -- unlike the Polish key of the same
+        # name, which is prose about who spoke.
+        "wiec": ("DGB", "miejsce_wiecu"),
     },
 }
 
@@ -93,7 +97,7 @@ PROZA = {
         "Znaczenie", "Wspolnie_OPZZ_PPS",
     },
     "berlin": {
-        "wiec", "Festyn", "Wydarzenia", "Wydarzenia_alt", "Upamiętnienia",
+        "Festyn", "Wydarzenia", "Wydarzenia_alt", "Upamiętnienia",
         "Organizacje_trad", "Plan_main", "Vorabendveranstaltung", "Nazi",
     },
 }

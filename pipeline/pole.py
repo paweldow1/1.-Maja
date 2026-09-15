@@ -13,6 +13,7 @@ import re
 from pathlib import Path
 
 from common import write_csv
+from config.layers import WARSTWY_PRAWICOWE
 
 OUT_DIR = Path(__file__).parent / "output"
 MIASTA = ["PL", "DE"]
@@ -66,11 +67,15 @@ def main():
             serie.setdefault((int(w["rok"]), w["miasto"]), {}).setdefault(
                 (w["typ"], w["aktor"]), w["id"])
 
-    # main route per year/city, from the union's rocznik entry
-    trasy = {}
+    # main route and rally venue per year/city, from the union's rocznik entry
+    trasy, miejsca_wiecu = {}, {}
     for r in roczniki:
-        if r["trasa"] and r["aktor"] in zwiazkowi:
+        if r["aktor"] not in zwiazkowi:
+            continue
+        if r["trasa"]:
             trasy.setdefault((int(r["rok"]), r["miasto"]), r["trasa"])
+        if r["miejsce_wiecu"]:
+            miejsca_wiecu.setdefault((int(r["rok"]), r["miasto"]), r["miejsce_wiecu"])
 
     wiersze = []
     for rok in lata:
@@ -84,7 +89,9 @@ def main():
                 for k in ("liczba_wydarzen", "liczba_zwiazkowych", "frekwencja_suma",
                           "frekwencja_zwiazkowa", "udzial_zwiazkowy", "liczba_aktorow",
                           "aktorzy_nowi", "aktorzy_znikajacy", "wydarzenia_nowe",
-                          "wydarzenia_znikajace", "trasa_glowna_zmieniona", "notatka"):
+                          "wydarzenia_znikajace", "liczba_prawicowych", "liczba_kontra",
+                          "miejsce_wiecu", "miejsce_wiecu_zmienione",
+                          "trasa_glowna_zmieniona", "notatka"):
                     wiersz[f"{p}_{k}"] = ""
                 continue
             zdarzenia = [w for w in wydarzenia
@@ -113,17 +120,33 @@ def main():
             wczoraj = aktorzy.get((rok - 1, miasto), set())
             serie_teraz = serie.get((rok, miasto), {})
             serie_wczoraj = serie.get((rok - 1, miasto), {})
-            trasa = normalizuj_trase(trasy.get((rok, miasto), ""))
-            trasa_rok_wczesniej = normalizuj_trase(trasy.get((rok - 1, miasto), ""))
-            if not trasa or not trasa_rok_wczesniej:
-                zmiana = ""
+            # Only Warsaw's route field is a chain of stops that can be
+            # compared year to year. Berlin's is press prose, reworded every
+            # year by whoever wrote it, so comparing the strings would report
+            # a changed route almost every year and mean nothing.
+            if miasto == "PL":
+                trasa = normalizuj_trase(trasy.get((rok, miasto), ""))
+                poprzednia = normalizuj_trase(trasy.get((rok - 1, miasto), ""))
+                zmiana = ("TRUE" if trasa != poprzednia else "FALSE") if trasa and poprzednia else ""
             else:
-                zmiana = "TRUE" if trasa != trasa_rok_wczesniej else "FALSE"
+                zmiana = ""
+
+            miejsce = miejsca_wiecu.get((rok, miasto), "")
+            miejsce_wczoraj = miejsca_wiecu.get((rok - 1, miasto), "")
+            if miejsce and miejsce_wczoraj:
+                zmiana_miejsca = ("TRUE" if normalizuj_trase(miejsce) !=
+                                  normalizuj_trase(miejsce_wczoraj) else "FALSE")
+            else:
+                zmiana_miejsca = ""
 
             wiersz.update({
                 f"{p}_liczba_wydarzen": len(zdarzenia),
                 f"{p}_liczba_zwiazkowych": sum(1 for w in zdarzenia
                                                if w["charakter"] == "zwiazkowe"),
+                f"{p}_liczba_prawicowych": sum(1 for w in zdarzenia
+                                               if w["warstwa"] in WARSTWY_PRAWICOWE),
+                f"{p}_liczba_kontra": sum(1 for w in zdarzenia
+                                          if w["charakter"] == "kontra"),
                 f"{p}_frekwencja_suma": suma or "",
                 f"{p}_frekwencja_zwiazkowa": suma_zw or "",
                 f"{p}_udzial_zwiazkowy": round(suma_zw / suma, 3) if suma else "",
@@ -134,6 +157,8 @@ def main():
                     i for s, i in serie_teraz.items() if s not in serie_wczoraj)) if serie_wczoraj else "",
                 f"{p}_wydarzenia_znikajace": ";".join(sorted(
                     i for s, i in serie_wczoraj.items() if s not in serie_teraz)) if serie_wczoraj else "",
+                f"{p}_miejsce_wiecu": miejsce,
+                f"{p}_miejsce_wiecu_zmienione": zmiana_miejsca,
                 f"{p}_trasa_glowna_zmieniona": zmiana,
                 f"{p}_notatka": f"obsidian://open?vault=Wszystko&file={rok}_{miasto}",
             })
@@ -144,10 +169,12 @@ def main():
     for miasto in MIASTA:
         p = miasto.lower()
         kolumny += [f"{p}_liczba_wydarzen", f"{p}_liczba_zwiazkowych",
+                    f"{p}_liczba_prawicowych", f"{p}_liczba_kontra",
                     f"{p}_frekwencja_suma", f"{p}_frekwencja_zwiazkowa",
                     f"{p}_udzial_zwiazkowy", f"{p}_liczba_aktorow",
                     f"{p}_aktorzy_nowi", f"{p}_aktorzy_znikajacy",
                     f"{p}_wydarzenia_nowe", f"{p}_wydarzenia_znikajace",
+                    f"{p}_miejsce_wiecu", f"{p}_miejsce_wiecu_zmienione",
                     f"{p}_trasa_glowna_zmieniona", f"{p}_notatka"]
     write_csv(OUT_DIR / "pole.csv", wiersze, kolumny)
     zapisz_html(wiersze, OUT_DIR / "pole.html")
@@ -161,11 +188,14 @@ def main():
 
 
 def zapisz_html(wiersze, sciezka):
-    naglowki = ["wydarzenia", "zwiazkowe", "frekwencja", "fr. zwiazkowa",
-                "udzial", "aktorzy", "nowe id", "znikajace id", "trasa inna"]
-    kol = ["liczba_wydarzen", "liczba_zwiazkowych", "frekwencja_suma",
-           "frekwencja_zwiazkowa", "udzial_zwiazkowy", "liczba_aktorow",
-           "wydarzenia_nowe", "wydarzenia_znikajace", "trasa_glowna_zmieniona"]
+    naglowki = ["wydarzenia", "zwiazk.", "prawic.", "kontra", "frekwencja",
+                "fr. zwiazkowa", "udzial", "aktorzy", "nowe id", "znikajace id",
+                "miejsce wiecu", "wiec inny", "trasa inna"]
+    kol = ["liczba_wydarzen", "liczba_zwiazkowych", "liczba_prawicowych",
+           "liczba_kontra", "frekwencja_suma", "frekwencja_zwiazkowa",
+           "udzial_zwiazkowy", "liczba_aktorow", "wydarzenia_nowe",
+           "wydarzenia_znikajace", "miejsce_wiecu", "miejsce_wiecu_zmienione",
+           "trasa_glowna_zmieniona"]
     czesci = ["""<!DOCTYPE html><html lang="pl"><head><meta charset="utf-8">
 <title>POLE</title><style>
 body{font:13px/1.4 -apple-system,Segoe UI,Roboto,sans-serif;margin:24px;color:#1a1714;background:#faf8f5}

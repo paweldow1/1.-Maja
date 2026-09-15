@@ -144,6 +144,12 @@ OBIEKTY_MIEJSCA = {
 WARSTWY_ID_Z_NAZWY = {"Walpurgisnacht", "Other events", "Inne wydarzenia",
                       "Upamiętnienia"}
 
+# Right-wing layers, counted as their own column in POLE. `charakter` alone
+# will not do: it marks the Warsaw right-wing march as niezwiazkowe, which
+# is true but hides it among everything else that is not a union.
+WARSTWY_PRAWICOWE = {"Prawicowe kontry i blokady", "Right-wing May Day",
+                     "Neo-Nazi May Day"}
+
 # Known actor keywords for best-effort FROM_NAME guessing (section 9).
 ACTOR_KEYWORDS_PL = [
     "OPZZ", "Solidarność", "Sierpień 80", "ZZ Kontra", "ZNP", "Budowlani",
