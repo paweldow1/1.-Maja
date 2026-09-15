@@ -14,7 +14,7 @@ from pathlib import Path
 
 from common import (
     MIEJSCA_COLUMNS, WYDARZENIA_COLUMNS, build_event_rows, build_miejsce_rows,
-    podziel_obiekty, write_csv,
+    podziel_obiekty, write_csv, z_indeksami,
 )
 from config.layers import (
     BERLIN_LAYER_FILES, LAYERS_IGNORE, LAYERS_MIEJSCA, LAYER_META,
@@ -57,7 +57,7 @@ def main(input_dir, umap_path=None):
             if name in LAYERS_IGNORE[CITY]:
                 continue
             if name in LAYERS_MIEJSCA[CITY]:
-                miejsca_rows.extend(build_miejsce_rows(name, features, CITY, plik))
+                miejsca_rows.extend(build_miejsce_rows(name, z_indeksami(features), CITY, plik))
             elif name in LAYER_META[CITY]:
                 zdarzenia, stale = podziel_obiekty(features, CITY)
                 miejsca_rows.extend(build_miejsce_rows(name, stale, CITY, plik))

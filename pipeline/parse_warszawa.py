@@ -9,7 +9,7 @@ from pathlib import Path
 
 from common import (
     MIEJSCA_COLUMNS, WYDARZENIA_COLUMNS, build_event_rows, build_miejsce_rows,
-    podziel_obiekty, write_csv,
+    podziel_obiekty, write_csv, z_indeksami,
 )
 from config.layers import (
     FROM_NAME, LAYERS_IGNORE, LAYERS_MIEJSCA, LAYER_META, WARSTWY_UPAMIETNIENIA,
@@ -38,12 +38,12 @@ def main(umap_path):
         if name in LAYERS_IGNORE[CITY]:
             continue
         if name in LAYERS_MIEJSCA[CITY]:
-            miejsca_rows.extend(build_miejsce_rows(name, features, CITY, plik))
+            miejsca_rows.extend(build_miejsce_rows(name, z_indeksami(features), CITY, plik))
             if name in WARSTWY_UPAMIETNIENIA:
                 # The place is one row; the wreath-laying there is an event
                 # per year of use.
                 wydarzenia_rows.extend(build_event_rows(
-                    name, features, CITY, plik, id_counters, bez_lat_rows,
+                    name, z_indeksami(features), CITY, plik, id_counters, bez_lat_rows,
                     typ_wymuszony="upamiętnienie",
                     meta=("upamiętnienie", FROM_NAME, "niezwiazkowe")))
         elif name in LAYER_META[CITY]:

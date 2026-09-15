@@ -1,26 +1,26 @@
-id_miejsca,nazwa,miasto,wspolrzedne,lata_uzycia,opis,zrodlo
+id_miejsca,nazwa,miasto,wspolrzedne,lata_uzycia,opis,zrodlo,id_geo,plik_zrodlowy,warstwa
 PL_Punkty na trasie_0,Ambasada USA (Al. Ujazdowskie),PL,"52.224513,21.023755",2001;2003,"2001: na trasie demonstracji anarchistycznej
 2003: Cel demonstracji Nowej Lewicy i Inicjatywy Stop Wojnie
-2009: Punkt końcowy demonstracji lewicy radykalnej",umap_backup_1-maja_warszawa9.umap
-PL_Punkty na trasie_1,Bazar Różyckiego,PL,"52.251675,21.038921",2009,Punkt na trasie demonstracji ZSP 2009,umap_backup_1-maja_warszawa9.umap
-PL_Punkty na trasie_2,Dawna siedziba SLD,PL,"52.2277917,21.0330194",,,umap_backup_1-maja_warszawa9.umap
+2009: Punkt końcowy demonstracji lewicy radykalnej",umap_backup_1-maja_warszawa9.umap,0,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
+PL_Punkty na trasie_1,Bazar Różyckiego,PL,"52.251675,21.038921",2009,Punkt na trasie demonstracji ZSP 2009,umap_backup_1-maja_warszawa9.umap,1,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
+PL_Punkty na trasie_2,Dawna siedziba SLD,PL,"52.2277917,21.0330194",,,umap_backup_1-maja_warszawa9.umap,2,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
 PL_Punkty na trasie_3,Kancelaria Prezesa Rady Ministrów,PL,"52.21547,21.02582",2001;2010;2013;2014;2015;2016;2017;2018,"2001 – cel demonstracji anarchistycznej
-",umap_backup_1-maja_warszawa9.umap
-PL_Punkty na trasie_4,Park im. Edwarda Rydza-Śmigłego,PL,"52.227123,21.033046",,,umap_backup_1-maja_warszawa9.umap
-PL_Punkty na trasie_5,Plac Zamkowy,PL,"52.245739,21.0137174",,,umap_backup_1-maja_warszawa9.umap
-PL_Punkty na trasie_6,Poczta Polska,PL,"52.254315,21.034962",2009,Punkt na trasie demonstracji ZSP 2009,umap_backup_1-maja_warszawa9.umap
+",umap_backup_1-maja_warszawa9.umap,3,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
+PL_Punkty na trasie_4,Park im. Edwarda Rydza-Śmigłego,PL,"52.227123,21.033046",,,umap_backup_1-maja_warszawa9.umap,4,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
+PL_Punkty na trasie_5,Plac Zamkowy,PL,"52.245739,21.0137174",,,umap_backup_1-maja_warszawa9.umap,5,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
+PL_Punkty na trasie_6,Poczta Polska,PL,"52.254315,21.034962",2009,Punkt na trasie demonstracji ZSP 2009,umap_backup_1-maja_warszawa9.umap,6,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
 PL_Punkty na trasie_7,Rondo de Gaulle'a – wiec PPS / NL / RSS (Ikonowicz),PL,"52.232097,21.020955",1991;1992;1993;1994;1995;1996;1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2013;2014;2015;2016;2017;2018;2019,"## 1991
 wspólny wiec demonstracji PPS i anarchistycznej
 
 ## 2003
-Gdy pochód przeszedł Nowym Światem, natknął się na pikietę Nowej Lewicy (partii b. lidera PPS Piotra Ikonowicza) oraz towarzyszących im członków Komunistycznej Partii Polski. - 1 Maja to dzień propagandy sukcesu Millera. Wszystkie związki zawodowe powinny tu dzisiaj stanąć, by zaprotestować przeciwko rządowi - przemawiał jeden z działaczy Nowej Lewicy. - Precz z burżuazją SLD - krzyczano w stronę pochodu. - Pozdrawiamy lewicę działającą w trochę inny sposób niż my, ale równie potrzebną - odpowiedział megafon z poloneza. (Popieramy Kierownictwo GW 2003)",umap_backup_1-maja_warszawa9.umap
-PL_Punkty na trasie_8,Sejm RP,PL,"52.2256155,21.0270682",,,umap_backup_1-maja_warszawa9.umap
+Gdy pochód przeszedł Nowym Światem, natknął się na pikietę Nowej Lewicy (partii b. lidera PPS Piotra Ikonowicza) oraz towarzyszących im członków Komunistycznej Partii Polski. - 1 Maja to dzień propagandy sukcesu Millera. Wszystkie związki zawodowe powinny tu dzisiaj stanąć, by zaprotestować przeciwko rządowi - przemawiał jeden z działaczy Nowej Lewicy. - Precz z burżuazją SLD - krzyczano w stronę pochodu. - Pozdrawiamy lewicę działającą w trochę inny sposób niż my, ale równie potrzebną - odpowiedział megafon z poloneza. (Popieramy Kierownictwo GW 2003)",umap_backup_1-maja_warszawa9.umap,7,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
+PL_Punkty na trasie_8,Sejm RP,PL,"52.2256155,21.0270682",,,umap_backup_1-maja_warszawa9.umap,8,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
 PL_Punkty na trasie_9,Ministry of Finance,PL,"52.236894,21.016159",1990;1991;1992;1995;2007;2018,"1990 –
 1991 – cel demonstracji PPS i anarchistów „Balcerowicz na zasiłek, zwolnić rząd nie załogi, chcemy pracy, nie jałmużny”
 1992 – cel demonstracji PPS
 1995 –
 2001 – na trasie demonstracji anarchistycznej
-2007 – na trasie demonstracji ZSP",umap_backup_1-maja_warszawa9.umap
+2007 – na trasie demonstracji ZSP",umap_backup_1-maja_warszawa9.umap,9,umap_backup_1-maja_warszawa9.umap,Punkty na trasie
 PL_Upamiętnienia_0,Brama Straceń,PL,"52.2651492,21.0023019",1990;1991;1992;1993;1994;1995;1996;1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019,"1990:	O 12, delegacje uczestników pochodu składają kwiaty (DT), Jaruzelski składa kwiaty w asyście wojskowej. Sam? (DT)
 1991:	delegacja SLD i OPZZ składa kwiaty pod Bramą Straceń (DT)
 1992:	*Delegacje uczestników manifestacji złożyły kwiaty przy Bramie Straceń na Warszawskiej Cytadeli (DT)
@@ -50,16 +50,16 @@ PL_Upamiętnienia_0,Brama Straceń,PL,"52.2651492,21.0023019",1990;1991;1992;199
 2016:	""""""Okolicznościowe przemówienia"""", składanie kwiatów. Pojawiają się delegacje SLD i OPZZ(uniapracy.org)""
 2017:	gospodarzem UP, gośćmi PPS i OPZZ (uniapracy.org)
 2018:	delegacje UP, SLD i OPZZ składają kwiaty przed pochodem (Trybuna)
-2019:	wiec OPZZ i UP, następuje składanie wieńców (opzz.org.pl)",umap_backup_1-maja_warszawa9.umap
-PL_Upamiętnienia_1,Grób Nieznanego Żołnierza,PL,"52.241072,21.012383",1997,Wieńce składane przez delegację SLD i OPZZ,umap_backup_1-maja_warszawa9.umap
-PL_Upamiętnienia_2,Kamień Pamiątkowy na Placu Grzybowskim,PL,"52.235836,21.00359",1996;1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2011;2012;2013;2014;2015;2016;2017;2018;2019,"Kamień upamiętniający pierwszą demonstrację robotniczą na ziemiach polskich (13 listopada 1904), uznawaną za początek Rewolucji 1905 roku. Centralne miejsce manifestacji PPS, miejsce składania kwiatów. Również punkt końcowy / przystankowy wielu pochodów.",umap_backup_1-maja_warszawa9.umap
+2019:	wiec OPZZ i UP, następuje składanie wieńców (opzz.org.pl)",umap_backup_1-maja_warszawa9.umap,0,umap_backup_1-maja_warszawa9.umap,Upamiętnienia
+PL_Upamiętnienia_1,Grób Nieznanego Żołnierza,PL,"52.241072,21.012383",1997,Wieńce składane przez delegację SLD i OPZZ,umap_backup_1-maja_warszawa9.umap,1,umap_backup_1-maja_warszawa9.umap,Upamiętnienia
+PL_Upamiętnienia_2,Kamień Pamiątkowy na Placu Grzybowskim,PL,"52.235836,21.00359",1996;1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2011;2012;2013;2014;2015;2016;2017;2018;2019,"Kamień upamiętniający pierwszą demonstrację robotniczą na ziemiach polskich (13 listopada 1904), uznawaną za początek Rewolucji 1905 roku. Centralne miejsce manifestacji PPS, miejsce składania kwiatów. Również punkt końcowy / przystankowy wielu pochodów.",umap_backup_1-maja_warszawa9.umap,2,umap_backup_1-maja_warszawa9.umap,Upamiętnienia
 PL_Upamiętnienia_3,"Monument to the Heroes of Warsaw (Nike), Teatralny Square",PL,"52.2441337,21.0101321",1990;1991;1992;1993;1994;1995,"Pomnik Bohaterów Warszawy 1939-1945 („Nike”) na placu Teatralnym. Miejsce zwieńczenia pochodów OPZZ w latach 1990-1995 – tu odbywał się wiec, składano kwiaty, przemawiali przewodniczący OPZZ i liderzy SdRP.
 
 ## 1995
-Po wiecu pod biało-czerwonymi parasolami piwa ""Schutlheiss"" odbyły się spotkania z liderami SdRP, a Wojciech Jaruzelski i Mieczysław Rakowski podpisywali książki. (Rzeczpospolita)",umap_backup_1-maja_warszawa9.umap
-PL_Upamiętnienia_4,Pomnik Ignacego Daszyńskiego w Warszawie,PL,"52.2184959,21.0238147",2019,"Pomnik Ignacego Daszyńskiego, plac Na Rozdrożu. Miejsce Pikniku Europejskiego OPZZ/SLD w 2019 r. (15. rocznica wstąpienia Polski do UE) – pochodu nie było.",umap_backup_1-maja_warszawa9.umap
-PL_Upamiętnienia_5,Pomnik Józefa Piłsudskiego,PL,"52.241138,21.01396",1997,Wieńce składane przez delegację PPS (Wyborcza),umap_backup_1-maja_warszawa9.umap
-PL_Upamiętnienia_6,Pomnik Kopernika,PL,"52.239,21.0177",1994;1996;2000,,umap_backup_1-maja_warszawa9.umap
+Po wiecu pod biało-czerwonymi parasolami piwa ""Schutlheiss"" odbyły się spotkania z liderami SdRP, a Wojciech Jaruzelski i Mieczysław Rakowski podpisywali książki. (Rzeczpospolita)",umap_backup_1-maja_warszawa9.umap,3,umap_backup_1-maja_warszawa9.umap,Upamiętnienia
+PL_Upamiętnienia_4,Pomnik Ignacego Daszyńskiego w Warszawie,PL,"52.2184959,21.0238147",2019,"Pomnik Ignacego Daszyńskiego, plac Na Rozdrożu. Miejsce Pikniku Europejskiego OPZZ/SLD w 2019 r. (15. rocznica wstąpienia Polski do UE) – pochodu nie było.",umap_backup_1-maja_warszawa9.umap,4,umap_backup_1-maja_warszawa9.umap,Upamiętnienia
+PL_Upamiętnienia_5,Pomnik Józefa Piłsudskiego,PL,"52.241138,21.01396",1997,Wieńce składane przez delegację PPS (Wyborcza),umap_backup_1-maja_warszawa9.umap,5,umap_backup_1-maja_warszawa9.umap,Upamiętnienia
+PL_Upamiętnienia_6,Pomnik Kopernika,PL,"52.239,21.0177",1994;1996;2000,,umap_backup_1-maja_warszawa9.umap,6,umap_backup_1-maja_warszawa9.umap,Upamiętnienia
 PL_Upamiętnienia_7,"Wreath laying at the historic PPS headquarters, Warecka st.",PL,"52.235166,21.016492",1990;1991;1992;1993;1994;1995;1996;1997;1998;1999;2000;2001;2005;2008;2009;2010;2011;2013;2014;2017;2019,"Kamień przy ul. Wareckiej upamiętniający przedwojenną siedzibę CKR PPS i redakcję „Robotnika” (zburzoną w 1939 r.). Tradycyjne miejsce składania kwiatów przez PPS, czasem z udziałem OPZZ.
 
 1990:	PPS kończy pochód pod Robotnikiem, gdzie składa kwiaty: ""O godzinie 12 przybywa grupa członków PPS z Janem Józefem Lipskim. Złożyli kwiaty na kamieniu pamiątkowym, przemówił Władysław Jagiełło, lecz jak przystało na podeszły wiek większości manifestantów – w przemówieniu najwięcej miejsca poświęcono historii tej partii, jej różnym kolejom losu ( ŻW 1990), Jak wspomina JJG, ""swego czasu"" delegacja OPZZ chodziła również na Warecką, pod siedzibę Robotnika (JJG_1_2, 21:00)
@@ -91,9 +91,9 @@ PL_Upamiętnienia_7,"Wreath laying at the historic PPS headquarters, Warecka st.
 2016:	-
 2017:	przedstawiciele PPS składają kwiaty (PS)
 2018:	-
-2019:	Ikonowicz: Demonstrujący przeszli pod kamień przy ul. wareckiej, upamiętniający miejsce w którym znajdowała się redakcja PPSowskiego ""Robotnika"", następnie przy dźwiękach pieśni rewolucyjnych podeszli na pl. Grzybowski. (lewica.pl 2019)",umap_backup_1-maja_warszawa9.umap
-PL_Festyny_0,Park im. Edwarda Rydza-Śmigłego,PL,"52.227123,21.033046",1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2012;2013;2014;2016,Park im. Edwarda Rydza-Śmigłego na Rozbracie – obok dawnej siedziby SLD. Tradycyjne miejsce Pikniku Europejskiego SLD/OPZZ,umap_backup_1-maja_warszawa9.umap
-PL_Festyny_1,Siedziba SdRP/SLD,PL,"52.2277917,21.0330194",1991;1992;1993;1994;1995;1996;1997;2009;2010,"## 1991
+2019:	Ikonowicz: Demonstrujący przeszli pod kamień przy ul. wareckiej, upamiętniający miejsce w którym znajdowała się redakcja PPSowskiego ""Robotnika"", następnie przy dźwiękach pieśni rewolucyjnych podeszli na pl. Grzybowski. (lewica.pl 2019)",umap_backup_1-maja_warszawa9.umap,7,umap_backup_1-maja_warszawa9.umap,Upamiętnienia
+PL_Festyny_9,Park im. Edwarda Rydza-Śmigłego,PL,"52.227123,21.033046",1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2012;2013;2014;2016,Park im. Edwarda Rydza-Śmigłego na Rozbracie – obok dawnej siedziby SLD. Tradycyjne miejsce Pikniku Europejskiego SLD/OPZZ,umap_backup_1-maja_warszawa9.umap,9,umap_backup_1-maja_warszawa9.umap,Festyny
+PL_Festyny_11,Siedziba SdRP/SLD,PL,"52.2277917,21.0330194",1991;1992;1993;1994;1995;1996;1997;2009;2010,"## 1991
 - Tym razem Trybuna zaprasza na spotkanie w klubie dyskusyjnym przy Szarej 10, gdzie gościem będzie Miodowicz i Cimoszewicz, a także członkowie redakcji Trybuny (DT), 12 – spotkanie z kolegium Trybuny; 13 – gościem będzie Alfred Miodowicz; 14 – szef PKLD Włodzimierz Cimoszewicz; 15 – spotkanie z kierownictwem SdRP. Dyskusjom towarzyszyć ma kiermasz książek, czasopism i sprzętu elektronicznego. Na dzieci od 12 w sali kinowej czekać będą kreskówki. Finałem części festynowej będzie o 17 występ Władysława Komara i Andrzeja Gackiego (DT)
 
 ## 1992
@@ -112,8 +112,8 @@ O godzinie 13:30 odbędą się w siedzibie SdRP spotkania z Aleksandrem Kwaśnie
 Od 12:45 spotkania w siedzibie SdRP na Rozbrat – przedstawiciele redakcji Nie, Przeglądu Tygodniowego, potem spotkanie z liderami OPZZ i SdRP (DT),
 
 ## 2010
-Po przemówieniach pochód ruszył pod Sejm, a stamtąd na piknik na dziedzińcu siedziby SLD przy ul. Rozbrat. – Z roku na rok jest coraz mniej osób, nie chodzi tylko o deszcz – mówił Wiesław Gębicki z Bielan. – Ta formuła już się przejadła – dodał jeden z dzielnicowych radnych SLD. (Rzeczpospolita 2010",umap_backup_1-maja_warszawa9.umap
-PL_Prawicowe kontry i blokady_0,Brama Uniwersytetu Warszawskiego,PL,"52.239821,21.017194",1994;1996;1997;1998;1999;2000;2001;2004,"Brama Uniwersytetu Warszawskiego, Krakowskie Przedmieście – miejsce powtarzających się blokad pochodu pierwszomajowego organizowanych przez Ligę Republikańską (1994-1997). W 1996 r. interwencja policji.
+Po przemówieniach pochód ruszył pod Sejm, a stamtąd na piknik na dziedzińcu siedziby SLD przy ul. Rozbrat. – Z roku na rok jest coraz mniej osób, nie chodzi tylko o deszcz – mówił Wiesław Gębicki z Bielan. – Ta formuła już się przejadła – dodał jeden z dzielnicowych radnych SLD. (Rzeczpospolita 2010",umap_backup_1-maja_warszawa9.umap,11,umap_backup_1-maja_warszawa9.umap,Festyny
+PL_Prawicowe kontry i blokady_15,Brama Uniwersytetu Warszawskiego,PL,"52.239821,21.017194",1994;1996;1997;1998;1999;2000;2001;2004,"Brama Uniwersytetu Warszawskiego, Krakowskie Przedmieście – miejsce powtarzających się blokad pochodu pierwszomajowego organizowanych przez Ligę Republikańską (1994-1997). W 1996 r. interwencja policji.
 ## 1994
 Przed Bramą Uniwersytetu do pochodu dołączyła Liga Republikańska (ŻW); Liga Republikańska: Wznoszone przez nich hasła były parodią pochodów z okresu komunistycznego – ""Rokossowski, Bierut, Stalin""; ""Studenci do nauki""; ""Precz z Coca-Colą""; ""Kobiety na traktory""; ""Nie damy się wydymać! Parlamentarna Grupa Kobiet"". Ubrani byli w *historyczne szturmówki* i *autentyczne transparenty*: ""Pozdrawiamy narody ZSRR""; ""Młodzież z partią"". Rozdzielone pochody PPS i OPZZ połączyły się dopiero na placu Teatralnym, przy wsparciu policji. (ŻW 1994)
 
@@ -142,20 +142,20 @@ Drugim nowym zjawiskiem był brak Ligi Republikańskiej, która zawsze przy plac
 *(...) przed bramą uniwersytetu kilkunastu młodych prawicowców ledwo widocznych zza kordonu policji, za bramą - czterech przedstawicieli Młodzieży Wszechpolskiej. ""Lewacy do pracy"", ""Polska bez lewicy - cały naród krzyczy"" - skandowali. Uczestnicy pochodu rzucali w ich stronę jajkami i pojemnikami z kefirem.* (Wyborcza)
 Kiedy pochód OPZZ idący Krakowskim Przedmieściem zbliżał się w  stronę Uniwersytetu Warszawskiego prawicowa młodzież zaczęła krzyczeć ""SLD - KGB"", ""Raz sierpem, raz młotem czerwoną hołotę"", ""Józef Stalin was pochwali"", ""Cały naród krzyczy: Polska bez lewicy"".W stronę pikiety ze strony młodzieżówki PPS rzuconych zostało kilka jajek i kefirów. Prawicowa młodzież szczelnie otoczona przez policję nic nie odrzuciła. Do młodych antykomunistów krzyczano ""Faszyści, burżuje, wasz koniec się szykuje"". (Wprost)
 ## 2004
-“Doszło do utarczek słownych z kilkunastoma działaczami prawicy, zgromadzonymi przed bramą Uniwersytetu Warszawskiego.” (Ciszewski, 2004)",umap_backup_1-maja_warszawa9.umap
-PL_OPZZ_0,Sejm RP,PL,"52.2256155,21.0270682",2002;2003;2004;2005;2006;2007;2008;2009;2010,,umap_backup_1-maja_warszawa9.umap
-PL_OPZZ_1,OPZZ Headquarters,PL,"52.23792,21.02029",1990;1991;1992;1993;1994;1995;1996;1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2012;2013;2014;2016;2017;2018,"Główne miejsce wiecu pierwszomajowego OPZZ. Przemawiają tu przewodniczący OPZZ i liderzy lewicy. Punkt początkowy wszystkich pochodów OPZZ w Warszawie.
+“Doszło do utarczek słownych z kilkunastoma działaczami prawicy, zgromadzonymi przed bramą Uniwersytetu Warszawskiego.” (Ciszewski, 2004)",umap_backup_1-maja_warszawa9.umap,15,umap_backup_1-maja_warszawa9.umap,Prawicowe kontry i blokady
+PL_OPZZ_28,Sejm RP,PL,"52.2256155,21.0270682",2002;2003;2004;2005;2006;2007;2008;2009;2010,,umap_backup_1-maja_warszawa9.umap,28,umap_backup_1-maja_warszawa9.umap,OPZZ
+PL_OPZZ_29,OPZZ Headquarters,PL,"52.23792,21.02029",1990;1991;1992;1993;1994;1995;1996;1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2012;2013;2014;2016;2017;2018,"Główne miejsce wiecu pierwszomajowego OPZZ. Przemawiają tu przewodniczący OPZZ i liderzy lewicy. Punkt początkowy wszystkich pochodów OPZZ w Warszawie.
 
 Siedziba OPZZ.
 Początek pochodu: 1990-2002; 2004-2010; 2012-2014; 2016-2018
 2015: Wiec rozpoczynający demonstrację Partii Zmiana
-Wiec zamiast pochodu: 2011",umap_backup_1-maja_warszawa9.umap
-DE_Walpurgisnacht_0,Mauerpark Walpurgisplatz,DE,,1999;2000;2001;2002,"1999 – Walpurgisnacht alternative to Kollwitzplatz, which was under heavy police occupation. ""Reclaim the Streets"" called people to Alexanderplatz; part of the crowd later moved to Prenzlauer Berg. Smaller clashes with police near Mauerpark. (1999_DE; LÖPA chronology)
+Wiec zamiast pochodu: 2011",umap_backup_1-maja_warszawa9.umap,29,umap_backup_1-maja_warszawa9.umap,OPZZ
+DE_Walpurgisnacht_7,Mauerpark Walpurgisplatz,DE,,1999;2000;2001;2002,"1999 – Walpurgisnacht alternative to Kollwitzplatz, which was under heavy police occupation. ""Reclaim the Streets"" called people to Alexanderplatz; part of the crowd later moved to Prenzlauer Berg. Smaller clashes with police near Mauerpark. (1999_DE; LÖPA chronology)
 2000 – Walpurgisnacht celebrated peacefully. Commercially organised festivals at both Kollwitzplatz and Mauerpark, coordinated with police. Thousands of participants; police presence barely noticeable. (2000_DE; LÖPA chronology)
 2001 – Walpurgisnacht peaceful. Police had difficulty finding an organiser for the Mauerpark festival due to its reputation for uncontrolled crowds; threats from left-wing groups against potential organisers. Festival took place nonetheless. (2001_DE; LÖPA chronology)
 2002 – ~7,000 participants, peaceful until midnight. When firefighters were blocked from extinguishing a large fire on Eberswalder Straße, police cleared the street with water cannons and tear gas. First injuries reported; a young woman hit by a thrown bottle. (2002_DE; LÖPA chronology)
-2003 – ~8,000 participants. Shortly after midnight, stone-throwing against police began; police entered from the north using water cannons, batons, and tear gas. Clashes continued between Schönhauser Allee, Eberswalder Straße, and Oderberger Straße until around 3:00 AM. A Johanniter-Unfallhilfe ambulance was stolen during the unrest. (2003_DE; LÖPA chronology)",1__mai_berlin_aktualna_11_.geojson
-DE_Walpurgisnacht_1,Mauerpark Walpurgisplatz,DE,,2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018,"## 2001
+2003 – ~8,000 participants. Shortly after midnight, stone-throwing against police began; police entered from the north using water cannons, batons, and tear gas. Clashes continued between Schönhauser Allee, Eberswalder Straße, and Oderberger Straße until around 3:00 AM. A Johanniter-Unfallhilfe ambulance was stolen during the unrest. (2003_DE; LÖPA chronology)",1__mai_berlin_aktualna_11_.geojson,7,1__mai_berlin_aktualna_11_.geojson,Walpurgisnacht
+DE_Walpurgisnacht_8,Mauerpark Walpurgisplatz,DE,,2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018,"## 2001
 Family festival organised by the Turnerjugend (youth organisation of the Berliner Turnerbund), with police participation: a cheerleader group from the police sports club performed at the event. Programme included bouncy castle, skill games, health information stands, a petting zoo, and a lantern procession. The police's original plan — a large rock concert — had failed due to lack of funding and neighbourhood resistance. Simultaneously, the police organised a youth football tournament at the adjacent Friedrich-Ludwig-Jahn-Sportpark. (Tagesspiegel 17.04.2001)
 *Heißer ging es im Mauerpark in Prenzlauer Berg zu. Die auf Initiative der Polizei vom Turnerbund am Nachmittag dort aufgestellten Hüpfburgen wurden von den Parkbesuchern weit gehend ignoriert. Erst in der Nacht drängelten sich 6.000 Menschen um zahlreiche Lagerfeuer und Trommler. Die Polizei griff selbst dann nicht ein, als sich gegen 23.30 Uhr einige Leute auf die Eberswalder Straße setzten. Stattdessen sperrte sie die Straße für den Durchgangsverkehr. Erst gegen 0:30 Uhr drohte kurzfistig eine Eskalation. Als Beamte einen pöbelnden Passanten nahe der Schönhauser Allee brutal zu Boden warfen, flogen erste Flaschen. Innerhalb von Minuten kamen Mannschaftswagen und Wasserwerfer herangeeilt. Die Polizei verzichtete aber darauf, Richtung Mauerpark vorzurücken. Weitere Festnahmen Angetrunkener waren umstritten. ""Fünf Mann auf eine Frau, was seid ihr für Helden"", kommentierte ein Polizist die Arbeit seiner Kollegen. Auf dem Gewerbegelände neben dem Mauerpark ging gegen 1.45 Uhr eine Baracke in Flammen auf. Ob es einen Zusammenhang mit den Lagerfeuern im Park gab, war gestern noch unklar. Heftige Zusammenstöße zwischen Polizei und Feiernden gab es nur in Friedrichshain.*
 
@@ -183,8 +183,8 @@ Attendance: 400 (Tsg)
 
 
 ## 2019
-no festival due to noise complaints of the neighbors",1__mai_berlin_aktualna_11_.geojson
-DE_Walpurgisnacht_2,Viktoriapark,DE,"52.4874665,13.3808123",2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2017;2018;2019,"## 2006
+no festival due to noise complaints of the neighbors",1__mai_berlin_aktualna_11_.geojson,8,1__mai_berlin_aktualna_11_.geojson,Walpurgisnacht
+DE_Walpurgisnacht_9,Viktoriapark,DE,"52.4874665,13.3808123",2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2017;2018;2019,"## 2006
 Rangeleien mit der Polizei gab es auch im Kreuzberger Viktoriapark, wo Jugendliche ein Feuer angezündet hatten. ""Da waren 200 Leute, zum Teil vermummt, die dachten, da entwickelt sich was"", sagte ein Polizeisprecher. Völlig ruhig blieb es dagegen im Mauerpark in Prenzlauer Berg. Wer in den Park wollte, musste sein Bier in Becher umschütten. Weil die Berliner Polizei ohnehin nicht mit Ausschreitungen rechnete, hatte sie die Einlasskontrollen an die Brandenburger Polizei übergeben.
 ## 2007
 m Viktoriapark seien in derselben Nacht mehrere Feuer festgestellt worden, an denen sich teilweise bis zu
@@ -237,8 +237,8 @@ Attendance:
 Mehrere tausend Menschen feierten die Walpurgisnacht in den verschiedenen Parks der Stadt, wie zum Beispiel im Mauerpark, Görlitzer Park, Monbijoupark und Volkspark Friedrichshain, völlig friedlich. Lediglich im Viktoriapark löschten Einsatzkräfte ein paar kleine Lagerfeuer. (xhain.net)
 
 ## 2019
-Auch im Viktoriapark in Kreuzberg gab es kleinere Walpurgisfeiern, womit nach altem Brauch der Winter vertrieben wird. (WELT)  ",1__mai_berlin_aktualna_11_.geojson
-DE_East German Left_0,Kollwitzplatz,DE,"52.536232,13.417018",1990;1991;1992;1993;1994;1995;1996;1997;1998,"
+Auch im Viktoriapark in Kreuzberg gab es kleinere Walpurgisfeiern, womit nach altem Brauch der Winter vertrieben wird. (WELT)  ",1__mai_berlin_aktualna_11_.geojson,9,1__mai_berlin_aktualna_11_.geojson,Walpurgisnacht
+DE_East German Left_19,Kollwitzplatz,DE,"52.536232,13.417018",1990;1991;1992;1993;1994;1995;1996;1997;1998,"
 ---
 1990 – endpoint of the anti-nazi, mostly east german demonstration against the nazis and the reunification (?) (taz 26.04.90, 1. Mai am Kollwitzplatz)
 1991 – względnie szybko przygotowany festyn, zorganizowany przez wschodnioniemieckie grupy
@@ -249,8 +249,8 @@ Attendance: 10000 (JW)
 1996 – planowany koniec wspólnej, radykalnej i ML demonstracji. Bójki tuż przed Kollwitzplatz, rozbicie obu pochodów przez policję
 
 2000 – peaceful festival, coorganized by the city
-2001 – peaceful festival, coorganized by the city",1__mai_berlin_aktualna_12_.geojson
-DE_East German Left_1,Kollwitzplatz,DE,"52.536232,13.417018",1990;1991;1992;1993;1994;1995;1996;1997;1998,"
+2001 – peaceful festival, coorganized by the city",1__mai_berlin_aktualna_12_.geojson,19,1__mai_berlin_aktualna_12_.geojson,East German Left
+DE_East German Left_20,Kollwitzplatz,DE,"52.536232,13.417018",1990;1991;1992;1993;1994;1995;1996;1997;1998,"
 ---
 1990 – endpoint of the anti-nazi, mostly east german demonstration against the nazis and the reunification (?) (taz 26.04.90, 1. Mai am Kollwitzplatz)
 1991 – względnie szybko przygotowany festyn, zorganizowany przez wschodnioniemieckie grupy
@@ -261,8 +261,8 @@ Attendance: 10000 (JW)
 1996 – planowany koniec wspólnej, radykalnej i ML demonstracji. Bójki tuż przed Kollwitzplatz, rozbicie obu pochodów przez policję
 
 2000 – peaceful festival, coorganized by the city
-2001 – peaceful festival, coorganized by the city",1__mai_berlin_aktualna_12_.geojson
-DE_DGB_0,Brandenburger Tor,DE,"52.51643,13.377399",2002;2003;2004;2005,"Brandenburger Tor / Platz des 18. März, Mitte.
+2001 – peaceful festival, coorganized by the city",1__mai_berlin_aktualna_12_.geojson,20,1__mai_berlin_aktualna_12_.geojson,East German Left
+DE_DGB_2,Brandenburger Tor,DE,"52.51643,13.377399",2002;2003;2004;2005,"Brandenburger Tor / Platz des 18. März, Mitte.
 
 1991: End of East German trade union march (Platz der Republik side). (DGBB 653)
 1992: Part of DGB Sternmarsch route. (DGBB 657)
@@ -283,9 +283,9 @@ DE_DGB_0,Brandenburger Tor,DE,"52.51643,13.377399",2002;2003;2004;2005,"Brandenb
 2018: DGB Berlin main rally. ~14,000. IG Metall strike context: Arbeitszeitmauer Ost/West. (2018_DE)
 2019: DGB demonstration reaches here at ~10:48. ~5,500 police deployed across the city. (2019_DE)
 
-[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson
-DE_DGB_1,DGB Main headquarters (1999-2019),DE,"52.522645,13.401954",,,1__mai_berlin_aktualna_14_.geojson
-DE_DGB_2,DGB-Haus,DE,"52.5018563,13.3456562",1990;1991;1992;1993;2006;2007;2008;2009;2010;2011,"DGB-Haus Berlin, Keithstraße 1–3, Schöneberg (near Wittenbergplatz/Kleiststraße).
+[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson,2,1__mai_berlin_aktualna_14_.geojson,DGB
+DE_DGB_3,DGB Main headquarters (1999-2019),DE,"52.522645,13.401954",,,1__mai_berlin_aktualna_14_.geojson,3,1__mai_berlin_aktualna_14_.geojson,DGB
+DE_DGB_4,DGB-Haus,DE,"52.5018563,13.3456562",1990;1991;1992;1993;2006;2007;2008;2009;2010;2011,"DGB-Haus Berlin, Keithstraße 1–3, Schöneberg (near Wittenbergplatz/Kleiststraße).
 
 1990–1993: Beginning rally point for the DGB Sternmarsch. (1990_DE–1993_DE)
 2005: Start of cycling cortège, 8:00. (2005_DE; DGB erstermai.dgb)
@@ -296,8 +296,8 @@ DE_DGB_2,DGB-Haus,DE,"52.5018563,13.3456562",1990;1991;1992;1993;2006;2007;2008;
 2011: Route: DGB-Haus – Kleiststraße – Bülowstraße – Potsdamer Straße – Lützowstraße – Ebertstraße – Brandenburger Tor. (2011_DE; taz 30.04.2011)
 2012–2015: Demonstration starts from Hackescher Markt instead. (2012_DE–2015_DE)
 
-[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson
-DE_DGB_3,Haus des Deutschen Verkehrsbunds,DE,"52.506217,13.419929",1994;1995;1996;1997;1998;2000;2001,"Engeldamm 70, Mitte. Before 1933: housed trade unions outside large industrial unions. 1933: seized by Nazis on 2 May. 1950–1990: used by FDGB. 1993–2002: ÖTV Berlin headquarters, then ver.di.
+[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson,4,1__mai_berlin_aktualna_14_.geojson,DGB
+DE_DGB_5,Haus des Deutschen Verkehrsbunds,DE,"52.506217,13.419929",1994;1995;1996;1997;1998;2000;2001,"Engeldamm 70, Mitte. Before 1933: housed trade unions outside large industrial unions. 1933: seized by Nazis on 2 May. 1950–1990: used by FDGB. 1993–2002: ÖTV Berlin headquarters, then ver.di.
 
 1994: ÖTV beginning rally. Route to Lustgarten not fully documented. (1994_DE)
 1995: Beginning rally; route to Köllnischer Park. (1995_DE; ND 28.04.1995)
@@ -305,8 +305,8 @@ DE_DGB_3,Haus des Deutschen Verkehrsbunds,DE,"52.506217,13.419929",1994;1995;199
 2000–2001: Route: Engeldamm – Heinrich-Heine-Straße – Brückenstraße – Alexanderstraße – Spandauer Straße – Rotes Rathaus. (2000_DE; 2001_DE)
 2002: ver.di formed from ÖTV merger. Unified DGB demo replaces Sternmarsch. (2002_DE)
 
-[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson
-DE_DGB_4,IG Metall HQ,DE,"52.499177,13.39596",1990;1991;1992;1993;1994;1996;1997;1998;1999;2000;2001,"IG Metall Berlin, Alte Jakobstraße 149, Kreuzberg.
+[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson,5,1__mai_berlin_aktualna_14_.geojson,DGB
+DE_DGB_6,IG Metall HQ,DE,"52.499177,13.39596",1990;1991;1992;1993;1994;1996;1997;1998;1999;2000;2001,"IG Metall Berlin, Alte Jakobstraße 149, Kreuzberg.
 
 1990: Joint beginning rally for IG Metall and IG Metall-Ost. (1990_DE; DGBB 651)
 1991–1992: Beginning rally. Route: Alte Jakobstraße – Oranienstraße – Kochstraße – Friedrichstraße – Unter den Linden – Platz der Republik. (1991_DE; DGBB 653)
@@ -315,8 +315,8 @@ DE_DGB_4,IG Metall HQ,DE,"52.499177,13.39596",1990;1991;1992;1993;1994;1996;1997
 2000–2001: Route: IG Metall-Haus – Alte Jakobstraße – Fischerinsel – Breite Straße – Rathausstraße – Spandauer Straße – Rotes Rathaus. (2000_DE; Berliner Kurier 29.04.2000)
 2002 onwards: Joins unified DGB demonstration from new starting points. (2002_DE onwards)
 
-[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson
-DE_DGB_5,Lustgarten,DE,"52.5185383,13.399396320043286",1990;1992;1993;1994,"Lustgarten, Museumsinsel, Mitte.
+[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson,6,1__mai_berlin_aktualna_14_.geojson,DGB
+DE_DGB_8,Lustgarten,DE,"52.5185383,13.399396320043286",1990;1992;1993;1994,"Lustgarten, Museumsinsel, Mitte.
 
 1990: FDGB auftakt rally, ~7,000 participants. First joint East-West May Day event since 1947. (1990_DE; ND 2.05.1990)
 1992: DGB Berlin main rally. ~40,000. Motto 'Teilen verbindet' contested within unions — some replaced it with 'Solidarität'. (1992_DE; DGBB 657)
@@ -328,29 +328,29 @@ Sie werden sicher wissen, daß der Deutsche Gewerkschaftsbund, Landesbezirk Berl
 1994: DGB Berlin main rally. ~5,000–8,000. Kurdish groups blocked from stage over PKK flags. (1994_DE)
 1995: No longer main rally site — replaced by Köllnischer Park. (1995_DE)
 
-[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson
-DE_DGB_6,ÖTV trade union headquarters,DE,"52.500294,13.330954",1990;1991;1992;1993,"1990-1993 – ÖTV and GEW parade start
-",1__mai_berlin_aktualna_14_.geojson
-DE_DGB_7,Wallstrasse 61-65 (former HQ of Berlin FDGB and pre-war ADGB),DE,"52.5131795,13.4122918",1991;1992;1993;1994,"Wallstraße 61–65, Mitte. Pre-1933: ADGB headquarters. Seized by Nazis on 2 May 1933. GDR era: FDGB Berlin headquarters.
+[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson,8,1__mai_berlin_aktualna_14_.geojson,DGB
+DE_DGB_10,ÖTV trade union headquarters,DE,"52.500294,13.330954",1990;1991;1992;1993,"1990-1993 – ÖTV and GEW parade start
+",1__mai_berlin_aktualna_14_.geojson,10,1__mai_berlin_aktualna_14_.geojson,DGB
+DE_DGB_12,Wallstrasse 61-65 (former HQ of Berlin FDGB and pre-war ADGB),DE,"52.5131795,13.4122918",1991;1992;1993;1994,"Wallstraße 61–65, Mitte. Pre-1933: ADGB headquarters. Seized by Nazis on 2 May 1933. GDR era: FDGB Berlin headquarters.
 
 1991: IG BAU union demonstration beginning rally. Route: Wallstraße – Märkisches Ufer – Brückenstraße – Stralauer Straße – Spandauer Straße – Karl-Liebknecht-Straße – Platz der Republik. (1991_DE; DGBB 653)
 1992: IG BAU union beginning rally, same route towards Lustgarten. (1992_DE; DGBB 657)
 1993–1994: Assumed same starting point; route not separately documented. (assumed)
 
-[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson
-DE_Revolutionäre 1. Mai_0,Bergmannstraße,DE,"52.48882209802496,13.402425360714567",2000;2001;2002,"## 2000 
+[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_14_.geojson,12,1__mai_berlin_aktualna_14_.geojson,DGB
+DE_Revolutionäre 1. Mai_70,Bergmannstraße,DE,"52.48882209802496,13.402425360714567",2000;2001;2002,"## 2000 
 festyn organizowany przez policję, mający odwieźć młodzież od udziału w wydarzeniach lewicy radykalnej
 
 *Auf einem nur mittelmäßig besuchten Fest in der Bergmannstraße trug die Polizei gestern in Kreuzberg zur Deeskaltion bei. Beamte der Wasserschutzpolizei und der Reiterstaffel spazierten in Zweierformationen über die Meile und parlierten mit den Bürgern. Das Sportfest war Teil des polizeilichen Konzepts AHA, mit dem erlebnishungrige jugendliche Mitläufer von Randale abgehalten werden sollten. Dass es sich bei den Jugendlichen und Kindern, die sich gestern in der Bergmannstraße beim Streetball, Bunge-Jumping und Kistenklettern vergnügten, wirklich um die gemeinte Zielgruppe handelte, darf bezweifelt werden. Spaß hatten sie allemal. „Wir hätten sonst woanders Streetball gespielt“, versicherte ein 18-jähriger Jugendlicher mit Nachdruck, dass er und seine Freunde schon lange nicht mehr zur Mai-Randale gingen. „Das ist doch langweilig geworden. Die Bullen, die da immer noch hinmüssen, tun mir schon fast Leid.“* (taz 2.05.2000)
 
 ## 2002
-Tagesspiegel pisze o trzecim festynie organizowanym przez policję dla młodzieży w tym miejscu (Tagesspiegel 3.05.2002)",1__mai_berlin_aktualna_15_.geojson
-DE_Revolutionäre 1. Mai_1,Lausitzer Platz,DE,"52.500235,13.4307",1987;1988;1989;1990;1991,"1987 – festyn, od którego zaczynają się zamieszki
+Tagesspiegel pisze o trzecim festynie organizowanym przez policję dla młodzieży w tym miejscu (Tagesspiegel 3.05.2002)",1__mai_berlin_aktualna_15_.geojson,70,1__mai_berlin_aktualna_15_.geojson,Revolutionäre 1. Mai
+DE_Revolutionäre 1. Mai_74,Lausitzer Platz,DE,"52.500235,13.4307",1987;1988;1989;1990;1991,"1987 – festyn, od którego zaczynają się zamieszki
 1988 – festyn, pokojowy przebieg, kończy się przed rozpoczęciem zamieszek
 1989 – festyn współorganizowany przez radykalną lewicę, AL i  ""Gewerkschaftsleuten""
 1990 – zamieszki: ludzie rzucają kamieniami w policjantów blokujących wejście do Görlitzer Park
-1991 – spontaniczny festiwal, który kończy się zamieszkami",1__mai_berlin_aktualna_15_.geojson
-DE_Revolutionäre 1. Mai_2,Oranienplatz,DE,"52.5022391,13.41571442375585",1992;1993;1994;1996;1997;1998;1999;2002;2016;2017;2018,"1987: Lausitzer Platz festival sparks riots – starting point of the R1M tradition. (2001_DE Apel)
+1991 – spontaniczny festiwal, który kończy się zamieszkami",1__mai_berlin_aktualna_15_.geojson,74,1__mai_berlin_aktualna_15_.geojson,Revolutionäre 1. Mai
+DE_Revolutionäre 1. Mai_76,Oranienplatz,DE,"52.5022391,13.41571442375585",1992;1993;1994;1996;1997;1998;1999;2002;2016;2017;2018,"1987: Lausitzer Platz festival sparks riots – starting point of the R1M tradition. (2001_DE Apel)
 1988: First organised Revolutionärer 1. Mai demonstration starts from here. (2001_DE Apel)
 1990: R1M start, route: Oranienplatz → Oranienstr. → Wiener Str. → Ohlauer Str. → Friedelstr. → Reuterstr. → Hermannplatz → Kottbusser Tor. (Interim 99/1990; 1990_DE)
 1991: R1M start, 13:00, route towards Friedrichshain (Bänschstr./Proskauerstr.). (Interim 142/1991; 1991_DE)
@@ -378,8 +378,8 @@ DE_Revolutionäre 1. Mai_2,Oranienplatz,DE,"52.5022391,13.41571442375585",1992;1
 2018: R1M demo, 18:00. Start location not confirmed in available sources. [not documented]
 2019: R1M moved away from Kreuzberg for the first time — starts at Wismarplatz, Wedding, 18:00. Motto: against Deutsche Wohnen. (2019_DE)
 
-[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_15_.geojson
-DE_Other events_0,Mariannenplatz,DE,"52.502325,13.424466",1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019,"The first 1. Mai Fest at Mariannenplatz was organised in 1972 by the squatters of the nearby Bethanien. Their idea was to inform the broader public about their situation. At least between 1987 and 1997 no festival was organised there, when it was revived by a coalition of district political forces and continues up until the end of the researched period (https://www.umbruch-bildarchiv.de/bildarchiv/ereignis/010577berlin.html; https://taz.de/Bethanien-Besetzer-ueber-Vergangenes/!5818723/)
+[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",1__mai_berlin_aktualna_15_.geojson,76,1__mai_berlin_aktualna_15_.geojson,Revolutionäre 1. Mai
+DE_Other events_20,Mariannenplatz,DE,"52.502325,13.424466",1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019,"The first 1. Mai Fest at Mariannenplatz was organised in 1972 by the squatters of the nearby Bethanien. Their idea was to inform the broader public about their situation. At least between 1987 and 1997 no festival was organised there, when it was revived by a coalition of district political forces and continues up until the end of the researched period (https://www.umbruch-bildarchiv.de/bildarchiv/ereignis/010577berlin.html; https://taz.de/Bethanien-Besetzer-ueber-Vergangenes/!5818723/)
 
 1992 – planowany festiwal LGBT przy Muskauer strasse (taz)
 1997 – festyn wspierany przez PDS/Zielonych, tuż przed końcem dochodzi tam do starć z policją
@@ -391,8 +391,8 @@ peaceful festival. *Gegen den Krieg wird am Mariannenplatz angefeiert. Von 14 bi
 
 ## 2001
 
-*“Die Polizei löste um kurz nach 18 Uhr das traditionelle Straßenfest am Mariannenplatz mit rund 5.000 Besuchern auf, setzte Wasserwerfer ein und räumte den Platz. Die Begründung: Stein- und Flaschenwürfe auf Beamte. Hunderte TeilnehmerInnen des Festes schlugen zurück. Unter Applaus anderer Besucher trieben sie die Polizisten mit Pflastersteinen und Flaschen vom Platz. Bis Redaktionsschluss mussten sich die Beamten zweimal zurückziehen. Ein Bauwagen und ein Auto gingen in Flammen auf.”* (taz)",umap_backup_1-mai-berlin_aktualna16.umap
-DE_Other events_1,Mariannenplatz,DE,"52.502325,13.424466",2026,"The first 1. Mai Fest at Mariannenplatz was organised in 1972 by the squatters of the nearby Bethanien. Their idea was to inform the broader public about their situation. At least between 1987 and 1997 no festival was organised there, when it was revived by a coalition of district political forces and continues up until the end of the researched period (https://www.umbruch-bildarchiv.de/bildarchiv/ereignis/010577berlin.html; https://taz.de/Bethanien-Besetzer-ueber-Vergangenes/!5818723/)
+*“Die Polizei löste um kurz nach 18 Uhr das traditionelle Straßenfest am Mariannenplatz mit rund 5.000 Besuchern auf, setzte Wasserwerfer ein und räumte den Platz. Die Begründung: Stein- und Flaschenwürfe auf Beamte. Hunderte TeilnehmerInnen des Festes schlugen zurück. Unter Applaus anderer Besucher trieben sie die Polizisten mit Pflastersteinen und Flaschen vom Platz. Bis Redaktionsschluss mussten sich die Beamten zweimal zurückziehen. Ein Bauwagen und ein Auto gingen in Flammen auf.”* (taz)",umap_backup_1-mai-berlin_aktualna16.umap,20,umap_backup_1-mai-berlin_aktualna16.umap,Other events
+DE_Other events_21,Mariannenplatz,DE,"52.502325,13.424466",2026,"The first 1. Mai Fest at Mariannenplatz was organised in 1972 by the squatters of the nearby Bethanien. Their idea was to inform the broader public about their situation. At least between 1987 and 1997 no festival was organised there, when it was revived by a coalition of district political forces and continues up until the end of the researched period (https://www.umbruch-bildarchiv.de/bildarchiv/ereignis/010577berlin.html; https://taz.de/Bethanien-Besetzer-ueber-Vergangenes/!5818723/)
 
 1992 – planowany festiwal LGBT przy Muskauer strasse (taz)
 1997 – festyn wspierany przez PDS/Zielonych, tuż przed końcem dochodzi tam do starć z policją
@@ -404,18 +404,18 @@ peaceful festival. *Gegen den Krieg wird am Mariannenplatz angefeiert. Von 14 bi
 
 ## 2001
 
-*“Die Polizei löste um kurz nach 18 Uhr das traditionelle Straßenfest am Mariannenplatz mit rund 5.000 Besuchern auf, setzte Wasserwerfer ein und räumte den Platz. Die Begründung: Stein- und Flaschenwürfe auf Beamte. Hunderte TeilnehmerInnen des Festes schlugen zurück. Unter Applaus anderer Besucher trieben sie die Polizisten mit Pflastersteinen und Flaschen vom Platz. Bis Redaktionsschluss mussten sich die Beamten zweimal zurückziehen. Ein Bauwagen und ein Auto gingen in Flammen auf.”* (taz)",umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_0,Axel-Springer-Haus,DE,"52.507563,13.39809",1990;1991;1992;1993;1994;1995;1996;1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019,2012 – **,umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_1,Bundesverband Leiharbeit/Arbeitgeberverband Mittelständischer Personaldienstleister (AMP),DE,"52.5109178,13.3875522",2011,2011 – ,umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_2,Bundesverband Zeitarbeit Personal-Dienstleistungen,DE,"52.508974,13.3899616",2011,2011 – point on the FAU Spaziergang,umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_3,Federal Ministy of Labour and Social Affairs,DE,"52.5126664,13.3843762",2011,2011 – on route of FAU (Spaziergang),umap_backup_1-mai-berlin_aktualna16.umap
+*“Die Polizei löste um kurz nach 18 Uhr das traditionelle Straßenfest am Mariannenplatz mit rund 5.000 Besuchern auf, setzte Wasserwerfer ein und räumte den Platz. Die Begründung: Stein- und Flaschenwürfe auf Beamte. Hunderte TeilnehmerInnen des Festes schlugen zurück. Unter Applaus anderer Besucher trieben sie die Polizisten mit Pflastersteinen und Flaschen vom Platz. Bis Redaktionsschluss mussten sich die Beamten zweimal zurückziehen. Ein Bauwagen und ein Auto gingen in Flammen auf.”* (taz)",umap_backup_1-mai-berlin_aktualna16.umap,21,umap_backup_1-mai-berlin_aktualna16.umap,Other events
+DE_Points of Interest_0,Axel-Springer-Haus,DE,"52.507563,13.39809",1990;1991;1992;1993;1994;1995;1996;1997;1998;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019,2012 – **,umap_backup_1-mai-berlin_aktualna16.umap,0,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
+DE_Points of Interest_1,Bundesverband Leiharbeit/Arbeitgeberverband Mittelständischer Personaldienstleister (AMP),DE,"52.5109178,13.3875522",2011,2011 – ,umap_backup_1-mai-berlin_aktualna16.umap,1,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
+DE_Points of Interest_2,Bundesverband Zeitarbeit Personal-Dienstleistungen,DE,"52.508974,13.3899616",2011,2011 – point on the FAU Spaziergang,umap_backup_1-mai-berlin_aktualna16.umap,2,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
+DE_Points of Interest_3,Federal Ministy of Labour and Social Affairs,DE,"52.5126664,13.3843762",2011,2011 – on route of FAU (Spaziergang),umap_backup_1-mai-berlin_aktualna16.umap,3,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
 DE_Points of Interest_4,Gerhard-Hauptman Hochsule,DE,"52.49599,13.430389",2015,"Between 2012 and 2018 refugees squatted the empty building of a former high school in Kreuzberg. On 24th June, due to bad living conditions in the building, city authorities offered to move the dwellers to a different building. The group refugees who declined the offer were then supported by demonstrations, aiming to defend them from the looming eviction by the police. The site became a hotspot of protest  in the following years.
 
-On May 1st 2015, R1M demonstration passed the buidling",umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_5,Haus der Demokratie,DE,"52.51375940286752,13.391486406326296",1990;1991;1992;1993;1994;1995;1996;1997,,umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_6,Haus der Deutschen Wirtschaft,DE,"52.5149552,13.4054999",2005,2005 – endpoint of FAU demonstration,umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_7,Olympia Personaldienstleistungen GmbH,DE,"52.5271288,13.3859648",2011,2011 – Endpoint of FAU walk,umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_8,Randstad Deutschland,DE,"52.5193389,13.3881827",2011,2011 – FAU route,umap_backup_1-mai-berlin_aktualna16.umap
+On May 1st 2015, R1M demonstration passed the buidling",umap_backup_1-mai-berlin_aktualna16.umap,4,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
+DE_Points of Interest_5,Haus der Demokratie,DE,"52.51375940286752,13.391486406326296",1990;1991;1992;1993;1994;1995;1996;1997,,umap_backup_1-mai-berlin_aktualna16.umap,5,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
+DE_Points of Interest_6,Haus der Deutschen Wirtschaft,DE,"52.5149552,13.4054999",2005,2005 – endpoint of FAU demonstration,umap_backup_1-mai-berlin_aktualna16.umap,6,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
+DE_Points of Interest_7,Olympia Personaldienstleistungen GmbH,DE,"52.5271288,13.3859648",2011,2011 – Endpoint of FAU walk,umap_backup_1-mai-berlin_aktualna16.umap,7,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
+DE_Points of Interest_8,Randstad Deutschland,DE,"52.5193389,13.3881827",2011,2011 – FAU route,umap_backup_1-mai-berlin_aktualna16.umap,8,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
 DE_Points of Interest_9,Red City Hall,DE,"52.518271799999994,13.407830867048435",1996;1997;1998;1999;2000;2001;2002;2003;2004;2005,"Rotes Rathaus (Red City Hall), Rathausstraße, Mitte.
 
 1996: DGB Berlin main rally. ~20,000. DGB chief Schulte booed and pelted with tomatoes by BKG protesters against 'Bündnis für Arbeit'. (1996_DE; taz 2.05.1996)
@@ -430,8 +430,8 @@ DE_Points of Interest_9,Red City Hall,DE,"52.518271799999994,13.407830867048435"
 2005: DGB Berlin main rally. ~12,000. (2005_DE)
 2006 onwards: No longer main rally site — replaced by Brandenburger Tor. (2006_DE)
 
-[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",umap_backup_1-mai-berlin_aktualna16.umap
-DE_Points of Interest_10,Treuhandanstalt/Bundesfinanzministerium,DE,"52.508828,13.384708",1991;1992;1993;1994;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019,The main headquarters of Treuhandanstalt between ca. March 1991-1994. Since 1999 Ministry of Finance headquarters,umap_backup_1-mai-berlin_aktualna16.umap
+[Open in Obsidian by year: see individual year notes 1990_DE–2019_DE]",umap_backup_1-mai-berlin_aktualna16.umap,9,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
+DE_Points of Interest_10,Treuhandanstalt/Bundesfinanzministerium,DE,"52.508828,13.384708",1991;1992;1993;1994;1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019,The main headquarters of Treuhandanstalt between ca. March 1991-1994. Since 1999 Ministry of Finance headquarters,umap_backup_1-mai-berlin_aktualna16.umap,10,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
 DE_Points of Interest_11,Weddinger Blutmai Memorial,DE,"52.5486087,13.37222405",1991;2019,"
 The commemorative stone was first unveiled on April 30th, 1991 by Wedding's Baustadtrat Dieter Scholz at the Walter-Röber-Brücke (‘Gedenkstein für Opfer des “Blutmai” von 1929 enthüllt’, 1991; Unterwegs im »Roten Wedding, 2024; Hensel, 2025b).[2]. The initiative to erect the monument came from Heimatverein Wedding e. V., a local history association.
 
@@ -442,7 +442,7 @@ These commemorative ceremonies have been held by the AG Gedenkstein since 2015, 
 In 2019, on May 1st, its members organised a historical walk through Wedding that included a wreath-laying ceremony at the commemorative stone (‘Weddinger Blutmai 1929’, 2019). They also took part in the May 4th ceremony organised by the AG Gedenkstein.
 
 ## 2026
-17.15 Uhr -19 Uhr",umap_backup_1-mai-berlin_aktualna16.umap
+17.15 Uhr -19 Uhr",umap_backup_1-mai-berlin_aktualna16.umap,11,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
 DE_Points of Interest_12,Weddinger Blutmai Memorial,DE,"52.5486087,13.37222405",2026,"
 The commemorative stone was first unveiled on April 30th, 1991 by Wedding's Baustadtrat Dieter Scholz at the Walter-Röber-Brücke (‘Gedenkstein für Opfer des “Blutmai” von 1929 enthüllt’, 1991; Unterwegs im »Roten Wedding, 2024; Hensel, 2025b).[2]. The initiative to erect the monument came from Heimatverein Wedding e. V., a local history association.
 
@@ -453,14 +453,14 @@ These commemorative ceremonies have been held by the AG Gedenkstein since 2015, 
 In 2019, on May 1st, its members organised a historical walk through Wedding that included a wreath-laying ceremony at the commemorative stone (‘Weddinger Blutmai 1929’, 2019). They also took part in the May 4th ceremony organised by the AG Gedenkstein.
 
 ## 2026
-17.15 Uhr -19 Uhr",umap_backup_1-mai-berlin_aktualna16.umap
+17.15 Uhr -19 Uhr",umap_backup_1-mai-berlin_aktualna16.umap,12,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
 DE_Points of Interest_13,Willy-Brandt-Haus,DE,"52.500130729984924,13.388278484344482",2014,"Since 1999, central headquarters of SPD.
-2014 – end-point of R1M demonstration",umap_backup_1-mai-berlin_aktualna16.umap
+2014 – end-point of R1M demonstration",umap_backup_1-mai-berlin_aktualna16.umap,13,umap_backup_1-mai-berlin_aktualna16.umap,Points of Interest
 DE_MyGruni_0,2018 MyGruni,DE,,2018,"""Warum immer Kreuzberg? Warum nicht mal in einem richtigen Problembezirk auf die Straße gehen?"" fragten sich die Hedonist-international.org/ und starteten den 1. Mai bereits am Nachmittag um 14 Uhr mit einer Demo im Grunewald. Statt der angemeldeten 200 Teilnehmer*innen zogen mehr als 3.000 Menschen begleitet von Lärm, Wumms und allerlei guten Ideen, die laut in die Vorgärten schallten, vom S-Bahnhof Grunewald durch das Villenviertel. An der fast sieben Kilometer langen Strecke lagen Botschaften, Residenzen und die Häuser zahlreicher Prominenter. Einige Villen, bei denen die Gartentür offen stand, wurden gleich mal besichtigt, bei anderen Sturm geklingelt oder sie mit Aufklebern und anderem verschönert. Das führte zu einem längeren unfreiwilligen Aufenthalt in der Nähe der britischen Botschaft. Nach einer Stunde gab die Polizei die Straße wieder frei. Wo eine Villa ist, ist auch ein Weg.  (Umbruch Archiv)
 
-Attendance: 1500 (taz, ticker 2018)",umap_backup_1-mai-berlin_aktualna16.umap
+Attendance: 1500 (taz, ticker 2018)",umap_backup_1-mai-berlin_aktualna16.umap,0,umap_backup_1-mai-berlin_aktualna16.umap,MyGruni
 DE_MyGruni_1,2019 MyGruni,DE,,2019,"(https://x.com/QMGrunewald/status/1122441996206059521?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1122441996206059521%7Ctwgr%5E8da16f343d9f2a15bfd5eb3756be7a07a50a015d%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.berliner-kurier.de%2Farchiv%2F1-mai-2019-und-walpurgisnacht-in-berlin-demonstrationen-und-feiern-in-wedding-kreuzberg-und-friedrichshain-li.2122132)
 Attendance: 3000 (Berliner Zeitung, 2.05.2019)
-7500 (organisers via Berliner Zeitung 1.05.2019)",umap_backup_1-mai-berlin_aktualna16.umap
-DE_MyGruni_2,2026 MyGruni Fahrraddemo,DE,,2026,10:30 Brandenburger Tor – 13:30 Bismarckplatz (BM 2026),umap_backup_1-mai-berlin_aktualna16.umap
-DE_MyGruni_3,MyGruni 2026. Autobahnen zu Tennisplätzenoder Radwegen!,DE,,2026,BM 2026,umap_backup_1-mai-berlin_aktualna16.umap
+7500 (organisers via Berliner Zeitung 1.05.2019)",umap_backup_1-mai-berlin_aktualna16.umap,1,umap_backup_1-mai-berlin_aktualna16.umap,MyGruni
+DE_MyGruni_2,2026 MyGruni Fahrraddemo,DE,,2026,10:30 Brandenburger Tor – 13:30 Bismarckplatz (BM 2026),umap_backup_1-mai-berlin_aktualna16.umap,2,umap_backup_1-mai-berlin_aktualna16.umap,MyGruni
+DE_MyGruni_3,MyGruni 2026. Autobahnen zu Tennisplätzenoder Radwegen!,DE,,2026,BM 2026,umap_backup_1-mai-berlin_aktualna16.umap,3,umap_backup_1-mai-berlin_aktualna16.umap,MyGruni

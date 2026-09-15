@@ -123,7 +123,7 @@ WYDARZENIA_COLUMNS = [
 
 MIEJSCA_COLUMNS = [
     "id_miejsca", "nazwa", "miasto", "wspolrzedne", "lata_uzycia", "opis",
-    "zrodlo",
+    "zrodlo", "id_geo", "plik_zrodlowy", "warstwa",
 ]
 
 
@@ -134,7 +134,7 @@ def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters,
     city_code = CITY_CODE[city]
     rows = []
 
-    for id_geo, feat in enumerate(features):
+    for id_geo, feat in features:
         props = feat.get("properties", {})
         geometry = feat.get("geometry", {})
         name = props.get("name", "")
@@ -223,7 +223,7 @@ def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters,
 def build_miejsce_rows(layer_name, features, city, plik_zrodlowy):
     city_code = CITY_CODE[city]
     rows = []
-    for id_geo, feat in enumerate(features):
+    for id_geo, feat in features:
         props = feat.get("properties", {})
         geometry = feat.get("geometry", {})
         name = props.get("name", "")
@@ -236,6 +236,9 @@ def build_miejsce_rows(layer_name, features, city, plik_zrodlowy):
             wsp = ""
         rows.append({
             "id_miejsca": f"{city_code}_{layer_name}_{id_geo}",
+            "id_geo": id_geo,
+            "plik_zrodlowy": plik_zrodlowy,
+            "warstwa": layer_name,
             "nazwa": name,
             "miasto": city_code,
             "wspolrzedne": wsp,
@@ -246,13 +249,23 @@ def build_miejsce_rows(layer_name, features, city, plik_zrodlowy):
     return rows
 
 
+def z_indeksami(features):
+    """Pair each feature with its position in the source file.
+
+    id_geo has to point back into the file for the id write-back to land on
+    the right object, so the index travels with the feature through every
+    filter rather than being recomputed after one.
+    """
+    return list(enumerate(features))
+
+
 def podziel_obiekty(features, city):
-    """-> (wydarzenia, obiekty_stale). Fixed objects are named in config."""
+    """-> (wydarzenia, obiekty_stale), both as (indeks, feature) pairs."""
     stale_nazwy = OBIEKTY_MIEJSCA.get(city, set())
     wydarzenia, stale = [], []
-    for f in features:
+    for indeks, f in z_indeksami(features):
         nazwa = (f.get("properties", {}).get("name") or "").strip()
-        (stale if nazwa in stale_nazwy else wydarzenia).append(f)
+        (stale if nazwa in stale_nazwy else wydarzenia).append((indeks, f))
     return wydarzenia, stale
 
 

@@ -19,8 +19,9 @@ KEY_ALIASES = {
     "Vorabendveranstlatung": "Vorabendveranstaltung",
 }
 
-# Obsidian bookkeeping, not data.
-DROP_KEYS = {"cssclasses", "aliases", "locations"}
+# Obsidian bookkeeping, not data. id_wydarzen is written back by step 7, so
+# it is ours rather than the source's and must not be reported as unknown.
+DROP_KEYS = {"cssclasses", "aliases", "locations", "id_wydarzen"}
 
 KONTEKST = {
     "warszawa": {"Temat", "Związek", "Rok", "Źródła", "Źródło", "Kontekst"},
