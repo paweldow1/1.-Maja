@@ -73,6 +73,44 @@ def hhmm(wartosc):
     return f"{wartosc // 60:02d}:{wartosc % 60:02d}"
 
 
+def wpisy_z_tekstu(tekst):
+    """Yield (od, do, fragment) for every time in the text, not just the first.
+
+    One description can enumerate a whole afternoon of district festivals --
+    "Kreuzberg, 15-21 Uhr, Mariannenplatz, Prenzlauer Berg, 10-18 Uhr,
+    Humannplatz, Treptow, 14-18 Uhr, ..." -- and taking one time per
+    description collapses seven events into one.
+    """
+    znalezione = []
+    zajete = []
+    for m in ZAKRES.finditer(tekst):
+        od, do = minuty(m.group(1), m.group(2)), minuty(m.group(3), m.group(4))
+        if od is not None and do is not None:
+            znalezione.append((m.start(), m.end(), hhmm(od), hhmm(do)))
+            zajete.append((m.start(), m.end()))
+    for m in GODZINA.finditer(tekst):
+        if any(p <= m.start() < k for p, k in zajete):
+            continue
+        godz = m.group(1) or m.group(3) or m.group(5)
+        minut = m.group(2) or m.group(4) or m.group(6)
+        od = minuty(godz, minut)
+        if od is None:
+            continue
+        if m.group(1) is not None and int(godz) < 5:
+            continue
+        znalezione.append((m.start(), m.end(), hhmm(od), ""))
+    znalezione.sort()
+
+    for i, (start, koniec, od, do) in enumerate(znalezione):
+        # The place is usually named just before its hour and the detail just
+        # after, so the window reaches back to the previous entry and forward
+        # to the next.
+        lewo = znalezione[i - 1][1] if i else 0
+        prawo = znalezione[i + 1][0] if i + 1 < len(znalezione) else len(tekst)
+        fragment = tekst[max(lewo, start - 110):min(prawo + 40, koniec + 150)]
+        yield od, do, fragment
+
+
 def czasy(tekst):
     m = ZAKRES.search(tekst)
     if m:
@@ -144,54 +182,89 @@ def z_korpusu(miasto, slownik_dzielnic, slownik_aktorow):
                 continue
             if not linia.strip():
                 continue
-            od, do = czasy(linia)
-            if not od:
-                continue
-            czysty = oczysc(linia)
-            trafione = dopasuj(czysty, slownik_dzielnic)
-            wiersze.append({
-                "rok": rok, "miasto": miasto, "godzina_od": od, "godzina_do": do,
-                "dzielnica": trafione[0] if trafione else "",
-                "dzielnice_wszystkie": ";".join(trafione),
-                "aktor": ";".join(dopasuj(czysty, slownik_aktorow)),
-                "skala": "dzielnicowa" if trafione else "",
-                "zrodlo": "korpus",
-                "sekcja": " / ".join(sciezka_naglowkow),
-                "id_wydarzenia": "",
-                "tekst": czysty[:400],
-                "odniesienie": f"{sciezka.name}:{start + 1 + offset}",
-            })
+            for od, do, fragment in wpisy_z_tekstu(linia):
+                czysty = oczysc(fragment)
+                trafione = dopasuj(czysty, slownik_dzielnic)
+                wiersze.append({
+                    "rok": rok, "miasto": miasto, "godzina_od": od, "godzina_do": do,
+                    "dzielnica": trafione[0] if trafione else "",
+                    "dzielnice_wszystkie": ";".join(trafione),
+                    "aktor": ";".join(dopasuj(czysty, slownik_aktorow)),
+                    "skala": "dzielnicowa" if trafione else "",
+                    "zrodlo": "korpus",
+                    "sekcja": " / ".join(sciezka_naglowkow),
+                    "id_wydarzenia": "",
+                    "tekst": czysty[:400],
+                    "odniesienie": f"{sciezka.name}:{start + 1 + offset}",
+                })
     return wiersze
 
 
+ROK_ZRODLA = re.compile(r"(?:19|20)\d{2}")
+DATA_ZRODLA = re.compile(r"\d{1,2}\.\d{2}\.((?:19|20)\d{2})")
+
+
 def z_mapy(wydarzenia, slowniki_dzielnic, slowniki_aktorow):
-    wiersze = []
+    # Group the year-split rows back into the objects they came from. An
+    # object whose description is not split by year has one text covering all
+    # of them, so its entries are emitted once rather than repeated for every
+    # year -- nine years of one quote would otherwise be nine copies.
+    obiekty = {}
     for w in wydarzenia:
-        opis = w.get("opis") or ""
+        obiekty.setdefault((w.get("plik_zrodlowy"), w.get("id_geo")), []).append(w)
+
+    zadania = []
+    for grupa in obiekty.values():
+        opis = grupa[0].get("opis") or ""
         if not opis:
             continue
-        rok = int(w["rok"])
-        fragment, pinowany = segment_roku(opis, rok)
-        if not fragment.strip():
-            continue
-        od, do = czasy(fragment)
-        if not od:
-            continue
-        czysty = oczysc(fragment)
-        trafione = dopasuj(czysty, slowniki_dzielnic[w["miasto"]])
-        wiersze.append({
-            "rok": rok, "miasto": w["miasto"], "godzina_od": od, "godzina_do": do,
-            "dzielnica": w.get("dzielnica_start") or (trafione[0] if trafione else ""),
-            "dzielnice_wszystkie": ";".join(trafione),
-            "aktor": w.get("aktor") or ";".join(dopasuj(czysty, slowniki_aktorow[w["miasto"]])),
-            "skala": "dzielnicowa" if w.get("dzielnicowe") == "TRUE" else (
-                "centralna" if w.get("centralne") == "TRUE" else ""),
-            "zrodlo": "mapa" if pinowany else "mapa (opis wspolny dla lat)",
-            "sekcja": w.get("warstwa", ""),
-            "id_wydarzenia": w.get("id", ""),
-            "tekst": (w.get("nazwa") or "")[:60] + " | " + czysty[:340],
-            "odniesienie": f"{w.get('plik_zrodlowy', '')}#{w.get('id_geo', '')}",
-        })
+        lata = sorted(int(g["rok"]) for g in grupa)
+        po_latach = len(list(ROK_SEGMENT.finditer(opis))) >= 2
+        if po_latach:
+            for g in grupa:
+                fragment, _ = segment_roku(opis, int(g["rok"]))
+                if fragment.strip():
+                    zadania.append((g, int(g["rok"]), fragment, True, lata))
+        else:
+            zadania.append((grupa[0], None, opis, len(lata) == 1, lata))
+
+    wiersze = []
+    for w, rok_wymuszony, fragment_roku, pinowany, lata in zadania:
+        for od, do, fragment in wpisy_z_tekstu(fragment_roku):
+            # An undated shared description often cites its own source date
+            # ("ND 30.04.1997"); that pins the entry better than the object's
+            # first year does.
+            if rok_wymuszony is not None:
+                rok = rok_wymuszony
+            else:
+                cytowane = [int(r) for r in ROK_ZRODLA.findall(fragment)
+                            if lata[0] <= int(r) <= lata[-1]]
+                if not cytowane:
+                    # The citation often trails the whole quote ("ND
+                    # 30.04.1997"), outside this entry's window. A full date
+                    # is unambiguous enough to attribute the passage.
+                    cytowane = [int(d) for d in DATA_ZRODLA.findall(fragment_roku)
+                                if lata[0] <= int(d) <= lata[-1]]
+                rok = cytowane[0] if cytowane else lata[0]
+            czysty = oczysc(fragment)
+            trafione = dopasuj(czysty, slowniki_dzielnic[w["miasto"]])
+            # A district named inside this fragment beats the object's own
+            # location: the enumeration is about other places than the pin.
+            dzielnica = trafione[0] if trafione else (w.get("dzielnica_start") or "")
+            wiersze.append({
+                "rok": rok, "miasto": w["miasto"], "godzina_od": od, "godzina_do": do,
+                "dzielnica": dzielnica,
+                "dzielnice_wszystkie": ";".join(trafione),
+                "aktor": w.get("aktor") or ";".join(dopasuj(czysty, slowniki_aktorow[w["miasto"]])),
+                "skala": "dzielnicowa" if w.get("dzielnicowe") == "TRUE" else (
+                    "centralna" if w.get("centralne") == "TRUE" else ""),
+                "zrodlo": "mapa" if pinowany else (
+                    f"mapa (opis wspolny {lata[0]}-{lata[-1]})"),
+                "sekcja": w.get("warstwa", ""),
+                "id_wydarzenia": w.get("id", ""),
+                "tekst": (w.get("nazwa") or "")[:50] + " | " + czysty[:340],
+                "odniesienie": f"{w.get('plik_zrodlowy', '')}#{w.get('id_geo', '')}",
+            })
     return wiersze
 
 
