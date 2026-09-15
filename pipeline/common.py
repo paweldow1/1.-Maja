@@ -67,6 +67,25 @@ def typ_z_nazwy(name):
     return ""
 
 
+def frekwencja_dla_roku(surowa, rok):
+    """Headcount for this row's year, as an int, or '' when unusable.
+
+    A multi-year object can carry a figure per year ("2003: 20000\\n2004:
+    30000"), so taking the whole blob would attach the wrong year's number.
+    """
+    if surowa is None:
+        return ""
+    tekst = str(surowa).strip()
+    if not tekst:
+        return ""
+    po_latach = dict(re.findall(r"((?:19|20)\d{2})\s*:\s*(\d[\d\s]*)", tekst))
+    if po_latach:
+        trafienie = po_latach.get(str(rok))
+        return int(re.sub(r"\s+", "", trafienie)) if trafienie else ""
+    czysty = re.sub(r"\s+", "", tekst)
+    return int(czysty) if czysty.isdigit() else ""
+
+
 def typ_z_geometrii(geom_type):
     return "demonstracja" if geom_type in ("LineString", "MultiLineString") else "wiec"
 
@@ -97,7 +116,7 @@ def route_length(geometry):
 WYDARZENIA_COLUMNS = [
     "id", "rok", "rok_zrodlo", "miasto", "warstwa", "typ", "typ_zrodlo", "aktor",
     "aktor_zgadniety", "charakter", "nazwa", "opis", "haslo",
-    "frekwencja_mapa", "geom_typ", "dlugosc_trasy_m", "punkt_start",
+    "frekwencja_mapa", "frekwencja_mapa_num", "geom_typ", "dlugosc_trasy_m", "punkt_start",
     "punkt_koniec", "id_geo", "plik_zrodlowy", "postcovid",
     "wymaga_weryfikacji",
 ]
@@ -186,6 +205,8 @@ def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters,
                 "opis": props.get("description", ""),
                 "haslo": props.get(field_map["haslo"], ""),
                 "frekwencja_mapa": props.get(field_map["frekwencja"], ""),
+                "frekwencja_mapa_num": frekwencja_dla_roku(
+                    props.get(field_map["frekwencja"]), rok),
                 "geom_typ": geometry.get("type", ""),
                 "dlugosc_trasy_m": round(dlugosc, 1) if dlugosc else "",
                 "punkt_start": f"{punkt_start[1]},{punkt_start[0]}" if punkt_start[0] is not None else "",

@@ -19,7 +19,7 @@ MIASTA = ["PL", "DE"]
 # Declared scope per city (instrukcja_v2.md sec. 0). The attendance
 # spreadsheet runs to 2026, well past the maps, so without this the table
 # grows years that have a headcount and no events to attach it to.
-ZAKRES = {"PL": (1989, 2024), "DE": (1987, 2019)}
+ZAKRES = {"PL": (1989, 2019), "DE": (1987, 2019)}
 # Actors whose events count as union events. Taken from the map layers'
 # `charakter`, plus the unions that appear only in the roczniki.
 ZWIAZKI_DODATKOWE = {"DGB", "DGB Berlin-Brandenburg", "OPZZ", "IG Metall",
@@ -56,6 +56,16 @@ def main():
         if w["aktor"]:
             aktorzy.setdefault((int(w["rok"]), w["miasto"]), set()).add(w["aktor"])
 
+    # Event series per year/city, carrying the id of the event that stands for
+    # the series that year. Every id contains its own year, so comparing ids
+    # directly would make every event new every year; the series (type+actor)
+    # is what recurs, and the id is how it is shown.
+    serie = {}
+    for w in wydarzenia:
+        if w["aktor"]:
+            serie.setdefault((int(w["rok"]), w["miasto"]), {}).setdefault(
+                (w["typ"], w["aktor"]), w["id"])
+
     # main route per year/city, from the union's rocznik entry
     trasy = {}
     for r in roczniki:
@@ -73,8 +83,8 @@ def main():
                 # "not covered" rather than as a measured zero.
                 for k in ("liczba_wydarzen", "liczba_zwiazkowych", "frekwencja_suma",
                           "frekwencja_zwiazkowa", "udzial_zwiazkowy", "liczba_aktorow",
-                          "aktorzy_nowi", "aktorzy_znikajacy",
-                          "trasa_glowna_zmieniona", "notatka"):
+                          "aktorzy_nowi", "aktorzy_znikajacy", "wydarzenia_nowe",
+                          "wydarzenia_znikajace", "trasa_glowna_zmieniona", "notatka"):
                     wiersz[f"{p}_{k}"] = ""
                 continue
             zdarzenia = [w for w in wydarzenia
@@ -84,8 +94,25 @@ def main():
             suma = sum(int(f["frekwencja_sr"]) for f in grupy if f["frekwencja_sr"])
             suma_zw = sum(int(f["frekwencja_sr"]) for f in grupy
                           if f["frekwencja_sr"] and f["aktor"] in zwiazkowi)
+
+            # The maps carry headcounts for events the dedicated sheets do not
+            # cover -- in Warsaw that is everything except the unions, without
+            # which the union share is 1.0 by construction. Only actors the
+            # sheets miss are added, and identical readings within one
+            # actor+type are counted once: several map objects can describe
+            # the same event and repeat its figure.
+            pokryci = {f["aktor"] for f in grupy if f["frekwencja_sr"]}
+            z_mapy = set()
+            for e in zdarzenia:
+                if e["aktor"] in pokryci or not e["frekwencja_mapa_num"]:
+                    continue
+                z_mapy.add((e["typ"], e["aktor"], int(e["frekwencja_mapa_num"])))
+            suma += sum(n for _, _, n in z_mapy)
+            suma_zw += sum(n for _, aktor, n in z_mapy if aktor in zwiazkowi)
             teraz = aktorzy.get((rok, miasto), set())
             wczoraj = aktorzy.get((rok - 1, miasto), set())
+            serie_teraz = serie.get((rok, miasto), {})
+            serie_wczoraj = serie.get((rok - 1, miasto), {})
             trasa = normalizuj_trase(trasy.get((rok, miasto), ""))
             trasa_rok_wczesniej = normalizuj_trase(trasy.get((rok - 1, miasto), ""))
             if not trasa or not trasa_rok_wczesniej:
@@ -103,6 +130,10 @@ def main():
                 f"{p}_liczba_aktorow": len(teraz),
                 f"{p}_aktorzy_nowi": ";".join(sorted(teraz - wczoraj)) if wczoraj else "",
                 f"{p}_aktorzy_znikajacy": ";".join(sorted(wczoraj - teraz)) if wczoraj else "",
+                f"{p}_wydarzenia_nowe": ";".join(sorted(
+                    i for s, i in serie_teraz.items() if s not in serie_wczoraj)) if serie_wczoraj else "",
+                f"{p}_wydarzenia_znikajace": ";".join(sorted(
+                    i for s, i in serie_wczoraj.items() if s not in serie_teraz)) if serie_wczoraj else "",
                 f"{p}_trasa_glowna_zmieniona": zmiana,
                 f"{p}_notatka": f"obsidian://open?vault=Wszystko&file={rok}_{miasto}",
             })
@@ -116,6 +147,7 @@ def main():
                     f"{p}_frekwencja_suma", f"{p}_frekwencja_zwiazkowa",
                     f"{p}_udzial_zwiazkowy", f"{p}_liczba_aktorow",
                     f"{p}_aktorzy_nowi", f"{p}_aktorzy_znikajacy",
+                    f"{p}_wydarzenia_nowe", f"{p}_wydarzenia_znikajace",
                     f"{p}_trasa_glowna_zmieniona", f"{p}_notatka"]
     write_csv(OUT_DIR / "pole.csv", wiersze, kolumny)
     zapisz_html(wiersze, OUT_DIR / "pole.html")
@@ -130,10 +162,10 @@ def main():
 
 def zapisz_html(wiersze, sciezka):
     naglowki = ["wydarzenia", "zwiazkowe", "frekwencja", "fr. zwiazkowa",
-                "udzial", "aktorzy", "nowi", "znikajacy", "trasa inna"]
+                "udzial", "aktorzy", "nowe id", "znikajace id", "trasa inna"]
     kol = ["liczba_wydarzen", "liczba_zwiazkowych", "frekwencja_suma",
            "frekwencja_zwiazkowa", "udzial_zwiazkowy", "liczba_aktorow",
-           "aktorzy_nowi", "aktorzy_znikajacy", "trasa_glowna_zmieniona"]
+           "wydarzenia_nowe", "wydarzenia_znikajace", "trasa_glowna_zmieniona"]
     czesci = ["""<!DOCTYPE html><html lang="pl"><head><meta charset="utf-8">
 <title>POLE</title><style>
 body{font:13px/1.4 -apple-system,Segoe UI,Roboto,sans-serif;margin:24px;color:#1a1714;background:#faf8f5}
@@ -141,13 +173,14 @@ h1{font-size:18px;margin:0 0 4px}p.sub{color:#6b6459;margin:0 0 18px;font-size:1
 table{border-collapse:collapse;font-size:12px}
 th,td{border:1px solid #d8d2c8;padding:3px 7px;text-align:right;white-space:nowrap}
 th{background:#ede9e2;font-weight:600}
-td.akt{text-align:left;max-width:190px;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:#5a534a}
+td.akt{text-align:left;max-width:280px;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:#5a534a}
 td.rok{text-align:left;font-weight:600;background:#f3f0eb}
 .pl{background:#eef4f9}.de{background:#fceeec}
 tr:hover td{background:#fff8e6}
 </style></head><body><h1>POLE &mdash; przekr&oacute;j rok &times; miasto</h1>
-<p class="sub">Frekwencja sumowana po odczytach aktor/wydarzenie, nie po wierszach wydarze&#324;.
-Puste kom&oacute;rki = rok poza zakresem danych dla tego miasta.</p>
+<p class="sub">Frekwencja sumowana po odczytach aktor/wydarzenie, nie po wierszach wydarze&#324;;
+gdzie arkusze nie si&#281;gaj&#261;, uzupe&#322;niona z pola Frekwencja na mapie.
+Kolumny <i>nowe id</i> i <i>znikaj&#261;ce id</i> &mdash; naje&#380;d&#378; kursorem, by zobaczy&#263; pe&#322;n&#261; list&#281;.</p>
 <table><thead><tr><th rowspan="2">rok</th>"""]
     czesci.append(f'<th class="pl" colspan="{len(kol)}">Warszawa</th>')
     czesci.append(f'<th class="de" colspan="{len(kol)}">Berlin</th></tr><tr>')
@@ -162,9 +195,14 @@ Puste kom&oacute;rki = rok poza zakresem danych dla tego miasta.</p>
         for miasto in MIASTA:
             p = miasto.lower()
             for k in kol:
-                v = w[f"{p}_{k}"]
-                klasa = "akt" if "aktorzy" in k else ""
-                czesci.append(f'<td class="{klasa}">{html.escape(str(v))}</td>')
+                v = str(w[f"{p}_{k}"])
+                if "aktorzy" in k or "wydarzenia_" in k:
+                    # Ids are long and there can be several; the cell is
+                    # clipped, so carry the full list in the tooltip.
+                    tytul = f' title="{html.escape(v.replace(";", chr(10)))}"' if v else ""
+                    czesci.append(f'<td class="akt"{tytul}>{html.escape(v)}</td>')
+                else:
+                    czesci.append(f"<td>{html.escape(v)}</td>")
         czesci.append("</tr>")
     czesci.append("</tbody></table></body></html>")
     sciezka.write_text("".join(czesci), encoding="utf-8")
