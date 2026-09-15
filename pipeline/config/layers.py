@@ -36,7 +36,7 @@ LAYER_META = {
     "berlin": {
         "DGB": (FROM_NAME, "DGB", "zwiazkowe"),
         "Revolutionäre 1. Mai": ("demonstracja", "R1M", "niezwiazkowe"),
-        "Walpurgisnacht": (FROM_NAME, FROM_NAME, "niezwiazkowe"),
+        "Walpurgisnacht": (FROM_NAME, "Walpurgisnacht", "niezwiazkowe"),
         "Neo-Nazi May Day": ("demonstracja", FROM_NAME, "kontra"),
         "East German Left": (FROM_NAME, "PDS", "niezwiazkowe"),
         "Euro May Day": ("demonstracja", "EuroMayDay", "niezwiazkowe"),
