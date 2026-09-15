@@ -51,13 +51,15 @@ def raport(rok, miasto):
             if r["frekwencja_lista"]:
                 print(f"      frekwencja: {r['frekwencja_lista']}  (sr {r['frekwencja_sr']})")
 
-    scen = [s for s in wczytaj("scenariusz_berlin.csv") if s["rok"] == rok_s]
-    if scen and miasto == "DE":
+    scen = [s for s in wczytaj("scenariusz.csv")
+            if s["rok"] == rok_s and s["miasto"] == miasto]
+    if scen:
         naglowek(f"scenariusz godzinowy ({len(scen)} wpisow)")
         for s in scen:
             czas = s["godzina_od"] + (f"-{s['godzina_do']}" if s["godzina_do"] else "")
             dz = f"[{s['dzielnica']}]" if s["dzielnica"] else ""
-            print(f"  {czas:12s} {dz:20s} {s['tekst'][:92]}")
+            skala = s.get("skala") or ""
+            print(f"  {czas:12s} {dz:20s} {skala:12s} {s['tekst'][:78]}")
 
     wyd = [w for w in wczytaj("wydarzenia.csv")
            if w["rok"] == rok_s and w["miasto"] == miasto]
