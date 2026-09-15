@@ -1,0 +1,91 @@
+"""Layer classification config for the wydarzenia/miejsca pipeline.
+
+Nothing here is hardcoded into the parser scripts themselves — the parsers
+read these tables. Keep this file as the single place to adjust mappings.
+"""
+
+FROM_NAME = "__FROM_NAME__"
+
+LAYERS_IGNORE = {
+    "warszawa": {"Obszary MSI", "Pomniki i tablice upamiętniające"},
+    "berlin": {"Stadteile", "Berlin Wall"},
+}
+
+LAYERS_MIEJSCA = {
+    "warszawa": {"Punkty na trasie", "Upamiętnienia"},
+    "berlin": {"Points of Interest", "MyGruni"},
+}
+
+# warstwa -> (typ domyślny, aktor, charakter)
+# aktor / typ == FROM_NAME means: derive from `name` via regex, flag
+# aktor_zgadniety=True, wymaga_weryfikacji=True.
+LAYER_META = {
+    "warszawa": {
+        "OPZZ": ("demonstracja", "OPZZ", "zwiazkowe"),
+        "PPS": ("demonstracja", "PPS", "niezwiazkowe"),
+        "Solidarność": ("demonstracja", "Solidarność", "zwiazkowe"),
+        "Anarchistyczny 1. Maja": ("demonstracja", "Anarchiści", "niezwiazkowe"),
+        "Lewica radykalna": ("demonstracja", FROM_NAME, "niezwiazkowe"),
+        "Prawicowe kontry i blokady": ("kontra", FROM_NAME, "kontra"),
+        "Right-wing May Day": ("demonstracja", FROM_NAME, "niezwiazkowe"),
+        "Festyny": ("festyn", FROM_NAME, "niezwiazkowe"),
+        "Parada Równości": ("demonstracja", "Parada Równości", "niezwiazkowe"),
+        "European Union accession anniversary": ("festyn", "", "niezwiazkowe"),
+        "Inne wydarzenia": (FROM_NAME, FROM_NAME, "niezwiazkowe"),
+    },
+    "berlin": {
+        "DGB": (FROM_NAME, "DGB", "zwiazkowe"),
+        "Revolutionäre 1. Mai": ("demonstracja", "R1M", "niezwiazkowe"),
+        "Walpurgisnacht": (FROM_NAME, FROM_NAME, "niezwiazkowe"),
+        "Neo-Nazi May Day": ("demonstracja", FROM_NAME, "kontra"),
+        "East German Left": (FROM_NAME, "PDS", "niezwiazkowe"),
+        "Euro May Day": ("demonstracja", "EuroMayDay", "niezwiazkowe"),
+        "DAG (1990-1997)": ("demonstracja", "DAG", "zwiazkowe"),
+        "Other events": (FROM_NAME, FROM_NAME, "niezwiazkowe"),
+    },
+}
+
+# Berlin backup contains group:true layer headers with no data; the real
+# features live in per-layer geojson exports, matched by filename.
+BERLIN_LAYER_FILES = {
+    "1__mai_berlin_aktualna_11_.geojson": "Walpurgisnacht",
+    "1__mai_berlin_aktualna_12_.geojson": "East German Left",
+    "1__mai_berlin_aktualna_13_.geojson": "Neo-Nazi May Day",
+    "1__mai_berlin_aktualna_14_.geojson": "DGB",
+    "1__mai_berlin_aktualna_15_.geojson": "Revolutionäre 1. Mai",
+}
+# Never parse this one -- it's a concatenation duplicating the five above.
+BERLIN_LAYER_FILES_IGNORE = {"1__mai_berlin_aktualna_10_.geojson"}
+
+FIELD_MAP = {
+    "warszawa": {"frekwencja": "Frekwencja", "haslo": "Hasło"},
+    "berlin": {"frekwencja": "Attendance", "haslo": "Slogan"},
+}
+
+CITY_CODE = {"warszawa": "PL", "berlin": "DE"}
+
+DROP_FIELDS = {
+    "osm_type", "osm_id", "osm_key", "osm_value", "type", "countrycode",
+    "country", "city", "district", "postcode", "locality", "street",
+    "housenumber", "state", "extent", "_umap_options", "styleUrl",
+    "label-scale", "markerColor", "tooltip", "imgurl",
+}
+DROP_FIELD_PREFIXES = ("stroke", "icon", "fill")
+
+# Known actor keywords for best-effort FROM_NAME guessing (section 9).
+ACTOR_KEYWORDS_PL = [
+    "OPZZ", "Solidarność", "Sierpień 80", "ZZ Kontra", "ZNP", "Budowlani",
+    "WZZ", "SLD", "PPS", "SdRP", "UP", "Razem", "ZSMP", "PSL", "Zieloni",
+    "PLD", "KRPEiR", "ZKP Proletariat", "Stronnictwo Demokratyczne",
+    "Liga Republikańska", "NZS", "KPN", "UPR", "Samoobrona",
+    "Młodzież Wszechpolska", "Federacja Anarchistyczna", "Komitet M1",
+    "Nurt Lewicy Rewolucyjnej", "Krytyka Polityczna",
+]
+ACTOR_KEYWORDS_DE = [
+    "DGB", "IG Metall", "IGM", "ÖTV", "OTV", "HBV", "ver.di", "GEW", "NGG",
+    "IG BAU", "IG BCE", "TRANSNET", "FDGB", "DAG", "PDS", "SPD", "Grüne",
+    "Die Linke", "Linkspartei", "DKP", "MLPD", "Jusos", "Falken", "FDJ",
+    "Naturfreunde", "BKG", "Revolutionäre 1. Mai", "Antifa", "EuroMayDay",
+    "NPD", "FAP", "Junge Nationaldemokraten", "AfD", "Bärgida", "MyFest",
+    "MyGruni", "GBBO",
+]
