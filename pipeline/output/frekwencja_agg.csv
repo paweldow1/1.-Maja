@@ -1,0 +1,194 @@
+rok,miasto,aktor,wydarzenie,n_odczytow,frekwencja_min,frekwencja_max,frekwencja_sr,frekwencja_mediana,fr_organizatorzy,fr_policja,fr_prasa,zrodla
+1988,DE,R1M,demonstracja wspolna,1,7000,7000,7000,7000,,,7000,Gluckspilz
+1989,DE,R1M,demonstracja wspolna,1,10000,10000,10000,10000,,,10000,Gluckspilz
+1990,DE,DGB,demonstracja,3,50000,60000,56667,60000,,,56667,Junge Welt;Neues Deutschland;TAZ
+1990,DE,PDS,demonstracja,2,15000,16000,15500,15500,,,15500,ND (demo Ost);taz (demo Ost)
+1990,DE,R1M,demonstracja wspolna,2,10000,15000,12500,12500,15000,10000,,"(organisers, Gluckspilz);(police, Gluckspilz)"
+1990,PL,OPZZ,demonstracja,4,5000,30000,14250,11000,,,,Gazeta Wyborcza;Rzeczpospolita;TPZ;Życie Warszawy
+1991,DE,DGB,demonstracja,3,5000,15000,10000,10000,15000,,7500,"""mehrere Tausend"" (taz);Christine Bretz, DGB Berlin (taz);rbb"
+1991,DE,R1M,demonstracja wspolna,3,8000,20000,12667,10000,20000,8000,,Gluckspilz
+1991,PL,OPZZ,demonstracja,2,10000,15000,12500,12500,,,,Gazeta Wyborcza;Życie Warszawy
+1992,DE,Antifa,kontrdemonstracja,1,200,200,200,200,,,200,Gluckspilz
+1992,DE,DGB,demonstracja,6,8000,40000,23000,20000,25000,8000,26250,Berliner Morgenpost DGBG657;Berliner Zeitung 2.05.1992;DGBG000656;Kronika Berlina;Neues Deutschland (Kritische Gewerkschaften s.71);rbb
+1992,DE,NPD,demonstracja,1,50,50,50,50,,,50,taz
+1992,DE,PDS,demonstracja,1,6000,6000,6000,6000,,,6000,Zug der Widerspensigsten (JW)
+1992,DE,R1M,demonstracja wspolna,3,9000,15000,12000,12000,,9000,13500,"Gluckspilz;policja, za rbb"
+1992,PL,OPZZ,demonstracja,4,4000,47000,24000,22500,,,,Dziennik Trybuna;Gazeta Wyborcza;TPZ;Życie Warszawy
+1993,DE,DGB,demonstracja,3,5000,30000,16667,15000,30000,,10000,Neues Deutschland 3.05; Berliner Zeitung 3.05 za DGB;Taz 3.05;rbb
+1993,DE,NPD,demonstracja,1,100,100,100,100,,,100,Gluckspilz
+1993,DE,PDS,demonstracja,1,6000,6000,6000,6000,,,6000,ZdW (JW)
+1993,DE,R1M,demonstracja wspolna,2,5500,10000,7750,7750,,5500,10000,Gluckspilz
+1993,PL,OPZZ,demonstracja,2,3000,13000,8000,8000,,,,Dziennik Trybuna;Gazeta Wyborcza
+1994,DE,Antifa,kontrdemonstracja,2,400,500,450,450,,,450,Gluckspilz;taz
+1994,DE,DGB,demonstracja,3,5000,8000,6000,5000,8000,,5000,DGBG664;TAZ;rbb
+1994,DE,NPD,demonstracja,1,5,5,5,5,,,5,Berliner Zeitung
+1994,DE,PDS,demonstracja,1,1000,1000,1000,1000,,,1000,(Zug PDS) BZ
+1994,DE,R1M,demonstracja wspolna,2,800,1000,900,900,,,900,Berliner Zeitung;Gluckspilz
+1994,PL,OPZZ,demonstracja,2,2000,4000,3000,3000,,,,Dziennik Trybuna;Życie Warszawy
+1995,DE,DGB,demonstracja,5,5000,10000,7400,6000,10000,,6750,Berliner Morgenpost (DGBB664);Berliner Zeitung (DGBB664);DGBG664;Kronika Berlina;TAZ 2.05
+1995,DE,R1M,demonstracja wspolna,2,2000,2500,2250,2250,,,2250,Berliner Zeitung;Gluckspilz
+1995,PL,OPZZ,demonstracja,4,2000,10000,4500,3000,,,,Gazeta Wyborcza;Rzeczpospolita;TPZ;Życie Warszawy
+1996,DE,Antifa,kontrdemonstracja,1,40,40,40,40,40,,,Breitenbach (JW 3.05)
+1996,DE,DGB,demonstracja,3,10000,20000,16667,20000,,,16667,DPA;Junge Welt;TAZ 2.05
+1996,DE,NPD,demonstracja,2,300,400,350,350,,,350,Gluckspilz;jw
+1996,DE,PDS,demonstracja,2,400,4000,2200,2200,,,2200,"""mehrere Tausend"" PDS Kundgebung ~4000, ND;mehrere hundert, rbb"
+1996,DE,R1M,demonstracja 13:00,1,3000,3000,3000,3000,,,3000,Gluckspilz
+1996,DE,R1M,demonstracja wieczorna,1,10000,10000,10000,10000,,,10000,Gluckspilz
+1996,PL,OPZZ,demonstracja,4,2000,10000,4500,3000,,,,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;TPZ
+1997,DE,DGB,demonstracja,5,5000,25000,9500,5000,25000,5000,5833,DGBG1329;Kronika Berlina;TAZ;rbb;rbb B1 1. Mai Spezial
+1997,DE,PDS,demonstracja,3,2000,15000,7333,5000,15000,2000,5000,"PDS Kundgebung (organizatorzy, za ND);Polizei, za ND PDS Kundgebung;rbb B1 1. Mai Spezial"
+1997,DE,R1M,demonstracja 13:00,1,2000,2000,2000,2000,,,2000,Gluckspilz
+1997,DE,R1M,demonstracja wieczorna,1,9000,9000,9000,9000,,,9000,Glückspilz
+1997,PL,OPZZ,demonstracja,4,2000,4000,2500,2000,,,,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;Życie Warszawy
+1998,DE,DGB,demonstracja,4,8000,20000,13875,13750,17500,,12667,"DGBG1327 (15000–20000, środek przedziału);Kronika Berlina;TAZ 2.05;dpa"
+1998,DE,Mariannenplatz,festyn,1,1500,1500,1500,1500,,,1500,taz
+1998,DE,PDS,demonstracja,2,1000,12000,6500,6500,,,6500,"PDS Fest, BZ;PDS Veranstaltung ND"
+1998,DE,R1M,demonstracja 13:00,1,1750,1750,1750,1750,,,1750,Gluckspilz
+1998,DE,R1M,demonstracja wieczorna,3,3000,11000,6667,6000,11000,6000,3000,Gluckspilz;ND
+1998,PL,OPZZ,demonstracja,3,3000,6000,4000,3000,,,,Rzeczpospolita;TPZ;Życie Warszawy
+1999,DE,DGB,demonstracja,5,7000,15000,10400,10000,15000,7000,10000,DGB (za Berliner Zeitung 3.05);Kronika Berlina;TAZ 3.05;Tagesspiegel;policja za taz
+1999,DE,PDS,demonstracja,1,10000,10000,10000,10000,,,10000,"PDS Kundgebung, ND"
+1999,DE,R1M,demonstracja 13:00,1,1500,1500,1500,1500,,,1500,Gluckspilz
+1999,DE,R1M,demonstracja wieczorna,3,12000,15000,14000,15000,,,14000,Beliner Zeitung;Gluckspilz;Tagesspiegel
+1999,PL,OPZZ,demonstracja,5,5000,20000,9200,6000,,,,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;TPZ;Życie Warszawy
+2000,DE,Antifa,kontrdemonstracja,1,10000,10000,10000,10000,,,10000,ND
+2000,DE,DGB,demonstracja,6,7000,18000,11167,10000,15000,7000,10000,Berliner Kurier;DGBAI3702;Kronika Berlina;Organizatorzy (za Tagesspiegel);Poicja (za Tagsspl);taz
+2000,DE,Mariannenplatz,festyn,1,5000,5000,5000,5000,,,5000,taz
+2000,DE,NPD,demonstracja,1,1000,1000,1000,1000,,,1000,Gluckspilz
+2000,DE,PDS,demonstracja,3,1000,7000,3667,3000,,,3667,"PDS Kundgebung, BZ;PDS Kundgebung, ND;PDS Kundgebung, die Welt"
+2000,DE,R1M,demonstracja 13:00,3,800,2000,1267,1000,,,1267,Berliner Morgenpost;Gluckspilz;taz
+2000,DE,R1M,demonstracja wieczorna,3,5000,20000,13333,15000,20000,5000,15000,Gluckspilz
+2000,PL,OPZZ,demonstracja,4,1500,3500,2250,2000,,,,Gazeta Wyborcza;Rzeczpospolita;TPZ;Życie Warszawy
+2001,DE,Antifa,kontrdemonstracja,2,350,600,475,475,,,475,"Tsg, s. 11;taz"
+2001,DE,DGB,demonstracja,6,10000,25000,16833,18000,,,16833,Berliner Zeitung;Kronika Berlina;Neues Deutschland;TAZ 2.05;Tagesspiegel;rbb
+2001,DE,Mariannenplatz,festyn,1,5000,5000,5000,5000,,,5000,taz
+2001,DE,NPD,demonstracja,1,100,100,100,100,,,100,"TsG, s. 11"
+2001,DE,PDS,demonstracja,2,7000,7500,7250,7250,,,7250,"PDS Kundgebung, Berliner Kurier;PDs Kundgebung, ND"
+2001,DE,R1M,demonstracja 13:00,2,2000,2500,2250,2250,,,2250,stressfaktor;taz
+2001,DE,R1M,demonstracja wieczorna,2,5000,6000,5500,5500,,,5500,stressfaktor;taz
+2001,PL,OPZZ,demonstracja,4,6000,10000,7500,7000,,,,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;TPZ
+2002,DE,Antifa,kontrdemonstracja,1,1000,1000,1000,1000,,,1000,taz
+2002,DE,DGB,demonstracja,4,7000,25000,13500,11000,25000,7000,11000,Helbrecht (za policją);Tagesspiegel (za organizatorami);Taz 2.05;rbb
+2002,DE,NPD,demonstracja,1,700,700,700,700,,,700,Gluckspilz
+2002,DE,PDS,demonstracja,2,1000,3500,2250,2250,,,2250,PDS Kundgebung Rucht;PDS Kundgebung rbb
+2002,DE,R1M,demonstracja 13:00,1,4000,4000,4000,4000,,,4000,Gluckspilz
+2002,DE,R1M,demonstracja wieczorna,2,8000,11000,9500,9500,,,9500,"10-12k (Gluckspilz, stressfaktor);LÖPA"
+2002,PL,OPZZ,demonstracja,5,1000,4000,2100,2000,,,,Dziennik Trybuna;Gazeta Wyborcza;Lewica.pl;Rzeczpospolita;TPZ
+2003,DE,Antifa,kontrdemonstracja,2,200,300,250,250,,,250,LÖPA;taz
+2003,DE,DGB,demonstracja,2,7000,20000,13500,13500,20000,7000,,Helbrecht (za policją);TAZ 2.05 s.21 za organizatorami
+2003,DE,Mariannenplatz,festyn,1,20000,20000,20000,20000,,,20000,"taz; ta sama liczba, co MyFest"
+2003,DE,MyFest,festyn,1,20000,20000,20000,20000,,,20000,taz 16.01
+2003,DE,NPD,demonstracja,2,1350,2000,1675,1675,,1350,2000,"TsG;taz, za policją"
+2003,DE,R1M,demonstracja 13:00,2,3500,10000,6750,6750,,3500,10000,"Gluckspilz;Tsg, police"
+2003,DE,R1M,demonstracja wieczorna,1,3500,3500,3500,3500,,,3500,Gluckspilz
+2003,PL,OPZZ,demonstracja,3,2000,5000,3333,3000,,,,RMF.FM;Rzeczpospolita;Wprost
+2004,DE,Antifa,kontrdemonstracja,2,2300,4500,3400,3400,,,3400,LÖPA;Umbruch
+2004,DE,DGB,demonstracja,2,12000,25000,18500,18500,25000,12000,,Die Welt 3.05 / Hamburger Abendblatt 3.05 (organizatorzy);Tagesspiegel (za policją)
+2004,DE,MyFest,festyn,1,30000,30000,30000,30000,,,30000,BZ 17.01
+2004,DE,NPD,demonstracja,1,2300,2300,2300,2300,,,2300,LÖPA
+2004,DE,R1M,demonstracja 13:00,1,5000,5000,5000,5000,,,5000,Gluckspilz
+2004,DE,R1M,demonstracja wieczorna,1,3500,3500,3500,3500,,,3500,Umbruch
+2004,PL,OPZZ,demonstracja,3,500,1000,667,500,,,,Gazeta Wyborcza;TPZ;Wprost
+2005,DE,DGB,demonstracja,4,8000,12000,10500,11000,12000,,10000,Berliner Zeitung;Strona arch. DGB;Tagesspiegel;taz
+2005,DE,MyFest,festyn,1,15000,15000,15000,15000,,15000,,Helbrecht
+2005,DE,R1M,demonstracja 13:00,1,500,500,500,500,,,500,Berliner Zeitung
+2005,DE,R1M,demonstracja wieczorna,1,0,0,0,0,,,,
+2005,PL,OPZZ,demonstracja,6,400,1000,633,500,,,,Dziennik Trybuna;Gazeta Wyborcza;PAP;TPZ;Wprost;wp.pl
+2006,DE,DGB,demonstracja,5,7500,25000,13500,10000,21000,7500,9000,Geschäftsbericht;ND;Petra Pau i Berliner Zeitung (za DGB);policja;taz
+2006,DE,EuroMayDay,demonstracja,1,4000,4000,4000,4000,,,4000,taz liveticker
+2006,DE,MyFest,festyn,1,11000,11000,11000,11000,,11000,,Helbrecht
+2006,DE,R1M,demonstracja 13:00,1,50,50,50,50,,,50,"mehr Menschen mit Kamera und Fotoapparat unterwegs als Demonstranten"" (taz)"
+2006,DE,R1M,demonstracja wieczorna,1,0,0,0,0,,,,
+2006,PL,OPZZ,demonstracja,4,1000,2000,1750,2000,,,,Dziennik Trybuna;Gazeta Wyborcza;NTP;Rzeczpospolita
+2007,DE,DGB,demonstracja,3,7500,12000,10500,12000,12000,7500,12000,BK 2.05;Geschäftsbericht;Helbrecht (za policją)
+2007,DE,EuroMayDay,demonstracja,2,6000,8000,7000,7000,,,7000,Berliner Kurier;Berliner Morgenpost
+2007,DE,MyFest,festyn,3,16000,60000,42000,50000,60000,16000,50000,Berliner Kurier;Helbrecht;organizatorzy via taz
+2007,DE,R1M,demonstracja 13:00,2,800,1000,900,900,,,900,Berliner Kurier;Berliner Zeitung
+2007,DE,R1M,demonstracja wieczorna,3,3000,15000,7667,5000,15000,3000,5000,Berliner Kurier;organisers via BZ;police
+2007,PL,OPZZ,demonstracja,4,800,2000,1400,1400,,,,Dziennik Trybuna;Gazeta Wyborcza;Lewica.pl;TPZ
+2008,DE,DGB,demonstracja,4,5000,20000,9125,5750,20000,5000,5750,Geschäftsbericht;Helbrecht (weit weniger als 6000 → ~5000);TAZ / BK 2.05 (mehrere Tausend → ~3000);weit mehr als 6000 (BZ 2.05.2008)
+2008,DE,EuroMayDay,demonstracja,1,6500,6500,6500,6500,6500,,,Umbruch
+2008,DE,MyFest,festyn,1,20000,20000,20000,20000,,20000,,Helbrecht
+2008,DE,R1M,demonstracja 13:00,1,300,300,300,300,,,300,"""einige Hundert"" ~300 (taz)"
+2008,DE,R1M,demonstracja wieczorna,2,10000,12000,11000,11000,12000,10000,,"""mehr als 10.000"" ~ 12000 (Umbruch);police via taz"
+2008,PL,OPZZ,demonstracja,6,2000,3000,2167,2000,,,,Dziennik Trybuna;Gazeta Wyborcza;Lewica.pl;Rzeczpospolita;TPZ;Wprost
+2009,DE,Antifa,kontrdemonstracja,1,3500,3500,3500,3500,,3500,,Polizeiliche darstellung
+2009,DE,DGB,demonstracja,3,2500,20000,13500,18000,19000,2500,,Geschäftsbericht;Helbrecht (za policją 2500; mało wiarygodne);TAZ liveticker (za organizatorami)
+2009,DE,EuroMayDay,demonstracja,1,3500,3500,3500,3500,3500,,,Umbruch
+2009,DE,MyFest,festyn,1,35000,35000,35000,35000,,35000,,Helbrecht
+2009,DE,NPD,demonstracja,1,200,200,200,200,,,200,taz liveticker
+2009,DE,R1M,demonstracja 13:00,1,300,300,300,300,,,300,taz
+2009,DE,R1M,demonstracja wieczorna,2,5000,12000,8500,8500,12000,5000,,"""über 10.000 TeilnehmerInnen"" ~ 12000 (Umbruch archiv);police, via Tagesspiegel ticker 2010"
+2009,PL,OPZZ,demonstracja,7,500,2500,1357,1000,,,,Dziennik Trybuna;Gazeta Wyborcza;Lewica.pl;PAP;Rzeczpospolita;TPZ;Wprost
+2010,DE,Antifa,kontrdemonstracja,1,10000,10000,10000,10000,,,10000,taz
+2010,DE,DGB,demonstracja,2,7500,12000,9750,9750,12000,7500,,Helbrecht (za policją);Tagesspiegel (za organizatorami)
+2010,DE,MyFest,festyn,1,29000,29000,29000,29000,,29000,,Helbrecht
+2010,DE,NPD,demonstracja,1,700,700,700,700,,,700,(TsG) – Prenzlauer Berg + Ku'Damm
+2010,DE,R1M,demonstracja 13:00,1,50,50,50,50,,,50,taz
+2010,DE,R1M,demonstracja wieczorna,2,10000,15000,12500,12500,15000,10000,,"Umbruch Archiv;police, via Tagesspiegel ticker"
+2010,PL,OPZZ,demonstracja,5,200,1000,440,300,,,,Gazeta Wyborcza;RMF.FM;Rzeczpospolita;TPZ;Wprost
+2011,DE,DGB,demonstracja,4,6000,15000,11500,12500,12500,6000,15000,Berliner Morgenpost (za organizatorami);Berliner Morgenpost (za policją);Neues Deutschland;rbb za organizatorami
+2011,DE,MyFest,festyn,2,24000,30000,27000,27000,,27000,,"""mehrere zeintausend"" Franz Schulz (Grüne), za BZ 3.05;policja via MAZ"
+2011,DE,R1M,demonstracja wieczorna,3,9000,15000,11333,10000,15000,9000,10000,Umbruch;polica via BZ;taz
+2011,PL,OPZZ,demonstracja,3,100,200,133,100,,,,Gazeta Wyborcza;Rzeczpospolita;Wprost
+2012,DE,DGB,demonstracja,4,10000,15000,12625,12750,15000,,11833,"DGB BB;ND;Tagesspiegel 2.05 (12000–15000, środek);taz 2.05"
+2012,DE,MyFest,festyn,3,29000,35000,31333,30000,,29000,32500,BZ;knapp 30 000 police via Stuttgarter Nachrichten;taz 1.05.2013
+2012,DE,R1M,demonstracja wieczorna,2,12000,25000,18500,18500,25000,,12000,"organisers, via tagesspiegel;taz"
+2012,PL,OPZZ,demonstracja,4,5000,15000,11750,13500,,,,FZZHiM;Gazeta Wyborcza;Lewica.pl;TPZ
+2013,DE,Antifa,kontrdemonstracja,1,2000,2000,2000,2000,,,2000,ND
+2013,DE,DGB,demonstracja,2,9500,10000,9750,9750,,,9750,"TAZ 2.05;Welt 2.05 (7000–12000, środek)"
+2013,DE,MyFest,festyn,1,40000,40000,40000,40000,,,40000,BM
+2013,DE,NPD,demonstracja,1,300,300,300,300,,,300,taz
+2013,DE,R1M,demonstracja wieczorna,3,8000,17000,11667,10000,17000,8000,10000,BZ;Police (za BM);Umbruch (mehr als 15.000)
+2013,PL,OPZZ,demonstracja,3,20000,20000,20000,20000,,,,FZZHiM;Lewica.pl;TPZ
+2014,DE,DGB,demonstracja,2,10000,10000,10000,10000,,,10000,BZ;Neues Deutschland
+2014,DE,MyFest,festyn,1,40000,40000,40000,40000,,,40000,organizatorzy via taz
+2014,DE,R1M,demonstracja wieczorna,2,19000,25000,22000,22000,25000,19000,,organisers;police
+2014,PL,OPZZ,demonstracja,3,6000,10000,7333,6000,,,,Lewica.pl;Przegląd Socjalistyczny;TPZ
+2015,DE,Antifa,kontrdemonstracja,1,500,500,500,500,,,500,BM
+2015,DE,DGB,demonstracja,1,15000,15000,15000,15000,15000,,,rbb za DGB
+2015,DE,MyFest,festyn,1,45000,45000,45000,45000,45000,,,organisers via Tsg
+2015,DE,NPD,demonstracja,1,50,50,50,50,,,50,apabiz.de
+2015,DE,R1M,demonstracja wieczorna,2,18000,33000,25500,25500,33000,18000,,"organisers, via taz;police via Tsg"
+2016,DE,Antifa,kontrdemonstracja,1,900,900,900,900,,900,,police via taz
+2016,DE,DGB,demonstracja,1,14000,14000,14000,14000,14000,,,TAZ liveticker 1.05 za organizatorami
+2016,DE,MyFest,festyn,1,30000,30000,30000,30000,,,30000,Berliner Morgenpost
+2016,DE,NPD,demonstracja,1,50,50,50,50,,,50,"Störungsmelder, blog.zeit.de"
+2016,DE,R1M,demonstracja 13:00,1,250,250,250,250,,,250,taz
+2016,DE,R1M,demonstracja wieczorna,2,13000,20000,16500,16500,20000,13000,,"organisers, taz liveticker;police, taz liveticker"
+2016,PL,OPZZ,demonstracja,3,1000,5000,3667,5000,,,,FZZHiM;Gazeta Wyborcza;TPZ
+2017,DE,Antifa,kontrdemonstracja,1,600,600,600,600,600,,,Berliner Bundnis gegen Rechts
+2017,DE,DGB,demonstracja,1,14000,14000,14000,14000,14000,,,BZ / DGB BB internet (za organizatorami)
+2017,DE,MyFest,festyn,1,45000,45000,45000,45000,,,45000,BZ
+2017,DE,NPD,demonstracja,1,50,50,50,50,,,50,rbb (AfD Fest)
+2017,DE,R1M,demonstracja 13:00,1,250,250,250,250,250,,,JugendWiderstand
+2017,DE,R1M,demonstracja wieczorna,2,10000,20000,15000,15000,20000,10000,,"organizers, umbruch archiv;police, Berliner Morgenpost ticker 2018"
+2017,PL,OPZZ,demonstracja,2,300,1000,650,650,,,,Gazeta Wyborcza;Polskie Radio
+2018,DE,DGB,demonstracja,2,5000,14000,9500,9500,14000,5000,,Neues Deutschland (za organizatorami);Policja
+2018,DE,MyFest,festyn,1,52000,52000,52000,52000,,,52000,szacunki (MyFest + MaiGörli)
+2018,DE,MyGruni,festyn,2,1500,5000,3250,3250,5000,,1500,PM MyGruni;taz ticker
+2018,DE,NPD,demonstracja,1,30,30,30,30,,,30,taz (AfD Fest)
+2018,DE,R1M,demonstracja 13:00,1,200,200,200,200,200,,,JugendWiderstand
+2018,DE,R1M,demonstracja wieczorna,2,7000,18000,12500,12500,18000,7000,,"organisers, Umbruch Archiv;police, Berliner Morgenpost ticker 2018"
+2018,PL,OPZZ,demonstracja,4,500,1000,775,800,,,,FZZHiM;Strajk.eu;TPZ;Wprost
+2019,DE,Antifa,kontrdemonstracja,1,500,500,500,500,,,500,nd
+2019,DE,DGB,demonstracja,1,13000,13000,13000,13000,13000,,,DGB online
+2019,DE,MyFest,festyn,1,45000,45000,45000,45000,,,45000,szacunki
+2019,DE,MyGruni,festyn,4,2500,7500,4375,3750,7500,,3333,"(organisers via Berliner Zeitung 1.05.2019);3000 (Berliner Zeitung, 2.05.2019);Weit mehr als 2000 Menschen, BK 2.05.2019;taz(4.05.2019)"
+2019,DE,NPD,demonstracja,1,100,100,100,100,100,,,AfD
+2019,DE,R1M,demonstracja 13:00,1,200,200,200,200,200,,,JugendWiderstand
+2019,DE,R1M,demonstracja wieczorna,3,5000,15000,10000,10000,15000,5000,10000,"organisers, Umbruch Archiv;police, via Berliner Zeitung;press, Perspektive"
+2020,DE,DGB,demonstracja,1,0,0,0,0,,,,odwołano
+2020,DE,R1M,demonstracja wieczorna,2,3000,3000,3000,3000,3000,3000,,mehrere tausend
+2021,DE,DGB,demonstracja,1,300,300,300,300,300,,,Tylko na zaproszenie
+2021,DE,R1M,demonstracja wieczorna,2,9000,20000,14500,14500,20000,9000,,"organizatorzy, Umbruch Archiv;police, via BM"
+2022,DE,DGB,demonstracja,2,7500,9500,8500,8500,,9500,7500,BM;polizei Meldung
+2022,DE,R1M,demonstracja wieczorna,2,14000,20000,17000,17000,20000,14000,,"organizatorzy, via BM;police, via BM"
+2023,DE,DGB,demonstracja,1,6000,6000,6000,6000,,6000,,polizei Meldung
+2023,DE,R1M,demonstracja wieczorna,2,12000,20000,16000,16000,20000,12000,,"organizatorzy, via BM;police via BM"
+2024,DE,DGB,demonstracja,3,7500,14000,11333,12500,,14000,10000,BZ;Naturfreunde;polizei Meldung
+2024,DE,R1M,demonstracja wieczorna,3,11800,25000,17267,15000,25000,11800,15000,Umbruch Archiv;organizatorzy via Tsg;polizei Meldung
+2025,DE,DGB,demonstracja,2,6600,11000,8800,8800,,6600,11000,polizei Meldung;rbb
+2025,DE,R1M,demonstracja wieczorna,2,22000,30000,26000,26000,30000,22000,,organizatorzy;police via BM
+2026,DE,DGB,demonstracja,2,7100,12000,9550,9550,12000,7100,,Naturfreunde;polizei Meldung
+2026,DE,R1M,demonstracja wieczorna,2,11000,30000,20500,20500,30000,11000,,organizatorzy;police

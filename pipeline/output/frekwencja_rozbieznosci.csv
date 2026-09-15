@@ -1,0 +1,31 @@
+rok,miasto,aktor,wydarzenie,frekwencja_rocznik,frekwencja_arkusz,odchylka_proc,lista_rocznik,zrodla_arkusz
+1994,PL,OPZZ,demonstracja,2500,3000,-17,2000@ŻW;1500;4000@GW,Dziennik Trybuna;Życie Warszawy
+1996,PL,OPZZ,demonstracja,6000,4500,33,2000@GW;10000@TPZ;2000@RP;10000@organizatorzy,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;TPZ
+1997,PL,OPZZ,demonstracja,2000,2500,-20,2000@GW;2000@ŻW;2000@RP,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;Życie Warszawy
+2001,PL,OPZZ,demonstracja,8000,7500,7,6000@GW;10000@TPZ;10000@DT;8000@DT;6000@RP,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;TPZ
+1990,DE,DGB,demonstracja,34833,56667,-39,60000@JW;60000@ND;50000@TAZ;16000@TAZ;15000@organizatorzy;8000@policja,Junge Welt;Neues Deutschland;TAZ
+1990,DE,R1M,demonstracja wspolna,14000,12500,12,12000@TAZ;15000@organizatorzy;15000@BZ,"(organisers, Gluckspilz);(police, Gluckspilz)"
+1991,DE,DGB,demonstracja,15000,10000,50,15000@DGB,"""mehrere Tausend"" (taz);Christine Bretz, DGB Berlin (taz);rbb"
+1991,DE,R1M,demonstracja wspolna,16000,12667,26,12000@TAZ;20000@ND,Gluckspilz
+1992,DE,DGB,demonstracja,25400,23000,10,7000@TAZ;15000;40000@ND;25000@DGBG000656;40000@BZ,Berliner Morgenpost DGBG657;Berliner Zeitung 2.05.1992;DGBG000656;Kronika Berlina;Neues Deutschland (Kritische Gewerkschaften s.71);rbb
+1992,DE,R1M,demonstracja wspolna,15000,12000,25,15000,"Gluckspilz;policja, za rbb"
+1993,DE,R1M,demonstracja wspolna,6083,7750,-22,7750@policja;5000@Tagesschau;5500@BZ,Gluckspilz
+1995,DE,DGB,demonstracja,21250,7400,187,5000@TAZ;10000@DGBG664;60000@BM;10000@BZ,Berliner Morgenpost (DGBB664);Berliner Zeitung (DGBB664);DGBG664;Kronika Berlina;TAZ 2.05
+1995,DE,R1M,demonstracja wspolna,2500,2250,11,2500@BZ,Berliner Zeitung;Gluckspilz
+1996,DE,R1M,demonstracja wieczorna,12000,10000,20,10000@TAZ;14000@JW,Gluckspilz
+1997,DE,DGB,demonstracja,10625,9500,12,5000@TAZ;25000@DGBG1329;5000@BZ;7500@rbb,DGBG1329;Kronika Berlina;TAZ;rbb;rbb B1 1. Mai Spezial
+1999,DE,R1M,demonstracja wieczorna,8250,14000,-41,1500@BZ;15000@TAZ,Beliner Zeitung;Gluckspilz;Tagesspiegel
+2000,DE,DGB,demonstracja,9667,11167,-13,12000@DGBAI3702;7000@policja;10000@BK,Berliner Kurier;DGBAI3702;Kronika Berlina;Organizatorzy (za Tagesspiegel);Poicja (za Tagsspl);taz
+2003,DE,DGB,demonstracja,11800,13500,-13,4000@BK;20000@TAZ;7000@policja;8000@BM;20000@Österreichische-Zeit,Helbrecht (za policją);TAZ 2.05 s.21 za organizatorami
+2003,DE,R1M,demonstracja 13:00,7500,6750,11,10000;5000@TAZ,"Gluckspilz;Tsg, police"
+2004,DE,DGB,demonstracja,45000,18500,143,25000@Die-Welt;120000@policja;10000@rbb;25000@TAZ,Die Welt 3.05 / Hamburger Abendblatt 3.05 (organizatorzy);Tagesspiegel (za policją)
+2006,DE,DGB,demonstracja,5675,13500,-58,17000@DGB;8;17@rbb,Geschäftsbericht;ND;Petra Pau i Berliner Zeitung (za DGB);policja;taz
+2008,DE,DGB,demonstracja,6000,9125,-34,6000@policja;6000@BZ,Geschäftsbericht;Helbrecht (weit weniger als 6000 → ~5000);TAZ / BK 2.05 (mehrere Tausend → ~3000);weit mehr als 6000 (BZ 2.05.2008)
+2009,DE,DGB,demonstracja,20000,13500,48,20000@TAZ;20000@rbb,Geschäftsbericht;Helbrecht (za policją 2500; mało wiarygodne);TAZ liveticker (za organizatorami)
+2011,DE,DGB,demonstracja,8000,11500,-30,10000@BM;6000@BM,Berliner Morgenpost (za organizatorami);Berliner Morgenpost (za policją);Neues Deutschland;rbb za organizatorami
+2012,DE,DGB,demonstracja,8002,12625,-37,12;15000@TSG;5000@pochód;6000@BM;12000@DGBAI3702;10000@ND,"DGB BB;ND;Tagesspiegel 2.05 (12000–15000, środek);taz 2.05"
+2014,DE,DGB,demonstracja,7500,10000,-25,5000@TSG;10000@ND,BZ;Neues Deutschland
+2015,DE,DGB,demonstracja,14000,15000,-7,14000@TAZ,rbb za DGB
+2017,DE,DGB,demonstracja,13000,14000,-7,14000@BZ;12000@Naturfreunde,BZ / DGB BB internet (za organizatorami)
+2018,DE,DGB,demonstracja,14000,9500,47,14000@ND,Neues Deutschland (za organizatorami);Policja
+2019,DE,DGB,demonstracja,10500,13000,-19,13000@DGB;8000@TAZ,DGB online

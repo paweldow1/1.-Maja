@@ -128,6 +128,11 @@ def parse_frekwencja(value):
         text = str(item).replace(" ", " ").strip()
         if not text:
             continue
+        # "20.000 Teilnehmer" is twenty thousand, not 20 and 000.
+        text = re.sub(r"(\d)\.(\d{3})\b", r"\1\2", text)
+        # "13:00 1500" is a start time and a headcount. Drop times and
+        # day.month dates, or they get counted as attendance.
+        text = re.sub(r"\b\d{1,2}[:.]\d{2}\b", " ", text)
         pending = None
         saw_any = False
         for kind, chunk in split_outside_parens(text):
