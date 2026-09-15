@@ -13,7 +13,7 @@ import re
 from pathlib import Path
 
 from common import write_csv
-from config.layers import WARSTWY_PRAWICOWE
+from config.layers import WARSTWY_PRAWICOWE, WARSTWY_REWOLUCYJNE
 
 OUT_DIR = Path(__file__).parent / "output"
 MIASTA = ["PL", "DE"]
@@ -86,7 +86,10 @@ def main():
             if not (od <= rok <= do):
                 # Outside this city's scope: blank, so an empty cell reads as
                 # "not covered" rather than as a measured zero.
-                for k in ("liczba_wydarzen", "liczba_zwiazkowych", "frekwencja_suma",
+                for k in ("typy", "liczba_demonstracji", "liczba_upamietnien", "liczba_festynow",
+                          "czy_kontra", "demonstracje_piesze", "korso",
+                          "liczba_rewolucyjnych", "marsz_gwiazdzisty",
+                          "liczba_wydarzen", "liczba_zwiazkowych", "frekwencja_suma",
                           "frekwencja_zwiazkowa", "udzial_zwiazkowy", "liczba_aktorow",
                           "aktorzy_nowi", "aktorzy_znikajacy", "wydarzenia_nowe",
                           "wydarzenia_znikajace", "liczba_prawicowych", "liczba_kontra",
@@ -139,8 +142,31 @@ def main():
             else:
                 zmiana_miejsca = ""
 
+            typy = {}
+            for e in zdarzenia:
+                typy[e["typ"]] = typy.get(e["typ"], 0) + 1
+            # Walking marches against the wheeled and static forms: the shift
+            # from one column on foot to a korso is a change in the field, not
+            # just in the count.
+            piesze = sum(1 for e in zdarzenia if e["typ"] == "demonstracja"
+                         and e["geom_typ"] in ("LineString", "MultiLineString"))
+            rewolucyjne = sum(1 for e in zdarzenia
+                              if e["warstwa"] in WARSTWY_REWOLUCYJNE or e["aktor"] == "R1M")
+            trasa_tekst = (trasy.get((rok, miasto), "") or "").lower()
+            gwiazdzisty = "TRUE" if "sternmarsch" in trasa_tekst else (
+                "FALSE" if trasa_tekst else "")
+
             wiersz.update({
                 f"{p}_liczba_wydarzen": len(zdarzenia),
+                f"{p}_typy": ";".join(f"{t}:{n}" for t, n in sorted(typy.items())),
+                f"{p}_liczba_demonstracji": typy.get("demonstracja", 0),
+                f"{p}_liczba_upamietnien": typy.get("upamiętnienie", 0) + typy.get("kwiaty", 0),
+                f"{p}_liczba_festynow": typy.get("festyn", 0),
+                f"{p}_czy_kontra": "TRUE" if typy.get("kontra") else "FALSE",
+                f"{p}_demonstracje_piesze": piesze,
+                f"{p}_korso": typy.get("korso", 0),
+                f"{p}_liczba_rewolucyjnych": rewolucyjne,
+                f"{p}_marsz_gwiazdzisty": gwiazdzisty,
                 f"{p}_liczba_zwiazkowych": sum(1 for w in zdarzenia
                                                if w["charakter"] == "zwiazkowe"),
                 f"{p}_liczba_prawicowych": sum(1 for w in zdarzenia
@@ -168,7 +194,12 @@ def main():
     kolumny = ["rok"]
     for miasto in MIASTA:
         p = miasto.lower()
-        kolumny += [f"{p}_liczba_wydarzen", f"{p}_liczba_zwiazkowych",
+        kolumny += [f"{p}_liczba_wydarzen", f"{p}_typy",
+                    f"{p}_liczba_demonstracji", f"{p}_liczba_upamietnien",
+                    f"{p}_liczba_festynow", f"{p}_czy_kontra",
+                    f"{p}_demonstracje_piesze", f"{p}_korso",
+                    f"{p}_liczba_rewolucyjnych", f"{p}_marsz_gwiazdzisty",
+                    f"{p}_liczba_zwiazkowych",
                     f"{p}_liczba_prawicowych", f"{p}_liczba_kontra",
                     f"{p}_frekwencja_suma", f"{p}_frekwencja_zwiazkowa",
                     f"{p}_udzial_zwiazkowy", f"{p}_liczba_aktorow",

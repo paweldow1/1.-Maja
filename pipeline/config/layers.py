@@ -167,3 +167,8 @@ ACTOR_KEYWORDS_DE = [
     "NPD", "FAP", "Junge Nationaldemokraten", "AfD", "Bärgida", "MyFest",
     "MyGruni", "GBBO",
 ]
+
+# Layers whose events are the revolutionary May Day, counted separately in
+# POLE: the 13:00 march, the evening demonstration and the joint march they
+# ran until 1995 are all R1M, whatever the layer they sit in.
+WARSTWY_REWOLUCYJNE = {"Revolutionäre 1. Mai"}
