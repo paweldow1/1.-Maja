@@ -1,0 +1,1381 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.433763416678673,
+          52.5387445
+        ]
+      },
+      "properties": {
+        "osm_type": "R",
+        "osm_id": 14395502,
+        "osm_key": "leisure",
+        "osm_value": "park",
+        "type": "other",
+        "postcode": "10405",
+        "countrycode": "DE",
+        "name": "1992. FAP \"1. Mai – Chaoten Frei\"",
+        "country": "Germany",
+        "city": "Berlin",
+        "district": "Prenzlauer Berg",
+        "extent": [
+          13.4267277,
+          52.5439965,
+          13.4367121,
+          52.5364823
+        ],
+        "description": "*Schon am Nachmittag hatten sich in Ost-Berlin fünfzig Neonazis der „Freiheitlichen Deutschen Arbeiterpartei“ (FAP) mit 200 Antifas Scharmützel geliefert. Die GegendemonstrantInnen verhinderten den von der FAP angemeldeten Aufmarsch, die Polizei eskortierte die Neonazis zum S-Bahnhof* (taz 2.05.1992)",
+        "Lata": "1992",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Freiheitliche_Deutsche_Arbeiterpartei_Logo.svg/1920px-Freiheitliche_Deutsche_Arbeiterpartei_Logo.svg.png"
+        },
+        "Attendance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.5128387,
+          52.5061644
+        ]
+      },
+      "properties": {
+        "osm_type": "N",
+        "osm_id": 193661797,
+        "osm_key": "railway",
+        "osm_value": "station",
+        "type": "house",
+        "postcode": "10315",
+        "countrycode": "DE",
+        "name": "1993 Friedrichsfelde",
+        "country": "Germany",
+        "city": "Berlin",
+        "district": "Friedrichsfelde",
+        "locality": "Alt-Friedrichsfelde",
+        "street": "Einbecker Straße",
+        "description": "1993 – 100 członków FAP organizuje demonstrację. Blokada antify:\n\nIn Berlin-Friedrichsfelde machten 100 FAP-Nazis eine Demo, die von den Bullen geschützt wurde. Viele mobilisierte Antifas wurden an Sperren abgefangen, 40 wurden festgenommen; nur etwa 30 erreichten den Schauplatz, es gab einzelne kurze Auseinandersetzungen mit Nazis.",
+        "Lata": "1993",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Freiheitliche_Deutsche_Arbeiterpartei_Logo.svg/1920px-Freiheitliche_Deutsche_Arbeiterpartei_Logo.svg.png"
+        },
+        "Attendance": 100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.508785,
+          52.448144
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "1994",
+        "name": "1994 FAP Demo",
+        "description": "Am Vormittag hatte die FAP noch auf einen geplanten Aufmarsch in Johannisthal verzichtet, nachdem sich etwa fünfhundert GegendemonstrantInnen an der Kreuzung Sterndamm/Königsheideweg zu einer ebenfalls genehmigten Kundgebung eingefunden hatten. Zuvor waren nach Angaben der Gegendemonstranten mehrere Fahrzeuge mit Neonazis von der Polizei „festgesetzt“ worden. (taz 3.05.1994)\n\nAttendance: 400 (taz)\n",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Freiheitliche_Deutsche_Arbeiterpartei_Logo.svg/1920px-Freiheitliche_Deutsche_Arbeiterpartei_Logo.svg.png"
+        },
+        "Attendance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.563142,
+          52.5429481
+        ]
+      },
+      "properties": {
+        "osm_type": "R",
+        "osm_id": 404584,
+        "osm_key": "place",
+        "osm_value": "suburb",
+        "type": "district",
+        "countrycode": "DE",
+        "name": "1996 NPD + Junge Nationaldemokraten",
+        "city": "Berlin",
+        "country": "Germany",
+        "extent": [
+          13.5168837,
+          52.5745093,
+          13.5877853,
+          52.5096256
+        ],
+        "description": "1996 – 300-500 take part in nazi demonstration; little to no blockades, only 40 DGB members according to HBV leader (jw, 2.05.96), Gluckspilz Nachbereitung reports *relativ bescheidene* mobilisation of Antifa ",
+        "Lata": "1996",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Nationaldemokratische_Partei_Deutschlands.svg/3840px-Nationaldemokratische_Partei_Deutschlands.svg.png"
+        },
+        "Attendance": 350
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.619818,
+            52.539516
+          ],
+          [
+            13.620193,
+            52.538211
+          ],
+          [
+            13.620408,
+            52.537526
+          ],
+          [
+            13.621073,
+            52.536873
+          ],
+          [
+            13.622242,
+            52.536462
+          ],
+          [
+            13.623101,
+            52.534942
+          ],
+          [
+            13.62324,
+            52.534146
+          ],
+          [
+            13.621953,
+            52.532697
+          ],
+          [
+            13.620882,
+            52.530935
+          ],
+          [
+            13.61103,
+            52.532958
+          ],
+          [
+            13.607833,
+            52.53361
+          ],
+          [
+            13.607008,
+            52.534093
+          ],
+          [
+            13.60572,
+            52.53581
+          ],
+          [
+            13.605001,
+            52.536625
+          ],
+          [
+            13.604765,
+            52.537448
+          ],
+          [
+            13.603414,
+            52.54426
+          ],
+          [
+            13.599422,
+            52.54396
+          ],
+          [
+            13.591653,
+            52.545017
+          ],
+          [
+            13.591354,
+            52.543947
+          ],
+          [
+            13.591472,
+            52.542524
+          ],
+          [
+            13.591569,
+            52.541565
+          ],
+          [
+            13.590034,
+            52.5415
+          ],
+          [
+            13.588918,
+            52.541259
+          ],
+          [
+            13.588838,
+            52.540926
+          ],
+          [
+            13.588822,
+            52.539184
+          ],
+          [
+            13.589058,
+            52.537435
+          ],
+          [
+            13.591783,
+            52.537082
+          ],
+          [
+            13.591397,
+            52.53485
+          ],
+          [
+            13.591246,
+            52.533689
+          ],
+          [
+            13.592706,
+            52.532853
+          ],
+          [
+            13.591719,
+            52.531365
+          ],
+          [
+            13.590603,
+            52.529956
+          ],
+          [
+            13.587212,
+            52.523467
+          ],
+          [
+            13.590624,
+            52.52305
+          ],
+          [
+            13.593307,
+            52.522723
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "_umap_options": {
+          "dashArray": "10"
+        },
+        "Lata": "2000",
+        "description": "Planned route: \nU-Bhf. Louis-Lewin-Str. - Louis-Lewin-Str. - Riesaerstr. - Stendalerstr. - Zossenerstr. - Alte Hellersdorferstr. - Gothaerstr. - Alte Hellersdorferstr. - Hellersdorferstr. - Cecilienstr. - Lilly-Braun-Str. (http://www.stressfaktor.squat.net/2002/sonderseiten/mai.php)\n\n*. Inzwischen demonstrieren bald 1.000 Rechtsextreme für Deutschtum und Arbeit für Deutsche* Taz 2.05.2000 ",
+        "name": "2000 NPD Aufmarsch",
+        "Slogan": "Für Deutschtum und Arbeit für Deutsche",
+        "Attendance": 1000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.619703,
+          52.539249
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2000",
+        "description": "Der Kampf um die Straßen, Köpfe und Parlamente: Mehr als 1.000 Rechtsextreme von NPD, „Freien Kameradschaften“ und Skinheads demonstrieren am 1. Mai 2000 bei einer Kundgebung in Berlin-Hellersdorf unter dem Motto „Arbeit zuerst für Deutsche“ (taz 30.08.2000)",
+        "name": "2000 NPD. Arbeit zuerst für Deutsche",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Nationaldemokratische_Partei_Deutschlands.svg/3840px-Nationaldemokratische_Partei_Deutschlands.svg.png"
+        },
+        "Slogan": "Arbeit zuerst für Deutsche",
+        "Attendance": 1000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.525429,
+            52.555559
+          ],
+          [
+            13.528606,
+            52.557099
+          ],
+          [
+            13.522553,
+            52.560823
+          ],
+          [
+            13.521212,
+            52.561215
+          ],
+          [
+            13.520074,
+            52.561997
+          ],
+          [
+            13.520256,
+            52.562095
+          ],
+          [
+            13.523208,
+            52.561906
+          ],
+          [
+            13.523723,
+            52.561723
+          ],
+          [
+            13.526739,
+            52.563119
+          ],
+          [
+            13.522598,
+            52.566465
+          ],
+          [
+            13.520881,
+            52.567691
+          ],
+          [
+            13.520752,
+            52.568577
+          ],
+          [
+            13.520322,
+            52.570247
+          ],
+          [
+            13.520795,
+            52.571186
+          ],
+          [
+            13.520322,
+            52.573794
+          ],
+          [
+            13.519893,
+            52.574316
+          ],
+          [
+            13.51779,
+            52.574863
+          ],
+          [
+            13.515257,
+            52.575359
+          ],
+          [
+            13.515143,
+            52.575489
+          ],
+          [
+            13.514027,
+            52.575333
+          ],
+          [
+            13.511279,
+            52.575359
+          ],
+          [
+            13.508446,
+            52.575437
+          ],
+          [
+            13.50426,
+            52.575568
+          ],
+          [
+            13.503423,
+            52.575776
+          ],
+          [
+            13.503316,
+            52.575685
+          ],
+          [
+            13.503316,
+            52.57485
+          ],
+          [
+            13.503552,
+            52.574342
+          ],
+          [
+            13.50441,
+            52.573729
+          ],
+          [
+            13.50484,
+            52.573455
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "Lata": "2001",
+        "name": "2001 NPD Demo",
+        "description": "Tagesspiegel, s. 10\n\nDas Oberverwaltungsgericht hat am Freitagabend beschlossen, den geplantenNPD-Aufmarsch am 1.Mai nach Hohenschönhausen zu verlegen.Die Route: S-Bahnhof Gehrenseestraße, Pablo-Picasso-Straße, SeehausenerStraße, Vincent-van-Gogh-Straße, Prendener Straße, Dorfstraße,Ernst-Barlach-Straße, Egon-Erwin-Kisch Straße, S-Bahnhof Wartenberg.Die Zeit: 11.00 Uhr bis 14.00 Uhr. (DGB\n\nAttendance: 900 (MAZ)",
+        "Slogan": "Deutschland zuerst – gemeinsam für soziale Gerechtigkeit in einem Europa der Vaterländer",
+        "Attendance": 100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.514635,
+            52.566719
+          ],
+          [
+            13.515236,
+            52.566993
+          ],
+          [
+            13.516116,
+            52.566302
+          ],
+          [
+            13.516073,
+            52.565199
+          ],
+          [
+            13.517071,
+            52.564436
+          ],
+          [
+            13.517833,
+            52.563823
+          ],
+          [
+            13.52032,
+            52.56173
+          ],
+          [
+            13.521264,
+            52.561143
+          ],
+          [
+            13.522724,
+            52.560738
+          ],
+          [
+            13.526717,
+            52.55809
+          ],
+          [
+            13.528305,
+            52.556864
+          ],
+          [
+            13.527382,
+            52.556473
+          ],
+          [
+            13.525794,
+            52.55569
+          ],
+          [
+            13.525729,
+            52.555687
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "Lata": "2002",
+        "name": "2002 – NPD-Demonstration",
+        "description": "na podst. Rucht 2003, 250",
+        "Attendance": 700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.259173,
+            52.508608
+          ],
+          [
+            13.258996,
+            52.510501
+          ],
+          [
+            13.259339,
+            52.512382
+          ],
+          [
+            13.260158,
+            52.516169
+          ],
+          [
+            13.257024,
+            52.516378
+          ],
+          [
+            13.249555,
+            52.51549
+          ],
+          [
+            13.24608,
+            52.514941
+          ],
+          [
+            13.246081,
+            52.514928
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "Lata": "2003",
+        "name": "2003. NPD Wir sind das Volk",
+        "description": "Zwischen 11 und 15 Uhr will die NPD unter dem Motto »Wir sind das Volk« mit einen »Siegeszug« voraussichtlich zwischen Raußendorffplatz und dem Coubertin-Platz am Olympiastadion das Scheitern des NPD-Verbotes feiern (ND 30.04.2003, Tagesspiegel 30.04.2003)",
+        "Attendance": 1675
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              13.481426,
+              52.514628
+            ]
+          ],
+          [
+            [
+              13.472843,
+              52.513923
+            ],
+            [
+              13.498284,
+              52.51137
+            ],
+            [
+              13.500667,
+              52.511161
+            ],
+            [
+              13.497822,
+              52.509665
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      },
+      "properties": {
+        "_umap_options": {
+          "dashArray": "10"
+        },
+        "description": " (blocked at Lichtenberger Bridge) die Route der Neonazis inzwischen fest. Sie soll vom S-Bahnhof Lichtenberg über Frankfurter Allee, Petersburger Straße, Landsberger Allee, Weißenseer Weg zurück zum S-Bahnhof Lichtenberg führen. Der Naziaufmarsch sei die erste große Veranstaltung nach dem Scheitern des NPD-Verbots vor dem Bundesverfassungsgericht. Deshalb sei mit sehr vielen Teilnehmern zu rechnen. (nd 28.04.2004)\n\nSlogans:\nNein zur Ost-Erweiterung; Wir sind das Volk; Gute Heimreise Jetzt\n\nAttendance:\n2500 (Umbruch-Archiv)",
+        "Lata": "2004",
+        "name": "2004 NPD Demo (blocked)",
+        "Attendance": 2300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.580357,
+          52.455513
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2009",
+        "description": "12:12-16:27, ca. 280 Teilnehmer (Polizeilische Darstellung)",
+        "name": "2009 NPD Strassenfest",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Nationaldemokratische_Partei_Deutschlands.svg/3840px-Nationaldemokratische_Partei_Deutschlands.svg.png"
+        },
+        "Attendance": 280
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.397554,
+            52.554672
+          ],
+          [
+            13.41113,
+            52.553903
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "Lata": "2010",
+        "name": "2010 – planned route of NPD demonstration",
+        "description": "2010 – 12:00, 1.05 NPD demonstration route. S-Bhf Bornholmer Strasse – S-Bhf Landsberger Strasse (taz 30.4)\n\n*16.40 Uhr: Rückzug. Die Demo der Rechtsextremen muss auf Höhe der Seelower Straße umdrehen. Noch auf der Bornholmer Straße machen die Demonstranten kehrt, ohne die Schönhauser Allee erreicht zu haben.* (Tagesspiegel liveticker)",
+        "Attendance": 700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.397645,
+          52.554757
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2010",
+        "name": "2010 NPD Demo",
+        "description": "*13.45 Uhr: Die Kundgebung der Neonazis in Prenzlauer Berg hat begonnen. 300 Rechtsextreme haben sich inzwischen versammelt. Ein Redner spricht weitschweifig über die Reconquista, die Rückeroberung Spaniens von den muslimischen Besatzern im Mittelalter. Das Ganze wird übertönt durch Reggae-Musik und Kochtopfklappern von umliegenden Balkonen.* (Tagesspiegel-liveticker)\n\n*14.40 Mit knapp drei Stunden Verspätung formieren sich knapp 600 Rechtsextreme in der Bornholmer Straße zum Marsch. Angeführt wird der Zug von Berliner Rechten, die ein breites Frontplakat mit der Aufschrift \"Stoßt auf das Tor zur Freiheit\" tragen.* (Tagesspiegel liveticker)",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Nationaldemokratische_Partei_Deutschlands.svg/3840px-Nationaldemokratische_Partei_Deutschlands.svg.png"
+        },
+        "Attendance": 700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.289573,
+          52.496721
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "description": "Während rund 600 Rechte am 1. Mai in Pankow warteten, hatten sich, wie berichtet, 300 weitere am Südkreuz versammelt. Darunter der frühere NPD-Landesvorsitzende Jörg Hähnel und Anhänger der verbotenen „Kameradschaft Tor“ und „Frontbann 24“. Am S-Bahnhof Halensee verließen sie auf Kommando die Bahn und stürmten Richtung Adenauerplatz. Dabei attackierten sie Passanten und warfen Flaschen auf Polizisten. (https://blog.zeit.de/stoerungsmelder/2010/05/03/naziaktion-auf-dem-kudamm-hat-rechtliche-folgen_3171)",
+        "Lata": "2010",
+        "name": "2010 Spontan Nazi Demo",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Nationaldemokratische_Partei_Deutschlands.svg/3840px-Nationaldemokratische_Partei_Deutschlands.svg.png"
+        },
+        "Attendance": 700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.509904,
+            52.456428
+          ],
+          [
+            13.512619,
+            52.459167
+          ],
+          [
+            13.513381,
+            52.460834
+          ],
+          [
+            13.51418,
+            52.462455
+          ],
+          [
+            13.508771,
+            52.463593
+          ],
+          [
+            13.508492,
+            52.463697
+          ],
+          [
+            13.51066,
+            52.464142
+          ],
+          [
+            13.513686,
+            52.464665
+          ],
+          [
+            13.514072,
+            52.462508
+          ],
+          [
+            13.512591,
+            52.458991
+          ],
+          [
+            13.510252,
+            52.456663
+          ],
+          [
+            13.510076,
+            52.456336
+          ],
+          [
+            13.512179,
+            52.454878
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "name": "2013 NPD Demo",
+        "Lata": "2013",
+        "Slogan": "Raus aus dem Euro – Gegen Euro und Großkapital",
+        "Attendance": 300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.512127,
+          52.454833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2013 NPD Kundgebung",
+        "description": "(taz 30.04.2013)",
+        "Lata": "2013",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nationaldemokratische_Partei_Deutschlands_%28NPD%29%2C_logo_2013.svg",
+          "iconOpacity": 1
+        },
+        "Attendance": 300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.565866,
+          52.570925
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2015",
+        "name": "2015 NPD Kundgebung",
+        "description": "14:00, 2015 – Die NPD plant zwei kleinere Kundgebungen – ab 12 Uhr in Hohenschönhausen an der Zingster Straße/Ecke Falkenberger Chaussee (Nahe S-Hohenschönhausen) sowie im Anschluss in Marzahn am Ahrensfelder Platz (nahe S-Ahrensfelde). Antifa-Demo und Kundgebungen gegen die NPD – anschließend NPD-Kundgebung in Marzahn stören. (taz 30.04.2015)",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nationaldemokratische_Partei_Deutschlands_%28NPD%29%2C_logo_2013.svg"
+        },
+        "Attendance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.504812,
+          52.563125
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2015",
+        "name": "2015 NPD Kundgebung",
+        "description": "2015 – Die NPD plant zwei kleinere Kundgebungen – ab 12 Uhr in Hohenschönhausen an der Zingster Straße/Ecke Falkenberger Chaussee (Nahe S-Hohenschönhausen) sowie im Anschluss in Marzahn am Ahrensfelder Platz (nahe S-Ahrensfelde). Antifa-Demo und Kundgebungen gegen die NPD – anschließend NPD-Kundgebung in Marzahn stören. Vortreffpunkt für die gemeinsame Anreise aus der Innenstadt: 10.15 Uhr am Ostkreuz, Ausgang Sonntagsstraße. (taz 30.04.2015)\n\nAttendance: 30",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nationaldemokratische_Partei_Deutschlands_%28NPD%29%2C_logo_2013.svg"
+        },
+        "Attendance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.451675176620485,
+          52.54765928050418
+        ]
+      },
+      "properties": {
+        "name": "2016 NPD „Asylflut stoppen“",
+        "description": "10:00 (BZ 27.04)\nJetzt #Bärgida-Hymne „Wir sind das Volk“ bei Nazi-Kundgebung in Berlin #b0105 #nobaergida #nonazis” (https://x.com/JFDA_eV/status/726692549159706624)",
+        "Lata": "2016",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nationaldemokratische_Partei_Deutschlands_%28NPD%29%2C_logo_2013.svg"
+        },
+        "Attendance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.505502,
+          52.563047
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2016 NPD Kundgebung",
+        "description": "",
+        "Lata": "2016",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nationaldemokratische_Partei_Deutschlands_%28NPD%29%2C_logo_2013.svg"
+        },
+        "Attendance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.510178,
+          52.453721
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2016 NPD Kundgebung",
+        "description": "",
+        "Lata": "2016",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nationaldemokratische_Partei_Deutschlands_%28NPD%29%2C_logo_2013.svg"
+        },
+        "Attendance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.406872,
+          52.569
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/AfD-Logo-2017.svg/1920px-AfD-Logo-2017.svg.png"
+        },
+        "name": "2017 AFD Maifest ",
+        "description": "*Super Protest gegen das Parteifest der AfD im Pankower Bürgerpark heute. Rund 600 Demonstrantinnen sorgten dafür, dass das traurige Häufchen von rund 60 AfD Anhängerinnen und Parteifunktionärinnen mit ihrem Grill und ihrer Hüpfburg in einem Polizeikessel feiern mussten. Statt Parkpanorama und Gespräche mit Anwohnerinnen, gab es blau-weiße Polizeiauto und komplette Isolation* (Berliner Bündnis Gegen Rechts)",
+        "Lata": "2017",
+        "Attendance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            13.369417,
+            52.523366
+          ],
+          [
+            13.368339,
+            52.522628
+          ],
+          [
+            13.322178,
+            52.505754
+          ],
+          [
+            13.317554,
+            52.506008
+          ],
+          [
+            13.317232,
+            52.504199
+          ],
+          [
+            13.319775,
+            52.504029
+          ],
+          [
+            13.319443,
+            52.501567
+          ],
+          [
+            13.325269,
+            52.50252
+          ],
+          [
+            13.33441,
+            52.504486
+          ],
+          [
+            13.336287,
+            52.504336
+          ],
+          [
+            13.339292,
+            52.503193
+          ],
+          [
+            13.341448,
+            52.502233
+          ],
+          [
+            13.342489,
+            52.501717
+          ]
+        ]
+      },
+      "properties": {
+        "Lata": "2017",
+        "name": "2017 Bärgida",
+        "description": "Berlińska sekcja organizacji Bärgida organizuje niewielką, **cykliczną Montagsdemonstration, która wypada 1. Maja 2017.** \n18.30 Uhr, Washingtonplatz, Aufzug ab 19.15 Uhr über S-Bahnhof Sayignyplatz, Schlüterstraße, Niebuhrstraße, Bleibtreustraße, Kurfürstendamm, Breitscheidplatz, Tauentzienstraße, Wittenbergplatz (Berliner Morgenpost)\n\n28.04.2017\n\nTreffpunkt von #No Bärgida ist der Hauptbahnhof (Washingtonplatz) um 18.30 Uhr. Die Rassist_innen, Nazi-Hooligans und Flüchtlingsfeinde von Bärgida versammeln sich ebenso um 18.30 Uhr am selben Ort. Bärgida führt häufig spontane Aufmärsche im Anschluss an die Kundgebung am Washingtonplatz durch. Zu diesem Zweck fahren die Rassist_innen mit U oder S-Bahn zum Startpunkt des Aufmarsches.\nAktionskarte Bärgida, 01.05.2017, Berlin-Charlottenburg (Änderungen möglich) (Berlin Gegen Nazis)\n\n## Twitter summary (via Grok)\nGrok twitter AI summary\n- Approx. 19:50 (@BerlingegenNazi) – Bärgida is about to arrive at Breitscheidplatz.  \n    [Link](/BerlingegenNazi/status/859103164318011395)  \n    „1950 Bärgida gleich am Breidscheidplatz. #nobärgida #b0105 #Charlottenburg” (with photo)\n- Approx. 19:56 (@BerlingegenNazi) – Intermediate rally at Breitscheidplatz. Previously the far-right chanted “Europa, Jugend, Reconquista”.  \n    [Link](/BerlingegenNazi/status/859104797802336257)  \n    „1956 Zwischenkundgebung am Breidscheidplatz zuvor wurde „Europa, Jugend, Reconquista“ von den Rechtsextremen skandiert. #nobärgida”\n- Approx. 20:15 (@BerlingegenNazi) – A group of passers-by and some tourists are visibly enjoying the protest against the aggressive far-right extremists behind the barriers.  \n    [Link](/BerlingegenNazi/status/859109158200782849)  \n    „2015 Eine Gruppe Passanten und einige Tourist_innen haben sichtlich Spaß am Protest gegen aggressive Rechtsextreme hinter Gittern.#nobärgida” (2 photos)\n- Approx. 20:25 (@BerlingegenNazi) – Bärgida starts moving again. Next to them a refugee from Afghanistan is explaining racism to a camera crew from Singapore.  \n    [Link](/BerlingegenNazi/status/859111357039489027)  \n    „2025 Bärgida läuft wieder. Daneben erklärt ein Geflüchteter aus Afghanistan einem Kamerateam aus Singapur Rassismus #nobärgida”\n- Approx. 20:26 (@BerlingegenNazi) – Bärgida has expanded its usually unchanging music repertoire – a new Söhne Mannheims song is being played.  \n    [Link](/BerlingegenNazi/status/859112248232611843)  \n    „2026 Bärgida hat das eigentlich immer gleichbleibende Musikreportoire erweitert - Der neue Söhne Mannheims Song wird gespielt #nobärgida” (with photo)\n- Approx. 20:44 (@BerlingegenNazi) – The end of Bärgida’s closing rally is delayed because one of the speakers refuses to give his personal details.  \n    [Link](/BerlingegenNazi/status/859116496643076097)  \n    „2044 Ende der Abschlusskundgebung Bärgida verzögert sich, da sich ein Redner weigert die Personalien abzugeben. #nobärgida”\n- Approx. 20:51 (@BerlingegenNazi) – Closing with the first verse. Earlier an announcement was made over Bärgida’s loudspeakers: “17. Juni Volksaufstand 2.0 – unangemeldet”.  \n    [Link](/BerlingegenNazi/status/859118744890732544)  \n    „2051 Abschluss mit 1.Strophe. Vorher Ansage über Bärgida-Lautsprecher „17.Juni Volksaufstand 2.0 -unangemeldet“ #nobärgida #1Mai”\n- Approx. 20:56 (@BerlingegenNazi) – Thanks to everyone who protested against the far-right march in Charlottenburg.  \n    [Link](/BerlingegenNazi/status/859119358412509185)  \n    „Danke an alle die gegen den rechtsextremen Aufmarsch in #Charlottenburg protestiert haben #nobärgida” (with photo)\n- Approx. 21:00 (@BerlingegenNazi) – One arrest from the ranks of the far-right extremists of Bärgida.  \n    [Link](/BerlingegenNazi/status/859120836334243841)  \n    „2100 eine Festnahme aus den Reihen der Rechtsextremen von Bärgida #nobärgida”\n- Approx. 22:54 (@nopegida_berlin) – Thanks from NoBärgida.  \n    [Link](/nopegida_berlin/status/859148966818193409)  \n    „Danke, dass ihr heute da wart. Wir mussten einfach mal raus & andere Volkspfosten am Montag sehen. Nächste Woche geht's weiter #nobärgida” (quotes the post with thanks and photo from Charlottenburg)",
+        "Attendance": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.393312,
+          52.569197
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/AfD-Logo-2017.svg/1920px-AfD-Logo-2017.svg.png"
+        },
+        "name": "2018 AFD Maifest ",
+        "description": "*Bei einem Sommerfest der Berliner AfD im Bleichröderpark in Pankow versammelten sich am Dienstag einige hundert Demonstranten. Erklärtes Ziel war es, das sogenannte Maifest der Partei zu stören. Die Protestierenden hatten ihre Lautsprecher, meist mit Punk-Musik, daher in Richtung des Festes gerichtet, wo die AfD Volksmusik und Schlager erklingen ließ. Nennenswerte Zwischenfälle oder Gewalttaten gab es bis zum Redaktionsschluss dieser Ausgabe nicht.* (Berliner Morgenpost)",
+        "Lata": "2018",
+        "Attendance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.44265682776852,
+          52.59100795
+        ]
+      },
+      "properties": {
+        "osm_type": "W",
+        "osm_id": 48063546,
+        "osm_key": "building",
+        "osm_value": "train_station",
+        "type": "house",
+        "postcode": "13129",
+        "countrycode": "DE",
+        "name": "2019 AfD Maifest",
+        "country": "Germany",
+        "city": "Berlin",
+        "district": "Blankenburg",
+        "locality": "Anlage Blankenburg",
+        "street": "Bahnhofstraße",
+        "extent": [
+          13.4424915,
+          52.5911229,
+          13.4428139,
+          52.5909132
+        ],
+        "Lata": "2019",
+        "description": "Festyn majowy zorganizowany przez AfD zostaje oprotestowany przez około 500 osób. Wśród blokujących Antifa, członkowie Linke, SPD; SPD nawołuje do bojkotu i blokad obchodów święta, oraz udziału w ich święcie \n\n*Ein Sperrkreis von 50 Metern und ein Großaufgebot der Polizei trennten am Nachmittag des 1. Mai die Teilnehmer des Bürgerfests der Pankower AfD in Alt-Blankenburg von etwa 500 Demonstranten, die angetreten waren, „die völkische Party zu crashen*\n(BM 1.05.2019)",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/AfD-Logo-2017.svg/1920px-AfD-Logo-2017.svg.png"
+        },
+        "Attendance": 100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.513012,
+          52.505695
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "1993 Antifa Blockade",
+        "description": "In Berlin-Friedrichsfelde machten 100 FAP-Nazis eine Demo, die von den Bullen geschützt wurde. Viele mobilisierte Antifas wurden an Sperren abgefangen, 40 wurden festgenommen; nur etwa 30 erreichten den Schauplatz, es gab einzelne kurze Auseinandersetzungen mit Nazis. (Glückspilz Archiv)",
+        "Lata": "1993"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.506382,
+          52.446581
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "1994",
+        "name": "1994 FAP blockade",
+        "description": "Am Vormittag hatte die FAP noch auf einen geplanten Aufmarsch in Johannisthal verzichtet, nachdem sich etwa fünfhundert GegendemonstrantInnen an der Kreuzung Sterndamm/Königsheideweg zu einer ebenfalls genehmigten Kundgebung eingefunden hatten. Zuvor waren nach Angaben der Gegendemonstranten mehrere Fahrzeuge mit Neonazis von der Polizei „festgesetzt“ worden. (taz 3.05.1994)\n",
+        "_umap_options": {
+          "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Drei_Pfeile.svg/1920px-Drei_Pfeile.svg.png"
+        },
+        "Attendance": 450
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.60455,
+          52.5369
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2000",
+        "name": "2000 \"Kulturfest gegen Rechts\", 10 Uhr, Alice-Salomon-Platz in Hellersdorf",
+        "description": "PDS organized \"Kulturfest gegen Rechts\", 10 Uhr, Alice-Salomon-Platz in Hellersdorf. 10 000 in attendance",
+        "Attendance": 10000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.520651,
+          52.568525
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2002 Counter-demonstration",
+        "description": "Ab 10 Uhr finden zwei Gegenkundgebungen gegen den NPD-Aufmarsch in Hohenschönhausen statt - am Lindencenter am Prerower Platz sowie an der Falkenberger Chaussee Ecke Prendener Straße. Die NPD will eine Stunde später, um 11 Uhr, am S-Bahnhof Hohenschönhausen losmarschieren. (taz 30.04.2002)",
+        "Attendance": 1000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.506682,
+          52.563752
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2002 Counter-demonstration",
+        "description": "Ab 10 Uhr finden zwei Gegenkundgebungen gegen den NPD-Aufmarsch in Hohenschönhausen statt - am Lindencenter am Prerower Platz sowie an der Falkenberger Chaussee Ecke Prendener Straße. Die NPD will eine Stunde später, um 11 Uhr, am S-Bahnhof Hohenschönhausen losmarschieren. (taz 30.04.2002)",
+        "Attendance": 1000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.259395,
+          52.508666
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2003",
+        "name": "2003 Fegt die Nazis aus der Stadt",
+        "description": "13:30 – Berliner Initiative: Europa ohne Rassismus blokuje część trasy przemarszu NPD 1. Maja (ND 1.05.03)\nAttendance: 300 (taz)",
+        "Attendance": 250
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.496209,
+          52.511545
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2004 Antifa Blockade",
+        "description": "Zur bundesweiten Großdemo in Berlin hatten die NPD und faschistische \"Freie Kameradschaften\" aufgerufen. Rund 2500 Nazis fanden sich ab 10 Uhr am Bahnhof Lichtenberg ein und wollten von dort durch die Bezirke Lichtenberg und Friedrichshain marschieren. Doch dazu kam es nicht. An verschiedenen Stellen blockierten nach Polizeiangaben 4500 AntifaschistInnen über Stunden die vorgesehene Demoroute entlang der Frankfurter Allee.\n\nAttendance:\n4500 (Umbruch)",
+        "Lata": "2004",
+        "Attendance": 3400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.579284,
+            52.458278
+          ],
+          [
+            13.578791,
+            52.457938
+          ],
+          [
+            13.577986,
+            52.456938
+          ],
+          [
+            13.576805,
+            52.455238
+          ],
+          [
+            13.575431,
+            52.45376
+          ],
+          [
+            13.574486,
+            52.45291
+          ],
+          [
+            13.574669,
+            52.452832
+          ],
+          [
+            13.576021,
+            52.452858
+          ],
+          [
+            13.576998,
+            52.453545
+          ],
+          [
+            13.578275,
+            52.454231
+          ],
+          [
+            13.577782,
+            52.454401
+          ],
+          [
+            13.576343,
+            52.454525
+          ],
+          [
+            13.577256,
+            52.455702
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "Lata": "2009",
+        "description": "12:08 – 13:05 Uhr  \nvon Bahnhofstraße 23-25  bis Seelenbinderstraße 17-21  \nca. 2.500 Teilnehmer (Polizeilische Darstellung)\nSeelenbinderstraße 17-21 – die Linke Kundgebung, 3500 Teilnehmer",
+        "name": "2009 Counterdemonstration NPD (registered by SPD)",
+        "_umap_options": {
+          "popupTemplate": "Default"
+        },
+        "Attendance": "3500"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.511517,
+            52.454558
+          ],
+          [
+            13.512054,
+            52.455016
+          ],
+          [
+            13.510078,
+            52.456454
+          ],
+          [
+            13.512483,
+            52.459043
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "Lata": "2010",
+        "name": "2010 – Demonstration against Zum Henker",
+        "description": "2010 – Demonstration against a Nazi bar Zum Henker (taz 30.4)\nAttendance:\n50 (Police, via taz)",
+        "Attendance": "50"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.511109,
+          52.454427
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2010",
+        "name": "2010 – Demonstration against Zum Henker bar",
+        "description": "2010 – 30.4, 17:00 (taz 30.4)",
+        "Attendance": "500"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.414199,
+          52.553602
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2010",
+        "name": "2010 Anti-NPD Blockade",
+        "description": "* Blockades at many different sites – this is the site of the main counter \n*An die **10.000 Menschen** versammeln sich an mehreren Plätzen, darunter Antifa-Aktivisten und Punks, aber auch bürgerliche Protestierer, Eltern mit ihren Kindern und Rentner mit roten Nelken in der Hand. Anwohner stehen auf Balkonen und klopfen auf Töpfe, auf Transparenten steht: \"Berlin bleibt bunt, Scheiße bleibt braun.\"* (taz, 3.05.2010)\n\n*600 Neonazis kommen nicht mehr weiter. Sie stecken fest, gleich am Anfang ihrer Demonstration. Thierse hält sie auf, zusammen mit dem Bezirksbürgermeister und Abgeordneten von Grünen und Linkspartei. Was für ein Bild! Journalisten eilen zu dem Grüppchen. Fotoapparate klicken. Und jetzt? Gehts jetzt rund?* (taz, 3.05.2010)\n\n**Sitting blockade at the Malmoer Strasse**\n*Die Polizei kesselt die auf der Fahrbahn verstreuten Gegendemonstranten an der Bornholmer Ecke Malmöer Straße ein. Es entwickelt sich eine spontane Sitzblockade - eher eine symbolische Aktion eines eher bürgerlichen Publikums. Die Blockierer rufen: \"Wir sind friedlich, was seid ihr?\" Die Polizei zerrt und trägt daraufhin die Demonstranten von der Fahrbahn. Dabei geht es wenig sanft zu* (Tagesspiegel liveticker)",
+        "Attendance": "10000"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.510607,
+            52.456258
+          ],
+          [
+            13.514136,
+            52.455225
+          ],
+          [
+            13.517807,
+            52.456166
+          ],
+          [
+            13.519116,
+            52.457435
+          ],
+          [
+            13.521026,
+            52.460808
+          ],
+          [
+            13.514201,
+            52.462403
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "name": "2013 Anti-Nazi Demo",
+        "Lata": "2013",
+        "Attendance": 2000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.512089,
+          52.566334
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2002, 2015",
+        "description": "12-13:30 (taz 30.04)",
+        "name": "2015 – NPD Counterdemonstration",
+        "Attendance": 500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.510523,
+          52.453028
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2016",
+        "name": "2016 – Kundgebung „1. Mai – Nazifrei!“ am Busbahnhof Schöneweide, Beginn 13 Uhr",
+        "description": "(B.Z. Stimme 27.04)",
+        "Attendance": 900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.50997567176819,
+          52.45598977913197
+        ]
+      },
+      "properties": {
+        "name": "2016 – Kundgebung „1. Mai – Nazifreiheit!“ am Cajamarcaplatz ",
+        "description": "auf dem Vorplatz des S-Bahnhof Schöneweide, Beginn 13.30 Uhr (BZ 27.04)",
+        "Lata": "2016",
+        "Attendance": 900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.507084,
+          52.563569
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2016 – Kundgebung „Gemeinsam gegen Rassismus – Refugees Welcome“,",
+        "description": "Berlin-Lichtenberg; Beginn 11.30 Uhr (BZ, 27.04)",
+        "Lata": "2016",
+        "Attendance": 900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.509892,
+          52.456456
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2016 – Kundgebung „Schöner weiden ohne Nazis\"",
+        "description": " Beginn 13.30 Uhr an der Schnellerstrasse/Brückenstrasse",
+        "Lata": "2016",
+        "Attendance": 900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.448166,
+          52.547026
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2016 Kundgebung Die Grünen „Pankow ist bunt und vielfältig“ ",
+        "description": "10:00 (BZ, 27.04)\nAttendance: (Overall 900)",
+        "Lata": "2016",
+        "Attendance": 900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.451021,
+          52.548076
+        ]
+      },
+      "properties": {
+        "name": "2017 Kundgebung „Berlin solidarisch gegen Nazis“",
+        "description": "10:00, Antonplatz (Berliner Morgenpost)",
+        "Lata": "2017"
+      }
+    }
+  ]
+}

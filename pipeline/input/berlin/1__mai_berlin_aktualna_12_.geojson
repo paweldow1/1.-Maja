@@ -1,0 +1,650 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.767441,
+            52.695941
+          ],
+          [
+            13.915103,
+            52.689279
+          ],
+          [
+            13.60673,
+            52.651785
+          ],
+          [
+            13.601236,
+            52.636361
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {}
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.400123,
+          52.512487
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "description": "(ND 2.05.1990)",
+        "name": "1990 PDS-Fest \"1. Mai wird 100\"",
+        "Lata": "1990"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.411195,
+          52.527149
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "description": "From invitation:\n\n**Kommt alle zur Kundgebung des DGB am 1. Mai.**\n*11 Uhr Platz der Republik, Reichstagsgebäude* \n\n**Straßenfest der PDS** \n*Am Rosa-Luxemburg-Platz von 14-18 Uhr Gespräche mit Gregor Gysi und Käthe ReichelStände der AG's und IG’s Linker Medien- und Lesemarkt Spielaktionen für Kinderund Erwachsene PDS»Tag der Ottenen Tür«im Parteivorstand der PDS*",
+        "name": "1991 PDS Strassenfest",
+        "Lata": "1991"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.411689,
+          52.526457
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "description": "9:30 – Kundgebung\n11:30 – Tag der offenen Tür (nur Berliner PDS) (jw 30.04.1993)",
+        "name": "1993 PDS Tag der offenen Tür",
+        "Lata": "1993"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.411271,
+          52.52666
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "1994 "
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.411506,
+            52.526274
+          ],
+          [
+            13.415338,
+            52.52728
+          ],
+          [
+            13.415767,
+            52.527071
+          ],
+          [
+            13.411432,
+            52.523493
+          ],
+          [
+            13.406196,
+            52.520686
+          ],
+          [
+            13.400229,
+            52.517944
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "_umap_options": {
+          "color": "HotPink",
+          "dashArray": "10"
+        },
+        "name": "1994 PDS Demo",
+        "description": "*Die PDS Berlin ruft ihre Mitglieder und Sympathisanten auf, an den Maiveranstaltungen der Gewerkschaften teilzunehmen. Um 10.15 Uhr ist Treffpunkt vor dem Karl-Liebknecht-Haus.* (nd 27.04)\n\n*Auch die PDS, die rund tausend Anhänger mobilisierte, erließ es bei dem Transparent: „Gegen Rechtsruck und Sozialabbau\". Erstaunt oder amüsiert reagierten Teilnehmer auf einen mit roten Fahnenüberladenen Lastwagen der „fdj\".* (BZ 2.05.94)\n\nAttendance: \n1000 (BZ 2.05.1994)",
+        "Lata": "1994",
+        "Attendance": "1000"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4164507,
+          52.52068
+        ]
+      },
+      "properties": {
+        "osm_type": "W",
+        "osm_id": 19001815,
+        "osm_key": "amenity",
+        "osm_value": "conference_centre",
+        "type": "house",
+        "housenumber": "11",
+        "name": "1994 PDS Tanz in den Mai",
+        "street": "Alexanderstraße",
+        "district": "Mitte",
+        "city": "Berlin",
+        "country": "Germany",
+        "postcode": "10178",
+        "countrycode": "DE",
+        "extent": [
+          13.4159287,
+          52.5209964,
+          13.4169722,
+          52.5203636
+        ],
+        "description": "*Schon am Vorabend ist etwas los. Am 30. April lädt die PDS um 19.30 Uhr in die Kongreßhalle am Alex ein. Reinhold Ändert sowie der Gewerkschafter und Bundestagskandidat Manfred Müller werden dabei sein. Es wird eine Versteigerung geben und Musik für den Tanz in den Mai.* (ND 28.04.1994",
+        "Lata": "1994"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.411625,
+          52.526588
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "1995",
+        "name": "1995 PDS 1. Mai Fest",
+        "description": "*Bei der PDS rund um das Karl-Liebknecht-Haus ging es mit Jazzmusik und Hofschoppen eher familiär zu. Viele Besucher waren gekommen, um die Diskussionsrunden zu erleben, etwa zur Länderehe Berlin-Brandenburg. Die uniformierte Staatsmacht war von der Sicherheitslage offensichtlich so überzeugt, daß sie sich gar nicht erst blicken ließ.* (ND 2.05.1995)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.413247,
+          52.52192
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "1996",
+        "name": "1996 PDS Kundgebung",
+        "description": "# 1996\n12:15 **Gegen Sozialabbau und Ausgrenzung** (zusammen mit Ostdeutsches Kuratorium von Verbänden)\n*Die PDS, die mit einer geballten Faust als Logo, und der Parole »Kämpfen für Arbeit« zum 1. Mai mobilisiert, ruft ihre Mitglieder auf, zu der HBV-Demo zu gehen und veranstaltet selbst eine Kundgebung am Alexanderplatz.* (JW, 30.04.1996)\n# 1998\n12:30 **Gegen rechts – für eine gerechte Republik**\n*Kundgebung der PDS 12.30 Uhr auf dem Berliner Alexanderplatzmit Petra Pau, Petra Sitte,Lothar Bisky und Uwe Doering,ab 11 Uhr Konzert mit „The Clogs\"* (PDS Einladung)\n\n*Nach der Kundgebung der Gewerkschaften »Zum Tag der Arbeit« vor dem Roten Rathaus zogen viele Teilnehmer gleich weiter auf den Alex zur Maifeier der PDS. Dort zählten die Veranstalter 12 000 Teilnehmer. Vor ihnen forderte PDS-Vorsitzender Lothar Bisky einen Politikwechsel in Deutschland und eine gerechte Republik. Allein ein Regierungswechsel reiche nicht. So, wie unser Land heute ökologisch, ökonomisch, sozial, kulturell und moralisch verfaßt sei, dürfe es nicht bleiben* (ND)\nAttendance:\n12000 (ND, 2.05.1998)\n1000 Teilnehmer (BZ, 2.05.1998)\n\n# 1999\nca. 12:00 – **Frieden schaffen ohne Waffen!**\n*Eine der größten Maikundgebungen mit 10 000 Teilnehmergegen den NATO-Krieg fand auf dem Berliner Alexanderplatz statt. Aufgerufen dazu hatte die PDS*\n10 000 Teilnehmer (ND, 3.05.1999)\n\n# 2000\n12:30 – *Ausbildung jetzt. Arbeit jetzt. Frieden jetzt. Atomausstieg jetzt.*\n**Es sprechen Gregor Gysi, Christa Luft und Petra Pau.**\n7 000 Teilnehmer (ND, 2.05.2000)\n\n# 2001\n11:30 \n*Auch PDS-Chefin Petra Pau kritisierte auf der Kundgebung am Alex vor 7000 Teilnehmern die \"unsägliche Faulheits-Debatte\". Sie warf dem Kanzler fehlendes Engagement beim Aufbau Ost vor.* (Berliner Kurier 2.05.2001)\n*Ostdeutsche seien keine Jammerossis, sagte auf einer PDS-Kundgebung auf dem Berliner Alexanderplatz die Parteivorsitzende Gabriele Zimmer zu 7500 Teilnehmern.* (ND, 2.05.2001)\n\n# 2002\n12:30 \n** (ND 30.04.2002)",
+        "Attendance": "4000"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.413073,
+          52.521712
+        ]
+      },
+      "properties": {
+        "description": "**12:00** – u.a. Lothar Bisky, Petra Pau, Christa Luft und Elke Breitenbach (HBV) sprechen. (ND 30.04.1997)",
+        "name": "1997 PDS Kundgebung \"sozial und solidarisch\"",
+        "Lata": "1997",
+        "Attendance": 7333
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.413247,
+          52.52192
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "1998",
+        "name": "1998 PDS Kundgebung",
+        "description": "# 1996\n12:15 **Gegen Sozialabbau und Ausgrenzung** (zusammen mit Ostdeutsches Kuratorium von Verbänden)\n*Die PDS, die mit einer geballten Faust als Logo, und der Parole »Kämpfen für Arbeit« zum 1. Mai mobilisiert, ruft ihre Mitglieder auf, zu der HBV-Demo zu gehen und veranstaltet selbst eine Kundgebung am Alexanderplatz.* (JW, 30.04.1996)\n# 1998\n12:30 **Gegen rechts – für eine gerechte Republik**\n*Kundgebung der PDS 12.30 Uhr auf dem Berliner Alexanderplatzmit Petra Pau, Petra Sitte,Lothar Bisky und Uwe Doering,ab 11 Uhr Konzert mit „The Clogs\"* (PDS Einladung)\n\n*Nach der Kundgebung der Gewerkschaften »Zum Tag der Arbeit« vor dem Roten Rathaus zogen viele Teilnehmer gleich weiter auf den Alex zur Maifeier der PDS. Dort zählten die Veranstalter 12 000 Teilnehmer. Vor ihnen forderte PDS-Vorsitzender Lothar Bisky einen Politikwechsel in Deutschland und eine gerechte Republik. Allein ein Regierungswechsel reiche nicht. So, wie unser Land heute ökologisch, ökonomisch, sozial, kulturell und moralisch verfaßt sei, dürfe es nicht bleiben* (ND)\nAttendance:\n12000 (ND, 2.05.1998)\n1000 Teilnehmer (BZ, 2.05.1998)\n\n# 1999\nca. 12:00 – **Frieden schaffen ohne Waffen!**\n*Eine der größten Maikundgebungen mit 10 000 Teilnehmergegen den NATO-Krieg fand auf dem Berliner Alexanderplatz statt. Aufgerufen dazu hatte die PDS*\n10 000 Teilnehmer (ND, 3.05.1999)\n\n# 2000\n12:30 – *Ausbildung jetzt. Arbeit jetzt. Frieden jetzt. Atomausstieg jetzt.*\n**Es sprechen Gregor Gysi, Christa Luft und Petra Pau.**\n7 000 Teilnehmer (ND, 2.05.2000)\n\n# 2001\n11:30 \n*Auch PDS-Chefin Petra Pau kritisierte auf der Kundgebung am Alex vor 7000 Teilnehmern die \"unsägliche Faulheits-Debatte\". Sie warf dem Kanzler fehlendes Engagement beim Aufbau Ost vor.* (Berliner Kurier 2.05.2001)\n*Ostdeutsche seien keine Jammerossis, sagte auf einer PDS-Kundgebung auf dem Berliner Alexanderplatz die Parteivorsitzende Gabriele Zimmer zu 7500 Teilnehmern.* (ND, 2.05.2001)\n\n# 2002\n12:30 \n** (ND 30.04.2002)\n",
+        "Attendance": "6500"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.413247,
+          52.52192
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "1999",
+        "name": "1999 PDS Kundgebung",
+        "description": "# 1996\n12:15 **Gegen Sozialabbau und Ausgrenzung** (zusammen mit Ostdeutsches Kuratorium von Verbänden)\n*Die PDS, die mit einer geballten Faust als Logo, und der Parole »Kämpfen für Arbeit« zum 1. Mai mobilisiert, ruft ihre Mitglieder auf, zu der HBV-Demo zu gehen und veranstaltet selbst eine Kundgebung am Alexanderplatz.* (JW, 30.04.1996)\n# 1998\n12:30 **Gegen rechts – für eine gerechte Republik**\n*Kundgebung der PDS 12.30 Uhr auf dem Berliner Alexanderplatzmit Petra Pau, Petra Sitte,Lothar Bisky und Uwe Doering,ab 11 Uhr Konzert mit „The Clogs\"* (PDS Einladung)\n\n*Nach der Kundgebung der Gewerkschaften »Zum Tag der Arbeit« vor dem Roten Rathaus zogen viele Teilnehmer gleich weiter auf den Alex zur Maifeier der PDS. Dort zählten die Veranstalter 12 000 Teilnehmer. Vor ihnen forderte PDS-Vorsitzender Lothar Bisky einen Politikwechsel in Deutschland und eine gerechte Republik. Allein ein Regierungswechsel reiche nicht. So, wie unser Land heute ökologisch, ökonomisch, sozial, kulturell und moralisch verfaßt sei, dürfe es nicht bleiben* (ND)\nAttendance:\n12000 (ND, 2.05.1998)\n1000 Teilnehmer (BZ, 2.05.1998)\n\n# 1999\nca. 12:00 – **Frieden schaffen ohne Waffen!**\n*Eine der größten Maikundgebungen mit 10 000 Teilnehmergegen den NATO-Krieg fand auf dem Berliner Alexanderplatz statt. Aufgerufen dazu hatte die PDS*\n10 000 Teilnehmer (ND, 3.05.1999)\n\n# 2000\n12:30 – *Ausbildung jetzt. Arbeit jetzt. Frieden jetzt. Atomausstieg jetzt.*\n**Es sprechen Gregor Gysi, Christa Luft und Petra Pau.**\n7 000 Teilnehmer (ND, 2.05.2000)\n\n# 2001\n11:30 \n*Auch PDS-Chefin Petra Pau kritisierte auf der Kundgebung am Alex vor 7000 Teilnehmern die \"unsägliche Faulheits-Debatte\". Sie warf dem Kanzler fehlendes Engagement beim Aufbau Ost vor.* (Berliner Kurier 2.05.2001)\n*Ostdeutsche seien keine Jammerossis, sagte auf einer PDS-Kundgebung auf dem Berliner Alexanderplatz die Parteivorsitzende Gabriele Zimmer zu 7500 Teilnehmern.* (ND, 2.05.2001)\n\n# 2002\n12:30 \n** (ND 30.04.2002)\n",
+        "Attendance": "10000"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.413247,
+          52.52192
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2000",
+        "name": "2000 PDS Kundgebung",
+        "description": "# 1996\n12:15 **Gegen Sozialabbau und Ausgrenzung** (zusammen mit Ostdeutsches Kuratorium von Verbänden)\n*Die PDS, die mit einer geballten Faust als Logo, und der Parole »Kämpfen für Arbeit« zum 1. Mai mobilisiert, ruft ihre Mitglieder auf, zu der HBV-Demo zu gehen und veranstaltet selbst eine Kundgebung am Alexanderplatz.* (JW, 30.04.1996)\n# 1998\n12:30 **Gegen rechts – für eine gerechte Republik**\n*Kundgebung der PDS 12.30 Uhr auf dem Berliner Alexanderplatzmit Petra Pau, Petra Sitte,Lothar Bisky und Uwe Doering,ab 11 Uhr Konzert mit „The Clogs\"* (PDS Einladung)\n\n*Nach der Kundgebung der Gewerkschaften »Zum Tag der Arbeit« vor dem Roten Rathaus zogen viele Teilnehmer gleich weiter auf den Alex zur Maifeier der PDS. Dort zählten die Veranstalter 12 000 Teilnehmer. Vor ihnen forderte PDS-Vorsitzender Lothar Bisky einen Politikwechsel in Deutschland und eine gerechte Republik. Allein ein Regierungswechsel reiche nicht. So, wie unser Land heute ökologisch, ökonomisch, sozial, kulturell und moralisch verfaßt sei, dürfe es nicht bleiben* (ND)\nAttendance:\n12000 (ND, 2.05.1998)\n1000 Teilnehmer (BZ, 2.05.1998)\n\n# 1999\nca. 12:00 – **Frieden schaffen ohne Waffen!**\n*Eine der größten Maikundgebungen mit 10 000 Teilnehmergegen den NATO-Krieg fand auf dem Berliner Alexanderplatz statt. Aufgerufen dazu hatte die PDS*\n10 000 Teilnehmer (ND, 3.05.1999)\n\n# 2000\n12:30 – *Ausbildung jetzt. Arbeit jetzt. Frieden jetzt. Atomausstieg jetzt.*\n**Es sprechen Gregor Gysi, Christa Luft und Petra Pau.**\n7 000 Teilnehmer (ND, 2.05.2000)\n\n# 2001\n11:30 \n*Auch PDS-Chefin Petra Pau kritisierte auf der Kundgebung am Alex vor 7000 Teilnehmern die \"unsägliche Faulheits-Debatte\". Sie warf dem Kanzler fehlendes Engagement beim Aufbau Ost vor.* (Berliner Kurier 2.05.2001)\n*Ostdeutsche seien keine Jammerossis, sagte auf einer PDS-Kundgebung auf dem Berliner Alexanderplatz die Parteivorsitzende Gabriele Zimmer zu 7500 Teilnehmern.* (ND, 2.05.2001)\n\n# 2002\n12:30 \n** (ND 30.04.2002)\n",
+        "Attendance": "3666"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.413247,
+          52.52192
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2001",
+        "name": "2001 PDS Kundgebung",
+        "description": "# 1996\n12:15 **Gegen Sozialabbau und Ausgrenzung** (zusammen mit Ostdeutsches Kuratorium von Verbänden)\n*Die PDS, die mit einer geballten Faust als Logo, und der Parole »Kämpfen für Arbeit« zum 1. Mai mobilisiert, ruft ihre Mitglieder auf, zu der HBV-Demo zu gehen und veranstaltet selbst eine Kundgebung am Alexanderplatz.* (JW, 30.04.1996)\n# 1998\n12:30 **Gegen rechts – für eine gerechte Republik**\n*Kundgebung der PDS 12.30 Uhr auf dem Berliner Alexanderplatzmit Petra Pau, Petra Sitte,Lothar Bisky und Uwe Doering,ab 11 Uhr Konzert mit „The Clogs\"* (PDS Einladung)\n\n*Nach der Kundgebung der Gewerkschaften »Zum Tag der Arbeit« vor dem Roten Rathaus zogen viele Teilnehmer gleich weiter auf den Alex zur Maifeier der PDS. Dort zählten die Veranstalter 12 000 Teilnehmer. Vor ihnen forderte PDS-Vorsitzender Lothar Bisky einen Politikwechsel in Deutschland und eine gerechte Republik. Allein ein Regierungswechsel reiche nicht. So, wie unser Land heute ökologisch, ökonomisch, sozial, kulturell und moralisch verfaßt sei, dürfe es nicht bleiben* (ND)\nAttendance:\n12000 (ND, 2.05.1998)\n1000 Teilnehmer (BZ, 2.05.1998)\n\n# 1999\nca. 12:00 – **Frieden schaffen ohne Waffen!**\n*Eine der größten Maikundgebungen mit 10 000 Teilnehmergegen den NATO-Krieg fand auf dem Berliner Alexanderplatz statt. Aufgerufen dazu hatte die PDS*\n10 000 Teilnehmer (ND, 3.05.1999)\n\n# 2000\n12:30 – *Ausbildung jetzt. Arbeit jetzt. Frieden jetzt. Atomausstieg jetzt.*\n**Es sprechen Gregor Gysi, Christa Luft und Petra Pau.**\n7 000 Teilnehmer (ND, 2.05.2000)\n\n# 2001\n11:30 \n*Auch PDS-Chefin Petra Pau kritisierte auf der Kundgebung am Alex vor 7000 Teilnehmern die \"unsägliche Faulheits-Debatte\". Sie warf dem Kanzler fehlendes Engagement beim Aufbau Ost vor.* (Berliner Kurier 2.05.2001)\n*Ostdeutsche seien keine Jammerossis, sagte auf einer PDS-Kundgebung auf dem Berliner Alexanderplatz die Parteivorsitzende Gabriele Zimmer zu 7500 Teilnehmern.* (ND, 2.05.2001)\n\n# 2002\n12:30 \n** (ND 30.04.2002)\n",
+        "Attendance": "7250"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.413247,
+          52.52192
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "Lata": "2002",
+        "name": "2002 PDS Kundgebung",
+        "description": "# 1996\n12:15 **Gegen Sozialabbau und Ausgrenzung** (zusammen mit Ostdeutsches Kuratorium von Verbänden)\n*Die PDS, die mit einer geballten Faust als Logo, und der Parole »Kämpfen für Arbeit« zum 1. Mai mobilisiert, ruft ihre Mitglieder auf, zu der HBV-Demo zu gehen und veranstaltet selbst eine Kundgebung am Alexanderplatz.* (JW, 30.04.1996)\n# 1998\n12:30 **Gegen rechts – für eine gerechte Republik**\n*Kundgebung der PDS 12.30 Uhr auf dem Berliner Alexanderplatzmit Petra Pau, Petra Sitte,Lothar Bisky und Uwe Doering,ab 11 Uhr Konzert mit „The Clogs\"* (PDS Einladung)\n\n*Nach der Kundgebung der Gewerkschaften »Zum Tag der Arbeit« vor dem Roten Rathaus zogen viele Teilnehmer gleich weiter auf den Alex zur Maifeier der PDS. Dort zählten die Veranstalter 12 000 Teilnehmer. Vor ihnen forderte PDS-Vorsitzender Lothar Bisky einen Politikwechsel in Deutschland und eine gerechte Republik. Allein ein Regierungswechsel reiche nicht. So, wie unser Land heute ökologisch, ökonomisch, sozial, kulturell und moralisch verfaßt sei, dürfe es nicht bleiben* (ND)\nAttendance:\n12000 (ND, 2.05.1998)\n1000 Teilnehmer (BZ, 2.05.1998)\n\n# 1999\nca. 12:00 – **Frieden schaffen ohne Waffen!**\n*Eine der größten Maikundgebungen mit 10 000 Teilnehmergegen den NATO-Krieg fand auf dem Berliner Alexanderplatz statt. Aufgerufen dazu hatte die PDS*\n10 000 Teilnehmer (ND, 3.05.1999)\n\n# 2000\n12:30 – *Ausbildung jetzt. Arbeit jetzt. Frieden jetzt. Atomausstieg jetzt.*\n**Es sprechen Gregor Gysi, Christa Luft und Petra Pau.**\n7 000 Teilnehmer (ND, 2.05.2000)\n\n# 2001\n11:30 \n*Auch PDS-Chefin Petra Pau kritisierte auf der Kundgebung am Alex vor 7000 Teilnehmern die \"unsägliche Faulheits-Debatte\". Sie warf dem Kanzler fehlendes Engagement beim Aufbau Ost vor.* (Berliner Kurier 2.05.2001)\n*Ostdeutsche seien keine Jammerossis, sagte auf einer PDS-Kundgebung auf dem Berliner Alexanderplatz die Parteivorsitzende Gabriele Zimmer zu 7500 Teilnehmern.* (ND, 2.05.2001)\n\n# 2002\n12:30 \n** (ND 30.04.2002)\n",
+        "Attendance": "2250"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.38698,
+          52.527129
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "description": "1990 – Beginning of the May Demonstration of organisations such as AG Junger GenossInnen of PDS, Autonomen Antifa, Vereinigte Linke and Unabhängigen Frauenverbandes. (taz 26.04.1990). The end point – Kollwitzerplatz"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.419006,
+            52.543033
+          ],
+          [
+            13.418877,
+            52.542642
+          ],
+          [
+            13.420229,
+            52.542055
+          ],
+          [
+            13.422676,
+            52.54458
+          ],
+          [
+            13.426346,
+            52.543014
+          ],
+          [
+            13.424167,
+            52.539281
+          ],
+          [
+            13.418575,
+            52.540188
+          ],
+          [
+            13.417974,
+            52.540019
+          ],
+          [
+            13.417633,
+            52.538192
+          ],
+          [
+            13.417461,
+            52.537278
+          ],
+          [
+            13.417032,
+            52.536338
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "name": "\"The East strikes back\". East German left demonstration 1992",
+        "description": "*Am Abend gingen die Auseinan-dersetzungen in Prenzlauer Berg indie zweite Runde: Unter dem Motto\"Der Osten schlägt zurück\" zogengegen 20 Uhr etwa 200 Demonstranten vom Heimholtzplatz in Richtung Kollwitzplatz. Entlang der Duncker-und der Husemannstraße hinterließen die Autonomen eine Spur der Verwüstung. Bauwagen wurden umgekippt, Mulicontainer auf die Straße geschoben, Autos angezündet und Schaufenster eingeworfen.* (BZ 2.05.1992)\n\n200 – BZ\n1000 – Gluckspilz",
+        "_umap_options": {
+          "dashArray": "10"
+        },
+        "Lata": "1992",
+        "Attendance": 600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.386986,
+            52.527146
+          ],
+          [
+            13.387656,
+            52.52726
+          ],
+          [
+            13.391776,
+            52.528089
+          ],
+          [
+            13.39493,
+            52.52882
+          ],
+          [
+            13.397698,
+            52.529433
+          ],
+          [
+            13.401217,
+            52.529668
+          ],
+          [
+            13.403363,
+            52.529877
+          ],
+          [
+            13.409543,
+            52.528807
+          ],
+          [
+            13.410069,
+            52.529518
+          ],
+          [
+            13.410552,
+            52.530197
+          ],
+          [
+            13.411818,
+            52.530987
+          ],
+          [
+            13.412375,
+            52.531581
+          ],
+          [
+            13.412708,
+            52.532612
+          ],
+          [
+            13.413534,
+            52.532351
+          ],
+          [
+            13.415058,
+            52.533623
+          ],
+          [
+            13.417633,
+            52.535921
+          ],
+          [
+            13.417075,
+            52.536267
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "description": "Friedrichstraße/Ecke Hannoversche Straße – Wilhelm-Pieck-Straße – Schönhauser Allee – Metzer Straße – Kollwitzstraße -Kollwitzplatz; (telegraph 7/1990)\n\nPoczątek demonstracji przed stałym przedstawicielstwem RFN w Berlinie\n\n**Aufruf** (excerpt)\n*Der faschistische Plan von Großraum Europa im 'dritten Reich‘ wird mit dem entstehenden 'vierten Reich deutscher Nation‘ innerhalb des 'europäischen Hauses‘ eine neue und wesentlich effektivere Gestalt annehmen.* (taz 27.04.1990)\n\n*Etwas 2000 Demonstranten blieben am Vormittag auf dem Kollwitzplatz in Prenzlauer Berg gelassen, fackelten zwar eine ehemalige deutsche Reichskriegsflagge ab, beschränkten sich aber ansonsten auf die Gewalt des Wortes im Kampf gegen Faschismus und Großkapital. * (BZ 2.05.1990)\n\nOrganizers: *Revolutionärer Jugendverband (RAJV), Autonome Antifa, Antifa-Jugend Berlin, Sozialistischer Studentenbund, AG Junge GenossInnen, Besetzte Häuser, Marxistischer Jugendverband (MJV), MitgliederInnen Vereinigte Linke, VSJV „Rosa Luxemburg“, MitgliederInnen des Unabh. Frauenverband*\n\nAttendance:\n2000 (Glückspilz)",
+        "Lata": "1990",
+        "name": "1990. Ost-Gruppen 100 Jahre 1. Mai – Widerstand gegen Unterdrückung, Kapital und Faschismus",
+        "Attendance": 2000,
+        "Slogan": "Widerstand gegen Unterdrückung, Kapital und Faschismus"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.419032624098314,
+          52.5430211
+        ]
+      },
+      "properties": {
+        "osm_type": "W",
+        "osm_id": 24515082,
+        "osm_key": "place",
+        "osm_value": "square",
+        "type": "other",
+        "postcode": "10437",
+        "countrycode": "DE",
+        "name": "Helmholtzplatz",
+        "country": "Germany",
+        "city": "Berlin",
+        "district": "Prenzlauer Berg",
+        "locality": "Helmholtzkiez",
+        "extent": [
+          13.4173878,
+          52.5438299,
+          13.4206774,
+          52.5421842
+        ],
+        "description": "1992 – początek demonstracji \"Osten schlägt zurück\" (20:00)\n\n## 1993 \n\n*Nach einem Stadtteilfest der Hausbestzern auf dem Helmhotzplatz hatten angetrunkene Randalier Gerümpel angerundet und Bauzäune auf die Strasse geworfen. Die Auseinandersetzungen dauerten bis Mitternacht* (BZ 3.05.1993)",
+        "Lata": "1992, 1993",
+        "_umap_options": {
+          "iconUrl": "/uploads/pictogram/table.svg"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.417018,
+          52.536232
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Kollwitzplatz",
+        "description": "\n---\n1990 – endpoint of the anti-nazi, mostly east german demonstration against the nazis and the reunification (?) (taz 26.04.90, 1. Mai am Kollwitzplatz)\n1991 – względnie szybko przygotowany festyn, zorganizowany przez wschodnioniemieckie grupy\n1992 – koniec demonstracji \"Der Osten schlägt zurück\". 1000-osobowa demonstracja zwieńczona budowaniem barykad, rzucaniem kamieni i zamieszkami\n1995 – Am Vorabend des 1.Mai feierten – wie seit Anfang der 90er Jahre üblich und jedes Jahr mehr – Menschen am Kollwitzplatz die Walpurgisnacht. Als die Bullen das Feuer auf dem Platz löschten und das Fest sprengten, wurden aus ein paar hundert rasch rund 2000 Menschen, die sich gegen die rund 600 Bullen zur Wehr setzten mit Steinen und Barrikaden (Glückspilz)\n1996 – festyn w noc Walpurgii organizowany przez władze lokalne, komercyjny; zamieszki od ok. 1\nAttendance: 10000 (JW)\n1996 – planowany koniec wspólnej, radykalnej i ML demonstracji. Bójki tuż przed Kollwitzplatz, rozbicie obu pochodów przez policję\n\n2000 – peaceful festival, coorganized by the city\n2001 – peaceful festival, coorganized by the city",
+        "Lata": "1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          13.417018,
+          52.536232
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Kollwitzplatz",
+        "description": "\n---\n1990 – endpoint of the anti-nazi, mostly east german demonstration against the nazis and the reunification (?) (taz 26.04.90, 1. Mai am Kollwitzplatz)\n1991 – względnie szybko przygotowany festyn, zorganizowany przez wschodnioniemieckie grupy\n1992 – koniec demonstracji \"Der Osten schlägt zurück\". 1000-osobowa demonstracja zwieńczona budowaniem barykad, rzucaniem kamieni i zamieszkami\n1995 – Am Vorabend des 1.Mai feierten – wie seit Anfang der 90er Jahre üblich und jedes Jahr mehr – Menschen am Kollwitzplatz die Walpurgisnacht. Als die Bullen das Feuer auf dem Platz löschten und das Fest sprengten, wurden aus ein paar hundert rasch rund 2000 Menschen, die sich gegen die rund 600 Bullen zur Wehr setzten mit Steinen und Barrikaden (Glückspilz)\n1996 – festyn w noc Walpurgii organizowany przez władze lokalne, komercyjny; zamieszki od ok. 1\nAttendance: 10000 (JW)\n1996 – planowany koniec wspólnej, radykalnej i ML demonstracji. Bójki tuż przed Kollwitzplatz, rozbicie obu pochodów przez policję\n\n2000 – peaceful festival, coorganized by the city\n2001 – peaceful festival, coorganized by the city",
+        "Lata": "1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.422295698381111,
+          52.549074000000005
+        ]
+      },
+      "properties": {
+        "osm_type": "W",
+        "osm_id": 175616015,
+        "osm_key": "leisure",
+        "osm_value": "park",
+        "type": "other",
+        "postcode": "10439",
+        "countrycode": "DE",
+        "name": "Widerspenstig und lebendig Hummanplatz Maifest",
+        "country": "Germany",
+        "city": "Berlin",
+        "district": "Prenzlauer Berg",
+        "locality": "Helmholtzkiez",
+        "extent": [
+          13.4209534,
+          52.5499089,
+          13.4236971,
+          52.5481983
+        ],
+        "description": "## 1995\nfestyn, z dala od potencjalnie niebezpiecznego Kollwitzplatz\n\n*“Unter dem Motto \"Widerspenstig & Lebendig\" findet am Humannplatz in Prenzlauer Berg von 10 bis 19 Uhr ein \"buntes, froehliches Strassenfest gegen den grauen Alltag\" statt. \"Leider haben die Faschisten in den letzten Jahren den 1. Mai genutzt, um an die Oeffentlichkeit zu treten und gegen Minderheiten zu hetzen (...) Wir wollen dieser Entwicklung entgegentreten\", heisst es in einem Aufruf. Neben tuerkischer und lateinamerikanischer Musik gibt es Punk aus Bernau, internationales Essen und Informationsstaende. Im Diskussionszelt finden u.a. Gespraechsrunden zur Lage der vietnamesischen VertragsarbeiterInnen (15 Uhr) statt. Um 14 Uhr berichten Antifaschistische Widerstandskaempfer, danach informiert die Vorbereitungsgruppe 8. Mai.* taz 1995\n## 1996\n– festyn organizowany przez grupy lewicowe; ma być alternatywą dla zamieszek, polityczny, ale bez przemocy\n\n*In Kreuzberg will ein von kommunistischen und stalinistischen Gruppierungen dominiertes Bündnis am Oranienplatz demonstrieren, in Mitte und Prenzlauer Berg rufen ein autonomes Bündnis zur Demo (Rosa-Luxemburg- Platz), organisieren Ostinitiativen ein \"lebendiges und widerspenstiges\" Straßenfest (Humannplatz) und findet bereits in der Nacht zum 1. Mai die Walpurgisfeier statt (Kollwitzplatz).* (taz 1996)\n\n## 1997 \nfestyn wspierany przez PDS/Zielonych (Glückspilz)\n\n*Weitere Mai-Veranstaltungen der PDS gibt es in den Bezirken: Kreuzberg, 15-21 Uhr, Mariannenplatz, Prenzlauer Berg, 10-18 Uhr, Humannplatz, Treptow, 14-18 Uhr, Springbornclub Johannisthai, Köpenick, 14-18 Uhr, Luisenhain, Marzahn, 13-18 Uhr, Alt-Marzahn 64, Hohenschönhausen, 10-17 Uhr, Oberseepark, Hellersdorf, 11-19 Uhr, Boulevard Kastanienallee.* ND 30.04.1997\n\n## 1998 \npokojowo zakończony festyn (podobnie jak rok wcześniej, również współorganizowany przez PDS) BZ (3.05.1999)\n## 1999\npeaceful festival\n\n## 2000\n peaceful festival\n*9-24 Uhr Bündnisfest auf dem Humannplatz, Prenzlauer Berg* (ND 30.04.2000)\n\n## 2001\n*ab 11.00 Uhr - Humannplatz (Prenzlauer Berg) 7. Humannplatz-Fest mit viel Musik, Essen- und Infoständen* (stressfaktor)\n\n## 2002\n*Berlin ruft die PDS für 12.30 Uhr zu einer Kundgebung auf dem Alexanderplatz. Maifeste veranstalten die Sozialisten an der Bötzoweiche (10-20 Uhr, Bötzowstraße, Prenzlauer Berg), am Obersee (11-18 Uhr, Lindenweg, Lichtenberg), auf dem Humannplatz (12-20 Uhr, Prenzlauer Berg)*\n\n## 2003\n*Dann am 1. Mai selbst trifft man sich ab 10 Uhr auf dem Mariannenplatz an Marktständen zum Debattieren, von dort aus strebt eine erste irgendwie revolutionäre Gruppe zur Protestkundgebung auf dem Oranienplatz. Dieweil startet um 14 Uhr auf dem Humannplatz in Prenzlauer Berg ein konkurrierendes Kleinhändler-Polit-Fest, friedlich und mit großem PDS-Anteil.* taz 2003\n\n## End\n*Unter dem Motto »widerspenstig und lebendig« hatte ein Bündnis aus linken Gruppierungen erstmals 1995 das Fest auf dem Humannplatz in Prenzlauer Berg mit dem Ziel organisiert, den Feiertag im Ostteil der Stadt »jenseits von traditionellen Massenaufläufen und revolutionärer Verbalrhetorik wiederzubeleben«, wie es in einer Presseerklärung heißt. »Die politische Ausrichtung des Festes fiel schnell hinten runter«, konstatieren die Organisatoren neun Jahre später. Inhaltliche Angebote seien auf breites Desinteresse gestoßen. »Wir haben keine Lust mehr«, gab das Festkomitee bekannt. In den Jahren seines Bestehens hatte das ausnahmslos friedlich verlaufende Fest immer stärkeren Zulauf bekommen.* ND 28.04.2004",
+        "Lata": "1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003",
+        "_umap_options": {
+          "iconClass": "LargeCircle",
+          "iconUrl": "/uploads/pictogram/table.svg"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.412402,
+            52.521613
+          ],
+          [
+            13.40959,
+            52.522514
+          ],
+          [
+            13.406285,
+            52.520948
+          ],
+          [
+            13.403409,
+            52.519394
+          ],
+          [
+            13.400404,
+            52.518206
+          ],
+          [
+            13.399631,
+            52.518336
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "_umap_options": {
+          "dashArray": "10"
+        },
+        "name": "1992 – Zug der Widerspensigsten",
+        "description": "Slogan: *Alles was uns fällt, ist Solidarität*\nAttendance: mehr als 5000 ~ 6000 (ND)\n",
+        "Lata": "1992",
+        "Attendance": 5500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          [
+            13.410929,
+            52.526933
+          ],
+          [
+            13.411185,
+            52.526104
+          ],
+          [
+            13.409725,
+            52.524172
+          ],
+          [
+            13.408867,
+            52.522912
+          ],
+          [
+            13.409801,
+            52.522566
+          ],
+          [
+            13.4048,
+            52.520021
+          ],
+          [
+            13.406175,
+            52.519002
+          ],
+          [
+            13.404436,
+            52.518493
+          ],
+          [
+            13.403449,
+            52.519263
+          ],
+          [
+            13.400445,
+            52.518049
+          ],
+          [
+            13.399843,
+            52.518519
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "_umap_options": {
+          "dashArray": "10"
+        },
+        "Lata": "1993",
+        "name": "BKG Demonstration 1993",
+        "description": "(Berliner Zeitung 30.04; [@hurtgenDokumenteBundnisKritischer2017 {89}]\n\n*Gut 5000 Kritische Gewerkschafterinnen, Wehrdienstverweigerer, Arbeitslose, Behinderte, Vertreter von Bürgerinitiativen, KPD, PDS sammelten sich hier [Rosa-Luxemburg-Platz] gegen 9 Uhr gemeinsam* (jw 2.05.1993)\n\nVeranstalter: *Ostberliner Betriebs- und Personalratsinitiative und einem „Bündnis Kritischer GewerkschafterInnen\"* (taz 1993)\nAttendance: ~6000 (JW 3.05)",
+        "Attendance": 6000
+      }
+    }
+  ]
+}
