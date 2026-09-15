@@ -102,7 +102,15 @@ def main():
         if not od:
             continue
         czysty = re.sub(r"[*_`#>\[\]]", "", tekst)
-        trafione = [d for d in dzielnice if re.search(r"\b%s\b" % re.escape(d), czysty)]
+        # Order by where the name appears, not by how long it is: the venue
+        # is named before the organising branch, so "Rosa-Luxemburg-Platz,
+        # Mitte ... Prenzlauer Berg" is an event in Mitte.
+        pozycje = []
+        for d in dzielnice:
+            m = re.search(r"\b%s\b" % re.escape(d), czysty)
+            if m:
+                pozycje.append((m.start(), -len(d), d))
+        trafione = [d for _, _, d in sorted(pozycje)]
         aktorzy = [a for a in ACTOR_KEYWORDS_DE
                    if re.search(r"\b%s\b" % re.escape(a), czysty)]
         wiersze.append({
