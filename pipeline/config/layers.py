@@ -72,6 +72,39 @@ DROP_FIELDS = {
 }
 DROP_FIELD_PREFIXES = ("stroke", "icon", "fill")
 
+# Name evidence for the event type, checked in order: the specific kinds
+# first, so "DGB Maifest" reads as a festyn rather than falling through to
+# the generic demonstration/rally match. The layer only says who, not what,
+# so a clear signal in the name overrides the layer's default type (which
+# instrukcja_v2.md sec. 6 calls a "typ domyslny").
+TYP_SLOWA = [
+    ("kwiaty", ["kwiat", "wieńc", "wieniec", "wieńce", "złożenie kwiat",
+                "kranz", "kranzniederlegung", "gedenk", "denkmal", "mahnmal",
+                "ehrung", "upamiętnien"]),
+    ("korso", ["korso", "motorrad", "skater", "fahrrad", "rowerow"]),
+    ("koncert", ["konzert", "koncert", "concert"]),
+    ("festyn", ["maifest", "strassenfest", "straßenfest", "kulturfest",
+                "stadtteilfest", "bürgerfest", "sommerfest", "myfest",
+                "mygruni", "festyn", "piknik", "picnic", "festival",
+                "tanz in den mai", "street party", "strassenparty", "-fest",
+                " fest", "fest\""]),
+    ("spotkanie", ["spotkanie", "treffen", "tag der offenen tür", "diskussion",
+                   "gespräch"]),
+    ("wiec", ["kundgebung", "wiec", "rally", "versammlung", "auftakt"]),
+    ("kontra", ["gegendemo", "gegenkundgebung", "counterdemo", "counter-demo",
+                "counterdemonstration", "kontra", "blockade", "blokada",
+                "gegenprotest"]),
+    ("demonstracja", ["demonstracja", "demonstration", "aufmarsch", "aufzug",
+                      "marsch", "pochód", "marsz", "manifest", "demo",
+                      "sponti", "spontandemo"]),
+]
+
+# Layers where the layer name carries no distinguishing information, so the
+# id discriminator is taken from the object's own name instead. Walpurgisnacht
+# is the case: the layer is one label over parties, women's marches and riots
+# in a dozen different parks, and only the name tells them apart.
+WARSTWY_ID_Z_NAZWY = {"Walpurgisnacht", "Other events", "Inne wydarzenia"}
+
 # Known actor keywords for best-effort FROM_NAME guessing (section 9).
 ACTOR_KEYWORDS_PL = [
     "OPZZ", "Solidarność", "Sierpień 80", "ZZ Kontra", "ZNP", "Budowlani",

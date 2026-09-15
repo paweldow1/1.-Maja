@@ -7,7 +7,7 @@ from pathlib import Path
 from config.layers import (
     ACTOR_KEYWORDS_DE, ACTOR_KEYWORDS_PL, CITY_CODE, DROP_FIELD_PREFIXES,
     DROP_FIELDS, FIELD_MAP, FROM_NAME, LAYER_META, LAYERS_IGNORE,
-    LAYERS_MIEJSCA,
+    LAYERS_MIEJSCA, TYP_SLOWA, WARSTWY_ID_Z_NAZWY,
 )
 
 YEAR_RE = re.compile(r"(?:19|20)\d{2}")
@@ -56,21 +56,19 @@ def guess_actor(name, city):
     return ""
 
 
-def guess_typ(name, geom_type):
+def typ_z_nazwy(name):
+    """Type read off the object's name, or '' when the name says nothing."""
     if not name:
-        return "demonstracja" if geom_type in ("LineString", "MultiLineString") else "wiec"
+        return ""
     low = name.lower()
-    if "kwiat" in low or "wieniec" in low or "wieńce" in low:
-        return "kwiaty"
-    if "koncert" in low:
-        return "koncert"
-    if "festyn" in low or "piknik" in low:
-        return "festyn"
-    if "spotkanie" in low:
-        return "spotkanie"
-    if geom_type in ("LineString", "MultiLineString"):
-        return "korso" if "korso" in low else "demonstracja"
-    return "wiec"
+    for typ, slowa in TYP_SLOWA:
+        if any(s in low for s in slowa):
+            return typ
+    return ""
+
+
+def typ_z_geometrii(geom_type):
+    return "demonstracja" if geom_type in ("LineString", "MultiLineString") else "wiec"
 
 
 def start_end_points(geometry):
@@ -97,7 +95,7 @@ def route_length(geometry):
 
 
 WYDARZENIA_COLUMNS = [
-    "id", "rok", "rok_zrodlo", "miasto", "warstwa", "typ", "aktor",
+    "id", "rok", "rok_zrodlo", "miasto", "warstwa", "typ", "typ_zrodlo", "aktor",
     "aktor_zgadniety", "charakter", "nazwa", "opis", "haslo",
     "frekwencja_mapa", "geom_typ", "dlugosc_trasy_m", "punkt_start",
     "punkt_koniec", "id_geo", "plik_zrodlowy", "postcovid",
@@ -143,18 +141,28 @@ def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters, bez
         else:
             aktor = aktor_default
 
-        if typ_default == FROM_NAME:
-            typ = guess_typ(name, geometry.get("type"))
+        nazwany_typ = typ_z_nazwy(name)
+        if nazwany_typ:
+            typ, typ_zrodlo = nazwany_typ, "name"
+        elif typ_default != FROM_NAME:
+            typ, typ_zrodlo = typ_default, "warstwa"
         else:
-            typ = typ_default
+            typ, typ_zrodlo = typ_z_geometrii(geometry.get("type")), "geometria"
 
-        wymaga_weryfikacji = aktor_zgadniety or typ_default == FROM_NAME or not aktor
+        wymaga_weryfikacji = aktor_zgadniety or typ_zrodlo == "geometria" or not aktor
 
         punkt_start, punkt_koniec = start_end_points(geometry)
         dlugosc = route_length(geometry)
 
         for rok in years:
             slug = slugify_actor(aktor) or "NIEZNANY"
+            if layer_name in WARSTWY_ID_Z_NAZWY:
+                # The layer groups unlike things, so the name is what
+                # distinguishes them -- without it these collapse into one id
+                # per year and come out as _a/_b.
+                z_nazwy = slugify_actor(re.sub(r"(?:19|20)\d{2}", "", name or ""))
+                if z_nazwy:
+                    slug = f"{slug}-{z_nazwy[:40]}" if aktor else z_nazwy[:40]
             base_id = f"{rok}_{city_code}_{typ}_{slug}"
             n = id_counters.get(base_id, 0)
             id_counters[base_id] = n + 1
@@ -167,6 +175,7 @@ def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters, bez
                 "miasto": city_code,
                 "warstwa": layer_name,
                 "typ": typ,
+                "typ_zrodlo": typ_zrodlo,
                 "aktor": aktor,
                 "aktor_zgadniety": aktor_zgadniety,
                 "charakter": charakter,
