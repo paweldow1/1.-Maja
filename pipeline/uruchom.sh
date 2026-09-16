@@ -17,6 +17,8 @@ python3 parse_roczniki.py input/PL_1990-2019.md input/DE_1990-2019.md
 python3 parse_frekwencja.py input
 
 echo "=== 3. zlaczenie i geografia"
+# before the join, so it matches on the corrected actors
+python3 zastosuj_decyzje.py --miasta
 python3 join.py
 python3 dzielnice.py
 

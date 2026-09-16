@@ -1,14 +1,14 @@
 id,rok,rok_zrodlo,miasto,warstwa,typ,typ_zrodlo,aktor,aktor_zgadniety,charakter,nazwa,opis,haslo,frekwencja_mapa,frekwencja_mapa_num,geom_typ,dlugosc_trasy_m,punkt_start,punkt_koniec,id_geo,plik_zrodlowy,klucz_zrodlowy,postcovid,wymaga_weryfikacji
 1999_DE_wiec_Walpurgisnacht-Helmholtzplatz-Walpurgisnacht-Kundgebung,1999,Lata,DE,Walpurgisnacht,wiec,name,Walpurgisnacht,False,niezwiazkowe,1990 Helmholtzplatz Walpurgisnacht Kundgebung,1999 – Kundgebung Walpurgisnacht (rbb),,,,Point,,"52.5430211,13.419032624098314","52.5430211,13.419032624098314",0,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#0#1999,,False
-1990_DE_wiec_Walpurgisnacht-Walpurgisnacht,1990,Lata,DE,Walpurgisnacht,wiec,geometria,Walpurgisnacht,False,niezwiazkowe,1990 Walpurgisnacht,"
+1990_DE_wiec_Walpurgisnacht-Walpurgisnacht,1990,Lata,DE,Walpurgisnacht,festyn,weryfikacja,Walpurgisnacht,False,niezwiazkowe,1990 Walpurgisnacht,"
 *BDer Käthe-Kollwitz-Platz im Berliner Prenzlauer Berg ist auserwählt (!) für ein Spektakel, bei dem man und frau sich die Augen reiben werden in jenen sagenumwobenen dunklen Stunden zwischen dem 30. April und 1. Mai - der Walpurgisnacht. Da wird der Kolle also zum Hexentanzplatz und seine Namenpatin wäre sicher dafür und mittendrin, denn da streiten sehr irdische, sehr selbstbewußt-realistische Frauen um ihre derzeit in Frage gestellten, teils ziemlich bedrohten und teils noch nicht eingelösten Rechte. Die Aktion geht aber nicht zänkisch über den Platz, sondern mit Spaß, Witz, Wort, Musik und Spiel. Fraueninitiativen und -gruppen aus dem Ost- und Westteil Berlins haben dieses ketzerische Treffen organisiert. Und was seit einigen Jahren in Westberlin schon Sitte war, findet diesmal im Prenzl Berg statt.* (taz 7.04.1990)",,,,Point,,"52.536169,13.416562","52.536169,13.416562",1,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#1#1990,,True
 1995_DE_demonstracja_Walpurgisnacht-Demo,1995,Lata,DE,Walpurgisnacht,demonstracja,name,Walpurgisnacht,False,niezwiazkowe,1995 Demo (?),"*Nach Angaben der Polizei haben am Vorabend der 1. Mai 300 Jugendlichen von einem Fest auf der Humannplatz zum Kollwitzplatz gezogen* (rbb, 0:18)",,300,300,LineString,1394.2,"52.548644,13.422128","52.536482,13.417277",2,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#2#1995,,False
-1996_DE_wiec_Walpurgisnacht-Walpurgisnacht-at-Kollwitzplatz,1996,Lata,DE,Walpurgisnacht,wiec,geometria,Walpurgisnacht,False,niezwiazkowe,1996 Walpurgisnacht at Kollwitzplatz,"1996 – festyn w noc Walpurgii organizowany przez władze lokalne, komercyjny; zamieszki od ok. 1
+1996_DE_wiec_Walpurgisnacht-Walpurgisnacht-at-Kollwitzplatz,1996,Lata,DE,Walpurgisnacht,festyn,weryfikacja,Walpurgisnacht,False,niezwiazkowe,1996 Walpurgisnacht at Kollwitzplatz,"1996 – festyn w noc Walpurgii organizowany przez władze lokalne, komercyjny; zamieszki od ok. 1
 Attendance: 10000 (JW)
 1996 – planowany koniec wspólnej, radykalnej i ML demonstracji. Bójki tuż przed Kollwitzplatz, rozbicie obu pochodów przez policję",,10000,10000,Point,,"52.536232,13.417018","52.536232,13.417018",3,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#3#1996,,True
-1999_DE_wiec_Walpurgisnacht-Walpurginsnacht,1999,Lata,DE,Walpurgisnacht,wiec,geometria,Walpurgisnacht,False,niezwiazkowe,1999. Walpurginsnacht,"1999 – Walpurgisnacht Kollwitzplatz (rbb)
+1999_DE_wiec_Walpurgisnacht-Walpurginsnacht,1999,Lata,DE,Walpurgisnacht,festyn,weryfikacja,Walpurgisnacht,False,niezwiazkowe,1999. Walpurginsnacht,"1999 – Walpurgisnacht Kollwitzplatz (rbb)
 Pokojowy przebieg, żadnych zamieszek",,10000,10000,Point,,"52.536232,13.417018","52.536232,13.417018",4,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#4#1999,,True
-2001_DE_wiec_Walpurgisnacht-Walpurgisnacht-Spontane-Street-Party,2001,Lata,DE,Walpurgisnacht,wiec,geometria,Walpurgisnacht,False,niezwiazkowe,2001 Walpurgisnacht Spontane Street-Party,"*""Spontane"" Walpurgisfeiern sind für den Volkspark Friedrichshain (ab 20 Uhr) und für den Boxhagener Platz in Friedrichshain angekündigt.* (taz 30.04.2001, s. 24)",,,,Point,,"52.52729246882668,13.434948921203613","52.52729246882668,13.434948921203613",5,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#5#2001,,True
+2001_DE_wiec_Walpurgisnacht-Walpurgisnacht-Spontane-Street-Party,2001,Lata,DE,Walpurgisnacht,festyn,weryfikacja,Walpurgisnacht,False,niezwiazkowe,2001 Walpurgisnacht Spontane Street-Party,"*""Spontane"" Walpurgisfeiern sind für den Volkspark Friedrichshain (ab 20 Uhr) und für den Boxhagener Platz in Friedrichshain angekündigt.* (taz 30.04.2001, s. 24)",,,,Point,,"52.52729246882668,13.434948921203613","52.52729246882668,13.434948921203613",5,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#5#2001,,True
 2001_DE_festyn_Walpurgisnacht-Tanz-in-den-Mai-auf-dem-Kolle,2001,Lata,DE,Walpurgisnacht,festyn,name,Walpurgisnacht,False,niezwiazkowe,2001. Tanz in den Mai auf dem Kolle,rbb Walpurgisnacht und 1. Mai,,10000,10000,Point,,"52.536232,13.417018","52.536232,13.417018",6,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#6#2001,,False
 2015_DE_wiec_Walpurgisnacht-Walpurgisnacht-in-Gorli,2015,Lata,DE,Walpurgisnacht,wiec,geometria,Walpurgisnacht,False,niezwiazkowe,Walpurgisnacht in Görli,"## 2012
 
@@ -17,7 +17,7 @@ im Görlitzer Park in Kreuzberg feierten bis zu 900 Personen das ""Hexenfest""
 ## 2015
 
 *Im Görlitzer Park in Kreuzberg, im Viktoriapark im selben Stadtteil, sowie im Treptower Park im gleichnamigen Bezirk hatten sich insgesamt mehrere Hundert Personen versammelt und ebenfalls friedlich in den Mai gefeiert.* (2015)",,,,Point,,"52.497312,13.434995","52.497312,13.434995",10,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#10#2015,,True
-1998_DE_wiec_Walpurgisnacht-Freiheit-ist-immer-auch-die-Freiheit-des,1998,Lata,DE,Walpurgisnacht,wiec,geometria,Walpurgisnacht,False,niezwiazkowe,1998 – Freiheit ist immer auch die Freiheit des Andersdenkenden,"*Unterdessen hat auch eine Gruppe namens ""Ratten und Gesindel"" zu einer Demo am Vorabend des 1. Mai in Prenzlauer Berg aufgerufen. Dies sei allerdings keine Walpurgisnacht-Veranstaltung, sondern eine Demo gegen den polizeilichen Belagerungszustand in Prenzlauer Berg im vergangenen Jahr. Die Demo am 30. April beginnt um 17 Uhr am U-Bahnhof Eberswalder Straße.* (taz 30.04.98)
+1998_DE_wiec_Walpurgisnacht-Freiheit-ist-immer-auch-die-Freiheit-des,1998,Lata,DE,Walpurgisnacht,demonstracja,weryfikacja,Walpurgisnacht,False,niezwiazkowe,1998 – Freiheit ist immer auch die Freiheit des Andersdenkenden,"*Unterdessen hat auch eine Gruppe namens ""Ratten und Gesindel"" zu einer Demo am Vorabend des 1. Mai in Prenzlauer Berg aufgerufen. Dies sei allerdings keine Walpurgisnacht-Veranstaltung, sondern eine Demo gegen den polizeilichen Belagerungszustand in Prenzlauer Berg im vergangenen Jahr. Die Demo am 30. April beginnt um 17 Uhr am U-Bahnhof Eberswalder Straße.* (taz 30.04.98)
 ",,,,Point,,"52.54039722388597,13.411688804626467","52.54039722388597,13.411688804626467",11,1__mai_berlin_aktualna_11_.geojson,1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#11#1998,,True
 2004_DE_demonstracja_Walpurgisnacht-Kommunismus-statt-Europa,2004,Lata,DE,Walpurgisnacht,demonstracja,geometria,Walpurgisnacht,False,niezwiazkowe,2004 – Kommunismus statt Europa,"Start: 18 Uhr 30.04 (Tagesspiegel 2004, Route sowohl)
 U-Bhf Friedrichstrasse- Unter den Linden - Universitätstrasse - Tucholskystrasse - Augustrstrasse - Rosenthalerplatz
@@ -463,7 +463,7 @@ ca. 12:00 – **Frieden schaffen ohne Waffen!**
 
 200 – BZ
 1000 – Gluckspilz",,600,600,LineString,2077.6,"52.543033,13.419006","52.536338,13.417032",16,1__mai_berlin_aktualna_12_.geojson,1__mai_berlin_aktualna_12_.geojson#East German Left#16#1992,,False
-1990_DE_demonstracja_PDS,1990,Lata,DE,East German Left,demonstracja,geometria,PDS,False,niezwiazkowe,"1990. Ost-Gruppen 100 Jahre 1. Mai – Widerstand gegen Unterdrückung, Kapital und Faschismus","Friedrichstraße/Ecke Hannoversche Straße – Wilhelm-Pieck-Straße – Schönhauser Allee – Metzer Straße – Kollwitzstraße -Kollwitzplatz; (telegraph 7/1990)
+1990_DE_demonstracja_PDS,1990,Lata,DE,East German Left,demonstracja,geometria,East_Autonomen,False,niezwiazkowe,"1990. Ost-Gruppen 100 Jahre 1. Mai – Widerstand gegen Unterdrückung, Kapital und Faschismus","Friedrichstraße/Ecke Hannoversche Straße – Wilhelm-Pieck-Straße – Schönhauser Allee – Metzer Straße – Kollwitzstraße -Kollwitzplatz; (telegraph 7/1990)
 
 Początek demonstracji przed stałym przedstawicielstwem RFN w Berlinie
 
@@ -476,12 +476,12 @@ Organizers: *Revolutionärer Jugendverband (RAJV), Autonome Antifa, Antifa-Jugen
 
 Attendance:
 2000 (Glückspilz)","Widerstand gegen Unterdrückung, Kapital und Faschismus",2000,2000,LineString,2675.0,"52.527146,13.386986","52.536267,13.417075",17,1__mai_berlin_aktualna_12_.geojson,1__mai_berlin_aktualna_12_.geojson#East German Left#17#1990,,True
-1992_DE_wiec_PDS,1992,Lata,DE,East German Left,wiec,geometria,PDS,False,niezwiazkowe,Helmholtzplatz,"1992 – początek demonstracji ""Osten schlägt zurück"" (20:00)
+1992_DE_wiec_PDS,1992,Lata,DE,East German Left,demonstracja,weryfikacja,East_Autonomen,False,niezwiazkowe,Helmholtzplatz,"1992 – początek demonstracji ""Osten schlägt zurück"" (20:00)
 
 ## 1993 
 
 *Nach einem Stadtteilfest der Hausbestzern auf dem Helmhotzplatz hatten angetrunkene Randalier Gerümpel angerundet und Bauzäune auf die Strasse geworfen. Die Auseinandersetzungen dauerten bis Mitternacht* (BZ 3.05.1993)",,,,Point,,"52.5430211,13.419032624098314","52.5430211,13.419032624098314",18,1__mai_berlin_aktualna_12_.geojson,1__mai_berlin_aktualna_12_.geojson#East German Left#18#1992,,True
-1993_DE_wiec_PDS,1993,Lata,DE,East German Left,wiec,geometria,PDS,False,niezwiazkowe,Helmholtzplatz,"1992 – początek demonstracji ""Osten schlägt zurück"" (20:00)
+1993_DE_wiec_PDS,1993,Lata,DE,East German Left,demonstracja,weryfikacja,East_Autonomen,False,niezwiazkowe,Helmholtzplatz,"1992 – początek demonstracji ""Osten schlägt zurück"" (20:00)
 
 ## 1993 
 
@@ -792,7 +792,7 @@ peaceful festival
 
 ## End
 *Unter dem Motto »widerspenstig und lebendig« hatte ein Bündnis aus linken Gruppierungen erstmals 1995 das Fest auf dem Humannplatz in Prenzlauer Berg mit dem Ziel organisiert, den Feiertag im Ostteil der Stadt »jenseits von traditionellen Massenaufläufen und revolutionärer Verbalrhetorik wiederzubeleben«, wie es in einer Presseerklärung heißt. »Die politische Ausrichtung des Festes fiel schnell hinten runter«, konstatieren die Organisatoren neun Jahre später. Inhaltliche Angebote seien auf breites Desinteresse gestoßen. »Wir haben keine Lust mehr«, gab das Festkomitee bekannt. In den Jahren seines Bestehens hatte das ausnahmslos friedlich verlaufende Fest immer stärkeren Zulauf bekommen.* ND 28.04.2004",,,,Point,,"52.549074000000005,13.422295698381111","52.549074000000005,13.422295698381111",21,1__mai_berlin_aktualna_12_.geojson,1__mai_berlin_aktualna_12_.geojson#East German Left#21#2003,,False
-1992_DE_demonstracja_PDS_a,1992,Lata,DE,East German Left,demonstracja,geometria,PDS,False,niezwiazkowe,1992 – Zug der Widerspensigsten,"Slogan: *Alles was uns fällt, ist Solidarität*
+1992_DE_demonstracja_PDS_a,1992,Lata,DE,East German Left,demonstracja,geometria,BKG,False,niezwiazkowe,1992 – Zug der Widerspensigsten,"Slogan: *Alles was uns fällt, ist Solidarität*
 Attendance: mehr als 5000 ~ 6000 (ND)
 ",,5500,5500,LineString,1055.4,"52.521613,13.412402","52.518336,13.399631",22,1__mai_berlin_aktualna_12_.geojson,1__mai_berlin_aktualna_12_.geojson#East German Left#22#1992,,True
 1993_DE_demonstracja_PDS,1993,Lata,DE,East German Left,demonstracja,name,PDS,False,niezwiazkowe,BKG Demonstration 1993,"(Berliner Zeitung 30.04; [@hurtgenDokumenteBundnisKritischer2017 {89}]
@@ -836,7 +836,7 @@ Attendance:
 2010_DE_demonstracja_NPD_a,2010,Lata,DE,Neo-Nazi May Day,demonstracja,name,NPD,True,kontra,2010 NPD Demo,"*13.45 Uhr: Die Kundgebung der Neonazis in Prenzlauer Berg hat begonnen. 300 Rechtsextreme haben sich inzwischen versammelt. Ein Redner spricht weitschweifig über die Reconquista, die Rückeroberung Spaniens von den muslimischen Besatzern im Mittelalter. Das Ganze wird übertönt durch Reggae-Musik und Kochtopfklappern von umliegenden Balkonen.* (Tagesspiegel-liveticker)
 
 *14.40 Mit knapp drei Stunden Verspätung formieren sich knapp 600 Rechtsextreme in der Bornholmer Straße zum Marsch. Angeführt wird der Zug von Berliner Rechten, die ein breites Frontplakat mit der Aufschrift ""Stoßt auf das Tor zur Freiheit"" tragen.* (Tagesspiegel liveticker)",,700,700,Point,,"52.554757,13.397645","52.554757,13.397645",12,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#12#2010,,True
-2010_DE_demonstracja_NIEZNANY,2010,Lata,DE,Neo-Nazi May Day,demonstracja,name,,True,kontra,2010 Spontan Nazi Demo,"Während rund 600 Rechte am 1. Mai in Pankow warteten, hatten sich, wie berichtet, 300 weitere am Südkreuz versammelt. Darunter der frühere NPD-Landesvorsitzende Jörg Hähnel und Anhänger der verbotenen „Kameradschaft Tor“ und „Frontbann 24“. Am S-Bahnhof Halensee verließen sie auf Kommando die Bahn und stürmten Richtung Adenauerplatz. Dabei attackierten sie Passanten und warfen Flaschen auf Polizisten. (https://blog.zeit.de/stoerungsmelder/2010/05/03/naziaktion-auf-dem-kudamm-hat-rechtliche-folgen_3171)",,700,700,Point,,"52.496721,13.289573","52.496721,13.289573",13,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#13#2010,,True
+2010_DE_demonstracja_NIEZNANY,2010,Lata,DE,Neo-Nazi May Day,demonstracja,name,NPD,False,kontra,2010 Spontan Nazi Demo,"Während rund 600 Rechte am 1. Mai in Pankow warteten, hatten sich, wie berichtet, 300 weitere am Südkreuz versammelt. Darunter der frühere NPD-Landesvorsitzende Jörg Hähnel und Anhänger der verbotenen „Kameradschaft Tor“ und „Frontbann 24“. Am S-Bahnhof Halensee verließen sie auf Kommando die Bahn und stürmten Richtung Adenauerplatz. Dabei attackierten sie Passanten und warfen Flaschen auf Polizisten. (https://blog.zeit.de/stoerungsmelder/2010/05/03/naziaktion-auf-dem-kudamm-hat-rechtliche-folgen_3171)",,700,700,Point,,"52.496721,13.289573","52.496721,13.289573",13,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#13#2010,,True
 2013_DE_demonstracja_NPD,2013,Lata,DE,Neo-Nazi May Day,demonstracja,name,NPD,True,kontra,2013 NPD Demo,,Raus aus dem Euro – Gegen Euro und Großkapital,300,300,LineString,2717.0,"52.456428,13.509904","52.454878,13.512179",14,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#14#2013,,True
 2013_DE_wiec_NPD,2013,Lata,DE,Neo-Nazi May Day,wiec,name,NPD,True,kontra,2013 NPD Kundgebung,(taz 30.04.2013),,300,300,Point,,"52.454833,13.512127","52.454833,13.512127",15,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#15#2013,,True
 2015_DE_wiec_NPD,2015,Lata,DE,Neo-Nazi May Day,wiec,name,NPD,True,kontra,2015 NPD Kundgebung,"14:00, 2015 – Die NPD plant zwei kleinere Kundgebungen – ab 12 Uhr in Hohenschönhausen an der Zingster Straße/Ecke Falkenberger Chaussee (Nahe S-Hohenschönhausen) sowie im Anschluss in Marzahn am Ahrensfelder Platz (nahe S-Ahrensfelde). Antifa-Demo und Kundgebungen gegen die NPD – anschließend NPD-Kundgebung in Marzahn stören. (taz 30.04.2015)",,50,50,Point,,"52.570925,13.565866","52.570925,13.565866",16,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#16#2015,,True
@@ -893,43 +893,43 @@ Grok twitter AI summary
 
 *Ein Sperrkreis von 50 Metern und ein Großaufgebot der Polizei trennten am Nachmittag des 1. Mai die Teilnehmer des Bürgerfests der Pankower AfD in Alt-Blankenburg von etwa 500 Demonstranten, die angetreten waren, „die völkische Party zu crashen*
 (BM 1.05.2019)",,100,100,Point,,"52.59100795,13.44265682776852","52.59100795,13.44265682776852",24,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#24#2019,,True
-1993_DE_kontra_Antifa,1993,Lata,DE,Neo-Nazi May Day,kontra,name,Antifa,True,kontra,1993 Antifa Blockade,"In Berlin-Friedrichsfelde machten 100 FAP-Nazis eine Demo, die von den Bullen geschützt wurde. Viele mobilisierte Antifas wurden an Sperren abgefangen, 40 wurden festgenommen; nur etwa 30 erreichten den Schauplatz, es gab einzelne kurze Auseinandersetzungen mit Nazis. (Glückspilz Archiv)",,,,Point,,"52.505695,13.513012","52.505695,13.513012",25,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#25#1993,,True
-1994_DE_kontra_FAP,1994,Lata,DE,Neo-Nazi May Day,kontra,name,FAP,True,kontra,1994 FAP blockade,"Am Vormittag hatte die FAP noch auf einen geplanten Aufmarsch in Johannisthal verzichtet, nachdem sich etwa fünfhundert GegendemonstrantInnen an der Kreuzung Sterndamm/Königsheideweg zu einer ebenfalls genehmigten Kundgebung eingefunden hatten. Zuvor waren nach Angaben der Gegendemonstranten mehrere Fahrzeuge mit Neonazis von der Polizei „festgesetzt“ worden. (taz 3.05.1994)
+1993_DE_kontra_Antifa,1993,Lata,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin,False,kontra,1993 Antifa Blockade,"In Berlin-Friedrichsfelde machten 100 FAP-Nazis eine Demo, die von den Bullen geschützt wurde. Viele mobilisierte Antifas wurden an Sperren abgefangen, 40 wurden festgenommen; nur etwa 30 erreichten den Schauplatz, es gab einzelne kurze Auseinandersetzungen mit Nazis. (Glückspilz Archiv)",,,,Point,,"52.505695,13.513012","52.505695,13.513012",25,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#25#1993,,True
+1994_DE_kontra_FAP,1994,Lata,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin,False,kontra,1994 FAP blockade,"Am Vormittag hatte die FAP noch auf einen geplanten Aufmarsch in Johannisthal verzichtet, nachdem sich etwa fünfhundert GegendemonstrantInnen an der Kreuzung Sterndamm/Königsheideweg zu einer ebenfalls genehmigten Kundgebung eingefunden hatten. Zuvor waren nach Angaben der Gegendemonstranten mehrere Fahrzeuge mit Neonazis von der Polizei „festgesetzt“ worden. (taz 3.05.1994)
 ",,450,450,Point,,"52.446581,13.506382","52.446581,13.506382",26,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#26#1994,,True
-2000_DE_festyn_NIEZNANY,2000,Lata,DE,Neo-Nazi May Day,festyn,name,,True,kontra,"2000 ""Kulturfest gegen Rechts"", 10 Uhr, Alice-Salomon-Platz in Hellersdorf","PDS organized ""Kulturfest gegen Rechts"", 10 Uhr, Alice-Salomon-Platz in Hellersdorf. 10 000 in attendance",,10000,10000,Point,,"52.5369,13.60455","52.5369,13.60455",27,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#27#2000,,True
-2002_DE_kontra_NIEZNANY,2002,name,DE,Neo-Nazi May Day,kontra,name,,True,kontra,2002 Counter-demonstration,"Ab 10 Uhr finden zwei Gegenkundgebungen gegen den NPD-Aufmarsch in Hohenschönhausen statt - am Lindencenter am Prerower Platz sowie an der Falkenberger Chaussee Ecke Prendener Straße. Die NPD will eine Stunde später, um 11 Uhr, am S-Bahnhof Hohenschönhausen losmarschieren. (taz 30.04.2002)",,1000,1000,Point,,"52.568525,13.520651","52.568525,13.520651",28,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#28#2002,,True
-2002_DE_kontra_NIEZNANY_a,2002,name,DE,Neo-Nazi May Day,kontra,name,,True,kontra,2002 Counter-demonstration,"Ab 10 Uhr finden zwei Gegenkundgebungen gegen den NPD-Aufmarsch in Hohenschönhausen statt - am Lindencenter am Prerower Platz sowie an der Falkenberger Chaussee Ecke Prendener Straße. Die NPD will eine Stunde später, um 11 Uhr, am S-Bahnhof Hohenschönhausen losmarschieren. (taz 30.04.2002)",,1000,1000,Point,,"52.563752,13.506682","52.563752,13.506682",29,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#29#2002,,True
-2003_DE_demonstracja_NIEZNANY,2003,Lata,DE,Neo-Nazi May Day,demonstracja,warstwa,,True,kontra,2003 Fegt die Nazis aus der Stadt,"13:30 – Berliner Initiative: Europa ohne Rassismus blokuje część trasy przemarszu NPD 1. Maja (ND 1.05.03)
+2000_DE_festyn_NIEZNANY,2000,Lata,DE,Neo-Nazi May Day,festyn,name,PDS_Antinazi,False,kontra,"2000 ""Kulturfest gegen Rechts"", 10 Uhr, Alice-Salomon-Platz in Hellersdorf","PDS organized ""Kulturfest gegen Rechts"", 10 Uhr, Alice-Salomon-Platz in Hellersdorf. 10 000 in attendance",,10000,10000,Point,,"52.5369,13.60455","52.5369,13.60455",27,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#27#2000,,True
+2002_DE_kontra_NIEZNANY,2002,name,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin,False,kontra,2002 Counter-demonstration,"Ab 10 Uhr finden zwei Gegenkundgebungen gegen den NPD-Aufmarsch in Hohenschönhausen statt - am Lindencenter am Prerower Platz sowie an der Falkenberger Chaussee Ecke Prendener Straße. Die NPD will eine Stunde später, um 11 Uhr, am S-Bahnhof Hohenschönhausen losmarschieren. (taz 30.04.2002)",,1000,1000,Point,,"52.568525,13.520651","52.568525,13.520651",28,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#28#2002,,True
+2002_DE_kontra_NIEZNANY_a,2002,name,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin,False,kontra,2002 Counter-demonstration,"Ab 10 Uhr finden zwei Gegenkundgebungen gegen den NPD-Aufmarsch in Hohenschönhausen statt - am Lindencenter am Prerower Platz sowie an der Falkenberger Chaussee Ecke Prendener Straße. Die NPD will eine Stunde später, um 11 Uhr, am S-Bahnhof Hohenschönhausen losmarschieren. (taz 30.04.2002)",,1000,1000,Point,,"52.563752,13.506682","52.563752,13.506682",29,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#29#2002,,True
+2003_DE_demonstracja_NIEZNANY,2003,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,2003 Fegt die Nazis aus der Stadt,"13:30 – Berliner Initiative: Europa ohne Rassismus blokuje część trasy przemarszu NPD 1. Maja (ND 1.05.03)
 Attendance: 300 (taz)",,250,250,Point,,"52.508666,13.259395","52.508666,13.259395",30,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#30#2003,,True
-2004_DE_kontra_Antifa,2004,Lata,DE,Neo-Nazi May Day,kontra,name,Antifa,True,kontra,2004 Antifa Blockade,"Zur bundesweiten Großdemo in Berlin hatten die NPD und faschistische ""Freie Kameradschaften"" aufgerufen. Rund 2500 Nazis fanden sich ab 10 Uhr am Bahnhof Lichtenberg ein und wollten von dort durch die Bezirke Lichtenberg und Friedrichshain marschieren. Doch dazu kam es nicht. An verschiedenen Stellen blockierten nach Polizeiangaben 4500 AntifaschistInnen über Stunden die vorgesehene Demoroute entlang der Frankfurter Allee.
+2004_DE_kontra_Antifa,2004,Lata,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin,False,kontra,2004 Antifa Blockade,"Zur bundesweiten Großdemo in Berlin hatten die NPD und faschistische ""Freie Kameradschaften"" aufgerufen. Rund 2500 Nazis fanden sich ab 10 Uhr am Bahnhof Lichtenberg ein und wollten von dort durch die Bezirke Lichtenberg und Friedrichshain marschieren. Doch dazu kam es nicht. An verschiedenen Stellen blockierten nach Polizeiangaben 4500 AntifaschistInnen über Stunden die vorgesehene Demoroute entlang der Frankfurter Allee.
 
 Attendance:
 4500 (Umbruch)",,3400,3400,Point,,"52.511545,13.496209","52.511545,13.496209",31,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#31#2004,,True
-2009_DE_kontra_SPD,2009,Lata,DE,Neo-Nazi May Day,kontra,name,SPD,True,kontra,2009 Counterdemonstration NPD (registered by SPD),"12:08 – 13:05 Uhr  
+2009_DE_kontra_SPD,2009,Lata,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin_SPD,False,kontra,2009 Counterdemonstration NPD (registered by SPD),"12:08 – 13:05 Uhr  
 von Bahnhofstraße 23-25  bis Seelenbinderstraße 17-21  
 ca. 2.500 Teilnehmer (Polizeilische Darstellung)
 Seelenbinderstraße 17-21 – die Linke Kundgebung, 3500 Teilnehmer",,3500,3500,LineString,1287.5,"52.458278,13.579284","52.455702,13.577256",32,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#32#2009,,True
-2010_DE_demonstracja_NIEZNANY_a,2010,Lata,DE,Neo-Nazi May Day,demonstracja,name,,True,kontra,2010 – Demonstration against Zum Henker,"2010 – Demonstration against a Nazi bar Zum Henker (taz 30.4)
+2010_DE_demonstracja_NIEZNANY_a,2010,Lata,DE,Neo-Nazi May Day,demonstracja,name,Antinazi Berlin,False,kontra,2010 – Demonstration against Zum Henker,"2010 – Demonstration against a Nazi bar Zum Henker (taz 30.4)
 Attendance:
 50 (Police, via taz)",,50,50,LineString,601.9,"52.454558,13.511517","52.459043,13.512483",33,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#33#2010,,True
-2010_DE_demonstracja_NIEZNANY_b,2010,Lata,DE,Neo-Nazi May Day,demonstracja,name,,True,kontra,2010 – Demonstration against Zum Henker bar,"2010 – 30.4, 17:00 (taz 30.4)",,500,500,Point,,"52.454427,13.511109","52.454427,13.511109",34,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#34#2010,,True
-2010_DE_kontra_NPD,2010,Lata,DE,Neo-Nazi May Day,kontra,name,NPD,True,kontra,2010 Anti-NPD Blockade,"* Blockades at many different sites – this is the site of the main counter 
+2010_DE_demonstracja_NIEZNANY_b,2010,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,2010 – Demonstration against Zum Henker bar,"2010 – 30.4, 17:00 (taz 30.4)",,500,500,Point,,"52.454427,13.511109","52.454427,13.511109",34,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#34#2010,,True
+2010_DE_kontra_NPD,2010,Lata,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin,False,kontra,2010 Anti-NPD Blockade,"* Blockades at many different sites – this is the site of the main counter 
 *An die **10.000 Menschen** versammeln sich an mehreren Plätzen, darunter Antifa-Aktivisten und Punks, aber auch bürgerliche Protestierer, Eltern mit ihren Kindern und Rentner mit roten Nelken in der Hand. Anwohner stehen auf Balkonen und klopfen auf Töpfe, auf Transparenten steht: ""Berlin bleibt bunt, Scheiße bleibt braun.""* (taz, 3.05.2010)
 
 *600 Neonazis kommen nicht mehr weiter. Sie stecken fest, gleich am Anfang ihrer Demonstration. Thierse hält sie auf, zusammen mit dem Bezirksbürgermeister und Abgeordneten von Grünen und Linkspartei. Was für ein Bild! Journalisten eilen zu dem Grüppchen. Fotoapparate klicken. Und jetzt? Gehts jetzt rund?* (taz, 3.05.2010)
 
 **Sitting blockade at the Malmoer Strasse**
 *Die Polizei kesselt die auf der Fahrbahn verstreuten Gegendemonstranten an der Bornholmer Ecke Malmöer Straße ein. Es entwickelt sich eine spontane Sitzblockade - eher eine symbolische Aktion eines eher bürgerlichen Publikums. Die Blockierer rufen: ""Wir sind friedlich, was seid ihr?"" Die Polizei zerrt und trägt daraufhin die Demonstranten von der Fahrbahn. Dabei geht es wenig sanft zu* (Tagesspiegel liveticker)",,10000,10000,Point,,"52.553602,13.414199","52.553602,13.414199",35,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#35#2010,,True
-2013_DE_demonstracja_NIEZNANY,2013,Lata,DE,Neo-Nazi May Day,demonstracja,name,,True,kontra,2013 Anti-Nazi Demo,,,2000,2000,LineString,1593.8,"52.456258,13.510607","52.462403,13.514201",36,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#36#2013,,True
-2002_DE_kontra_NPD,2002,Lata,DE,Neo-Nazi May Day,kontra,name,NPD,True,kontra,2015 – NPD Counterdemonstration,12-13:30 (taz 30.04),,500,500,Point,,"52.566334,13.512089","52.566334,13.512089",37,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#37#2002,,True
-2015_DE_kontra_NPD,2015,Lata,DE,Neo-Nazi May Day,kontra,name,NPD,True,kontra,2015 – NPD Counterdemonstration,12-13:30 (taz 30.04),,500,500,Point,,"52.566334,13.512089","52.566334,13.512089",37,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#37#2015,,True
-2016_DE_wiec_NIEZNANY,2016,Lata,DE,Neo-Nazi May Day,wiec,name,,True,kontra,"2016 – Kundgebung „1. Mai – Nazifrei!“ am Busbahnhof Schöneweide, Beginn 13 Uhr",(B.Z. Stimme 27.04),,900,900,Point,,"52.453028,13.510523","52.453028,13.510523",38,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#38#2016,,True
-2016_DE_wiec_NIEZNANY_a,2016,Lata,DE,Neo-Nazi May Day,wiec,name,,True,kontra,2016 – Kundgebung „1. Mai – Nazifreiheit!“ am Cajamarcaplatz ,"auf dem Vorplatz des S-Bahnhof Schöneweide, Beginn 13.30 Uhr (BZ 27.04)",,900,900,Point,,"52.45598977913197,13.50997567176819","52.45598977913197,13.50997567176819",39,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#39#2016,,True
-2016_DE_wiec_NIEZNANY_b,2016,Lata,DE,Neo-Nazi May Day,wiec,name,,True,kontra,"2016 – Kundgebung „Gemeinsam gegen Rassismus – Refugees Welcome“,","Berlin-Lichtenberg; Beginn 11.30 Uhr (BZ, 27.04)",,900,900,Point,,"52.563569,13.507084","52.563569,13.507084",40,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#40#2016,,True
-2016_DE_wiec_NIEZNANY_c,2016,Lata,DE,Neo-Nazi May Day,wiec,name,,True,kontra,"2016 – Kundgebung „Schöner weiden ohne Nazis""", Beginn 13.30 Uhr an der Schnellerstrasse/Brückenstrasse,,900,900,Point,,"52.456456,13.509892","52.456456,13.509892",41,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#41#2016,,True
-2016_DE_wiec_Grune,2016,Lata,DE,Neo-Nazi May Day,wiec,name,Grüne,True,kontra,2016 Kundgebung Die Grünen „Pankow ist bunt und vielfältig“ ,"10:00 (BZ, 27.04)
+2013_DE_demonstracja_NIEZNANY,2013,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,2013 Anti-Nazi Demo,,,2000,2000,LineString,1593.8,"52.456258,13.510607","52.462403,13.514201",36,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#36#2013,,True
+2002_DE_kontra_NPD,2002,Lata,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin,False,kontra,2015 – NPD Counterdemonstration,12-13:30 (taz 30.04),,500,500,Point,,"52.566334,13.512089","52.566334,13.512089",37,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#37#2002,,True
+2015_DE_kontra_NPD,2015,Lata,DE,Neo-Nazi May Day,kontra,name,Antinazi Berlin,False,kontra,2015 – NPD Counterdemonstration,12-13:30 (taz 30.04),,500,500,Point,,"52.566334,13.512089","52.566334,13.512089",37,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#37#2015,,True
+2016_DE_wiec_NIEZNANY,2016,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,"2016 – Kundgebung „1. Mai – Nazifrei!“ am Busbahnhof Schöneweide, Beginn 13 Uhr",(B.Z. Stimme 27.04),,900,900,Point,,"52.453028,13.510523","52.453028,13.510523",38,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#38#2016,,True
+2016_DE_wiec_NIEZNANY_a,2016,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,2016 – Kundgebung „1. Mai – Nazifreiheit!“ am Cajamarcaplatz ,"auf dem Vorplatz des S-Bahnhof Schöneweide, Beginn 13.30 Uhr (BZ 27.04)",,900,900,Point,,"52.45598977913197,13.50997567176819","52.45598977913197,13.50997567176819",39,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#39#2016,,True
+2016_DE_wiec_NIEZNANY_b,2016,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,"2016 – Kundgebung „Gemeinsam gegen Rassismus – Refugees Welcome“,","Berlin-Lichtenberg; Beginn 11.30 Uhr (BZ, 27.04)",,900,900,Point,,"52.563569,13.507084","52.563569,13.507084",40,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#40#2016,,True
+2016_DE_wiec_NIEZNANY_c,2016,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,"2016 – Kundgebung „Schöner weiden ohne Nazis""", Beginn 13.30 Uhr an der Schnellerstrasse/Brückenstrasse,,900,900,Point,,"52.456456,13.509892","52.456456,13.509892",41,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#41#2016,,True
+2016_DE_wiec_Grune,2016,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,2016 Kundgebung Die Grünen „Pankow ist bunt und vielfältig“ ,"10:00 (BZ, 27.04)
 Attendance: (Overall 900)",,900,900,Point,,"52.547026,13.448166","52.547026,13.448166",42,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#42#2016,,True
-2017_DE_wiec_NIEZNANY,2017,Lata,DE,Neo-Nazi May Day,wiec,name,,True,kontra,2017 Kundgebung „Berlin solidarisch gegen Nazis“,"10:00, Antonplatz (Berliner Morgenpost)",,,,Point,,"52.548076,13.451021","52.548076,13.451021",43,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#43#2017,,True
+2017_DE_wiec_NIEZNANY,2017,Lata,DE,Neo-Nazi May Day,kontra,weryfikacja,Antinazi Berlin,False,kontra,2017 Kundgebung „Berlin solidarisch gegen Nazis“,"10:00, Antonplatz (Berliner Morgenpost)",,,,Point,,"52.548076,13.451021","52.548076,13.451021",43,1__mai_berlin_aktualna_13_.geojson,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#43#2017,,True
 1990_DE_wiec_DGB,1990,Lata,DE,DGB,wiec,name,DGB,False,zwiazkowe,1990. East German May 1st rally in Lustgarten,"Lustgarten, Museumsinsel, Mitte.
 
 1990: FDGB auftakt rally, ~7,000 participants. First joint East-West May Day event since 1947. (1990_DE; ND 2.05.1990)",,,,Point,,"52.5185383,13.399396320043286","52.5185383,13.399396320043286",0,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#0#1990,,False
@@ -1282,7 +1282,7 @@ BSR-Spiele, Musik, Essen, Trinken, Hüpfburgen",,10000,10000,Point,,"52.51643,13
 
 Attendance: 16000 (taz)
 15000 (ND)",,15000,15000,LineString,2057.8,"52.517958,13.400037","52.518415,13.373837",46,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#46#1990,,False
-1990_DE_demonstracja_DGB_a,1990,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1990 IG Metall,"Alte Jacobstrasse – Lindenstrasse – Gitschner Strasse – Mehringdamm – Yorckstrasse – Yorkbrücken – Goebenstrasse – Kulmer Strasse – Bülowstr. – Postdamer Str. – Entlastungsstr. – Platz der Republik (DGBB 651)
+1990_DE_demonstracja_DGB_a,1990,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1990 IG Metall,"Alte Jacobstrasse – Lindenstrasse – Gitschner Strasse – Mehringdamm – Yorckstrasse – Yorkbrücken – Goebenstrasse – Kulmer Strasse – Bülowstr. – Postdamer Str. – Entlastungsstr. – Platz der Republik (DGBB 651)
 
 IG Metall joined by the IG Metall-Ost (taz 30.04.1990)",,,,LineString,6108.3,"52.499099,13.39596","52.518636,13.373022",47,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#47#1990,,True
 1990_DE_demonstracja_DGB_b,1990,Lata,DE,DGB,demonstracja,name,DGB,False,zwiazkowe,1990 ÖTV Demo,"Joachimstaler Straße, Ecke Lietzenburger Strasse – Joachimstaler Straße – Lietzenburger Strasse – Schlüsterstrasse – Kantstrasse – Breitschiedtplatz – Budapester Strasse – Stülerstrasse – Hofjägerallee – Großer Stern – Spreeweg – John-Forster-Dulles-Alle – Platz der Republik (DGBB 651)",,,,LineString,6777.2,"52.500255,13.331013","52.518617,13.372765",48,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#48#1990,,False
@@ -1294,7 +1294,7 @@ Attendance: einige hundert ~ 300 (BZ 2.05.91)",,300,300,LineString,5164.9,"52.50
 Attendance: einige hundert ~ 300 (BZ 2.05.91)",,300,300,LineString,5164.9,"52.501731,13.345937","52.518702,13.373044",49,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#49#1991,,False
 1991_DE_demonstracja_DGB_a,1991,Lata,DE,DGB,demonstracja,name,DGB,False,zwiazkowe,1991 DGB trade unionist demonstration,"Märkisches Ufer – Brückenstrasse – Stralauer Strasse – Spandauer Strasse – Karl-Liebknecht–Strasse – Unter den Linden – Brandenburger Tor – Strasse der 17. Juni – Entlastungsstrasse – Platz der Republik (DGBB 653)
 Attendance: 100 (BZ 2.05.91)",,100,100,LineString,4831.9,"52.513084,13.412359","52.51865,13.373344",50,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#50#1991,,False
-1991_DE_demonstracja_DGB_b,1991,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1991 IG Metall,"Alte Jacobstrasse – Oranienstrasse – Kochstrasse – Friedrichstrasse – Unter den Linden – Brandenburger Tor – Strasse der 17. Juni – Entlastungsstrasse – Platz der Republik (DGBB 653)
+1991_DE_demonstracja_DGB_b,1991,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1991 IG Metall,"Alte Jacobstrasse – Oranienstrasse – Kochstrasse – Friedrichstrasse – Unter den Linden – Brandenburger Tor – Strasse der 17. Juni – Entlastungsstrasse – Platz der Republik (DGBB 653)
 
 1991: Joined by BKG (Bündnis Kritischer Gewerkschafter)
 Attendance: 1000 (BZ 2.05.91)",,1000,1000,LineString,4502.2,"52.499079,13.396132","52.518636,13.373108",51,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#51#1991,,True
@@ -1309,16 +1309,16 @@ Attendance:
 1992_DE_demonstracja_DGB_a,1992,Lata,DE,DGB,demonstracja,name,DGB,False,zwiazkowe,1992 DGB demonstration,"Kleiststrasse – Nollendorfplatz – Bülowstrasse – Potsdamer Strasse – Potsdamer Brücke – Entlastungsstrasse – Kemper Platz – Strasse der 17. Juni – Brandenburger Tor – Pariser Platz – Unter den Linden – Lustgarten (DGBB 657)
 
 In 1993, only the demonstration from Wallstrasse",,,,LineString,5486.0,"52.50163,13.345755","52.518571,13.399715",54,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#54#1992,,False
-1992_DE_demonstracja_DGB_b,1992,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1992 IG Metall,Alte Jakobstrasse/Lindenstrasse – Oranienstrasse – Moritzplatz – Heinrich-Heine-Strasse – Brückenstrasse – Jannowitzbrücke – Stalauer Strasse – Molkenmarkt – Spandauer Strasse – Karl-Liebknechtstrasse – Lustgarten (DGBG656). IG Metall joins the Wallstrasse demonstration at Märkisches Ufer/Brückenstrasse (DGBB 657),,,,LineString,2789.1,"52.499122,13.396347","52.513723,13.417692",55,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#55#1992,,True
+1992_DE_demonstracja_DGB_b,1992,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1992 IG Metall,Alte Jakobstrasse/Lindenstrasse – Oranienstrasse – Moritzplatz – Heinrich-Heine-Strasse – Brückenstrasse – Jannowitzbrücke – Stalauer Strasse – Molkenmarkt – Spandauer Strasse – Karl-Liebknechtstrasse – Lustgarten (DGBG656). IG Metall joins the Wallstrasse demonstration at Märkisches Ufer/Brückenstrasse (DGBB 657),,,,LineString,2789.1,"52.499122,13.396347","52.513723,13.417692",55,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#55#1992,,True
 1992_DE_demonstracja_DGB_c,1992,Lata,DE,DGB,demonstracja,name,DGB,False,zwiazkowe,1992 ÖTV demonstration,Lietzenburger Strasse – An der Urania – Schillstrasse – Lützowufer – Schöneberger Ufer – Potsdamer Strasse – Potsdamer Platz – Leipziger Platz – Leipziger Strasse – Friedrichstrasse – Unter den Linden – Lustgarten (DGBB 653),,,,LineString,6170.7,"52.500588,13.331501","52.518271,13.400273",56,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#56#1992,,False
-1994_DE_demonstracja_DGB,1994,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1992-94 IG Metall,"1992 – Alte Jakobstrasse/Lindenstrasse – Oranienstrasse – Moritzplatz – Heinrich-Heine-Strasse – Brückenstrasse – Jannowitzbrücke – Stalauer Strasse – Molkenmarkt – Spandauer Strasse – Karl-Liebknechtstrasse – Lustgarten (DGBG656). IG Metall joins the Wallstrasse demonstration at Märkisches Ufer/Brückenstrasse (DGBB 657)
+1994_DE_demonstracja_DGB,1994,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1992-94 IG Metall,"1992 – Alte Jakobstrasse/Lindenstrasse – Oranienstrasse – Moritzplatz – Heinrich-Heine-Strasse – Brückenstrasse – Jannowitzbrücke – Stalauer Strasse – Molkenmarkt – Spandauer Strasse – Karl-Liebknechtstrasse – Lustgarten (DGBG656). IG Metall joins the Wallstrasse demonstration at Märkisches Ufer/Brückenstrasse (DGBB 657)
 
 No definitive proof for 1993-4: given the same timing, I assume the same routes were followed
 
 1992: 9:30
 1993: 9:30
 1994: 9:30",,,,MultiLineString,2789.1,"52.499122,13.396347","52.513723,13.417692",57,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#57#1994,,True
-1993_DE_demonstracja_DGB,1993,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1992-94 IG Metall,"1992 – Alte Jakobstrasse/Lindenstrasse – Oranienstrasse – Moritzplatz – Heinrich-Heine-Strasse – Brückenstrasse – Jannowitzbrücke – Stalauer Strasse – Molkenmarkt – Spandauer Strasse – Karl-Liebknechtstrasse – Lustgarten (DGBG656). IG Metall joins the Wallstrasse demonstration at Märkisches Ufer/Brückenstrasse (DGBB 657)
+1993_DE_demonstracja_DGB,1993,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1992-94 IG Metall,"1992 – Alte Jakobstrasse/Lindenstrasse – Oranienstrasse – Moritzplatz – Heinrich-Heine-Strasse – Brückenstrasse – Jannowitzbrücke – Stalauer Strasse – Molkenmarkt – Spandauer Strasse – Karl-Liebknechtstrasse – Lustgarten (DGBG656). IG Metall joins the Wallstrasse demonstration at Märkisches Ufer/Brückenstrasse (DGBB 657)
 
 No definitive proof for 1993-4: given the same timing, I assume the same routes were followed
 
@@ -1349,7 +1349,7 @@ No definitive proof for 1993-4: given the same timing, I assume the same routes 
 1994_DE_demonstracja_DGB_b,1994,Lata,DE,DGB,demonstracja,name,DGB,False,zwiazkowe,1994 ÖTV demonstration,"1994: 9:30
 (Route through Moritzplatz?)",,,,LineString,4063.7,"52.506139,13.419591","52.518493,13.399587",61,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#61#1994,,False
 1995_DE_demonstracja_DGB,1995,Lata,DE,DGB,demonstracja,name,DGB,False,zwiazkowe,1995 DGB/ÖTV demonstration,"1995, 9:30-11:00. Engeldammstrasse – (Moritzplatz) – Kölnischer Park (BZ 29.04.1994)",,,,LineString,2337.0,"52.506152,13.419907","52.513048,13.414435",62,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#62#1995,,False
-1996_DE_demonstracja_DGB,1996,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996 – DGB Jugend Job Parade. Deine Einstellung zählt – Perspektive Jetzt,"* Neue Synagogue vorbei (DGB BB Geschäftsbericht 1994-1997)
+1996_DE_demonstracja_DGB,1996,Lata,DE,DGB,demonstracja,geometria,DGB Jugend,False,zwiazkowe,1996 – DGB Jugend Job Parade. Deine Einstellung zählt – Perspektive Jetzt,"* Neue Synagogue vorbei (DGB BB Geschäftsbericht 1994-1997)
 * Attendance via DGB BB Geschäftsbericht
 ",,300,300,LineString,2025.7,"52.52632,13.387422","52.518003,13.407931",63,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#63#1996,,True
 1996_DE_demonstracja_DGB_a,1996,Lata,DE,DGB,demonstracja,name,DGB,False,zwiazkowe,1996-1999 Demonstration,"1996 – IG Bau, GTB, GdED und NGG sammeln sich vor der Infobox am Potsdamer Platz; (taz 30.04 Demos in Doppelpack)
@@ -1406,7 +1406,7 @@ Attendance: einige hundert (500)
  (Berliner Zeitung 28.04)
 
 ## 1999",,500,500,LineString,2612.8,"52.509646,13.378451","52.518578,13.406936",67,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#67#1999,,False
-1996_DE_demonstracja_DGB_c,1996,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4; rbb 0:00-0:10)
+1996_DE_demonstracja_DGB_c,1996,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4; rbb 0:00-0:10)
 1997 – Joined by SPD Spitze (taz 30.4); Ecke Breite Strasse/Leipziger Strasse Ausschreitungen der Polizei/kurdische Gruppen
 Attendance: 5000 (Gluckspilz)
 1998 – 10:00 (Berliner Zeitung 28.04)
@@ -1414,7 +1414,7 @@ Attendance: 5000 (Gluckspilz)
 10 Uhr: ab IG-Metall-Haus (über Alte Jakobstraße inKreuzberg, Fischerinsel, Breite, Rathaus- und Spandauer Straße)
 
 2001 – most likely the same route",,,,LineString,2940.6,"52.498968,13.396132","52.518088,13.407826",68,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#68#1996,,True
-1997_DE_demonstracja_DGB_b,1997,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
+1997_DE_demonstracja_DGB_b,1997,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
 1997 – Joined by SPD Spitze (taz 30.4); Ecke Breite Strasse/Leipziger Strasse Ausschreitungen der Polizei/kurdische Gruppen
 Attendance: 5000 (Gluckspilz)
 1998 – 10:00 (Berliner Zeitung 28.04)
@@ -1422,7 +1422,7 @@ Attendance: 5000 (Gluckspilz)
 10 Uhr: ab IG-Metall-Haus (über Alte Jakobstraße inKreuzberg, Fischerinsel, Breite, Rathaus- und Spandauer Straße)
 
 2001 – most likely the same route",,,,LineString,2940.6,"52.498968,13.396132","52.518088,13.407826",69,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#69#1997,,True
-1998_DE_demonstracja_DGB_a,1998,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
+1998_DE_demonstracja_DGB_a,1998,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
 1997 – Joined by SPD Spitze (taz 30.4); Ecke Breite Strasse/Leipziger Strasse Ausschreitungen der Polizei/kurdische Gruppen
 Attendance: 5000 (Gluckspilz)
 1998 – 10:00 (Berliner Zeitung 28.04)
@@ -1430,7 +1430,7 @@ Attendance: 5000 (Gluckspilz)
 10 Uhr: ab IG-Metall-Haus (über Alte Jakobstraße inKreuzberg, Fischerinsel, Breite, Rathaus- und Spandauer Straße)
 
 2001 – most likely the same route",,,,LineString,2940.6,"52.498968,13.396132","52.518088,13.407826",70,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#70#1998,,True
-1999_DE_demonstracja_DGB_a,1999,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
+1999_DE_demonstracja_DGB_a,1999,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
 1997 – Joined by SPD Spitze (taz 30.4); Ecke Breite Strasse/Leipziger Strasse Ausschreitungen der Polizei/kurdische Gruppen
 Attendance: 5000 (Gluckspilz)
 1998 – 10:00 (Berliner Zeitung 28.04)
@@ -1438,7 +1438,7 @@ Attendance: 5000 (Gluckspilz)
 10 Uhr: ab IG-Metall-Haus (über Alte Jakobstraße inKreuzberg, Fischerinsel, Breite, Rathaus- und Spandauer Straße)
 
 2001 – most likely the same route",,,,LineString,2940.6,"52.498968,13.396132","52.518088,13.407826",71,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#71#1999,,True
-2000_DE_demonstracja_DGB,2000,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
+2000_DE_demonstracja_DGB,2000,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
 1997 – Joined by SPD Spitze (taz 30.4); Ecke Breite Strasse/Leipziger Strasse Ausschreitungen der Polizei/kurdische Gruppen
 Attendance: 5000 (Gluckspilz)
 1998 – 10:00 (Berliner Zeitung 28.04)
@@ -1446,7 +1446,7 @@ Attendance: 5000 (Gluckspilz)
 10 Uhr: ab IG-Metall-Haus (über Alte Jakobstraße inKreuzberg, Fischerinsel, Breite, Rathaus- und Spandauer Straße)
 
 2001 – most likely the same route",,,,LineString,2940.6,"52.498968,13.396132","52.518088,13.407826",72,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#72#2000,,True
-2001_DE_demonstracja_DGB,2001,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
+2001_DE_demonstracja_DGB,2001,Lata,DE,DGB,demonstracja,geometria,IG Metall,False,zwiazkowe,1996-2001 IG Metall,"1996 – IG Metall, IG Medien und GHK treffen sich vor dem IG- Metall-Haus in der Alten Jakobstraße (taz 30.4)
 1997 – Joined by SPD Spitze (taz 30.4); Ecke Breite Strasse/Leipziger Strasse Ausschreitungen der Polizei/kurdische Gruppen
 Attendance: 5000 (Gluckspilz)
 1998 – 10:00 (Berliner Zeitung 28.04)
@@ -1454,7 +1454,7 @@ Attendance: 5000 (Gluckspilz)
 10 Uhr: ab IG-Metall-Haus (über Alte Jakobstraße inKreuzberg, Fischerinsel, Breite, Rathaus- und Spandauer Straße)
 
 2001 – most likely the same route",,,,LineString,2940.6,"52.498968,13.396132","52.518088,13.407826",73,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#73#2001,,True
-1996_DE_demonstracja_DGB_d,1996,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
+1996_DE_demonstracja_DGB_d,1996,Lata,DE,DGB,demonstracja,geometria,ÖTV,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
 1996 – ÖTV, HBV, DPG, GEW und CPK klumpen sich vor dem ÖTV- Haus am Engeldamm zusammen. Dortselbst wird auch das „Bündnis gegen Sozialkürzung und Ausgrenzung“ mitmarschieren (taz 30.4)
 Attendance: 2500 (JW 2.05)
 3500 (Breitenbach (organiser) JW 3.05)
@@ -1464,7 +1464,7 @@ Attendance: 8000 (organisers 5DGBG001329)
 1999 – Anschließend ist ein großes Familienprogramm und im Vorfeld ein Sternmarsch (10 Uhr, Potsdamer Platz, Engeldamm, Alte Jakobstraße) zum Roten Rathaus geplant (BM 30.04)
 Engeldamm in Mitte, über Heinrich-Heine-, Brücken-, Alexander-,Grunerstraße, Straße am Alexanderplatz, Karl-Liebknecht- und SpandauerStraße (BK 29.04.2000)
 2001 – Annenstraße – Heinrich-Heine-Strasse – Brückenstrasse – Alexanderstrasse – rechts in die Grunerstrasse – Alexanderplatz – links in der Karl-Liebknecht-Strasse – links in die Spandauer Strasse – Berliner Rathaus (DGBGB 668)",,,,LineString,3447.3,"52.506142,13.419666","52.518166,13.407784",74,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#74#1996,,True
-1997_DE_demonstracja_DGB_c,1997,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
+1997_DE_demonstracja_DGB_c,1997,Lata,DE,DGB,demonstracja,geometria,ÖTV,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
 1996 – ÖTV, HBV, DPG, GEW und CPK klumpen sich vor dem ÖTV- Haus am Engeldamm zusammen. Dortselbst wird auch das „Bündnis gegen Sozialkürzung und Ausgrenzung“ mitmarschieren (taz 30.4)
 Attendance: 2500 (JW 2.05)
 3500 (Breitenbach (organiser) JW 3.05)
@@ -1474,7 +1474,7 @@ Attendance: 8000 (organisers 5DGBG001329)
 1999 – Anschließend ist ein großes Familienprogramm und im Vorfeld ein Sternmarsch (10 Uhr, Potsdamer Platz, Engeldamm, Alte Jakobstraße) zum Roten Rathaus geplant (BM 30.04)
 Engeldamm in Mitte, über Heinrich-Heine-, Brücken-, Alexander-,Grunerstraße, Straße am Alexanderplatz, Karl-Liebknecht- und SpandauerStraße (BK 29.04.2000)
 2001 – Annenstraße – Heinrich-Heine-Strasse – Brückenstrasse – Alexanderstrasse – rechts in die Grunerstrasse – Alexanderplatz – links in der Karl-Liebknecht-Strasse – links in die Spandauer Strasse – Berliner Rathaus (DGBGB 668)",,,,LineString,3447.3,"52.506142,13.419666","52.518166,13.407784",74,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#74#1997,,True
-1998_DE_demonstracja_DGB_b,1998,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
+1998_DE_demonstracja_DGB_b,1998,Lata,DE,DGB,demonstracja,geometria,ÖTV,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
 1996 – ÖTV, HBV, DPG, GEW und CPK klumpen sich vor dem ÖTV- Haus am Engeldamm zusammen. Dortselbst wird auch das „Bündnis gegen Sozialkürzung und Ausgrenzung“ mitmarschieren (taz 30.4)
 Attendance: 2500 (JW 2.05)
 3500 (Breitenbach (organiser) JW 3.05)
@@ -1484,7 +1484,7 @@ Attendance: 8000 (organisers 5DGBG001329)
 1999 – Anschließend ist ein großes Familienprogramm und im Vorfeld ein Sternmarsch (10 Uhr, Potsdamer Platz, Engeldamm, Alte Jakobstraße) zum Roten Rathaus geplant (BM 30.04)
 Engeldamm in Mitte, über Heinrich-Heine-, Brücken-, Alexander-,Grunerstraße, Straße am Alexanderplatz, Karl-Liebknecht- und SpandauerStraße (BK 29.04.2000)
 2001 – Annenstraße – Heinrich-Heine-Strasse – Brückenstrasse – Alexanderstrasse – rechts in die Grunerstrasse – Alexanderplatz – links in der Karl-Liebknecht-Strasse – links in die Spandauer Strasse – Berliner Rathaus (DGBGB 668)",,,,LineString,3447.3,"52.506142,13.419666","52.518166,13.407784",74,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#74#1998,,True
-1999_DE_demonstracja_DGB_b,1999,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
+1999_DE_demonstracja_DGB_b,1999,Lata,DE,DGB,demonstracja,geometria,ÖTV,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
 1996 – ÖTV, HBV, DPG, GEW und CPK klumpen sich vor dem ÖTV- Haus am Engeldamm zusammen. Dortselbst wird auch das „Bündnis gegen Sozialkürzung und Ausgrenzung“ mitmarschieren (taz 30.4)
 Attendance: 2500 (JW 2.05)
 3500 (Breitenbach (organiser) JW 3.05)
@@ -1494,7 +1494,7 @@ Attendance: 8000 (organisers 5DGBG001329)
 1999 – Anschließend ist ein großes Familienprogramm und im Vorfeld ein Sternmarsch (10 Uhr, Potsdamer Platz, Engeldamm, Alte Jakobstraße) zum Roten Rathaus geplant (BM 30.04)
 Engeldamm in Mitte, über Heinrich-Heine-, Brücken-, Alexander-,Grunerstraße, Straße am Alexanderplatz, Karl-Liebknecht- und SpandauerStraße (BK 29.04.2000)
 2001 – Annenstraße – Heinrich-Heine-Strasse – Brückenstrasse – Alexanderstrasse – rechts in die Grunerstrasse – Alexanderplatz – links in der Karl-Liebknecht-Strasse – links in die Spandauer Strasse – Berliner Rathaus (DGBGB 668)",,,,LineString,3447.3,"52.506142,13.419666","52.518166,13.407784",74,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#74#1999,,True
-2000_DE_demonstracja_DGB_a,2000,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
+2000_DE_demonstracja_DGB_a,2000,Lata,DE,DGB,demonstracja,geometria,ÖTV,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
 1996 – ÖTV, HBV, DPG, GEW und CPK klumpen sich vor dem ÖTV- Haus am Engeldamm zusammen. Dortselbst wird auch das „Bündnis gegen Sozialkürzung und Ausgrenzung“ mitmarschieren (taz 30.4)
 Attendance: 2500 (JW 2.05)
 3500 (Breitenbach (organiser) JW 3.05)
@@ -1504,7 +1504,7 @@ Attendance: 8000 (organisers 5DGBG001329)
 1999 – Anschließend ist ein großes Familienprogramm und im Vorfeld ein Sternmarsch (10 Uhr, Potsdamer Platz, Engeldamm, Alte Jakobstraße) zum Roten Rathaus geplant (BM 30.04)
 Engeldamm in Mitte, über Heinrich-Heine-, Brücken-, Alexander-,Grunerstraße, Straße am Alexanderplatz, Karl-Liebknecht- und SpandauerStraße (BK 29.04.2000)
 2001 – Annenstraße – Heinrich-Heine-Strasse – Brückenstrasse – Alexanderstrasse – rechts in die Grunerstrasse – Alexanderplatz – links in der Karl-Liebknecht-Strasse – links in die Spandauer Strasse – Berliner Rathaus (DGBGB 668)",,,,LineString,3447.3,"52.506142,13.419666","52.518166,13.407784",75,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#75#2000,,True
-2001_DE_demonstracja_DGB_a,2001,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
+2001_DE_demonstracja_DGB_a,2001,Lata,DE,DGB,demonstracja,geometria,ÖTV,False,zwiazkowe,1996-2001 ÖTV,"1996-1999 presumed the same route as 2000-2001
 1996 – ÖTV, HBV, DPG, GEW und CPK klumpen sich vor dem ÖTV- Haus am Engeldamm zusammen. Dortselbst wird auch das „Bündnis gegen Sozialkürzung und Ausgrenzung“ mitmarschieren (taz 30.4)
 Attendance: 2500 (JW 2.05)
 3500 (Breitenbach (organiser) JW 3.05)
@@ -1609,7 +1609,7 @@ Attendance: 8000 (only demo, organisers via taz 1.05) 4500 (Police)",,6250,6250,
 Attendance: 8000 (only demo, organisers via taz 1.05)",,8000,8000,LineString,4013.5,"52.522279,13.40221","52.51626,13.378408",95,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#95#2019,,True
 2026_DE_demonstracja_DGB,2026,Lata,DE,DGB,demonstracja,name,DGB,False,zwiazkowe,"DGB 2026 Demonstration. Erst unser Jobs, dann Eure Profite","11:30 Strausberger Platz
 15:00 Rotes Rathaus (BM 2026)",,,,LineString,3607.8,"52.518338127199115,13.428206899944541","52.519005188802964,13.4075853954551",96,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#96#2026,True,False
-2005_DE_demonstracja_DGB_a,2005,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,2005 DGB Run,"Treff: 08:00 Uhr, Spandauer Straße Ecke Rathausstraße
+2005_DE_demonstracja_DGB_a,2005,Lata,DE,DGB,korso,weryfikacja,DGB,False,zwiazkowe,2005 DGB Run,"Treff: 08:00 Uhr, Spandauer Straße Ecke Rathausstraße
 Start: 09:00 Uhr, Spandauer Straße Richtung Nord
 Anmeldung
 Der 1. Mai-Lauf wird in diesem Jahr zum ersten Mal veranstaltet. Wir wollen damit zeigen, dass wir uns anstrengen und kämpfen für unsere Zukunft. Wir wollen aber auch Spaß haben und dabei unsere Kolleginnen und Kollegen, Freundinnen und Freunde, Nachbarn und Bekannten mitnehmen. Für die fachkundige Beratung und Begleitung haben wir die Unterstützung der Firma Long Distance, die auch die RBB-Laufbewegung begleitet. Die ersten 250 Teilnehmer, die sich angemeldet haben, bekommen am Start ein hochwertiges Funktions-Shirt der Firma odlo mit dem Aufdruck „1. Mai-Lauf 2005 – run for the future"". Voraussetzung ist natürlich, dass es während des Laufes getragen wird. So wollen wir ein unübersehbares Bild der Geschlossenheit abgeben: Für Arbeit und soziale Gerechtigkeit.
@@ -1641,7 +1641,7 @@ START 09:00 Uhr, Spandauer Straße
 → Rathausstraße
 → Spandauer Straße
 ZIEL: Platz vor dem Berliner Rathaus",,100,100,LineString,11715.8,"52.518179,13.407542","52.518428,13.407055",97,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#97#2005,,True
-2006_DE_demonstracja_DGB_a,2006,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,2006 DGB Lauf,"(assumed the same route as 2007)
+2006_DE_demonstracja_DGB_a,2006,Lata,DE,DGB,korso,weryfikacja,DGB,False,zwiazkowe,2006 DGB Lauf,"(assumed the same route as 2007)
 1. Mai-Demonstration
 vom DGB-Gewerkschaftshaus am Wittenbergplatz zum Brandenburger Tor
 
@@ -1650,7 +1650,7 @@ Start: 10:05 Uhr, Kleiststraße Richtung Nollendorfplatz
 Ankunft: ca. 11:00 Uhr, Brandenburger Tor
 
 ***11:05, Unter den Linden:** 23 Jogger in roten Ver.di-T-Shirts überqueren die Friedrichstraße. Die Solidargemeinschaft bröckelt: Zwei Läufer wurden von der Gruppe bereits deutlich abgehängt.* (taz 2.05.2006)",,23,23,LineString,9162.2,"52.50159,13.345913","52.516371,13.380299",98,1__mai_berlin_aktualna_14_.geojson,1__mai_berlin_aktualna_14_.geojson#DGB#98#2006,,True
-2007_DE_demonstracja_DGB_a,2007,Lata,DE,DGB,demonstracja,geometria,DGB,False,zwiazkowe,2007 DGB Lauf,"
+2007_DE_demonstracja_DGB_a,2007,Lata,DE,DGB,korso,weryfikacja,DGB,False,zwiazkowe,2007 DGB Lauf,"
 Mai-Lauf vom DGB-Gewerkschaftshaus am Wittenbergplatz zum Brandenburger Tor
 
 Treff: 09:00 Uhr, DGB-Haus, Keithstraße 1-3
@@ -2784,14 +2784,14 @@ Attendance:
 1997 – punkt końcowy demonstracji Autonomów",,,,Point,,"52.5298999,13.4011206","52.5298999,13.4011206",78,1__mai_berlin_aktualna_15_.geojson,1__mai_berlin_aktualna_15_.geojson#Revolutionäre 1. Mai#78#1993,,False
 1998_DE_demonstracja_R1M_c,1998,Lata,DE,Revolutionäre 1. Mai,demonstracja,warstwa,R1M,False,niezwiazkowe,Senefelder Platz,1998 – planned endpoint of the AAB/radical rally from Rosa-Luxembourg Platz,,,,Point,,"52.5317969,13.4121526","52.5317969,13.4121526",79,1__mai_berlin_aktualna_15_.geojson,1__mai_berlin_aktualna_15_.geojson#Revolutionäre 1. Mai#79#1998,,False
 2026_DE_demonstracja_NIEZNANY,2026,Lata,DE,Other events,demonstracja,geometria,,True,niezwiazkowe,,16:00 Schlosplatz - 18:00 Potsdamer Platz (BM 2026),,,,LineString,3430.4,"52.517321451729,13.399622655562467","52.50922856957678,13.376300590310848",0,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#0#2026,True,True
-2026_DE_wiec_b-Gorlitzer-Park-Free-Gorli-Rave-against,2026,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,<b>Görlitzer Park: Free Görli - Rave against the Zaun</b>,8.00-22.30 Uhr BM 2026,,,,Point,,"52.496334924265824,13.440410263890726","52.496334924265824,13.440410263890726",1,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#1#2026,True,True
+2026_DE_wiec_b-Gorlitzer-Park-Free-Gorli-Rave-against,2026,Lata,DE,Other events,festyn,weryfikacja,,True,niezwiazkowe,<b>Görlitzer Park: Free Görli - Rave against the Zaun</b>,8.00-22.30 Uhr BM 2026,,,,Point,,"52.496334924265824,13.440410263890726","52.496334924265824,13.440410263890726",1,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#1#2026,True,True
 2026_DE_wiec_b-Tempelhofer-Feld-Langsam-reichts-Kultu,2026,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,<b>Tempelhofer Feld: Langsam reichts - Kulturkürzungen stoppen!</b>,12-22 Uhr (BM 2026),,,,Point,,"52.47432939628871,13.403090958488178","52.47432939628871,13.403090958488178",2,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#2#2026,True,True
-2026_DE_wiec_b-Treptower-Park-Puschkinallee-ganztagig,2026,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,<b>Treptower Park /Puschkinallee: ganztägig</b>diverse Veranstaltunge,"diverse Veranstaltungen:
+2026_DE_wiec_b-Treptower-Park-Puschkinallee-ganztagig,2026,Lata,DE,Other events,festyn,weryfikacja,,True,niezwiazkowe,<b>Treptower Park /Puschkinallee: ganztägig</b>diverse Veranstaltunge,"diverse Veranstaltungen:
 - Clubkultur (Musikbranche)
 - Bass statt Beton
 - Stärkung der Kunst und Kultur
 - A100 stoppen (BM 2026)",,,,Point,,"52.48844095360204,13.463952011112042","52.48844095360204,13.463952011112042",3,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#3#2026,True,True
-2014_DE_wiec_1st-of-May-Rave-Gorli,2014,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,1st of May Rave Görli,"## 2014
+2014_DE_wiec_1st-of-May-Rave-Gorli,2014,Lata,DE,Other events,festyn,weryfikacja,,True,niezwiazkowe,1st of May Rave Görli,"## 2014
 13.08 Uhr: Im Görlitzer Park soll es mehrere illegale Bühnen geben, die derzeit von der Polizei kontrolliert werden.  (Berliner Stimme)
 
 ## 2015
@@ -2810,7 +2810,7 @@ Live broadcasting every DJ set from Görlitzer Park Berlin.
 
 from 10:00 AM to 22:00 PM at the Park followed by an Afterparty at Görlitzer's Park more iconic Bar ""Das Edelweiss"" untill closing.
 ",,,,Polygon,,,,5,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#5#2014,False,True
-2015_DE_wiec_1st-of-May-Rave-Gorli,2015,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,1st of May Rave Görli,"## 2014
+2015_DE_wiec_1st-of-May-Rave-Gorli,2015,Lata,DE,Other events,festyn,weryfikacja,,True,niezwiazkowe,1st of May Rave Görli,"## 2014
 13.08 Uhr: Im Görlitzer Park soll es mehrere illegale Bühnen geben, die derzeit von der Polizei kontrolliert werden.  (Berliner Stimme)
 
 ## 2015
@@ -2829,7 +2829,7 @@ Live broadcasting every DJ set from Görlitzer Park Berlin.
 
 from 10:00 AM to 22:00 PM at the Park followed by an Afterparty at Görlitzer's Park more iconic Bar ""Das Edelweiss"" untill closing.
 ",,,,Polygon,,,,5,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#5#2015,False,True
-2016_DE_wiec_1st-of-May-Rave-Gorli,2016,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,1st of May Rave Görli,"## 2014
+2016_DE_wiec_1st-of-May-Rave-Gorli,2016,Lata,DE,Other events,festyn,weryfikacja,,True,niezwiazkowe,1st of May Rave Görli,"## 2014
 13.08 Uhr: Im Görlitzer Park soll es mehrere illegale Bühnen geben, die derzeit von der Polizei kontrolliert werden.  (Berliner Stimme)
 
 ## 2015
@@ -2848,7 +2848,7 @@ Live broadcasting every DJ set from Görlitzer Park Berlin.
 
 from 10:00 AM to 22:00 PM at the Park followed by an Afterparty at Görlitzer's Park more iconic Bar ""Das Edelweiss"" untill closing.
 ",,,,Polygon,,,,5,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#5#2016,False,True
-2017_DE_wiec_1st-of-May-Rave-Gorli,2017,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,1st of May Rave Görli,"## 2014
+2017_DE_wiec_1st-of-May-Rave-Gorli,2017,Lata,DE,Other events,festyn,weryfikacja,,True,niezwiazkowe,1st of May Rave Görli,"## 2014
 13.08 Uhr: Im Görlitzer Park soll es mehrere illegale Bühnen geben, die derzeit von der Polizei kontrolliert werden.  (Berliner Stimme)
 
 ## 2015
@@ -2867,10 +2867,10 @@ Live broadcasting every DJ set from Görlitzer Park Berlin.
 
 from 10:00 AM to 22:00 PM at the Park followed by an Afterparty at Görlitzer's Park more iconic Bar ""Das Edelweiss"" untill closing.
 ",,,,Polygon,,,,5,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#5#2017,False,True
-1996_DE_demonstracja_Graue-Panther,1996,Lata,DE,Other events,demonstracja,geometria,,True,niezwiazkowe,1996 Graue Panther,"*Die Demonstrationszüge der Gewerkschaften beginnen 10 Uhr Treffpunkte: OTV-Haus, Engeldamm; IG Bau, Info-Box Potsdamer Platz; IG Metall-Haus, Alte Jakobstraße; DGB, U-Bahnhof Oranienburger Tor; Graue Panther, Brandenburger Tor* (ND 30.04.1996)",,49,49,LineString,2072.0,"52.516391,13.379524","52.518285,13.407571",6,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#6#1996,False,True
-1997_DE_wiec_Obdachlose-Iniativen-Treffe,1997,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,1997 Obdachlose Iniativen Treffe,"Obdachlosen-Initiativen treffen sich an der Siegessäule in Tiergarten, 11 Uhr (taz 1997)",,,,Point,,"52.514288,13.350234","52.514288,13.350234",7,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#7#1997,,True
-2000_DE_wiec_Wreath-laying-by-delegation-of-Russian-e,2000,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,2000. Wreath laying by delegation of Russian embassy (?),"The wreath laying ceremony in the same spot was (at least once) included in the May 1st script of GDR. Here, in 1954, trade union delegates from Soviet Union, China, Eastern Bloc countries as well as Western countries laid wreaths to commemorate the liberation of Europe from fascismus by the heroes of the soviet army (ND 2.05.1954. s. 2)",,,,Point,,"52.487321,13.469315","52.487321,13.469315",8,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#8#2000,False,True
-2002_DE_wiec_KPD-RZ,2002,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,2002 – KPD/RZ,"22:00 – satyryczna demonstracja KPD/RZ (taz 30.4)
+1996_DE_demonstracja_Graue-Panther,1996,Lata,DE,Other events,demonstracja,geometria,Graue Panther,False,niezwiazkowe,1996 Graue Panther,"*Die Demonstrationszüge der Gewerkschaften beginnen 10 Uhr Treffpunkte: OTV-Haus, Engeldamm; IG Bau, Info-Box Potsdamer Platz; IG Metall-Haus, Alte Jakobstraße; DGB, U-Bahnhof Oranienburger Tor; Graue Panther, Brandenburger Tor* (ND 30.04.1996)",,49,49,LineString,2072.0,"52.516391,13.379524","52.518285,13.407571",6,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#6#1996,False,True
+1997_DE_wiec_Obdachlose-Iniativen-Treffe,1997,Lata,DE,Other events,wiec,geometria,Obdachlose Initativen,False,niezwiazkowe,1997 Obdachlose Iniativen Treffe,"Obdachlosen-Initiativen treffen sich an der Siegessäule in Tiergarten, 11 Uhr (taz 1997)",,,,Point,,"52.514288,13.350234","52.514288,13.350234",7,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#7#1997,,True
+2000_DE_wiec_Wreath-laying-by-delegation-of-Russian-e,2000,Lata,DE,Other events,upamiętnienie,weryfikacja,,True,niezwiazkowe,2000. Wreath laying by delegation of Russian embassy (?),"The wreath laying ceremony in the same spot was (at least once) included in the May 1st script of GDR. Here, in 1954, trade union delegates from Soviet Union, China, Eastern Bloc countries as well as Western countries laid wreaths to commemorate the liberation of Europe from fascismus by the heroes of the soviet army (ND 2.05.1954. s. 2)",,,,Point,,"52.487321,13.469315","52.487321,13.469315",8,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#8#2000,False,True
+2002_DE_wiec_KPD-RZ,2002,Lata,DE,Other events,happening,weryfikacja,KPD/RZ,False,niezwiazkowe,2002 – KPD/RZ,"22:00 – satyryczna demonstracja KPD/RZ (taz 30.4)
 
 No demonstration; only a rally due to riots
 
@@ -2893,13 +2893,13 @@ zur Wiener Str.
 (dortige Feuerwache)
 
 Kreuzberger Patriotische Demokraten/Realistisches Zentrum - Massenlinie (Generalcommando) KPD/RZ-ML (GC)",,,,Point,,"52.498256,13.430061","52.498256,13.430061",9,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#9#2002,False,True
-2005_DE_demonstracja_FAU-Du-Hast-eine-Wurde-Verteidige-Sie,2005,name,DE,Other events,demonstracja,geometria,,True,niezwiazkowe,2005 FAU. Du Hast eine Würde. Verteidige Sie!,"*Wir gehen weiter und machen nicht am Sitz des Bürgermeisters halt, sondern führen eine Demonstration zum ""Haus der Deutschen Wirtschaft"" durch, wo die Bundesvereinigung der Deutschen Arbeitgeberverbände (BDA) und der Bundesverband der Deutschen Industrie e.V. (BDI) ihren Sitz haben. Wir gehen deshalb von der DGB-Kundgebung weiter zur Rückseite des Roten Rathauses (12 Uhr Molkenmarkt).* (fau.org)",,,,LineString,474.4,"52.517724,13.408194","52.514262,13.40566",10,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#10#2005,,True
+2005_DE_demonstracja_FAU-Du-Hast-eine-Wurde-Verteidige-Sie,2005,name,DE,Other events,demonstracja,geometria,FAU,False,niezwiazkowe,2005 FAU. Du Hast eine Würde. Verteidige Sie!,"*Wir gehen weiter und machen nicht am Sitz des Bürgermeisters halt, sondern führen eine Demonstration zum ""Haus der Deutschen Wirtschaft"" durch, wo die Bundesvereinigung der Deutschen Arbeitgeberverbände (BDA) und der Bundesverband der Deutschen Industrie e.V. (BDI) ihren Sitz haben. Wir gehen deshalb von der DGB-Kundgebung weiter zur Rückseite des Roten Rathauses (12 Uhr Molkenmarkt).* (fau.org)",,,,LineString,474.4,"52.517724,13.408194","52.514262,13.40566",10,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#10#2005,,True
 2019_DE_wiec_der-Kampf-und-Feiertag-der-Arbeitslosen,2019,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,2019 der Kampf- und Feiertag der Arbeitslosen,"Wenn am 1. Mai also bestehende Ausbeutungsverhältnisse kritisiert werden, kann damit am 2. Mai nicht wieder Schluss sein. Aus diesem Grund findet am Donnerstag bereits zum 16. Mal der Kampf- und Feiertag der Arbeitslosen statt. Leben muss nicht Arbeit sein und vielleicht müssen wir neue Ideen zu diesen Themen zulassen (2.5.,TreffpunktamSenefelderplatz,ab 13 Uhr). (2.05, taz)",,,,Point,,"52.532406,13.41271","52.532406,13.41271",11,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#11#2019,False,True
 2026_DE_wiec_Auf-Nazis-Stampfen-b-12-22-Uhr,2026,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,2026. Auf Nazis Stampfen</b>12-22 Uhr,BM 2026,,,,Point,,"52.54529541136415,13.385953711278603","52.54529541136415,13.385953711278603",12,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#12#2026,True,True
 2026_DE_demonstracja_Feministische-1-Mai-Demo,2026,Lata,DE,Other events,demonstracja,name,,True,niezwiazkowe,2026. Feministische 1. Mai Demo,"13:30 Bismarckplatz
 17:00 Wittenbergerplatz (BM 2026)",,,,LineString,3744.5,"52.49739272955972,13.290378399092475","52.50189606413929,13.342619484057394",13,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#13#2026,True,True
-2026_DE_wiec_Fur-den-Erhalt-von-kunsterlischer-Arbeit,2026,name,DE,Other events,wiec,geometria,,True,niezwiazkowe,2026. Für den Erhalt von künsterlischer Arbeit auf dem RAW Gelände. (Kopie),<b>Revaler Str.: 16.30-20 Uhr</b> (BM 2026),,,,Point,,"52.508137779196346,13.453191509968974","52.508137779196346,13.453191509968974",14,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#14#2026,,True
-2011_DE_demonstracja_FAU-Spaziergang-gegen-Leiharbeit,2011,Lata,DE,Other events,demonstracja,geometria,,True,niezwiazkowe,FAU 2011. Spaziergang gegen Leiharbeit,"12:30
+2026_DE_wiec_Fur-den-Erhalt-von-kunsterlischer-Arbeit,2026,name,DE,Other events,festyn,weryfikacja,,True,niezwiazkowe,2026. Für den Erhalt von künsterlischer Arbeit auf dem RAW Gelände. (Kopie),<b>Revaler Str.: 16.30-20 Uhr</b> (BM 2026),,,,Point,,"52.508137779196346,13.453191509968974","52.508137779196346,13.453191509968974",14,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#14#2026,,True
+2011_DE_demonstracja_FAU-Spaziergang-gegen-Leiharbeit,2011,Lata,DE,Other events,demonstracja,geometria,FAU,False,niezwiazkowe,FAU 2011. Spaziergang gegen Leiharbeit,"12:30
 
 Attendance:
 50 (nd)
@@ -2911,11 +2911,11 @@ Beim Bundesministerium für Soziales ging es um die Leiharbeit und Hartz IV, ins
 Die Abschlusskundgebung fand anschließend vor einem Büro von Olympia Personaldienstleistungen statt. Olympia gehört zum international operierenden Konzern OTTO Workforce. Seit Februar wehren sich hier polnische und slowakische ArbeiterInnen, die von OTTO in die Niederlande verliehen wurden, gegen ihre miesen Arbeits- und Lebensbedingungen. Die FAU unterstützt diesen Arbeitskampf der von ihren Schwestergewerkschaften ZSP (Polen) und PA (Slowakei) initiiert wurde.
 Die Demonstration, an der sich auch Gewerkschaftsaktivisten aus Italien , Frankreich und Spanien beteiligten, wurde musikalisch durch die Gruppe Atze Wellblech begleitet, die in vielen ihrer Liedern miese Arbeitsbedingungen thematisiert. In zahlreichen Slogans wurden bei besten akustischen Bedingungen in der Friedrichstraße sowohl die ungleiche Behandlung der LeiharbeiterInnen gegenüber anderen LohnarbeiterInnen angeprangert, als auch die Lohnarbeit als solche in Frage gestellt.
 Zusammenfassend kann gesagt werden, das es am 1.Mai 2011 gelungen ist eine kämpferische kleine Gewerkschaftsdemonstration abseits des sozialdemokratischen Mainstream durchzuführen. ",,95,95,LineString,3052.6,"52.512146,13.389545","52.527008,13.386103",15,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#15#2011,False,True
-2006_DE_wiec_Jungen-Liberalen-Protest,2006,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,Jungen Liberalen Protest,"Die Jungen Liberalen wollen gegen Berlins Kultursenator Thomas Flierl (Linkspartei) und den PDS-Ehrenvorsitzenden Hans Modrow demonstrieren. Beide seien ""Stasi-Ideologen"". 50 Teilnehmer sind angemeldet. Die zuständigen Polizisten suchen - und finden fünf JuLis an der Ecke. ""Wir haben auch überlegt, näher an die linken Demos zu gehen, aber das war uns dann doch zu gefährlich"", sagt die Vorsitzende Daniela Langer. (taz liveticker 2006)
+2006_DE_wiec_Jungen-Liberalen-Protest,2006,Lata,DE,Other events,demonstracja,weryfikacja,Jungen Liberalen,False,niezwiazkowe,Jungen Liberalen Protest,"Die Jungen Liberalen wollen gegen Berlins Kultursenator Thomas Flierl (Linkspartei) und den PDS-Ehrenvorsitzenden Hans Modrow demonstrieren. Beide seien ""Stasi-Ideologen"". 50 Teilnehmer sind angemeldet. Die zuständigen Polizisten suchen - und finden fünf JuLis an der Ecke. ""Wir haben auch überlegt, näher an die linken Demos zu gehen, aber das war uns dann doch zu gefährlich"", sagt die Vorsitzende Daniela Langer. (taz liveticker 2006)
 Attendance: 5 (taz)",,,,Point,,"52.50757,13.390275","52.50757,13.390275",16,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#16#2006,False,True
 1994_DE_wiec_Kottbusser-Tor,1994,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,Kottbusser Tor,1994 – endpoint of the KPD/RZ demonstration,,,,Point,,"52.4989853,13.4183107","52.4989853,13.4183107",17,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#17#1994,False,True
-1992_DE_festyn_LSBT-Fest,1992,Lata,DE,Other events,festyn,name,,True,niezwiazkowe,LSBT Fest," Bislang wird lediglich für ein lesbisch-schwules Fest in der Muskauer Straße geworben. Ob auch auf der Oberbaumbrücke gefeiert wird, war gestern unklar. (taz 30.04.1992)",,,,Point,,"52.502502,13.428587","52.502502,13.428587",18,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#18#1992,False,True
-2018_DE_wiec_MaiGorli,2018,Lata,DE,Other events,wiec,geometria,,True,niezwiazkowe,MaiGörli,"## 2018
+1992_DE_festyn_LSBT-Fest,1992,Lata,DE,Other events,festyn,name,LSBT Gruppen,False,niezwiazkowe,LSBT Fest," Bislang wird lediglich für ein lesbisch-schwules Fest in der Muskauer Straße geworben. Ob auch auf der Oberbaumbrücke gefeiert wird, war gestern unklar. (taz 30.04.1992)",,,,Point,,"52.502502,13.428587","52.502502,13.428587",18,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#18#1992,False,True
+2018_DE_wiec_MaiGorli,2018,Lata,DE,Other events,festyn,weryfikacja,,True,niezwiazkowe,MaiGörli,"## 2018
 
 *Der familienfreundliche Teil der Maifeste findet in diesem Jahr im Görlizer Park statt, der extra umzäunt wird. Der Veranstalter „pure fm – berlins electronic radio“ präsentiert das Fest in Kooperation mit dem Bezirksamt Friedrichshain-Kreuzberg. Ausgelassen, bunt und fröhlich soll es auf zwei Bühnen und im Park zugehen. Von 12 bis 23 Uhr gibt es am 1. Mai ein Fest bei freien Eintritt.* (friedrichshain-kreuzberg.de)
 ",,,,Polygon,,,,19,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#19#2018,False,True
@@ -3378,7 +3378,7 @@ Attendance: 5 (taz)",,,,Point,,"52.50757,13.390275","52.50757,13.390275",16,umap
 2017: 45000
 2018: 52000
 2019: 45000",45000,Polygon,,,,22,umap_backup_1-mai-berlin_aktualna16.umap,umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2019,False,True
-1994_DE_demonstracja_Demokraten-fur-Deutschland-Vollendung-de,1994,Lata,DE,Other events,demonstracja,name,,True,niezwiazkowe,1994. Demokraten für Deutschland – *Vollendung der Einheit und für den sofortigen Regierungsumzug nach Berlin*,"Attendance unknown; 
+1994_DE_demonstracja_Demokraten-fur-Deutschland-Vollendung-de,1994,Lata,DE,Other events,demonstracja,name,Demokraten für Deutschland,False,niezwiazkowe,1994. Demokraten für Deutschland – *Vollendung der Einheit und für den sofortigen Regierungsumzug nach Berlin*,"Attendance unknown; 
 
 Bereits am Sonnenabend laden die 'Demokraten für Deutschland' für 14 Uhr zu einem Meeting zur *Vollendung der Einheitund für den sofortigen Regierungs-umzug nach Berlin* zum Reichstag ein. Das Ganze ist mit einem Autokorso vom Grunewald zum Strausberger Platz verbunden. (ND 30.04.1994)
 

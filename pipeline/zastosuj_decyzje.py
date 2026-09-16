@@ -7,10 +7,18 @@ type, it replaces what the parser inferred, and the row stops being flagged.
 Runs after join.py and dzielnice.py, rewriting wydarzenia.csv in place, so a
 fresh parse never loses a judgement already made.
 
-Usage: python3 zastosuj_decyzje.py
+Runs twice. First over the per-city files, before join.py: the join matches
+a rocznik entry to a map object by actor, so a correction that lands only
+afterwards leaves the entry looking like it has no object at all -- which is
+why fifteen `tylko_rocznik` rows came back annotated "jest na mapie". Then
+over the joined table, which is where the audit trail and the flags belong.
+
+Usage: python3 zastosuj_decyzje.py            (the joined table)
+       python3 zastosuj_decyzje.py --miasta   (the per-city files, aktor/typ only)
 """
 import csv
 import json
+import sys
 from pathlib import Path
 
 from common import write_csv
@@ -29,6 +37,30 @@ def wczytaj_decyzje(nazwa):
     if isinstance(dane, dict) and "content" in dane and isinstance(dane["content"], dict):
         dane = dane["content"]
     return {k: v for k, v in dane.items() if isinstance(v, dict)}
+
+
+def przed_zlaczeniem():
+    """Only aktor and typ, only in the per-city files."""
+    aktorzy = wczytaj_decyzje("aktorzy")
+    for nazwa in ("wydarzenia_warszawa.csv", "wydarzenia_berlin.csv"):
+        sciezka = OUT_DIR / nazwa
+        if not sciezka.exists():
+            continue
+        with sciezka.open(encoding="utf-8") as f:
+            wiersze = list(csv.DictReader(f))
+        n = 0
+        for w in wiersze:
+            d = aktorzy.get(w["klucz_zrodlowy"])
+            if not d:
+                continue
+            if d.get("aktor") and d["aktor"] != w["aktor"]:
+                w["aktor"], w["aktor_zgadniety"] = d["aktor"], "False"
+                n += 1
+            if d.get("typ") and d["typ"] != w["typ"]:
+                w["typ"], w["typ_zrodlo"] = d["typ"], "weryfikacja"
+                n += 1
+        write_csv(sciezka, wiersze, list(wiersze[0].keys()))
+        print(f"{nazwa}: {n} poprawek przed zlaczeniem")
 
 
 def main():
@@ -114,4 +146,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--miasta" in sys.argv:
+        przed_zlaczeniem()
+    else:
+        main()
