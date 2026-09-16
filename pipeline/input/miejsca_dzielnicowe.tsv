@@ -1,0 +1,47 @@
+# Gazeter miejsc dzielnicowek: 80 zapisow z dzielnicowe.tsv sprowadzonych do
+# realnych adresow. Z tego powstaje warstwa geojson na mape.
+#
+# wzorzec  -- fragment, po ktorym rozpoznaje sie miejsce w kolumnie `miejsce`
+#             (male litery, bez znakow diakrytycznych; pierwszy pasujacy wygrywa)
+# wspolrzedne -- "szerokosc,dlugosc". PUSTE = do uzupelnienia. Najszybciej
+#             kliknac punkt w uMap i skopiowac; skrypt wtedy sam wstawi go
+#             wszystkim edycjom w tym miejscu.
+# precyzja -- "adres" gdy punkt stoi tam, gdzie impreza; "mapa" gdy wziety z
+#             obiektu juz istniejacego na Twojej mapie
+klucz	dzielnica	wzorzec	wspolrzedne	precyzja	zrodlo
+schlosspark-buch	Buch	schlosspark buch	52.6335,13.4936	park	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+nd-haus	Friedrichshain	franz mehring	52.5108,13.4288	adres	Franz-Mehring-Platz 1; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+alice-salomon-platz	Hellersdorf	alice salomon	52.5369,13.60455	mapa	obiekt „2000 Kulturfest gegen Rechts” z mapy berlinskiej
+kastanienallee	Hellersdorf	kastanienallee	52.5384,13.5976	adres	Kastanienallee 6-8, Hellersdorf; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+cecilienplatz	Hellersdorf	cecilienplatz	52.5290,13.5880	plac	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+oberseepark	Hohenschönhausen	obersee	52.5482,13.5008	park	brzeg Obersee; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+falkenberger-chaussee	Hohenschönhausen	falkenberger	52.5645,13.5060	skrzyzowanie	Falkenberger Chaussee / Vincent-van-Gogh-Straße; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+warnitzer-bogen	Hohenschönhausen	warnitzer	52.5700,13.5150	ulica	Quartierspark Warnitzer Bogen; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+orankebad	Hohenschönhausen	orankeba	52.5535,13.4960	obiekt	polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy
+prerower-platz	Hohenschönhausen	prerower	52.5640,13.5090	plac	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+mariannenplatz	Kreuzberg	mariannenplatz	52.502325,13.424466	mapa	obiekt „Mariannenplatz” z miejsca.csv
+stallschreiberstrasse	Kreuzberg	stallschreiber	52.5055,13.4045	adres	Stallschreiberstraße 12; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+schlossplatz-koepenick	Köpenick	schlossplatz|schlosspl|frauentog|schlossinsel|schlosshof|altstadt koepenick	52.4440,13.5748	plac	Schlossplatz / Frauentog, Altstadt; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+luisenhain	Köpenick	luisenhain	52.4455,13.5735	park	nad Dahme; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+rathaus-lichtenberg	Lichtenberg	moellendorff	52.5157,13.4798	skrzyzowanie	Frankfurter Allee / Möllendorffstraße; polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy
+kulturhaus-karlshorst	Lichtenberg	kulturhaus karlshorst	52.4835,13.5265	obiekt	Treskowallee; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+lindencenter	Lichtenberg	lindencenter	52.5640,13.5090	plac	Prerower Platz -- ten sam punkt; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+alt-marzahn	Marzahn	alt marzahn	52.5430,13.5640	ulica	wies Alt-Marzahn, nr 64; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+marzahn-kundgebungen	Marzahn	allee der kosmonauten|eisenacher			
+koellnischer-park	Mitte	koellnischen park	52.5130,13.4135	park	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+lipschitzallee	Neukölln	lipschitzallee	52.4246425,13.4626984	z kroniki	link geo: w rocznikach DE, przy wpisie SPD 1995; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+haus-der-pds-pankow	Pankow	breite strasse 48|haus der pds	52.5690,13.4020	adres	Breite Straße 48; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+pankgraefin	Pankow	breite strasse 43	52.5688,13.4016	adres	Breite Straße 43; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+breite-strasse-pankow	Pankow	breite strasse			
+buergerpark-pankow	Pankow	buergerpark	52.5710,13.4055	park	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+tanzschule-pankow	Pankow	kreuzstrasse			
+boetzow-eiche	Prenzlauer Berg	boetzow|kino am friedrichshain|am friedrichshain	52.5305,13.4340	skrzyzowanie	Bötzowstraße / Am Friedrichshain, przy Kino am Friedrichshain; polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy
+humannplatz	Prenzlauer Berg	humannplatz	52.5565,13.4085	plac	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+springbornclub	Treptow	springborn	52.4420,13.5115	adres	Springbornstraße 53, Johannisthal; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+rosengarten-treptow	Treptow	rosengarten|treptower park	52.4930,13.4660	park	Rosengarten w Treptower Park; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+gruenauer-strasse	Treptow	gruenauer			
+karl-kunger-strasse	Treptow	karl kunger	52.4885,13.4520	ulica	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+rathaus-wedding	Wedding	rathaus wedding	52.5495,13.3565	obiekt	Müllerstraße 146; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+weddingstrasse	Wedding	weddingstrasse			
+parkstrasse-weissensee	Weißensee	parkstrasse	52.5545,13.4620	adres	Parkstraße 23; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+herbert-baum-strasse	Weißensee	herbert baum	52.5510,13.4585	ulica	polozenie rozpoznane z nazwy miejsca, nie z geokodera

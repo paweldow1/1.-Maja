@@ -1,0 +1,466 @@
+{
+ "type": "FeatureCollection",
+ "name": "Festyny dzielnicowe PDS",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5748,
+     52.444
+    ]
+   },
+   "properties": {
+    "name": "1. Mai Fest Köpenick",
+    "Lata": "1992;1993;2005;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019",
+    "description": "1992: Frühlingsfest auf der Schloßinsel, 14:00\n1993: Maifeier der PDS Köpenick, 14:00–17:00 [adres z innych edycji cyklu]\n2005: Maifest Schlossplatz Köpenick, 13:00\n2007: Maifest »Venceremos!«, 13:00–18:00 — Ines Feierabend; Michael Schneider\n2008: Maifete im Frauentog, 13:00–18:00\n2009: Maifest im Frauentog, 13:00–18:00 — Gregor Gysi\n2010: Maifest am Schloßplatz, 13:00–18:00\n2011: Maifest der Partei DIE LINKE, 13:00–18:00 — Marko Tesch; Petra Pau; Klaus Lederer\n2012: Maifest am Frauentog, 13:00–18:00 — Klaus Lederer\n2013: Maifest in Treptow-Köpenick — Petra Pau\n2014: Maifest der LINKEN Treptow-Köpenick, 13:00–19:00\n2015: Maifest der LINKEN Treptow-Köpenick, 13:00–18:00\n2016: Maifest der LINKEN Treptow-Köpenick, 13:00–18:00\n2017: 1. Mai-Fest DIE LINKE Treptow-Köpenick, 13:00–18:00 — Katina Schubert\n2018: 1. Mai Fest DIE LINKE Treptow-Köpenick, 13:00–18:00 — Petra Pau; Klaus Lederer; Katina Schubert\n2019: Maifest auf dem Schlossplatz Köpenick, 13:00 — Gregor Gysi; Petra Pau; Katina Schubert; Klaus Lederer",
+    "Aktor": "Die Linke;PDS",
+    "Dzielnica": "Köpenick",
+    "Edycji opisanych": 16,
+    "Precyzja": "plac",
+    "Zrodlo punktu": "Schlossplatz / Frauentog, Altstadt; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5735,
+     52.4455
+    ]
+   },
+   "properties": {
+    "name": "1. Mai Fest Köpenick",
+    "Lata": "1994;1997;2000",
+    "description": "1994: Maifeier im Luisenhain, 14:00–18:00\n1997: Maifest im Luisenhain, 14:00–18:00\n2000: PDS-Mai-Fest im Luisenhain, 13:00–18:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Köpenick",
+    "Edycji opisanych": 3,
+    "Precyzja": "park",
+    "Zrodlo punktu": "nad Dahme; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.588,
+     52.529
+    ]
+   },
+   "properties": {
+    "name": "1. Mai-Fest Cecilienplatz",
+    "Lata": "2017",
+    "description": "2017: 1. Mai-Fest Cecilienplatz, 14:00–18:00",
+    "Aktor": "Die Linke",
+    "Dzielnica": "Hellersdorf",
+    "Edycji opisanych": 1,
+    "Precyzja": "plac",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4016,
+     52.5688
+    ]
+   },
+   "properties": {
+    "name": "Familiennachmittag in der »Pankgräfin«",
+    "Lata": "1992",
+    "description": "1992: Familiennachmittag in der »Pankgräfin«, 16:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Pankow",
+    "Edycji opisanych": 1,
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Breite Straße 43; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.434,
+     52.5305
+    ]
+   },
+   "properties": {
+    "name": "Fest an der Bötzow-Eiche",
+    "Lata": "2000;2004;2005;2007;2008;2009;2010;2011;2012;2013;2015;2017;2018;2019",
+    "description": "2000: PDS-Fest Bötzowstraße, 10:00–20:00\n2004: 15. Kiezfest an der Bötzow-Eiche, 14:00\n2005: Maifest an der Bötzoweiche, 14:00\n2007: 1. Mai-Fest an der Bötzow-Eiche, 13:00–18:00\n2008: 1. Mai-Fest an der Bötzoweiche, 13:00\n2009: 1. Mai-Fest an der Bötzow-Eiche, 14:00–19:00\n2010: Maifest der LINKEN Pankow an der Bötzoweiche, 14:00\n2011: 1. Mai Fest an der Bötzoweiche, 14:00\n2012: 1. Mai-Fest an der Bötzoweiche, 13:00\n2013: 1. Mai Fest an der Bötzoweiche, 13:00\n2015: 1. Mai-Fest an der Bötzoweiche, 13:00\n2017: Fest an der Bötzow-Eiche, 13:00–18:30 — Elke Breitenbach\n2018: Fest an der Bötzow-Eiche, 13:00–18:30 — Katina Schubert; Pascal Meiser; Klaus Lederer; Elke Breitenbach; Petra Pau; Stefan Liebich\n2019: Maifest an der Bötzow-Eiche, 13:00 — Elke Breitenbach; Stefan Liebich; Petra Pau; Martina Michels",
+    "Aktor": "Die Linke;PDS",
+    "Dzielnica": "Prenzlauer Berg",
+    "Edycji opisanych": 14,
+    "Precyzja": "skrzyzowanie",
+    "Zrodlo punktu": "Bötzowstraße / Am Friedrichshain, przy Kino am Friedrichshain; polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.462,
+     52.5545
+    ]
+   },
+   "properties": {
+    "name": "Frühlingsfest Parkstraße",
+    "Lata": "1992;1993",
+    "description": "1992: Frühlingsfest Parkstraße, 14:00\n1993: Bunter Nachmittag in der PDS-Geschäftsstelle, 13:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Weißensee",
+    "Edycji opisanych": 2,
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Parkstraße 23; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.509,
+     52.564
+    ]
+   },
+   "properties": {
+    "name": "Gegenkundgebung vor dem Lindencenter",
+    "Lata": "2012",
+    "description": "2012: Gegenkundgebung vor dem Lindencenter, 14:00",
+    "Aktor": "Die Linke",
+    "Dzielnica": "Lichtenberg",
+    "Edycji opisanych": 1,
+    "Precyzja": "plac",
+    "Zrodlo punktu": "Prerower Platz -- ten sam punkt; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4135,
+     52.513
+    ]
+   },
+   "properties": {
+    "name": "Großes Familienfest am Köllnischen Park",
+    "Lata": "1992",
+    "description": "1992: Großes Familienfest am Köllnischen Park, 12:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Mitte",
+    "Edycji opisanych": 1,
+    "Precyzja": "park",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4085,
+     52.5565
+    ]
+   },
+   "properties": {
+    "name": "Humannplatz Prenzlauer Berg",
+    "Lata": "1996;2000",
+    "description": "1996: Widerspenstig und lebendig, Humannplatz, 10:00–19:00\n2000: Bündnisfest auf dem Humannplatz, 09:00–24:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Prenzlauer Berg",
+    "Edycji opisanych": 2,
+    "Precyzja": "plac",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5265,
+     52.4835
+    ]
+   },
+   "properties": {
+    "name": "Maifeier der PDS Lichtenberg",
+    "Lata": "1997",
+    "description": "1997 (30.04): Maifeier der PDS Lichtenberg, 19:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Lichtenberg",
+    "Edycji opisanych": 1,
+    "Precyzja": "obiekt",
+    "Zrodlo punktu": "Treskowallee; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4585,
+     52.551
+    ]
+   },
+   "properties": {
+    "name": "Maifeier der PDS Weißensee",
+    "Lata": "1997",
+    "description": "1997 (30.04): Maifeier der PDS Weißensee, 14:30–22:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Weißensee",
+    "Edycji opisanych": 1,
+    "Precyzja": "ulica",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.452,
+     52.4885
+    ]
+   },
+   "properties": {
+    "name": "Maifeier im Gerard-Philippe-Klub",
+    "Lata": "1992",
+    "description": "1992: Maifeier im Gerard-Philippe-Klub, 14:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Treptow",
+    "Edycji opisanych": 1,
+    "Precyzja": "ulica",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5976,
+     52.5384
+    ]
+   },
+   "properties": {
+    "name": "Maifest Boulevard Kastanienallee",
+    "Lata": "1993;1996;1997",
+    "description": "1993: Maifest vor dem Haus der Parteien, 10:00\n1996: Maifest Boulevard Kastanienallee, 10:00 — Hermann Kant; Gisela Steineckert\n1997: Maifest Boulevard Kastanienallee, 11:00–19:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Hellersdorf",
+    "Edycji opisanych": 3,
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Kastanienallee 6-8, Hellersdorf; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.506,
+     52.5645
+    ]
+   },
+   "properties": {
+    "name": "Maifest Hohenschönhausen (Falkenberger Chaussee)",
+    "Lata": "2003;2005;2006;2007;2010;2013;2015;2017;2018",
+    "description": "2003: Bürgerdemo und -kundgebung »Gegen rechte Gewalt«, 10:30–12:45\n2005: Maifest Lichtenberg, 11:00–18:00\n2006: Familienfest Falkenberger Chaussee, 11:00\n2007: Lichtenberger Familienfest, 11:00–18:00\n2010: Stadtteilfest »Bunte Platte«, 11:00\n2013: Maifest »Bunte Platte« — Gesine Lötzsch [adres z innych edycji cyklu]\n2015: Maifest auf der Falkenberger Festwiese, 11:00\n2017: Familienfest Hohenschönhausen, 11:00–17:00\n2018: Familienfest »Bunte Platte«, 11:00–17:00 — Michael Grunst; Gesine Lötzsch",
+    "Aktor": "Die Linke;Linkspartei;PDS",
+    "Dzielnica": "Hohenschönhausen",
+    "Edycji opisanych": 9,
+    "Precyzja": "skrzyzowanie",
+    "Zrodlo punktu": "Falkenberger Chaussee / Vincent-van-Gogh-Straße; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.515,
+     52.57
+    ]
+   },
+   "properties": {
+    "name": "Maifest Hohenschönhausen (Falkenberger Chaussee)",
+    "Lata": "2012;2019",
+    "description": "2012: Familienfest »Bunte Platte«, 11:00–20:00\n2019: Bunte-Platte-Fest, 10:00 — Petra Pau; Gesine Lötzsch",
+    "Aktor": "Die Linke",
+    "Dzielnica": "Hohenschönhausen",
+    "Edycji opisanych": 2,
+    "Precyzja": "ulica",
+    "Zrodlo punktu": "Quartierspark Warnitzer Bogen; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5115,
+     52.442
+    ]
+   },
+   "properties": {
+    "name": "Maifest Springbornclub Johannisthal",
+    "Lata": "1992;1993;2000;2005;2007;2009;2010;2011;2012;2014;2015;2016;2017",
+    "description": "1992: Maifeier im Johannisthaler Springbornclub, 14:00\n1993: Maifete im Springbrunnenclub, 13:00\n2000: PDS-Mai-Fest im Springborn-Club, 14:00–18:00\n2005: Maifest Springbornclub, 14:00\n2007: 16. Kiez-Fete rund um den Springbornclub, 13:00–18:00 — Rosemarie Schuder; Anne-Kathrin Bürger\n2009: Kiezfete im Springbornklub, 13:00–18:00\n2010: Kiezfest im Springbornklub, 13:00–18:00\n2011: 20. Kiezfest Berlin-Johannisthal, 12:00–22:00 — Ines Feierabend\n2012: Kiezfest im Springbornclub, 13:00–18:00\n2014: 23. Kiezfest der BO'n Johannisthal, 13:00–18:00\n2015: 24. Kiezfest der BO'n Johannisthal, 13:00–18:00 — Petra Pau\n2016: 25. Kiezfest der LINKEN im Springbornclub, 14:00–19:00\n2017: Kiezfest Johannisthal, 12:00–20:00",
+    "Aktor": "Die Linke;PDS",
+    "Dzielnica": "Treptow",
+    "Edycji opisanych": 13,
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Springbornstraße 53, Johannisthal; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5008,
+     52.5482
+    ]
+   },
+   "properties": {
+    "name": "Maifest am Obersee",
+    "Lata": "1996;1997;2000;2003",
+    "description": "1996: Festumzug und Maifest am Obersee, 09:30 — Heinz Quermann\n1997: Maifest im Oberseepark, 10:00–17:00\n2000: Bündnisfest Am Obersee, 11:00–18:00\n2003: Maifest am Obersee",
+    "Aktor": "PDS",
+    "Dzielnica": "Hohenschönhausen",
+    "Edycji opisanych": 4,
+    "Precyzja": "park",
+    "Zrodlo punktu": "brzeg Obersee; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4288,
+     52.5108
+    ]
+   },
+   "properties": {
+    "name": "Maifest im ND-Haus Friedrichshain",
+    "Lata": "1993;1994",
+    "description": "1993: Maifest von ND und PDS Friedrichshain, 14:00\n1994: Maifest der PDS Friedrichshain und Lichtenberg, 12:00 — Christa Luft; Günter Reisch; Ernst-Busch-Chor; Ensemble aus Wünsdorf",
+    "Aktor": "PDS",
+    "Dzielnica": "Friedrichshain",
+    "Edycji opisanych": 2,
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Franz-Mehring-Platz 1; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.424466,
+     52.502325
+    ]
+   },
+   "properties": {
+    "name": "Mariannenplatzfest",
+    "Lata": "2000;2005;2012;2017;2018;2019",
+    "description": "2000: Bündnis-Mai-Feier auf dem Mariannenplatz, 13:00–21:00\n2005: Maifest Mariannenplatz, 13:00\n2012: Fest der Linken auf dem Mariannenplatz, 14:00–19:00\n2017: 1. Mai-Fest auf dem Mariannenplatz, 13:00–20:00 — Katina Schubert\n2018: 1. Mai Fest auf dem Mariannenplatz, 13:00–22:00 — Katina Schubert; Petra Pau; Pascal Meiser\n2019: 1. Mai Fest auf dem Mariannenplatz, 13:00 — Pascal Meiser; Katrin Lompscher; Martina Michels; Gregor Gysi",
+    "Aktor": "Die Linke;PDS",
+    "Dzielnica": "Kreuzberg",
+    "Edycji opisanych": 6,
+    "Precyzja": "mapa",
+    "Zrodlo punktu": "obiekt „Mariannenplatz” z miejsca.csv"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4798,
+     52.5157
+    ]
+   },
+   "properties": {
+    "name": "Markt am Rathaus Lichtenberg",
+    "Lata": "2006;2010;2012;2017;2018;2019",
+    "description": "2006: Familienfest am Rathaus, 12:00\n2010: Sportfest »Der Gewalt einen Korb geben«, 12:00–18:00\n2012: Familiensportfest »Der Gewalt einen Korb geben«, 12:00–18:00\n2017: Markt am Rathaus Lichtenberg, 11:00–18:00\n2018: Markt am Rathaus Lichtenberg, 11:00–18:00 — Gesine Lötzsch\n2019: Spectaculum am lichten Berg, 12:00–18:00 — Sebastian Schlüsselburg; Hendrikje Klein; Gesine Lötzsch",
+    "Aktor": "Die Linke;Linkspartei",
+    "Dzielnica": "Lichtenberg",
+    "Edycji opisanych": 6,
+    "Precyzja": "skrzyzowanie",
+    "Zrodlo punktu": "Frankfurter Allee / Möllendorffstraße; polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.60455,
+     52.5369
+    ]
+   },
+   "properties": {
+    "name": "Multikulturelles Bündnisfest gegen Rechts",
+    "Lata": "2000",
+    "description": "2000: Multikulturelles Bündnisfest gegen Rechts, 11:00–20:00 — Gregor Gysi; Petra Pau",
+    "Aktor": "PDS",
+    "Dzielnica": "Hellersdorf",
+    "Edycji opisanych": 1,
+    "Precyzja": "mapa",
+    "Zrodlo punktu": "obiekt „2000 Kulturfest gegen Rechts” z mapy berlinskiej"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.564,
+     52.543
+    ]
+   },
+   "properties": {
+    "name": "Rot ist der Mai / Alt-Marzahn",
+    "Lata": "1992;1993;1996;1997;2000",
+    "description": "1992: Kiezfest Alt-Marzahn, 13:00 — Gregor Gysi\n1993: Maifest an der PDS-Geschäftsstelle Alt-Marzahn, 13:00–23:00\n1996: Maifete »Rot ist der Mai«, 13:00 — Harald Buttler; Norbert Lüdtke\n1997: Maifest Alt-Marzahn, 13:00–18:00\n2000: Kundgebungen der PDS Marzahn, 10:00–17:00",
+    "Aktor": "PDS",
+    "Dzielnica": "Marzahn",
+    "Edycji opisanych": 5,
+    "Precyzja": "ulica",
+    "Zrodlo punktu": "wies Alt-Marzahn, nr 64; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.402,
+     52.569
+    ]
+   },
+   "properties": {
+    "name": "Talk und Tanz in den 1. Mai",
+    "Lata": "1992",
+    "description": "1992 (30.04): Talk und Tanz in den 1. Mai, 18:00 — Kerstin Kaiser; André Brie\n1992: Forum zu aktuellen Fragen der Politik, 16:00 — Hans Modrow",
+    "Aktor": "PDS",
+    "Dzielnica": "Pankow",
+    "Edycji opisanych": 2,
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Breite Straße 48; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  }
+ ]
+}

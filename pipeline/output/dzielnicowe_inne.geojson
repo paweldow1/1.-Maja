@@ -1,0 +1,226 @@
+{
+ "type": "FeatureCollection",
+ "name": "Festyny dzielnicowe -- inni organizatorzy",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4045,
+     52.5055
+    ]
+   },
+   "properties": {
+    "name": "Begegnung der Generationen",
+    "Lata": "1993",
+    "description": "1993: Begegnung der Generationen, 15:00–19:00",
+    "Aktor": "AWO",
+    "Dzielnica": "Kreuzberg",
+    "Edycji opisanych": 1,
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Stallschreiberstraße 12; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4085,
+     52.5565
+    ]
+   },
+   "properties": {
+    "name": "Humannplatz Prenzlauer Berg",
+    "Lata": "1995",
+    "description": "1995: Antifaschistisches Zelt auf dem Humannplatz",
+    "Aktor": "Antifa",
+    "Dzielnica": "Prenzlauer Berg",
+    "Edycji opisanych": 1,
+    "Precyzja": "plac",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.496,
+     52.5535
+    ]
+   },
+   "properties": {
+    "name": "Maifeier am Orankebad",
+    "Lata": "1994;1995",
+    "description": "1994: Maifeier der SPD Hohenschönhausen, 14:00–18:00\n1995: Maifeier am Orankebad, 14:00–18:00",
+    "Aktor": "SPD",
+    "Dzielnica": "Hohenschönhausen",
+    "Edycji opisanych": 2,
+    "Precyzja": "obiekt",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5976,
+     52.5384
+    ]
+   },
+   "properties": {
+    "name": "Maifest Boulevard Kastanienallee",
+    "Lata": "1998",
+    "description": "1998: Straßenfest Boulevard Kastanienallee",
+    "Aktor": "Volkssolidarität",
+    "Dzielnica": "Hellersdorf",
+    "Edycji opisanych": 1,
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Kastanienallee 6-8, Hellersdorf; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5008,
+     52.5482
+    ]
+   },
+   "properties": {
+    "name": "Maifest am Obersee",
+    "Lata": "1994",
+    "description": "1994: 1. Mai-Fest im Oberseepark, 14:00–18:00",
+    "Aktor": "Aktionsbündnis für Soziale Verantwortung",
+    "Dzielnica": "Hohenschönhausen",
+    "Edycji opisanych": 1,
+    "Precyzja": "park",
+    "Zrodlo punktu": "brzeg Obersee; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4055,
+     52.571
+    ]
+   },
+   "properties": {
+    "name": "Maifest im Bürgerpark",
+    "Lata": "1995",
+    "description": "1995: Maifest im Bürgerpark, 13:00–18:00",
+    "Aktor": "SPD",
+    "Dzielnica": "Pankow",
+    "Edycji opisanych": 1,
+    "Precyzja": "park",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4936,
+     52.6335
+    ]
+   },
+   "properties": {
+    "name": "Maifest im Schloßpark Buch",
+    "Lata": "1995",
+    "description": "1995: Maifest im Schloßpark Buch, 13:00–18:00",
+    "Aktor": "SPD",
+    "Dzielnica": "Buch",
+    "Edycji opisanych": 1,
+    "Precyzja": "park",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.466,
+     52.493
+    ]
+   },
+   "properties": {
+    "name": "SPD-Rosengartenfest",
+    "Lata": "1995",
+    "description": "1995: SPD-Rosengartenfest, 13:00–18:00",
+    "Aktor": "SPD",
+    "Dzielnica": "Treptow",
+    "Edycji opisanych": 1,
+    "Precyzja": "park",
+    "Zrodlo punktu": "Rosengarten w Treptower Park; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4626984,
+     52.4246425
+    ]
+   },
+   "properties": {
+    "name": "Tanz in den Mai",
+    "Lata": "1995",
+    "description": "1995 (30.04): Tanz in den Mai",
+    "Aktor": "SPD",
+    "Dzielnica": "Neukölln",
+    "Edycji opisanych": 1,
+    "Precyzja": "z kroniki",
+    "Zrodlo punktu": "link geo: w rocznikach DE, przy wpisie SPD 1995; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3565,
+     52.5495
+    ]
+   },
+   "properties": {
+    "name": "Tanz in den Mai",
+    "Lata": "1995",
+    "description": "1995 (30.04): Tanz in den Mai",
+    "Aktor": "SPD",
+    "Dzielnica": "Wedding",
+    "Edycji opisanych": 1,
+    "Precyzja": "obiekt",
+    "Zrodlo punktu": "Müllerstraße 146; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5748,
+     52.444
+    ]
+   },
+   "properties": {
+    "name": "Volksfest der SPD im Schlosshof",
+    "Lata": "1994",
+    "description": "1994: Volksfest der SPD im Schlosshof, 14:00",
+    "Aktor": "SPD",
+    "Dzielnica": "Köpenick",
+    "Edycji opisanych": 1,
+    "Precyzja": "plac",
+    "Zrodlo punktu": "Schlossplatz / Frauentog, Altstadt; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  }
+ ]
+}
