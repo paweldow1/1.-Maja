@@ -201,12 +201,39 @@ python -m kwerenda corpus
 python -m kwerenda languages
 ```
 
+## Where your work lives
+
+Your corpus, your presets and everything exported live in **`~/Kwerenda`** — a
+plain folder next to your documents, not inside the program. Updating means
+replacing the program folder and nothing else. Point `KWERENDA_HOME` somewhere
+else (a synced drive, the dissertation folder) if you prefer.
+
+```
+~/Kwerenda/kwerenda.sqlite3    the corpus and every run
+~/Kwerenda/presets/            searches you saved
+~/Kwerenda/exports/            RIS, BibTeX, CSV, Obsidian notes
+```
+
+`python -m kwerenda where` prints all of it. Anything an earlier version left
+inside the program folder is moved out on first run, and says so.
+
+## Updating
+
+1. Download the current ZIP and unpack it.
+2. Delete the old program folder, or just leave it.
+3. Run `python install_desktop_icon.py` in the new one — it rebuilds the
+   environment (picking up new dependencies) and repoints the desktop icon.
+
+Your work is untouched: it was never in there.
+
 ## Presets
 
-**A preset is a file.** Everything in the `presets/` folder — YAML or JSON, with
-English keys — shows up in the interface's *load a preset* list and can be run
-from the command line. Nothing is hidden in a database, so a query can go into
-version control, be mailed to a colleague, or edited in any text editor.
+**A preset is a file.** Yours live in `~/Kwerenda/presets`; the examples ship
+with the program and are listed separately, so updates bring better examples
+without ever overwriting your own. Both appear in the interface's *load a
+preset* list and both run from the command line. Nothing is hidden in a
+database, so a query can go into version control, be mailed to a colleague, or
+edited in any text editor.
 
 | file | what it shows |
 |---|---|
@@ -217,14 +244,17 @@ version control, be mailed to a colleague, or edited in any text editor.
 | `offline-corpus.yaml` | new keywords against already-downloaded material |
 
 In the interface: pick one from the dropdown to fill the whole form, or press
-**Save as preset** to write the current form back out as a new file.
+**Save as preset** to write the current form out as a new file in your own
+folder. Copying an example is exactly that: load it, change it, save it under a
+new name.
 
 From the command line, by name or by path:
 
 ```bash
 python -m kwerenda presets                        # what is available
 python -m kwerenda run may-day-solidarnosc        # by name
-python -m kwerenda run presets/offline-corpus.yaml --format ris
+python -m kwerenda run ~/Kwerenda/presets/mine.yaml --format ris
+python -m kwerenda where                          # where everything is kept
 python -m kwerenda --presets ~/my-queries run whatever
 ```
 
@@ -258,7 +288,7 @@ use it, but nothing depends on it.
 python -m unittest discover -s tests -t .
 ```
 
-72 tests: morphology in five languages, the query parser, metadata extraction,
+76 tests: morphology in five languages, the query parser, metadata extraction,
 source adapters, PDF attachments, the engine end to end and every export format. The engine is
 tested against a **local fake WordPress site** (`tests/atrapa_wordpressa.py`) —
 REST API with pagination, a title-only search, an archive listing, a sitemap, an
@@ -279,7 +309,8 @@ text layer) — so the suite never sends a request to anybody else's server.
 | `silnik.py` | orchestration: candidates → verification → hits |
 | `cytowania.py` | record → RIS / CSL-JSON / BibTeX / CSV / Markdown / Zotero |
 | `zotero.py` | the local connector and the Web API |
-| `magazyn.py` | SQLite: corpus, runs, hits, presets |
+| `magazyn.py` | SQLite: corpus, runs, hits |
+| `dane.py` | where your work is kept, and moving it out of older layouts |
 | `serwer.py` + `web/index.html` | the interface |
 | `zasoby/ikona.py` | draws the application icon, in pure Python |
 

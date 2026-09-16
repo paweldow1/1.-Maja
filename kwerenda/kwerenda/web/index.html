@@ -952,10 +952,13 @@ async function loadState() {
       `<option value="${PRESETS.indexOf(p)}"${p.error ? " disabled" : ""}>${esc(p.name)}${
         p.error ? " (cannot be read)" : ""}</option>`).join("") + "</optgroup>";
   $("#presets").innerHTML = '<option value="">— load a preset —</option>'
-    + grupa("Files in presets/", PRESETS.filter(p => p.source === "file"))
-    + grupa("Saved earlier", PRESETS.filter(p => p.source !== "file"));
+    + grupa("Your presets", PRESETS.filter(p => p.source === "file"))
+    + grupa("Examples", PRESETS.filter(p => p.source === "example"))
+    + grupa("Saved earlier", PRESETS.filter(p => p.source === "database"));
   $("#presets-dir").textContent = s.presets_dir
-    ? `Preset files live in ${s.presets_dir}` : "";
+    ? `Your presets, corpus and exports live in ${s.data_dir || s.presets_dir}`
+      + " — updating the program never touches them."
+    : "";
   // Files may be edited by hand while the interface is open; pick the list up
   // again whenever somebody is about to use it.
   $("#presets").onfocus = () => loadState();

@@ -607,6 +607,83 @@ class TestPresety(unittest.TestCase):
                 _znajdz_preset(args, "nie-ma-takiego")
 
 
+class TestRozdzielenieDanych(unittest.TestCase):
+    """Your work must not live inside the folder that gets replaced on update."""
+
+    def test_katalog_danych_slucha_zmiennej(self):
+        from kwerenda import dane
+        with tempfile.TemporaryDirectory() as katalog:
+            stare = os.environ.get("KWERENDA_HOME")
+            os.environ["KWERENDA_HOME"] = katalog
+            try:
+                self.assertEqual(dane.katalog_danych(), Path(katalog))
+                self.assertEqual(dane.sciezka_bazy().parent, Path(katalog))
+                self.assertEqual(dane.katalog_presetow(), Path(katalog) / "presets")
+            finally:
+                if stare is None:
+                    os.environ.pop("KWERENDA_HOME", None)
+                else:
+                    os.environ["KWERENDA_HOME"] = stare
+
+    def test_przenosi_stara_baze_i_moje_presety_ale_nie_przyklady(self):
+        from kwerenda import dane
+        with tempfile.TemporaryDirectory() as katalog:
+            katalog = Path(katalog)
+            program = dane.katalog_programu()
+            stara_baza = program / dane.NAZWA_BAZY
+            moj_preset = dane.katalog_przykladow() / "moja-wlasna-kwerenda.yaml"
+            przyklad = dane.katalog_przykladow() / sorted(dane.PRZYKLADY)[0]
+
+            stare = os.environ.get("KWERENDA_HOME")
+            os.environ["KWERENDA_HOME"] = str(katalog)
+            posprzataj = []
+            try:
+                if not stara_baza.exists():
+                    stara_baza.write_bytes(b"SQLite format 3\x00")
+                    posprzataj.append(stara_baza)
+                moj_preset.write_text("name: Mine\nquery: x\n", encoding="utf-8")
+                posprzataj.append(moj_preset)
+
+                dane.przenies_stare_dane(log=lambda *_: None)
+
+                self.assertTrue((katalog / dane.NAZWA_BAZY).is_file())
+                self.assertFalse(stara_baza.exists())         # moved, not copied
+                self.assertTrue((katalog / "presets" / moj_preset.name).is_file())
+                # an untouched example belongs to the program, not to the user
+                self.assertFalse((katalog / "presets" / przyklad.name).exists())
+            finally:
+                for plik in posprzataj:
+                    plik.unlink(missing_ok=True)
+                if stare is None:
+                    os.environ.pop("KWERENDA_HOME", None)
+                else:
+                    os.environ["KWERENDA_HOME"] = stare
+
+    def test_manifest_przykladow_nadaza_za_folderem(self):
+        """Adding an example without listing it would make the migration treat
+        it as the user's work and copy it into their folder."""
+        from kwerenda.dane import PRZYKLADY, katalog_przykladow
+        na_dysku = {p.name for p in katalog_przykladow().glob("*.yaml")}
+        self.assertEqual(na_dysku, set(PRZYKLADY))
+
+    def test_lista_laczy_moje_presety_z_przykladami(self):
+        from kwerenda.dane import katalog_przykladow
+        from kwerenda.serwer import Stan, lista_presetow
+
+        with tempfile.TemporaryDirectory() as katalog:
+            katalog = Path(katalog)
+            moje = katalog / "presets"
+            moje.mkdir()
+            (moje / "wlasna.yaml").write_text("name: Wlasna\nquery: x\n", encoding="utf-8")
+            stan = Stan(Magazyn(":memory:"), katalog / "exports", moje, katalog_przykladow())
+            presety = lista_presetow(stan)
+
+        zrodla = {p["name"]: p["source"] for p in presety}
+        self.assertEqual(zrodla.get("Wlasna"), "file")
+        self.assertIn("example", zrodla.values())
+        self.assertEqual(len(presety), len({p["name"] for p in presety}))   # no duplicates
+
+
 class TestSerwer(unittest.TestCase):
     def test_zajety_port_nie_wywala_programu(self):
         """Double-clicking the icon twice must not end in a stack trace."""

@@ -11,6 +11,8 @@ from pathlib import Path
 from . import __wersja__
 from .cytowania import (Rekord, do_bibtex, do_csl, do_csv, do_markdown, do_ris,
                         nadaj_citekeys, nazwa_pliku)
+from .dane import (katalog_danych, katalog_eksportu, katalog_presetow,
+                   katalog_przykladow, przenies_stare_dane, sciezka_bazy)
 from .konfiguracja import Konfiguracja
 from .magazyn import Magazyn
 from .morfologia import (DOMYSLNE, JEZYKI, TRYB_DOKLADNY, TRYB_ODMIANA, Opcje,
@@ -20,17 +22,19 @@ from .zapytania import BladZapytania, parsuj
 
 
 def _magazyn(args) -> Magazyn:
-    return Magazyn(args.database)
+    przenies_stare_dane(lambda w: print(w, file=sys.stderr))
+    return Magazyn(args.database or sciezka_bazy())
 
 
 def _katalog_eksportu(args) -> Path:
-    katalog = Path(args.exports)
+    katalog = Path(args.exports) if args.exports else katalog_eksportu()
     katalog.mkdir(parents=True, exist_ok=True)
     return katalog
 
 
 def _katalog_presetow(args) -> Path:
-    katalog = Path(getattr(args, "presets", "presets"))
+    wskazany = getattr(args, "presets", None)
+    katalog = Path(wskazany) if wskazany else katalog_presetow()
     katalog.mkdir(parents=True, exist_ok=True)
     return katalog
 
@@ -58,7 +62,8 @@ def _znajdz_preset(args, wskazanie: str) -> Path:
 def polecenie_gui(args) -> int:
     from .serwer import uruchom_serwer
     uruchom_serwer(_magazyn(args), _katalog_eksportu(args), port=args.port,
-                   otworz=not args.no_browser, katalog_presetow=_katalog_presetow(args))
+                   otworz=not args.no_browser, katalog_presetow=_katalog_presetow(args),
+                   katalog_przykladow=katalog_przykladow())
     return 0
 
 
@@ -165,6 +170,9 @@ def polecenie_presets(args) -> int:
     from .serwer import presety_z_plikow
     katalog = _katalog_presetow(args)
     presety = presety_z_plikow(katalog)
+    nazwy = {p["file"] for p in presety}
+    presety += [p for p in presety_z_plikow(katalog_przykladow())
+                if p["file"] not in nazwy]
     if not presety:
         print(f"No presets in {katalog}/. Save one from the interface, or copy "
               f"an example from the presets/ folder of the repository.")
@@ -180,6 +188,19 @@ def polecenie_presets(args) -> int:
         print(f"  {'':<28} query:   {konfig.zapytanie.strip()[:80]}")
         print(f"  {'':<28} sources: {zrodla[:80]}\n")
     print(f"Run one with:  python -m kwerenda run {Path(presety[0]['file']).stem}")
+    return 0
+
+
+def polecenie_where(args) -> int:
+    przenies_stare_dane(lambda w: print(w))
+    print(f"Your work      {katalog_danych()}")
+    print(f"  corpus       {args.database or sciezka_bazy()}")
+    print(f"  your presets {_katalog_presetow(args)}")
+    print(f"  exports      {_katalog_eksportu(args)}")
+    print(f"\nThe program    {katalog_przykladow().parent}")
+    print(f"  examples     {katalog_przykladow()}")
+    print("\nUpdating means replacing the program folder only. "
+          "Set KWERENDA_HOME to keep your work somewhere else.")
     return 0
 
 
@@ -223,11 +244,12 @@ def zbuduj_parser() -> argparse.ArgumentParser:
         prog="kwerenda",
         description="Kwerenda — search websites for content and export to Zotero.")
     parser.add_argument("--version", action="version", version=f"Kwerenda {__wersja__}")
-    parser.add_argument("--database", default="kwerenda.sqlite3",
-                        help="database file (default ./kwerenda.sqlite3)")
-    parser.add_argument("--exports", default="exports", help="directory for exported files")
-    parser.add_argument("--presets", default="presets",
-                        help="directory holding preset configuration files")
+    parser.add_argument("--database", default=None,
+                        help=f"database file (default {sciezka_bazy()})")
+    parser.add_argument("--exports", default=None,
+                        help="directory for exported files")
+    parser.add_argument("--presets", default=None,
+                        help="directory holding your preset files")
     pod = parser.add_subparsers(dest="command")
 
     p = pod.add_parser("gui", help="open the graphical interface in a browser")
@@ -279,6 +301,9 @@ def zbuduj_parser() -> argparse.ArgumentParser:
 
     p = pod.add_parser("presets", help="list the saved presets")
     p.set_defaults(funkcja=polecenie_presets)
+
+    p = pod.add_parser("where", help="show where your work is kept")
+    p.set_defaults(funkcja=polecenie_where)
 
     p = pod.add_parser("languages", help="list supported languages")
     p.set_defaults(funkcja=polecenie_languages)

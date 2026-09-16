@@ -39,12 +39,14 @@ class Stan:
     """Shared server state: database, current run, export and preset directories."""
 
     def __init__(self, magazyn: Magazyn, katalog_eksportu: Path,
-                 katalog_presetow: Optional[Path] = None):
+                 katalog_presetow: Optional[Path] = None,
+                 katalog_przykladow: Optional[Path] = None):
         self.magazyn = magazyn
         self.katalog_eksportu = katalog_eksportu
         self.katalog_eksportu.mkdir(parents=True, exist_ok=True)
         self.katalog_presetow = Path(katalog_presetow or "presets")
         self.katalog_presetow.mkdir(parents=True, exist_ok=True)
+        self.katalog_przykladow = Path(katalog_przykladow) if katalog_przykladow else None
         self.silnik: Optional[Silnik] = None
         self.watek: Optional[threading.Thread] = None
         self.ostatni_przebieg: Optional[int] = None
@@ -117,12 +119,28 @@ def presety_z_plikow(katalog: Path) -> List[dict]:
 
 
 def lista_presetow(stan: Stan) -> List[dict]:
-    """Files first, then anything saved into the database by older versions."""
-    z_plikow = presety_z_plikow(stan.katalog_presetow)
-    nazwy = {p["name"] for p in z_plikow}
+    """Your own presets first, then the examples shipped with the program.
+
+    Yours live in your data folder and survive an update; the examples travel
+    with the code. A file of yours with the same name hides the example.
+    """
+    moje = presety_z_plikow(stan.katalog_presetow)
+    pliki = {p["file"] for p in moje}
+    nazwy = {p["name"] for p in moje}
+
+    przyklady = []
+    if stan.katalog_przykladow and stan.katalog_przykladow.is_dir() \
+            and stan.katalog_przykladow.resolve() != stan.katalog_presetow.resolve():
+        for preset in presety_z_plikow(stan.katalog_przykladow):
+            if preset["file"] in pliki or preset["name"] in nazwy:
+                continue
+            preset["source"] = "example"
+            przyklady.append(preset)
+            nazwy.add(preset["name"])
+
     z_bazy = [{"name": p["nazwa"], "config": p["konfig"], "source": "database"}
               for p in stan.magazyn.presety() if p["nazwa"] not in nazwy]
-    return z_plikow + z_bazy
+    return moje + przyklady + z_bazy
 
 
 def zapisz_preset_do_pliku(stan: Stan, nazwa: str, konfig: dict) -> Path:
@@ -230,6 +248,7 @@ class Obsluga(BaseHTTPRequestHandler):
                            for k in stan.magazyn.statystyki_korpusu()],
                 "presets": lista_presetow(stan),
                 "presets_dir": str(stan.katalog_presetow.resolve()),
+                "data_dir": str(stan.katalog_presetow.resolve().parent),
                 "runs": [_przebieg_en(p) for p in stan.magazyn.przebiegi(30)],
                 "last_run": stan.ostatni_przebieg,
                 "settings": stan.magazyn.ustawienie("interface", {}),
@@ -470,9 +489,11 @@ def zwiaz_serwer(klasa, host: str, port: int, ile_prob: int = 12) -> ThreadingHT
 
 def uruchom_serwer(magazyn: Magazyn, katalog_eksportu: Path, port: int = 8765,
                    host: str = "127.0.0.1", otworz: bool = True,
-                   katalog_presetow: Optional[Path] = None) -> None:
+                   katalog_presetow: Optional[Path] = None,
+                   katalog_przykladow: Optional[Path] = None) -> None:
     klasa = type("ObslugaZeStanem", (Obsluga,),
-                 {"stan": Stan(magazyn, katalog_eksportu, katalog_presetow)})
+                 {"stan": Stan(magazyn, katalog_eksportu, katalog_presetow,
+                               katalog_przykladow)})
 
     serwer = zwiaz_serwer(klasa, host, port)
     if serwer.server_address[1] != port:
