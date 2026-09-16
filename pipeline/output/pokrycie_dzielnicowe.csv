@@ -19,16 +19,16 @@ rok,wpisane,z_kroniki,wzmianki_o_fescie,na_mapie_poza_centrum,z_godzina,dzielnic
 2004,1,7,3,5,8,Charlottenburg;Friedrichshain;Kreuzberg;Prenzlauer Berg,jest
 2005,5,5,4,7,10,Friedrichshain;Hohenschönhausen;Kreuzberg;Köpenick;Prenzlauer Berg;Treptow,jest
 2006,2,0,4,10,2,Hohenschönhausen;Lichtenberg,jest
-2007,2,0,0,9,2,Hohenschönhausen;Prenzlauer Berg,cienko
-2008,1,16,0,6,17,Biesdorf;Charlottenburg;Dahlem;Friedrichsfelde;Friedrichshain;Karlshorst;Kreuzberg;Lichterfelde;Mariendorf;Marzahn;Niederschöneweide;Oberschöneweide;Prenzlauer Berg;Reinickendorf;Treptow,jest
-2009,1,2,2,8,3,Kreuzberg;Köpenick;Prenzlauer Berg,jest
-2010,3,0,0,10,3,Hohenschönhausen;Lichtenberg;Prenzlauer Berg,cienko
-2011,1,0,0,6,1,Prenzlauer Berg,cienko
-2012,5,0,1,2,5,Hohenschönhausen;Kreuzberg;Lichtenberg;Prenzlauer Berg,jest
+2007,4,0,0,9,4,Hohenschönhausen;Köpenick;Prenzlauer Berg;Treptow,jest
+2008,2,16,0,6,18,Biesdorf;Charlottenburg;Dahlem;Friedrichsfelde;Friedrichshain;Karlshorst;Kreuzberg;Köpenick;Lichterfelde;Mariendorf;Marzahn;Niederschöneweide;Oberschöneweide;Prenzlauer Berg;Reinickendorf;Treptow,jest
+2009,3,2,2,8,5,Kreuzberg;Köpenick;Prenzlauer Berg;Treptow,jest
+2010,5,0,0,10,5,Hohenschönhausen;Köpenick;Lichtenberg;Prenzlauer Berg;Treptow,jest
+2011,3,0,0,6,3,Köpenick;Prenzlauer Berg;Treptow,cienko
+2012,7,0,1,2,7,Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Prenzlauer Berg;Treptow,jest
 2013,3,0,1,5,1,Hohenschönhausen;Köpenick;Prenzlauer Berg,jest
-2014,0,0,0,2,0,,pusto
-2015,2,0,0,6,2,Hohenschönhausen;Prenzlauer Berg,cienko
-2016,0,7,1,11,7,Friedrichshain-Kreuzberg;Lichtenberg;Neukölln;Pankow;Treptow;Treptow-Köpenick,jest
+2014,2,0,0,2,2,Köpenick;Treptow,cienko
+2015,4,0,0,6,4,Hohenschönhausen;Köpenick;Prenzlauer Berg;Treptow,jest
+2016,2,7,1,11,9,Friedrichshain-Kreuzberg;Köpenick;Lichtenberg;Neukölln;Pankow;Treptow;Treptow-Köpenick,jest
 2017,7,3,3,6,10,Friedrichshain-Kreuzberg;Hellersdorf;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Prenzlauer Berg;Treptow,jest
 2018,5,1,0,3,6,Grunewald;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Prenzlauer Berg,jest
 2019,5,16,7,5,21,Gatow;Grunewald;Hellersdorf;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Neukölln;Pankow;Prenzlauer Berg;Spandau;Steglitz-Zehlendorf;Tempelhof,jest

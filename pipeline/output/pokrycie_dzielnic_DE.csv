@@ -151,9 +151,11 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2006,DE,Tiergarten,1,0,1
 2007,DE,Hohenschönhausen,1,0,1
 2007,DE,Kreuzberg,4,2,6
+2007,DE,Köpenick,1,0,1
 2007,DE,Prenzlauer Berg,1,0,1
 2007,DE,Schöneberg,5,0,5
 2007,DE,Tiergarten,1,0,1
+2007,DE,Treptow,1,0,1
 2008,DE,Biesdorf,0,1,1
 2008,DE,Charlottenburg,0,1,1
 2008,DE,Dahlem,0,1,1
@@ -161,6 +163,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2008,DE,Friedrichshain,1,2,3
 2008,DE,Karlshorst,0,1,1
 2008,DE,Kreuzberg,2,5,7
+2008,DE,Köpenick,1,0,1
 2008,DE,Lichterfelde,0,1,1
 2008,DE,Mariendorf,0,1,1
 2008,DE,Marzahn,0,1,1
@@ -173,31 +176,38 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2008,DE,Tiergarten,1,1,2
 2008,DE,Treptow,0,1,1
 2009,DE,Kreuzberg,2,3,5
-2009,DE,Köpenick,2,2,4
+2009,DE,Köpenick,3,2,5
 2009,DE,Mitte,1,1,2
 2009,DE,Prenzlauer Berg,1,0,1
 2009,DE,Schöneberg,4,2,6
 2009,DE,Tiergarten,1,0,1
+2009,DE,Treptow,1,0,1
 2010,DE,Gesundbrunnen,1,0,1
 2010,DE,Halensee,1,0,1
 2010,DE,Hohenschönhausen,1,0,1
 2010,DE,Kreuzberg,2,0,2
+2010,DE,Köpenick,1,0,1
 2010,DE,Lichtenberg,1,0,1
 2010,DE,Mitte,0,1,1
 2010,DE,Niederschöneweide,2,0,2
 2010,DE,Prenzlauer Berg,3,0,3
 2010,DE,Schöneberg,3,0,3
 2010,DE,Tiergarten,1,0,1
+2010,DE,Treptow,1,0,1
 2011,DE,Kreuzberg,2,0,2
+2011,DE,Köpenick,1,0,1
 2011,DE,Mitte,2,0,2
 2011,DE,Prenzlauer Berg,1,0,1
 2011,DE,Schöneberg,4,0,4
 2011,DE,Tiergarten,1,0,1
+2011,DE,Treptow,1,0,1
 2012,DE,Hohenschönhausen,1,0,1
 2012,DE,Kreuzberg,3,0,3
+2012,DE,Köpenick,1,0,1
 2012,DE,Lichtenberg,2,0,2
 2012,DE,Mitte,4,0,4
 2012,DE,Prenzlauer Berg,1,0,1
+2012,DE,Treptow,1,0,1
 2012,DE,Wedding,1,0,1
 2013,DE,Gesundbrunnen,1,0,1
 2013,DE,Hohenschönhausen,1,0,1
@@ -207,20 +217,25 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2013,DE,Niederschöneweide,3,0,3
 2013,DE,Prenzlauer Berg,1,0,1
 2014,DE,Kreuzberg,2,0,2
+2014,DE,Köpenick,1,0,1
 2014,DE,Mitte,4,0,4
+2014,DE,Treptow,1,0,1
 2014,DE,Wedding,1,0,1
 2015,DE,Hohenschönhausen,1,0,1
 2015,DE,Kreuzberg,3,1,4
+2015,DE,Köpenick,1,0,1
 2015,DE,Marzahn,1,0,1
 2015,DE,Mitte,3,2,5
 2015,DE,Neu-Hohenschönhausen,2,0,2
 2015,DE,Prenzlauer Berg,1,0,1
 2015,DE,Tiergarten,1,0,1
+2015,DE,Treptow,1,0,1
 2015,DE,Wedding,1,2,3
 2016,DE,Friedrichshain-Kreuzberg,0,1,1
 2016,DE,Gesundbrunnen,1,0,1
 2016,DE,Johannisthal,1,0,1
 2016,DE,Kreuzberg,2,0,2
+2016,DE,Köpenick,1,0,1
 2016,DE,Lichtenberg,0,1,1
 2016,DE,Mitte,3,1,4
 2016,DE,Neu-Hohenschönhausen,2,0,2
@@ -228,7 +243,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2016,DE,Niederschöneweide,3,0,3
 2016,DE,Pankow,0,2,2
 2016,DE,Tiergarten,1,0,1
-2016,DE,Treptow,0,1,1
+2016,DE,Treptow,1,1,2
 2016,DE,Treptow-Köpenick,0,1,1
 2016,DE,Wedding,0,1,1
 2016,DE,Weißensee,2,0,2
