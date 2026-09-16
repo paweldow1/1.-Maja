@@ -84,7 +84,8 @@ def main():
             "plik_zrodlowy": "dzielnicowe.tsv", "klucz_zrodlowy": klucz,
             "zrodlo_zlaczenia": "dzielnicowe",
             "wymaga_weryfikacji": "False",
-            "decyzja_notatka": d.get("pewnosc", ""),
+            "decyzja_notatka": "; ".join(
+                x for x in (d.get("pewnosc", ""), d.get("uwaga", "")) if x),
         })
         # Ktora to edycja cyklu. Liczona od roku poczatkowego z tabeli serii,
         # nie od najstarszego opisu, jaki mamy -- brak opisu nie znaczy, ze
