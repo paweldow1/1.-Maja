@@ -166,6 +166,36 @@ def _skrypt_macos(python: Path) -> str:
                           .replace("@PYTHON@", str(python)))
 
 
+_SZABLON_DIAGNOSTYKI = r"""#!/bin/bash
+# Double-click this to check the installation. It knows where Kwerenda lives,
+# so it works from anywhere — which "python3 -m kwerenda" does not.
+cd "@PROGRAM@" || { echo "The Kwerenda folder is gone: @PROGRAM@"; read -r _; exit 1; }
+"@PYTHON@" -m kwerenda doctor
+echo
+echo "Press Enter to close."
+read -r _
+"""
+
+
+def diagnostyka(python: Path) -> Path:
+    """A double-clickable check, next to the shortcut.
+
+    ``python3 -m kwerenda doctor`` only works from inside the program folder,
+    which is not where anybody happens to be standing when something breaks.
+    """
+    system = platform.system()
+    if system == "Windows":
+        cel = pulpit() / f"{NAZWA} - check setup.bat"
+        cel.write_text(f'@echo off\r\ncd /d "{KATALOG}"\r\n'
+                       f'"{python}" -m kwerenda doctor\r\npause\r\n', encoding="utf-8")
+        return cel
+    cel = pulpit() / (f"{NAZWA} - check setup" + (".command" if system == "Darwin" else ".sh"))
+    cel.write_text(_SZABLON_DIAGNOSTYKI.replace("@PROGRAM@", str(KATALOG))
+                                       .replace("@PYTHON@", str(python)), encoding="utf-8")
+    cel.chmod(0o755)
+    return cel
+
+
 def _icns(png: Path, cel: Path) -> None:
     """Build an .icns with the tools macOS ships; skip quietly if unavailable."""
     zestaw = cel.parent / "kwerenda.iconset"
@@ -219,9 +249,25 @@ def main() -> int:
               f"{python} -m kwerenda gui", file=sys.stderr)
         return 1
 
+    sprawdzenie = diagnostyka(python)
+
     print(f"\nDone. Double-click {skrot}")
     print("It opens the interface at http://127.0.0.1:8765 in your browser.")
+    print(f"\nIf it ever will not start, double-click {sprawdzenie}")
+    # `python -m kwerenda` needs the program folder as the working directory,
+    # so the copy-and-paste version has to carry the cd with it.
+    print("Or paste one of these into a terminal — they work from any folder:")
+    print(f'  cd "{KATALOG}" && "{python}" -m kwerenda doctor')
+    print(f'  cd "{KATALOG}" && "{python}" -m kwerenda gui')
+    print(f"\nThe program is in  {KATALOG}")
+    print(f"Your work is in    {_katalog_danych()}")
     return 0
+
+
+def _katalog_danych() -> Path:
+    import os
+    wskazany = os.environ.get("KWERENDA_HOME", "").strip()
+    return Path(wskazany).expanduser() if wskazany else Path.home() / "Kwerenda"
 
 
 if __name__ == "__main__":
