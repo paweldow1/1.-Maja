@@ -11,6 +11,7 @@ organizatorzy) recorded separately, which the prose never stated reliably.
 Usage: python3 parse_frekwencja.py <input_dir>
 """
 import csv
+import re
 import statistics
 import sys
 from pathlib import Path
@@ -69,6 +70,7 @@ def wczytaj_xlsx(path, odrzucone):
                 "wydarzenie": wydarzenie, "liczba": int(licz),
                 "zrodlo": str(zrodlo).strip() if zrodlo else "",
                 "kategoria": kat if kat in KATEGORIE else "",
+                "zastrzezenie": "",
                 "plik_zrodlowy": f"{plik}#{arkusz}",
             })
     return wiersze
@@ -86,11 +88,17 @@ def wczytaj_tsv(path, odrzucone):
                                   "powod": "rok lub liczba nieliczbowa",
                                   "wartosc": f"{rok!r}/{surowa!r}"})
                 continue
+            # "Dziennik Trybuna (\"kilka tysiecy\")" is a reading of a vague
+            # phrase and "(dolna estymacja)" one end of a range: the source is
+            # the paper, the parenthesis says how firm the number is.
+            pelne = (row.get("Źródło") or "").strip()
+            m = re.match(r"^(.*?)\s*\((.+)\)\s*$", pelne)
             wiersze.append({
                 "rok": int(rok), "miasto": "PL", "aktor": "OPZZ",
                 "wydarzenie": "demonstracja",
                 "liczba": int(surowa.replace(" ", "")),
-                "zrodlo": (row.get("Źródło") or "").strip(),
+                "zrodlo": (m.group(1) if m else pelne).strip(),
+                "zastrzezenie": m.group(2).strip() if m else "",
                 # The Warsaw table has no counting-party column; leaving it
                 # blank rather than guessing which sources are press.
                 "kategoria": "",
@@ -175,7 +183,7 @@ def main(input_dir):
     agg = agreguj(wiersze)
     write_csv(OUT_DIR / "frekwencja.csv", wiersze, [
         "rok", "miasto", "aktor", "wydarzenie", "liczba", "zrodlo", "kategoria",
-        "plik_zrodlowy"])
+        "zastrzezenie", "plik_zrodlowy"])
     write_csv(OUT_DIR / "frekwencja_agg.csv", agg, [
         "rok", "miasto", "aktor", "wydarzenie", "n_odczytow", "frekwencja_min",
         "frekwencja_max", "frekwencja_sr", "frekwencja_mediana",

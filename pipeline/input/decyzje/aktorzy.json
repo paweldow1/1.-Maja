@@ -1,0 +1,2304 @@
+{
+ "1__mai_berlin_aktualna_14_.geojson#DGB#47#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:48",
+  "stare_id": "1990_DE_demonstracja_DGB_a"
+ },
+ "1__mai_berlin_aktualna_12_.geojson#East German Left#17#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "East_Autonomen",
+  "kiedy": "2026-09-16T10:32:42",
+  "stare_id": "1990_DE_demonstracja_PDS"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#1#1990": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:38:30",
+  "typ": "festyn",
+  "stare_id": "1990_DE_wiec_Walpurgisnacht-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#0#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:46:31",
+  "typ": "spotkanie",
+  "stare_id": "1990_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#1#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS-RD/PPS-TKK/Anarchist",
+  "kiedy": "2026-09-16T10:52:30",
+  "stare_id": "1990_PL_demonstracja_PPS"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#1#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "Trybuna Ludu",
+  "kiedy": "2026-09-16T10:50:00",
+  "stare_id": "1990_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#0#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "SdRP",
+  "kiedy": "2026-09-16T10:50:05",
+  "typ": "spotkanie",
+  "stare_id": "1990_PL_festyn_SdRP"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1990_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ_SdRP_Prezydent",
+  "kiedy": "2026-09-16T11:04:50",
+  "notatka": "O 12, delegacje uczestników pochodu składają kwiaty (DT), Jaruzelski składa kwiaty w asyście wojskowej. Sam? (DT)",
+  "typ": "",
+  "stare_id": "1990_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#3#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ_SdRP",
+  "kiedy": "2026-09-16T10:59:09",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1990_PL_upamiętnienie_Monument-to-the-Heroes-of-Warsaw-Nike-Te"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1990_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Inne wydarzenia#0#1990": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:42:47",
+  "typ": "spotkanie",
+  "stare_id": "1990_PL_wiec_Wizyta-Wojciecha-Jaruzelskiego-w-elektro"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#51#1991": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:44",
+  "stare_id": "1991_DE_demonstracja_DGB_b"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1991": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1991_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1991": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:04:45",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1991_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#3#1991": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ_SdRP",
+  "kiedy": "2026-09-16T10:59:09",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1991_PL_upamiętnienie_Monument-to-the-Heroes-of-Warsaw-Nike-Te"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1991": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1991_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#55#1992": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:41",
+  "stare_id": "1992_DE_demonstracja_DGB_b"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#0#1992": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:55",
+  "stare_id": "1992_DE_demonstracja_FAP"
+ },
+ "1__mai_berlin_aktualna_12_.geojson#East German Left#22#1992": {
+  "akcja": "potwierdzam",
+  "aktor": "BKG",
+  "kiedy": "2026-09-16T10:32:04",
+  "stare_id": "1992_DE_demonstracja_PDS_a"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#18#1992": {
+  "akcja": "potwierdzam",
+  "aktor": "LSBT Gruppen",
+  "kiedy": "2026-09-16T10:24:12",
+  "stare_id": "1992_DE_festyn_LSBT-Fest"
+ },
+ "1__mai_berlin_aktualna_12_.geojson#East German Left#18#1992": {
+  "akcja": "potwierdzam",
+  "aktor": "East_Autonomen",
+  "kiedy": "2026-09-16T10:32:30",
+  "notatka": "",
+  "typ": "demonstracja",
+  "stare_id": "1992_DE_wiec_PDS"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1992": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1992_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1992": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:05:24",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1992_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#3#1992": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ_SdRP",
+  "kiedy": "2026-09-16T10:59:09",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1992_PL_upamiętnienie_Monument-to-the-Heroes-of-Warsaw-Nike-Te"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1992": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1992_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#58#1993": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:34",
+  "stare_id": "1993_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#1#1993": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:54",
+  "stare_id": "1993_DE_demonstracja_NIEZNANY"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#25#1993": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:30:51",
+  "stare_id": "1993_DE_kontra_Antifa"
+ },
+ "1__mai_berlin_aktualna_12_.geojson#East German Left#18#1993": {
+  "akcja": "potwierdzam",
+  "aktor": "East_Autonomen",
+  "kiedy": "2026-09-16T10:32:30",
+  "typ": "demonstracja",
+  "stare_id": "1993_DE_wiec_PDS"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#8#1993": {
+  "akcja": "potwierdzam",
+  "aktor": "SdRP",
+  "kiedy": "2026-09-16T10:49:18",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1993_PL_festyn_SdRP"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1993": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1993_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1993": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:06:21",
+  "notatka": "delegacje SLD i OPZZ składają po wiecu kwiaty (DT), UP samodzielnie składa kwiaty o 11; zebrało się kilkadziesiąt osób (GW)",
+  "typ": "",
+  "stare_id": "1993_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#3#1993": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ_SdRP",
+  "kiedy": "2026-09-16T10:59:09",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1993_PL_upamiętnienie_Monument-to-the-Heroes-of-Warsaw-Nike-Te"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1993": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1993_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#57#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1994_DE_demonstracja_DGB"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#23#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "Demokraten für Deutschland",
+  "kiedy": "2026-09-16T10:23:33",
+  "stare_id": "1994_DE_demonstracja_Demokraten-fur-Deutschland-Vollendung-de"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#2#1994": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:53",
+  "stare_id": "1994_DE_demonstracja_FAP"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#32#1994": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:37:38",
+  "stare_id": "1994_DE_demonstracja_Walpurgisnacht-Gegen-die-Kriminalisierung-des-Antifasch"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#26#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:30:50",
+  "stare_id": "1994_DE_kontra_FAP"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#17#1994": {
+  "akcja": "odkładam",
+  "kiedy": "2026-09-16T10:24:17",
+  "stare_id": "1994_DE_wiec_Kottbusser-Tor"
+ },
+ "1__mai_berlin_aktualna_12_.geojson#East German Left#4#1994": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:32:49",
+  "stare_id": "1994_DE_wiec_PDS"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#8#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "SdRP",
+  "kiedy": "2026-09-16T10:49:17",
+  "stare_id": "1994_PL_festyn_SdRP"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#0#1994": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:49:06",
+  "stare_id": "1994_PL_kontra_Liga-Republikanska"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1994_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:06:10",
+  "notatka": "PPS udaje się w delegację do Bramy Straceń, gdzie składane są kwiaty (DT), Samodzielny wiec i składanie kwiatów przez UP (TVP)",
+  "typ": "",
+  "stare_id": "1994_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#3#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ_SdRP",
+  "kiedy": "2026-09-16T10:59:09",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1994_PL_upamiętnienie_Monument-to-the-Heroes-of-Warsaw-Nike-Te"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1994_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#6#1994": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:58:41",
+  "typ": "wiec",
+  "stare_id": "1994_PL_upamiętnienie_Pomnik-Kopernika"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#7#1995": {
+  "akcja": "potwierdzam",
+  "aktor": "DGB",
+  "kiedy": "2026-09-16T10:27:57",
+  "stare_id": "1995_DE_wiec_DGB"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#6#1995": {
+  "akcja": "potwierdzam",
+  "aktor": "UP",
+  "kiedy": "2026-09-16T10:49:31",
+  "stare_id": "1995_PL_festyn_UP"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1995": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1995_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#1#1995": {
+  "akcja": "potwierdzam",
+  "aktor": "NZS",
+  "kiedy": "2026-09-16T10:49:04",
+  "stare_id": "1995_PL_kontra_NZS"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#2#1995": {
+  "akcja": "potwierdzam",
+  "aktor": "UPR",
+  "kiedy": "2026-09-16T10:49:01",
+  "stare_id": "1995_PL_kontra_UP"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1995": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:06:00",
+  "notatka": "po pochodzie, o 12 delegacje SLD i OPZZ składają kwiaty pod Cytadelą (DT), UP – odrębny wiec i składanie kwiatów (ŻW)",
+  "typ": "",
+  "stare_id": "1995_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#3#1995": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ_SdRP",
+  "kiedy": "2026-09-16T10:59:08",
+  "stare_id": "1995_PL_upamiętnienie_Monument-to-the-Heroes-of-Warsaw-Nike-Te"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1995": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1995_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#63#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "DGB Jugend",
+  "kiedy": "2026-09-16T10:27:30",
+  "stare_id": "1996_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#68#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1996_DE_demonstracja_DGB_c"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#74#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "ÖTV",
+  "kiedy": "2026-09-16T10:27:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1996_DE_demonstracja_DGB_d"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#6#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "Graue Panther",
+  "kiedy": "2026-09-16T10:25:59",
+  "stare_id": "1996_DE_demonstracja_Graue-Panther"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#3#1996": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:51",
+  "stare_id": "1996_DE_demonstracja_NPD"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#3#1996": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:38:27",
+  "typ": "festyn",
+  "stare_id": "1996_DE_wiec_Walpurgisnacht-Walpurgisnacht-at-Kollwitzplatz"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1996_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#3#1996": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:48:57",
+  "stare_id": "1996_PL_kontra_Liga-Republikanska"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:06:36",
+  "notatka": "UP składa kwiaty o 11 (GW), Po manifestacji delegacje uczestników składają kwiaty (DT)",
+  "typ": "",
+  "stare_id": "1996_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1996_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1996_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#6#1996": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:58:41",
+  "notatka": "",
+  "typ": "wiec",
+  "stare_id": "1996_PL_upamiętnienie_Pomnik-Kopernika"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#69#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1997_DE_demonstracja_DGB_b"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#74#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "ÖTV",
+  "kiedy": "2026-09-16T10:27:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1997_DE_demonstracja_DGB_c"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#36#1997": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:32:59",
+  "stare_id": "1997_DE_demonstracja_Walpurgisnacht-Frauen-Lesben-Madchen-gegen-Gewalt"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#7#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "Obdachlose Initativen",
+  "kiedy": "2026-09-16T10:25:52",
+  "stare_id": "1997_DE_wiec_Obdachlose-Iniativen-Treffe"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1997_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#4#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "UP",
+  "kiedy": "2026-09-16T10:49:38",
+  "stare_id": "1997_PL_festyn_UP"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#4#1997": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:48:56",
+  "stare_id": "1997_PL_kontra_Liga-Republikanska"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#5#1997": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:48:54",
+  "stare_id": "1997_PL_kontra_Liga-Republikanska_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1997_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:06:40",
+  "notatka": "Oddzielne uroczystości organizuje Unia Pracy. Unici zaczynają od złożenia wieńca przy Bramie Straceń o 11.  ... O 12 działacze SLD złożą wieńce pod Ścianą Straceń na stokach Cytadeli. Pół godziny później SdRP organizuje w swojej siedzibie konferencję prasową. GW 1997",
+  "typ": "",
+  "stare_id": "1997_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#1#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "SLD",
+  "kiedy": "2026-09-16T11:14:00",
+  "stare_id": "1997_PL_upamiętnienie_Grob-Nieznanego-Zo-nierza"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1997_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1997_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#5#1997": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:58:46",
+  "stare_id": "1997_PL_upamiętnienie_Pomnik-Jozefa-Pi-sudskiego"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#70#1998": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1998_DE_demonstracja_DGB_a"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#74#1998": {
+  "akcja": "potwierdzam",
+  "aktor": "ÖTV",
+  "kiedy": "2026-09-16T10:27:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1998_DE_demonstracja_DGB_b"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#37#1998": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:32:57",
+  "stare_id": "1998_DE_demonstracja_Walpurgisnacht-Frauen-Lesben-Madchen"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#11#1998": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:38:10",
+  "typ": "demonstracja",
+  "stare_id": "1998_DE_wiec_Walpurgisnacht-Freiheit-ist-immer-auch-die-Freiheit-des"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#1998": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1998_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1998": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1998_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1998": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:06:54",
+  "notatka": "\"Pod Cytadelą samodzielny wiec UP, połączony z ceremonią składania kwiatów (TVP), Delegacje \"\"lewicy\"\" składają kwiaty pod Cytadelą przed pochodem (RP)\" 1999:\tUP samodzielnie składa kwiaty. Podejrzewam, że możliwe, że później również SLD i OPZZ (DT)",
+  "typ": "",
+  "stare_id": "1998_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#1998": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1998_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1998": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1998_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Inne wydarzenia#1#1998": {
+  "akcja": "potwierdzam",
+  "aktor": "Młodzi demokraci",
+  "kiedy": "2026-09-16T10:42:36",
+  "notatka": "nowy typ: happening?",
+  "stare_id": "1998_PL_wiec_Niebieska-Alternatywa-Kapitalizm-jest-li"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#71#1999": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1999_DE_demonstracja_DGB_a"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#74#1999": {
+  "akcja": "potwierdzam",
+  "aktor": "ÖTV",
+  "kiedy": "2026-09-16T10:27:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1999_DE_demonstracja_DGB_b"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#38#1999": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:32:55",
+  "stare_id": "1999_DE_demonstracja_Walpurgisnacht-Frauen-Lesben-Madchen-gegen-Gewalt"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#28#1999": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:33:08",
+  "stare_id": "1999_DE_demonstracja_Walpurgisnacht-Walpurgisnacht"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#4#1999": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:38:23",
+  "typ": "festyn",
+  "stare_id": "1999_DE_wiec_Walpurgisnacht-Walpurginsnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#1999": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1999_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#1999": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1999_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#6#1999": {
+  "akcja": "potwierdzam",
+  "aktor": "Liga Republikańska",
+  "kiedy": "2026-09-16T10:48:52",
+  "stare_id": "1999_PL_kontra_PPS"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1999": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:10:44",
+  "notatka": "Rada Mazowiecka Unii Pracy zaprasza na 10:45 członków i sympatyków na ceremonię składania wieńców (DT)",
+  "typ": "",
+  "stare_id": "1999_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#1999": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1999_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#1999": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "1999_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#72#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2000_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#75#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "ÖTV",
+  "kiedy": "2026-09-16T10:27:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2000_DE_demonstracja_DGB_a"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#4#2000": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:45",
+  "stare_id": "2000_DE_demonstracja_NPD"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#5#2000": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:44",
+  "stare_id": "2000_DE_demonstracja_NPD_a"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#39#2000": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:32:54",
+  "stare_id": "2000_DE_demonstracja_Walpurgisnacht-Frauen-Lesben-Madchen-gegen-Gewalt"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#27#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "PDS_Antinazi",
+  "kiedy": "2026-09-16T10:30:29",
+  "notatka": "festyn w kontrze do nazistów",
+  "stare_id": "2000_DE_festyn_NIEZNANY"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#8#2000": {
+  "akcja": "odkładam",
+  "kiedy": "2026-09-16T10:25:41",
+  "typ": "upamiętnienie",
+  "stare_id": "2000_DE_wiec_Wreath-laying-by-delegation-of-Russian-e"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2000_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#7#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "Liga Republikańska",
+  "kiedy": "2026-09-16T10:48:48",
+  "notatka": "typ: happening",
+  "stare_id": "2000_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "stare_id": "2000_PL_kontra_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ_SdRP",
+  "kiedy": "2026-09-16T11:10:45",
+  "notatka": "Przedstawiciele UP składają wieniec przed tablicą, i kwiaty na grobach samodzielnie, o 11. O 12 przedstawiciele SLD i OPZZ w tym samym miejscu (DT 2000)",
+  "typ": "",
+  "stare_id": "2000_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2000_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2000_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#6#2000": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:58:41",
+  "notatka": "",
+  "typ": "wiec",
+  "stare_id": "2000_PL_upamiętnienie_Pomnik-Kopernika"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#73#2001": {
+  "akcja": "potwierdzam",
+  "aktor": "IG Metall",
+  "kiedy": "2026-09-16T10:27:22",
+  "stare_id": "2001_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#75#2001": {
+  "akcja": "potwierdzam",
+  "aktor": "ÖTV",
+  "kiedy": "2026-09-16T10:27:14",
+  "stare_id": "2001_DE_demonstracja_DGB_a"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#6#2001": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:42",
+  "stare_id": "2001_DE_demonstracja_NPD"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2001": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2001_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#5#2001": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:38:16",
+  "typ": "festyn",
+  "stare_id": "2001_DE_wiec_Walpurgisnacht-Walpurgisnacht-Spontane-Street-Party"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#2001": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2001_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#2001": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:47:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2001_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2001": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:11:02",
+  "notatka": "(pewnie pierwsze, które nie jest do rozbicia wydarzenie) Po raz pierwszy w wiecu przy Cytadeli do UP dołączają przedstawiciele SLD i PPS (DT).",
+  "typ": "",
+  "stare_id": "2001_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2001": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2001_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2001": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2001_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#7#2002": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:41",
+  "stare_id": "2002_DE_demonstracja_NPD"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#28#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:30:03",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2002_DE_kontra_NIEZNANY"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#29#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:30:03",
+  "stare_id": "2002_DE_kontra_NIEZNANY_a"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#37#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:19",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2002_DE_kontra_NPD"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#9#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "KPD/RZ",
+  "kiedy": "2026-09-16T10:45:26",
+  "notatka": "typ: happening",
+  "typ": "wiec",
+  "stare_id": "2002_DE_wiec_KPD-RZ"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2002_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#2#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:25",
+  "stare_id": "2002_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2002_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#8#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "KPN",
+  "kiedy": "2026-09-16T10:48:31",
+  "stare_id": "2002_PL_kontra_KPN"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#17#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "Koliber, Młodzież Wszechpolska, Organizacja Młodej Polski",
+  "kiedy": "2026-09-16T10:47:27",
+  "stare_id": "2002_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:11:10",
+  "notatka": "Wspólne składanie wieńców przez Millera, i Marka Belkę z UP. W delegacji również OPZZ (TVP)",
+  "typ": "",
+  "stare_id": "2002_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2002": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2002_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#30#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:30:05",
+  "typ": "kontra",
+  "stare_id": "2003_DE_demonstracja_NIEZNANY"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#8#2003": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:39",
+  "stare_id": "2003_DE_demonstracja_NPD"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2003_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2003_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#3#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "Nowa Lewica + Inicjatywa Stop Wojnie",
+  "kiedy": "2026-09-16T10:52:15",
+  "stare_id": "2003_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#4#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "Inicjatywa Stop Wojnie",
+  "kiedy": "2026-09-16T10:52:09",
+  "stare_id": "2003_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2003_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#9#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "Prawica",
+  "kiedy": "2026-09-16T10:48:26",
+  "stare_id": "2003_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:11:17",
+  "notatka": "elegacje OPZZ (i pewnie innych, tak jak UP) składają kwiaty (KZ)",
+  "typ": "",
+  "stare_id": "2003_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2003": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2003_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#9#2004": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:38",
+  "stare_id": "2004_DE_demonstracja_NPD"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#12#2004": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:38:01",
+  "stare_id": "2004_DE_demonstracja_Walpurgisnacht-Kommunismus-statt-Europa"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2004": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2004_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#31#2004": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:56",
+  "stare_id": "2004_DE_kontra_Antifa"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2004": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2004_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#5#2004": {
+  "akcja": "potwierdzam",
+  "aktor": "Nowa Lewica",
+  "kiedy": "2026-09-16T10:51:55",
+  "stare_id": "2004_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#1#2004": {
+  "akcja": "potwierdzam",
+  "aktor": "LPR",
+  "kiedy": "2026-09-16T10:46:18",
+  "stare_id": "2004_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#2004": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:25",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2004_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2004": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:11:34",
+  "notatka": "Pochód zaczyna się o 9:30 – kiedy składanie wieńców? NA pewno była delegacja OPZZ, w jej składzie Wiesława Taranowska (NTP, KZ), Jeszcze przed pochodem Oleksy i Jaruga-Nowacka złożyli kwiaty pod Bramą Straceń Warszawskiej Cytadeli (DT, 4.05)",
+  "typ": "",
+  "stare_id": "2004_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2004": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2004_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#97#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "DGB",
+  "kiedy": "2026-09-16T10:28:35",
+  "typ": "korso",
+  "stare_id": "2005_DE_demonstracja_DGB_a"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#10#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "FAU",
+  "kiedy": "2026-09-16T10:25:25",
+  "stare_id": "2005_DE_demonstracja_FAU-Du-Hast-eine-Wurde-Verteidige-Sie"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#14#2005": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:37:58",
+  "stare_id": "2005_DE_demonstracja_Walpurgisnacht-Berlin-protestiert-friedlich-Fur-friedli"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2005_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2005_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#13#2005": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:38:00",
+  "stare_id": "2005_DE_wiec_Walpurgisnacht-Berlin-protestiert-friedlich-fur-friedli"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#6#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "Nowa Lewica",
+  "kiedy": "2026-09-16T10:51:54",
+  "stare_id": "2005_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#3#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "Lewica_radykalna",
+  "kiedy": "2026-09-16T10:49:47",
+  "stare_id": "2005_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#7#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:49:24",
+  "stare_id": "2005_PL_festyn_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:11:40",
+  "notatka": "Najpewniej UP sklada kwiaty na Cytadeli (skoro w 2006 było napisane że zgodnie z tradycją delegacja OPZZ tam jest)",
+  "stare_id": "2005_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T11:01:53",
+  "notatka": "pochód NL Ikonowicza kończy się na placu Grzybowskim pod kamieniem, tam jest wieniec i flagi PPS (youtube)",
+  "typ": "",
+  "stare_id": "2005_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2005": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2005_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#98#2006": {
+  "akcja": "potwierdzam",
+  "aktor": "DGB",
+  "kiedy": "2026-09-16T10:28:31",
+  "typ": "korso",
+  "stare_id": "2006_DE_demonstracja_DGB_a"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2006": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2006_DE_festyn_MyFest-MyFest"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#16#2006": {
+  "akcja": "potwierdzam",
+  "aktor": "Jungen Liberalen",
+  "kiedy": "2026-09-16T10:24:29",
+  "typ": "demonstracja",
+  "stare_id": "2006_DE_wiec_Jungen-Liberalen-Protest"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2006": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2006_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#7#2006": {
+  "akcja": "potwierdzam",
+  "aktor": "Nowa Lewica",
+  "kiedy": "2026-09-16T10:51:52",
+  "stare_id": "2006_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2006": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:11:47",
+  "notatka": "delegacje OPZZ i NTP składają kwiaty (pewnie UP też) (NTP)",
+  "typ": "",
+  "stare_id": "2006_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2006": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T11:01:47",
+  "notatka": "delegacje SLD i OPZZ składają kwiaty (NTP), pochód NL zakończył się złożeniem kwiatów (lewica.pl)",
+  "typ": "",
+  "stare_id": "2006_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#99#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "DGB",
+  "kiedy": "2026-09-16T10:28:40",
+  "typ": "korso",
+  "stare_id": "2007_DE_demonstracja_DGB_a"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2007_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2007_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#8#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "Nowa Lewica",
+  "kiedy": "2026-09-16T10:51:49",
+  "stare_id": "2007_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#2#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:49:53",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2007_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#10#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "Forum Liberalne",
+  "kiedy": "2026-09-16T10:48:17",
+  "notatka": "typ: happening",
+  "stare_id": "2007_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#11#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "LPR",
+  "kiedy": "2026-09-16T10:48:00",
+  "stare_id": "2007_PL_kontra_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:12:06",
+  "notatka": "brak informacji, najpewniej się odbyło",
+  "typ": "",
+  "stare_id": "2007_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2007": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T11:01:30",
+  "notatka": "\"PPS i weterani lewicy składają kwiaty. (PS)  Z nimi kwiaty składali reprezentanci kilku różnych partii, min SLD SdPL i UP (DT), Drugie składanie kwiatów – Manifestanci (ok. 300 osób m. in. z Nowej Lewicy, Komunistycznej Partii Polski, Polskiej Partii Socjalistycznej, Pracowniczej Demokracji, Młodych Socjalistów) pod hasłami obrony świata pracy przed kapitalistycznym wyzyskiem przemaszerowali przez Śródmieście, skandowali hasła antywojenne i krytykowali politykę PiS (\"\"Kodeks pracy, a nie kodeks karny\"\", \"\"Zdrowie prawem, nie towarem!\"\") by w końcu na Placu Grzybowskim złożyć hołd bojowcom PPS poległym w walce z caratem (lewica.pl)\"",
+  "typ": "",
+  "stare_id": "2007_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2008": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2008_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2008": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2008_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#9#2008": {
+  "akcja": "potwierdzam",
+  "aktor": "Nowa Lewica",
+  "kiedy": "2026-09-16T10:51:47",
+  "stare_id": "2008_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#19#2008": {
+  "akcja": "potwierdzam",
+  "aktor": "Lewica_radykalna",
+  "kiedy": "2026-09-16T10:50:24",
+  "typ": "wiec",
+  "stare_id": "2008_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#2#2008": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:49:53",
+  "stare_id": "2008_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2008": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:11:57",
+  "notatka": "“Przed rozpoczęciem pochodu członkowie Unii Pracy, OPZZ i przedstawiciele innych organizacji lewicowych złożyli wieńce pod Bramą Straceń warszawskiej Cytadeli. Co roku 1 maja UP upamiętnia w ten sposób bojowników o wolność Polski, więzionych w murach Cytadeli w latach 1834-1918.” ([“Aby Polacy mogli godniej żyć”, 2008]",
+  "typ": "",
+  "stare_id": "2008_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2008": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2008_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2008": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2008_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2009_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#10#2009": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:32",
+  "stare_id": "2009_DE_festyn_NPD"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#32#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin_SPD",
+  "kiedy": "2026-09-16T10:29:54",
+  "stare_id": "2009_DE_kontra_SPD"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:34:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2009_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#10#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "Nowa Lewica",
+  "kiedy": "2026-09-16T10:51:44",
+  "stare_id": "2009_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#19#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "Lewica_radykalna",
+  "kiedy": "2026-09-16T10:50:24",
+  "notatka": "",
+  "typ": "wiec",
+  "stare_id": "2009_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#12#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "Falanga",
+  "kiedy": "2026-09-16T10:47:55",
+  "typ": "kontra",
+  "stare_id": "2009_PL_festyn_SLD"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#13#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "ONR",
+  "kiedy": "2026-09-16T10:47:49",
+  "stare_id": "2009_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:12:14",
+  "notatka": "Gospodarzem UP, wśród gości ceremoni składania kwiatów OPZZ i SLD(TV SLD; PS),",
+  "typ": "",
+  "stare_id": "2009_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2009_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2009": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2009_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#13#2010": {
+  "akcja": "potwierdzam",
+  "aktor": "NPD",
+  "kiedy": "2026-09-16T10:31:24",
+  "stare_id": "2010_DE_demonstracja_NIEZNANY"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#33#2010": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:38",
+  "stare_id": "2010_DE_demonstracja_NIEZNANY_a"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#34#2010": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:32",
+  "typ": "kontra",
+  "stare_id": "2010_DE_demonstracja_NIEZNANY_b"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#11#2010": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:28",
+  "stare_id": "2010_DE_demonstracja_NPD"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#12#2010": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:26",
+  "stare_id": "2010_DE_demonstracja_NPD_a"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2010": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2010_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#35#2010": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:28",
+  "typ": "kontra",
+  "stare_id": "2010_DE_kontra_NPD"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2010": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:34:15",
+  "stare_id": "2010_DE_wiec_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#11#2010": {
+  "akcja": "potwierdzam",
+  "aktor": "Nowa Lewica",
+  "kiedy": "2026-09-16T10:51:40",
+  "stare_id": "2010_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2010": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:12:18",
+  "notatka": "UP i delegacja PPS, SdPL oraz OPZZ składają kwiaty pod Bramą Straceń (dzieje.pl)",
+  "typ": "",
+  "stare_id": "2010_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2010": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:57:51",
+  "notatka": "Pojawia się delegacja OPZZ",
+  "typ": "",
+  "stare_id": "2010_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#15#2011": {
+  "akcja": "potwierdzam",
+  "aktor": "FAU",
+  "kiedy": "2026-09-16T10:24:34",
+  "stare_id": "2011_DE_demonstracja_FAU-Spaziergang-gegen-Leiharbeit"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#16#2011": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:37:56",
+  "stare_id": "2011_DE_demonstracja_Walpurgisnacht-Walpurgisnacht-Wir-Bleiben-Alle"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2011": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2011_DE_festyn_MyFest-MyFest"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#12#2011": {
+  "akcja": "potwierdzam",
+  "aktor": "KSS Ikonowicza",
+  "kiedy": "2026-09-16T10:51:36",
+  "stare_id": "2011_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2011": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:12:24",
+  "notatka": "delegacja UP z  PPS, OPZZ i SLD składa kwiaty (PS, Związkowiec)",
+  "typ": "",
+  "stare_id": "2011_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2011": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2011_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2011": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:58:28",
+  "notatka": "Wieńce składane przez uczestników Marszu Pustych Garnków, pewnie oddzielnie",
+  "typ": "",
+  "stare_id": "2011_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Inne wydarzenia#2#2011": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:42:22",
+  "notatka": "inny rodzaj; może upamiętnienie?",
+  "stare_id": "2011_PL_wiec_Beatification-of-John-Paul-II"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#88#2012": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:27:06",
+  "stare_id": "2012_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#17#2012": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:37:56",
+  "stare_id": "2012_DE_demonstracja_Walpurgisnacht-antikapitalistische-Walpurgisnahcht"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2012": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2012_DE_festyn_MyFest-MyFest"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#0#2012": {
+  "akcja": "potwierdzam",
+  "aktor": "KSS Ikonowicza",
+  "kiedy": "2026-09-16T10:52:40",
+  "stare_id": "2012_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#2#2012": {
+  "akcja": "potwierdzam",
+  "aktor": "Autonomiczni nacjonaliści",
+  "kiedy": "2026-09-16T10:46:13",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2012_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2012": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:12:32",
+  "notatka": "delegacje UP i OPZZ (przegladsocjalistyczny.org), Jeszcze przed rozpoczęciem uroczystości przed budynkiem OPZZ, delegacje OPZZ złożyły wieńce przed miejscami pamięci, niezwykle ważnymi dla tożsamości związków zawodowych i lewicy w Polsce (KZ 63/2012)",
+  "typ": "",
+  "stare_id": "2012_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2012": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2012_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Inne wydarzenia#3#2012": {
+  "akcja": "potwierdzam",
+  "aktor": "Ruch Palikota",
+  "kiedy": "2026-09-16T10:41:54",
+  "typ": "spotkanie",
+  "stare_id": "2012_PL_wiec_Kongres-za-ozycielski-partii-Palikota-Ko"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#89#2013": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:27:05",
+  "stare_id": "2013_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#36#2013": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:24",
+  "typ": "kontra",
+  "stare_id": "2013_DE_demonstracja_NIEZNANY"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#14#2013": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:19",
+  "stare_id": "2013_DE_demonstracja_NPD"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#18#2013": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:37:54",
+  "stare_id": "2013_DE_demonstracja_Walpurgisnacht-Walpurgisnacht-take-back-the-city"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2013": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2013_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#15#2013": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:18",
+  "stare_id": "2013_DE_wiec_NPD"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#13#2013": {
+  "akcja": "potwierdzam",
+  "aktor": "KSS Ikonowicza",
+  "kiedy": "2026-09-16T10:51:37",
+  "stare_id": "2013_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#2#2013": {
+  "akcja": "potwierdzam",
+  "aktor": "Autonomiczni nacjonaliści",
+  "kiedy": "2026-09-16T10:46:13",
+  "stare_id": "2013_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#0#2013": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:38:58",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2013_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2013": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:03:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2013_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2013": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2013_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2013": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2013_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#90#2014": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:27:04",
+  "stare_id": "2014_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#19#2014": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:37:53",
+  "stare_id": "2014_DE_demonstracja_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2014_DE_festyn_MyFest-MyFest"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#5#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:26:07",
+  "notatka": "",
+  "typ": "festyn",
+  "stare_id": "2014_DE_wiec_1st-of-May-Rave-Gorli"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#14#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "RSS Ikonowicza",
+  "kiedy": "2026-09-16T10:51:26",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2014_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#3#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "Autonomiczni nacjonaliści",
+  "kiedy": "2026-09-16T10:46:04",
+  "stare_id": "2014_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#4#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "Ruch Narodowy",
+  "kiedy": "2026-09-16T10:44:48",
+  "notatka": "typ: happening",
+  "stare_id": "2014_PL_demonstracja_NIEZNANY_b"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#0#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:38:58",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2014_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:03:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2014_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2014_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2014": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:52:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2014_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Inne wydarzenia#4#2014": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T11:14:09",
+  "notatka": "typ:happening",
+  "stare_id": "2014_PL_wiec_Zieloni-Partia-Zieloni-happening"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#91#2015": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:27:01",
+  "stare_id": "2015_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#20#2015": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:37:44",
+  "stare_id": "2015_DE_demonstracja_Walpurgisnacht-Antikapitalistische-Walpurgisnacht"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2015_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#37#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:18",
+  "stare_id": "2015_DE_kontra_NPD"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#5#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:26:07",
+  "notatka": "",
+  "typ": "festyn",
+  "stare_id": "2015_DE_wiec_1st-of-May-Rave-Gorli"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#16#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:31:15",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2015_DE_wiec_NPD"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#17#2015": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:15",
+  "stare_id": "2015_DE_wiec_NPD_a"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#10#2015": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:38:12",
+  "stare_id": "2015_DE_wiec_Walpurgisnacht-Walpurgisnacht-in-Gorli"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#14#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "RSS Ikonowicza",
+  "kiedy": "2026-09-16T10:51:25",
+  "stare_id": "2015_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#15#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "Zmiana",
+  "kiedy": "2026-09-16T10:51:19",
+  "stare_id": "2015_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#5#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "Szturmowcy",
+  "kiedy": "2026-09-16T10:44:39",
+  "stare_id": "2015_PL_demonstracja_NIEZNANY_b"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#0#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "Prezydent",
+  "kiedy": "2026-09-16T10:38:58",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2015_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:12:40",
+  "notatka": "Unia Pracy gospodarzem, delegacja OPZZ dda hołd ponad  60 tysięcy więźniom - bojowników o wyzwolenie narodowe i przemiany społeczne (opzz.org.pl archiwalne) 2016:\t\"\"\"Okolicznościowe przemówienia\"\", składanie kwiatów. Pojawiają się delegacje SLD i OPZZ(uniapracy.org)\"",
+  "typ": "",
+  "stare_id": "2015_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2015": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2015_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#92#2016": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:27:00",
+  "stare_id": "2016_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#18#2016": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:10",
+  "stare_id": "2016_DE_demonstracja_NPD"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2016_DE_festyn_MyFest-MyFest"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#5#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:26:07",
+  "notatka": "",
+  "typ": "festyn",
+  "stare_id": "2016_DE_wiec_1st-of-May-Rave-Gorli"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#42#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:28:20",
+  "typ": "kontra",
+  "stare_id": "2016_DE_wiec_Grune"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#38#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:14",
+  "typ": "kontra",
+  "stare_id": "2016_DE_wiec_NIEZNANY"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#39#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:07",
+  "typ": "kontra",
+  "stare_id": "2016_DE_wiec_NIEZNANY_a"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#40#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:29:08",
+  "typ": "kontra",
+  "stare_id": "2016_DE_wiec_NIEZNANY_b"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#41#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:28:59",
+  "typ": "kontra",
+  "stare_id": "2016_DE_wiec_NIEZNANY_c"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#19#2016": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:06",
+  "stare_id": "2016_DE_wiec_NPD"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#20#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:31:07",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2016_DE_wiec_NPD_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#16#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "RSS / KPP / Partia Socjaliści / WSL",
+  "kiedy": "2026-09-16T10:51:14",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2016_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#6#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "Szturmowcy",
+  "kiedy": "2026-09-16T10:44:34",
+  "stare_id": "2016_PL_demonstracja_UP"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#0#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "Muzeum Łazienki Królewskie",
+  "kiedy": "2026-09-16T10:40:05",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2016_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:03:48",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2016_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2016": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2016_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#22#2017": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:30:59",
+  "stare_id": "2017_DE_demonstracja_Bargida"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#93#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "DGB",
+  "kiedy": "2026-09-16T10:26:57",
+  "stare_id": "2017_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#21#2017": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:31:01",
+  "stare_id": "2017_DE_festyn_AfD"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2017_DE_festyn_MyFest-MyFest"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#5#2017": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:26:06",
+  "typ": "festyn",
+  "stare_id": "2017_DE_wiec_1st-of-May-Rave-Gorli"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#43#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "Antinazi Berlin",
+  "kiedy": "2026-09-16T10:28:24",
+  "typ": "kontra",
+  "stare_id": "2017_DE_wiec_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#16#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "RSS / KPP / Partia Socjaliści / WSL",
+  "kiedy": "2026-09-16T10:51:14",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2017_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#0#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "Muzeum Łazienki Królewskie",
+  "kiedy": "2026-09-16T10:40:07",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2017_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#5#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ",
+  "kiedy": "2026-09-16T10:49:35",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2017_PL_festyn_OPZZ"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:12:52",
+  "notatka": "gospodarzem UP, gośćmi PPS i OPZZ (uniapracy.org)",
+  "typ": "",
+  "stare_id": "2017_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2017_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2017": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:57:05",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2017_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#94#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "DGB",
+  "kiedy": "2026-09-16T10:26:55",
+  "stare_id": "2018_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#23#2018": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:30:56",
+  "stare_id": "2018_DE_festyn_AfD"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "",
+  "kiedy": "2026-09-16T10:23:41",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2018_DE_festyn_MyFest-MyFest"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#19#2018": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:23:52",
+  "typ": "festyn",
+  "stare_id": "2018_DE_wiec_MaiGorli"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#16#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "RSS / KPP / Partia Socjaliści / WSL",
+  "kiedy": "2026-09-16T10:51:13",
+  "stare_id": "2018_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#17#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "Feministki",
+  "kiedy": "2026-09-16T11:14:02",
+  "notatka": "typ mieszany: również trochę festyn i happening",
+  "typ": "wiec",
+  "stare_id": "2018_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#7#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "Szturmowcy",
+  "kiedy": "2026-09-16T10:44:34",
+  "stare_id": "2018_PL_demonstracja_NIEZNANY_b"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#0#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "Muzeum Łazienki Królewskie",
+  "kiedy": "2026-09-16T10:40:08",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2018_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#5#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "OPZZ",
+  "kiedy": "2026-09-16T10:49:34",
+  "stare_id": "2018_PL_festyn_OPZZ"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#14#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "Obywatele RP",
+  "kiedy": "2026-09-16T10:47:47",
+  "stare_id": "2018_PL_kontra_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "Unia Pracy",
+  "kiedy": "2026-09-16T11:13:07",
+  "notatka": "delegacje UP, SLD i OPZZ składają kwiaty przed pochodem (Trybuna)",
+  "typ": "",
+  "stare_id": "2018_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2018": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:22",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2018_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "1__mai_berlin_aktualna_14_.geojson#DGB#95#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "DGB",
+  "kiedy": "2026-09-16T10:26:53",
+  "stare_id": "2019_DE_demonstracja_DGB"
+ },
+ "1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#24#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "AfD",
+  "kiedy": "2026-09-16T10:30:54",
+  "stare_id": "2019_DE_festyn_AfD"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#22#2019": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:23:41",
+  "stare_id": "2019_DE_festyn_MyFest-MyFest"
+ },
+ "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#25#2019": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:37:45",
+  "stare_id": "2019_DE_wiec_Walpurgisnacht-Weddinger-Walpurgisnacht"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#11#2019": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:25:20",
+  "notatka": "do sprawdzenia w poprzednich latach, gdzie się dizało i jak",
+  "stare_id": "2019_DE_wiec_der-Kampf-und-Feiertag-der-Arbeitslosen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Lewica radykalna#18#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "Lewica_radykalna",
+  "kiedy": "2026-09-16T10:50:34",
+  "stare_id": "2019_PL_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#8#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "KORWiN",
+  "kiedy": "2026-09-16T10:43:06",
+  "stare_id": "2019_PL_demonstracja_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Right-wing May Day#9#2019": {
+  "akcja": "odkładam",
+  "kiedy": "2026-09-16T10:42:57",
+  "notatka": "nie wydarzenie",
+  "stare_id": "2019_PL_demonstracja_NIEZNANY_b"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#0#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "Muzeum Łazienki Królewskie",
+  "kiedy": "2026-09-16T10:40:16",
+  "stare_id": "2019_PL_festyn_NIEZNANY"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#1#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "Miasto",
+  "kiedy": "2026-09-16T10:38:47",
+  "notatka": "",
+  "typ": "",
+  "stare_id": "2019_PL_festyn_NIEZNANY_a"
+ },
+ "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#2#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "Miasto",
+  "kiedy": "2026-09-16T10:38:51",
+  "stare_id": "2019_PL_festyn_NIEZNANY_b"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Festyny#10#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "SLD/OPZZ",
+  "kiedy": "2026-09-16T10:49:14",
+  "stare_id": "2019_PL_festyn_OPZZ"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "UP_OPZZ",
+  "kiedy": "2026-09-16T11:13:01",
+  "notatka": "wiec OPZZ i UP, następuje składanie wieńców (opzz.org.pl)",
+  "typ": "",
+  "stare_id": "2019_PL_upamiętnienie_Brama-Stracen"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:59:56",
+  "notatka": "3 osobne ceremonie upamiętniające: 1. składanie kwiatów przez marsz lewicy radykalnej; nastepnie delegacje PPS, OPZZ i SLD; potem przdestawiciele partii Razem",
+  "stare_id": "2019_PL_upamiętnienie_Kamien-Pamiatkowy-na-Placu-Grzybowskim"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "PPS",
+  "kiedy": "2026-09-16T10:57:18",
+  "notatka": "",
+  "stare_id": "2019_PL_upamiętnienie_PPS-Wreath-laying-at-the-historic-PPS-headqu"
+ },
+ "umap_backup_1-maja_warszawa9.umap#Upamiętnienia#4#2019": {
+  "akcja": "potwierdzam",
+  "aktor": "SLD",
+  "kiedy": "2026-09-16T10:58:52",
+  "stare_id": "2019_PL_upamiętnienie_Pomnik-Ignacego-Daszynskiego-w-Warszawie"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#13#2026": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:24:47",
+  "stare_id": "2026_DE_demonstracja_Feministische-1-Mai-Demo"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#0#2026": {
+  "akcja": "odkładam",
+  "kiedy": "2026-09-16T10:26:35",
+  "stare_id": "2026_DE_demonstracja_NIEZNANY"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#12#2026": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:24:54",
+  "stare_id": "2026_DE_wiec_Auf-Nazis-Stampfen-b-12-22-Uhr"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#14#2026": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:24:45",
+  "typ": "festyn",
+  "stare_id": "2026_DE_wiec_Fur-den-Erhalt-von-kunsterlischer-Arbeit"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#1#2026": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:26:31",
+  "typ": "festyn",
+  "stare_id": "2026_DE_wiec_b-Gorlitzer-Park-Free-Gorli-Rave-against"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#2#2026": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:26:27",
+  "typ": "wiec",
+  "stare_id": "2026_DE_wiec_b-Tempelhofer-Feld-Langsam-reichts-Kultu"
+ },
+ "umap_backup_1-mai-berlin_aktualna16.umap#Other events#3#2026": {
+  "akcja": "potwierdzam",
+  "kiedy": "2026-09-16T10:26:17",
+  "typ": "festyn",
+  "stare_id": "2026_DE_wiec_b-Treptower-Park-Puschkinallee-ganztagig"
+ }
+}

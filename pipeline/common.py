@@ -117,7 +117,7 @@ WYDARZENIA_COLUMNS = [
     "id", "rok", "rok_zrodlo", "miasto", "warstwa", "typ", "typ_zrodlo", "aktor",
     "aktor_zgadniety", "charakter", "nazwa", "opis", "haslo",
     "frekwencja_mapa", "frekwencja_mapa_num", "geom_typ", "dlugosc_trasy_m", "punkt_start",
-    "punkt_koniec", "id_geo", "plik_zrodlowy", "postcovid",
+    "punkt_koniec", "id_geo", "plik_zrodlowy", "klucz_zrodlowy", "postcovid",
     "wymaga_weryfikacji",
 ]
 
@@ -213,6 +213,12 @@ def build_event_rows(layer_name, features, city, plik_zrodlowy, id_counters,
                 "punkt_koniec": f"{punkt_koniec[1]},{punkt_koniec[0]}" if punkt_koniec[0] is not None else "",
                 "id_geo": id_geo,
                 "plik_zrodlowy": plik_zrodlowy,
+                # Identity that verification cannot move. `id` carries the
+                # type and the actor, which is exactly what a decision
+                # changes, so keying decisions on it orphans them the moment
+                # they are applied. id_geo numbers within a layer, so the
+                # layer has to be part of the key.
+                "klucz_zrodlowy": f"{plik_zrodlowy}#{layer_name}#{id_geo}#{rok}",
                 "postcovid": props.get("postcovid", ""),
                 "wymaga_weryfikacji": wymaga_weryfikacji,
             })

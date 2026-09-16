@@ -81,13 +81,17 @@ TYP_SLOWA = [
     ("kwiaty", ["kwiat", "wieńc", "wieniec", "wieńce", "złożenie kwiat",
                 "kranz", "kranzniederlegung", "gedenk", "denkmal", "mahnmal",
                 "ehrung", "upamiętnien"]),
-    ("korso", ["korso", "motorrad", "skater", "fahrrad", "rowerow"]),
+    ("korso", ["korso", "motorrad", "skater", "inline", "fahrrad", "rowerow"]),
     ("koncert", ["konzert", "koncert", "concert"]),
     ("festyn", ["maifest", "strassenfest", "straßenfest", "kulturfest",
                 "stadtteilfest", "bürgerfest", "sommerfest", "myfest",
                 "mygruni", "festyn", "piknik", "picnic", "festival",
                 "tanz in den mai", "street party", "strassenparty", "-fest",
                 " fest", "fest\""]),
+    # Asked for repeatedly in the verification notes: a parody march, a stunt
+    # or a street performance is not a demonstration and not a rally.
+    ("happening", ["happening", "performance", "parodia", "pastisz",
+                   "straßentheater", "strassentheater"]),
     ("spotkanie", ["spotkanie", "treffen", "tag der offenen tür", "diskussion",
                    "gespräch"]),
     ("wiec", ["kundgebung", "wiec", "rally", "versammlung", "auftakt"]),
@@ -162,7 +166,7 @@ ACTOR_KEYWORDS_PL = [
 ACTOR_KEYWORDS_DE = [
     "DGB", "IG Metall", "IGM", "ÖTV", "OTV", "HBV", "ver.di", "GEW", "NGG",
     "IG BAU", "IG BCE", "TRANSNET", "FDGB", "DAG", "PDS", "SPD", "Grüne",
-    "Die Linke", "Linkspartei", "DKP", "MLPD", "Jusos", "Falken", "FDJ",
+    "DGB Jugend", "Die Linke", "Linkspartei", "DKP", "MLPD", "Jusos", "Falken", "FDJ",
     "Naturfreunde", "BKG", "Revolutionäre 1. Mai", "Antifa", "EuroMayDay",
     "NPD", "FAP", "Junge Nationaldemokraten", "AfD", "Bärgida", "MyFest",
     "MyGruni", "GBBO",

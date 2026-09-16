@@ -34,7 +34,7 @@ def main():
 
     # 1. rows the parser could not settle on its own
     kolejki["aktorzy"] = [{
-        "klucz": w["id"], "rok": w["rok"], "miasto": w["miasto"],
+        "klucz": w["klucz_zrodlowy"], "id": w["id"], "rok": w["rok"], "miasto": w["miasto"],
         "warstwa": w["warstwa"], "typ": w["typ"], "typ_zrodlo": w["typ_zrodlo"],
         "aktor": w["aktor"], "zgadniety": w["aktor_zgadniety"] == "True",
         "nazwa": skroc(w["nazwa"], 90), "opis": skroc(w["opis"]),
@@ -99,7 +99,11 @@ def main():
         "kolejki": kolejki,
         "pole": pole,
         "aktorzy_znani": sorted({w["aktor"] for w in wydarzenia if w["aktor"]}),
-        "typy_znane": sorted({w["typ"] for w in wydarzenia if w["typ"]}),
+        # Types the parser never assigns still have to be selectable: the
+        # notes asked for "happening" six times before it existed anywhere.
+        "typy_znane": sorted({w["typ"] for w in wydarzenia if w["typ"]}
+                             | {"happening", "koncert", "kwiaty", "korso",
+                                "spotkanie", "zamieszki"}),
         "podsumowanie": {
             "wydarzen": len(wydarzenia),
             "pl": sum(1 for w in wydarzenia if w["miasto"] == "PL"),

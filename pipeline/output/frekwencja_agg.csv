@@ -18,7 +18,7 @@ rok,miasto,aktor,wydarzenie,n_odczytow,frekwencja_min,frekwencja_max,frekwencja_
 1993,DE,NPD,demonstracja,1,100,100,100,100,,,100,Gluckspilz
 1993,DE,PDS,demonstracja,1,6000,6000,6000,6000,,,6000,ZdW (JW)
 1993,DE,R1M,demonstracja wspolna,2,5500,10000,7750,7750,,5500,10000,Gluckspilz
-1993,PL,OPZZ,demonstracja,2,3000,13000,8000,8000,,,,Dziennik Trybuna;Gazeta Wyborcza
+1993,PL,OPZZ,demonstracja,3,1500,13000,6167,4000,,,,Dziennik Trybuna;Gazeta Wyborcza
 1994,DE,Antifa,kontrdemonstracja,2,400,500,450,450,,,450,Gluckspilz;taz
 1994,DE,DGB,demonstracja,3,5000,8000,6000,5000,8000,,5000,DGBG664;TAZ;rbb
 1994,DE,NPD,demonstracja,1,5,5,5,5,,,5,Berliner Zeitung

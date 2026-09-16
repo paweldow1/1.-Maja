@@ -1,4 +1,5 @@
 rok,miasto,aktor,wydarzenie,frekwencja_rocznik,frekwencja_arkusz,odchylka_proc,lista_rocznik,zrodla_arkusz
+1993,PL,OPZZ,demonstracja,8000,6167,30,3000@GW;13000@DT,Dziennik Trybuna;Gazeta Wyborcza
 1994,PL,OPZZ,demonstracja,2500,3000,-17,2000@ŻW;1500;4000@GW,Dziennik Trybuna;Życie Warszawy
 1996,PL,OPZZ,demonstracja,6000,4500,33,2000@GW;10000@TPZ;2000@RP;10000@organizatorzy,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;TPZ
 1997,PL,OPZZ,demonstracja,2000,2500,-20,2000@GW;2000@ŻW;2000@RP,Dziennik Trybuna;Gazeta Wyborcza;Rzeczpospolita;Życie Warszawy
