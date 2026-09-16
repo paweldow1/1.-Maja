@@ -121,10 +121,14 @@ def main():
             # Berlin is judged on the borough, Warsaw on the MSI area itself.
             klucz = nazwy[0][1] if w["miasto"] == "DE" else nazwy[0][0]
             w["centralne"] = "TRUE" if klucz in CENTRUM[w["miasto"]] else "FALSE"
-            w["dzielnicowe"] = "FALSE" if w["centralne"] == "TRUE" else "TRUE"
+            # NOT the same thing as a "dzielnicowka": this only says the
+            # event sits outside the central area. A district festival that
+            # never made it onto a map is a different question entirely, and
+            # lives in brakujace_na_mapie.csv.
+            w["poza_centrum"] = "FALSE" if w["centralne"] == "TRUE" else "TRUE"
             w["przecina_dzielnice"] = "TRUE" if len({n[0] for n in nazwy}) > 1 else "FALSE"
         else:
-            w["centralne"] = w["dzielnicowe"] = w["przecina_dzielnice"] = ""
+            w["centralne"] = w["poza_centrum"] = w["przecina_dzielnice"] = ""
 
     kolumny = list(wydarzenia[0].keys())
     write_csv(OUT_DIR / "wydarzenia.csv", wydarzenia, kolumny)

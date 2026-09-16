@@ -190,7 +190,9 @@ def z_korpusu(miasto, slownik_dzielnic, slownik_aktorow):
                     "dzielnica": trafione[0] if trafione else "",
                     "dzielnice_wszystkie": ";".join(trafione),
                     "aktor": ";".join(dopasuj(czysty, slownik_aktorow)),
-                    "skala": "dzielnicowa" if trafione else "",
+                    # only says the entry names a Bezirk, not that the event
+                    # was a district one -- see the note in dzielnice.py
+                    "skala": "nazwana dzielnica" if trafione else "",
                     "zrodlo": "korpus",
                     "sekcja": " / ".join(sciezka_naglowkow),
                     "id_wydarzenia": "",
@@ -256,8 +258,8 @@ def z_mapy(wydarzenia, slowniki_dzielnic, slowniki_aktorow):
                 "dzielnica": dzielnica,
                 "dzielnice_wszystkie": ";".join(trafione),
                 "aktor": w.get("aktor") or ";".join(dopasuj(czysty, slowniki_aktorow[w["miasto"]])),
-                "skala": "dzielnicowa" if w.get("dzielnicowe") == "TRUE" else (
-                    "centralna" if w.get("centralne") == "TRUE" else ""),
+                "skala": "poza centrum" if w.get("poza_centrum") == "TRUE" else (
+                    "centrum" if w.get("centralne") == "TRUE" else ""),
                 "zrodlo": "mapa" if pinowany else (
                     f"mapa (opis wspolny {lata[0]}-{lata[-1]})"),
                 "sekcja": w.get("warstwa", ""),

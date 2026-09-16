@@ -1,0 +1,35 @@
+# Jedno miejsce upamietnienia w jednym roku to czesto kilka osobnych ceremonii:
+# UP sklada kwiaty o 11 samodzielnie, delegacja SLD i OPZZ o 12. Notatki z
+# kartoteki to rozpisuja, ta tabela jest ich odczytem. Kazdy wiersz = jedna
+# ceremonia = jeden wiersz w wydarzenia.csv. Rok bez wpisu tutaj zostaje
+# jednym wierszem, tak jak byl.
+# pewnosc: "pewna" = notatka nazywa dwie osobne ceremonie wprost,
+#          "niepewna" = notatka to sugeruje ("pewnie oddzielnie", "Sam?")
+klucz_zrodlowy	ceremonia	aktor	godzina	zrodlo	pewnosc	uwaga
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1990	1	OPZZ_SdRP	12:00	DT	pewna	delegacje uczestnikow pochodu
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1990	2	Prezydent RP		DT	niepewna	Jaruzelski w asyscie wojskowej, wg notatki byc moze sam
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1993	1	Unia Pracy	11:00	GW	pewna	samodzielnie, kilkadziesiat osob
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1993	2	SLD_OPZZ		DT	pewna	po wiecu
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1994	1	Unia Pracy		TVP	pewna	samodzielny wiec i skladanie kwiatow
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1994	2	PPS		DT	pewna	delegacja PPS
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1995	1	Unia Pracy		ŻW	pewna	odrebny wiec i skladanie kwiatow
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1995	2	SLD_OPZZ	12:00	DT	pewna	po pochodzie
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1996	1	Unia Pracy	11:00	GW	pewna
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1996	2	OPZZ_SdRP		DT	pewna	delegacje uczestnikow po manifestacji
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1997	1	Unia Pracy	11:00	GW	pewna	unici zaczynaja od zlozenia wienca
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1997	2	SLD	12:00	GW	pewna	pod Sciana Stracen
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1998	1	Unia Pracy		TVP	pewna	samodzielny wiec z ceremonia
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1998	2	SLD_OPZZ		RP	pewna	delegacje lewicy przed pochodem
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1999	1	Unia Pracy	10:45	DT	pewna	Rada Mazowiecka UP zaprasza
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#1999	2	SLD_OPZZ		DT	niepewna	wg notatki mozliwe, ze pozniej rowniez SLD i OPZZ
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2000	1	Unia Pracy	11:00	DT	pewna	wieniec przed tablica i kwiaty na grobach
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#0#2000	2	SLD_OPZZ	12:00	DT	pewna	w tym samym miejscu
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2006	1	SLD_OPZZ		NTP	pewna	delegacje skladaja kwiaty
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2006	2	Nowa Lewica		lewica.pl	pewna	pochod NL zakonczyl sie zlozeniem kwiatow
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2007	1	PPS		PS	pewna	PPS i weterani lewicy, z nimi SLD, SdPL, UP
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2007	2	Lewica radykalna		lewica.pl	pewna	drugie skladanie kwiatow, ok. 300 osob po marszu
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2019	1	Lewica radykalna			pewna	skladanie kwiatow przez marsz lewicy radykalnej
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2019	2	PPS_OPZZ_SLD			pewna	nastepnie delegacje
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#2#2019	3	Razem			pewna	potem przedstawiciele partii Razem
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2011	1	PPS			niepewna	ceremonia PPS
+umap_backup_1-maja_warszawa9.umap#Upamiętnienia#7#2011	2	Marsz Pustych Garnkow			niepewna	wg notatki "pewnie oddzielnie"

@@ -15,7 +15,11 @@ from pathlib import Path
 from common import write_csv
 from config.layers import WARSTWY_PRAWICOWE, WARSTWY_REWOLUCYJNE
 
-OUT_DIR = Path(__file__).parent / "output"
+BASE = Path(__file__).parent
+OUT_DIR = BASE / "output"
+# Police deployment, injuries and arrests, from the Violence_Berlin repo.
+# Berlin only: Warsaw has no equivalent series.
+PRZEMOC = BASE / "input/przemoc_berlin.csv"
 MIASTA = ["PL", "DE"]
 # Declared scope per city (instrukcja_v2.md sec. 0). The attendance
 # spreadsheet runs to 2026, well past the maps, so without this the table
@@ -32,6 +36,19 @@ def wczytaj(nazwa):
         return list(csv.DictReader(f))
 
 
+def wczytaj_przemoc():
+    """rok -> {kolumna: wartosc}, pusty slownik gdy pliku brak."""
+    if not PRZEMOC.exists():
+        return {}
+    with PRZEMOC.open(encoding="utf-8") as f:
+        return {int(r["year"]): r for r in csv.DictReader(f) if r.get("year", "").isdigit()}
+
+
+def liczba(tekst):
+    tekst = (tekst or "").strip()
+    return int(tekst) if tekst.lstrip("-").isdigit() else ""
+
+
 def normalizuj_trase(tekst):
     if not tekst:
         return ""
@@ -42,6 +59,7 @@ def main():
     wydarzenia = wczytaj("wydarzenia.csv")
     frekwencja = wczytaj("frekwencja_agg.csv")
     roczniki = wczytaj("roczniki_wydarzenia.csv")
+    przemoc = wczytaj_przemoc()
 
     zwiazkowi = set(ZWIAZKI_DODATKOWE)
     for w in wydarzenia:
@@ -173,6 +191,14 @@ def main():
                                                if w["warstwa"] in WARSTWY_PRAWICOWE),
                 f"{p}_liczba_kontra": sum(1 for w in zdarzenia
                                           if w["charakter"] == "kontra"),
+                # The remaining types, so every event in the year is counted
+                # under some column and not only inside the _typy string.
+                f"{p}_liczba_wiecow": typy.get("wiec", 0),
+                f"{p}_liczba_happeningow": typy.get("happening", 0),
+                f"{p}_liczba_spotkan": typy.get("spotkanie", 0),
+                f"{p}_liczba_koncertow": typy.get("koncert", 0),
+                f"{p}_liczba_poza_centrum": sum(1 for w in zdarzenia
+                                                if w.get("poza_centrum") == "TRUE"),
                 f"{p}_frekwencja_suma": suma or "",
                 f"{p}_frekwencja_zwiazkowa": suma_zw or "",
                 f"{p}_udzial_zwiazkowy": round(suma_zw / suma, 3) if suma else "",
@@ -188,6 +214,15 @@ def main():
                 f"{p}_trasa_glowna_zmieniona": zmiana,
                 f"{p}_notatka": f"obsidian://open?vault=Wszystko&file={rok}_{miasto}",
             })
+            if miasto == "DE":
+                pr = przemoc.get(rok, {})
+                wiersz.update({
+                    "de_policja_sily": liczba(pr.get("einsatz")),
+                    "de_ranni_policjanci": liczba(pr.get("injured_officers")),
+                    "de_zatrzymania_1maja": liczba(pr.get("arrests_may1")),
+                    "de_zatrzymania_walpurgis": liczba(pr.get("arrests_walpurgisnacht")),
+                    "de_zatrzymania_kontra": liczba(pr.get("arrests_npd_kontra")),
+                })
         if any(wiersz[f"{m.lower()}_liczba_wydarzen"] != "" for m in MIASTA):
             wiersze.append(wiersz)
 
@@ -201,12 +236,19 @@ def main():
                     f"{p}_liczba_rewolucyjnych", f"{p}_marsz_gwiazdzisty",
                     f"{p}_liczba_zwiazkowych",
                     f"{p}_liczba_prawicowych", f"{p}_liczba_kontra",
+                    f"{p}_liczba_wiecow", f"{p}_liczba_happeningow",
+                    f"{p}_liczba_spotkan", f"{p}_liczba_koncertow",
+                    f"{p}_liczba_poza_centrum",
                     f"{p}_frekwencja_suma", f"{p}_frekwencja_zwiazkowa",
                     f"{p}_udzial_zwiazkowy", f"{p}_liczba_aktorow",
                     f"{p}_aktorzy_nowi", f"{p}_aktorzy_znikajacy",
                     f"{p}_wydarzenia_nowe", f"{p}_wydarzenia_znikajace",
                     f"{p}_miejsce_wiecu", f"{p}_miejsce_wiecu_zmienione",
                     f"{p}_trasa_glowna_zmieniona", f"{p}_notatka"]
+        if miasto == "DE":
+            kolumny += ["de_policja_sily", "de_ranni_policjanci",
+                        "de_zatrzymania_1maja", "de_zatrzymania_walpurgis",
+                        "de_zatrzymania_kontra"]
     write_csv(OUT_DIR / "pole.csv", wiersze, kolumny)
     zapisz_html(wiersze, OUT_DIR / "pole.html")
     poza = [w for w in wydarzenia

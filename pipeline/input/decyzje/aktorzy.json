@@ -642,7 +642,8 @@
   "aktor": "Młodzi demokraci",
   "kiedy": "2026-09-16T10:42:36",
   "notatka": "nowy typ: happening?",
-  "stare_id": "1998_PL_wiec_Niebieska-Alternatywa-Kapitalizm-jest-li"
+  "stare_id": "1998_PL_wiec_Niebieska-Alternatywa-Kapitalizm-jest-li",
+  "typ": "happening"
  },
  "1__mai_berlin_aktualna_14_.geojson#DGB#71#1999": {
   "akcja": "potwierdzam",
@@ -779,7 +780,8 @@
   "aktor": "Liga Republikańska",
   "kiedy": "2026-09-16T10:48:48",
   "notatka": "typ: happening",
-  "stare_id": "2000_PL_kontra_NIEZNANY"
+  "stare_id": "2000_PL_kontra_NIEZNANY",
+  "typ": "happening"
  },
  "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#16#2000": {
   "akcja": "potwierdzam",
@@ -922,7 +924,7 @@
   "aktor": "KPD/RZ",
   "kiedy": "2026-09-16T10:45:26",
   "notatka": "typ: happening",
-  "typ": "wiec",
+  "typ": "happening",
   "stare_id": "2002_DE_wiec_KPD-RZ"
  },
  "1__mai_berlin_aktualna_11_.geojson#Walpurgisnacht#26#2002": {
@@ -1287,7 +1289,8 @@
   "aktor": "Forum Liberalne",
   "kiedy": "2026-09-16T10:48:17",
   "notatka": "typ: happening",
-  "stare_id": "2007_PL_kontra_NIEZNANY"
+  "stare_id": "2007_PL_kontra_NIEZNANY",
+  "typ": "happening"
  },
  "umap_backup_1-maja_warszawa9.umap#Prawicowe kontry i blokady#11#2007": {
   "akcja": "potwierdzam",
@@ -1752,7 +1755,8 @@
   "aktor": "Ruch Narodowy",
   "kiedy": "2026-09-16T10:44:48",
   "notatka": "typ: happening",
-  "stare_id": "2014_PL_demonstracja_NIEZNANY_b"
+  "stare_id": "2014_PL_demonstracja_NIEZNANY_b",
+  "typ": "happening"
  },
  "umap_backup_1-maja_warszawa9.umap#European Union accession anniversary#0#2014": {
   "akcja": "potwierdzam",
@@ -1790,7 +1794,8 @@
   "akcja": "potwierdzam",
   "kiedy": "2026-09-16T11:14:09",
   "notatka": "typ:happening",
-  "stare_id": "2014_PL_wiec_Zieloni-Partia-Zieloni-happening"
+  "stare_id": "2014_PL_wiec_Zieloni-Partia-Zieloni-happening",
+  "typ": "happening"
  },
  "1__mai_berlin_aktualna_14_.geojson#DGB#91#2015": {
   "akcja": "potwierdzam",

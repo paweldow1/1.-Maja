@@ -32,14 +32,19 @@ def main():
 
     kolejki = {}
 
-    # 1. rows the parser could not settle on its own
+    # 1. rows the parser could not settle on its own.
+    # A row already judged stays in the queue: applying the decision clears
+    # wymaga_weryfikacji, and dropping it here would make the judgement
+    # invisible and impossible to revise. The page's "tylko niezrobione"
+    # filter is what narrows this down to what is left.
     kolejki["aktorzy"] = [{
         "klucz": w["klucz_zrodlowy"], "id": w["id"], "rok": w["rok"], "miasto": w["miasto"],
         "warstwa": w["warstwa"], "typ": w["typ"], "typ_zrodlo": w["typ_zrodlo"],
         "aktor": w["aktor"], "zgadniety": w["aktor_zgadniety"] == "True",
         "nazwa": skroc(w["nazwa"], 90), "opis": skroc(w["opis"]),
         "dzielnica": w["dzielnica_start"],
-    } for w in wydarzenia if w["wymaga_weryfikacji"] == "True"]
+    } for w in wydarzenia
+        if w["wymaga_weryfikacji"] == "True" or w.get("decyzja")]
 
     # 2. ids that collided and got a suffix
     duplikaty = wczytaj("duplikaty_id_warszawa.csv") + wczytaj("duplikaty_id_berlin.csv")
