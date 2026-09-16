@@ -171,6 +171,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2009,DE,Tiergarten,1,0,1
 2010,DE,Gesundbrunnen,1,0,1
 2010,DE,Halensee,1,0,1
+2010,DE,Hohenschönhausen,1,0,1
 2010,DE,Kreuzberg,2,0,2
 2010,DE,Mitte,0,1,1
 2010,DE,Niederschöneweide,2,0,2
@@ -181,7 +182,9 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2011,DE,Mitte,2,0,2
 2011,DE,Schöneberg,4,0,4
 2011,DE,Tiergarten,1,0,1
-2012,DE,Kreuzberg,2,0,2
+2012,DE,Hohenschönhausen,1,0,1
+2012,DE,Kreuzberg,3,0,3
+2012,DE,Lichtenberg,1,0,1
 2012,DE,Mitte,4,0,4
 2012,DE,Wedding,1,0,1
 2013,DE,Gesundbrunnen,1,0,1

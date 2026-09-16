@@ -64,7 +64,10 @@ def main():
         wiersz = {k: "" for k in kolumny}
         wiersz.update({
             "rok": d["rok"], "rok_zrodlo": "dzielnicowe.tsv", "miasto": d["miasto"],
-            "warstwa": "Dzielnicowe", "typ": "festyn", "typ_zrodlo": "dzielnicowe.tsv",
+            "warstwa": "Dzielnicowe",
+            # Wiekszosc to festyny, ale nie wszystko: kontrdemonstracja
+            # dzielnicowego zarzadu partii to nadal dzielnicowka.
+            "typ": d.get("typ") or "festyn", "typ_zrodlo": "dzielnicowe.tsv",
             "aktor": d["aktor"], "aktor_zgadniety": "False",
             "aktor_linia": LINIA if d["aktor"] in LINIA_LEWICY else d["aktor"],
             "aktor_zrodlo": "dzielnicowe.tsv", "charakter": "niezwiazkowe",

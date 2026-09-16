@@ -22,9 +22,9 @@ rok,wpisane,z_kroniki,wzmianki_o_fescie,na_mapie_poza_centrum,z_godzina,dzielnic
 2007,0,0,0,9,0,,pusto
 2008,0,16,0,6,16,Biesdorf;Charlottenburg;Dahlem;Friedrichsfelde;Friedrichshain;Karlshorst;Kreuzberg;Lichterfelde;Mariendorf;Marzahn;Niederschöneweide;Oberschöneweide;Prenzlauer Berg;Reinickendorf;Treptow,jest
 2009,0,2,2,8,2,Kreuzberg;Köpenick,jest
-2010,0,0,0,10,0,,pusto
+2010,1,0,0,10,1,Hohenschönhausen,cienko
 2011,0,0,0,6,0,,pusto
-2012,0,0,1,2,0,,cienko
+2012,3,0,1,2,2,Hohenschönhausen;Kreuzberg;Lichtenberg,jest
 2013,2,0,1,5,0,Hohenschönhausen;Köpenick,cienko
 2014,0,0,0,2,0,,pusto
 2015,0,0,0,6,0,,pusto

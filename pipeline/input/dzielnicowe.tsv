@@ -8,73 +8,77 @@
 #            POLE widzi ciaglosc, a nie osobne wydarzenie w kazdym roku.
 # pewnosc -- "pewna" gdy zrodlo podaje wszystko wprost, "dzielnica" gdy sama
 #            dzielnica jest wywnioskowana z adresu, "godzina" gdy brak godziny.
-rok	data	miasto	dzielnica	aktor	nazwa	godzina_od	godzina_do	miejsce	osoby	seria	pewnosc	zrodlo	uwaga
-1992	30.04	DE	Pankow	PDS	Talk und Tanz in den 1. Mai	18:00		Haus der PDS Pankow, Breite Straße 48	Kerstin Kaiser; André Brie		pewna	ND 30.04.1992	
-1992	30.04	DE	Wedding	PDS	Links-Treff: Entscheiden müssen die Betroffenen	19:00		Weddingstraße 6	Gesine Lötzsch		pewna	ND 30.04.1992	
-1992	30.04	DE	Treptow	PDS	Mai-Fete im Klub der AG Junge GenossInnen	19:00		Grünauer Straße 7 (Baracke)			pewna	ND 30.04.1992	
-1992	01.05	DE	Mitte	PDS	Großes Familienfest am Köllnischen Park	12:00		Haus Am Köllnischen Park			pewna	ND 30.04.1992	
-1992	01.05	DE	Weißensee	PDS	Frühlingsfest Parkstraße	14:00		Parkstraße 23			pewna	ND 30.04.1992	
-1992	01.05	DE	Köpenick	PDS	Frühlingsfest auf der Schloßinsel	14:00		Köpenicker Schloßinsel		1. Mai Fest Köpenick	pewna	ND 30.04.1992	
-1992	01.05	DE	Marzahn	PDS	Kiezfest Alt-Marzahn	13:00		Alt-Marzahn	Gregor Gysi	Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1992	
-1992	01.05	DE	Hellersdorf	PDS	Kiezfest Hellersdorf	17:00			Gregor Gysi		pewna	ND 30.04.1992	
-1992	01.05	DE	Pankow	PDS	Familiennachmittag in der »Pankgräfin«	16:00		Breite Straße 43			pewna	ND 30.04.1992	
-1992	01.05	DE	Treptow	PDS	Maifeier im Johannisthaler Springbornclub	14:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	ND 30.04.1992	
-1992	01.05	DE	Treptow	PDS	Maifeier im Gerard-Philippe-Klub	14:00		Karl-Kunger-Straße			pewna	ND 30.04.1992	
-1992	01.05	DE	Pankow	PDS	Forum zu aktuellen Fragen der Politik	16:00		Haus der PDS Pankow, Breite Straße 48	Hans Modrow		pewna	ND 30.04.1992	
-1993	01.05	DE	Friedrichshain	PDS	Maifest von ND und PDS Friedrichshain	14:00		Franz-Mehring-Platz			pewna	ND 30.04.1993	
-1993	01.05	DE	Marzahn	PDS	Maifest an der PDS-Geschäftsstelle Alt-Marzahn	13:00	23:00	Alt-Marzahn 64		Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1993	
-1993	01.05	DE	Weißensee	PDS	Bunter Nachmittag in der PDS-Geschäftsstelle	13:00		Parkstraße 23			pewna	ND 30.04.1993	
-1993	01.05	DE	Hellersdorf	PDS	Maifest vor dem Haus der Parteien	10:00		Kastanienallee 6-8			pewna	ND 30.04.1993	
-1993	01.05	DE	Treptow	PDS	Maifete im Springbrunnenclub	13:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	ND 30.04.1993	
-1993	01.05	DE	Köpenick	PDS	Maifeier der PDS Köpenick	14:00	17:00			1. Mai Fest Köpenick	pewna	ND 30.04.1993	
-1993	01.05	DE	Kreuzberg	AWO	Begegnung der Generationen	15:00	19:00	Seniorenheim Stallschreiberstraße 12			pewna	ND 30.04.1993	
-1995	30.04	DE	Lichtenberg	SPD	Tanz in den Mai	 		Kreisverband Lichtenberg			godzina	ND 29.04.1995	
-1995	30.04	DE	Pankow	SPD	Tanz in den Mai			Kreisverband Pankow			godzina	ND 29.04.1995	
-1995	30.04	DE	Köpenick	SPD	Tanz in den Mai			Kreisverband Köpenick			godzina	ND 29.04.1995	
-1995	01.05	DE	Treptow	SPD	SPD-Rosengartenfest			Rosengarten			godzina	ND 29.04.1995	
-1995	01.05	DE	Pankow	PDS	Maifest im Bürgerpark	14:00		Bürgerpark Pankow			pewna	ND 29.04.1995	
-1995	01.05	DE	Prenzlauer Berg	Antifa	Antifaschistisches Zelt auf dem Humannplatz			Humannplatz		Humannplatz Prenzlauer Berg	godzina	ND 29.04.1995	
-1996	01.05	DE	Hellersdorf	PDS	Maifest Boulevard Kastanienallee	10:00		Boulevard Kastanienallee	Hermann Kant; Gisela Steineckert	Maifest Boulevard Kastanienallee	pewna	ND 30.04.1996	
-1996	01.05	DE	Hohenschönhausen	PDS	Festumzug und Maifest am Obersee	09:30		Lindencenter, Festwiese am Obersee	Heinz Quermann	Maifest am Obersee	pewna	ND 30.04.1996	
-1996	01.05	DE	Prenzlauer Berg	PDS	Widerspenstig und lebendig, Humannplatz	10:00	19:00	Humannplatz		Humannplatz Prenzlauer Berg	pewna	ND 30.04.1996	
-1996	01.05	DE	Marzahn	PDS	Maifete »Rot ist der Mai«	13:00		Alt-Marzahn	Harald Buttler; Norbert Lüdtke	Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1996	
-1997	30.04	DE	Weißensee	PDS	Maifeier der PDS Weißensee	14:30	22:00	Herbert-Baum-Straße			pewna	ND 30.04.1997	
-1997	30.04	DE	Lichtenberg	PDS	Maifeier der PDS Lichtenberg	19:00		Kulturhaus Karlshorst			pewna	ND 30.04.1997	
-1997	01.05	DE	Köpenick	PDS	Maifest im Luisenhain	14:00	18:00	Luisenhain		1. Mai Fest Köpenick	pewna	ND 30.04.1997	
-1997	01.05	DE	Marzahn	PDS	Maifest Alt-Marzahn	13:00	18:00	Alt-Marzahn 64		Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1997	
-1997	01.05	DE	Hohenschönhausen	PDS	Maifest im Oberseepark	10:00	17:00	Oberseepark		Maifest am Obersee	pewna	ND 30.04.1997	
-1997	01.05	DE	Hellersdorf	PDS	Maifest Boulevard Kastanienallee	11:00	19:00	Boulevard Kastanienallee		Maifest Boulevard Kastanienallee	pewna	ND 30.04.1997	
-1998	01.05	DE	Hellersdorf	Volkssolidarität	Straßenfest Boulevard Kastanienallee			Boulevard Kastanienallee		Maifest Boulevard Kastanienallee	godzina	ND 29.04.1998	
-2000	01.05	DE	Hellersdorf	PDS	Multikulturelles Bündnisfest gegen Rechts	11:00	20:00	Alice-Salomon-Platz	Gregor Gysi; Petra Pau		pewna	ND 29.04.2000	
-2000	01.05	DE	Marzahn	BVV Marzahn	Kundgebungen der BVV Marzahn	09:00		Eisenacher Straße; Wittenberger Straße			pewna	ND 29.04.2000	
-2000	01.05	DE	Marzahn	PDS	Kundgebungen der PDS Marzahn	10:00	17:00	Allee der Kosmonauten; Alt-Marzahn; Freizeitforum Marzahn; S-Bhf Biesdorf; Poelchaustraße; Ahrensfelde		Rot ist der Mai / Alt-Marzahn	pewna	ND 29.04.2000	
-2000	01.05	DE	Prenzlauer Berg	PDS	Bündnisfest auf dem Humannplatz	09:00	24:00	Humannplatz		Humannplatz Prenzlauer Berg	pewna	ND 29.04.2000	
-2000	01.05	DE	Prenzlauer Berg	PDS	PDS-Fest Bötzowstraße	10:00	20:00	Bötzowstraße		Fest an der Bötzow-Eiche	pewna	ND 29.04.2000	
-2000	01.05	DE	Hohenschönhausen	PDS	Bündnisfest Am Obersee	11:00	18:00	Am Obersee		Maifest am Obersee	pewna	ND 29.04.2000	
-2000	01.05	DE	Köpenick	PDS	PDS-Mai-Fest im Luisenhain	13:00	18:00	Luisenhain		1. Mai Fest Köpenick	pewna	ND 29.04.2000	
-2000	01.05	DE	Kreuzberg	PDS	Bündnis-Mai-Feier auf dem Mariannenplatz	13:00	21:00	Mariannenplatz		Mariannenplatzfest	pewna	ND 29.04.2000	
-2000	01.05	DE	Treptow	PDS	PDS-Mai-Fest im Springborn-Club	14:00	18:00	Springborn-Club, Johannisthal		Maifest Springbornclub Johannisthal	pewna	ND 29.04.2000	
-2005	01.05	DE	Hohenschönhausen	PDS	Maifest Falkenberger Chaussee	11:00		Falkenberger Chaussee, zwischen Pablo-Picasso- und Vincent-van-Gogh-Straße		Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	PDS Berlin, Termine 05.04.2005	
-2005	01.05	DE	Köpenick	PDS	Maifest Schlossplatz Köpenick	13:00		Schlossplatz, Altstadt Köpenick		1. Mai Fest Köpenick	pewna	PDS Berlin, Termine 05.04.2005	
-2005	01.05	DE	Kreuzberg	PDS	Maifest Mariannenplatz	13:00		Mariannenplatz		Mariannenplatzfest	pewna	PDS Berlin, Termine 05.04.2005	
-2005	01.05	DE	Prenzlauer Berg	PDS	Maifest an der Bötzoweiche	14:00		Bötzowstraße / Am Friedrichshain		Fest an der Bötzow-Eiche	pewna	PDS Berlin, Termine 05.04.2005	
-2005	01.05	DE	Treptow	PDS	Maifest Springbornclub	14:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	PDS Berlin, Termine 05.04.2005	
-2013	01.05	DE	Köpenick	Die Linke	Maifest in Treptow-Köpenick			Altstadt Köpenick	Petra Pau	1. Mai Fest Köpenick	godzina	Facebook Die Linke, 1.05.2013	
-2013	01.05	DE	Hohenschönhausen	Die Linke	Maifest »Bunte Platte«				Gesine Lötzsch	Maifest Hohenschönhausen (Falkenberger Chaussee)	godzina	Facebook Die Linke, 1.05.2013	
-2017	01.05	DE	Hohenschönhausen	Die Linke	Familienfest Hohenschönhausen	11:00	17:00	Falkenberger Chaussee / Vincent-van-Gogh-Straße		Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	Newsletter Die Linke Berlin 21.04.2017	
-2017	01.05	DE	Lichtenberg	Die Linke	Markt am Rathaus Lichtenberg	11:00	18:00	Frankfurter Allee / Möllendorffstraße		Markt am Rathaus Lichtenberg	pewna	Newsletter Die Linke Berlin 21.04.2017	
-2017	01.05	DE	Prenzlauer Berg	Die Linke	Fest an der Bötzow-Eiche	13:00	18:30	Bötzowstraße / Straße am Friedrichshain	Elke Breitenbach	Fest an der Bötzow-Eiche	pewna	Newsletter Die Linke Berlin 21.04.2017	
-2017	01.05	DE	Treptow	Die Linke	Kiezfest Johannisthal	12:00	20:00	Springbornstraße 13		Maifest Springbornclub Johannisthal	pewna	Newsletter Die Linke Berlin 21.04.2017	
-2017	01.05	DE	Köpenick	Die Linke	1. Mai-Fest DIE LINKE Treptow-Köpenick	13:00	18:00	Schloßplatz, Altstadt Köpenick	Katina Schubert	1. Mai Fest Köpenick	pewna	Newsletter Die Linke Berlin 21.04.2017	
-2017	01.05	DE	Kreuzberg	Die Linke	1. Mai-Fest auf dem Mariannenplatz	13:00	20:00	Mariannenplatz	Katina Schubert	Mariannenplatzfest	pewna	Newsletter Die Linke Berlin 21.04.2017	
-2017	01.05	DE	Hellersdorf	Die Linke	1. Mai-Fest Cecilienplatz	14:00	18:00	Cecilienplatz, Kaulsdorf-Nord		1. Mai-Fest Cecilienplatz	dzielnica	Newsletter Die Linke Berlin 21.04.2017	
-2018	01.05	DE	Hohenschönhausen	Die Linke	Familienfest »Bunte Platte«	11:00	17:00	Falkenberger Chaussee / Vincent-van-Gogh-Straße	Michael Grunst; Gesine Lötzsch	Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	ND	
-2018	01.05	DE	Lichtenberg	Die Linke	Markt am Rathaus Lichtenberg	11:00	18:00	Frankfurter Allee / Möllendorffstraße	Gesine Lötzsch	Markt am Rathaus Lichtenberg	pewna	ND	
-2018	01.05	DE	Prenzlauer Berg	Die Linke	Fest an der Bötzow-Eiche	13:00	18:30	Bötzow-Eiche	Katina Schubert; Pascal Meiser; Klaus Lederer; Elke Breitenbach; Petra Pau; Stefan Liebich	Fest an der Bötzow-Eiche	dzielnica	ND	
-2018	01.05	DE	Köpenick	Die Linke	1. Mai Fest DIE LINKE Treptow-Köpenick	13:00	18:00	Schlossplatz, Altstadt Köpenick	Petra Pau; Klaus Lederer; Katina Schubert	1. Mai Fest Köpenick	pewna	ND	
-2018	01.05	DE	Kreuzberg	Die Linke	1. Mai Fest auf dem Mariannenplatz	13:00	22:00	Mariannenplatz	Katina Schubert; Petra Pau; Pascal Meiser	Mariannenplatzfest	pewna	ND	
-2019	01.05	DE	Hohenschönhausen	Die Linke	Familienfest »Bunte Platte«	11:00		Falkenberger Chaussee / Vincent-van-Gogh-Straße	Petra Pau; Gesine Lötzsch	Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	Newsletter Die Linke Berlin »Maifeierlichkeiten«	strona wydarzenia Linke podaje dla 2019 godz. 10:00 i Quartierspark Warnitzer Bogen -- ten sam festyn, inny rog; rozbieznosc nierozstrzygnieta
-2019	01.05	DE	Lichtenberg	Die Linke	Markt am Rathaus Lichtenberg	11:00	18:00	Rathaus Lichtenberg, Frankfurter Allee / Möllendorffstraße	Sebastian Schlüsselburg; Hendrikje Klein; Gesine Lötzsch	Markt am Rathaus Lichtenberg	pewna	Newsletter Die Linke Berlin »Maifeierlichkeiten«	godzina koncowa ze strony wydarzenia Linke
-2019	01.05	DE	Köpenick	Die Linke	1. Mai Fest DIE LINKE Treptow-Köpenick	13:00		Schloßplatz, Altstadt Köpenick	Gregor Gysi; Petra Pau; Katina Schubert	1. Mai Fest Köpenick	pewna	Newsletter Die Linke Berlin »Maifeierlichkeiten«	
-2019	01.05	DE	Prenzlauer Berg	Die Linke	Maifest an der Bötzow-Eiche	13:00		Bötzowstraße / Am Friedrichshain	Elke Breitenbach; Stefan Liebich; Petra Pau; Martina Michels	Fest an der Bötzow-Eiche	dzielnica	Newsletter Die Linke Berlin »Maifeierlichkeiten«	
-2019	01.05	DE	Kreuzberg	Die Linke	1. Mai Fest auf dem Mariannenplatz	13:00		Mariannenplatz	Pascal Meiser; Katrin Lompscher; Martina Michels; Gregor Gysi	Mariannenplatzfest	pewna	Newsletter Die Linke Berlin »Maifeierlichkeiten«	
+rok	data	miasto	dzielnica	aktor	typ	nazwa	godzina_od	godzina_do	miejsce	osoby	seria	pewnosc	zrodlo	uwaga
+1992	30.04	DE	Pankow	PDS	festyn	Talk und Tanz in den 1. Mai	18:00		Haus der PDS Pankow, Breite Straße 48	Kerstin Kaiser; André Brie		pewna	ND 30.04.1992	
+1992	30.04	DE	Wedding	PDS	festyn	Links-Treff: Entscheiden müssen die Betroffenen	19:00		Weddingstraße 6	Gesine Lötzsch		pewna	ND 30.04.1992	
+1992	30.04	DE	Treptow	PDS	festyn	Mai-Fete im Klub der AG Junge GenossInnen	19:00		Grünauer Straße 7 (Baracke)			pewna	ND 30.04.1992	
+1992	01.05	DE	Mitte	PDS	festyn	Großes Familienfest am Köllnischen Park	12:00		Haus Am Köllnischen Park			pewna	ND 30.04.1992	
+1992	01.05	DE	Weißensee	PDS	festyn	Frühlingsfest Parkstraße	14:00		Parkstraße 23			pewna	ND 30.04.1992	
+1992	01.05	DE	Köpenick	PDS	festyn	Frühlingsfest auf der Schloßinsel	14:00		Köpenicker Schloßinsel		1. Mai Fest Köpenick	pewna	ND 30.04.1992	
+1992	01.05	DE	Marzahn	PDS	festyn	Kiezfest Alt-Marzahn	13:00		Alt-Marzahn	Gregor Gysi	Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1992	
+1992	01.05	DE	Hellersdorf	PDS	festyn	Kiezfest Hellersdorf	17:00			Gregor Gysi		pewna	ND 30.04.1992	
+1992	01.05	DE	Pankow	PDS	festyn	Familiennachmittag in der »Pankgräfin«	16:00		Breite Straße 43			pewna	ND 30.04.1992	
+1992	01.05	DE	Treptow	PDS	festyn	Maifeier im Johannisthaler Springbornclub	14:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	ND 30.04.1992	
+1992	01.05	DE	Treptow	PDS	festyn	Maifeier im Gerard-Philippe-Klub	14:00		Karl-Kunger-Straße			pewna	ND 30.04.1992	
+1992	01.05	DE	Pankow	PDS	festyn	Forum zu aktuellen Fragen der Politik	16:00		Haus der PDS Pankow, Breite Straße 48	Hans Modrow		pewna	ND 30.04.1992	
+1993	01.05	DE	Friedrichshain	PDS	festyn	Maifest von ND und PDS Friedrichshain	14:00		Franz-Mehring-Platz			pewna	ND 30.04.1993	
+1993	01.05	DE	Marzahn	PDS	festyn	Maifest an der PDS-Geschäftsstelle Alt-Marzahn	13:00	23:00	Alt-Marzahn 64		Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1993	
+1993	01.05	DE	Weißensee	PDS	festyn	Bunter Nachmittag in der PDS-Geschäftsstelle	13:00		Parkstraße 23			pewna	ND 30.04.1993	
+1993	01.05	DE	Hellersdorf	PDS	festyn	Maifest vor dem Haus der Parteien	10:00		Kastanienallee 6-8			pewna	ND 30.04.1993	
+1993	01.05	DE	Treptow	PDS	festyn	Maifete im Springbrunnenclub	13:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	ND 30.04.1993	
+1993	01.05	DE	Köpenick	PDS	festyn	Maifeier der PDS Köpenick	14:00	17:00			1. Mai Fest Köpenick	pewna	ND 30.04.1993	
+1993	01.05	DE	Kreuzberg	AWO	festyn	Begegnung der Generationen	15:00	19:00	Seniorenheim Stallschreiberstraße 12			pewna	ND 30.04.1993	
+1995	30.04	DE	Lichtenberg	SPD	festyn	Tanz in den Mai	 		Kreisverband Lichtenberg			godzina	ND 29.04.1995	
+1995	30.04	DE	Pankow	SPD	festyn	Tanz in den Mai			Kreisverband Pankow			godzina	ND 29.04.1995	
+1995	30.04	DE	Köpenick	SPD	festyn	Tanz in den Mai			Kreisverband Köpenick			godzina	ND 29.04.1995	
+1995	01.05	DE	Treptow	SPD	festyn	SPD-Rosengartenfest			Rosengarten			godzina	ND 29.04.1995	
+1995	01.05	DE	Pankow	PDS	festyn	Maifest im Bürgerpark	14:00		Bürgerpark Pankow			pewna	ND 29.04.1995	
+1995	01.05	DE	Prenzlauer Berg	Antifa	festyn	Antifaschistisches Zelt auf dem Humannplatz			Humannplatz		Humannplatz Prenzlauer Berg	godzina	ND 29.04.1995	
+1996	01.05	DE	Hellersdorf	PDS	festyn	Maifest Boulevard Kastanienallee	10:00		Boulevard Kastanienallee	Hermann Kant; Gisela Steineckert	Maifest Boulevard Kastanienallee	pewna	ND 30.04.1996	
+1996	01.05	DE	Hohenschönhausen	PDS	festyn	Festumzug und Maifest am Obersee	09:30		Lindencenter, Festwiese am Obersee	Heinz Quermann	Maifest am Obersee	pewna	ND 30.04.1996	
+1996	01.05	DE	Prenzlauer Berg	PDS	festyn	Widerspenstig und lebendig, Humannplatz	10:00	19:00	Humannplatz		Humannplatz Prenzlauer Berg	pewna	ND 30.04.1996	
+1996	01.05	DE	Marzahn	PDS	festyn	Maifete »Rot ist der Mai«	13:00		Alt-Marzahn	Harald Buttler; Norbert Lüdtke	Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1996	
+1997	30.04	DE	Weißensee	PDS	festyn	Maifeier der PDS Weißensee	14:30	22:00	Herbert-Baum-Straße			pewna	ND 30.04.1997	
+1997	30.04	DE	Lichtenberg	PDS	festyn	Maifeier der PDS Lichtenberg	19:00		Kulturhaus Karlshorst			pewna	ND 30.04.1997	
+1997	01.05	DE	Köpenick	PDS	festyn	Maifest im Luisenhain	14:00	18:00	Luisenhain		1. Mai Fest Köpenick	pewna	ND 30.04.1997	
+1997	01.05	DE	Marzahn	PDS	festyn	Maifest Alt-Marzahn	13:00	18:00	Alt-Marzahn 64		Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1997	
+1997	01.05	DE	Hohenschönhausen	PDS	festyn	Maifest im Oberseepark	10:00	17:00	Oberseepark		Maifest am Obersee	pewna	ND 30.04.1997	
+1997	01.05	DE	Hellersdorf	PDS	festyn	Maifest Boulevard Kastanienallee	11:00	19:00	Boulevard Kastanienallee		Maifest Boulevard Kastanienallee	pewna	ND 30.04.1997	
+1998	01.05	DE	Hellersdorf	Volkssolidarität	festyn	Straßenfest Boulevard Kastanienallee			Boulevard Kastanienallee		Maifest Boulevard Kastanienallee	godzina	ND 29.04.1998	
+2000	01.05	DE	Hellersdorf	PDS	festyn	Multikulturelles Bündnisfest gegen Rechts	11:00	20:00	Alice-Salomon-Platz	Gregor Gysi; Petra Pau		pewna	ND 29.04.2000	
+2000	01.05	DE	Marzahn	BVV Marzahn	festyn	Kundgebungen der BVV Marzahn	09:00		Eisenacher Straße; Wittenberger Straße			pewna	ND 29.04.2000	
+2000	01.05	DE	Marzahn	PDS	festyn	Kundgebungen der PDS Marzahn	10:00	17:00	Allee der Kosmonauten; Alt-Marzahn; Freizeitforum Marzahn; S-Bhf Biesdorf; Poelchaustraße; Ahrensfelde		Rot ist der Mai / Alt-Marzahn	pewna	ND 29.04.2000	
+2000	01.05	DE	Prenzlauer Berg	PDS	festyn	Bündnisfest auf dem Humannplatz	09:00	24:00	Humannplatz		Humannplatz Prenzlauer Berg	pewna	ND 29.04.2000	
+2000	01.05	DE	Prenzlauer Berg	PDS	festyn	PDS-Fest Bötzowstraße	10:00	20:00	Bötzowstraße		Fest an der Bötzow-Eiche	pewna	ND 29.04.2000	
+2000	01.05	DE	Hohenschönhausen	PDS	festyn	Bündnisfest Am Obersee	11:00	18:00	Am Obersee		Maifest am Obersee	pewna	ND 29.04.2000	
+2000	01.05	DE	Köpenick	PDS	festyn	PDS-Mai-Fest im Luisenhain	13:00	18:00	Luisenhain		1. Mai Fest Köpenick	pewna	ND 29.04.2000	
+2000	01.05	DE	Kreuzberg	PDS	festyn	Bündnis-Mai-Feier auf dem Mariannenplatz	13:00	21:00	Mariannenplatz		Mariannenplatzfest	pewna	ND 29.04.2000	
+2000	01.05	DE	Treptow	PDS	festyn	PDS-Mai-Fest im Springborn-Club	14:00	18:00	Springborn-Club, Johannisthal		Maifest Springbornclub Johannisthal	pewna	ND 29.04.2000	
+2005	01.05	DE	Hohenschönhausen	PDS	festyn	Maifest Falkenberger Chaussee	11:00		Falkenberger Chaussee, zwischen Pablo-Picasso- und Vincent-van-Gogh-Straße		Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	PDS Berlin, Termine 05.04.2005	
+2005	01.05	DE	Köpenick	PDS	festyn	Maifest Schlossplatz Köpenick	13:00		Schlossplatz, Altstadt Köpenick		1. Mai Fest Köpenick	pewna	PDS Berlin, Termine 05.04.2005	
+2005	01.05	DE	Kreuzberg	PDS	festyn	Maifest Mariannenplatz	13:00		Mariannenplatz		Mariannenplatzfest	pewna	PDS Berlin, Termine 05.04.2005	
+2005	01.05	DE	Prenzlauer Berg	PDS	festyn	Maifest an der Bötzoweiche	14:00		Bötzowstraße / Am Friedrichshain		Fest an der Bötzow-Eiche	pewna	PDS Berlin, Termine 05.04.2005	
+2005	01.05	DE	Treptow	PDS	festyn	Maifest Springbornclub	14:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	PDS Berlin, Termine 05.04.2005	
+2013	01.05	DE	Köpenick	Die Linke	festyn	Maifest in Treptow-Köpenick			Altstadt Köpenick	Petra Pau	1. Mai Fest Köpenick	godzina	Facebook Die Linke, 1.05.2013	
+2013	01.05	DE	Hohenschönhausen	Die Linke	festyn	Maifest »Bunte Platte«				Gesine Lötzsch	Maifest Hohenschönhausen (Falkenberger Chaussee)	godzina	Facebook Die Linke, 1.05.2013	
+2017	01.05	DE	Hohenschönhausen	Die Linke	festyn	Familienfest Hohenschönhausen	11:00	17:00	Falkenberger Chaussee / Vincent-van-Gogh-Straße		Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	Newsletter Die Linke Berlin 21.04.2017	
+2017	01.05	DE	Lichtenberg	Die Linke	festyn	Markt am Rathaus Lichtenberg	11:00	18:00	Frankfurter Allee / Möllendorffstraße		Markt am Rathaus Lichtenberg	pewna	Newsletter Die Linke Berlin 21.04.2017	
+2017	01.05	DE	Prenzlauer Berg	Die Linke	festyn	Fest an der Bötzow-Eiche	13:00	18:30	Bötzowstraße / Straße am Friedrichshain	Elke Breitenbach	Fest an der Bötzow-Eiche	pewna	Newsletter Die Linke Berlin 21.04.2017	
+2017	01.05	DE	Treptow	Die Linke	festyn	Kiezfest Johannisthal	12:00	20:00	Springbornstraße 13		Maifest Springbornclub Johannisthal	pewna	Newsletter Die Linke Berlin 21.04.2017	
+2017	01.05	DE	Köpenick	Die Linke	festyn	1. Mai-Fest DIE LINKE Treptow-Köpenick	13:00	18:00	Schloßplatz, Altstadt Köpenick	Katina Schubert	1. Mai Fest Köpenick	pewna	Newsletter Die Linke Berlin 21.04.2017	
+2017	01.05	DE	Kreuzberg	Die Linke	festyn	1. Mai-Fest auf dem Mariannenplatz	13:00	20:00	Mariannenplatz	Katina Schubert	Mariannenplatzfest	pewna	Newsletter Die Linke Berlin 21.04.2017	
+2017	01.05	DE	Hellersdorf	Die Linke	festyn	1. Mai-Fest Cecilienplatz	14:00	18:00	Cecilienplatz, Kaulsdorf-Nord		1. Mai-Fest Cecilienplatz	dzielnica	Newsletter Die Linke Berlin 21.04.2017	
+2018	01.05	DE	Hohenschönhausen	Die Linke	festyn	Familienfest »Bunte Platte«	11:00	17:00	Falkenberger Chaussee / Vincent-van-Gogh-Straße	Michael Grunst; Gesine Lötzsch	Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	ND	
+2018	01.05	DE	Lichtenberg	Die Linke	festyn	Markt am Rathaus Lichtenberg	11:00	18:00	Frankfurter Allee / Möllendorffstraße	Gesine Lötzsch	Markt am Rathaus Lichtenberg	pewna	ND	
+2018	01.05	DE	Prenzlauer Berg	Die Linke	festyn	Fest an der Bötzow-Eiche	13:00	18:30	Bötzow-Eiche	Katina Schubert; Pascal Meiser; Klaus Lederer; Elke Breitenbach; Petra Pau; Stefan Liebich	Fest an der Bötzow-Eiche	dzielnica	ND	
+2018	01.05	DE	Köpenick	Die Linke	festyn	1. Mai Fest DIE LINKE Treptow-Köpenick	13:00	18:00	Schlossplatz, Altstadt Köpenick	Petra Pau; Klaus Lederer; Katina Schubert	1. Mai Fest Köpenick	pewna	ND	
+2018	01.05	DE	Kreuzberg	Die Linke	festyn	1. Mai Fest auf dem Mariannenplatz	13:00	22:00	Mariannenplatz	Katina Schubert; Petra Pau; Pascal Meiser	Mariannenplatzfest	pewna	ND	
+2019	01.05	DE	Hohenschönhausen	Die Linke	festyn	Familienfest »Bunte Platte«	11:00		Falkenberger Chaussee / Vincent-van-Gogh-Straße	Petra Pau; Gesine Lötzsch	Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	Newsletter Die Linke Berlin »Maifeierlichkeiten«	strona wydarzenia Linke podaje dla 2019 godz. 10:00 i Quartierspark Warnitzer Bogen -- ten sam festyn, inny rog; rozbieznosc nierozstrzygnieta
+2019	01.05	DE	Lichtenberg	Die Linke	festyn	Markt am Rathaus Lichtenberg	11:00	18:00	Rathaus Lichtenberg, Frankfurter Allee / Möllendorffstraße	Sebastian Schlüsselburg; Hendrikje Klein; Gesine Lötzsch	Markt am Rathaus Lichtenberg	pewna	Newsletter Die Linke Berlin »Maifeierlichkeiten«	godzina koncowa ze strony wydarzenia Linke
+2019	01.05	DE	Köpenick	Die Linke	festyn	1. Mai Fest DIE LINKE Treptow-Köpenick	13:00		Schloßplatz, Altstadt Köpenick	Gregor Gysi; Petra Pau; Katina Schubert	1. Mai Fest Köpenick	pewna	Newsletter Die Linke Berlin »Maifeierlichkeiten«	
+2019	01.05	DE	Prenzlauer Berg	Die Linke	festyn	Maifest an der Bötzow-Eiche	13:00		Bötzowstraße / Am Friedrichshain	Elke Breitenbach; Stefan Liebich; Petra Pau; Martina Michels	Fest an der Bötzow-Eiche	dzielnica	Newsletter Die Linke Berlin »Maifeierlichkeiten«	
+2019	01.05	DE	Kreuzberg	Die Linke	festyn	1. Mai Fest auf dem Mariannenplatz	13:00		Mariannenplatz	Pascal Meiser; Katrin Lompscher; Martina Michels; Gregor Gysi	Mariannenplatzfest	pewna	Newsletter Die Linke Berlin »Maifeierlichkeiten«	
+2010	01.05	DE	Hohenschönhausen	Die Linke	festyn	Stadtteilfest »Bunte Platte«	11:00		Falkenberger Chaussee / Vincent-van-Gogh-Straße		Maifest Hohenschönhausen (Falkenberger Chaussee)	aktor	Berliner Morgenpost 29.04.2010	zrodlo nie nazywa organizatora, pisze o "jährlich stattfindenden Stadtteilfest"; aktor wziety z pozostalych edycji cyklu. Otwiera obchody 25-lecia dzielnicy; Papa Binnes Jazzband 11:00, Kosmonautics 17:00
+2012	01.05	DE	Hohenschönhausen	Die Linke	festyn	Interkulturelles Fest »Bunte Platte«			Falkenberger Chaussee / Vincent-van-Gogh-Straße		Maifest Hohenschönhausen (Falkenberger Chaussee)	godzina	Berliner Zeitung 30.04.2012	burmistrz Lichtenberga Andreas Geisel (SPD) wzywal, by odwiedzic festyn, a potem o 14:30 demonstrowac przeciw neonazistom
+2012	01.05	DE	Lichtenberg	Die Linke	kontra	Gegenkundgebung vor dem Lindencenter	14:00		Lindencenter			pewna	Berliner Zeitung 30.04.2012	zwolana przez Bezirksverband Linkspartei przeciw trzem wiecom NPD w Hellersdorfie i Lichtenbergu
+2012	01.05	DE	Kreuzberg	Die Linke	festyn	Fest der Linken auf dem Mariannenplatz	14:00	19:00	Mariannenplatz		Mariannenplatzfest	pewna	Berliner Zeitung 30.04.2012	stoiska i dyskusje polityczne w ramach MyFestu; tam tez centralny punkt zbiorki dzieci
