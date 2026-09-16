@@ -34,6 +34,7 @@ python3 brakujace.py
 python3 scenariusz.py
 python3 pokrycie.py
 python3 pokrycie_dzielnicowe.py
+python3 macierz_dzielnicowe.py
 python3 pole.py
 
 echo "=== 6. dane dla kartoteki"
