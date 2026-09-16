@@ -1,0 +1,9 @@
+# Kandydaci wyciagnieci z artykulow w input/nd/. Przejrzyj,
+# uzupelnij kolumne pewnosc i przenies dobre wiersze do
+# input/dzielnicowe.tsv (kolumny sie zgadzaja, bez odniesienia).
+rok	miasto	dzielnica	aktor	nazwa	godzina_od	godzina_do	miejsce	osoby	seria	pewnosc	zrodlo	odniesienie
+2018	DE	Hohenschönhausen	Die Linke	Familienfest »Bunte Platte«	11:00	17:00	Falkenberger Chaussee/ Vincent-van-Gogh-Straße	Michael Grunst; Gesine Lötzsch		do uzupelnienia: aktor z naglowka, nie z linii	ND	nd_2018.txt:3
+2018	DE	Lichtenberg	Die Linke	Markt am Rathaus Lichtenberg	11:00	18:00	Frankfurter Allee/Möllendorffstraße	Gesine Lötzsch		do uzupelnienia: aktor z naglowka, nie z linii	ND	nd_2018.txt:5
+2018	DE		Die Linke	Fest an der Bötzow-Eiche	13:00	18:30		Katina Schubert; Pascal Meiser; Klaus Lederer; Elke Breitenbach; Petra Pau; Stefan Liebich		do uzupelnienia: dzielnica	ND	nd_2018.txt:7
+2018	DE	Treptow-Köpenick	Die Linke	1. Mai Fest DIE LINKE. Treptow-Köpenick	13:00	18:00	Schlossplatz, Altstadt Köpenick	Petra Pau; Klaus Lederer; Katina Schubert		pewna	ND	nd_2018.txt:9
+2018	DE	Kreuzberg	Die Linke	1. Mai Fest auf dem Mariannenplatz Kreuzberg	13:00	22:00		Katina Schubert; Petra Pau; Pascal Meiser		do uzupelnienia: aktor z naglowka, nie z linii	ND	nd_2018.txt:11
