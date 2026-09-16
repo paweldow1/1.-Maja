@@ -15,6 +15,7 @@ dodaj --skrot: zostana tylko fragmenty mowiace o godzinach i festynach,
 z linijka kontekstu z obu stron.
 """
 import html as html_mod
+import json
 import re
 import sys
 from pathlib import Path
@@ -23,7 +24,65 @@ ISTOTNE = re.compile(r"\bUhr\b|\w*[Ff]est\b|Kundgebung|Demonstration|Markt am|"
                      r"\b1\.\s*Mai\b|Maifeier|Aufzug|Umzug", re.I)
 
 
+# Strony takie jak Facebook nie maja tresci w HTML-u -- maja szkielet, a
+# posty siedza w blokach <script type="application/json">. Wyciecie skryptow
+# razem z nimi zostawia sama nawigacje.
+SKRYPT_JSON = re.compile(
+    r'<script[^>]+type=["\']application/json["\'][^>]*>(.*?)</script>', re.S | re.I)
+# Daty przepuszczamy bez wzgledu na dlugosc i w kolejnosci wystapienia:
+# w zrzucie wyszukiwarki kazdy post ma wlasny rok, a data stoi zaraz obok
+# tresci. Odcieta data zostawilaby posty z roznych lat bez rozroznienia.
+DATA = re.compile(r"\b\d{1,2}[ .]\s*(?:sty|lut|mar|kwi|maj|cze|lip|sie|wrz|paź|paz|lis|gru|"
+                  r"Jan|Feb|Mär|Mar|Apr|Mai|May|Jun|Jul|Aug|Sep|Okt|Oct|Nov|Dez|Dec)"
+                  r"[a-zA-ZäöüÄÖÜżźćńółęąś]*\s+((?:19|20)\d{2})\b"
+                  r"|\b\d{1,2}\.\d{1,2}\.((?:19|20)\d{2})\b")
+# Co uznajemy za zdanie, a nie za identyfikator albo kawalek kodu.
+ZDANIE = re.compile(r"[A-Za-zÄÖÜäöüßĄĆĘŁŃÓŚŹŻąćęłńóśźż]{3}.*\s.*"
+                    r"[A-Za-zÄÖÜäöüßĄĆĘŁŃÓŚŹŻąćęłńóśźż]")
+
+
+def _zbierz_napisy(obiekt, out):
+    """Rekurencyjnie: wszystkie napisy z rozpakowanego JSON-a."""
+    if isinstance(obiekt, str):
+        out.append(obiekt)
+    elif isinstance(obiekt, dict):
+        for v in obiekt.values():
+            _zbierz_napisy(v, out)
+    elif isinstance(obiekt, list):
+        for v in obiekt:
+            _zbierz_napisy(v, out)
+
+
+def tekst_z_json(surowy):
+    """Zdania z blokow <script type="application/json">, bez powtorzen."""
+    widziane, wynik = set(), []
+    for blok in SKRYPT_JSON.findall(surowy):
+        try:
+            dane = json.loads(blok)
+        except (ValueError, RecursionError):
+            continue
+        napisy = []
+        try:
+            _zbierz_napisy(dane, napisy)
+        except RecursionError:
+            continue
+        for n in napisy:
+            n = html_mod.unescape(n).strip()
+            # Za krotkie to etykiety, za dlugie to zrzuty konfiguracji;
+            # bez spacji i bez liter to identyfikatory.
+            if n in widziane or len(n) > 1200:
+                continue
+            if n.startswith(("http", "{", "[", "<")) or "/" in n[:12]:
+                continue
+            if not DATA.search(n) and (len(n) < 25 or not ZDANIE.match(n)):
+                continue
+            widziane.add(n)
+            wynik.append(n)
+    return wynik
+
+
 def tekst_z_html(surowy):
+    z_json = tekst_z_json(surowy)
     surowy = re.sub(r"(?is)<(script|style|noscript|svg)\b.*?</\1>", " ", surowy)
     surowy = re.sub(r"(?s)<!--.*?-->", " ", surowy)
     surowy = re.sub(r"(?i)<(br|/p|/div|/li|/tr|/h[1-6]|/section|/article)\b[^>]*>",
@@ -32,7 +91,10 @@ def tekst_z_html(surowy):
     surowy = html_mod.unescape(surowy)
     surowy = re.sub(r"[ \t\xa0]+", " ", surowy)
     linie = [l.strip() for l in surowy.splitlines()]
-    return "\n".join(l for l in linie if l)
+    widoczne = [l for l in linie if l]
+    if z_json:
+        widoczne += ["--- tresc z blokow JSON ---"] + z_json
+    return "\n".join(widoczne)
 
 
 def skroc(tekst):
@@ -82,6 +144,7 @@ def main(argv):
         # z nazwy folderu.
         czesci.append(f"=== PLIK: {p.relative_to(katalog).as_posix()} ===\n{tekst}")
 
+    wyjscie.parent.mkdir(parents=True, exist_ok=True)
     wyjscie.write_text("\n\n".join(czesci), encoding="utf-8")
     rozmiar = wyjscie.stat().st_size
 

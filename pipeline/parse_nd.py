@@ -220,6 +220,16 @@ PARTIE = [
     ("DGB", ["dgb", "ver.di", "ig metall"]),
 ]
 # "13 bis 18.30 Uhr:", "ab 13 Uhr:", "11 Uhr -"
+# Data stojaca w linii -- zrzut z wyszukiwarki niesie posty z wielu lat i
+# rok calego "artykulu" nie znaczy wtedy nic. Data raz napotkana obowiazuje
+# az do nastepnej.
+DATA_W_LINII = re.compile(
+    r"\b\d{1,2}\s+(?:stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|"
+    r"wrze\u015bnia|pa\u017adziernika|listopada|grudnia)\s+((?:19|20)\d{2})\b"
+    r"|\b\d{1,2}\.\s*(?:Januar|Februar|M\u00e4rz|April|Mai|Juni|Juli|August|"
+    r"September|Oktober|November|Dezember)\s+((?:19|20)\d{2})\b"
+    r"|\b\d{1,2}\.\d{1,2}\.((?:19|20)\d{2})\b")
+
 GODZINY = re.compile(
     r"(?:^|\s)(?:ab\s+)?(\d{1,2})(?:[.:](\d{2}))?\s*"
     r"(?:bis|–|-|—)\s*(\d{1,2})(?:[.:](\d{2}))?\s*Uhr"
@@ -360,8 +370,12 @@ def main(katalog=None):
         aktor_pliku = w_pliku[0] if len(w_pliku) == 1 else ""
         if not rok:
             bez_roku.add(str(sciezka.relative_to(katalog)))
+        rok_linii = ""
         for nr, linia in enumerate(tekst.splitlines(), start=1):
             linia = linia.strip()
+            m_data = DATA_W_LINII.search(linia)
+            if m_data:
+                rok_linii = next(g for g in m_data.groups() if g)
             if len(linia) < 20 or not re.search(r"\bUhr\b", linia, re.I):
                 continue
             od, do = czas(linia)
@@ -403,12 +417,13 @@ def main(katalog=None):
             z_naglowka = False
             if not aktor and aktor_pliku:
                 aktor, z_naglowka = aktor_pliku, True
-            braki = [p for p, v in (("rok", rok), ("dzielnica", dzielnica),
+            rok_wpisu = rok_linii or rok
+            braki = [p for p, v in (("rok", rok_wpisu), ("dzielnica", dzielnica),
                                     ("aktor", aktor)) if not v]
             if z_naglowka and not braki:
                 braki = ["aktor z naglowka, nie z linii"]
             kandydaci.append({
-                "rok": rok, "miasto": "DE", "dzielnica": dzielnica, "aktor": aktor,
+                "rok": rok_wpisu, "miasto": "DE", "dzielnica": dzielnica, "aktor": aktor,
                 "nazwa": nazwa, "godzina_od": od, "godzina_do": do,
                 "miejsce": miejsce, "osoby": osoby, "seria": "",
                 "pewnosc": "pewna" if not braki else "do uzupelnienia: " + ", ".join(braki),
