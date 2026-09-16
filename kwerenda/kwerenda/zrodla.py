@@ -45,6 +45,7 @@ KLUCZE: Dict[str, str] = {
     "search_url": "szablon_szukania", "listing_url": "szablon_listy",
     "link_selector": "selektor_linkow", "next_selector": "selektor_dalej",
     "first_page": "pierwsza_strona", "language": "jezyk",
+    "attachments": "zalaczniki",
     "cookies": "ciasteczka", "cookies_file": "plik_ciasteczek",
     "browser_cookies": "ciasteczka_z_przegladarki",
     "basic_auth": "basic_auth", "headers": "naglowki",
@@ -70,6 +71,7 @@ class Zrodlo:
     glebokosc: int = 2                  # crawl depth
     lista_url: List[str] = field(default_factory=list)
     jezyk: str = ""                     # language hint for this source
+    zalaczniki: bool = True             # follow PDFs and documents linked from pages
 
     # universal templates
     szablon_szukania: str = ""          # ".../search?q={q}&page={page}"
@@ -121,6 +123,7 @@ _NORMALIZUJ_TRYB = {
 class Kandydat:
     url: str
     tytul: str = ""
+    strona_zrodlowa: str = ""           # the page a document was linked from
     data: str = ""
     autorzy: List[str] = field(default_factory=list)
     tresc_html: str = ""                # when the source already gave us full text
@@ -175,8 +178,15 @@ _SCIEZKI_SLUZBOWE = re.compile(
     r"wp-login|wp-content|feed|rss|amp)(?:/|$)", re.I)
 
 
-def _wyglada_na_tresc(url: str) -> bool:
-    """Rough filter: is this an article rather than an index or an asset?"""
+def _wyglada_na_tresc(url: str, zalaczniki: bool = False) -> bool:
+    """Rough filter: is this an article rather than an index or an asset?
+
+    With ``zalaczniki`` on, readable documents (PDF, .docx) count as content —
+    a party newsletter published only as a PDF is the source, not an asset.
+    """
+    from .pliki import rozszerzenie
+    if zalaczniki and rozszerzenie(url):
+        return True
     if _NIE_TRESC.search(url):
         return False
     sciezka = urlparse(url).path.lower()
@@ -187,8 +197,11 @@ def _wyglada_na_tresc(url: str) -> bool:
     return True
 
 
-def _wyglada_na_artykul(url: str) -> bool:
+def _wyglada_na_artykul(url: str, zalaczniki: bool = False) -> bool:
     """Stronger heuristic used when we have to guess without any selector."""
+    from .pliki import rozszerzenie
+    if zalaczniki and rozszerzenie(url):
+        return True
     if not _wyglada_na_tresc(url):
         return False
     sciezka = urlparse(url).path
@@ -452,7 +465,7 @@ def z_sitemap(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
             url = normalizuj_url(url)
             if host_z_url(url) != host_z_url(baza):
                 continue
-            if not (_pasuje_url(zrodlo, url) and _wyglada_na_tresc(url)):
+            if not (_pasuje_url(zrodlo, url) and _wyglada_na_tresc(url, zrodlo.zalaczniki)):
                 continue
             data = normalizuj_date(lastmod)
             if lata and data[:4].isdigit() and int(data[:4]) not in lata:
@@ -556,7 +569,28 @@ def _linki_wynikow(zupa: BeautifulSoup, baza: str, selektor: str = "") -> List:
         return znalezione
     # last resort: everything that looks like an article address
     return [a for a in zupa.find_all("a", href=True)
-            if _wyglada_na_artykul(_link_absolutny(baza, a["href"]))]
+            if _wyglada_na_artykul(_link_absolutny(baza, a["href"]), True)]
+
+
+def linki_do_zalacznikow(html: str, baza_url: str) -> List[Tuple[str, str]]:
+    """Every readable document linked from a page, with its link text.
+
+    The link text is often the only title a PDF has ("Info-Links Mai 2019"),
+    so it is carried along and used for the citation.
+    """
+    from .pliki import rozszerzenie
+    zupa = BeautifulSoup(html or "", "html.parser")
+    wynik, widziane = [], set()
+    for link in zupa.find_all("a", href=True):
+        url = _link_absolutny(baza_url, link["href"])
+        if not url or url in widziane or not rozszerzenie(url):
+            continue
+        widziane.add(url)
+        podpis = link.get_text(" ", strip=True)
+        if not podpis:
+            podpis = (link.get("title") or "").strip()
+        wynik.append((url, podpis))
+    return wynik
 
 
 def _wypelnij(szablon: str, haslo: str, strona: int, rok: Optional[int] = None) -> str:
@@ -578,7 +612,7 @@ def _zbierz_ze_strony(klient: KlientHTTP, zrodlo: Zrodlo, adres: str, baza: str,
         url = _link_absolutny(baza, link.get("href") or "")
         if not url or url in widziane or host_z_url(url) != host_z_url(baza):
             continue
-        if not (_pasuje_url(zrodlo, url) and _wyglada_na_tresc(url)):
+        if not (_pasuje_url(zrodlo, url) and _wyglada_na_tresc(url, zrodlo.zalaczniki)):
             continue
         widziane.add(url)
         kandydaci.append(Kandydat(url=url, tytul=link.get_text(" ", strip=True),
@@ -694,7 +728,7 @@ def z_crawl(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
         odp = klient.pobierz(url, zrodlo=zrodlo)
         if not odp.ok:
             continue
-        if _wyglada_na_tresc(url) and _pasuje_url(zrodlo, url):
+        if _wyglada_na_tresc(url, zrodlo.zalaczniki) and _pasuje_url(zrodlo, url):
             wydane += 1
             yield Kandydat(url=url, tagi_zrodla=list(zrodlo.tagi), skad="crawl",
                            zrodlo=zrodlo.etykieta)
@@ -703,8 +737,9 @@ def z_crawl(klient: KlientHTTP, zrodlo: Zrodlo, log: Log,
         zupa = BeautifulSoup(odp.tekst, "html.parser")
         for link in zupa.find_all("a", href=True):
             nowy = _link_absolutny(url, link["href"])
-            if nowy and nowy not in odwiedzone and host_z_url(nowy) == host_z_url(baza) \
-                    and not _NIE_TRESC.search(nowy):
+            if not nowy or nowy in odwiedzone or host_z_url(nowy) != host_z_url(baza):
+                continue
+            if not _NIE_TRESC.search(nowy):
                 kolejka.append((nowy, glebokosc + 1))
         if len(odwiedzone) % 25 == 0:
             log(f"    [crawl] visited {len(odwiedzone)}, queued {len(kolejka)}")

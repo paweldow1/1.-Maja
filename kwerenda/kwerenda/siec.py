@@ -56,6 +56,7 @@ class Odpowiedz:
     naglowki: Dict[str, str] = field(default_factory=dict)
     z_cache: bool = False
     blad: str = ""
+    dane: bytes = b""            # raw body, kept for attachments (PDF, .docx)
 
     @property
     def ok(self) -> bool:
@@ -130,11 +131,12 @@ def korzen(url: str) -> str:
 class KlientHTTP:
     def __init__(self, kontakt: str = "badacz@example.org", opoznienie: float = 0.4,
                  timeout: float = 20.0, proby: int = 3, respektuj_robots: bool = True,
-                 user_agent: str = "", cache=None, log=None):
+                 user_agent: str = "", cache=None, log=None, maks_plik_mb: float = 40.0):
         self.opoznienie = max(0.0, float(opoznienie))
         self.timeout = timeout
         self.proby = max(1, int(proby))
         self.respektuj_robots = respektuj_robots
+        self.maks_plik_mb = maks_plik_mb
         self.user_agent = naglowek_ascii(
             user_agent or DOMYSLNY_UA.format(kontakt=kontakt or "badacz")) or "Kwerenda/1.0"
         self.cache = cache
@@ -295,12 +297,23 @@ class KlientHTTP:
                                      blad="the page requires signing in or refuses access "
                                           "— skipping")
 
-                tekst = ""
+                tekst, dane = "", b""
                 typ = r.headers.get("Content-Type", "")
                 if r.status_code < 400 and ("html" in typ or "xml" in typ or "json" in typ
                                             or "text" in typ or not typ):
                     tekst = r.text
-                odp = Odpowiedz(r.url, r.status_code, tekst, dict(r.headers))
+                if r.status_code < 400:
+                    from .pliki import czy_zalacznik
+                    if czy_zalacznik(url, typ):
+                        # An attachment is bytes, not text: keep the body, unless it
+                        # is so large that holding it in memory would be reckless.
+                        if len(r.content) <= self.maks_plik_mb * 1024 * 1024:
+                            dane = r.content
+                        else:
+                            return Odpowiedz(r.url, r.status_code, naglowki=dict(r.headers),
+                                             blad=f"file larger than {self.maks_plik_mb:.0f} MB "
+                                                  f"— skipping")
+                odp = Odpowiedz(r.url, r.status_code, tekst, dict(r.headers), dane=dane)
                 if odp.ok and self.cache is not None and tekst:
                     self.cache.zapisz_strone(url, r.status_code, tekst, r.url)
                 return odp

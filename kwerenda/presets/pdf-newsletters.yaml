@@ -1,0 +1,42 @@
+# A local party branch that publishes its newsletter only as PDFs.
+# The HTML page is nearly empty; everything worth reading hangs off it as files.
+#
+#   python -m kwerenda run pdf-newsletters --format ris
+#
+# How it works: the page listed below is fetched, every PDF linked from it is
+# downloaded, its text is extracted and matched against the query. A hit becomes
+# a Zotero "document" — and when you send it to a running Zotero, the PDF itself
+# is attached, not merely linked.
+name: PDF newsletters — May Day
+
+query: '"1. Mai"* AND (Familienfest OR Maifest OR Maifeier)'
+languages: [de]
+default_operator: AND
+
+contact: Pawel Downarowicz (doctoral research)
+delay: 1.0                     # PDFs are heavier than pages — take it slowly
+threads: 1
+respect_robots: true
+use_cache: true                # once read, a PDF is searchable offline
+
+zotero_type: document
+extra_tags: [dissertation, "1. Mai", Germany]
+tag_from_language: true
+
+sources:
+  - url: https://www.die-linke-lichtenberg.de/partei/info-links/
+    name: DIE LINKE Berlin-Lichtenberg — Info-Links
+    mode: urls                 # just this page; the PDFs are found on it
+    language: de
+    tags: [Berlin, Lichtenberg, party press]
+    attachments: true          # ← follow and read the linked documents
+    urls:
+      - https://www.die-linke-lichtenberg.de/partei/info-links/
+
+  # If the newsletters were spread over several pages instead, walk them:
+  # - url: https://www.die-linke-lichtenberg.de
+  #   name: DIE LINKE Lichtenberg — whole site
+  #   mode: crawl
+  #   depth: 2
+  #   attachments: true
+  #   url_pattern: "info-links|dokumente|download"

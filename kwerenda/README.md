@@ -101,6 +101,30 @@ bot detection or circumvents any protection — a 401/403 ends with the page bei
 skipped and a clear message. It reaches what your own account already opens, and
 whether automated reading is allowed is between you and the site's terms.
 
+### PDFs and other attachments
+
+Local party newsletters, council minutes and festival programmes are routinely
+published as a PDF hanging off an otherwise empty page. Kwerenda follows those
+links, reads the text out of the file and treats it as a document in its own
+right: it gets its own citation, its own quotation in context, and — when sent
+to a running Zotero — **the PDF itself is attached**, not merely linked.
+
+* Works from every adapter: whatever page is fetched, the documents linked from
+  it are picked up. Switch it off per source with `attachments: false`.
+* Reads `.pdf`, `.docx` and plain text. PDF text comes from `pypdf` (shipped),
+  or `pdfminer.six` or poppler's `pdftotext` if you have them.
+* The date comes from the file name where there is one — `info-links-05-2019.pdf`
+  is the May 2019 issue, whatever date the file was last saved.
+* The title comes from the PDF's own metadata, falling back to the link text on
+  the page ("Info-Links Mai 2019"), and the citation records which page it was
+  found on.
+* **A scan is reported as a scan.** A PDF with no text layer yields the message
+  *no text layer — the file is almost certainly a scan and would need OCR*,
+  rather than silently counting as "no match". Kwerenda does not do OCR.
+
+Once read, a PDF lives in the corpus like any page, so further queries run
+against it offline. See `presets/pdf-newsletters.yaml`.
+
 ### The citation
 
 * Author, date, site name, language and publisher, taken in a cascade from
@@ -189,6 +213,7 @@ version control, be mailed to a colleague, or edited in any text editor.
 | `may-day-solidarnosc.yaml` | the WordPress case, fully commented |
 | `may-day-three-countries.yaml` | one question in Polish, German and Ukrainian |
 | `newspaper-archive.yaml` | a bad archive search, walked by a listing template; signing in with your own subscription |
+| `pdf-newsletters.yaml` | a branch that publishes only PDFs — following and reading them |
 | `offline-corpus.yaml` | new keywords against already-downloaded material |
 
 In the interface: pick one from the dropdown to fill the whole form, or press
@@ -233,12 +258,13 @@ use it, but nothing depends on it.
 python -m unittest discover -s tests -t .
 ```
 
-61 tests: morphology in five languages, the query parser, metadata extraction,
-source adapters, the engine end to end and every export format. The engine is
+72 tests: morphology in five languages, the query parser, metadata extraction,
+source adapters, PDF attachments, the engine end to end and every export format. The engine is
 tested against a **local fake WordPress site** (`tests/atrapa_wordpressa.py`) —
 REST API with pagination, a title-only search, an archive listing, a sitemap, an
-RSS feed, `robots.txt` and one article behind a subscriber cookie — so the suite
-never sends a request to anybody else's server.
+RSS feed, `robots.txt`, one article behind a subscriber cookie and a page of PDF
+newsletters (real PDFs, generated without any library, one of them a scan with no
+text layer) — so the suite never sends a request to anybody else's server.
 
 ## Layout
 
@@ -249,6 +275,7 @@ never sends a request to anybody else's server.
 | `siec.py` | the polite HTTP client (throttling, backoff, robots.txt, your credentials) |
 | `ekstrakcja.py` | article text and bibliographic metadata out of HTML |
 | `zrodla.py` | adapters: WordPress, Drupal, sitemap, RSS, search, listing, crawl |
+| `pliki.py` | reading text out of PDF, .docx and plain-text attachments |
 | `silnik.py` | orchestration: candidates → verification → hits |
 | `cytowania.py` | record → RIS / CSL-JSON / BibTeX / CSV / Markdown / Zotero |
 | `zotero.py` | the local connector and the Web API |

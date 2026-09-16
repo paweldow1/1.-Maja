@@ -434,6 +434,102 @@ class TestSilnikNaAtrapie(unittest.TestCase):
         self.assertNotIn("pierwszomaj*", tagi)
 
 
+class TestZalaczniki(unittest.TestCase):
+    """PDFs hanging off a page are the source, not an asset to be skipped."""
+
+    ZAPYTANIE = '"1. Mai"* AND (Familienfest OR Maifest)'
+
+    def setUp(self):
+        from kwerenda.pliki import dostepne_silniki
+        if not dostepne_silniki():
+            self.skipTest("no PDF backend available (pip install pypdf)")
+
+    def _uruchom(self, baza, **kw):
+        zrodlo = {"lista_url": [f"{baza}/partei/info-links"]}
+        zrodlo.update(kw.pop("zrodlo", {}))
+        konfig = Konfiguracja(
+            nazwa="pdf", zapytanie=kw.pop("zapytanie", self.ZAPYTANIE),
+            jezyki=["de"], opoznienie=0.0, watki=1, kontakt="test@example.org",
+            zrodla=[Zrodlo(url=baza, nazwa="DIE LINKE Lichtenberg", tryb="urls", **zrodlo)])
+        for klucz, wartosc in kw.items():
+            setattr(konfig, klucz, wartosc)
+        magazyn = Magazyn(":memory:")
+        silnik = Silnik(konfig, magazyn)
+        przebieg = silnik.uruchom()
+        return silnik, magazyn.trafienia(przebieg)
+
+    def test_znajduje_tresc_w_pdf_ie_podlinkowanym_ze_strony(self):
+        with AtrapaWordPressa() as baza:
+            silnik, trafienia = self._uruchom(baza)
+        self.assertEqual(len(trafienia), 1, [t["tytul"] for t in trafienia])
+        wpis = trafienia[0]
+        self.assertTrue(wpis["url"].endswith("info-links-05-2019.pdf"))
+        self.assertEqual(wpis["tytul"], "Info-Links Mai 2019")
+        self.assertEqual(wpis["autorzy"], ["DIE LINKE Lichtenberg"])
+        self.assertIn("Familienfest", wpis["cytaty"][0]["fragment"])
+        self.assertEqual(silnik.postep.zalacznikow, 3)     # all three were read
+
+    def test_data_bierze_sie_z_nazwy_pliku(self):
+        """A newsletter's file name carries the issue date; the PDF's own
+        creation date (here 15 April) is when the file was made."""
+        with AtrapaWordPressa() as baza:
+            _, trafienia = self._uruchom(baza)
+        self.assertEqual(trafienia[0]["data"], "2019-05")
+        self.assertIn("2019", trafienia[0]["tagi"])
+
+    def test_pdf_dostaje_typ_dokumentu_i_slad_strony(self):
+        with AtrapaWordPressa() as baza:
+            _, trafienia = self._uruchom(baza, typ_zotero="blogPost")
+        self.assertEqual(trafienia[0]["typ"], "document")
+        self.assertTrue(trafienia[0]["meta"]["strona_zrodlowa"].endswith("/partei/info-links"))
+        self.assertEqual(trafienia[0]["meta"]["plik"], ".pdf")
+
+    def test_skan_jest_zglaszany_a_nie_przemilczany(self):
+        """An empty text layer means "nobody ran OCR", not "no match here"."""
+        with AtrapaWordPressa() as baza:
+            silnik, trafienia = self._uruchom(baza)
+        dziennik = "\n".join(silnik.dziennik)
+        self.assertIn("no text layer", dziennik)
+        self.assertIn("info-links-05-2021.pdf", dziennik)
+        self.assertNotIn("2021", [t["data"] for t in trafienia])
+
+    def test_wylaczone_zalaczniki_pomijaja_pdfy(self):
+        with AtrapaWordPressa() as baza:
+            silnik, trafienia = self._uruchom(baza, zrodlo={"zalaczniki": False})
+        self.assertEqual(trafienia, [])
+        self.assertEqual(silnik.postep.zalacznikow, 0)
+
+    def test_zotero_dostaje_sam_plik_w_zalaczniku(self):
+        from kwerenda.cytowania import Rekord, do_zotero, nadaj_citekeys
+        with AtrapaWordPressa() as baza:
+            _, trafienia = self._uruchom(baza)
+        rekord = nadaj_citekeys([Rekord.z_trafienia(trafienia[0])])[0]
+        element = do_zotero(rekord, z_zalacznikiem=True)
+        self.assertEqual(element["attachments"][0]["mimeType"], "application/pdf")
+        self.assertTrue(element["attachments"][0]["url"].endswith(".pdf"))
+        self.assertIn("Found on:", element["extra"])
+        # the Web API rejects unknown fields, so that path must not carry them
+        self.assertNotIn("attachments", do_zotero(rekord, z_zalacznikiem=False))
+
+    def test_korpus_zapamietuje_tekst_pdf_a(self):
+        """Once read, a PDF is searchable offline like any other page."""
+        magazyn = Magazyn(":memory:")
+        konfig = Konfiguracja(nazwa="pdf", zapytanie=self.ZAPYTANIE, jezyki=["de"],
+                              opoznienie=0.0, watki=1,
+                              zrodla=[Zrodlo(url="", tryb="urls", lista_url=[])])
+        with AtrapaWordPressa() as baza:
+            konfig.zrodla = [Zrodlo(url=baza, tryb="urls",
+                                    lista_url=[f"{baza}/partei/info-links"])]
+            Silnik(konfig, magazyn).uruchom()
+        # the fixture is gone now — search what was kept
+        konfig_korpus = Konfiguracja(nazwa="corpus", zapytanie="Familienfest",
+                                     jezyki=["de"], opoznienie=0.0,
+                                     zrodla=[Zrodlo(url="", tryb="corpus")])
+        przebieg = Silnik(konfig_korpus, magazyn).uruchom()
+        trafienia = magazyn.trafienia(przebieg)
+        self.assertTrue(any(t["url"].endswith(".pdf") for t in trafienia))
+
+
 class TestGrzecznosc(unittest.TestCase):
     def test_user_agent_znosi_znaki_spoza_latin1(self):
         from kwerenda.siec import KlientHTTP, naglowek_ascii

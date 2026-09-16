@@ -47,6 +47,27 @@ POSTY = [
      "author": "Redakcja", "categories": [1], "tags": [10, 11]},
 ]
 
+#: Newsletters published only as PDFs, the way local party branches do it.
+ZALACZNIKI = {
+    "info-links-05-2019.pdf": {
+        "tytul": "Info-Links Mai 2019",
+        "autor": "DIE LINKE Lichtenberg",
+        "data": "20190415",
+        "linie": ["Info-Links Mai 2019", "",
+                  "Am 1. Mai laedt die Partei zum Familienfest",
+                  "in den Stadtpark ein. Alle sind herzlich eingeladen."],
+    },
+    "info-links-11-2019.pdf": {
+        "tytul": "Info-Links November 2019",
+        "autor": "DIE LINKE Lichtenberg",
+        "data": "20191105",
+        "linie": ["Info-Links November 2019", "",
+                  "Bericht von der Mitgliederversammlung.",
+                  "Termine im Dezember."],
+    },
+    "info-links-05-2021.pdf": {"skan": True, "tytul": "Info-Links Mai 2021"},
+}
+
 KATEGORIE = {1: "Wydarzenia", 2: "Komunikaty"}
 TAGI = {10: "1 maja", 11: "Święto Pracy"}
 
@@ -71,6 +92,13 @@ class _Handler(BaseHTTPRequestHandler):
         pass
 
     # ---------------- pomocnicze ----------------
+    def _bajty(self, dane: bytes, typ: str, status: int = 200):
+        self.send_response(status)
+        self.send_header("Content-Type", typ)
+        self.send_header("Content-Length", str(len(dane)))
+        self.end_headers()
+        self.wfile.write(dane)
+
     def _odpowiedz(self, tresc: str, typ: str = "text/html; charset=utf-8",
                    status: int = 200, naglowki: dict | None = None):
         dane = tresc.encode("utf-8")
@@ -117,6 +145,12 @@ class _Handler(BaseHTTPRequestHandler):
 
         if sciezka.startswith("/archiwum"):
             return self._archiwum(sciezka)
+
+        if sciezka == "/partei/info-links":
+            return self._odpowiedz(self._strona_z_pdfami())
+
+        if sciezka.startswith("/media/"):
+            return self._plik(sciezka.rsplit("/", 1)[-1])
 
         for post in self.posty():
             if sciezka == _sciezka(post):
@@ -196,6 +230,29 @@ class _Handler(BaseHTTPRequestHandler):
         if strona * na_strone < len(pasujace):
             dalej = f'<a href="/?s={szukane}&paged={strona + 1}">»</a>'
         return self._odpowiedz(f"<html><body>{wyniki}{dalej}</body></html>")
+
+    # ---------------- strona z załącznikami ----------------
+    def _strona_z_pdfami(self):
+        """A thin page whose whole content is a list of PDF links."""
+        linki = "".join(
+            f'<li><a href="/media/{nazwa}">{opis.get("tytul", nazwa)}</a></li>'
+            for nazwa, opis in ZALACZNIKI.items())
+        return (f'<html lang="de"><head><title>Info-Links | DIE LINKE</title>'
+                f'<meta property="og:site_name" content="DIE LINKE Lichtenberg">'
+                f'</head><body><article><h1>Info-Links</h1>'
+                f"<p>Unsere Mitgliederzeitung zum Herunterladen.</p>"
+                f"<ul>{linki}</ul></article></body></html>")
+
+    def _plik(self, nazwa: str):
+        from tests.pdf_testowy import zbuduj_pdf, zbuduj_skan
+        opis = ZALACZNIKI.get(nazwa)
+        if opis is None:
+            return self._odpowiedz("<html><body>404</body></html>", status=404)
+        if opis.get("skan"):
+            return self._bajty(zbuduj_skan(opis.get("tytul", "")), "application/pdf")
+        return self._bajty(zbuduj_pdf(opis["linie"], opis.get("tytul", ""),
+                                      opis.get("autor", ""), opis.get("data", "")),
+                           "application/pdf")
 
     # ---------------- archiwum z paginacją ----------------
     def _archiwum(self, sciezka: str):

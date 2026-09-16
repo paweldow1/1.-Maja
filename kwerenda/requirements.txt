@@ -1,7 +1,9 @@
 requests>=2.28
 beautifulsoup4>=4.11
+pypdf>=4.0             # reading the text out of PDF attachments
 PyYAML>=6.0            # only for .yaml configurations (JSON works without it)
 
 # Optional, never required:
+# pdfminer.six         # a second PDF reader, better with awkward layouts
 # browser-cookie3      # read cookies straight from your browser profile
 # morfeusz2            # a real Polish morphological analyser, for the preview

@@ -51,7 +51,7 @@ def wyslij_do_konektora(rekordy: Sequence[Rekord], timeout: float = 30.0) -> dic
 
     wyslane, bledy = 0, []
     for rekord in rekordy:
-        element = do_zotero(rekord, z_notatka=True)
+        element = do_zotero(rekord, z_notatka=True, z_zalacznikiem=True)
         ladunek = {
             "items": [element],
             "uri": rekord.url,

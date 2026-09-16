@@ -52,6 +52,7 @@ class Rekord:
     cytaty: List[dict] = field(default_factory=list)
     notatka: str = ""
     citekey: str = ""
+    strona_zrodlowa: str = ""            # the page a document was linked from
     data_dostepu: str = field(default_factory=dzis_iso)
 
     @classmethod
@@ -72,12 +73,13 @@ class Rekord:
             cytaty=list(trafienie.get("cytaty") or []),
             notatka=trafienie.get("notatka", "") or "",
             citekey=trafienie.get("citekey", "") or "",
+            strona_zrodlowa=meta.get("strona_zrodlowa", "") or "",
             data_dostepu=meta.get("data_dostepu") or dzis_iso(),
         )
 
 
 # --------------------------------------------------------------------------
-# Klucze cytowań (styl Better BibTeX: nazwiskoRokPierwszeSlowo)
+# Citation keys, Better BibTeX style: surnameYearFirstWord
 # --------------------------------------------------------------------------
 
 def ascii_slug(tekst: str) -> str:
@@ -132,7 +134,7 @@ def nadaj_citekeys(rekordy: Sequence[Rekord]) -> List[Rekord]:
 
 
 # --------------------------------------------------------------------------
-# Wspólne kawałki
+# Shared pieces
 # --------------------------------------------------------------------------
 
 def _twórcy_zotero(autorzy: Sequence[str]) -> List[dict]:
@@ -169,6 +171,9 @@ def notatka_html(rekord: Rekord) -> str:
         czesci.append(f"<p><b>My note:</b> {_escape(rekord.notatka)}</p>")
     czesci.append(f'<p><a href="{_escape(rekord.url)}">{_escape(rekord.url)}</a> '
                   f"(accessed {rekord.data_dostepu})</p>")
+    if rekord.strona_zrodlowa:
+        czesci.append(f'<p>Found on: <a href="{_escape(rekord.strona_zrodlowa)}">'
+                      f"{_escape(rekord.strona_zrodlowa)}</a></p>")
     return "\n".join(czesci)
 
 
@@ -189,11 +194,12 @@ def _abstrakt(rekord: Rekord) -> str:
 
 
 # --------------------------------------------------------------------------
-# Zotero (format API/konektora)
+# Zotero (API / connector format)
 # --------------------------------------------------------------------------
 
 def do_zotero(rekord: Rekord, z_notatka: bool = True,
-              kolekcje: Optional[List[str]] = None) -> dict:
+              kolekcje: Optional[List[str]] = None,
+              z_zalacznikiem: bool = False) -> dict:
     profil = TYPY_ZOTERO.get(rekord.typ, TYPY_ZOTERO["webpage"])
     element = {
         "itemType": rekord.typ if rekord.typ in TYPY_ZOTERO else "webpage",
@@ -213,6 +219,15 @@ def do_zotero(rekord: Rekord, z_notatka: bool = True,
         element["publicationTitle"] = rekord.serwis or rekord.wydawca
     if z_notatka and (rekord.cytaty or rekord.notatka):
         element["notes"] = [{"itemType": "note", "note": notatka_html(rekord)}]
+    if z_zalacznikiem:
+        # Where the hit is a PDF, hand Zotero the file itself so the document
+        # lands in the library rather than just a link to it. Only the local
+        # connector understands this; the Web API rejects unknown fields.
+        from .pliki import czy_zalacznik, typ_mime
+        if czy_zalacznik(rekord.url):
+            element["attachments"] = [{"title": "Full text",
+                                       "url": rekord.url,
+                                       "mimeType": typ_mime(rekord.url)}]
     if kolekcje:
         element["collections"] = list(kolekcje)
     return {k: v for k, v in element.items() if v not in ("", [], None)}
@@ -223,12 +238,16 @@ def _extra(rekord: Rekord) -> str:
     if rekord.citekey:
         linie.append(f"Citation Key: {rekord.citekey}")
     if rekord.terminy:
-        linie.append("Kwerenda: " + ", ".join(rekord.terminy))
+        linie.append("Search terms: " + ", ".join(rekord.terminy))
+    if rekord.strona_zrodlowa:
+        # For a PDF this is the page it hung off — often the only context saying
+        # what the file is and who published it.
+        linie.append(f"Found on: {rekord.strona_zrodlowa}")
     return "\n".join(linie)
 
 
 # --------------------------------------------------------------------------
-# RIS – najpewniejsza droga do Zotero przez plik (KW → tagi, N1 → notatka)
+# RIS — the most reliable route into Zotero (KW → tags, N1 → note)
 # --------------------------------------------------------------------------
 
 def do_ris(rekordy: Sequence[Rekord]) -> str:
@@ -342,7 +361,7 @@ def do_csl(rekordy: Sequence[Rekord]) -> List[dict]:
 
 
 # --------------------------------------------------------------------------
-# BibTeX (Better BibTeX: pole keywords → tagi w Zotero)
+# BibTeX (Better BibTeX maps the keywords field to Zotero tags)
 # --------------------------------------------------------------------------
 
 _BIB_ZNAKI = {"&": r"\&", "%": r"\%", "$": r"\$", "#": r"\#", "_": r"\_",
@@ -377,7 +396,7 @@ def do_bibtex(rekordy: Sequence[Rekord]) -> str:
 
 
 # --------------------------------------------------------------------------
-# CSV i Markdown (Obsidian)
+# CSV and Markdown (Obsidian)
 # --------------------------------------------------------------------------
 
 KOLUMNY_CSV = ["citekey", "title", "authors", "date", "site", "url", "type", "language",

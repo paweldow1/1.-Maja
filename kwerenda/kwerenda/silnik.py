@@ -19,11 +19,13 @@ from .cytowania import Rekord, nadaj_citekeys, zbuduj_citekey
 from .ekstrakcja import (Metadane, dzis_iso, html_na_tekst, rok_z_daty,
                          wyciagnij_metadane, wyciagnij_tekst)
 from .morfologia import JEZYKI, wykryj_jezyk_tekstu
+from .pliki import (czy_zalacznik, data_z_nazwy_pliku, dostepne_silniki, rozszerzenie,
+                    wyciagnij as wyciagnij_zalacznik)
 from .konfiguracja import Konfiguracja
 from .magazyn import Magazyn
 from .siec import KlientHTTP, host_z_url, normalizuj_url
 from .zapytania import Dokument, Wezel, cytaty, parsuj
-from .zrodla import Kandydat, Zrodlo, kandydaci
+from .zrodla import Kandydat, Zrodlo, kandydaci, linki_do_zalacznikow
 
 
 @dataclass
@@ -35,6 +37,7 @@ class Postep:
     trafien: int = 0
     pobran: int = 0
     z_cache: int = 0
+    zalacznikow: int = 0
     bledow: int = 0
     start: float = field(default_factory=time.time)
 
@@ -65,6 +68,7 @@ class Silnik:
         )
         self._widziane_url: set = set()
         self._citekeys: set = set()
+        self._kolejka_zalacznikow: List[Kandydat] = []
 
     # ------------------------------------------------------------------
     def log(self, wiadomosc: str) -> None:
@@ -110,6 +114,13 @@ class Silnik:
         self.log(f"  morphology: {', '.join(jezyki) or 'default set'}")
         if hasla:
             self.log(f"  words handed to site search engines: {', '.join(hasla)}")
+        if any(z.zalaczniki for z in konfig.zrodla):
+            silniki = dostepne_silniki()
+            if silniki:
+                self.log(f"  attachments: following PDFs and documents (reader: {silniki[0]})")
+            else:
+                self.log("  ⚠ attachments: no PDF reader available — install pypdf "
+                         "(pip install pypdf), otherwise PDFs will be skipped")
         for uwaga in konfig.sprawdz():
             self.log("  ⚠ " + uwaga)
 
@@ -168,6 +179,16 @@ class Silnik:
         if paczka and not self.czy_stop():
             self._sprawdz_paczke(paczka, drzewo, przebieg_id, zrodlo)
 
+        # Documents linked from the pages we just read are candidates in their
+        # own right — a newsletter published only as a PDF is the source.
+        while self._kolejka_zalacznikow and not self.czy_stop():
+            with self._lock:
+                partia = self._kolejka_zalacznikow[:40]
+                del self._kolejka_zalacznikow[:40]
+            if partia:
+                self.log(f"  following {len(partia)} linked document(s)")
+                self._sprawdz_paczke(partia, drzewo, przebieg_id, zrodlo)
+
     def _sprawdz_paczke(self, paczka: List[Kandydat], drzewo: Wezel, przebieg_id: int,
                         zrodlo: Zrodlo) -> None:
         watki = max(1, int(self.konfig.watki))
@@ -184,12 +205,15 @@ class Silnik:
         if self.czy_stop() or self.postep.trafien >= self.konfig.limit_trafien:
             return
         try:
-            tekst, meta = self._tresc_i_meta(kandydat, zrodlo)
+            tekst, meta, html = self._tresc_i_meta(kandydat, zrodlo)
         except Exception as exc:                      # one page must not stop the run
             self.postep.bledow += 1
             self.log(f"  ! error at {kandydat.url}: {exc}")
             return
         self.postep.sprawdzonych += 1
+
+        if html and zrodlo.zalaczniki:
+            self._zbierz_zalaczniki(html, kandydat.url, zrodlo)
 
         if not tekst:
             return
@@ -229,30 +253,92 @@ class Silnik:
         self.log(f"  ✓ {rekord['tytul'][:70]} [{rekord['data'] or 'no date'}] — {formy}")
 
     # ------------------------------------------------------------------
+    def _zbierz_zalaczniki(self, html: str, url_strony: str, zrodlo: Zrodlo) -> None:
+        """Queue every readable document linked from a page we have just read."""
+        for url, podpis in linki_do_zalacznikow(html, url_strony):
+            url = normalizuj_url(url)
+            if not url:
+                continue
+            with self._lock:
+                if url in self._widziane_url:
+                    continue
+                if self.postep.kandydatow >= self.konfig.limit_kandydatow:
+                    return
+                self._widziane_url.add(url)
+                self.postep.kandydatow += 1
+                self._kolejka_zalacznikow.append(Kandydat(
+                    url=url, tytul=podpis, strona_zrodlowa=url_strony,
+                    tagi_zrodla=list(zrodlo.tagi), skad="attachment",
+                    zrodlo=zrodlo.etykieta))
+
+    def _tresc_zalacznika(self, kandydat: Kandydat, zrodlo: Optional[Zrodlo]) -> tuple:
+        """Text and metadata of a PDF or Word file."""
+        zapisane = None
+        if self.konfig.uzyj_cache:
+            zapisane = self.magazyn.pobierz_strone(kandydat.url, self.konfig.maks_wiek_cache_dni)
+        if zapisane and zapisane.get("tekst"):
+            self.postep.z_cache += 1
+            return zapisane["tekst"], self._meta_z_cache(zapisane), ""
+
+        odp = self.klient.pobierz(kandydat.url, uzyj_cache=False, zrodlo=zrodlo)
+        self.postep.pobran += 1
+        if not odp.ok or not odp.dane:
+            if odp.blad:
+                self.log(f"  – skipping {kandydat.url}: {odp.blad}")
+            return "", Metadane(), ""
+
+        wynik = wyciagnij_zalacznik(kandydat.url, odp.dane)
+        self.postep.zalacznikow += 1
+        if wynik.uwaga:
+            self.log(f"  – {kandydat.url.rsplit('/', 1)[-1]}: {wynik.uwaga}")
+        if not wynik.tekst:
+            return "", Metadane(), ""
+
+        meta = wynik.meta or Metadane()
+        # A newsletter's file name usually carries the issue date, which is more
+        # telling than whenever the file happened to be saved.
+        meta.data = data_z_nazwy_pliku(kandydat.url) or meta.data
+        meta.tytul = (meta.tytul or kandydat.tytul
+                      or kandydat.url.rsplit("/", 1)[-1].rsplit(".", 1)[0].replace("-", " "))
+        meta.typ = "document"
+        meta.nazwa_serwisu = meta.nazwa_serwisu or zrodlo.nazwa if zrodlo else ""
+        self.log(f"  ↓ {rozszerzenie(kandydat.url)[1:].upper()} "
+                 f"{meta.tytul[:60]} ({wynik.stron or '?'} pages, {wynik.silnik})")
+
+        if self.konfig.uzyj_cache:
+            self.magazyn.zapisz_strone(kandydat.url, 200, "", kandydat.url,
+                                       wynik.tekst, meta.jako_dict())
+        return wynik.tekst, meta, ""
+
+    @staticmethod
+    def _meta_z_cache(zapisane: dict) -> Metadane:
+        import json as _json
+        try:
+            dane = _json.loads(zapisane.get("meta_json") or "{}")
+        except ValueError:
+            dane = {}
+        return Metadane(**{k: v for k, v in dane.items()
+                           if k in Metadane.__dataclass_fields__})
+
     def _tresc_i_meta(self, kandydat: Kandydat, zrodlo: Optional[Zrodlo] = None) -> tuple:
-        """Article text and metadata — from the API, from the corpus or from the network."""
+        """Text and metadata — from an API, an attachment, the corpus or the network."""
+        if czy_zalacznik(kandydat.url):
+            return self._tresc_zalacznika(kandydat, zrodlo)
+
         if kandydat.tresc_html:
             tekst = html_na_tekst(kandydat.tresc_html)
             meta = Metadane(tytul=kandydat.tytul, autorzy=list(kandydat.autorzy),
                             data=kandydat.data, opis=kandydat.zajawka)
             if len(tekst) > 200 or not kandydat.url:
                 self.postep.z_cache += 1
-                return tekst, meta
+                return tekst, meta, kandydat.tresc_html
 
         zapisane = None
         if self.konfig.uzyj_cache:
             zapisane = self.magazyn.pobierz_strone(kandydat.url, self.konfig.maks_wiek_cache_dni)
         if zapisane and zapisane.get("tekst"):
             self.postep.z_cache += 1
-            meta_dict = {}
-            try:
-                import json as _json
-                meta_dict = _json.loads(zapisane.get("meta_json") or "{}")
-            except ValueError:
-                meta_dict = {}
-            meta = Metadane(**{k: v for k, v in meta_dict.items()
-                               if k in Metadane.__dataclass_fields__})
-            return zapisane["tekst"], meta
+            return zapisane["tekst"], self._meta_z_cache(zapisane), zapisane.get("html", "")
 
         html = ""
         if zapisane and zapisane.get("html"):
@@ -264,7 +350,7 @@ class Silnik:
             if not odp.ok:
                 if odp.blad:
                     self.log(f"  – skipping {kandydat.url}: {odp.blad}")
-                return "", Metadane()
+                return "", Metadane(), ""
             html = odp.tekst
 
         tekst = wyciagnij_tekst(html)
@@ -272,7 +358,7 @@ class Silnik:
         if self.konfig.uzyj_cache:
             self.magazyn.zapisz_strone(kandydat.url, 200, html, kandydat.url, tekst,
                                        meta.jako_dict())
-        return tekst, meta
+        return tekst, meta, html
 
     # ------------------------------------------------------------------
     def _zbuduj_rekord(self, kandydat: Kandydat, meta: Metadane, trafienia,
@@ -309,7 +395,9 @@ class Silnik:
             serwis=meta.nazwa_serwisu or zrodlo.nazwa or host_z_url(kandydat.url),
             wydawca=meta.wydawca or zrodlo.nazwa or host_z_url(kandydat.url),
             jezyk=meta.jezyk,
-            typ=konfig.typ_zotero or meta.typ or "webpage",
+            typ=("document" if (czy_zalacznik(kandydat.url)
+                                and (konfig.typ_zotero or "webpage") in ("webpage", "blogPost"))
+                 else (konfig.typ_zotero or meta.typ or "webpage")),
             opis=meta.opis,
             tagi=tagi,
             terminy=terminy,
@@ -324,6 +412,8 @@ class Silnik:
             "jezyk": rekord.jezyk, "typ": rekord.typ, "citekey": rekord.citekey,
             "terminy": rekord.terminy, "tagi": rekord.tagi, "cytaty": rekord.cytaty,
             "meta": {**meta.jako_dict(), "skad": kandydat.skad, "zrodlo": zrodlo.etykieta,
+                     "strona_zrodlowa": kandydat.strona_zrodlowa,
+                     "plik": rozszerzenie(kandydat.url),
                      "data_dostepu": dzis_iso()},
         }
 

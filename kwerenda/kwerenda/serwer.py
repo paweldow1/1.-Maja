@@ -26,6 +26,7 @@ from .konfiguracja import Konfiguracja
 from .magazyn import Magazyn
 from .morfologia import (JEZYKI, TRYB_DOKLADNY, TRYB_ODMIANA, Opcje, czy_pasuje,
                          wykryj_jezyk_tekstu)
+from .pliki import dostepne_silniki
 from .silnik import Silnik
 from .zapytania import BladZapytania, parsuj
 from .zotero import kolekcje as zotero_kolekcje
@@ -224,6 +225,7 @@ class Obsluga(BaseHTTPRequestHandler):
                 "zotero": {"connector": dziala, "message": komunikat},
                 "languages": [{"code": j.kod, "name": j.nazwa, "script": j.pismo}
                               for j in JEZYKI.values()],
+                "pdf_engines": dostepne_silniki(),
                 "corpus": [{"host": k["host"], "pages": k["ile"], "last": k["ostatnio"]}
                            for k in stan.magazyn.statystyki_korpusu()],
                 "presets": lista_presetow(stan),

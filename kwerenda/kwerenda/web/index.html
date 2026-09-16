@@ -153,6 +153,7 @@ tr.unselected td{opacity:.42}
     <div class="chips">
       <span class="chip" id="chip-zotero">Zotero: checking…</span>
       <span class="chip" id="chip-corpus">corpus: —</span>
+      <span class="chip" id="chip-pdf">PDF: —</span>
       <span class="chip" id="chip-version">v—</span>
     </div>
   </div>
@@ -493,6 +494,8 @@ function addSource(s) {
       </div>
       <label class="check"><input type="checkbox" class="s-sweep"${s.full_sweep?" checked":""}>
         Sweep the whole archive instead of trusting the site's search (slower, surer)</label>
+      <label class="check"><input type="checkbox" class="s-attach"${s.attachments===false?"":" checked"}>
+        Follow PDFs and documents linked from the pages, and search inside them</label>
 
       <div class="row" style="margin-top:8px">
         <div class="field"><label>Search template — <code>{q}</code>, <code>{page}</code></label>
@@ -548,6 +551,7 @@ function readSources() {
       year_from: n(".s-from"), year_to: n(".s-to"), date_window: v(".s-window"),
       max_pages: n(".s-maxpages") || 30, max_urls: n(".s-maxurls") || 1500,
       url_pattern: v(".s-pattern"), full_sweep: $(".s-sweep", el).checked,
+      attachments: $(".s-attach", el).checked,
       search_url: v(".s-search"), listing_url: v(".s-listing"),
       link_selector: v(".s-linksel"), next_selector: v(".s-nextsel"),
       first_page: n(".s-firstpage") || 1,
@@ -928,6 +932,12 @@ async function loadState() {
   $("#zotero-state").textContent = z.message || "";
   const pages = (s.corpus || []).reduce((a, c) => a + c.pages, 0);
   $("#chip-corpus").textContent = `corpus: ${pages} pages`;
+  const pdf = (s.pdf_engines || []);
+  $("#chip-pdf").textContent = pdf.length ? `PDF: ${pdf[0]}` : "PDF: no reader";
+  $("#chip-pdf").className = "chip " + (pdf.length ? "ok" : "off");
+  $("#chip-pdf").title = pdf.length
+    ? `Text can be read out of PDF attachments (${pdf.join(", ")}).`
+    : "PDFs will be skipped. Install pypdf: pip install pypdf";
   $("#export-dir").textContent = "Files are written to: " + s.export_dir;
 
   if (!LANGUAGES.length) {
