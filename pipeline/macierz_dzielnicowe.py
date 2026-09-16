@@ -54,9 +54,12 @@ def main():
     opisane = sum(len(v) for v in wg_serii.values())
     w_cyklu = sum(1 for s in kolumny for r in lata
                   if (rozpietosc(s)[0] or 9999) <= r <= (rozpietosc(s)[1] or -1))
+    obcy = sum(1 for s in kolumny for x in wg_serii[s].values()
+               if x["aktor_linia"] != "PDS/Die Linke")
     czesci = [SZABLON_GORA.format(
         opisane=opisane, niepotw=w_cyklu - opisane, cykli=len(kolumny),
-        luznych=sum(len(v) for v in luzne.values()))]
+        luznych=sum(len(v) for v in luzne.values()), obcy=obcy,
+        razem=opisane + sum(len(v) for v in luzne.values()))]
 
     # naglowek
     czesci.append('<div class="ramka"><table class="macierz"><thead><tr>'
@@ -186,6 +189,8 @@ SZABLON_GORA = """<title>Dzielnicówki PDS</title>
   .liczby span{{font-size:11px;text-transform:uppercase;letter-spacing:.07em;
     color:var(--muted);margin-top:3px;}}
 
+  .zakres{{max-width:62ch;color:var(--muted);font-size:13px;margin:0 0 16px;}}
+  .zakres b{{color:var(--ink);font-weight:500;}}
   .legenda{{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 18px;
     font-family:var(--ui);font-size:12px;color:var(--muted);align-items:center;}}
   .legenda i{{display:inline-block;width:14px;height:14px;vertical-align:-2px;
@@ -274,6 +279,10 @@ nazwy w 2007 roku.</p>
   <div><b>{luznych}</b><span>poza cyklami</span></div>
 </div>
 </div>
+<p class="zakres">Kolumna to <b>cykl</b>, nie organizator: {razem} edycji w tabeli,
+z czego {obcy} prowadzil w danym roku ktos inny niz PDS lub Die Linke &mdash; komórka
+mówi wtedy, kto. Festyny dzielnicowe SPD i pozostałych, które nie należą do żadnego
+z tych cykli, są poza tą tabelą.</p>
 <div class="legenda">
   <span><i class="l-jest"></i>edycja opisana w źródle</span>
   <span><i class="l-brak"></i>cykl trwał, tej edycji nikt nie opisał</span>
