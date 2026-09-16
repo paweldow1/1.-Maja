@@ -14,7 +14,7 @@ from __future__ import annotations
 import os
 import shutil
 from pathlib import Path
-from typing import Callable, List
+from typing import Callable, List, Optional
 
 NAZWA_BAZY = "kwerenda.sqlite3"
 
@@ -61,7 +61,8 @@ def katalog_presetow() -> Path:
 
 # --------------------------------------------------------------------------
 
-def przenies_stare_dane(log: Callable[[str], None] = print) -> List[str]:
+def przenies_stare_dane(log: Callable[[str], None] = print,
+                        program: Path | None = None) -> List[str]:
     """Move work left inside the program folder by earlier versions.
 
     Version 2.0 and before kept the database and saved presets next to the code,
@@ -69,7 +70,10 @@ def przenies_stare_dane(log: Callable[[str], None] = print) -> List[str]:
     found there is moved out once, and said out loud.
     """
     komunikaty: List[str] = []
-    program, dane = katalog_programu(), katalog_danych()
+    # During an update the folder being rescued is the one being replaced, which
+    # is not necessarily the one this code is running from.
+    program = Path(program) if program else katalog_programu()
+    dane = katalog_danych()
     if program.resolve() == dane.resolve():
         return komunikaty
 

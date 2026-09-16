@@ -233,12 +233,18 @@ anymore"* and no reason.
 
 ## Updating
 
-1. Download the current ZIP and unpack it.
-2. Delete the old program folder, or just leave it.
-3. Run `python install_desktop_icon.py` in the new one — it rebuilds the
-   environment (picking up new dependencies) and repoints the desktop icon.
+```bash
+python -m kwerenda update
+```
 
-Your work is untouched: it was never in there.
+That fetches the current version, replaces the program files in place and
+installs any new dependencies. Your environment, the corpus and your presets are
+left alone — the first two are skipped, the third lives elsewhere. Restart
+Kwerenda afterwards.
+
+By hand, if you prefer, or coming from a version that predates the command:
+download the ZIP, unpack it, and run `python install_desktop_icon.py` in the new
+folder. Your work is untouched either way: it was never in there.
 
 ## Presets
 

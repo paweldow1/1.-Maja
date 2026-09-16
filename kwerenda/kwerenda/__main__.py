@@ -205,6 +205,18 @@ def polecenie_where(args) -> int:
     return 0
 
 
+def polecenie_update(args) -> int:
+    from .aktualizacja import ZRODLO, aktualizuj
+    zmienione, komunikaty = aktualizuj(url=args.source or ZRODLO,
+                                       instaluj_zaleznosci=not args.no_deps)
+    for komunikat in komunikaty:
+        print(komunikat)
+    if not zmienione:
+        return 1
+    print("\nDone. Start Kwerenda again to pick up the new version.")
+    return 0
+
+
 def polecenie_doctor(args) -> int:
     """Check everything the interface needs, and say what is wrong in plain words."""
     import socket
@@ -384,6 +396,12 @@ def zbuduj_parser() -> argparse.ArgumentParser:
 
     p = pod.add_parser("presets", help="list the saved presets")
     p.set_defaults(funkcja=polecenie_presets)
+
+    p = pod.add_parser("update", help="fetch and install the current version in place")
+    p.add_argument("--source", default=None, help="archive URL to install from")
+    p.add_argument("--no-deps", action="store_true",
+                   help="do not touch the installed libraries")
+    p.set_defaults(funkcja=polecenie_update)
 
     p = pod.add_parser("doctor", help="check that everything needed is in place")
     p.set_defaults(funkcja=polecenie_doctor)
