@@ -1,0 +1,509 @@
+<title>Kartoteka 1 Maja</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#faf8f5; --surface:#f3f0eb; --raised:#fffefc;
+    --line:#ddd7cc; --line-soft:#ebe6dc;
+    --ink:#1a1714; --ink-2:#5a534a; --ink-3:#8a8178;
+    --pl:#3f7399; --de:#c6493a;
+    --ok:#4a8760; --wait:#a8762a; --skip:#8d867b;
+    --serif:'Source Serif 4',Georgia,serif;
+    --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ground:#15120e; --surface:#1d1915; --raised:#231e18;
+    --line:#38322a; --line-soft:#2a251f;
+    --ink:#f2ece2; --ink-2:#c0b7a9; --ink-3:#8d8477;
+    --pl:#82b5da; --de:#ef8573;
+    --ok:#6fba8b; --wait:#d3a24f; --skip:#7e776d;
+  }}
+  :root[data-theme="dark"]{
+    --ground:#15120e; --surface:#1d1915; --raised:#231e18;
+    --line:#38322a; --line-soft:#2a251f;
+    --ink:#f2ece2; --ink-2:#c0b7a9; --ink-3:#8d8477;
+    --pl:#82b5da; --de:#ef8573;
+    --ok:#6fba8b; --wait:#d3a24f; --skip:#7e776d;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+       margin:0;padding:0 16px 64px;font-size:14px;line-height:1.45}
+  .wrap{max-width:1180px;margin:0 auto}
+
+  header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+    background:var(--ground);border-bottom:1px solid var(--line);
+    padding-block:14px 10px;margin-bottom:18px}
+  .brand{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px}
+  h1{font-family:var(--serif);font-weight:700;font-size:21px;margin:0;letter-spacing:-.01em}
+  .sub{color:var(--ink-3);font-size:12px}
+  .stan{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink-2)}
+  .kropka{width:7px;height:7px;border-radius:50%;background:var(--skip)}
+  .kropka.on{background:var(--ok)}
+  .kropka.err{background:var(--de)}
+
+  nav.kolejki{display:flex;gap:6px;overflow-x:auto;padding-block:10px 0;margin-top:10px}
+  nav.kolejki button{flex:0 0 auto;font:inherit;font-size:12.5px;cursor:pointer;
+    background:var(--surface);color:var(--ink-2);border:1px solid var(--line);
+    border-radius:2px;padding:6px 11px;display:flex;align-items:center;gap:7px;
+    white-space:nowrap}
+  nav.kolejki button[aria-pressed="true"]{background:var(--raised);color:var(--ink);
+    border-color:var(--ink-3);font-weight:600}
+  nav.kolejki .licz{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+    font-variant-numeric:tabular-nums}
+  nav.kolejki button[aria-pressed="true"] .licz{color:var(--ink-2)}
+
+  .opis-kolejki{background:var(--surface);border-left:2px solid var(--ink-3);
+    padding:10px 14px;margin-bottom:16px;font-size:13px;color:var(--ink-2);
+    max-width:68ch}
+  .opis-kolejki b{color:var(--ink);font-weight:600}
+
+  .filtry{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  .filtry input[type=search],.filtry select{font:inherit;font-size:13px;padding:5px 8px;
+    background:var(--raised);color:var(--ink);border:1px solid var(--line);border-radius:2px}
+  .filtry input[type=search]{min-width:180px;width:min(280px,100%)}
+  .filtry label{font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:5px}
+
+  ul.lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;
+    background:var(--line-soft);border:1px solid var(--line)}
+  li.wpis{background:var(--ground);padding:11px 14px;display:grid;
+    grid-template-columns:82px 1fr auto;gap:12px;align-items:start}
+  li.wpis.zrobiony{background:var(--surface)}
+  .meta{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);
+    font-variant-numeric:tabular-nums;line-height:1.6}
+  .meta .miasto{font-weight:500}
+  .meta .miasto.PL{color:var(--pl)}
+  .meta .miasto.DE{color:var(--de)}
+  .tresc{min-width:0}
+  .tytul{font-weight:500;margin-bottom:2px;overflow-wrap:anywhere}
+  .ident{font-family:var(--mono);font-size:11px;color:var(--ink-3);overflow-wrap:anywhere}
+  .detal{font-size:12.5px;color:var(--ink-2);margin-top:4px;overflow-wrap:anywhere}
+  .warianty{margin-top:6px;display:flex;flex-direction:column;gap:5px}
+  .wariant{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px}
+  .wariant .ident{flex:0 0 auto}
+  .wariant input{flex:1 1 180px}
+
+  .akcje{display:flex;flex-direction:column;gap:6px;align-items:stretch;min-width:170px}
+  .rzad{display:flex;gap:5px;flex-wrap:wrap}
+  input[type=text],select{font:inherit;font-size:12.5px;padding:4px 7px;
+    background:var(--raised);color:var(--ink);border:1px solid var(--line);
+    border-radius:2px;min-width:0;width:100%}
+  button.opcja{font:inherit;font-size:12px;cursor:pointer;padding:4px 9px;border-radius:2px;
+    border:1px solid var(--line);background:var(--raised);color:var(--ink-2)}
+  button.opcja:hover{border-color:var(--ink-3);color:var(--ink)}
+  button.opcja[aria-pressed="true"]{font-weight:600}
+  button.opcja.ok[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:#fff}
+  button.opcja.wait[aria-pressed="true"]{background:var(--wait);border-color:var(--wait);color:#fff}
+  button.opcja.skip[aria-pressed="true"]{background:var(--skip);border-color:var(--skip);color:#fff}
+  :focus-visible{outline:2px solid var(--pl);outline-offset:1px}
+
+  .pusto{padding:26px 14px;color:var(--ink-3);font-size:13px;text-align:center;
+    border:1px dashed var(--line)}
+  .stopka{margin-top:22px;font-size:12px;color:var(--ink-3);max-width:70ch}
+  .stopka code{font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
+
+  table.pole{border-collapse:collapse;font-size:12px;font-family:var(--mono);
+    font-variant-numeric:tabular-nums;width:100%}
+  table.pole th,table.pole td{border:1px solid var(--line);padding:3px 7px;text-align:right;
+    white-space:nowrap}
+  table.pole th{background:var(--surface);font-family:var(--sans);font-size:11.5px;font-weight:600}
+  table.pole td.rok{text-align:left;font-weight:500;background:var(--surface)}
+  .przewijak{overflow-x:auto;border:1px solid var(--line)}
+  @media (max-width:640px){
+    li.wpis{grid-template-columns:1fr;gap:8px}
+    .akcje{min-width:0}
+  }
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="brand">
+    <h1>Kartoteka 1 Maja</h1>
+    <span class="sub">Warszawa 1989&ndash;2019 &middot; Berlin 1987&ndash;2019</span>
+    <span class="stan"><span class="kropka" id="kropka"></span><span id="stan">łączenie…</span></span>
+  </div>
+  <nav class="kolejki" id="nawigacja"></nav>
+</header>
+
+<div id="opis" class="opis-kolejki"></div>
+<div class="filtry" id="filtry"></div>
+<div id="tresc"></div>
+
+<p class="stopka">Decyzje zapisują się same, w bazie tej strony. Nie musisz niczego eksportować &mdash;
+odczytam je stąd i wepnę w pipeline jako <code>weryfikacja.csv</code>, który nadpisze zgadywanki parsera.
+Ponowne uruchomienie pipeline'u odświeży listy do sprawdzenia, ale nie ruszy tego, co już rozstrzygnąłeś.</p>
+</div>
+
+<script id="dane-json" type="application/json">__DANE__</script>
+<script>
+(function(){
+  "use strict";
+  const DANE = JSON.parse(document.getElementById("dane-json").textContent);
+  const KOLEJKI = [
+    {id:"aktorzy", nazwa:"Aktorzy i typy", opis:
+      "Parser nie był pewien <b>aktora albo typu</b> &mdash; zgadł z nazwy obiektu lub z geometrii. "+
+      "Potwierdź, popraw albo odłóż. To największa pula i ona najbardziej waży na agregacie POLE."},
+    {id:"duplikaty", nazwa:"Zderzone id", opis:
+      "Kilka obiektów dostało ten sam <b>id</b>, bo mają w danym roku ten sam typ i aktora. "+
+      "Dopisz każdemu wariantowi własną nazwę &mdash; sufiksy <code>_a</code>, <code>_b</code> znikną."},
+    {id:"frekwencja", nazwa:"Sporna frekwencja", opis:
+      "Liczba z prozy rocznika nie zgadza się z arkuszem. Część to <b>literówki w rocznikach</b> "+
+      "(zero za dużo), część &mdash; liczenie czegoś innego. Wskaż, która wartość jest właściwa."},
+    {id:"brakujace", nazwa:"Brak na mapie", opis:
+      "Wydarzenia dzielnicowe opisane w kronice, których <b>nie ma na mapie</b>. "+
+      "Zaznacz, które dopisać, a które pominąć albo scalić jako duplikat."},
+    {id:"tylko_rocznik", nazwa:"Tylko rocznik", opis:
+      "Rocznik zna aktora, którego mapa w tym roku nie ma. Albo brakuje obiektu na mapie, "+
+      "albo to nie jest osobne wydarzenie."},
+    {id:"bez_lat", nazwa:"Bez lat", opis:
+      "Obiekty bez pola <b>Lata</b> i bez roku w nazwie. Wpisz rok albo lata, po przecinku."},
+  ];
+  const AKCJE = {
+    aktorzy:[["potwierdzam","ok"],["odkładam","wait"]],
+    duplikaty:[["gotowe","ok"],["odkładam","wait"]],
+    frekwencja:[["rocznik","ok"],["arkusz","ok"],["odkładam","wait"]],
+    brakujace:[["dodać","ok"],["duplikat","skip"],["pomijam","skip"]],
+    tylko_rocznik:[["dodać","ok"],["nie wydarzenie","skip"],["odkładam","wait"]],
+    bez_lat:[["gotowe","ok"],["odkładam","wait"]],
+  };
+
+  let aktywna = "aktorzy";
+  let decyzje = {};          // kolejka -> {klucz: {...}}
+  let db = null;
+  let filtrTekst = "", filtrMiasto = "", filtrTylkoNiezrobione = false;
+  const zapisy = new Map();  // kolejka -> pending timer
+
+  KOLEJKI.forEach(k => decyzje[k.id] = {});
+
+  /* ---------- trwałość ---------- */
+  function stan(tekst, klasa){
+    document.getElementById("stan").textContent = tekst;
+    const kropka = document.getElementById("kropka");
+    kropka.className = "kropka" + (klasa ? " " + klasa : "");
+  }
+
+  async function polacz(){
+    try{ db = await window.claude?.use?.("db"); }catch(e){ db = null; }
+    if(!db){
+      stan("bez zapisu — decyzje przepadną", "err");
+      return;
+    }
+    stan("wczytywanie…");
+    try{
+      await Promise.all(KOLEJKI.map(async k => {
+        const snap = await db.doc("decyzje/" + k.id).get();
+        if(snap.exists) decyzje[k.id] = snap.data() || {};
+      }));
+      stan("zapis włączony", "on");
+    }catch(e){
+      stan("odczyt nie wyszedł: " + (e && e.code || "błąd"), "err");
+    }
+    rysuj();
+  }
+
+  function zapisz(kolejka){
+    if(!db) return;
+    clearTimeout(zapisy.get(kolejka));
+    zapisy.set(kolejka, setTimeout(async () => {
+      try{
+        stan("zapisuję…");
+        await db.doc("decyzje/" + kolejka).set(decyzje[kolejka]);
+        stan("zapisano " + new Date().toLocaleTimeString("pl-PL",{hour:"2-digit",minute:"2-digit"}), "on");
+      }catch(e){
+        stan("zapis nie wyszedł: " + (e && e.code || "błąd"), "err");
+      }
+    }, 450));
+  }
+
+  function ustaw(kolejka, klucz, zmiany){
+    const teraz = decyzje[kolejka][klucz] || {};
+    decyzje[kolejka][klucz] = Object.assign({}, teraz, zmiany,
+      {kiedy: new Date().toISOString().slice(0,19)});
+    zapisz(kolejka);
+  }
+
+  /* ---------- widok ---------- */
+  function pozycje(kolejka){
+    let lista = (DANE.kolejki[kolejka] || []).slice();
+    if(filtrMiasto) lista = lista.filter(p => (p.miasto || "") === filtrMiasto);
+    if(filtrTylkoNiezrobione) lista = lista.filter(p => !(decyzje[kolejka][p.klucz] || {}).akcja);
+    if(filtrTekst){
+      const q = filtrTekst.toLowerCase();
+      lista = lista.filter(p => JSON.stringify(p).toLowerCase().includes(q));
+    }
+    return lista;
+  }
+
+  function zrobione(kolejka){
+    const d = decyzje[kolejka] || {};
+    return (DANE.kolejki[kolejka] || []).filter(p => (d[p.klucz] || {}).akcja).length;
+  }
+
+  function rysujNawigacje(){
+    const nav = document.getElementById("nawigacja");
+    nav.replaceChildren();
+    KOLEJKI.forEach(k => {
+      const ile = (DANE.kolejki[k.id] || []).length;
+      if(!ile) return;
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(k.id === aktywna));
+      b.innerHTML = '<span>' + k.nazwa + '</span><span class="licz">' +
+                    zrobione(k.id) + "/" + ile + "</span>";
+      b.addEventListener("click", () => { aktywna = k.id; rysuj(); });
+      nav.appendChild(b);
+    });
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(aktywna === "pole"));
+    b.innerHTML = "<span>POLE</span>";
+    b.addEventListener("click", () => { aktywna = "pole"; rysuj(); });
+    nav.appendChild(b);
+  }
+
+  function rysujFiltry(){
+    const box = document.getElementById("filtry");
+    box.replaceChildren();
+    if(aktywna === "pole") return;
+
+    const szukaj = document.createElement("input");
+    szukaj.type = "search"; szukaj.id = "f-szukaj";
+    szukaj.placeholder = "szukaj w tej kolejce…";
+    szukaj.value = filtrTekst;
+    szukaj.addEventListener("input", () => { filtrTekst = szukaj.value; rysujListe(); });
+    box.appendChild(szukaj);
+
+    const sel = document.createElement("select");
+    sel.id = "f-miasto";
+    [["","oba miasta"],["PL","Warszawa"],["DE","Berlin"]].forEach(([v,t]) => {
+      const o = document.createElement("option"); o.value = v; o.textContent = t; sel.appendChild(o);
+    });
+    sel.value = filtrMiasto;
+    sel.addEventListener("change", () => { filtrMiasto = sel.value; rysujListe(); });
+    box.appendChild(sel);
+
+    const lab = document.createElement("label");
+    const chk = document.createElement("input");
+    chk.type = "checkbox"; chk.id = "f-niezrobione"; chk.checked = filtrTylkoNiezrobione;
+    chk.addEventListener("change", () => { filtrTylkoNiezrobione = chk.checked; rysujListe(); });
+    lab.appendChild(chk); lab.append(" tylko nierozstrzygnięte");
+    box.appendChild(lab);
+  }
+
+  function przyciski(kolejka, p, decyzja){
+    const rzad = document.createElement("div");
+    rzad.className = "rzad";
+    (AKCJE[kolejka] || []).forEach(([etykieta, klasa]) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "opcja " + klasa;
+      b.textContent = etykieta;
+      b.setAttribute("aria-pressed", String(decyzja.akcja === etykieta));
+      b.addEventListener("click", () => {
+        const teraz = (decyzje[kolejka][p.klucz] || {}).akcja;
+        ustaw(kolejka, p.klucz, {akcja: teraz === etykieta ? "" : etykieta});
+        rysuj();
+      });
+      rzad.appendChild(b);
+    });
+    return rzad;
+  }
+
+  function poleTekst(kolejka, p, nazwaPola, placeholder, wartosc){
+    const i = document.createElement("input");
+    i.type = "text";
+    i.id = "p-" + kolejka + "-" + nazwaPola + "-" + p.klucz;
+    i.placeholder = placeholder;
+    i.value = wartosc || "";
+    i.addEventListener("change", () => {
+      const z = {}; z[nazwaPola] = i.value.trim();
+      ustaw(kolejka, p.klucz, z);
+    });
+    return i;
+  }
+
+  function rysujWpis(kolejka, p){
+    const decyzja = decyzje[kolejka][p.klucz] || {};
+    const li = document.createElement("li");
+    li.className = "wpis" + (decyzja.akcja ? " zrobiony" : "");
+
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.innerHTML = (p.rok ? p.rok + "<br>" : "") +
+      (p.miasto ? '<span class="miasto ' + p.miasto + '">' + p.miasto + "</span><br>" : "") +
+      (p.godzina ? p.godzina : (p.dzielnica ? "" : ""));
+    li.appendChild(meta);
+
+    const tresc = document.createElement("div");
+    tresc.className = "tresc";
+
+    if(kolejka === "duplikaty"){
+      tresc.innerHTML = '<div class="tytul">' + p.warianty.length + " obiektów dzieli ten sam id</div>" +
+                        '<div class="ident">' + p.klucz + "</div>";
+      const box = document.createElement("div");
+      box.className = "warianty";
+      p.warianty.forEach(w => {
+        const r = document.createElement("div");
+        r.className = "wariant";
+        r.innerHTML = '<span class="ident">' + w.id + "</span>";
+        const i = poleTekst(kolejka, p, "nazwa__" + w.id,
+          w.nazwa || w.warstwa || "własna nazwa", decyzja["nazwa__" + w.id]);
+        r.appendChild(i);
+        box.appendChild(r);
+      });
+      tresc.appendChild(box);
+    } else if(kolejka === "frekwencja"){
+      tresc.innerHTML = '<div class="tytul">' + p.aktor + " &middot; " + p.wydarzenie + "</div>" +
+        '<div class="detal">rocznik <b>' + p.rocznik + "</b> &nbsp;vs&nbsp; arkusz <b>" +
+        p.arkusz + "</b> &nbsp;(" + p.odchylka + "%)</div>" +
+        '<div class="ident">' + p.lista + "</div>" +
+        '<div class="ident">' + p.zrodla + "</div>";
+    } else if(kolejka === "brakujace"){
+      tresc.innerHTML = '<div class="tytul">' + (p.dzielnica || "bez dzielnicy") +
+        (p.duplikat ? ' &middot; <span style="color:var(--wait)">możliwy duplikat</span>' : "") + "</div>" +
+        '<div class="detal">' + p.tekst + "</div>" +
+        '<div class="ident">' + p.odniesienie + "</div>";
+    } else if(kolejka === "tylko_rocznik"){
+      tresc.innerHTML = '<div class="tytul">' + (p.aktor || "aktor nieokreślony") +
+        (p.typ ? " &middot; " + p.typ : "") + "</div>" +
+        (p.trasa ? '<div class="detal">' + p.trasa + "</div>" : "") +
+        (p.haslo ? '<div class="detal">„' + p.haslo + "”</div>" : "") +
+        '<div class="ident">' + p.klucze + (p.frekwencja ? " &middot; " + p.frekwencja : "") + "</div>";
+    } else if(kolejka === "bez_lat"){
+      tresc.innerHTML = '<div class="tytul">' + (p.nazwa || "(bez nazwy)") + "</div>" +
+        '<div class="ident">' + p.warstwa + " &middot; " + p.plik + "#" + p.id_geo + "</div>";
+    } else {
+      tresc.innerHTML = '<div class="tytul">' + (p.nazwa || "(bez nazwy)") + "</div>" +
+        '<div class="ident">' + p.klucz + "</div>" +
+        '<div class="detal">' + p.warstwa + " &middot; typ z: " + p.typ_zrodlo +
+        (p.dzielnica ? " &middot; " + p.dzielnica : "") + "</div>" +
+        (p.opis ? '<div class="detal">' + p.opis + "</div>" : "");
+    }
+    li.appendChild(tresc);
+
+    const akcje = document.createElement("div");
+    akcje.className = "akcje";
+    if(kolejka === "aktorzy"){
+      akcje.appendChild(poleTekst(kolejka, p, "aktor", p.aktor || "aktor", decyzja.aktor));
+      const sel = document.createElement("select");
+      sel.id = "typ-" + p.klucz;
+      const pusty = document.createElement("option");
+      pusty.value = ""; pusty.textContent = "typ: " + p.typ;
+      sel.appendChild(pusty);
+      DANE.typy_znane.forEach(t => {
+        const o = document.createElement("option"); o.value = t; o.textContent = t; sel.appendChild(o);
+      });
+      sel.value = decyzja.typ || "";
+      sel.addEventListener("change", () => ustaw(kolejka, p.klucz, {typ: sel.value}));
+      akcje.appendChild(sel);
+    }
+    if(kolejka === "frekwencja"){
+      akcje.appendChild(poleTekst(kolejka, p, "wartosc", "własna liczba", decyzja.wartosc));
+    }
+    if(kolejka === "bez_lat"){
+      akcje.appendChild(poleTekst(kolejka, p, "lata", "np. 1994, 1995", decyzja.lata));
+    }
+    akcje.appendChild(przyciski(kolejka, p, decyzja));
+
+    // A commemoration or a recurring festival is one object split across its
+    // years, so the same judgement would be retyped once per year.
+    if(kolejka === "aktorzy" && p.nazwa){
+      const rodzenstwo = (DANE.kolejki.aktorzy || []).filter(
+        x => x.nazwa === p.nazwa && x.warstwa === p.warstwa && x.klucz !== p.klucz);
+      if(rodzenstwo.length){
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "opcja";
+        b.textContent = "to samo dla " + rodzenstwo.length + " innych lat";
+        b.addEventListener("click", () => {
+          const zrodlo = decyzje[kolejka][p.klucz] || {};
+          if(!zrodlo.akcja && !zrodlo.aktor && !zrodlo.typ) return;
+          rodzenstwo.forEach(x => ustaw(kolejka, x.klucz, {
+            akcja: zrodlo.akcja || "", aktor: zrodlo.aktor || "",
+            typ: zrodlo.typ || "", notatka: zrodlo.notatka || ""}));
+          rysuj();
+        });
+        akcje.appendChild(b);
+      }
+    }
+
+    akcje.appendChild(poleTekst(kolejka, p, "notatka", "notatka", decyzja.notatka));
+    li.appendChild(akcje);
+    return li;
+  }
+
+  function rysujPole(){
+    const tresc = document.getElementById("tresc");
+    tresc.replaceChildren();
+    const wiersze = DANE.pole || [];
+    if(!wiersze.length){ return; }
+    const kolumny = ["rok","pl_liczba_wydarzen","pl_liczba_demonstracji","pl_liczba_upamietnien",
+      "pl_czy_kontra","pl_frekwencja_suma","pl_udzial_zwiazkowy","pl_miejsce_wiecu",
+      "de_liczba_wydarzen","de_liczba_rewolucyjnych","de_liczba_prawicowych",
+      "de_frekwencja_suma","de_udzial_zwiazkowy","de_miejsce_wiecu"];
+    const etykiety = ["rok","PL wyd.","PL dem.","PL upam.","PL kontra","PL frekw.","PL udział","PL wiec",
+      "DE wyd.","DE rewol.","DE prawic.","DE frekw.","DE udział","DE wiec"];
+    const box = document.createElement("div");
+    box.className = "przewijak";
+    const t = document.createElement("table");
+    t.className = "pole";
+    const thead = document.createElement("thead");
+    const tr = document.createElement("tr");
+    etykiety.forEach(e => { const th = document.createElement("th"); th.textContent = e; tr.appendChild(th); });
+    thead.appendChild(tr); t.appendChild(thead);
+    const tbody = document.createElement("tbody");
+    wiersze.forEach(w => {
+      const r = document.createElement("tr");
+      kolumny.forEach((k,i) => {
+        const td = document.createElement("td");
+        if(i === 0) td.className = "rok";
+        td.textContent = w[k] || "";
+        r.appendChild(td);
+      });
+      tbody.appendChild(r);
+    });
+    t.appendChild(tbody); box.appendChild(t); tresc.appendChild(box);
+  }
+
+  function rysujListe(){
+    rysujNawigacje();
+    const tresc = document.getElementById("tresc");
+    tresc.replaceChildren();
+    if(aktywna === "pole"){ rysujPole(); return; }
+    const lista = pozycje(aktywna);
+    if(!lista.length){
+      const p = document.createElement("div");
+      p.className = "pusto";
+      p.textContent = filtrTylkoNiezrobione ? "Wszystko w tej kolejce rozstrzygnięte." : "Nic tu nie pasuje do filtrów.";
+      tresc.appendChild(p);
+      return;
+    }
+    const ul = document.createElement("ul");
+    ul.className = "lista";
+    lista.slice(0, 400).forEach(p => ul.appendChild(rysujWpis(aktywna, p)));
+    tresc.appendChild(ul);
+    if(lista.length > 400){
+      const p = document.createElement("div");
+      p.className = "pusto";
+      p.textContent = "Pokazane 400 z " + lista.length + ". Zawęź filtrem.";
+      tresc.appendChild(p);
+    }
+  }
+
+  function rysuj(){
+    const k = KOLEJKI.find(x => x.id === aktywna);
+    const opis = document.getElementById("opis");
+    if(aktywna === "pole"){
+      opis.innerHTML = "Przekrój <b>rok &times; miasto</b>. Pusta komórka znaczy, że rok jest poza zakresem "+
+        "danych dla tego miasta &mdash; to nie to samo co zero.";
+    } else {
+      opis.innerHTML = k ? k.opis : "";
+    }
+    rysujFiltry();
+    rysujListe();
+  }
+
+  rysuj();
+  polacz();
+})();
+</script>
