@@ -280,6 +280,16 @@ def rok_z_pliku(sciezka, tekst, korzen):
         m = re.search(r"(?:19|20)\d{2}", czesc)
         if m:
             return m.group(0)
+    # The publication date, standing on its own line: "30.04.1996" in the nd
+    # archive, "1. Mai 2019" on the Linke pages. It is the only year in these
+    # pages that means anything -- the rest are the paper's founding year, a
+    # digitisation note and links to unrelated elections.
+    for wzor in (r"^\s*\d{1,2}\.\d{1,2}\.((?:19|20)\d{2})\s*$",
+                 r"^\s*\d{1,2}\.\s*(?:Januar|Februar|M\u00e4rz|April|Mai|Juni|Juli|"
+                 r"August|September|Oktober|November|Dezember)\s+((?:19|20)\d{2})\s*$"):
+        m = re.search(wzor, tekst, re.M)
+        if m:
+            return m.group(1)
     m = re.search(r"(?:19|20)\d{2}", "\n".join(tekst.splitlines()[:5]))
     return m.group(0) if m else ""
 

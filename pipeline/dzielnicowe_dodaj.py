@@ -38,7 +38,7 @@ def main():
     with (OUT_DIR / "wydarzenia.csv").open(encoding="utf-8") as f:
         wydarzenia = list(csv.DictReader(f))
     kolumny = list(wydarzenia[0].keys())
-    for k in ("godzina_do", "miejsce", "osoby", "seria"):
+    for k in ("godzina_do", "miejsce", "osoby", "seria", "data"):
         if k not in kolumny:
             kolumny.append(k)
 
@@ -59,6 +59,9 @@ def main():
             "godzina": d.get("godzina_od", ""), "godzina_do": d.get("godzina_do", ""),
             "miejsce": d.get("miejsce", ""), "osoby": d.get("osoby", ""),
             "seria": d.get("seria", ""),
+            # 30 kwietnia to nie 1 maja: "Tanz in den Mai" to wieczor
+            # poprzedzajacy, osobne wydarzenie, i tak ma byc liczone.
+            "data": d.get("data", "01.05"),
             "dzielnica_start": d.get("dzielnica", ""),
             "bezirk_start": d.get("dzielnica", ""),
             # By definition: non-central, run by a local branch. That is what
@@ -80,6 +83,8 @@ def main():
               ["seria", "dzielnica", "aktor", "od_roku", "do_roku", "dowod"])
 
     opisane = {(w["seria"], w["rok"]) for w in wydarzenia if w.get("seria")}
+    from collections import Counter
+    wg_daty = Counter(w.get("data") for w in wydarzenia if w["warstwa"] == "Dzielnicowe")
     luki = []
     for s in serie:
         if not (s["od_roku"].isdigit() and s["do_roku"].isdigit()):
@@ -90,6 +95,7 @@ def main():
             luki.append((s["seria"], brak))
 
     print(f"dzielnicowe: +{dodane} wydarzen, {len(wydarzenia)} wierszy razem")
+    print("  wg daty: " + ", ".join(f"{d or '?'}: {n}" for d, n in sorted(wg_daty.items())))
     print(f"dzielnicowe_serie.csv: {len(serie)} cykli")
     for seria, brak in luki:
         print(f"  {seria}: bez opisu {len(brak)} edycji "
