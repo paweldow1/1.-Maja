@@ -14,7 +14,7 @@ import csv
 import json
 from pathlib import Path
 
-from common import write_csv
+from common import organizator_lokalny, write_csv
 
 BASE = Path(__file__).parent
 OUT_DIR = BASE / "output"
@@ -107,6 +107,11 @@ def main():
     print("obszary odniesienia: " + ", ".join(
         f"{m} {len(obszary[m])}" for m in obszary))
 
+    # District names a party name can sit against ("PDS Marzahn"), taken
+    # from the same reference layers, so the list never drifts from them.
+    nazwy_dzielnic = {m: {o[0] for o in obszary[m] if o[0]} | {o[1] for o in obszary[m] if o[1]}
+                      for m in obszary}
+
     trafione = 0
     for w in wydarzenia:
         punkty = punkty_wiersza(w)
@@ -129,6 +134,17 @@ def main():
             w["przecina_dzielnice"] = "TRUE" if len({n[0] for n in nazwy}) > 1 else "FALSE"
         else:
             w["centralne"] = w["poza_centrum"] = w["przecina_dzielnice"] = ""
+
+        # A dzielnicowka in Pawel's sense: non-central AND run by a local
+        # branch. On the maps this is almost empty by design -- he put the
+        # district events in the chronicles, not on the maps -- so an empty
+        # column here is the expected answer, not a failure to detect.
+        lokalny, dowod = organizator_lokalny(
+            " ".join(filter(None, [w.get("nazwa"), w.get("opis"), w.get("aktor")])),
+            nazwy_dzielnic.get(w["miasto"], set()))
+        w["organizator_lokalny"] = dowod
+        w["dzielnicowe"] = "TRUE" if (lokalny and w["poza_centrum"] == "TRUE") else (
+            "FALSE" if w["poza_centrum"] else "")
 
     kolumny = list(wydarzenia[0].keys())
     write_csv(OUT_DIR / "wydarzenia.csv", wydarzenia, kolumny)

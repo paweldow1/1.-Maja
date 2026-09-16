@@ -25,6 +25,7 @@ python3 dzielnice.py
 echo "=== 4. decyzje z kartoteki"
 python3 zastosuj_decyzje.py
 python3 rozbij_upamietnienia.py
+python3 identyfikatory.py
 
 echo "=== 5. tabele pochodne"
 python3 brakujace.py

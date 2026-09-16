@@ -77,18 +77,10 @@ def main(input_dir, umap_path=None):
         ["warstwa", "miasto", "nazwa", "id_geo", "plik_zrodlowy"],
     )
 
-    dup_rows = []
-    for base_id, count in id_counters.items():
-        if count > 1:
-            for i in range(count):
-                suffix = "" if i == 0 else f"_{chr(ord('a') + i - 1)}"
-                dup_rows.append({"id_bazowy": base_id, "id": f"{base_id}{suffix}"})
-    write_csv(OUT_DIR / "duplikaty_id_berlin.csv", dup_rows, ["id_bazowy", "id"])
 
     print(f"wydarzenia: {len(wydarzenia_rows)} wierszy (oczekiwano ~458 z pelnym backupem)")
     print(f"miejsca: {len(miejsca_rows)} wierszy")
     print(f"bez_lat: {len(bez_lat_rows)} wierszy")
-    print(f"duplikaty_id (wpisy): {len(dup_rows)} wierszy")
 
 
 if __name__ == "__main__":

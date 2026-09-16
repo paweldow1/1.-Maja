@@ -62,20 +62,11 @@ def main(umap_path):
         ["warstwa", "miasto", "nazwa", "id_geo", "plik_zrodlowy"],
     )
 
-    # Duplicate ids: group by base id (strip _a/_b suffix) via id_counters.
-    dup_rows = []
-    for base_id, count in id_counters.items():
-        if count > 1:
-            for i in range(count):
-                suffix = "" if i == 0 else f"_{chr(ord('a') + i - 1)}"
-                dup_rows.append({"id_bazowy": base_id, "id": f"{base_id}{suffix}"})
-    write_csv(OUT_DIR / "duplikaty_id_warszawa.csv", dup_rows, ["id_bazowy", "id"])
 
     print(f"Warstwy w pliku: {len(seen_layers)}")
     print(f"wydarzenia: {len(wydarzenia_rows)} wierszy (oczekiwano ~228)")
     print(f"miejsca: {len(miejsca_rows)} wierszy")
     print(f"bez_lat: {len(bez_lat_rows)} wierszy")
-    print(f"duplikaty_id (wpisy): {len(dup_rows)} wierszy")
 
 
 if __name__ == "__main__":

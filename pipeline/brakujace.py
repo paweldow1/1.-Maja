@@ -14,7 +14,12 @@ import csv
 import re
 from pathlib import Path
 
-from common import write_csv
+from common import organizator_lokalny, write_csv
+
+# Berlin's centre, as dzielnice.py draws it: the Mitte borough, which takes
+# in Tiergarten and Wedding. An entry here is a gap in the map, not a
+# district event.
+CENTRUM_DE = {"Mitte", "Tiergarten", "Wedding"}
 
 OUT_DIR = Path(__file__).parent / "output"
 # Words too common to tie an entry to a particular event.
@@ -101,11 +106,31 @@ def main():
     licznik = {}
     for k in kandydaci:
         licznik[k["grupa"]] = licznik.get(k["grupa"], 0) + 1
+    # Every candidate here is non-central by construction -- it was matched
+    # to a Bezirk and has no object on the map. What is left to establish is
+    # the organiser: a party's or union's local branch makes it a
+    # dzielnicowka rather than just something that happened out of town.
+    nazwy_dzielnic = {k["dzielnica"] for k in kandydaci if k["dzielnica"]}
     for k in kandydaci:
         k["mozliwy_duplikat"] = "TRUE" if licznik[k["grupa"]] > 1 else "FALSE"
+        lokalny, dowod = organizator_lokalny(
+            " ".join(filter(None, [k["aktor"], k["tekst"]])), nazwy_dzielnic)
+        k["organizator_lokalny"] = dowod
+        # Three states, because the prose names the organiser only sometimes.
+        # "TRUE" -- a branch is named. "kandydat" -- the entry sits in a
+        # non-central district with no object on the map, which is where the
+        # dzielnicowki are, but nothing says who ran it. "" -- central, so
+        # this is a gap in the map rather than a district event.
+        if lokalny:
+            k["dzielnicowe"] = "TRUE"
+        elif k["dzielnica"] and k["dzielnica"] not in CENTRUM_DE:
+            k["dzielnicowe"] = "kandydat"
+        else:
+            k["dzielnicowe"] = ""
     write_csv(OUT_DIR / "brakujace_na_mapie.csv", kandydaci, [
         "rok", "miasto", "godzina_od", "godzina_do", "dzielnica", "aktor",
-        "sekcja", "tekst", "grupa", "mozliwy_duplikat", "odniesienie"])
+        "sekcja", "tekst", "grupa", "mozliwy_duplikat", "dzielnicowe",
+        "organizator_lokalny", "odniesienie"])
 
     for miasto in ("DE", "PL"):
         sel = [k for k in kandydaci if k["miasto"] == miasto]

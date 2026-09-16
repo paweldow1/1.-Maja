@@ -7,7 +7,8 @@ from pathlib import Path
 from config.layers import (
     ACTOR_KEYWORDS_DE, ACTOR_KEYWORDS_PL, CITY_CODE, DROP_FIELD_PREFIXES,
     DROP_FIELDS, FIELD_MAP, FROM_NAME, LAYER_META, LAYERS_IGNORE,
-    LAYERS_MIEJSCA, OBIEKTY_MIEJSCA, TYP_SLOWA, WARSTWY_ID_Z_NAZWY,
+    LAYERS_MIEJSCA, OBIEKTY_MIEJSCA, ORGANIZATOR_LOKALNY_SLOWA,
+    PARTIE_Z_DZIELNICA, TYP_SLOWA, WARSTWY_ID_Z_NAZWY,
 )
 
 YEAR_RE = re.compile(r"(?:19|20)\d{2}")
@@ -283,3 +284,25 @@ def write_csv(path, rows, columns):
         w.writeheader()
         for r in rows:
             w.writerow(r)
+
+
+def organizator_lokalny(tekst, dzielnice):
+    """Czy tekst wskazuje na lokalny oddzial? -> (bool, dowod).
+
+    dzielnice: nazwy dzielnic, ktore moga stac tuz przy nazwie partii.
+    """
+    if not tekst:
+        return False, ""
+    low = tekst.lower()
+    for slowo in ORGANIZATOR_LOKALNY_SLOWA:
+        if slowo in low:
+            return True, slowo
+    if dzielnice:
+        wzor = re.compile(
+            "(" + "|".join(re.escape(p) for p in PARTIE_Z_DZIELNICA) + r")[\s\-\u2013]{0,2}("
+            + "|".join(re.escape(d) for d in sorted(dzielnice, key=len, reverse=True)) + ")",
+            re.I)
+        trafienie = wzor.search(tekst)
+        if trafienie:
+            return True, trafienie.group(0)
+    return False, ""

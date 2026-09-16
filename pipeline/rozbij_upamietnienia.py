@@ -17,7 +17,7 @@ Usage: python3 rozbij_upamietnienia.py
 import csv
 from pathlib import Path
 
-from common import slugify_actor, write_csv
+from common import write_csv
 
 BASE = Path(__file__).parent
 OUT_DIR = BASE / "output"
@@ -41,18 +41,6 @@ def wczytaj_ceremonie():
     return wg_klucza
 
 
-def nowy_id(w, liczniki):
-    """Same shape as the parser's ids for this layer: actor plus own name."""
-    slug = slugify_actor(w["aktor"]) or "NIEZNANY"
-    z_nazwy = slugify_actor(w["nazwa"])[:40]
-    if z_nazwy:
-        slug = f"{slug}-{z_nazwy}"
-    baza = f"{w['rok']}_{w['miasto']}_{w['typ']}_{slug}"
-    n = liczniki.get(baza, 0)
-    liczniki[baza] = n + 1
-    return baza if n == 0 else f"{baza}_{chr(ord('a') + n - 1)}"
-
-
 def main():
     with (OUT_DIR / "wydarzenia.csv").open(encoding="utf-8") as f:
         wydarzenia = list(csv.DictReader(f))
@@ -70,7 +58,6 @@ def main():
               "(sh uruchom.sh), nie sam ten krok")
         return
     nieuzyte = set(ceremonie)
-    liczniki = {}
     out, rozbitych, dodanych, z_godzina = [], 0, 0, 0
 
     for w in wydarzenia:
@@ -106,9 +93,6 @@ def main():
             if nowy["godzina"]:
                 z_godzina += 1
             out.append(nowy)
-
-    for w in out:
-        w["id"] = nowy_id(w, liczniki)
 
     write_csv(OUT_DIR / "wydarzenia.csv", out, kolumny)
 

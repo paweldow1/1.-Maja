@@ -46,22 +46,26 @@ def main():
     } for w in wydarzenia
         if w["wymaga_weryfikacji"] == "True" or w.get("decyzja")]
 
-    # 2. ids that collided and got a suffix
-    duplikaty = wczytaj("duplikaty_id_warszawa.csv") + wczytaj("duplikaty_id_berlin.csv")
+    # 2. ids that nothing in the data tells apart.
+    # Rebuilt from the finished table by identyfikatory.py, not from the
+    # parsers' snapshots: those were taken before the decisions and before
+    # the ceremony split, so they listed collisions that no longer exist.
     grupy = {}
-    for d in duplikaty:
-        grupy.setdefault(d["id_bazowy"], []).append(d["id"])
+    for d in wczytaj("duplikaty_id.csv"):
+        grupy.setdefault(d["id_bazowy"], []).append(d)
     kolejki["duplikaty"] = [{
         "klucz": baza,
-        "rok": baza.split("_")[0],
-        "miasto": baza.split("_")[1] if len(baza.split("_")) > 1 else "",
+        "rok": czlony[0]["rok"], "miasto": czlony[0]["miasto"],
+        "identyczna_geometria": czlony[0]["identyczna_geometria"] == "TRUE",
         "warianty": [{
-            "id": i,
-            "nazwa": skroc(po_id[i]["nazwa"], 70) if i in po_id else "",
-            "warstwa": po_id[i]["warstwa"] if i in po_id else "",
-            "dzielnica": po_id[i].get("dzielnica_start", "") if i in po_id else "",
-        } for i in sorted(ids)],
-    } for baza, ids in sorted(grupy.items()) if len(ids) > 1]
+            "id": c["id"],
+            "nazwa": skroc(c["nazwa"], 70),
+            "warstwa": c["warstwa"],
+            "dzielnica": c["dzielnica"],
+            "punkt": c["punkt_start"],
+            "geom": c["geom_typ"],
+        } for c in czlony],
+    } for baza, czlony in sorted(grupy.items())]
 
     # 3. the prose figure disagrees with the dedicated source
     kolejki["frekwencja"] = [{
@@ -79,6 +83,8 @@ def main():
         "godzina": b["godzina_od"] + ("–" + b["godzina_do"] if b["godzina_do"] else ""),
         "dzielnica": b["dzielnica"], "aktor": b["aktor"],
         "duplikat": b["mozliwy_duplikat"] == "TRUE",
+        "dzielnicowe": b["dzielnicowe"],
+        "organizator": b["organizator_lokalny"],
         "tekst": skroc(b["tekst"], 200), "odniesienie": b["odniesienie"],
     } for b in wczytaj("brakujace_na_mapie.csv")]
 

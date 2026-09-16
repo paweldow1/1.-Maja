@@ -176,3 +176,26 @@ ACTOR_KEYWORDS_DE = [
 # POLE: the 13:00 march, the evening demonstration and the joint march they
 # ran until 1995 are all R1M, whatever the layer they sit in.
 WARSTWY_REWOLUCYJNE = {"Revolutionäre 1. Mai"}
+
+
+# A "dzielnicowka" is not simply an event outside the centre (that is
+# `poza_centrum`) -- it is a non-central event put on by a party's or a
+# union's local branch: the SPD Kreisverband's Volksfest, PDS Marzahn's
+# "Rot ist der Mai". Two kinds of evidence say so.
+#
+# 1. The branch is named as such. Polish "kolo" is deliberately absent: in
+#    these sources it is almost always the preposition "near", not a party
+#    cell, and it matched six central Warsaw marches before it was dropped.
+ORGANIZATOR_LOKALNY_SLOWA = [
+    "kreisverband", "bezirksverband", "ortsverband", "kreisvorstand",
+    "bezirksvorstand", "ortsgruppe", "bezirksgruppe", "geschäftsstelle",
+    "geschaeftsstelle", "abgeordnetenbüro", "abgeordnetenbuero",
+    "bürgerbüro", "buergerbuero", "stadtteilgruppe", "bezirksverbandes",
+    "oddział dzielnicowy", "zarząd dzielnicowy", "struktury dzielnicowe",
+]
+# 2. A party or union name sitting directly against a district name --
+#    "PDS Marzahn", "DGB Spandau", "PDS-Friedrichshain".
+PARTIE_Z_DZIELNICA = [
+    "PDS", "SPD", "DGB", "Die Linke", "Linkspartei", "Grüne", "DKP", "CDU",
+    "FDP", "Falken", "Jusos", "FDJ", "Naturfreunde", "VVN", "ÖTV", "IG Metall",
+]

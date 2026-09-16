@@ -10,16 +10,35 @@ Usage: python3 pole.py
 import csv
 import html
 import re
+from collections import defaultdict
 from pathlib import Path
 
 from common import write_csv
 from config.layers import WARSTWY_PRAWICOWE, WARSTWY_REWOLUCYJNE
+
+# The Violence_Berlin data splits arrests three ways -- May 1st,
+# Walpurgisnacht, NPD and counter-protests -- because the three have
+# different political origins and should not be added up uncritically.
+# Attendance is split the same way here so the two can be read side by side.
+STRUMIEN_AKTOR = {"NPD": "npd_kontra", "Antifa": "npd_kontra"}
+
+
+def strumien(warstwa, charakter):
+    if warstwa == "Walpurgisnacht":
+        return "walpurgis"
+    if warstwa in WARSTWY_PRAWICOWE or charakter == "kontra":
+        return "npd_kontra"
+    return "maj1"
 
 BASE = Path(__file__).parent
 OUT_DIR = BASE / "output"
 # Police deployment, injuries and arrests, from the Violence_Berlin repo.
 # Berlin only: Warsaw has no equivalent series.
 PRZEMOC = BASE / "input/przemoc_berlin.csv"
+# Warsaw's rally place, given by hand. Derived from the roczniki it was
+# simply wrong: the prose names several places per route and the first one
+# is the assembly point, not where the rally was held.
+MIEJSCA_WIECU_PL = BASE / "input/miejsca_wiecu_warszawa.tsv"
 MIASTA = ["PL", "DE"]
 # Declared scope per city (instrukcja_v2.md sec. 0). The attendance
 # spreadsheet runs to 2026, well past the maps, so without this the table
@@ -34,6 +53,20 @@ ZWIAZKI_DODATKOWE = {"DGB", "DGB Berlin-Brandenburg", "OPZZ", "IG Metall",
 def wczytaj(nazwa):
     with (OUT_DIR / nazwa).open(encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+def wczytaj_miejsca_wiecu_pl():
+    """rok -> miejsce. Rok obecny z pusta wartoscia znaczy: wiecu nie bylo."""
+    if not MIEJSCA_WIECU_PL.exists():
+        return {}
+    out = {}
+    for linia in MIEJSCA_WIECU_PL.read_text(encoding="utf-8").splitlines():
+        if not linia.strip() or linia.startswith("#") or linia.startswith("rok\t"):
+            continue
+        czesci = linia.split("\t")
+        if czesci[0].strip().isdigit():
+            out[int(czesci[0])] = czesci[1].strip() if len(czesci) > 1 else ""
+    return out
 
 
 def wczytaj_przemoc():
@@ -60,6 +93,13 @@ def main():
     frekwencja = wczytaj("frekwencja_agg.csv")
     roczniki = wczytaj("roczniki_wydarzenia.csv")
     przemoc = wczytaj_przemoc()
+    # Chronicle entries with no object on the map: where the district events
+    # actually are, since they were never put on the maps.
+    kronika_dzielnicowe = defaultdict(int)
+    for k in wczytaj("brakujace_na_mapie.csv"):
+        if k["dzielnicowe"]:
+            kronika_dzielnicowe[(int(k["rok"]), k["miasto"])] += 1
+    miejsca_pl = wczytaj_miejsca_wiecu_pl()
 
     zwiazkowi = set(ZWIAZKI_DODATKOWE)
     for w in wydarzenia:
@@ -137,6 +177,21 @@ def main():
                 z_mapy.add((e["typ"], e["aktor"], int(e["frekwencja_mapa_num"])))
             suma += sum(n for _, _, n in z_mapy)
             suma_zw += sum(n for _, aktor, n in z_mapy if aktor in zwiazkowi)
+
+            # Same figures, split into the three streams.
+            strumienie = defaultdict(int)
+            for f in grupy:
+                if f["frekwencja_sr"]:
+                    strumienie[STRUMIEN_AKTOR.get(f["aktor"], "maj1")] += int(f["frekwencja_sr"])
+            widziane = set()
+            for e in zdarzenia:
+                if e["aktor"] in pokryci or not e["frekwencja_mapa_num"]:
+                    continue
+                klucz_e = (e["typ"], e["aktor"], int(e["frekwencja_mapa_num"]))
+                if klucz_e in widziane:
+                    continue
+                widziane.add(klucz_e)
+                strumienie[strumien(e["warstwa"], e["charakter"])] += int(e["frekwencja_mapa_num"])
             teraz = aktorzy.get((rok, miasto), set())
             wczoraj = aktorzy.get((rok - 1, miasto), set())
             serie_teraz = serie.get((rok, miasto), {})
@@ -152,8 +207,16 @@ def main():
             else:
                 zmiana = ""
 
-            miejsce = miejsca_wiecu.get((rok, miasto), "")
-            miejsce_wczoraj = miejsca_wiecu.get((rok - 1, miasto), "")
+            if miasto == "PL" and miejsca_pl:
+                # The table governs Warsaw outright. A year it does not list
+                # is unknown, not a licence to fall back on the derivation
+                # that was wrong in the first place -- 2019 came out as
+                # "Brama Stracen", which is a wreath-laying, not the rally.
+                miejsce = miejsca_pl.get(rok, "")
+                miejsce_wczoraj = miejsca_pl.get(rok - 1, "")
+            else:
+                miejsce = miejsca_wiecu.get((rok, miasto), "")
+                miejsce_wczoraj = miejsca_wiecu.get((rok - 1, miasto), "")
             if miejsce and miejsce_wczoraj:
                 zmiana_miejsca = ("TRUE" if normalizuj_trase(miejsce) !=
                                   normalizuj_trase(miejsce_wczoraj) else "FALSE")
@@ -199,6 +262,12 @@ def main():
                 f"{p}_liczba_koncertow": typy.get("koncert", 0),
                 f"{p}_liczba_poza_centrum": sum(1 for w in zdarzenia
                                                 if w.get("poza_centrum") == "TRUE"),
+                f"{p}_liczba_dzielnicowych": sum(1 for w in zdarzenia
+                                                 if w.get("dzielnicowe") == "TRUE"),
+                f"{p}_dzielnicowe_kronika": kronika_dzielnicowe.get((rok, miasto), 0),
+                f"{p}_frekwencja_maj1": strumienie.get("maj1", "") or "",
+                f"{p}_frekwencja_walpurgis": strumienie.get("walpurgis", "") or "",
+                f"{p}_frekwencja_npd_kontra": strumienie.get("npd_kontra", "") or "",
                 f"{p}_frekwencja_suma": suma or "",
                 f"{p}_frekwencja_zwiazkowa": suma_zw or "",
                 f"{p}_udzial_zwiazkowy": round(suma_zw / suma, 3) if suma else "",
@@ -222,6 +291,12 @@ def main():
                     "de_zatrzymania_1maja": liczba(pr.get("arrests_may1")),
                     "de_zatrzymania_walpurgis": liczba(pr.get("arrests_walpurgisnacht")),
                     "de_zatrzymania_kontra": liczba(pr.get("arrests_npd_kontra")),
+                    # The repo's single turnout figure, kept next to our own
+                    # sum rather than merged into it: it counts the main
+                    # demonstration, while de_frekwencja_suma adds up every
+                    # event of the year, so the two are not the same measure
+                    # and reconciling them is a decision, not arithmetic.
+                    "de_frekwencja_repo": liczba(pr.get("turnout")),
                 })
         if any(wiersz[f"{m.lower()}_liczba_wydarzen"] != "" for m in MIASTA):
             wiersze.append(wiersz)
@@ -238,15 +313,19 @@ def main():
                     f"{p}_liczba_prawicowych", f"{p}_liczba_kontra",
                     f"{p}_liczba_wiecow", f"{p}_liczba_happeningow",
                     f"{p}_liczba_spotkan", f"{p}_liczba_koncertow",
-                    f"{p}_liczba_poza_centrum",
-                    f"{p}_frekwencja_suma", f"{p}_frekwencja_zwiazkowa",
+                    f"{p}_liczba_poza_centrum", f"{p}_liczba_dzielnicowych",
+                    f"{p}_dzielnicowe_kronika",
+                    f"{p}_frekwencja_suma", f"{p}_frekwencja_maj1",
+                    f"{p}_frekwencja_walpurgis", f"{p}_frekwencja_npd_kontra",
+                    f"{p}_frekwencja_zwiazkowa",
                     f"{p}_udzial_zwiazkowy", f"{p}_liczba_aktorow",
                     f"{p}_aktorzy_nowi", f"{p}_aktorzy_znikajacy",
                     f"{p}_wydarzenia_nowe", f"{p}_wydarzenia_znikajace",
                     f"{p}_miejsce_wiecu", f"{p}_miejsce_wiecu_zmienione",
                     f"{p}_trasa_glowna_zmieniona", f"{p}_notatka"]
         if miasto == "DE":
-            kolumny += ["de_policja_sily", "de_ranni_policjanci",
+            kolumny += ["de_frekwencja_repo",
+                        "de_policja_sily", "de_ranni_policjanci",
                         "de_zatrzymania_1maja", "de_zatrzymania_walpurgis",
                         "de_zatrzymania_kontra"]
     write_csv(OUT_DIR / "pole.csv", wiersze, kolumny)
@@ -257,6 +336,9 @@ def main():
     if poza:
         lata_poza = sorted({w["rok"] for w in poza})
         print(f"  poza zakresem, nie liczone: {len(poza)} wydarzen ({', '.join(lata_poza)})")
+    braki = [str(r) for r in range(ZAKRES["PL"][0], ZAKRES["PL"][1] + 1) if r not in miejsca_pl]
+    if braki:
+        print(f"  miejsce wiecu PL nieustalone dla: {', '.join(braki)}")
     print(f"pole.html: {(OUT_DIR / 'pole.html').stat().st_size // 1024} KB")
 
 

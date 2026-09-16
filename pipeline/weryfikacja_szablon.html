@@ -339,13 +339,18 @@ Ponowne uruchomienie pipeline'u odświeży listy do sprawdzenia, ale nie ruszy t
 
     if(kolejka === "duplikaty"){
       tresc.innerHTML = '<div class="tytul">' + p.warianty.length + " obiektów dzieli ten sam id</div>" +
-                        '<div class="ident">' + p.klucz + "</div>";
+        '<div class="detal">' + (p.identyczna_geometria
+          ? "ta sama geometria — to zapewne jeden obiekt narysowany dwa razy"
+          : "różne punkty, ale nic poza tym ich nie rozróżnia") + "</div>" +
+        '<div class="ident">' + p.klucz + "</div>";
       const box = document.createElement("div");
       box.className = "warianty";
       p.warianty.forEach(w => {
         const r = document.createElement("div");
         r.className = "wariant";
-        r.innerHTML = '<span class="ident">' + w.id + "</span>";
+        r.innerHTML = '<span class="ident">' + w.id + "</span>" +
+          '<span class="ident">' + [w.dzielnica, w.geom, w.punkt]
+            .filter(Boolean).join(" · ") + "</span>";
         const i = poleTekst(kolejka, p, "nazwa__" + w.id,
           w.nazwa || w.warstwa || "własna nazwa", decyzja["nazwa__" + w.id]);
         r.appendChild(i);
@@ -360,7 +365,10 @@ Ponowne uruchomienie pipeline'u odświeży listy do sprawdzenia, ale nie ruszy t
         '<div class="ident">' + p.zrodla + "</div>";
     } else if(kolejka === "brakujace"){
       tresc.innerHTML = '<div class="tytul">' + (p.dzielnica || "bez dzielnicy") +
-        (p.duplikat ? ' &middot; <span style="color:var(--wait)">możliwy duplikat</span>' : "") + "</div>" +
+        (p.duplikat ? ' &middot; <span style="color:var(--wait)">możliwy duplikat</span>' : "") +
+        (p.dzielnicowe === "TRUE"
+          ? ' &middot; <span style="color:var(--ok)">dzielnicowe: ' + p.organizator + "</span>"
+          : (p.dzielnicowe ? ' &middot; kandydat na dzielnicowe' : "")) + "</div>" +
         '<div class="detal">' + p.tekst + "</div>" +
         '<div class="ident">' + p.odniesienie + "</div>";
     } else if(kolejka === "tylko_rocznik"){
