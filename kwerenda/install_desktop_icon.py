@@ -117,16 +117,53 @@ def skrot_macos(python: Path, ikona: Path) -> Path:
   <key>CFBundleIconFile</key><string>kwerenda</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleShortVersionString</key><string>2.0</string>
-  <key>LSUIElement</key><true/>
 </dict></plist>
 """, encoding="utf-8")
 
     uruchamiacz = aplikacja / "Contents/MacOS" / NAZWA
-    uruchamiacz.write_text(f'#!/bin/bash\ncd "{KATALOG}"\nexec "{python}" -m kwerenda gui\n',
-                           encoding="utf-8")
+    uruchamiacz.write_text(_skrypt_macos(python), encoding="utf-8")
     uruchamiacz.chmod(0o755)
     _icns(ikona, aplikacja / "Contents/Resources/kwerenda.icns")
     return aplikacja
+
+
+#: Launcher for the macOS bundle. Double-clicking an app that dies leaves macOS
+#: saying only "the application is not open anymore", with the reason gone — so
+#: this keeps a log and puts the failure on screen.
+_SZABLON_MACOS = r"""#!/bin/bash
+PROGRAM="@PROGRAM@"
+PYTHON="@PYTHON@"
+LOG="${KWERENDA_HOME:-$HOME/Kwerenda}/launch.log"
+mkdir -p "$(dirname "$LOG")" 2>/dev/null
+
+powiedz() {
+  printf '%s\n' "$1" >> "$LOG"
+  ODPOWIEDZ=$(osascript -e "display dialog \"$1\" buttons {\"Open the log\", \"OK\"} default button \"Open the log\" with title \"Kwerenda\" with icon caution" 2>/dev/null)
+  case "$ODPOWIEDZ" in *"Open the log"*) open "$LOG" ;; esac
+  exit 1
+}
+
+printf '\n--- %s ---\n' "$(date)" >> "$LOG"
+
+if [ ! -d "$PROGRAM" ]; then
+  powiedz "The Kwerenda folder is no longer where it was installed from: $PROGRAM. Move it back, or run install_desktop_icon.py again in its new place."
+fi
+if [ ! -x "$PYTHON" ]; then
+  powiedz "Kwerenda's Python environment is missing: $PYTHON. Run install_desktop_icon.py again in $PROGRAM."
+fi
+
+cd "$PROGRAM" || powiedz "Cannot enter $PROGRAM."
+"$PYTHON" -m kwerenda gui >> "$LOG" 2>&1
+KOD=$?
+if [ "$KOD" -ne 0 ]; then
+  powiedz "Kwerenda stopped with error $KOD. The last lines of the log say what happened."
+fi
+"""
+
+
+def _skrypt_macos(python: Path) -> str:
+    return (_SZABLON_MACOS.replace("@PROGRAM@", str(KATALOG))
+                          .replace("@PYTHON@", str(python)))
 
 
 def _icns(png: Path, cel: Path) -> None:

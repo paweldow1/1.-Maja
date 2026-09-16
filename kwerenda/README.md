@@ -217,6 +217,20 @@ else (a synced drive, the dissertation folder) if you prefer.
 `python -m kwerenda where` prints all of it. Anything an earlier version left
 inside the program folder is moved out on first run, and says so.
 
+## When something does not start
+
+```bash
+python -m kwerenda doctor
+```
+
+It checks the Python version, every library, the PDF reader, whether your data
+folder is writable and whether the port is free, and prints what to do about
+anything that is wrong.
+
+On macOS the desktop app also keeps `~/Kwerenda/launch.log` and puts a dialog on
+screen if it fails, rather than leaving you with *"the application is not open
+anymore"* and no reason.
+
 ## Updating
 
 1. Download the current ZIP and unpack it.

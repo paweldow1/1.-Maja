@@ -7,6 +7,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from typing import List
 
 from . import __wersja__
 from .cytowania import (Rekord, do_bibtex, do_csl, do_csv, do_markdown, do_ris,
@@ -204,6 +205,88 @@ def polecenie_where(args) -> int:
     return 0
 
 
+def polecenie_doctor(args) -> int:
+    """Check everything the interface needs, and say what is wrong in plain words."""
+    import socket
+
+    klopoty: List[str] = []
+
+    def zdaj(etykieta: str, ok: bool, szczegol: str = "", rada: str = "",
+             konieczna: bool = True) -> None:
+        # Something optional that is broken is not "ok" — saying so would hide
+        # exactly the kind of half-installed library that is worth knowing about.
+        znacznik = "ok  " if ok else ("FAIL" if konieczna else "warn")
+        print(f"  {znacznik}  {etykieta:<22} {szczegol}")
+        if not ok and rada:
+            klopoty.append(rada)
+
+    print(f"Kwerenda {__wersja__}\n")
+    print("Python")
+    wersja = sys.version_info
+    zdaj("version", wersja >= (3, 9), f"{wersja.major}.{wersja.minor}.{wersja.micro}",
+         "Python 3.9 or newer is needed — install it from python.org.")
+    zdaj("interpreter", True, sys.executable)
+
+    print("\nLibraries")
+    for nazwa, konieczna, rada in (
+            ("requests", True, "pip install -r requirements.txt"),
+            ("bs4", True, "pip install -r requirements.txt"),
+            ("pypdf", False, "pip install pypdf — without it PDF attachments are skipped"),
+            ("yaml", False, "pip install pyyaml — without it presets must be JSON")):
+        try:
+            modul = __import__(nazwa)
+            zdaj(nazwa, True, getattr(modul, "__version__", ""))
+        except BaseException as exc:
+            zdaj(nazwa, False, f"{type(exc).__name__}: {str(exc)[:60]}", rada,
+                 konieczna=konieczna)
+
+    print("\nPDF readers")
+    from .pliki import dostepne_silniki
+    silniki = dostepne_silniki()
+    zdaj("available", bool(silniki), ", ".join(silniki) or "none",
+         "No PDF reader: run pip install pypdf, otherwise PDFs will be skipped.")
+
+    print("\nYour work")
+    katalog = katalog_danych()
+    proba = katalog / ".zapis-probny"
+    try:
+        proba.write_text("x", encoding="utf-8")
+        proba.unlink()
+        zapisywalny = True
+    except OSError as exc:
+        zapisywalny = False
+        print(f"        ({exc})")
+    zdaj("folder", zapisywalny, str(katalog),
+         f"Cannot write to {katalog} — set KWERENDA_HOME to a folder you can write to.")
+    zdaj("corpus", True, str(args.database or sciezka_bazy()))
+
+    print("\nThe interface")
+    port = 8765
+    gniazdo = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        gniazdo.bind(("127.0.0.1", port))
+        wolny = True
+    except OSError:
+        wolny = False
+    finally:
+        gniazdo.close()
+    zdaj(f"port {port}", True, "free" if wolny
+         else "busy — Kwerenda will use the next one")
+
+    from .zotero import konektor_dziala
+    dziala, komunikat = konektor_dziala()
+    zdaj("Zotero", True, komunikat if dziala else "not running (that is fine — export a RIS file)")
+
+    if klopoty:
+        print("\nWhat to do:")
+        for rada in klopoty:
+            print(f"  • {rada}")
+        return 1
+    print("\nEverything the interface needs is in place. Start it with: "
+          "python -m kwerenda gui")
+    return 0
+
+
 def polecenie_languages(args) -> int:
     for jezyk in JEZYKI.values():
         print(f"{jezyk.kod}  {jezyk.nazwa:<12} {jezyk.pismo:<9} "
@@ -301,6 +384,9 @@ def zbuduj_parser() -> argparse.ArgumentParser:
 
     p = pod.add_parser("presets", help="list the saved presets")
     p.set_defaults(funkcja=polecenie_presets)
+
+    p = pod.add_parser("doctor", help="check that everything needed is in place")
+    p.set_defaults(funkcja=polecenie_doctor)
 
     p = pod.add_parser("where", help="show where your work is kept")
     p.set_defaults(funkcja=polecenie_where)
