@@ -36,6 +36,9 @@ from common import write_csv
 
 BASE = Path(__file__).parent
 KATALOG = BASE / "input/nd"
+# Pliki bez daty w tresci: rok podany recznie, zeby nie wracal jako
+# ostrzezenie przy kazdym przebiegu.
+LATA_RECZNIE = KATALOG / "lata_recznie.tsv"
 WYJSCIE = BASE / "output/dzielnicowe_kandydaci.tsv"
 
 # Marker wstawiany przez narzedzia/zbierz_html.py. Zapisana strona HTML
@@ -251,6 +254,19 @@ def czas(linia):
     return godzina(m.group(5), m.group(6)), ""
 
 
+def wczytaj_lata_recznie():
+    if not LATA_RECZNIE.exists():
+        return {}
+    out = {}
+    for linia in LATA_RECZNIE.read_text(encoding="utf-8").splitlines():
+        if not linia.strip() or linia.startswith("#") or linia.startswith("plik\t"):
+            continue
+        czesci = linia.split("\t")
+        if len(czesci) >= 2 and czesci[1].strip().isdigit():
+            out[czesci[0].strip()] = czesci[1].strip()
+    return out
+
+
 def rozbij_sklejke(tekst, sciezka, korzen):
     """-> [(sciezka, tresc)]. Plik bez markerow zostaje jednym artykulem."""
     trafienia = list(SKLEJKA.finditer(tekst))
@@ -285,6 +301,10 @@ def rok_z_pliku(sciezka, tekst, korzen):
     # pages that means anything -- the rest are the paper's founding year, a
     # digitisation note and links to unrelated elections.
     for wzor in (r"^\s*\d{1,2}\.\d{1,2}\.((?:19|20)\d{2})\s*$",
+                 # "1 maja 2013" -- zrzuty z polskiego Facebooka
+                 r"\b\d{1,2}\s+(?:stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|"
+                 r"sierpnia|wrze\u015bnia|pa\u017adziernika|listopada|grudnia)\s+"
+                 r"((?:19|20)\d{2})\b",
                  r"^\s*\d{1,2}\.\s*(?:Januar|Februar|M\u00e4rz|April|Mai|Juni|Juli|"
                  r"August|September|Oktober|November|Dezember)\s+((?:19|20)\d{2})\s*$"):
         m = re.search(wzor, tekst, re.M)
@@ -301,7 +321,8 @@ def main(katalog=None):
     pliki = sorted(p for p in katalog.rglob("*")
                    if p.is_file() and p.suffix.lower() in znane) if katalog.exists() else []
     pominiete = sorted({p.suffix.lower() for p in katalog.rglob("*")
-                        if p.is_file() and p.suffix.lower() not in znane}) \
+                        if p.is_file() and p.suffix.lower() not in znane
+                        and p != LATA_RECZNIE}) \
         if katalog.exists() else []
     if not pliki:
         print(f"brak czytelnych plikow w {katalog}")
@@ -309,6 +330,7 @@ def main(katalog=None):
             print(f"  sa za to rozszerzenia, ktorych nie obsluguje: {', '.join(pominiete)}")
         return
 
+    reczne = wczytaj_lata_recznie()
     kandydaci, bez_roku, nieczytelne = [], set(), []
     artykuly, sklejki = [], 0
     for sciezka in pliki:
@@ -323,7 +345,11 @@ def main(katalog=None):
         artykuly += czesci
 
     for sciezka, tekst in artykuly:
-        rok = rok_z_pliku(sciezka, tekst, katalog)
+        try:
+            wzgledna = sciezka.relative_to(katalog).as_posix()
+        except ValueError:
+            wzgledna = sciezka.name
+        rok = reczne.get(wzgledna) or rok_z_pliku(sciezka, tekst, katalog)
         # These lists sit under one heading ("Die Linke laedt ein ..."), so
         # most lines never name the party. If the article as a whole points
         # at exactly one, that is the organiser -- flagged as such, because
