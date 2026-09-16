@@ -14,10 +14,11 @@
    "properties": {
     "name": "Begegnung der Generationen",
     "Lata": "1993",
-    "description": "1993: Begegnung der Generationen, 15:00–19:00",
+    "description": "1993: Begegnung der Generationen, 15:00–19:00\n   źródło: ND 30.04.1993\n   „Unter dem Titel Begegnung der Generationen lädt die Arbeiterwohlfahrt Kreuzberg zwischen 15 und 19 Uhr in und um das Seniorenheim Stallschreiberstraße 12.”",
     "Aktor": "AWO",
     "Dzielnica": "Kreuzberg",
     "Edycji opisanych": 1,
+    "Zrodla": "ND 30.04.1993",
     "Precyzja": "adres",
     "Zrodlo punktu": "Stallschreiberstraße 12; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -34,10 +35,11 @@
    "properties": {
     "name": "Humannplatz Prenzlauer Berg",
     "Lata": "1995",
-    "description": "1995: Antifaschistisches Zelt auf dem Humannplatz",
+    "description": "1995: Antifaschistisches Zelt auf dem Humannplatz\n   źródło: ND 29.04.1995\n   „In Prenzlauer Berg auf dem Humannplatz wollen Antifaschisten ein Zelt [tekst urwany w zrodle]”",
     "Aktor": "Antifa",
     "Dzielnica": "Prenzlauer Berg",
     "Edycji opisanych": 1,
+    "Zrodla": "ND 29.04.1995",
     "Precyzja": "plac",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -54,10 +56,11 @@
    "properties": {
     "name": "Maifeier am Orankebad",
     "Lata": "1994;1995",
-    "description": "1994: Maifeier der SPD Hohenschönhausen, 14:00–18:00\n1995: Maifeier am Orankebad, 14:00–18:00",
+    "description": "1994: Maifeier der SPD Hohenschönhausen, 14:00–18:00\n   źródło: nd 27.04.1994\n   „Die Hohenschönhausener SPD macht bei Musik und Freibier ihre eigene Maifeier. Zwischen 14 und 18 Uhr am Orankebad.”\n\n1995: Maifeier am Orankebad, 14:00–18:00\n   źródło: rocznik DE\n   „(Festyny SPD): 14:00-18:00, Hohenschönhausen, Orankebad”",
     "Aktor": "SPD",
     "Dzielnica": "Hohenschönhausen",
     "Edycji opisanych": 2,
+    "Zrodla": "nd 27.04.1994; rocznik DE",
     "Precyzja": "obiekt",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy"
    }
@@ -74,10 +77,11 @@
    "properties": {
     "name": "Maifest Boulevard Kastanienallee",
     "Lata": "1998",
-    "description": "1998: Straßenfest Boulevard Kastanienallee",
+    "description": "1998: Straßenfest Boulevard Kastanienallee\n   źródło: ND 29.04.1998\n   „(ND-Dittmann). Zu einem großen Straßenfest auf dem Boulevard Kastanienallee lädt die Volkssolidarität am 1. Mai ein. Der unter dem Motto stehende Aufruf »In wachsender Solidarität der Generationen gemeinsam« wurde von über 50 Vereinen, freien Trägern, Bürgerinitiativen und dem PDS-Bezirksvorstand unterzeichnet. Die meisten beteiligen sich auch an der Organisation des Maifestes.”",
     "Aktor": "Volkssolidarität",
     "Dzielnica": "Hellersdorf",
     "Edycji opisanych": 1,
+    "Zrodla": "ND 29.04.1998",
     "Precyzja": "adres",
     "Zrodlo punktu": "Kastanienallee 6-8, Hellersdorf; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -94,10 +98,11 @@
    "properties": {
     "name": "Maifest am Obersee",
     "Lata": "1994",
-    "description": "1994: 1. Mai-Fest im Oberseepark, 14:00–18:00",
+    "description": "1994: 1. Mai-Fest im Oberseepark, 14:00–18:00\n   źródło: nd 27.04.1994\n   „Das »Aktionsbündnis für Soziale Verantwortung«, dem 20 Vereine und Projekte in Hohenschönhausen angehören, veranstaltet ein 1. Mai-Fest zwischen 14 und 18 Uhr im Oberseepark am Wasserturm.”",
     "Aktor": "Aktionsbündnis für Soziale Verantwortung",
     "Dzielnica": "Hohenschönhausen",
     "Edycji opisanych": 1,
+    "Zrodla": "nd 27.04.1994",
     "Precyzja": "park",
     "Zrodlo punktu": "brzeg Obersee; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -114,10 +119,11 @@
    "properties": {
     "name": "Maifest im Bürgerpark",
     "Lata": "1995",
-    "description": "1995: Maifest im Bürgerpark, 13:00–18:00",
+    "description": "1995: Maifest im Bürgerpark, 13:00–18:00\n   źródło: ND 29.04.1995; rocznik DE\n   „im Pankower Bürgerpark läuft ab 14 Uhr ein Maifest (nd); rocznik: 13:00-18:00, Pankower Bürgerpark”",
     "Aktor": "SPD",
     "Dzielnica": "Pankow",
     "Edycji opisanych": 1,
+    "Zrodla": "ND 29.04.1995; rocznik DE",
     "Precyzja": "park",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -134,10 +140,11 @@
    "properties": {
     "name": "Maifest im Schloßpark Buch",
     "Lata": "1995",
-    "description": "1995: Maifest im Schloßpark Buch, 13:00–18:00",
+    "description": "1995: Maifest im Schloßpark Buch, 13:00–18:00\n   źródło: rocznik DE\n   „(Festyny SPD): 13:00-18:00, Buch, Schloßpark”",
     "Aktor": "SPD",
     "Dzielnica": "Buch",
     "Edycji opisanych": 1,
+    "Zrodla": "rocznik DE",
     "Precyzja": "park",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -154,10 +161,11 @@
    "properties": {
     "name": "SPD-Rosengartenfest",
     "Lata": "1995",
-    "description": "1995: SPD-Rosengartenfest, 13:00–18:00",
+    "description": "1995: SPD-Rosengartenfest, 13:00–18:00\n   źródło: ND 29.04.1995; rocznik DE\n   „Treptow erlebt ein SPD-Rosengartenfest am 1. Mai (nd); rocznik: 13:00-18:00, Treptower Park, Rosengarten”",
     "Aktor": "SPD",
     "Dzielnica": "Treptow",
     "Edycji opisanych": 1,
+    "Zrodla": "ND 29.04.1995; rocznik DE",
     "Precyzja": "park",
     "Zrodlo punktu": "Rosengarten w Treptower Park; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -174,10 +182,11 @@
    "properties": {
     "name": "Tanz in den Mai",
     "Lata": "1995",
-    "description": "1995 (30.04): Tanz in den Mai",
+    "description": "1995 (30.04): Tanz in den Mai\n   źródło: rocznik DE\n   „»Tanz in den Mai«, organizowany przez zarzady dzielnicowe SPD; rocznik wymienia sale: Gemeinschaftshaus Lipschitzallee”",
     "Aktor": "SPD",
     "Dzielnica": "Neukölln",
     "Edycji opisanych": 1,
+    "Zrodla": "rocznik DE",
     "Precyzja": "z kroniki",
     "Zrodlo punktu": "link geo: w rocznikach DE, przy wpisie SPD 1995; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -194,10 +203,11 @@
    "properties": {
     "name": "Tanz in den Mai",
     "Lata": "1995",
-    "description": "1995 (30.04): Tanz in den Mai",
+    "description": "1995 (30.04): Tanz in den Mai\n   źródło: rocznik DE\n   „»Tanz in den Mai«, organizowany przez zarzady dzielnicowe SPD; rocznik wymienia sale: Rathaus Wedding”",
     "Aktor": "SPD",
     "Dzielnica": "Wedding",
     "Edycji opisanych": 1,
+    "Zrodla": "rocznik DE",
     "Precyzja": "obiekt",
     "Zrodlo punktu": "Müllerstraße 146; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -214,10 +224,11 @@
    "properties": {
     "name": "Volksfest der SPD im Schlosshof",
     "Lata": "1994",
-    "description": "1994: Volksfest der SPD im Schlosshof, 14:00",
+    "description": "1994: Volksfest der SPD im Schlosshof, 14:00\n   źródło: BZ 28.04.1994\n   „**14:00** – Volksfest SPD w Köpenick, Schlosshof #SPD i Pankow, Breite Strasse (BZ 28.04.1994)”",
     "Aktor": "SPD",
     "Dzielnica": "Köpenick",
     "Edycji opisanych": 1,
+    "Zrodla": "BZ 28.04.1994",
     "Precyzja": "plac",
     "Zrodlo punktu": "Schlossplatz / Frauentog, Altstadt; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }

@@ -46,7 +46,7 @@ def main():
         wydarzenia = list(csv.DictReader(f))
     kolumny = list(wydarzenia[0].keys())
     for k in ("godzina_do", "miejsce", "osoby", "seria", "data", "aktor_linia",
-              "edycja", "edycja_zrodlo"):
+              "edycja", "edycja_zrodlo", "zrodlo", "cytat"):
         if k not in kolumny:
             kolumny.append(k)
 
@@ -72,6 +72,9 @@ def main():
             "aktor_linia": LINIA if d["aktor"] in LINIA_LEWICY else d["aktor"],
             "aktor_zrodlo": "dzielnicowe.tsv", "charakter": "niezwiazkowe",
             "nazwa": d["nazwa"], "opis": d.get("zrodlo", ""),
+            # Zdanie, na ktorym stoi ten wiersz. Bez niego "wydarzenie
+            # istnialo" jest twierdzeniem, a nie ustaleniem.
+            "zrodlo": d.get("zrodlo", ""), "cytat": d.get("cytat", ""),
             "godzina": d.get("godzina_od", ""), "godzina_do": d.get("godzina_do", ""),
             "miejsce": d.get("miejsce", ""), "osoby": d.get("osoby", ""),
             "seria": d.get("seria", ""),

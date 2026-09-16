@@ -93,6 +93,10 @@ def main():
                     bity.append(f'<span class="obcy">organizuje: {e(x["aktor"])}</span>')
                 if x["edycja"]:
                     bity.append(f'<span class="edycja">edycja {e(x["edycja"])}</span>')
+                if x.get("cytat"):
+                    bity.append('<details class="dowod"><summary>'
+                                + e(x.get("zrodlo") or "źródło") + "</summary>"
+                                f'<q>{e(x["cytat"])}</q></details>')
                 czesci.append(f'<td class="jest">{"".join(bity)}</td>')
             elif od is not None and do is not None and od <= rok <= do:
                 czesci.append('<td class="brak"><span class="etykieta">'
@@ -221,6 +225,14 @@ SZABLON_GORA = """<title>Dzielnicówki PDS</title>
   .osoby{{color:var(--muted);font-size:11px;font-style:italic;margin-top:3px;
     line-height:1.35;}}
   .edycja{{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:4px;}}
+  .dowod{{margin-top:6px;font-family:var(--ui);font-size:10px;}}
+  .dowod summary{{color:var(--muted);cursor:pointer;list-style:none;
+    text-decoration:underline dotted;text-underline-offset:2px;}}
+  .dowod summary::-webkit-details-marker{{display:none}}
+  .dowod summary:hover{{color:var(--accent);}}
+  .dowod q{{display:block;margin-top:5px;padding-left:7px;
+    border-left:2px solid var(--line-mocna);font-family:var(--tekst);
+    font-size:11px;line-height:1.4;color:var(--ink);quotes:"„" "”";}}
   .obcy{{font-family:var(--ui);font-size:10px;font-weight:600;color:var(--accent);
     margin-top:4px;letter-spacing:.01em;}}
   td.brak{{background:var(--ghost-tlo);
@@ -266,6 +278,7 @@ nazwy w 2007 roku.</p>
   <span><i class="l-jest"></i>edycja opisana w źródle</span>
   <span><i class="l-brak"></i>cykl trwał, tej edycji nikt nie opisał</span>
   <span><i class="l-poza"></i>cyklu jeszcze lub już nie było</span>
+  <span>&middot; kliknij źródło pod wpisem, żeby zobaczyć cytat</span>
 </div>
 """
 

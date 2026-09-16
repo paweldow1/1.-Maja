@@ -111,6 +111,12 @@ def _dodaj(g, wydarzenia, kosz, braki):
             wiersz += f" \u2014 {w['osoby']}"
         if w.get("_z_cyklu"):
             wiersz += " [adres z innych edycji cyklu]"
+        # Zrodlo i cytat pod kazdym rokiem: klikniety punkt ma pokazywac,
+        # skad wiadomo, ze ta edycja sie odbyla.
+        if w.get("zrodlo"):
+            wiersz += f"\n   \u017ar\u00f3d\u0142o: {w['zrodlo']}"
+        if w.get("cytat"):
+            wiersz += f"\n   \u201e{w['cytat']}\u201d"
         opis.append(wiersz)
     aktorzy = sorted({w["aktor"] for w in wydarzenia})
     serie = sorted({w["seria"] for w in wydarzenia if w["seria"]})
@@ -120,10 +126,11 @@ def _dodaj(g, wydarzenia, kosz, braki):
         "properties": {
             "name": (serie[0] if serie else wydarzenia[0]["nazwa"]),
             "Lata": ";".join(lata),
-            "description": "\n".join(opis),
+            "description": "\n\n".join(opis),
             "Aktor": ";".join(aktorzy),
             "Dzielnica": g["dzielnica"],
             "Edycji opisanych": len(wydarzenia),
+            "Zrodla": "; ".join(sorted({w["zrodlo"] for w in wydarzenia if w.get("zrodlo")})),
             "Precyzja": g["precyzja"] or "adres",
             "Zrodlo punktu": g["zrodlo"],
         },
