@@ -23,18 +23,24 @@ def e(t):
 def main():
     with (OUT_DIR / "wydarzenia.csv").open(encoding="utf-8") as f:
         wyd = [x for x in csv.DictReader(f)
-               if x["warstwa"] == "Dzielnicowe"
-               and x["aktor_linia"] == "PDS/Die Linke"
-               and OD <= int(x["rok"]) <= DO]
+               if x["warstwa"] == "Dzielnicowe" and OD <= int(x["rok"]) <= DO]
     with (OUT_DIR / "dzielnicowe_serie.csv").open(encoding="utf-8") as f:
         meta = {s["seria"]: s for s in csv.DictReader(f)}
 
+    # Kolumna to cykl, a nie aktor: Maifest am Obersee w 1994 prowadzi
+    # ponadpartyjne Aktionsbündnis, a w pozostalych latach PDS -- to nadal
+    # ten sam cykl i ten sam rok trzeba w nim widziec. Do macierzy trafiaja
+    # cykle, ktore w wiekszosci edycji prowadzi linia PDS/Die Linke; kto
+    # prowadzil dana edycje, mowi sama komorka.
     wg_serii, luzne = defaultdict(dict), defaultdict(list)
     for x in wyd:
         if x["seria"]:
             wg_serii[x["seria"]][int(x["rok"])] = x
-        else:
+        elif x["aktor_linia"] == "PDS/Die Linke":
             luzne[int(x["rok"])].append(x)
+    wg_serii = {s: v for s, v in wg_serii.items()
+                if sum(1 for x in v.values() if x["aktor_linia"] == "PDS/Die Linke")
+                > len(v) / 2}
 
     def rozpietosc(seria):
         m = meta.get(seria, {})
@@ -83,6 +89,8 @@ def main():
                     bity.append(f'<span class="miejsce">{e(x["miejsce"])}</span>')
                 if x["osoby"]:
                     bity.append(f'<span class="osoby">{e(x["osoby"])}</span>')
+                if x["aktor_linia"] != "PDS/Die Linke":
+                    bity.append(f'<span class="obcy">organizuje: {e(x["aktor"])}</span>')
                 if x["edycja"]:
                     bity.append(f'<span class="edycja">edycja {e(x["edycja"])}</span>')
                 czesci.append(f'<td class="jest">{"".join(bity)}</td>')
@@ -213,6 +221,8 @@ SZABLON_GORA = """<title>Dzielnicówki PDS</title>
   .osoby{{color:var(--muted);font-size:11px;font-style:italic;margin-top:3px;
     line-height:1.35;}}
   .edycja{{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:4px;}}
+  .obcy{{font-family:var(--ui);font-size:10px;font-weight:600;color:var(--accent);
+    margin-top:4px;letter-spacing:.01em;}}
   td.brak{{background:var(--ghost-tlo);
     background-image:repeating-linear-gradient(
       -45deg,transparent 0 5px,var(--line) 5px 6px);}}

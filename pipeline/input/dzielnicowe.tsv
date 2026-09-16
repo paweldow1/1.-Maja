@@ -21,18 +21,18 @@ rok	data	miasto	dzielnica	aktor	typ	nazwa	godzina_od	godzina_do	miejsce	osoby	se
 1992	01.05	DE	Treptow	PDS	festyn	Maifeier im Johannisthaler Springbornclub	14:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	ND 30.04.1992	
 1992	01.05	DE	Treptow	PDS	festyn	Maifeier im Gerard-Philippe-Klub	14:00		Karl-Kunger-Straße			pewna	ND 30.04.1992	
 1992	01.05	DE	Pankow	PDS	festyn	Forum zu aktuellen Fragen der Politik	16:00		Haus der PDS Pankow, Breite Straße 48	Hans Modrow		pewna	ND 30.04.1992	
-1993	01.05	DE	Friedrichshain	PDS	festyn	Maifest von ND und PDS Friedrichshain	14:00		Franz-Mehring-Platz			pewna	ND 30.04.1993	
+1993	01.05	DE	Friedrichshain	PDS	festyn	Maifest von ND und PDS Friedrichshain	14:00		Franz-Mehring-Platz		Maifest im ND-Haus Friedrichshain	pewna	ND 30.04.1993	
 1993	01.05	DE	Marzahn	PDS	festyn	Maifest an der PDS-Geschäftsstelle Alt-Marzahn	13:00	23:00	Alt-Marzahn 64		Rot ist der Mai / Alt-Marzahn	pewna	ND 30.04.1993	
 1993	01.05	DE	Weißensee	PDS	festyn	Bunter Nachmittag in der PDS-Geschäftsstelle	13:00		Parkstraße 23			pewna	ND 30.04.1993	
 1993	01.05	DE	Hellersdorf	PDS	festyn	Maifest vor dem Haus der Parteien	10:00		Kastanienallee 6-8		Maifest Boulevard Kastanienallee	pewna	ND 30.04.1993	
 1993	01.05	DE	Treptow	PDS	festyn	Maifete im Springbrunnenclub	13:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	ND 30.04.1993	
 1993	01.05	DE	Köpenick	PDS	festyn	Maifeier der PDS Köpenick	14:00	17:00			1. Mai Fest Köpenick	pewna	ND 30.04.1993	
 1993	01.05	DE	Kreuzberg	AWO	festyn	Begegnung der Generationen	15:00	19:00	Seniorenheim Stallschreiberstraße 12			pewna	ND 30.04.1993	
-1995	30.04	DE	Lichtenberg	SPD	festyn	Tanz in den Mai	 		Kreisverband Lichtenberg			godzina	ND 29.04.1995	
-1995	30.04	DE	Pankow	SPD	festyn	Tanz in den Mai			Kreisverband Pankow			godzina	ND 29.04.1995	
-1995	30.04	DE	Köpenick	SPD	festyn	Tanz in den Mai			Kreisverband Köpenick			godzina	ND 29.04.1995	
-1995	01.05	DE	Treptow	SPD	festyn	SPD-Rosengartenfest			Rosengarten			godzina	ND 29.04.1995	
-1995	01.05	DE	Pankow	PDS	festyn	Maifest im Bürgerpark	14:00		Bürgerpark Pankow			pewna	ND 29.04.1995	
+1995	30.04	DE	Lichtenberg	SPD	festyn	Tanz in den Mai			Kreisverband Lichtenberg			godzina	ND 29.04.1995; rocznik DE	
+1995	30.04	DE	Pankow	SPD	festyn	Tanz in den Mai			Pankower Tanzschule, Kreuzstraße 3			godzina	ND 29.04.1995; rocznik DE	
+1995	30.04	DE	Köpenick	SPD	festyn	Tanz in den Mai			Kreisverband Köpenick			godzina	ND 29.04.1995; rocznik DE	
+1995	01.05	DE	Treptow	SPD	festyn	SPD-Rosengartenfest	13:00	18:00	Treptower Park, Rosengarten			pewna	ND 29.04.1995; rocznik DE	
+1995	01.05	DE	Pankow	SPD	festyn	Maifest im Bürgerpark	13:00	18:00	Bürgerpark Pankow			pewna	ND 29.04.1995; rocznik DE	mialem to wczesniej jako impreze PDS -- ND stawia ja w akapicie o SPD; ND podaje "ab 14 Uhr", rocznik 13:00-18:00
 1995	01.05	DE	Prenzlauer Berg	Antifa	festyn	Antifaschistisches Zelt auf dem Humannplatz			Humannplatz		Humannplatz Prenzlauer Berg	godzina	ND 29.04.1995	
 1996	01.05	DE	Hellersdorf	PDS	festyn	Maifest Boulevard Kastanienallee	10:00		Boulevard Kastanienallee	Hermann Kant; Gisela Steineckert	Maifest Boulevard Kastanienallee	pewna	ND 30.04.1996	
 1996	01.05	DE	Hohenschönhausen	PDS	festyn	Festumzug und Maifest am Obersee	09:30		Lindencenter, Festwiese am Obersee	Heinz Quermann	Maifest am Obersee	pewna	ND 30.04.1996	
@@ -82,3 +82,15 @@ rok	data	miasto	dzielnica	aktor	typ	nazwa	godzina_od	godzina_do	miejsce	osoby	se
 2012	01.05	DE	Hohenschönhausen	Die Linke	festyn	Interkulturelles Fest »Bunte Platte«			Falkenberger Chaussee / Vincent-van-Gogh-Straße		Maifest Hohenschönhausen (Falkenberger Chaussee)	godzina	Berliner Zeitung 30.04.2012	burmistrz Lichtenberga Andreas Geisel (SPD) wzywal, by odwiedzic festyn, a potem o 14:30 demonstrowac przeciw neonazistom
 2012	01.05	DE	Lichtenberg	Die Linke	kontra	Gegenkundgebung vor dem Lindencenter	14:00		Lindencenter			pewna	Berliner Zeitung 30.04.2012	zwolana przez Bezirksverband Linkspartei przeciw trzem wiecom NPD w Hellersdorfie i Lichtenbergu
 2012	01.05	DE	Kreuzberg	Die Linke	festyn	Fest der Linken auf dem Mariannenplatz	14:00	19:00	Mariannenplatz		Mariannenplatzfest	pewna	Berliner Zeitung 30.04.2012	stoiska i dyskusje polityczne w ramach MyFestu; tam tez centralny punkt zbiorki dzieci
+1994	30.04	DE	Spandau	SPD	festyn	Tanz in den Mai	18:00					pewna	BZ 28.04.1994	
+1994	30.04	DE	Prenzlauer Berg	SPD	festyn	Tanz in den Mai	20:00					pewna	BZ 28.04.1994	
+1994	01.05	DE	Friedrichshain	PDS	festyn	Maifest der PDS Friedrichshain und Lichtenberg	12:00		ND-Gebäude, Franz-Mehring-Platz 1	Christa Luft; Günter Reisch; Ernst-Busch-Chor; Ensemble aus Wünsdorf	Maifest im ND-Haus Friedrichshain	pewna	nd 27.04.1994	wspolna impreza dwoch zarzadow dzielnicowych: Friedrichshain i Lichtenberg
+1994	01.05	DE	Köpenick	PDS	festyn	Maifeier im Luisenhain	14:00	18:00	Luisenhain		1. Mai Fest Köpenick	pewna	nd 27.04.1994	muzyka, kabaret, festyn dla dzieci
+1994	01.05	DE	Hohenschönhausen	Aktionsbündnis für Soziale Verantwortung	festyn	1. Mai-Fest im Oberseepark	14:00	18:00	Oberseepark am Wasserturm		Maifest am Obersee	pewna	nd 27.04.1994	20 stowarzyszen i projektow z Hohenschönhausen; prezentuja sie kandydaci SPD, PDS, CDU i B90/Grüne -- impreza ponadpartyjna, nie PDS-owska
+1994	01.05	DE	Hohenschönhausen	SPD	festyn	Maifeier der SPD Hohenschönhausen	14:00	18:00	Orankebad		Maifeier am Orankebad	pewna	nd 27.04.1994	muzyka i darmowe piwo
+1994	01.05	DE	Köpenick	SPD	festyn	Volksfest der SPD im Schlosshof	14:00		Schlosshof Köpenick			pewna	BZ 28.04.1994	
+1994	01.05	DE	Pankow	SPD	festyn	Volksfest der SPD	14:00		Breite Straße			pewna	BZ 28.04.1994	
+1995	30.04	DE	Neukölln	SPD	festyn	Tanz in den Mai			Gemeinschaftshaus Lipschitzallee			dzielnica	rocznik DE	zrodlo wymienia sale, nie nazywa zarzadu dzielnicowego
+1995	30.04	DE	Wedding	SPD	festyn	Tanz in den Mai			Rathaus Wedding			dzielnica	rocznik DE	zrodlo wymienia sale, nie nazywa zarzadu dzielnicowego
+1995	01.05	DE	Buch	SPD	festyn	Maifest im Schloßpark Buch	13:00	18:00	Schloßpark Buch			pewna	rocznik DE	
+1995	01.05	DE	Hohenschönhausen	SPD	festyn	Maifeier am Orankebad	14:00	18:00	Orankebad		Maifeier am Orankebad	pewna	rocznik DE	
