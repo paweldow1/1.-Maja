@@ -133,7 +133,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2004,DE,Kreuzberg,2,2,4
 2004,DE,Lichtenberg,2,2,4
 2004,DE,Mitte,4,0,4
-2004,DE,Prenzlauer Berg,0,1,1
+2004,DE,Prenzlauer Berg,1,1,2
 2004,DE,Westend,1,0,1
 2005,DE,Friedrichshain,2,2,4
 2005,DE,Hohenschönhausen,1,1,2
@@ -147,6 +147,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2006,DE,Schöneberg,5,0,5
 2006,DE,Tiergarten,1,0,1
 2007,DE,Kreuzberg,4,2,6
+2007,DE,Prenzlauer Berg,1,0,1
 2007,DE,Schöneberg,5,0,5
 2007,DE,Tiergarten,1,0,1
 2008,DE,Biesdorf,0,1,1
@@ -162,7 +163,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2008,DE,Mitte,0,2,2
 2008,DE,Niederschöneweide,0,1,1
 2008,DE,Oberschöneweide,0,1,1
-2008,DE,Prenzlauer Berg,0,2,2
+2008,DE,Prenzlauer Berg,1,2,3
 2008,DE,Reinickendorf,0,1,1
 2008,DE,Schöneberg,3,1,4
 2008,DE,Tiergarten,1,1,2
@@ -170,6 +171,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2009,DE,Kreuzberg,2,3,5
 2009,DE,Köpenick,2,2,4
 2009,DE,Mitte,1,1,2
+2009,DE,Prenzlauer Berg,1,0,1
 2009,DE,Schöneberg,4,2,6
 2009,DE,Tiergarten,1,0,1
 2010,DE,Gesundbrunnen,1,0,1
@@ -178,17 +180,19 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2010,DE,Kreuzberg,2,0,2
 2010,DE,Mitte,0,1,1
 2010,DE,Niederschöneweide,2,0,2
-2010,DE,Prenzlauer Berg,2,0,2
+2010,DE,Prenzlauer Berg,3,0,3
 2010,DE,Schöneberg,3,0,3
 2010,DE,Tiergarten,1,0,1
 2011,DE,Kreuzberg,2,0,2
 2011,DE,Mitte,2,0,2
+2011,DE,Prenzlauer Berg,1,0,1
 2011,DE,Schöneberg,4,0,4
 2011,DE,Tiergarten,1,0,1
 2012,DE,Hohenschönhausen,1,0,1
 2012,DE,Kreuzberg,3,0,3
 2012,DE,Lichtenberg,1,0,1
 2012,DE,Mitte,4,0,4
+2012,DE,Prenzlauer Berg,1,0,1
 2012,DE,Wedding,1,0,1
 2013,DE,Gesundbrunnen,1,0,1
 2013,DE,Hohenschönhausen,1,0,1
@@ -196,6 +200,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2013,DE,Köpenick,1,0,1
 2013,DE,Mitte,4,0,4
 2013,DE,Niederschöneweide,3,0,3
+2013,DE,Prenzlauer Berg,1,0,1
 2014,DE,Kreuzberg,2,0,2
 2014,DE,Mitte,4,0,4
 2014,DE,Wedding,1,0,1
@@ -203,6 +208,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2015,DE,Marzahn,1,0,1
 2015,DE,Mitte,3,2,5
 2015,DE,Neu-Hohenschönhausen,2,0,2
+2015,DE,Prenzlauer Berg,1,0,1
 2015,DE,Tiergarten,1,0,1
 2015,DE,Wedding,1,2,3
 2016,DE,Friedrichshain-Kreuzberg,0,1,1

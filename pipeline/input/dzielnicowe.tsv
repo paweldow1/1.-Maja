@@ -57,7 +57,7 @@ rok	data	miasto	dzielnica	aktor	typ	nazwa	godzina_od	godzina_do	miejsce	osoby	se
 2005	01.05	DE	Hohenschönhausen	PDS	festyn	Maifest Falkenberger Chaussee	11:00		Falkenberger Chaussee, zwischen Pablo-Picasso- und Vincent-van-Gogh-Straße		Maifest Hohenschönhausen (Falkenberger Chaussee)	pewna	PDS Berlin, Termine 05.04.2005	
 2005	01.05	DE	Köpenick	PDS	festyn	Maifest Schlossplatz Köpenick	13:00		Schlossplatz, Altstadt Köpenick		1. Mai Fest Köpenick	pewna	PDS Berlin, Termine 05.04.2005	
 2005	01.05	DE	Kreuzberg	PDS	festyn	Maifest Mariannenplatz	13:00		Mariannenplatz		Mariannenplatzfest	pewna	PDS Berlin, Termine 05.04.2005	
-2005	01.05	DE	Prenzlauer Berg	PDS	festyn	Maifest an der Bötzoweiche	14:00		Bötzowstraße / Am Friedrichshain		Fest an der Bötzow-Eiche	pewna	PDS Berlin, Termine 05.04.2005	
+2005	01.05	DE	Prenzlauer Berg	PDS	festyn	Maifest an der Bötzoweiche	14:00		Bötzowstraße / Am Friedrichshain		Fest an der Bötzow-Eiche	pewna	PDS Berlin, Termine 05.04.2005; Zotero: »Botzow-Fest 1. Mai PDS«, s. 8	
 2005	01.05	DE	Treptow	PDS	festyn	Maifest Springbornclub	14:00		Springbornstraße		Maifest Springbornclub Johannisthal	pewna	PDS Berlin, Termine 05.04.2005	
 2013	01.05	DE	Köpenick	Die Linke	festyn	Maifest in Treptow-Köpenick			Altstadt Köpenick	Petra Pau	1. Mai Fest Köpenick	godzina	Facebook Die Linke, 1.05.2013	
 2013	01.05	DE	Hohenschönhausen	Die Linke	festyn	Maifest »Bunte Platte«				Gesine Lötzsch	Maifest Hohenschönhausen (Falkenberger Chaussee)	godzina	Facebook Die Linke, 1.05.2013	
@@ -94,3 +94,12 @@ rok	data	miasto	dzielnica	aktor	typ	nazwa	godzina_od	godzina_do	miejsce	osoby	se
 1995	30.04	DE	Wedding	SPD	festyn	Tanz in den Mai			Rathaus Wedding			dzielnica	rocznik DE	zrodlo wymienia sale, nie nazywa zarzadu dzielnicowego
 1995	01.05	DE	Buch	SPD	festyn	Maifest im Schloßpark Buch	13:00	18:00	Schloßpark Buch			pewna	rocznik DE	
 1995	01.05	DE	Hohenschönhausen	SPD	festyn	Maifeier am Orankebad	14:00	18:00	Orankebad		Maifeier am Orankebad	pewna	rocznik DE	
+2004	01.05	DE	Prenzlauer Berg	PDS	festyn	15. Kiezfest an der Bötzow-Eiche	14:00		Bötzowstraße / Am Friedrichshain		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«, s. 12	zrodlo nazywa ja PIETNASTA edycja -- a wiec pierwsza w 1990
+2007	01.05	DE	Prenzlauer Berg	Die Linke	festyn	1. Mai-Fest an der Bötzow-Eiche	13:00	18:00	Bötzowstraße / Am Friedrichshain		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«	
+2008	01.05	DE	Prenzlauer Berg	Die Linke	festyn	1. Mai-Fest an der Bötzoweiche	13:00		Am Friedrichshain / Bötzowstraße, vor dem Kino am Friedrichshain		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«, s. 8	
+2009	01.05	DE	Prenzlauer Berg	Die Linke	festyn	1. Mai-Fest an der Bötzow-Eiche	14:00	19:00	Straße am Friedrichshain, beim Kino am Friedrichshain		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«, s. 8	
+2010	01.05	DE	Prenzlauer Berg	Die Linke	festyn	Maifest der LINKEN Pankow an der Bötzoweiche	14:00		Am Friedrichshain, Ecke Bötzowstraße		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«, s. 8	program: Hopse-Burg, Ulf und Zwulf, Tino Eisbrenner i inni; jedyne zrodlo, ktore nazywa organizatora wprost -- Die Linke Pankow
+2011	01.05	DE	Prenzlauer Berg	Die Linke	festyn	1. Mai Fest an der Bötzoweiche	14:00		Bötzowstraße, Ecke Am Friedrichshain		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«, s. 8	
+2012	01.05	DE	Prenzlauer Berg	Die Linke	festyn	1. Mai-Fest an der Bötzoweiche	13:00		Kino am Friedrichshain		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«, s. 7	
+2013	01.05	DE	Prenzlauer Berg	Die Linke	festyn	1. Mai Fest an der Bötzoweiche	13:00		Straße am Friedrichshain / Bötzowstraße		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«, s. 7	
+2015	01.05	DE	Prenzlauer Berg	Die Linke	festyn	1. Mai-Fest an der Bötzoweiche	13:00		am Kino am Friedrichshain		Fest an der Bötzow-Eiche	pewna	Zotero: »Botzow-Fest 1. Mai PDS«, s. 7	

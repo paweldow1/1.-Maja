@@ -16,18 +16,18 @@ rok,wpisane,z_kroniki,wzmianki_o_fescie,na_mapie_poza_centrum,z_godzina,dzielnic
 2001,0,1,3,12,1,Hohenschönhausen,jest
 2002,0,0,0,8,0,,pusto
 2003,0,3,5,5,3,Charlottenburg;Kreuzberg;Neukölln,jest
-2004,0,7,3,5,7,Charlottenburg;Friedrichshain;Kreuzberg;Prenzlauer Berg,jest
+2004,1,7,3,5,8,Charlottenburg;Friedrichshain;Kreuzberg;Prenzlauer Berg,jest
 2005,5,4,4,7,9,Friedrichshain;Hohenschönhausen;Kreuzberg;Köpenick;Prenzlauer Berg;Treptow,jest
 2006,0,0,4,10,0,,jest
-2007,0,0,0,9,0,,pusto
-2008,0,16,0,6,16,Biesdorf;Charlottenburg;Dahlem;Friedrichsfelde;Friedrichshain;Karlshorst;Kreuzberg;Lichterfelde;Mariendorf;Marzahn;Niederschöneweide;Oberschöneweide;Prenzlauer Berg;Reinickendorf;Treptow,jest
-2009,0,2,2,8,2,Kreuzberg;Köpenick,jest
-2010,1,0,0,10,1,Hohenschönhausen,cienko
-2011,0,0,0,6,0,,pusto
-2012,3,0,1,2,2,Hohenschönhausen;Kreuzberg;Lichtenberg,jest
-2013,2,0,1,5,0,Hohenschönhausen;Köpenick,cienko
+2007,1,0,0,9,1,Prenzlauer Berg,cienko
+2008,1,16,0,6,17,Biesdorf;Charlottenburg;Dahlem;Friedrichsfelde;Friedrichshain;Karlshorst;Kreuzberg;Lichterfelde;Mariendorf;Marzahn;Niederschöneweide;Oberschöneweide;Prenzlauer Berg;Reinickendorf;Treptow,jest
+2009,1,2,2,8,3,Kreuzberg;Köpenick;Prenzlauer Berg,jest
+2010,2,0,0,10,2,Hohenschönhausen;Prenzlauer Berg,cienko
+2011,1,0,0,6,1,Prenzlauer Berg,cienko
+2012,4,0,1,2,3,Hohenschönhausen;Kreuzberg;Lichtenberg;Prenzlauer Berg,jest
+2013,3,0,1,5,1,Hohenschönhausen;Köpenick;Prenzlauer Berg,jest
 2014,0,0,0,2,0,,pusto
-2015,0,0,0,6,0,,pusto
+2015,1,0,0,6,1,Prenzlauer Berg,cienko
 2016,0,7,1,11,7,Friedrichshain-Kreuzberg;Lichtenberg;Neukölln;Pankow;Treptow;Treptow-Köpenick,jest
 2017,7,3,3,6,10,Friedrichshain-Kreuzberg;Hellersdorf;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Prenzlauer Berg;Treptow,jest
 2018,5,1,0,3,6,Grunewald;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Prenzlauer Berg,jest
