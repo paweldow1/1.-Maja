@@ -38,6 +38,13 @@ BASE = Path(__file__).parent
 KATALOG = BASE / "input/nd"
 WYJSCIE = BASE / "output/dzielnicowe_kandydaci.tsv"
 
+# Marker wstawiany przez narzedzia/zbierz_html.py. Zapisana strona HTML
+# wazy megabajty na sam CSS i obrazki w base64, wiec zamiast przesylac je w
+# calosci, tamten skrypt sciaga z nich tekst i sklada w jeden plik. Kazdy
+# artykul zachowuje w markerze swoja sciezke, wiec rok z nazwy folderu i
+# odniesienie do zrodla przezywaja sklejenie.
+SKLEJKA = re.compile(r"^=== PLIK: (.+?) ===[ \t]*$", re.M)
+
 PROSTE = {".txt", ".md", ".text"}
 ZNACZNIKI = {".html", ".htm", ".xml"}
 # Office formats that are really zip archives with one xml inside.
@@ -244,6 +251,18 @@ def czas(linia):
     return godzina(m.group(5), m.group(6)), ""
 
 
+def rozbij_sklejke(tekst, sciezka, korzen):
+    """-> [(sciezka, tresc)]. Plik bez markerow zostaje jednym artykulem."""
+    trafienia = list(SKLEJKA.finditer(tekst))
+    if not trafienia:
+        return [(sciezka, tekst)]
+    czesci = []
+    for n, m in enumerate(trafienia):
+        koniec = trafienia[n + 1].start() if n + 1 < len(trafienia) else len(tekst)
+        czesci.append((korzen / m.group(1).strip(), tekst[m.end():koniec]))
+    return czesci
+
+
 def rok_z_pliku(sciezka, tekst, korzen):
     """Nazwa pliku, potem katalogi po drodze, potem pierwsze linie tekstu.
 
@@ -281,11 +300,19 @@ def main(katalog=None):
         return
 
     kandydaci, bez_roku, nieczytelne = [], set(), []
+    artykuly, sklejki = [], 0
     for sciezka in pliki:
         tekst, sposob = tekst_z_pliku(sciezka)
         if not tekst.strip():
             nieczytelne.append(str(sciezka.relative_to(katalog)))
             continue
+        czesci = rozbij_sklejke(tekst, sciezka, katalog)
+        if len(czesci) > 1:
+            sklejki += 1
+            print(f"  {sciezka.relative_to(katalog)}: sklejka z {len(czesci)} artykulow")
+        artykuly += czesci
+
+    for sciezka, tekst in artykuly:
         rok = rok_z_pliku(sciezka, tekst, katalog)
         # These lists sit under one heading ("Die Linke laedt ein ..."), so
         # most lines never name the party. If the article as a whole points
@@ -366,7 +393,9 @@ def main(katalog=None):
             f.write("\t".join(str(k[c]) for c in kolumny) + "\n")
 
     pelne = sum(1 for k in kandydaci if k["pewnosc"] == "pewna")
-    print(f"pliki: {len(pliki)}  -> kandydatow: {len(kandydaci)} "
+    zrodla = (f"pliki: {len(pliki)}" if not sklejki
+              else f"pliki: {len(pliki)} -> artykulow: {len(artykuly)}")
+    print(f"{zrodla}  -> kandydatow: {len(kandydaci)} "
           f"({pelne} kompletnych, {len(kandydaci) - pelne} do uzupelnienia)")
     for nazwa in sorted(bez_roku):
         print(f"  UWAGA: {nazwa} -- brak roku w nazwie, w folderach i w tekscie")
