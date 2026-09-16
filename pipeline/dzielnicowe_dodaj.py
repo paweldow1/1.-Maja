@@ -20,6 +20,13 @@ from pathlib import Path
 
 from common import write_csv
 
+# PDS i Die Linke to jedna linia: partia zmienila nazwe w 2007, a Maifest
+# w Koepenick czy na Mariannenplatz odbywal sie dalej. Liczac je osobno
+# rozcina sie kazdy cykl na pol dokladnie w tym miejscu.
+LINIA_LEWICY = {"PDS", "Die Linke", "Linkspartei", "PDS / Die Linke",
+                "PDS/Die Linke"}
+LINIA = "PDS/Die Linke"
+
 BASE = Path(__file__).parent
 OUT_DIR = BASE / "output"
 TABELA = BASE / "input/dzielnicowe.tsv"
@@ -38,9 +45,14 @@ def main():
     with (OUT_DIR / "wydarzenia.csv").open(encoding="utf-8") as f:
         wydarzenia = list(csv.DictReader(f))
     kolumny = list(wydarzenia[0].keys())
-    for k in ("godzina_do", "miejsce", "osoby", "seria", "data"):
+    for k in ("godzina_do", "miejsce", "osoby", "seria", "data", "aktor_linia",
+              "edycja", "edycja_zrodlo"):
         if k not in kolumny:
             kolumny.append(k)
+
+    serie = wczytaj_tsv(SERIE)
+    poczatki = {s["seria"]: int(s["od_roku"]) for s in serie
+                if s.get("od_roku", "").isdigit()}
 
     wpisy = wczytaj_tsv(TABELA)
     istniejace = {w["klucz_zrodlowy"] for w in wydarzenia}
@@ -54,6 +66,7 @@ def main():
             "rok": d["rok"], "rok_zrodlo": "dzielnicowe.tsv", "miasto": d["miasto"],
             "warstwa": "Dzielnicowe", "typ": "festyn", "typ_zrodlo": "dzielnicowe.tsv",
             "aktor": d["aktor"], "aktor_zgadniety": "False",
+            "aktor_linia": LINIA if d["aktor"] in LINIA_LEWICY else d["aktor"],
             "aktor_zrodlo": "dzielnicowe.tsv", "charakter": "niezwiazkowe",
             "nazwa": d["nazwa"], "opis": d.get("zrodlo", ""),
             "godzina": d.get("godzina_od", ""), "godzina_do": d.get("godzina_do", ""),
@@ -73,12 +86,18 @@ def main():
             "wymaga_weryfikacji": "False",
             "decyzja_notatka": d.get("pewnosc", ""),
         })
+        # Ktora to edycja cyklu. Liczona od roku poczatkowego z tabeli serii,
+        # nie od najstarszego opisu, jaki mamy -- brak opisu nie znaczy, ze
+        # edycji nie bylo. Zrodlo policzenia idzie obok liczby.
+        seria_nazwa = d.get("seria", "")
+        if seria_nazwa in poczatki:
+            wiersz["edycja"] = int(d["rok"]) - poczatki[seria_nazwa] + 1
+            wiersz["edycja_zrodlo"] = f"od {poczatki[seria_nazwa]}"
         wydarzenia.append(wiersz)
         dodane += 1
 
     write_csv(OUT_DIR / "wydarzenia.csv", wydarzenia, kolumny)
 
-    serie = wczytaj_tsv(SERIE)
     write_csv(OUT_DIR / "dzielnicowe_serie.csv", serie,
               ["seria", "dzielnica", "aktor", "od_roku", "do_roku", "dowod"])
 
@@ -96,6 +115,10 @@ def main():
 
     print(f"dzielnicowe: +{dodane} wydarzen, {len(wydarzenia)} wierszy razem")
     print("  wg daty: " + ", ".join(f"{d or '?'}: {n}" for d, n in sorted(wg_daty.items())))
+    w_cyklu = sum(1 for w in wydarzenia
+                  if w["warstwa"] == "Dzielnicowe" and w.get("seria"))
+    print(f"  w znanym cyklu: {w_cyklu} z {dodane or w_cyklu} "
+          f"-- reszta to pojedyncze wydarzenia")
     print(f"dzielnicowe_serie.csv: {len(serie)} cykli")
     for seria, brak in luki:
         print(f"  {seria}: bez opisu {len(brak)} edycji "

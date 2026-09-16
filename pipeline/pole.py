@@ -60,7 +60,8 @@ KOLUMNY_MIASTA = [
     "liczba_rewolucyjnych", "marsz_gwiazdzisty", "liczba_zwiazkowych",
     "liczba_prawicowych", "liczba_kontra", "liczba_wiecow",
     "liczba_happeningow", "liczba_spotkan", "liczba_koncertow",
-    "liczba_poza_centrum", "liczba_dzielnicowych", "dzielnicowe_kronika",
+    "liczba_poza_centrum", "liczba_dzielnicowych",
+    "serie_dzielnicowe_czynne", "dzielnicowe_kronika",
     "frekwencja_suma", "frekwencja_maj1", "frekwencja_walpurgis",
     "frekwencja_npd_kontra", "frekwencja_zwiazkowa", "udzial_zwiazkowy",
     "liczba_aktorow", "aktorzy_nowi", "aktorzy_znikajacy", "wydarzenia_nowe",
@@ -143,6 +144,14 @@ def main():
     przemoc = wczytaj_przemoc()
     # Chronicle entries with no object on the map: where the district events
     # actually are, since they were never put on the maps.
+    # Cykle dzielnicowe: rok mieszczacy sie w rozpietosci cyklu liczy sie
+    # jako rok, w ktorym impreza sie odbyla, nawet bez opisu tej edycji.
+    # To inna wiedza niz udokumentowany wiersz i stoi w osobnej kolumnie.
+    serie_dzielnicowe = []
+    for sr in wczytaj("dzielnicowe_serie.csv"):
+        if sr.get("od_roku", "").isdigit() and sr.get("do_roku", "").isdigit():
+            serie_dzielnicowe.append((int(sr["od_roku"]), int(sr["do_roku"])))
+
     kronika_dzielnicowe = defaultdict(int)
     for k in wczytaj("brakujace_na_mapie.csv"):
         if k["dzielnicowe"]:
@@ -286,6 +295,13 @@ def main():
                                                 if w.get("poza_centrum") == "TRUE"),
                 "liczba_dzielnicowych": sum(1 for w in zdarzenia
                                                  if w.get("dzielnicowe") == "TRUE"),
+                # Ile cykli dzielnicowych bylo w tym roku czynnych. Rok w
+                # rozpietosci cyklu liczy sie nawet bez opisu tej edycji --
+                # to wiedza innego rodzaju niz udokumentowany wiersz, wiec
+                # stoi w osobnej kolumnie, nie dodaje sie do tamtej.
+                "serie_dzielnicowe_czynne": (
+                    sum(1 for od_s, do_s in serie_dzielnicowe if od_s <= rok <= do_s)
+                    if miasto == "DE" else ""),
                 "dzielnicowe_kronika": kronika_dzielnicowe.get((rok, miasto), 0),
                 "frekwencja_maj1": strumienie.get("maj1", "") or "",
                 "frekwencja_walpurgis": strumienie.get("walpurgis", "") or "",
