@@ -26,6 +26,23 @@ from common import write_csv
 BASE = Path(__file__).parent
 OUT_DIR = BASE / "output"
 DECYZJE = BASE / "input/decyzje"
+# Map objects that duplicate another object. Dropped here rather than in the
+# source files, so the call stays reversible and visible.
+USUNIETE = BASE / "input/usuniete.tsv"
+
+
+def wczytaj_usuniete():
+    """klucz_zrodlowy -> powod."""
+    if not USUNIETE.exists():
+        return {}
+    out = {}
+    for linia in USUNIETE.read_text(encoding="utf-8").splitlines():
+        if not linia.strip() or linia.startswith("#") or linia.startswith("klucz_zrodlowy\t"):
+            continue
+        czesci = linia.split("\t")
+        if len(czesci) >= 2:
+            out[czesci[0].strip()] = czesci[1].strip()
+    return out
 
 
 def wczytaj_decyzje(nazwa):
@@ -40,14 +57,24 @@ def wczytaj_decyzje(nazwa):
 
 
 def przed_zlaczeniem():
-    """Only aktor and typ, only in the per-city files."""
+    """Drop the duplicate objects, then apply aktor and typ."""
     aktorzy = wczytaj_decyzje("aktorzy")
+    usuniete = wczytaj_usuniete()
+    wyrzucone = []
     for nazwa in ("wydarzenia_warszawa.csv", "wydarzenia_berlin.csv"):
         sciezka = OUT_DIR / nazwa
         if not sciezka.exists():
             continue
         with sciezka.open(encoding="utf-8") as f:
             wiersze = list(csv.DictReader(f))
+        przed = len(wiersze)
+        for w in wiersze:
+            if w["klucz_zrodlowy"] in usuniete:
+                wyrzucone.append({"klucz_zrodlowy": w["klucz_zrodlowy"], "id": w["id"],
+                                  "rok": w["rok"], "miasto": w["miasto"],
+                                  "nazwa": w["nazwa"],
+                                  "powod": usuniete[w["klucz_zrodlowy"]]})
+        wiersze = [w for w in wiersze if w["klucz_zrodlowy"] not in usuniete]
         n = 0
         for w in wiersze:
             d = aktorzy.get(w["klucz_zrodlowy"])
@@ -60,7 +87,12 @@ def przed_zlaczeniem():
                 w["typ"], w["typ_zrodlo"] = d["typ"], "weryfikacja"
                 n += 1
         write_csv(sciezka, wiersze, list(wiersze[0].keys()))
-        print(f"{nazwa}: {n} poprawek przed zlaczeniem")
+        print(f"{nazwa}: {n} poprawek, {przed - len(wiersze)} wierszy usunietych")
+    write_csv(OUT_DIR / "usuniete.csv", wyrzucone,
+              ["klucz_zrodlowy", "id", "rok", "miasto", "nazwa", "powod"])
+    nieuzyte = set(usuniete) - {w["klucz_zrodlowy"] for w in wyrzucone}
+    for k in sorted(nieuzyte):
+        print(f"  UWAGA: usuniete.tsv wskazuje na nieistniejacy obiekt {k}")
 
 
 def main():

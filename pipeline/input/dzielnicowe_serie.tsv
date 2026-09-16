@@ -1,0 +1,5 @@
+# Cykle dzielnicowe: wydarzenia, o ktorych wiadomo, ze odbywaly sie co roku,
+# nawet jesli nie mamy opisu kazdej edycji. Sluzy do liczenia ciaglosci --
+# NIE dopisuje wydarzen do tabeli, bo edycji bez zrodla nie wymyslamy.
+seria	dzielnica	aktor	od_roku	do_roku	dowod
+1. Mai Fest Köpenick	Köpenick	PDS / Die Linke	1992	2019	18. edycja w 2009 (a wiec pierwsza w 1992); Pawel pamieta poczatek okolo 1991 -- rok poczatkowy do potwierdzenia

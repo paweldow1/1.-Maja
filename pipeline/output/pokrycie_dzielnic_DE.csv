@@ -52,12 +52,12 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 1995,DE,Wilmersdorf,1,0,1
 1996,DE,Kreuzberg,2,1,3
 1996,DE,Marzahn,1,0,1
-1996,DE,Mitte,11,0,11
+1996,DE,Mitte,10,0,10
 1996,DE,Prenzlauer Berg,2,8,10
 1996,DE,Westend,1,0,1
 1997,DE,Charlottenburg,1,0,1
 1997,DE,Kreuzberg,2,2,4
-1997,DE,Mitte,6,3,9
+1997,DE,Mitte,5,3,8
 1997,DE,Pankow,1,1,2
 1997,DE,Prenzlauer Berg,1,4,5
 1997,DE,Reinickendorf,0,2,2
@@ -125,7 +125,7 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2008,DE,Charlottenburg,0,1,1
 2008,DE,Dahlem,0,1,1
 2008,DE,Friedrichsfelde,0,1,1
-2008,DE,Friedrichshain,2,2,4
+2008,DE,Friedrichshain,1,2,3
 2008,DE,Karlshorst,0,1,1
 2008,DE,Kreuzberg,2,5,7
 2008,DE,Lichterfelde,0,1,1
@@ -195,9 +195,13 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2017,DE,Wedding,1,0,1
 2017,DE,Weißensee,1,0,1
 2018,DE,Grunewald,0,1,1
-2018,DE,Kreuzberg,2,0,2
+2018,DE,Hohenschönhausen,1,0,1
+2018,DE,Kreuzberg,3,0,3
+2018,DE,Köpenick,1,0,1
+2018,DE,Lichtenberg,1,0,1
 2018,DE,Mitte,4,0,4
 2018,DE,Pankow,1,0,1
+2018,DE,Prenzlauer Berg,1,0,1
 2018,DE,Wedding,1,0,1
 2019,DE,Blankenburg,1,0,1
 2019,DE,Friedrichshain,2,2,4

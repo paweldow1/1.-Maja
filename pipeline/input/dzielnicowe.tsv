@@ -1,0 +1,14 @@
+# Dzielnicowki: niecentralne wydarzenia organizowane przez lokalne struktury
+# partyjne (SPD, PDS/Linke). Nigdy nie trafily na mapy, wiec nie da sie ich
+# sparsowac -- sa wpisywane tutaj z prasy i z kronik.
+#
+# seria  -- nazwa cyklu, jesli wydarzenie powtarza sie co roku. Dzieki niej
+#           POLE widzi ciaglosc, a nie osobne wydarzenie w kazdym roku.
+# pewnosc -- "pewna" gdy zrodlo podaje wszystko wprost, "dzielnica" gdy
+#           sama dzielnica jest wywnioskowana z adresu.
+rok	miasto	dzielnica	aktor	nazwa	godzina_od	godzina_do	miejsce	osoby	seria	pewnosc	zrodlo
+2018	DE	Hohenschönhausen	Die Linke	Familienfest »Bunte Platte«	11:00	17:00	Falkenberger Chaussee / Vincent-van-Gogh-Straße	Michael Grunst; Gesine Lötzsch	Bunte Platte Hohenschönhausen	pewna	ND
+2018	DE	Lichtenberg	Die Linke	Markt am Rathaus Lichtenberg	11:00	18:00	Frankfurter Allee / Möllendorffstraße	Gesine Lötzsch	Markt am Rathaus Lichtenberg	pewna	ND
+2018	DE	Prenzlauer Berg	Die Linke	Fest an der Bötzow-Eiche	13:00	18:30	Bötzow-Eiche	Katina Schubert; Pascal Meiser; Klaus Lederer; Elke Breitenbach; Petra Pau; Stefan Liebich	Fest an der Bötzow-Eiche	dzielnica	ND
+2018	DE	Köpenick	Die Linke	1. Mai Fest DIE LINKE Treptow-Köpenick	13:00	18:00	Schlossplatz, Altstadt Köpenick	Petra Pau; Klaus Lederer; Katina Schubert	1. Mai Fest Köpenick	pewna	ND
+2018	DE	Kreuzberg	Die Linke	1. Mai Fest auf dem Mariannenplatz	13:00	22:00	Mariannenplatz	Katina Schubert; Petra Pau; Pascal Meiser	Mariannenplatzfest	pewna	ND

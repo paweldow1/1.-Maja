@@ -1,0 +1,7 @@
+# Obiekty mapy, ktore sa powtorzeniem innego obiektu. Nie znikaja z plikow
+# zrodlowych -- pipeline je pomija, zeby dalo sie cofnac decyzje i zeby bylo
+# widac, co i dlaczego wypadlo. Do skasowania na samej mapie osobno.
+klucz_zrodlowy	powod
+1__mai_berlin_aktualna_14_.geojson#DGB#65#1996	kopia obiektu #DGB#64, ktory obejmuje 1996 i 1997 w jednym; ta sama geometria i ta sama frekwencja
+1__mai_berlin_aktualna_14_.geojson#DGB#66#1997	kopia obiektu #DGB#64, ktory obejmuje 1996 i 1997 w jednym; ta sama geometria i ta sama frekwencja
+umap_backup_1-mai-berlin_aktualna16.umap#Euro May Day#4#2008	kopia obiektu #Euro May Day#2 (ten sam przejazd 3 m obok), bez trasy, bez frekwencji i bez opisu

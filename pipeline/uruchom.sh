@@ -15,6 +15,7 @@ python3 parse_berlin.py input/berlin input/berlin/umap_backup_1-mai-berlin_aktua
 echo "=== 2. roczniki i frekwencja"
 python3 parse_roczniki.py input/PL_1990-2019.md input/DE_1990-2019.md
 python3 parse_frekwencja.py input
+python3 parse_srednie.py
 
 echo "=== 3. zlaczenie i geografia"
 # before the join, so it matches on the corrected actors
@@ -25,6 +26,7 @@ python3 dzielnice.py
 echo "=== 4. decyzje z kartoteki"
 python3 zastosuj_decyzje.py
 python3 rozbij_upamietnienia.py
+python3 dzielnicowe_dodaj.py
 python3 identyfikatory.py
 
 echo "=== 5. tabele pochodne"

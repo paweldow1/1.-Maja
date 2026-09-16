@@ -1,9 +1,13 @@
-"""Step 6: the POLE aggregate -- one row per year, PL and DE side by side.
+"""Step 6: the POLE aggregate -- one row per year.
 
-Attendance is summed over distinct actor/event readings, never over event
-rows: several map objects can share one headcount (three DGB objects in
-1995 all carry the DGB 1995 figure), and summing rows would count it three
-times.
+Writes a table per city (pole_warszawa.csv, pole_berlin.csv), because the
+two do not have the same columns: only Berlin has the police series, and
+each city has its own event series. pole.csv is the two of them prefixed
+and joined on the year, for the side-by-side view.
+
+Attendance is read from the averaged series, not recomputed: the figures
+the analysis quotes were averaged from the spreadsheet once, in the repo's
+chart page, and parse_srednie.py lifts them into a table.
 
 Usage: python3 pole.py
 """
@@ -39,6 +43,33 @@ PRZEMOC = BASE / "input/przemoc_berlin.csv"
 # simply wrong: the prose names several places per route and the first one
 # is the assembly point, not where the rally was held.
 MIEJSCA_WIECU_PL = BASE / "input/miejsca_wiecu_warszawa.tsv"
+# The averaged attendance, one figure per year per event series, lifted from
+# the repo's chart page by parse_srednie.py. These are the numbers the
+# analysis quotes, so POLE reports them rather than averaging afresh.
+SREDNIE = BASE / "input/frekwencja_srednie.tsv"
+# Which of the three streams each series belongs to, so attendance lines up
+# with the way the Violence_Berlin data splits arrests. Anything unlisted is
+# the May 1st stream.
+SERIA_STRUMIEN = {"antinazi": "npd_kontra", "nazi": "npd_kontra",
+                  "prawica": "npd_kontra"}
+
+# One order, used by the city tables and by the combined one (prefixed).
+KOLUMNY_MIASTA = [
+    "liczba_wydarzen", "typy", "liczba_demonstracji", "liczba_upamietnien",
+    "liczba_festynow", "czy_kontra", "demonstracje_piesze", "korso",
+    "liczba_rewolucyjnych", "marsz_gwiazdzisty", "liczba_zwiazkowych",
+    "liczba_prawicowych", "liczba_kontra", "liczba_wiecow",
+    "liczba_happeningow", "liczba_spotkan", "liczba_koncertow",
+    "liczba_poza_centrum", "liczba_dzielnicowych", "dzielnicowe_kronika",
+    "frekwencja_suma", "frekwencja_maj1", "frekwencja_walpurgis",
+    "frekwencja_npd_kontra", "frekwencja_zwiazkowa", "udzial_zwiazkowy",
+    "liczba_aktorow", "aktorzy_nowi", "aktorzy_znikajacy", "wydarzenia_nowe",
+    "wydarzenia_znikajace", "miejsce_wiecu", "miejsce_wiecu_zmienione",
+    "trasa_glowna_zmieniona", "notatka",
+]
+KOLUMNY_DE = ["frekwencja_repo", "policja_sily", "ranni_policjanci",
+              "zatrzymania_1maja", "zatrzymania_walpurgis", "zatrzymania_kontra"]
+PLIKI_MIAST = {"PL": "pole_warszawa.csv", "DE": "pole_berlin.csv"}
 MIASTA = ["PL", "DE"]
 # Declared scope per city (instrukcja_v2.md sec. 0). The attendance
 # spreadsheet runs to 2026, well past the maps, so without this the table
@@ -53,6 +84,23 @@ ZWIAZKI_DODATKOWE = {"DGB", "DGB Berlin-Brandenburg", "OPZZ", "IG Metall",
 def wczytaj(nazwa):
     with (OUT_DIR / nazwa).open(encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+def wczytaj_srednie():
+    """-> {(rok, miasto): {seria: (etykieta, grupa, srednia)}}, plus serie per miasto."""
+    if not SREDNIE.exists():
+        return {}, {}
+    dane, serie_miasta = defaultdict(dict), defaultdict(list)
+    for linia in SREDNIE.read_text(encoding="utf-8").splitlines():
+        if not linia.strip() or linia.startswith("#") or linia.startswith("rok\t"):
+            continue
+        rok, miasto, seria, etykieta, grupa, srednia = (linia.split("\t") + [""] * 6)[:6]
+        if not rok.strip().isdigit():
+            continue
+        dane[(int(rok), miasto)][seria] = (etykieta, grupa, int(srednia))
+        if seria not in serie_miasta[miasto]:
+            serie_miasta[miasto].append(seria)
+    return dane, {m: sorted(v) for m, v in serie_miasta.items()}
 
 
 def wczytaj_miejsca_wiecu_pl():
@@ -100,6 +148,7 @@ def main():
         if k["dzielnicowe"]:
             kronika_dzielnicowe[(int(k["rok"]), k["miasto"])] += 1
     miejsca_pl = wczytaj_miejsca_wiecu_pl()
+    srednie, serie_miast = wczytaj_srednie()
 
     zwiazkowi = set(ZWIAZKI_DODATKOWE)
     for w in wydarzenia:
@@ -136,6 +185,7 @@ def main():
             miejsca_wiecu.setdefault((int(r["rok"]), r["miasto"]), r["miejsce_wiecu"])
 
     wiersze = []
+    wiersze_miast = {m: [] for m in MIASTA}
     for rok in lata:
         wiersz = {"rok": rok}
         for miasto in MIASTA:
@@ -143,55 +193,27 @@ def main():
             od, do = ZAKRES[miasto]
             if not (od <= rok <= do):
                 # Outside this city's scope: blank, so an empty cell reads as
-                # "not covered" rather than as a measured zero.
-                for k in ("typy", "liczba_demonstracji", "liczba_upamietnien", "liczba_festynow",
-                          "czy_kontra", "demonstracje_piesze", "korso",
-                          "liczba_rewolucyjnych", "marsz_gwiazdzisty",
-                          "liczba_wydarzen", "liczba_zwiazkowych", "frekwencja_suma",
-                          "frekwencja_zwiazkowa", "udzial_zwiazkowy", "liczba_aktorow",
-                          "aktorzy_nowi", "aktorzy_znikajacy", "wydarzenia_nowe",
-                          "wydarzenia_znikajace", "liczba_prawicowych", "liczba_kontra",
-                          "miejsce_wiecu", "miejsce_wiecu_zmienione",
-                          "trasa_glowna_zmieniona", "notatka"):
+                # "not covered" rather than as a measured zero. The city's own
+                # table gets no row at all for such a year.
+                for k in KOLUMNY_MIASTA + [f"frekwencja_{x}"
+                                           for x in serie_miast.get(miasto, [])]:
                     wiersz[f"{p}_{k}"] = ""
                 continue
             zdarzenia = [w for w in wydarzenia
                          if int(w["rok"]) == rok and w["miasto"] == miasto]
             grupy = [f for f in frekwencja
                      if int(f["rok"]) == rok and f["miasto"] == miasto]
-            suma = sum(int(f["frekwencja_sr"]) for f in grupy if f["frekwencja_sr"])
-            suma_zw = sum(int(f["frekwencja_sr"]) for f in grupy
-                          if f["frekwencja_sr"] and f["aktor"] in zwiazkowi)
-
-            # The maps carry headcounts for events the dedicated sheets do not
-            # cover -- in Warsaw that is everything except the unions, without
-            # which the union share is 1.0 by construction. Only actors the
-            # sheets miss are added, and identical readings within one
-            # actor+type are counted once: several map objects can describe
-            # the same event and repeat its figure.
-            pokryci = {f["aktor"] for f in grupy if f["frekwencja_sr"]}
-            z_mapy = set()
-            for e in zdarzenia:
-                if e["aktor"] in pokryci or not e["frekwencja_mapa_num"]:
-                    continue
-                z_mapy.add((e["typ"], e["aktor"], int(e["frekwencja_mapa_num"])))
-            suma += sum(n for _, _, n in z_mapy)
-            suma_zw += sum(n for _, aktor, n in z_mapy if aktor in zwiazkowi)
-
-            # Same figures, split into the three streams.
+            # Attendance comes from the averaged series, not from a mean
+            # recomputed here: two averaging methods over one spreadsheet
+            # would disagree quietly and nobody would know which figure the
+            # paper was quoting.
+            odczyty = srednie.get((rok, miasto), {})
+            suma = sum(v for _, _, v in odczyty.values())
+            suma_zw = sum(v for _, grupa, v in odczyty.values() if grupa == "union")
             strumienie = defaultdict(int)
-            for f in grupy:
-                if f["frekwencja_sr"]:
-                    strumienie[STRUMIEN_AKTOR.get(f["aktor"], "maj1")] += int(f["frekwencja_sr"])
-            widziane = set()
-            for e in zdarzenia:
-                if e["aktor"] in pokryci or not e["frekwencja_mapa_num"]:
-                    continue
-                klucz_e = (e["typ"], e["aktor"], int(e["frekwencja_mapa_num"]))
-                if klucz_e in widziane:
-                    continue
-                widziane.add(klucz_e)
-                strumienie[strumien(e["warstwa"], e["charakter"])] += int(e["frekwencja_mapa_num"])
+            for seria, (_, _, v) in odczyty.items():
+                strumienie[SERIA_STRUMIEN.get(seria, "maj1")] += v
+
             teraz = aktorzy.get((rok, miasto), set())
             wczoraj = aktorzy.get((rok - 1, miasto), set())
             serie_teraz = serie.get((rok, miasto), {})
@@ -237,101 +259,102 @@ def main():
             gwiazdzisty = "TRUE" if "sternmarsch" in trasa_tekst else (
                 "FALSE" if trasa_tekst else "")
 
-            wiersz.update({
-                f"{p}_liczba_wydarzen": len(zdarzenia),
-                f"{p}_typy": ";".join(f"{t}:{n}" for t, n in sorted(typy.items())),
-                f"{p}_liczba_demonstracji": typy.get("demonstracja", 0),
-                f"{p}_liczba_upamietnien": typy.get("upamiętnienie", 0) + typy.get("kwiaty", 0),
-                f"{p}_liczba_festynow": typy.get("festyn", 0),
-                f"{p}_czy_kontra": "TRUE" if typy.get("kontra") else "FALSE",
-                f"{p}_demonstracje_piesze": piesze,
-                f"{p}_korso": typy.get("korso", 0),
-                f"{p}_liczba_rewolucyjnych": rewolucyjne,
-                f"{p}_marsz_gwiazdzisty": gwiazdzisty,
-                f"{p}_liczba_zwiazkowych": sum(1 for w in zdarzenia
+            pola = {
+                "liczba_wydarzen": len(zdarzenia),
+                "typy": ";".join(f"{t}:{n}" for t, n in sorted(typy.items())),
+                "liczba_demonstracji": typy.get("demonstracja", 0),
+                "liczba_upamietnien": typy.get("upamiętnienie", 0) + typy.get("kwiaty", 0),
+                "liczba_festynow": typy.get("festyn", 0),
+                "czy_kontra": "TRUE" if typy.get("kontra") else "FALSE",
+                "demonstracje_piesze": piesze,
+                "korso": typy.get("korso", 0),
+                "liczba_rewolucyjnych": rewolucyjne,
+                "marsz_gwiazdzisty": gwiazdzisty,
+                "liczba_zwiazkowych": sum(1 for w in zdarzenia
                                                if w["charakter"] == "zwiazkowe"),
-                f"{p}_liczba_prawicowych": sum(1 for w in zdarzenia
+                "liczba_prawicowych": sum(1 for w in zdarzenia
                                                if w["warstwa"] in WARSTWY_PRAWICOWE),
-                f"{p}_liczba_kontra": sum(1 for w in zdarzenia
+                "liczba_kontra": sum(1 for w in zdarzenia
                                           if w["charakter"] == "kontra"),
                 # The remaining types, so every event in the year is counted
                 # under some column and not only inside the _typy string.
-                f"{p}_liczba_wiecow": typy.get("wiec", 0),
-                f"{p}_liczba_happeningow": typy.get("happening", 0),
-                f"{p}_liczba_spotkan": typy.get("spotkanie", 0),
-                f"{p}_liczba_koncertow": typy.get("koncert", 0),
-                f"{p}_liczba_poza_centrum": sum(1 for w in zdarzenia
+                "liczba_wiecow": typy.get("wiec", 0),
+                "liczba_happeningow": typy.get("happening", 0),
+                "liczba_spotkan": typy.get("spotkanie", 0),
+                "liczba_koncertow": typy.get("koncert", 0),
+                "liczba_poza_centrum": sum(1 for w in zdarzenia
                                                 if w.get("poza_centrum") == "TRUE"),
-                f"{p}_liczba_dzielnicowych": sum(1 for w in zdarzenia
+                "liczba_dzielnicowych": sum(1 for w in zdarzenia
                                                  if w.get("dzielnicowe") == "TRUE"),
-                f"{p}_dzielnicowe_kronika": kronika_dzielnicowe.get((rok, miasto), 0),
-                f"{p}_frekwencja_maj1": strumienie.get("maj1", "") or "",
-                f"{p}_frekwencja_walpurgis": strumienie.get("walpurgis", "") or "",
-                f"{p}_frekwencja_npd_kontra": strumienie.get("npd_kontra", "") or "",
-                f"{p}_frekwencja_suma": suma or "",
-                f"{p}_frekwencja_zwiazkowa": suma_zw or "",
-                f"{p}_udzial_zwiazkowy": round(suma_zw / suma, 3) if suma else "",
-                f"{p}_liczba_aktorow": len(teraz),
-                f"{p}_aktorzy_nowi": ";".join(sorted(teraz - wczoraj)) if wczoraj else "",
-                f"{p}_aktorzy_znikajacy": ";".join(sorted(wczoraj - teraz)) if wczoraj else "",
-                f"{p}_wydarzenia_nowe": ";".join(sorted(
+                "dzielnicowe_kronika": kronika_dzielnicowe.get((rok, miasto), 0),
+                "frekwencja_maj1": strumienie.get("maj1", "") or "",
+                "frekwencja_walpurgis": strumienie.get("walpurgis", "") or "",
+                "frekwencja_npd_kontra": strumienie.get("npd_kontra", "") or "",
+                "frekwencja_suma": suma or "",
+                "frekwencja_zwiazkowa": suma_zw or "",
+                "udzial_zwiazkowy": round(suma_zw / suma, 3) if suma else "",
+                "liczba_aktorow": len(teraz),
+                "aktorzy_nowi": ";".join(sorted(teraz - wczoraj)) if wczoraj else "",
+                "aktorzy_znikajacy": ";".join(sorted(wczoraj - teraz)) if wczoraj else "",
+                "wydarzenia_nowe": ";".join(sorted(
                     i for s, i in serie_teraz.items() if s not in serie_wczoraj)) if serie_wczoraj else "",
-                f"{p}_wydarzenia_znikajace": ";".join(sorted(
+                "wydarzenia_znikajace": ";".join(sorted(
                     i for s, i in serie_wczoraj.items() if s not in serie_teraz)) if serie_wczoraj else "",
-                f"{p}_miejsce_wiecu": miejsce,
-                f"{p}_miejsce_wiecu_zmienione": zmiana_miejsca,
-                f"{p}_trasa_glowna_zmieniona": zmiana,
-                f"{p}_notatka": f"obsidian://open?vault=Wszystko&file={rok}_{miasto}",
-            })
+                "miejsce_wiecu": miejsce,
+                "miejsce_wiecu_zmienione": zmiana_miejsca,
+                "trasa_glowna_zmieniona": zmiana,
+                "notatka": f"obsidian://open?vault=Wszystko&file={rok}_{miasto}",
+            }
+            # Every series as its own column: this is the split by event type
+            # with its attendance, in the city's own table.
+            for seria in serie_miast.get(miasto, []):
+                wpis = odczyty.get(seria)
+                pola[f"frekwencja_{seria}"] = wpis[2] if wpis else ""
             if miasto == "DE":
                 pr = przemoc.get(rok, {})
-                wiersz.update({
-                    "de_policja_sily": liczba(pr.get("einsatz")),
-                    "de_ranni_policjanci": liczba(pr.get("injured_officers")),
-                    "de_zatrzymania_1maja": liczba(pr.get("arrests_may1")),
-                    "de_zatrzymania_walpurgis": liczba(pr.get("arrests_walpurgisnacht")),
-                    "de_zatrzymania_kontra": liczba(pr.get("arrests_npd_kontra")),
+                pola.update({
+                    "policja_sily": liczba(pr.get("einsatz")),
+                    "ranni_policjanci": liczba(pr.get("injured_officers")),
+                    "zatrzymania_1maja": liczba(pr.get("arrests_may1")),
+                    "zatrzymania_walpurgis": liczba(pr.get("arrests_walpurgisnacht")),
+                    "zatrzymania_kontra": liczba(pr.get("arrests_npd_kontra")),
                     # The repo's single turnout figure, kept next to our own
                     # sum rather than merged into it: it counts the main
-                    # demonstration, while de_frekwencja_suma adds up every
-                    # event of the year, so the two are not the same measure
-                    # and reconciling them is a decision, not arithmetic.
-                    "de_frekwencja_repo": liczba(pr.get("turnout")),
+                    # demonstration, while frekwencja_suma adds up every event
+                    # of the year, so the two are not the same measure and
+                    # reconciling them is a decision, not arithmetic.
+                    "frekwencja_repo": liczba(pr.get("turnout")),
                 })
+            wiersze_miast[miasto].append({"rok": rok, **pola})
+            wiersz.update({f"{p}_{k}": v for k, v in pola.items()})
         if any(wiersz[f"{m.lower()}_liczba_wydarzen"] != "" for m in MIASTA):
             wiersze.append(wiersz)
 
+    # Two tables, one per city: they have different columns (Berlin alone
+    # has the police series) and different year ranges, and reading one city
+    # meant skipping every other column in the wide table.
+    for miasto, nazwa in PLIKI_MIAST.items():
+        kol = (["rok"] + KOLUMNY_MIASTA
+               + [f"frekwencja_{x}" for x in serie_miast.get(miasto, [])]
+               + (KOLUMNY_DE if miasto == "DE" else []))
+        write_csv(OUT_DIR / nazwa, wiersze_miast[miasto], kol)
+
+    # The wide table stays as the side-by-side view the HTML and the
+    # kartoteka read; it is the two above, prefixed and joined on the year.
     kolumny = ["rok"]
     for miasto in MIASTA:
         p = miasto.lower()
-        kolumny += [f"{p}_liczba_wydarzen", f"{p}_typy",
-                    f"{p}_liczba_demonstracji", f"{p}_liczba_upamietnien",
-                    f"{p}_liczba_festynow", f"{p}_czy_kontra",
-                    f"{p}_demonstracje_piesze", f"{p}_korso",
-                    f"{p}_liczba_rewolucyjnych", f"{p}_marsz_gwiazdzisty",
-                    f"{p}_liczba_zwiazkowych",
-                    f"{p}_liczba_prawicowych", f"{p}_liczba_kontra",
-                    f"{p}_liczba_wiecow", f"{p}_liczba_happeningow",
-                    f"{p}_liczba_spotkan", f"{p}_liczba_koncertow",
-                    f"{p}_liczba_poza_centrum", f"{p}_liczba_dzielnicowych",
-                    f"{p}_dzielnicowe_kronika",
-                    f"{p}_frekwencja_suma", f"{p}_frekwencja_maj1",
-                    f"{p}_frekwencja_walpurgis", f"{p}_frekwencja_npd_kontra",
-                    f"{p}_frekwencja_zwiazkowa",
-                    f"{p}_udzial_zwiazkowy", f"{p}_liczba_aktorow",
-                    f"{p}_aktorzy_nowi", f"{p}_aktorzy_znikajacy",
-                    f"{p}_wydarzenia_nowe", f"{p}_wydarzenia_znikajace",
-                    f"{p}_miejsce_wiecu", f"{p}_miejsce_wiecu_zmienione",
-                    f"{p}_trasa_glowna_zmieniona", f"{p}_notatka"]
+        kolumny += [f"{p}_{k}" for k in KOLUMNY_MIASTA]
+        kolumny += [f"{p}_frekwencja_{x}" for x in serie_miast.get(miasto, [])]
         if miasto == "DE":
-            kolumny += ["de_frekwencja_repo",
-                        "de_policja_sily", "de_ranni_policjanci",
-                        "de_zatrzymania_1maja", "de_zatrzymania_walpurgis",
-                        "de_zatrzymania_kontra"]
+            kolumny += [f"de_{k}" for k in KOLUMNY_DE]
     write_csv(OUT_DIR / "pole.csv", wiersze, kolumny)
     zapisz_html(wiersze, OUT_DIR / "pole.html")
     poza = [w for w in wydarzenia
             if not (ZAKRES[w["miasto"]][0] <= int(w["rok"]) <= ZAKRES[w["miasto"]][1])]
+    for miasto, nazwa in PLIKI_MIAST.items():
+        w = wiersze_miast[miasto]
+        print(f"{nazwa}: {len(w)} lat ({w[0]['rok']}-{w[-1]['rok']})")
     print(f"pole.csv:  {len(wiersze)} lat ({wiersze[0]['rok']}-{wiersze[-1]['rok']})")
     if poza:
         lata_poza = sorted({w["rok"] for w in poza})
@@ -363,9 +386,9 @@ td.rok{text-align:left;font-weight:600;background:#f3f0eb}
 .pl{background:#eef4f9}.de{background:#fceeec}
 tr:hover td{background:#fff8e6}
 </style></head><body><h1>POLE &mdash; przekr&oacute;j rok &times; miasto</h1>
-<p class="sub">Frekwencja sumowana po odczytach aktor/wydarzenie, nie po wierszach wydarze&#324;;
-gdzie arkusze nie si&#281;gaj&#261;, uzupe&#322;niona z pola Frekwencja na mapie.
-Kolumny <i>nowe id</i> i <i>znikaj&#261;ce id</i> &mdash; naje&#380;d&#378; kursorem, by zobaczy&#263; pe&#322;n&#261; list&#281;.</p>
+<p class="sub">Frekwencja: &#347;rednie z <code>index.html</code> (liczone z arkusza),
+sumowane po seriach wydarze&#324;. Pe&#322;ny rozbi&oacute;r na serie &mdash; i dane policyjne dla Berlina &mdash;
+w <code>pole_warszawa.csv</code> i <code>pole_berlin.csv</code>.</p>
 <table><thead><tr><th rowspan="2">rok</th>"""]
     czesci.append(f'<th class="pl" colspan="{len(kol)}">Warszawa</th>')
     czesci.append(f'<th class="de" colspan="{len(kol)}">Berlin</th></tr><tr>')
