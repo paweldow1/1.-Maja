@@ -17,7 +17,7 @@ rok,wpisane,z_kroniki,wzmianki_o_fescie,na_mapie_poza_centrum,z_godzina,dzielnic
 2002,10,0,0,8,10,Buch;Hohenschönhausen;Kreuzberg;Köpenick;Marzahn;Pankow;Prenzlauer Berg;Treptow,jest
 2003,2,3,5,5,4,Charlottenburg;Hohenschönhausen;Kreuzberg;Neukölln,jest
 2004,1,7,3,5,8,Charlottenburg;Friedrichshain;Kreuzberg;Prenzlauer Berg,jest
-2005,5,2,4,7,7,Friedrichshain;Hohenschönhausen;Kreuzberg;Köpenick;Prenzlauer Berg;Treptow,jest
+2005,5,3,4,7,8,Friedrichshain;Hohenschönhausen;Kreuzberg;Köpenick;Prenzlauer Berg;Treptow,jest
 2006,2,0,4,10,2,Hohenschönhausen;Lichtenberg,jest
 2007,4,0,0,9,4,Hohenschönhausen;Köpenick;Prenzlauer Berg;Treptow,jest
 2008,2,16,0,6,18,Biesdorf;Charlottenburg;Dahlem;Friedrichsfelde;Friedrichshain;Karlshorst;Kreuzberg;Köpenick;Lichterfelde;Mariendorf;Marzahn;Niederschöneweide;Oberschöneweide;Prenzlauer Berg;Reinickendorf;Treptow,jest
@@ -28,7 +28,7 @@ rok,wpisane,z_kroniki,wzmianki_o_fescie,na_mapie_poza_centrum,z_godzina,dzielnic
 2013,3,0,1,5,1,Hohenschönhausen;Köpenick;Prenzlauer Berg,jest
 2014,2,0,0,2,2,Köpenick;Treptow,cienko
 2015,4,0,0,6,4,Hohenschönhausen;Köpenick;Prenzlauer Berg;Treptow,jest
-2016,2,7,1,11,9,Friedrichshain-Kreuzberg;Köpenick;Lichtenberg;Neukölln;Pankow;Treptow;Treptow-Köpenick,jest
+2016,7,7,1,11,14,Friedrichshain-Kreuzberg;Hellersdorf;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Neukölln;Pankow;Prenzlauer Berg;Treptow;Treptow-Köpenick,jest
 2017,7,3,3,6,10,Friedrichshain-Kreuzberg;Hellersdorf;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Prenzlauer Berg;Treptow,jest
 2018,5,1,0,3,6,Grunewald;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Prenzlauer Berg,jest
 2019,5,16,7,5,21,Gatow;Grunewald;Hellersdorf;Hohenschönhausen;Kreuzberg;Köpenick;Lichtenberg;Neukölln;Pankow;Prenzlauer Berg;Spandau;Steglitz-Zehlendorf;Tempelhof,jest

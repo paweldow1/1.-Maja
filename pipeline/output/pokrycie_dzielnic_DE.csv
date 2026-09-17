@@ -143,11 +143,11 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2004,DE,Mitte,4,0,4
 2004,DE,Prenzlauer Berg,1,1,2
 2004,DE,Westend,1,0,1
-2005,DE,Friedrichshain,3,2,5
+2005,DE,Friedrichshain,2,2,4
 2005,DE,Hohenschönhausen,1,1,2
 2005,DE,Kreuzberg,4,2,6
 2005,DE,Köpenick,1,0,1
-2005,DE,Mitte,5,0,5
+2005,DE,Mitte,4,0,4
 2005,DE,Prenzlauer Berg,2,2,4
 2005,DE,Treptow,1,0,1
 2005,DE,Westend,2,0,2
@@ -240,15 +240,18 @@ rok,miasto,dzielnica,na_mapie,w_kronice,razem
 2015,DE,Wedding,1,2,3
 2016,DE,Friedrichshain-Kreuzberg,0,1,1
 2016,DE,Gesundbrunnen,1,0,1
+2016,DE,Hellersdorf,1,0,1
+2016,DE,Hohenschönhausen,1,0,1
 2016,DE,Johannisthal,1,0,1
-2016,DE,Kreuzberg,2,0,2
+2016,DE,Kreuzberg,3,0,3
 2016,DE,Köpenick,1,0,1
-2016,DE,Lichtenberg,0,1,1
+2016,DE,Lichtenberg,1,1,2
 2016,DE,Mitte,3,1,4
 2016,DE,Neu-Hohenschönhausen,2,0,2
 2016,DE,Neukölln,1,3,4
 2016,DE,Niederschöneweide,3,0,3
 2016,DE,Pankow,0,2,2
+2016,DE,Prenzlauer Berg,1,0,1
 2016,DE,Tiergarten,1,0,1
 2016,DE,Treptow,1,1,2
 2016,DE,Treptow-Köpenick,0,1,1

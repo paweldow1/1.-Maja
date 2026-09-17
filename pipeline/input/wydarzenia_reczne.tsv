@@ -6,6 +6,19 @@
 # output/wydarzenia.csv. Zdublowany cykl Humannplatz wzial sie wlasnie z
 # pominiecia tego kroku.
 rok	data	miasto	warstwa	dzielnica	aktor	typ	charakter	nazwa	godzina_od	godzina_do	miejsce	osoby	pewnosc	zrodlo	uwaga	cytat
-2005	01.05	DE	DGB	Mitte	DGB	festyn	zwiazkowe	Kinderfest am Neptunbrunnen	11:00	18:00	Neptunbrunnen	  	pewna	ND 30.04.2005		Zwischen 11 und 18 Uhr läuft am Neptunbrunnen ein Kinderfest.
-2005	30.04	DE	Walpurgisnacht	Prenzlauer Berg	nieustalony	festyn	niezwiazkowe	Fest zur friedlichen Walpurgisnacht im Mauerpark	16:30		Mauerpark, zwischen Eberswalder und Gleimstraße		pewna	ND 30.04.2005	program: tance, modlitwy o pokoj, wypuszczenie golebi pokoju 18:30, Helmi-Theater »Der Schweinehirt« 18:45, niespodzianki 22:15; butelki i puszki tego dnia w parku zakazane	Im Mauerpark von Prenzlauer Berg steigt am heutigen Sonnabend ab 16.30 Uhr ein Fest zur friedlichen Walpurgisnacht zwischen Eberswalder und Gleimstraße. Es wird getanzt, es werden Friedensgebete gesprochen, Friedenstauben zum Himmel geschickt (18.30 Uhr) und das Helmi-Theater zeigt den »Schweinehirten« (18.45 Uhr). Für 22.15 Uhr sind Überraschungen angekündigt.
-2005	30.04	DE	Walpurgisnacht	Friedrichshain	Bündnis »Mai-Steine 2005«	wiec	niezwiazkowe	Walpurgisnacht auf dem Boxhagener Platz	16:00		Boxhagener Platz		pewna	ND 30.04.2005	demonstracja przeciw »Yuppiesierung und Umstrukturierung«; stoiska, dyskusje, muzyka	Zu einer Walpurgisnacht auf dem Boxhagener Platz in Friedrichshain ruft ein Bündnis »Mai-Steine 2005«. Heute ab 16 Uhr wird dort gegen »Yuppiesierung und Umstrukturierung« demonstriert.
+2005	30.04	DE	Walpurgisnacht	Prenzlauer Berg	nieustalony	festyn	niezwiazkowe	Fest zur friedlichen Walpurgisnacht im Mauerpark	16:30		Mauerpark, zwischen Eberswalder und Gleimstraße		pewna	ND 30.04.2005	program: tance, modlitwy o pokoj, wypuszczenie golebi pokoju 18:30, Helmi-Theater »Der Schweinehirt« 18:45, niespodzianki 22:15; butelki i puszki tego dnia w parku zakazane; na mapie istnieje obiekt "Mauerpark", ale w warstwie Revolutionare 1. Mai i tylko dla 1999-2000 (1__mai_berlin_aktualna_15_.geojson) -- to inne wydarzenie niz ten festyn walpurgiowy 2005	Im Mauerpark von Prenzlauer Berg steigt am heutigen Sonnabend ab 16.30 Uhr ein Fest zur friedlichen Walpurgisnacht zwischen Eberswalder und Gleimstraße. Es wird getanzt, es werden Friedensgebete gesprochen, Friedenstauben zum Himmel geschickt (18.30 Uhr) und das Helmi-Theater zeigt den »Schweinehirten« (18.45 Uhr). Für 22.15 Uhr sind Überraschungen angekündigt.
+
+# ODRZUCONE -- zapis, zeby nie wracaly przy kolejnym czytaniu ND 30.04.2005:
+#
+# Kinderfest am Neptunbrunnen (2005, 11-18) -- nie osobne wydarzenie:
+#   uzytkownik kwalifikuje je jako czesc Maifestu DGB.
+#   >Zwischen 11 und 18 Uhr lauft am Neptunbrunnen ein Kinderfest.<
+#
+# Walpurgisnacht auf dem Boxhagener Platz (2005, od 16:00) -- juz na mapie
+#   jako obiekt "Antikapitalistische Walpurgisnacht" (warstwa Walpurgisnacht,
+#   wiec, Lata 2001-2010, 1__mai_berlin_aktualna_11_.geojson).
+#   >Zu einer Walpurgisnacht auf dem Boxhagener Platz in Friedrichshain ruft
+#   ein Bundnis >>Mai-Steine 2005<<. Heute ab 16 Uhr wird dort gegen
+#   >>Yuppiesierung und Umstrukturierung<< demonstriert. Es gibt Infostande,
+#   Diskussionen und musikalische Wortmeldungen.<
+
