@@ -34,12 +34,12 @@
    },
    "properties": {
     "name": "Humannplatz Prenzlauer Berg",
-    "Lata": "1995",
-    "description": "1995: Antifaschistisches Zelt auf dem Humannplatz\n   źródło: ND 29.04.1995\n   „In Prenzlauer Berg auf dem Humannplatz wollen Antifaschisten ein Zelt [tekst urwany w zrodle]”",
-    "Aktor": "Antifa",
+    "Lata": "1995;1996;1999;2001",
+    "description": "1995: Straßenfest »Widerspenstig & Lebendig«, 10:00–19:00\n   źródło: taz 1995; ND 29.04.1995\n   „Unter dem Motto \"Widerspenstig & Lebendig\" findet am Humannplatz in Prenzlauer Berg von 10 bis 19 Uhr ein \"buntes, froehliches Strassenfest gegen den grauen Alltag\" statt. \"Leider haben die Faschisten in den letzten Jahren den 1. Mai genutzt, um an die Oeffentlichkeit zu treten und gegen Minderheiten zu hetzen (...) Wir wollen dieser Entwicklung entgegentreten\", heisst es in einem Aufruf.”\n\n1996: Widerspenstig und lebendig, Humannplatz, 10:00–19:00\n   źródło: ND 30.04.1996; taz 1996\n   „PRENZLAUER BERG: »Widerspenstig und lebendig« soll es von 10-19 Uhr auf dem Humannplatz zugehen - mit Livemusik, Fußballturnier, Ausstellungen, Infoständen, Kinderfest.”\n\n1999: Fest auf dem Humannplatz\n   źródło: BZ 03.05.1999\n   „[peaceful festival]”\n\n2001: 7. Humannplatz-Fest, 11:00\n   źródło: stressfaktor\n   „ab 11.00 Uhr - Humannplatz (Prenzlauer Berg) 7. Humannplatz-Fest mit viel Musik, Essen- und Infoständen”",
+    "Aktor": "Bündnis linker Gruppen;Ostinitiativen;nieustalony",
     "Dzielnica": "Prenzlauer Berg",
-    "Edycji opisanych": 1,
-    "Zrodla": "ND 29.04.1995",
+    "Edycji opisanych": 4,
+    "Zrodla": "BZ 03.05.1999; ND 30.04.1996; taz 1996; stressfaktor; taz 1995; ND 29.04.1995",
     "Precyzja": "plac",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
