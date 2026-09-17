@@ -531,35 +531,63 @@ function addSource(s) {
           <div class="field"><label>HTTP basic auth</label>
             <input type="text" class="s-basic" value="${esc(s.basic_auth||"")}" placeholder="user:password"></div>
         </div>
+        <div class="row">
+          <div class="field"><label>Address of a page only you can see when signed in</label>
+            <input type="text" class="s-testurl" placeholder="https://…/an-article-behind-the-login"></div>
+          <div style="flex:0 0 auto;align-self:flex-end;padding-bottom:12px">
+            <button class="btn mini s-test">Test sign-in</button></div>
+        </div>
+        <div class="hint s-testout"></div>
       </details>
     </details>`;
   $(".s-del", el).onclick = () => el.remove();
+  $(".s-test", el).onclick = async () => {
+    const wynik = $(".s-testout", el);
+    wynik.textContent = "Checking…";
+    try {
+      const out = await api("test-login", {
+        source: readSource(el),
+        url: $(".s-testurl", el).value.trim() || $(".s-url", el).value.trim(),
+        contact: $("#contact").value,
+      });
+      const kolor = out.ok ? "var(--green)" : "var(--accent)";
+      wynik.innerHTML = `<span style="color:${kolor}">${out.ok ? "✓" : "✕"} ${esc(out.message)}</span>`
+        + (out.cookies != null ? `<br>cookies sent: ${out.cookies}` : "")
+        + (out.title ? ` · page title: ${esc(out.title)}` : "")
+        + (out.excerpt ? `<br><span style="opacity:.75">${esc(out.excerpt)}…</span>` : "");
+    } catch (e) {
+      wynik.innerHTML = `<span style="color:var(--accent)">✕ ${esc(e.message)}</span>`;
+    }
+  };
   $("#sources").appendChild(el);
   return el;
 }
 $("#add-source").onclick = () => addSource({});
 $("#add-corpus").onclick = () => addSource({mode: "corpus", name: "Downloaded corpus"});
 
-function readSources() {
-  return $$(".source").map(el => {
-    const v = s => ($(s, el) ? $(s, el).value.trim() : "");
-    const n = s => parseInt(v(s)) || null;
-    return {
+function readSource(el) {
+  const v = s => ($(s, el) ? $(s, el).value.trim() : "");
+  const n = s => parseInt(v(s)) || null;
+  return {
       url: v(".s-url"), name: v(".s-name"), mode: $(".s-mode", el).value,
-      language: v(".s-lang"),
-      tags: v(".s-tags").split(",").map(t => t.trim()).filter(Boolean),
-      year_from: n(".s-from"), year_to: n(".s-to"), date_window: v(".s-window"),
-      max_pages: n(".s-maxpages") || 30, max_urls: n(".s-maxurls") || 1500,
-      url_pattern: v(".s-pattern"), full_sweep: $(".s-sweep", el).checked,
-      attachments: $(".s-attach", el).checked,
-      search_url: v(".s-search"), listing_url: v(".s-listing"),
-      link_selector: v(".s-linksel"), next_selector: v(".s-nextsel"),
-      first_page: n(".s-firstpage") || 1,
-      urls: $(".s-urls", el).value.split("\n").map(t => t.trim()).filter(Boolean),
-      cookies: v(".s-cookies"), cookies_file: v(".s-cookiefile"),
-      browser_cookies: v(".s-browser"), basic_auth: v(".s-basic"),
-    };
-  }).filter(s => s.url || s.mode === "corpus" || s.urls.length);
+    language: v(".s-lang"),
+    tags: v(".s-tags").split(",").map(t => t.trim()).filter(Boolean),
+    year_from: n(".s-from"), year_to: n(".s-to"), date_window: v(".s-window"),
+    max_pages: n(".s-maxpages") || 30, max_urls: n(".s-maxurls") || 1500,
+    url_pattern: v(".s-pattern"), full_sweep: $(".s-sweep", el).checked,
+    attachments: $(".s-attach", el).checked,
+    search_url: v(".s-search"), listing_url: v(".s-listing"),
+    link_selector: v(".s-linksel"), next_selector: v(".s-nextsel"),
+    first_page: n(".s-firstpage") || 1,
+    urls: $(".s-urls", el).value.split("\n").map(t => t.trim()).filter(Boolean),
+    cookies: v(".s-cookies"), cookies_file: v(".s-cookiefile"),
+    browser_cookies: v(".s-browser"), basic_auth: v(".s-basic"),
+  };
+}
+
+function readSources() {
+  return $$(".source").map(readSource)
+    .filter(s => s.url || s.mode === "corpus" || s.urls.length);
 }
 
 /* --------------------------------------------------------- configuration */

@@ -684,6 +684,47 @@ class TestRozdzielenieDanych(unittest.TestCase):
         self.assertEqual(len(presety), len({p["name"] for p in presety}))   # no duplicates
 
 
+class TestSprawdzaniaLogowania(unittest.TestCase):
+    """Copying a Cookie header is the fiddliest step; a wrong one must not fail
+    silently by quietly collecting login pages."""
+
+    def _sprawdz(self, baza, ciasteczka=""):
+        from kwerenda.serwer import Obsluga, Stan
+
+        odpowiedzi = []
+        obsluga = Obsluga.__new__(Obsluga)
+        obsluga.stan = Stan(Magazyn(":memory:"), Path(tempfile.mkdtemp()))
+        obsluga._json = lambda dane, status=200: odpowiedzi.append(dane)
+        obsluga._sprawdz_logowanie({
+            "source": {"url": baza, "cookies": ciasteczka},
+            "url": f"{baza}/2020/05/tylko-dla-prenumeratorow"})
+        return odpowiedzi[0]
+
+    def test_rozpoznaje_brak_zle_i_dobre_ciasteczka(self):
+        with AtrapaWordPressa(wymagaj_ciasteczka="sid=tajne") as baza:
+            bez = self._sprawdz(baza)
+            zle = self._sprawdz(baza, "sid=nieprawidlowe")
+            dobre = self._sprawdz(baza, "sid=tajne")
+
+        self.assertFalse(bez["ok"])
+        self.assertEqual(bez["cookies"], 0)
+        self.assertIn("Nothing was sent to identify you", bez["message"])
+
+        self.assertFalse(zle["ok"])
+        self.assertEqual(zle["cookies"], 1)
+        self.assertIn("stale", zle["message"])
+
+        self.assertTrue(dobre["ok"])
+        self.assertIn("Looks signed in", dobre["message"])
+        self.assertIn("prenumerat", dobre["title"])
+
+    def test_rozpoznaje_strone_logowania(self):
+        from kwerenda.serwer import _wyglada_na_logowanie
+        self.assertTrue(_wyglada_na_logowanie('<form><input type="password"></form>'))
+        self.assertTrue(_wyglada_na_logowanie("<title>Anmelden | Zeitung</title>"))
+        self.assertFalse(_wyglada_na_logowanie("<title>1. Mai in Lichtenberg</title>"))
+
+
 class TestSerwer(unittest.TestCase):
     def test_zajety_port_nie_wywala_programu(self):
         """Double-clicking the icon twice must not end in a stack trace."""

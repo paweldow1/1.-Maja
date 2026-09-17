@@ -156,6 +156,21 @@ def zapisz_preset_do_pliku(stan: Stan, nazwa: str, konfig: dict) -> Path:
     return sciezka
 
 
+#: Marks of a page asking you to sign in rather than showing you the content.
+_POLE_HASLA = re.compile(r"<input[^>]+type=[\"']?password", re.I)
+_SLOWA_LOGOWANIA = re.compile(
+    r"\b(log ?in|sign ?in|anmelden|einloggen|zaloguj|logowanie|увійти|войти)\b", re.I)
+
+
+def _wyglada_na_logowanie(html: str) -> bool:
+    if _POLE_HASLA.search(html or ""):
+        return True
+    from bs4 import BeautifulSoup
+    zupa = BeautifulSoup(html or "", "html.parser")
+    tytul = (zupa.title.get_text(" ", strip=True) if zupa.title else "")
+    return bool(_SLOWA_LOGOWANIA.search(tytul))
+
+
 def _rekordy(stan: Stan, dane: dict) -> List[Rekord]:
     identyfikatory = dane.get("ids") or None
     przebieg = dane.get("run")
@@ -306,6 +321,9 @@ class Obsluga(BaseHTTPRequestHandler):
         if zasob == "preview":
             return self._podglad(dane)
 
+        if zasob == "test-login":
+            return self._sprawdz_logowanie(dane)
+
         if zasob == "start":
             if stan.trwa:
                 return self._json({"error": "A search is already running — stop it first."}, 409)
@@ -385,6 +403,61 @@ class Obsluga(BaseHTTPRequestHandler):
         return self._json({"error": "unknown resource"}, 404)
 
     # ------------------------------------------------------------------
+    def _sprawdz_logowanie(self, dane: dict):
+        """Fetch one page with the given credentials and say whether it worked.
+
+        Copying a Cookie header out of the browser is the fiddliest thing this
+        program asks of anybody, and a wrong one fails silently: the scraper just
+        collects login pages. So this fetches a page and reports what came back.
+        """
+        from .siec import KlientHTTP
+        from .zrodla import Zrodlo
+
+        zrodlo = Zrodlo.z_dict(dane.get("source") or {})
+        adres = (dane.get("url") or zrodlo.url or "").strip()
+        if not adres:
+            return self._json({"ok": False, "message": "Give the address of a page that "
+                                                       "only you can see when signed in."})
+
+        klient = KlientHTTP(kontakt=dane.get("contact", "") or "test",
+                            opoznienie=0.0, proby=1,
+                            respektuj_robots=bool(dane.get("respect_robots", True)))
+        kontekst = klient.kontekst_zrodla(zrodlo)
+        ile_ciastek = len(kontekst.get("cookies") or {})
+
+        odp = klient.pobierz(adres, uzyj_cache=False, zrodlo=zrodlo)
+        if not odp.ok:
+            if odp.status not in (401, 403):
+                rada = ""
+            elif ile_ciastek:
+                rada = ("  The cookies were sent but refused: they are probably stale. "
+                        "Sign in again in the browser and copy a fresh Cookie header.")
+            else:
+                rada = ("  Nothing was sent to identify you — paste the Cookie header from "
+                        "your browser into the field above.")
+            return self._json({"ok": False, "status": odp.status, "cookies": ile_ciastek,
+                               "message": f"HTTP {odp.status}. {odp.blad or ''}".strip() + rada})
+
+        from .ekstrakcja import wyciagnij_metadane, wyciagnij_tekst
+        tekst = wyciagnij_tekst(odp.tekst)
+        meta = wyciagnij_metadane(odp.tekst, adres)
+        logowanie = _wyglada_na_logowanie(odp.tekst)
+
+        if ile_ciastek == 0 and not kontekst.get("auth"):
+            wniosek = ("No credentials were sent — the page came back, but as a stranger "
+                       "sees it.")
+        elif logowanie:
+            wniosek = ("Signed out: the page came back as a login form. The cookies are "
+                       "missing, stale, or from a different host.")
+        else:
+            wniosek = f"Looks signed in. {len(tekst)} characters of text came back."
+
+        return self._json({"ok": not logowanie and ile_ciastek > 0, "status": odp.status,
+                           "cookies": ile_ciastek, "login_page": logowanie,
+                           "title": meta.tytul, "chars": len(tekst),
+                           "final_url": odp.url, "message": wniosek,
+                           "excerpt": re.sub(r"\s+", " ", tekst[:220])})
+
     def _podglad(self, dane: dict):
         opcje = Opcje(
             jezyki=tuple(k for k in (dane.get("languages") or JEZYKI.keys()) if k in JEZYKI),

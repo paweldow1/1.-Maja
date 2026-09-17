@@ -96,6 +96,29 @@ credentials: a `Cookie` header copied from the browser, a `cookies.txt` exported
 from it, cookies read straight from a local Firefox/Chrome profile (optional
 `browser-cookie3`), or HTTP basic auth.
 
+**Getting the cookie out of the browser**, which is the fiddliest step:
+
+1. Sign in to the site in your browser, as usual.
+2. Open the developer tools (`F12`, or `⌥⌘I` on a Mac) and pick **Network**.
+3. Reload the page. Click the **first entry** in the list — the page itself,
+   type `document`.
+4. On the right, under **Headers → Request Headers**, find the line beginning
+   `Cookie:` (Chrome hides it until you tick **Raw**).
+5. Copy everything after `Cookie:` — one long `name=value; name2=value2` line —
+   and paste it into **Cookie header** in the source's *Sign in with your own
+   account* section.
+
+Take it from a request to the host the articles are on, not from a login page on
+another domain, and copy the **request** header, not `Set-Cookie` from the
+response. Then press **Test sign-in**, giving the address of a page only a
+subscriber can see: Kwerenda fetches it with those credentials and says whether
+what came back is the article or the login form. Cookies expire; when the test
+starts failing, copy a fresh one.
+
+Easier, where it works: leave the Cookie field empty and put `firefox` or
+`chrome` in **Read cookies from browser** (needs `pip install browser-cookie3`),
+or export a `cookies.txt` with a browser extension and point at the file.
+
 **This is not a way past a paywall.** Nothing here disguises the client, defeats
 bot detection or circumvents any protection — a 401/403 ends with the page being
 skipped and a clear message. It reaches what your own account already opens, and
