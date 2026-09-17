@@ -11,8 +11,8 @@ scraper for the regional sites of NSZZ „Solidarność"; nothing about it is ti
 to them any more.
 
 ```
-python -m kwerenda gui              # the interface, in your browser
-python install_desktop_icon.py      # …or an icon on your desktop
+python install_desktop_icon.py      # sets everything up, adds a desktop icon
+./start.sh gui                      # …or run it straight from a terminal
 ```
 
 ---
@@ -207,6 +207,13 @@ Tabs: **Search** (what and where, the form preview, a live log) → **Results**
 
 ### The command line
 
+The commands below assume the private environment is active (`source
+.venv/bin/activate`, or `.venv\Scripts\activate` on Windows). Without that,
+replace `python -m kwerenda` with `./start.sh` (`start.bat` on Windows) — it
+finds the right Python on its own, so there is no environment to activate and
+no path to get wrong: `./start.sh preview '"1 maja"*'`, `./start.sh doctor`,
+and so on.
+
 ```bash
 # see what a query will catch, before going near the network
 python -m kwerenda preview '"1 maja"* AND (Żoliborz* OR "Józef Robotnik"*)' \
@@ -237,13 +244,14 @@ else (a synced drive, the dissertation folder) if you prefer.
 ~/Kwerenda/exports/            RIS, BibTeX, CSV, Obsidian notes
 ```
 
-`python -m kwerenda where` prints all of it. Anything an earlier version left
-inside the program folder is moved out on first run, and says so.
+`./start.sh where` (`start.bat where` on Windows) prints all of it. Anything an
+earlier version left inside the program folder is moved out on first run, and
+says so.
 
 ## When something does not start
 
 ```bash
-python -m kwerenda doctor
+./start.sh doctor          # start.bat doctor on Windows
 ```
 
 It checks the Python version, every library, the PDF reader, whether your data
@@ -264,7 +272,7 @@ anymore"* and no reason.
 ## Updating
 
 ```bash
-python -m kwerenda update
+./start.sh update          # start.bat update on Windows
 ```
 
 That fetches the current version, replaces the program files in place and

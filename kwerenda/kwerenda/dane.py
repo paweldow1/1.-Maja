@@ -78,21 +78,27 @@ def zapisz_wskaznik_programu(program: Optional[Path] = None) -> None:
     if program.resolve() == dane.resolve():
         return                                   # nothing to point at from itself
 
-    python = program / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
-    if not python.exists():
-        import sys
-        python = Path(sys.executable)
+    windows = os.name == "nt"
+    skrypt = "start.bat" if windows else "start.sh"
 
     tresc = (
         "This folder holds your data — the corpus, your presets, your exports.\n"
         "It is NOT the program. If a command like `python -m kwerenda ...` said\n"
         '"No module named kwerenda", you are probably standing here instead of\n'
-        "in the program folder.\n\n"
-        f"The program lives here:\n  {program}\n\n"
-        "Run commands like this instead (works from anywhere):\n"
-        f'  cd "{program}" && "{python}" -m kwerenda doctor\n'
-        f'  cd "{program}" && "{python}" -m kwerenda update\n'
-        f'  cd "{program}" && "{python}" -m kwerenda gui\n'
+        "in the program folder — the two are named alike on purpose, which is\n"
+        "exactly what makes this easy to mix up.\n\n"
+        f"The program that is currently installed lives here:\n  {program}\n"
+        "(if you have more than one downloaded copy on this computer, ignore\n"
+        "the others — this is the one the desktop icon points to)\n\n"
+        "Open a terminal, go there, then use start.sh / start.bat — it finds the\n"
+        "right Python for you, so there is no path or `-m` to get wrong:\n"
+        f'  cd "{program}"\n'
+        f"  {skrypt if windows else './' + skrypt} doctor"
+        "      (checks the installation)\n"
+        f"  {skrypt if windows else './' + skrypt} update"
+        "      (fetches the newest version)\n"
+        f"  {skrypt if windows else './' + skrypt} gui"
+        "         (opens the interface — same as the icon)\n"
     )
     try:
         (dane / NAZWA_WSKAZNIKA).write_text(tresc, encoding="utf-8")

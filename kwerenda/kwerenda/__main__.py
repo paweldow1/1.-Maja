@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 from typing import List
@@ -295,8 +296,8 @@ def polecenie_doctor(args) -> int:
         for rada in klopoty:
             print(f"  • {rada}")
         return 1
-    print("\nEverything the interface needs is in place. Start it with: "
-          "python -m kwerenda gui")
+    skrypt = "start.bat" if os.name == "nt" else "./start.sh"
+    print(f"\nEverything the interface needs is in place. Start it with: {skrypt} gui")
     return 0
 
 

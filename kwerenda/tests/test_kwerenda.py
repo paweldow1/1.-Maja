@@ -607,6 +607,39 @@ class TestPresety(unittest.TestCase):
                 _znajdz_preset(args, "nie-ma-takiego")
 
 
+class TestStartSh(unittest.TestCase):
+    """A user who typed `python3 -m /path/to/kwerenda update` — the wrong way to
+    invoke `-m` — should be able to run `./start.sh update` instead, with no
+    module path or venv location to get right by hand."""
+
+    ROOT = Path(__file__).resolve().parents[1]
+
+    def _uruchom(self, *argumenty):
+        import subprocess
+        # A stub interpreter that just records how it was called, standing in
+        # for .venv/bin/python so this test needs no real environment build.
+        with tempfile.TemporaryDirectory() as katalog:
+            venv_bin = Path(katalog) / ".venv" / "bin"
+            venv_bin.mkdir(parents=True)
+            udawany_python = venv_bin / "python"
+            udawany_python.write_text(
+                '#!/bin/bash\nprintf "%s\\n" "$@"\n', encoding="utf-8")
+            udawany_python.chmod(0o755)
+            for nazwa in ("start.sh", "requirements.txt"):
+                (Path(katalog) / nazwa).write_bytes((self.ROOT / nazwa).read_bytes())
+            (Path(katalog) / "start.sh").chmod(0o755)
+            wynik = subprocess.run(["./start.sh", *argumenty], cwd=katalog,
+                                   capture_output=True, text=True, timeout=10)
+            return wynik.stdout.strip().splitlines()
+
+    def test_bez_argumentow_odpala_gui(self):
+        self.assertEqual(self._uruchom(), ["-m", "kwerenda", "gui"])
+
+    def test_przekazuje_dowolne_polecenie(self):
+        self.assertEqual(self._uruchom("doctor"), ["-m", "kwerenda", "doctor"])
+        self.assertEqual(self._uruchom("update"), ["-m", "kwerenda", "update"])
+
+
 class TestRozdzielenieDanych(unittest.TestCase):
     """Your work must not live inside the folder that gets replaced on update."""
 
@@ -639,8 +672,9 @@ class TestRozdzielenieDanych(unittest.TestCase):
                 self.assertTrue(wskaznik.is_file())
                 tresc = wskaznik.read_text(encoding="utf-8")
                 self.assertIn(str(dane.katalog_programu()), tresc)
-                self.assertIn("kwerenda doctor", tresc)
-                self.assertIn("kwerenda update", tresc)
+                self.assertIn(" doctor", tresc)
+                self.assertIn(" update", tresc)
+                self.assertIn("start.sh" if os.name != "nt" else "start.bat", tresc)
             finally:
                 if stare is None:
                     os.environ.pop("KWERENDA_HOME", None)

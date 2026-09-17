@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-# Start Kwerenda on macOS/Linux:  ./start.sh
-# For an icon on the desktop instead:  python3 install_desktop_icon.py
+# Start Kwerenda on macOS/Linux:       ./start.sh
+# Any other command works the same way, from any folder:
+#   ./start.sh doctor
+#   ./start.sh update
+#   ./start.sh gui
+# (no "python -m kwerenda ..." needed — this script finds the right Python for
+# you, wherever it is called from)
 set -e
 cd "$(dirname "$0")"
 if [ ! -d .venv ]; then
@@ -9,4 +14,7 @@ if [ ! -d .venv ]; then
   ./.venv/bin/pip install --quiet --upgrade pip
   ./.venv/bin/pip install --quiet -r requirements.txt
 fi
-exec ./.venv/bin/python -m kwerenda gui "$@"
+if [ "$#" -eq 0 ]; then
+  set -- gui
+fi
+exec ./.venv/bin/python -m kwerenda "$@"

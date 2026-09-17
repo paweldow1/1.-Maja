@@ -261,11 +261,16 @@ def main() -> int:
     print(f"\nDone. Double-click {skrot}")
     print("It opens the interface at http://127.0.0.1:8765 in your browser.")
     print(f"\nIf it ever will not start, double-click {sprawdzenie}")
-    # `python -m kwerenda` needs the program folder as the working directory,
-    # so the copy-and-paste version has to carry the cd with it.
-    print("Or paste one of these into a terminal — they work from any folder:")
-    print(f'  cd "{KATALOG}" && "{python}" -m kwerenda doctor')
-    print(f'  cd "{KATALOG}" && "{python}" -m kwerenda gui')
+    # Anything typed by hand should go through start.sh/start.bat: it already
+    # knows which Python to use and finds its own folder, so there is no path
+    # to get wrong and no "-m" syntax to mistype. It needs a `cd` first because
+    # double-clicking always runs a script from its own folder, but a terminal
+    # does not.
+    print("Or from a terminal, once you cd into the program folder:")
+    print(f'  cd "{KATALOG}"')
+    print("  ./start.sh doctor      (Windows: start.bat doctor)")
+    print("  ./start.sh update      (Windows: start.bat update)")
+    print("  ./start.sh gui         (Windows: start.bat gui)")
     print(f"\nThe program is in  {KATALOG}")
     print(f"Your work is in    {_katalog_danych()}")
     return 0
