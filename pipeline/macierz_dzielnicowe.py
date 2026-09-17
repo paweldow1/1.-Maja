@@ -48,69 +48,107 @@ def main():
         do = int(m["do_roku"]) if m.get("do_roku", "").isdigit() else None
         return od, do
 
-    kolumny = sorted(wg_serii, key=lambda s: (rozpietosc(s)[0] or 9999, s))
+    cykle = sorted(wg_serii, key=lambda s: (rozpietosc(s)[0] or 9999, s))
     lata = list(range(OD, DO + 1))
 
+    # Kolumna to teraz dzielnica, nie cykl: organizuje ja lokalna struktura
+    # partyjna, wiec dzielnica jest sensowniejsza osia niz nazwa festynu,
+    # ktora czasem sie zmienia. Prenzlauer Berg i Hohenschönhausen maja po
+    # dwa cykle dzialajace rownolegle (Bötzow-Eiche + Humannplatz;
+    # Obersee + Orankebad) -- w tych latach komorka pokazuje oba wpisy.
+    wg_dzielnicy = defaultdict(list)
+    for s in cykle:
+        wg_dzielnicy[meta.get(s, {}).get("dzielnica", "?")].append(s)
+
+    KOLEJNOSC = ["Friedrichshain", "Kreuzberg", "Prenzlauer Berg", "Lichtenberg",
+                 "Marzahn", "Hellersdorf", "Hohenschönhausen", "Treptow"]
+    dzielnice = [d for d in KOLEJNOSC if d in wg_dzielnicy]
+    dzielnice += sorted(d for d in wg_dzielnicy if d not in KOLEJNOSC)
+
     opisane = sum(len(v) for v in wg_serii.values())
-    w_cyklu = sum(1 for s in kolumny for r in lata
+    w_cyklu = sum(1 for s in cykle for r in lata
                   if (rozpietosc(s)[0] or 9999) <= r <= (rozpietosc(s)[1] or -1))
-    obcy = sum(1 for s in kolumny for x in wg_serii[s].values()
+    obcy = sum(1 for s in cykle for x in wg_serii[s].values()
                if x["aktor_linia"] != "PDS/Die Linke")
     czesci = [SZABLON_GORA.format(
-        opisane=opisane, niepotw=w_cyklu - opisane, cykli=len(kolumny),
+        opisane=opisane, niepotw=w_cyklu - opisane, cykli=len(cykle),
+        dzielnic=len(dzielnice),
         luznych=sum(len(v) for v in luzne.values()), obcy=obcy,
         razem=opisane + sum(len(v) for v in luzne.values()))]
 
     # naglowek
     czesci.append('<div class="ramka"><table class="macierz"><thead><tr>'
                   '<th class="rok-h" scope="col">rok</th>')
-    for s in kolumny:
-        od, do = rozpietosc(s)
-        m = meta.get(s, {})
+    for d in dzielnice:
+        serie_d = wg_dzielnicy[d]
+        rozpietosci = []
+        for s in serie_d:
+            od, do = rozpietosc(s)
+            etykieta = f"{e(s)} ({od or '?'}–{do or '?'})" if len(serie_d) > 1 \
+                else f"{od or '?'}–{do or '?'}"
+            rozpietosci.append(etykieta)
         czesci.append(
-            f'<th scope="col"><span class="seria">{e(s)}</span>'
-            f'<span class="dz">{e(m.get("dzielnica"))}</span>'
-            f'<span class="span">{od or "?"}–{do or "?"}</span></th>')
+            f'<th scope="col"><span class="seria">{e(d)}</span>'
+            + "".join(f'<span class="span">{r}</span>' for r in rozpietosci)
+            + "</th>")
     czesci.append("</tr></thead><tbody>")
+
+    def wpis_html(x, pokaz_seria):
+        czas = e(x["godzina"]) + (f'–{e(x["godzina_do"])}' if x["godzina_do"] else "")
+        bity = []
+        if pokaz_seria:
+            bity.append(f'<span class="seria-wpis">{e(x["seria"])}</span>')
+        if czas:
+            bity.append(f'<span class="czas">{czas}</span>')
+        else:
+            bity.append('<span class="czas brak">godzina nieznana</span>')
+        if x["data"] and x["data"] != "01.05":
+            bity.append(f'<span class="wigilia">{e(x["data"])}</span>')
+        bity.append(f'<span class="nazwa">{e(x["nazwa"])}</span>')
+        if x["miejsce"]:
+            bity.append(f'<span class="miejsce">{e(x["miejsce"])}</span>')
+        if x["osoby"]:
+            bity.append(f'<span class="osoby">{e(x["osoby"])}</span>')
+        if x["aktor_linia"] != "PDS/Die Linke":
+            bity.append(f'<span class="obcy">organizuje: {e(x["aktor"])}</span>')
+        if x["edycja"]:
+            granica = "gorna granica" in (x.get("edycja_zrodlo") or "")
+            bity.append(
+                '<span class="edycja"'
+                + (' title="' + e(x["edycja_zrodlo"]) + '"' if granica else "")
+                + ">edycja " + ("≤ " if granica else "") + e(x["edycja"])
+                + "</span>")
+        if x.get("cytat"):
+            bity.append('<details class="dowod"><summary>'
+                        + e(x.get("zrodlo") or "\u017ar\u00f3d\u0142o") + "</summary>"
+                        f'<q>{e(x["cytat"])}</q></details>')
+        return f'<div class="wpis">{"".join(bity)}</div>'
 
     for rok in lata:
         czesci.append(f'<tr><th class="rok" scope="row">{rok}</th>')
-        for s in kolumny:
-            od, do = rozpietosc(s)
-            x = wg_serii[s].get(rok)
-            if x:
-                czas = e(x["godzina"]) + (f'–{e(x["godzina_do"])}' if x["godzina_do"] else "")
-                bity = []
-                if czas:
-                    bity.append(f'<span class="czas">{czas}</span>')
-                else:
-                    bity.append('<span class="czas brak">godzina nieznana</span>')
-                if x["data"] and x["data"] != "01.05":
-                    bity.append(f'<span class="wigilia">{e(x["data"])}</span>')
-                bity.append(f'<span class="nazwa">{e(x["nazwa"])}</span>')
-                if x["miejsce"]:
-                    bity.append(f'<span class="miejsce">{e(x["miejsce"])}</span>')
-                if x["osoby"]:
-                    bity.append(f'<span class="osoby">{e(x["osoby"])}</span>')
-                if x["aktor_linia"] != "PDS/Die Linke":
-                    bity.append(f'<span class="obcy">organizuje: {e(x["aktor"])}</span>')
-                if x["edycja"]:
-                    granica = "gorna granica" in (x.get("edycja_zrodlo") or "")
-                    bity.append(
-                        '<span class="edycja"'
-                        + (' title="' + e(x["edycja_zrodlo"]) + '"' if granica else "")
-                        + ">edycja " + ("≤ " if granica else "") + e(x["edycja"])
-                        + "</span>")
-                if x.get("cytat"):
-                    bity.append('<details class="dowod"><summary>'
-                                + e(x.get("zrodlo") or "źródło") + "</summary>"
-                                f'<q>{e(x["cytat"])}</q></details>')
-                czesci.append(f'<td class="jest">{"".join(bity)}</td>')
-            elif od is not None and do is not None and od <= rok <= do:
-                czesci.append('<td class="brak"><span class="etykieta">'
-                              'niepotwierdzone</span></td>')
-            else:
+        for d in dzielnice:
+            serie_d = wg_dzielnicy[d]
+            wieloseryjna = len(serie_d) > 1
+            aktywne = [s for s in serie_d
+                       if (rozpietosc(s)[0] or 9999) <= rok <= (rozpietosc(s)[1] or -1)]
+            if not aktywne:
                 czesci.append('<td class="poza"></td>')
+                continue
+            wpisy = []
+            wszystkie_puste = True
+            for s in aktywne:
+                x = wg_serii[s].get(rok)
+                if x:
+                    wpisy.append(wpis_html(x, wieloseryjna))
+                    wszystkie_puste = False
+                elif wieloseryjna:
+                    wpisy.append(f'<div class="wpis niepotw"><span class="seria-wpis">'
+                                f'{e(s)}</span><span class="etykieta">niepotwierdzone'
+                                "</span></div>")
+                else:
+                    wpisy.append('<span class="etykieta">niepotwierdzone</span>')
+            klasa = "jest" if not wszystkie_puste else "brak"
+            czesci.append(f'<td class="{klasa}">{"".join(wpisy)}</td>')
         czesci.append("</tr>")
     czesci.append("</tbody></table></div>")
 
@@ -137,18 +175,20 @@ def main():
 
     # dowody rozpietosci
     czesci.append('<h2 id="dowody">Skad rozpietosci cykli</h2><dl class="dowody">')
-    for s in kolumny:
+    for s in cykle:
         od, do = rozpietosc(s)
-        czesci.append(f'<dt>{e(s)} <span class="span">{od or "?"}–{do or "?"}</span></dt>'
-                      f'<dd>{e(meta.get(s, {}).get("dowod"))}</dd>')
+        m = meta.get(s, {})
+        czesci.append(f'<dt>{e(s)} <span class="span-inline">({e(m.get("dzielnica"))}, '
+                      f'{od or "?"}–{do or "?"})</span></dt>'
+                      f'<dd>{e(m.get("dowod"))}</dd>')
     czesci.append("</dl>")
     czesci.append(STOPKA)
 
     sciezka = OUT_DIR / "macierz_dzielnicowe.html"
     sciezka.write_text("".join(czesci), encoding="utf-8")
     print(f"macierz_dzielnicowe.html: {sciezka.stat().st_size // 1024} KB")
-    print(f"  cykli {len(kolumny)}, opisanych edycji {opisane}, "
-          f"niepotwierdzonych {w_cyklu - opisane}, poza cyklami "
+    print(f"  dzielnic {len(dzielnice)}, cykli {len(cykle)}, opisanych edycji "
+          f"{opisane}, niepotwierdzonych {w_cyklu - opisane}, poza cyklami "
           f"{sum(len(v) for v in luzne.values())}")
 
 
@@ -235,6 +275,14 @@ SZABLON_GORA = """<title>Dzielnicówki PDS</title>
   .osoby{{color:var(--muted);font-size:11px;font-style:italic;margin-top:3px;
     line-height:1.35;}}
   .edycja{{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:4px;}}
+  .wpis{{padding-block:2px;}}
+  .wpis + .wpis{{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line-mocna);}}
+  .wpis.niepotw{{color:var(--ghost);}}
+  .wpis.niepotw .etykieta{{font-family:var(--ui);font-size:9px;letter-spacing:.04em;
+    text-transform:lowercase;font-variant:small-caps;}}
+  .seria-wpis{{display:block;font-family:var(--ui);font-size:10px;font-weight:600;
+    letter-spacing:.02em;color:var(--muted);margin-bottom:2px;}}
+  .span-inline{{font-family:var(--mono);font-size:11px;color:var(--muted);}}
   .dowod{{margin-top:6px;font-family:var(--ui);font-size:10px;}}
   .dowod summary{{color:var(--muted);cursor:pointer;list-style:none;
     text-decoration:underline dotted;text-underline-offset:2px;}}
@@ -278,16 +326,20 @@ SZABLON_GORA = """<title>Dzielnicówki PDS</title>
 organizowane przez dzielnicowe struktury partii — jedna linia, mimo zmiany
 nazwy w 2007 roku.</p>
 <div class="liczby">
+  <div><b>{dzielnic}</b><span>dzielnic</span></div>
   <div><b>{cykli}</b><span>cykli</span></div>
   <div><b>{opisane}</b><span>opisanych edycji</span></div>
   <div><b>{niepotw}</b><span>niepotwierdzonych</span></div>
   <div><b>{luznych}</b><span>poza cyklami</span></div>
 </div>
 </div>
-<p class="zakres">Kolumna to <b>cykl</b>, nie organizator: {razem} edycji w tabeli,
-z czego {obcy} prowadzil w danym roku ktos inny niz PDS lub Die Linke &mdash; komórka
-mówi wtedy, kto. Festyny dzielnicowe SPD i pozostałych, które nie należą do żadnego
-z tych cykli, są poza tą tabelą.</p>
+<p class="zakres">Kolumna to <b>dzielnica</b>, nie cykl: organizuje ja lokalna
+struktura partyjna, a nazwa festynu bywa zmienna. Prenzlauer Berg i
+Hohenschönhausen mają w niektórych latach dwa równoległe festyny naraz — komórka
+pokazuje wtedy oba, każdy podpisany nazwą cyklu. {razem} edycji w tabeli, z
+czego {obcy} prowadził w danym roku ktoś inny niż PDS lub Die Linke &mdash;
+komórka mówi wtedy, kto. Festyny dzielnicowe SPD i pozostałych, które nie
+należą do żadnego z tych cykli, są poza tą tabelą.</p>
 <div class="legenda">
   <span><i class="l-jest"></i>edycja opisana w źródle</span>
   <span><i class="l-brak"></i>cykl trwał, tej edycji nikt nie opisał</span>
