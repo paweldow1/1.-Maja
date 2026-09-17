@@ -31,6 +31,8 @@ BASE = Path(__file__).parent
 OUT_DIR = BASE / "output"
 TABELA = BASE / "input/dzielnicowe.tsv"
 SERIE = BASE / "input/dzielnicowe_serie.tsv"
+# Cykle, ktorych obiekt juz jest na mapie -- tagujemy, zamiast dopisywac.
+NA_MAPIE = BASE / "input/cykle_na_mapie.tsv"
 
 
 def wczytaj_tsv(sciezka):
@@ -39,6 +41,32 @@ def wczytaj_tsv(sciezka):
     linie = [l for l in sciezka.read_text(encoding="utf-8").splitlines()
              if l.strip() and not l.startswith("#")]
     return list(csv.DictReader(linie, delimiter="\t"))
+
+
+def numeruj(wiersz, rok, seria, poczatki, kotwice, pominiete):
+    """Ktora to edycja cyklu, i na jakiej podstawie."""
+    if seria not in poczatki:
+        return
+    luk = pominiete.get(seria, 0)
+    pary = kotwice.get(seria)
+    if pary:
+        rok_k, ed_k = min(pary, key=lambda pr: abs(pr[0] - rok))
+        if luk and rok < rok_k:
+            # Przerwa lezy miedzy poczatkiem cyklu a kotwica, wiec liczenie
+            # wstecz od kotwicy daje za malo (dla Köpenick wychodzilo zero).
+            # Dla lat sprzed kotwicy liczy sie od poczatku i jest to gorna
+            # granica: rzeczywisty numer jest taki albo o tyle mniejszy, ile
+            # lat wypadlo przed nim.
+            wiersz["edycja"] = rok - poczatki[seria] + 1
+            wiersz["edycja_zrodlo"] = (f"od {poczatki[seria]}, gorna granica "
+                                       f"(w cyklu jest {luk} rok bez festynu, "
+                                       f"nie wiadomo ktory)")
+        else:
+            wiersz["edycja"] = ed_k + (rok - rok_k)
+            wiersz["edycja_zrodlo"] = f"{rok_k}={ed_k} ze zrodla"
+    else:
+        wiersz["edycja"] = rok - poczatki[seria] + 1
+        wiersz["edycja_zrodlo"] = f"od {poczatki[seria]}"
 
 
 def main():
@@ -117,32 +145,32 @@ def main():
         # Ktora to edycja cyklu. Liczona od roku poczatkowego z tabeli serii,
         # nie od najstarszego opisu, jaki mamy -- brak opisu nie znaczy, ze
         # edycji nie bylo. Zrodlo policzenia idzie obok liczby.
-        seria_nazwa = d.get("seria", "")
-        if seria_nazwa in poczatki:
-            rok = int(d["rok"])
-            luk = pominiete.get(seria_nazwa, 0)
-            pary = kotwice.get(seria_nazwa)
-            if pary:
-                rok_k, ed_k = min(pary, key=lambda pr: abs(pr[0] - rok))
-                if luk and rok < rok_k:
-                    # Przerwa lezy miedzy poczatkiem cyklu a kotwica, wiec
-                    # liczenie wstecz od kotwicy daje za malo (dla Köpenick
-                    # wychodzilo zero). Dla lat sprzed kotwicy liczy sie od
-                    # poczatku i jest to gorna granica: rzeczywisty numer
-                    # jest taki albo o tyle mniejszy, ile lat wypadlo przed
-                    # nim.
-                    wiersz["edycja"] = rok - poczatki[seria_nazwa] + 1
-                    wiersz["edycja_zrodlo"] = (
-                        f"od {poczatki[seria_nazwa]}, gorna granica "
-                        f"(w cyklu jest {luk} rok bez festynu, nie wiadomo ktory)")
-                else:
-                    wiersz["edycja"] = ed_k + (rok - rok_k)
-                    wiersz["edycja_zrodlo"] = f"{rok_k}={ed_k} ze zrodla"
-            else:
-                wiersz["edycja"] = rok - poczatki[seria_nazwa] + 1
-                wiersz["edycja_zrodlo"] = f"od {poczatki[seria_nazwa]}"
+        numeruj(wiersz, int(d["rok"]), d.get("seria", ""),
+                poczatki, kotwice, pominiete)
         wydarzenia.append(wiersz)
         dodane += 1
+
+    # Cykl, ktorego obiekt jest juz na mapie: oznaczamy ten obiekt, zamiast
+    # dopisywac rownolegle wiersze. Inaczej kazda edycja liczy sie dwa razy
+    # -- Humannplatz mial tak przez chwile dziewiec duplikatow.
+    otagowane = 0
+    for t in wczytaj_tsv(NA_MAPIE):
+        for w in wydarzenia:
+            if w["warstwa"] != "Dzielnicowe" and w["nazwa"] == t["nazwa_obiektu"]:
+                w["seria"] = t["seria"]
+                if t.get("dzielnicowe") == "TRUE":
+                    w["dzielnicowe"] = "TRUE"
+                w.setdefault("aktor_linia", "")
+                if w["aktor"] in LINIA_LEWICY:
+                    w["aktor_linia"] = LINIA
+                otagowane += 1
+
+    # Numery edycji nadaje sie teraz wszystkim wierszom z cyklem, takze tym
+    # z mapy -- inaczej cykl na mapie nie mialby numeracji.
+    for w in wydarzenia:
+        if not w.get("seria") or w.get("edycja"):
+            continue
+        numeruj(w, int(w["rok"]), w["seria"], poczatki, kotwice, pominiete)
 
     write_csv(OUT_DIR / "wydarzenia.csv", wydarzenia, kolumny)
 
@@ -163,6 +191,7 @@ def main():
             luki.append((s["seria"], brak))
 
     print(f"dzielnicowe: +{dodane} wydarzen, {len(wydarzenia)} wierszy razem")
+    print(f"  cykle juz na mapie: {otagowane} obiektow otagowanych")
     print("  wg daty: " + ", ".join(f"{d or '?'}: {n}" for d, n in sorted(wg_daty.items())))
     w_cyklu = sum(1 for w in wydarzenia
                   if w["warstwa"] == "Dzielnicowe" and w.get("seria"))

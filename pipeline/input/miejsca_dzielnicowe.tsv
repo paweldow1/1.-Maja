@@ -38,6 +38,7 @@ tanzschule-pankow	Pankow	kreuzstrasse
 boetzow-eiche	Prenzlauer Berg	boetzow|kino am friedrichshain|am friedrichshain	52.5305,13.4340	skrzyzowanie	Bötzowstraße / Am Friedrichshain, przy Kino am Friedrichshain; polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy
 humannplatz	Prenzlauer Berg	humannplatz	52.5565,13.4085	plac	polozenie rozpoznane z nazwy miejsca, nie z geokodera
 springbornclub	Treptow	springborn	52.4420,13.5115	adres	Springbornstraße 53, Johannisthal; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+zenner-treptow	Treptow	zenner	52.4890,13.4700	obiekt	»Zenner« nad Szprewa w Treptower Park -- inne miejsce w tym samym parku niz Rosengarten; polozenie rozpoznane z nazwy miejsca
 rosengarten-treptow	Treptow	rosengarten|treptower park	52.4930,13.4660	park	Rosengarten w Treptower Park; polozenie rozpoznane z nazwy miejsca, nie z geokodera
 gruenauer-strasse	Treptow	gruenauer			
 karl-kunger-strasse	Treptow	karl kunger	52.4885,13.4520	ulica	polozenie rozpoznane z nazwy miejsca, nie z geokodera
@@ -52,3 +53,5 @@ jungfernheide	Charlottenburg	jungfernheide|heckerdamm	52.5350,13.3000	park	wejsc
 lausitzer-platz	Kreuzberg	lausitzer	52.5010,13.4340	plac	polozenie rozpoznane z nazwy miejsca, nie z geokodera
 rosa-luxemburg-haus	Schöneberg	rosa luxemburg haus|kurze strasse			nie rozpoznaje tego adresu na tyle pewnie, zeby go postawic
 schoenboerse	Köpenick	schoenboerse|schonborse|schonboerse			nazwa miejsca prawdopodobnie znieksztalcona w zrodle; nie rozpoznaje jej
+arnswalder-platz	Prenzlauer Berg	arnswalder	52.5295,13.4370	plac	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+helene-weigel-platz	Marzahn	helene weigel	52.5385,13.5565	plac	polozenie rozpoznane z nazwy miejsca, nie z geokodera

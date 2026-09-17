@@ -1,0 +1,6 @@
+# Cykle dzielnicowe, ktore siedza juz na mapie jako obiekt wieloletni.
+# Bez tego dopisywalbym je drugi raz do dzielnicowe.tsv i kazda edycja
+# liczylaby sie podwojnie -- tak sie stalo z Humannplatz, zanim to powstalo.
+# Wiersz laczy obiekt mapy z cyklem; wydarzen nie dodaje.
+nazwa_obiektu	seria	dzielnicowe
+Widerspenstig und lebendig Hummanplatz Maifest	Humannplatz Prenzlauer Berg	TRUE

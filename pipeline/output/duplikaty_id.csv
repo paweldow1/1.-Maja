@@ -4,10 +4,10 @@ id_bazowy,id,rok,miasto,warstwa,typ,aktor,nazwa,dzielnica,punkt_start,geom_typ,i
 1995_DE_festyn_SPD,1995_DE_festyn_SPD_b,1995,DE,Dzielnicowe,festyn,SPD,Tanz in den Mai,Köpenick,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#21
 1995_DE_festyn_SPD,1995_DE_festyn_SPD_c,1995,DE,Dzielnicowe,festyn,SPD,SPD-Rosengartenfest,Treptow,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#22
 1995_DE_festyn_SPD,1995_DE_festyn_SPD_d,1995,DE,Dzielnicowe,festyn,SPD,Maifest im Bürgerpark,Pankow,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#23
-1995_DE_festyn_SPD,1995_DE_festyn_SPD_e,1995,DE,Dzielnicowe,festyn,SPD,Tanz in den Mai,Neukölln,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#81
-1995_DE_festyn_SPD,1995_DE_festyn_SPD_f,1995,DE,Dzielnicowe,festyn,SPD,Tanz in den Mai,Wedding,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#82
-1995_DE_festyn_SPD,1995_DE_festyn_SPD_g,1995,DE,Dzielnicowe,festyn,SPD,Maifest im Schloßpark Buch,Buch,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#83
-1995_DE_festyn_SPD,1995_DE_festyn_SPD_h,1995,DE,Dzielnicowe,festyn,SPD,Maifeier am Orankebad,Hohenschönhausen,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#84
+1995_DE_festyn_SPD,1995_DE_festyn_SPD_e,1995,DE,Dzielnicowe,festyn,SPD,Tanz in den Mai,Neukölln,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#78
+1995_DE_festyn_SPD,1995_DE_festyn_SPD_f,1995,DE,Dzielnicowe,festyn,SPD,Tanz in den Mai,Wedding,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#79
+1995_DE_festyn_SPD,1995_DE_festyn_SPD_g,1995,DE,Dzielnicowe,festyn,SPD,Maifest im Schloßpark Buch,Buch,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#80
+1995_DE_festyn_SPD,1995_DE_festyn_SPD_h,1995,DE,Dzielnicowe,festyn,SPD,Maifeier am Orankebad,Hohenschönhausen,,,TRUE,"nierozroznione, ta sama geometria",dzielnicowe.tsv#DE#1995#81
 2002_DE_kontra_Antinazi-Berlin,2002_DE_kontra_Antinazi-Berlin,2002,DE,Neo-Nazi May Day,kontra,Antinazi Berlin,2002 Counter-demonstration,Neu-Hohenschönhausen,"52.568525,13.520651",Point,FALSE,nierozroznione,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#28#2002
 2002_DE_kontra_Antinazi-Berlin,2002_DE_kontra_Antinazi-Berlin_a,2002,DE,Neo-Nazi May Day,kontra,Antinazi Berlin,2002 Counter-demonstration,Neu-Hohenschönhausen,"52.563752,13.506682",Point,FALSE,nierozroznione,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#29#2002
 2002_DE_kontra_Antinazi-Berlin,2002_DE_kontra_Antinazi-Berlin_b,2002,DE,Neo-Nazi May Day,kontra,Antinazi Berlin,2015 – NPD Counterdemonstration,Neu-Hohenschönhausen,"52.566334,13.512089",Point,FALSE,nierozroznione,1__mai_berlin_aktualna_13_.geojson#Neo-Nazi May Day#37#2002

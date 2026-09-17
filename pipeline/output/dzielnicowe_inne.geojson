@@ -28,27 +28,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     13.4085,
-     52.5565
-    ]
-   },
-   "properties": {
-    "name": "Humannplatz Prenzlauer Berg",
-    "Lata": "1995;1996;1999;2001",
-    "description": "1995: Straßenfest »Widerspenstig & Lebendig«, 10:00–19:00\n   źródło: taz 1995; ND 29.04.1995\n   „Unter dem Motto \"Widerspenstig & Lebendig\" findet am Humannplatz in Prenzlauer Berg von 10 bis 19 Uhr ein \"buntes, froehliches Strassenfest gegen den grauen Alltag\" statt. \"Leider haben die Faschisten in den letzten Jahren den 1. Mai genutzt, um an die Oeffentlichkeit zu treten und gegen Minderheiten zu hetzen (...) Wir wollen dieser Entwicklung entgegentreten\", heisst es in einem Aufruf.”\n\n1996: Widerspenstig und lebendig, Humannplatz, 10:00–19:00\n   źródło: ND 30.04.1996; taz 1996\n   „PRENZLAUER BERG: »Widerspenstig und lebendig« soll es von 10-19 Uhr auf dem Humannplatz zugehen - mit Livemusik, Fußballturnier, Ausstellungen, Infoständen, Kinderfest.”\n\n1999: Fest auf dem Humannplatz\n   źródło: BZ 03.05.1999\n   „[peaceful festival]”\n\n2001: 7. Humannplatz-Fest, 11:00\n   źródło: stressfaktor\n   „ab 11.00 Uhr - Humannplatz (Prenzlauer Berg) 7. Humannplatz-Fest mit viel Musik, Essen- und Infoständen”",
-    "Aktor": "Bündnis linker Gruppen;Ostinitiativen;nieustalony",
-    "Dzielnica": "Prenzlauer Berg",
-    "Edycji opisanych": 4,
-    "Zrodla": "BZ 03.05.1999; ND 30.04.1996; taz 1996; stressfaktor; taz 1995; ND 29.04.1995",
-    "Precyzja": "plac",
-    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      13.3,
      52.535
     ]
@@ -84,6 +63,27 @@
     "Zrodla": "nd 27.04.1994; rocznik DE",
     "Precyzja": "obiekt",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5565,
+     52.5385
+    ]
+   },
+   "properties": {
+    "name": "Maifeier auf dem Helene-Weigel-Platz",
+    "Lata": "2002",
+    "description": "2002: Maifeier auf dem Helene-Weigel-Platz, 14:00–20:00\n   źródło: ND 26.04.2002\n   „In Berlin ruft die PDS für 12.30 Uhr zu einer Kundgebung auf dem Alexanderplatz. Maifeste veranstalten die Sozialisten an der Bötzoweiche (10-20 Uhr, Bötzowstraße, Prenzlauer Berg), am Obersee (11-18 Uhr, Lindenweg, Lichtenberg), auf dem Humannplatz (12-20 Uhr, Prenzlauer Berg), im Luisenhain (13-19 Uhr, Köpenick) und in der Springbornstraße (14-18 Uhr, Johannisthal). Die SPD feiert am »Zenner« im Treptower Park (13-17 Uhr) sowie in Bürgerpark Pankow, Schlosspark Buch und am Arnswalder Platz (jeweils 13-18 Uhr). Bündnisse organisieren Feiern auf dem Marzahner Helene-Weigel-Platz (14-20 Uhr) und auf dem Kreuzberger Mariannenplatz (15-21 Uhr).”",
+    "Aktor": "Bündnis",
+    "Dzielnica": "Marzahn",
+    "Edycji opisanych": 1,
+    "Zrodla": "ND 26.04.2002",
+    "Precyzja": "plac",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
   },
   {
@@ -160,12 +160,12 @@
    },
    "properties": {
     "name": "Maifest im Bürgerpark",
-    "Lata": "1995",
-    "description": "1995: Maifest im Bürgerpark, 13:00–18:00\n   źródło: ND 29.04.1995; rocznik DE\n   „im Pankower Bürgerpark läuft ab 14 Uhr ein Maifest (nd); rocznik: 13:00-18:00, Pankower Bürgerpark”",
+    "Lata": "1995;2002",
+    "description": "1995: Maifest im Bürgerpark, 13:00–18:00\n   źródło: ND 29.04.1995; rocznik DE\n   „im Pankower Bürgerpark läuft ab 14 Uhr ein Maifest (nd); rocznik: 13:00-18:00, Pankower Bürgerpark”\n\n2002: SPD-Maifeier im Bürgerpark, 13:00–18:00\n   źródło: ND 26.04.2002\n   „In Berlin ruft die PDS für 12.30 Uhr zu einer Kundgebung auf dem Alexanderplatz. Maifeste veranstalten die Sozialisten an der Bötzoweiche (10-20 Uhr, Bötzowstraße, Prenzlauer Berg), am Obersee (11-18 Uhr, Lindenweg, Lichtenberg), auf dem Humannplatz (12-20 Uhr, Prenzlauer Berg), im Luisenhain (13-19 Uhr, Köpenick) und in der Springbornstraße (14-18 Uhr, Johannisthal). Die SPD feiert am »Zenner« im Treptower Park (13-17 Uhr) sowie in Bürgerpark Pankow, Schlosspark Buch und am Arnswalder Platz (jeweils 13-18 Uhr). Bündnisse organisieren Feiern auf dem Marzahner Helene-Weigel-Platz (14-20 Uhr) und auf dem Kreuzberger Mariannenplatz (15-21 Uhr).”",
     "Aktor": "SPD",
     "Dzielnica": "Pankow",
-    "Edycji opisanych": 1,
-    "Zrodla": "ND 29.04.1995; rocznik DE",
+    "Edycji opisanych": 2,
+    "Zrodla": "ND 26.04.2002; ND 29.04.1995; rocznik DE",
     "Precyzja": "park",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -181,12 +181,12 @@
    },
    "properties": {
     "name": "Maifest im Schloßpark Buch",
-    "Lata": "1995",
-    "description": "1995: Maifest im Schloßpark Buch, 13:00–18:00\n   źródło: rocznik DE\n   „(Festyny SPD): 13:00-18:00, Buch, Schloßpark”",
+    "Lata": "1995;2002",
+    "description": "1995: Maifest im Schloßpark Buch, 13:00–18:00\n   źródło: rocznik DE\n   „(Festyny SPD): 13:00-18:00, Buch, Schloßpark”\n\n2002: SPD-Maifeier im Schlosspark Buch, 13:00–18:00\n   źródło: ND 26.04.2002\n   „In Berlin ruft die PDS für 12.30 Uhr zu einer Kundgebung auf dem Alexanderplatz. Maifeste veranstalten die Sozialisten an der Bötzoweiche (10-20 Uhr, Bötzowstraße, Prenzlauer Berg), am Obersee (11-18 Uhr, Lindenweg, Lichtenberg), auf dem Humannplatz (12-20 Uhr, Prenzlauer Berg), im Luisenhain (13-19 Uhr, Köpenick) und in der Springbornstraße (14-18 Uhr, Johannisthal). Die SPD feiert am »Zenner« im Treptower Park (13-17 Uhr) sowie in Bürgerpark Pankow, Schlosspark Buch und am Arnswalder Platz (jeweils 13-18 Uhr). Bündnisse organisieren Feiern auf dem Marzahner Helene-Weigel-Platz (14-20 Uhr) und auf dem Kreuzberger Mariannenplatz (15-21 Uhr).”",
     "Aktor": "SPD",
     "Dzielnica": "Buch",
-    "Edycji opisanych": 1,
-    "Zrodla": "rocznik DE",
+    "Edycji opisanych": 2,
+    "Zrodla": "ND 26.04.2002; rocznik DE",
     "Precyzja": "park",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
@@ -210,6 +210,69 @@
     "Zrodla": "rocznik DE 1991",
     "Precyzja": "ulica",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.424466,
+     52.502325
+    ]
+   },
+   "properties": {
+    "name": "Mariannenplatzfest",
+    "Lata": "2002",
+    "description": "2002: Bündnis-Maifeier auf dem Mariannenplatz, 15:00–21:00\n   źródło: ND 26.04.2002\n   „In Berlin ruft die PDS für 12.30 Uhr zu einer Kundgebung auf dem Alexanderplatz. Maifeste veranstalten die Sozialisten an der Bötzoweiche (10-20 Uhr, Bötzowstraße, Prenzlauer Berg), am Obersee (11-18 Uhr, Lindenweg, Lichtenberg), auf dem Humannplatz (12-20 Uhr, Prenzlauer Berg), im Luisenhain (13-19 Uhr, Köpenick) und in der Springbornstraße (14-18 Uhr, Johannisthal). Die SPD feiert am »Zenner« im Treptower Park (13-17 Uhr) sowie in Bürgerpark Pankow, Schlosspark Buch und am Arnswalder Platz (jeweils 13-18 Uhr). Bündnisse organisieren Feiern auf dem Marzahner Helene-Weigel-Platz (14-20 Uhr) und auf dem Kreuzberger Mariannenplatz (15-21 Uhr).”",
+    "Aktor": "Bündnis",
+    "Dzielnica": "Kreuzberg",
+    "Edycji opisanych": 1,
+    "Zrodla": "ND 26.04.2002",
+    "Precyzja": "mapa",
+    "Zrodlo punktu": "obiekt „Mariannenplatz” z miejsca.csv"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.437,
+     52.5295
+    ]
+   },
+   "properties": {
+    "name": "SPD-Maifeier am Arnswalder Platz",
+    "Lata": "2002",
+    "description": "2002: SPD-Maifeier am Arnswalder Platz, 13:00–18:00\n   źródło: ND 26.04.2002\n   „In Berlin ruft die PDS für 12.30 Uhr zu einer Kundgebung auf dem Alexanderplatz. Maifeste veranstalten die Sozialisten an der Bötzoweiche (10-20 Uhr, Bötzowstraße, Prenzlauer Berg), am Obersee (11-18 Uhr, Lindenweg, Lichtenberg), auf dem Humannplatz (12-20 Uhr, Prenzlauer Berg), im Luisenhain (13-19 Uhr, Köpenick) und in der Springbornstraße (14-18 Uhr, Johannisthal). Die SPD feiert am »Zenner« im Treptower Park (13-17 Uhr) sowie in Bürgerpark Pankow, Schlosspark Buch und am Arnswalder Platz (jeweils 13-18 Uhr). Bündnisse organisieren Feiern auf dem Marzahner Helene-Weigel-Platz (14-20 Uhr) und auf dem Kreuzberger Mariannenplatz (15-21 Uhr).”",
+    "Aktor": "SPD",
+    "Dzielnica": "Prenzlauer Berg",
+    "Edycji opisanych": 1,
+    "Zrodla": "ND 26.04.2002",
+    "Precyzja": "plac",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.47,
+     52.489
+    ]
+   },
+   "properties": {
+    "name": "SPD-Maifeier am »Zenner«",
+    "Lata": "2002",
+    "description": "2002: SPD-Maifeier am »Zenner«, 13:00–17:00\n   źródło: ND 26.04.2002\n   „In Berlin ruft die PDS für 12.30 Uhr zu einer Kundgebung auf dem Alexanderplatz. Maifeste veranstalten die Sozialisten an der Bötzoweiche (10-20 Uhr, Bötzowstraße, Prenzlauer Berg), am Obersee (11-18 Uhr, Lindenweg, Lichtenberg), auf dem Humannplatz (12-20 Uhr, Prenzlauer Berg), im Luisenhain (13-19 Uhr, Köpenick) und in der Springbornstraße (14-18 Uhr, Johannisthal). Die SPD feiert am »Zenner« im Treptower Park (13-17 Uhr) sowie in Bürgerpark Pankow, Schlosspark Buch und am Arnswalder Platz (jeweils 13-18 Uhr). Bündnisse organisieren Feiern auf dem Marzahner Helene-Weigel-Platz (14-20 Uhr) und auf dem Kreuzberger Mariannenplatz (15-21 Uhr).”",
+    "Aktor": "SPD",
+    "Dzielnica": "Treptow",
+    "Edycji opisanych": 1,
+    "Zrodla": "ND 26.04.2002",
+    "Precyzja": "obiekt",
+    "Zrodlo punktu": "»Zenner« nad Szprewa w Treptower Park -- inne miejsce w tym samym parku niz Rosengarten; polozenie rozpoznane z nazwy miejsca"
    }
   },
   {
