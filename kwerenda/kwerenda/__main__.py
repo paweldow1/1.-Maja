@@ -13,7 +13,8 @@ from . import __wersja__
 from .cytowania import (Rekord, do_bibtex, do_csl, do_csv, do_markdown, do_ris,
                         nadaj_citekeys, nazwa_pliku)
 from .dane import (katalog_danych, katalog_eksportu, katalog_presetow,
-                   katalog_przykladow, przenies_stare_dane, sciezka_bazy)
+                   katalog_przykladow, przenies_stare_dane, sciezka_bazy,
+                   zapisz_wskaznik_programu)
 from .konfiguracja import Konfiguracja
 from .magazyn import Magazyn
 from .morfologia import (DOMYSLNE, JEZYKI, TRYB_DOKLADNY, TRYB_ODMIANA, Opcje,
@@ -415,6 +416,12 @@ def zbuduj_parser() -> argparse.ArgumentParser:
 
 
 def main(argv=None) -> int:
+    # However somebody found their way here, leave a note in the data folder
+    # saying where the program actually is — the two folders are named closely
+    # enough that ending up in the wrong one is the single most common way to
+    # get "No module named kwerenda" with no clue why.
+    zapisz_wskaznik_programu()
+
     parser = zbuduj_parser()
     args = parser.parse_args(argv)
     if not getattr(args, "funkcja", None):

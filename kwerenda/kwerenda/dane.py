@@ -61,6 +61,45 @@ def katalog_presetow() -> Path:
 
 # --------------------------------------------------------------------------
 
+NAZWA_WSKAZNIKA = "WHERE-IS-THE-PROGRAM.txt"
+
+
+def zapisz_wskaznik_programu(program: Optional[Path] = None) -> None:
+    """Leave a note in the data folder pointing back at the program folder.
+
+    ``~/Kwerenda`` (the data folder) and the folder holding the code look alike
+    enough that opening a terminal "in Kwerenda" easily lands in the wrong one —
+    and every CLI command then fails with a bare "No module named kwerenda",
+    which explains nothing. This file is refreshed on every run, so whichever
+    folder somebody is confused inside, the answer is one `cat` away.
+    """
+    program = Path(program) if program else katalog_programu()
+    dane = katalog_danych()
+    if program.resolve() == dane.resolve():
+        return                                   # nothing to point at from itself
+
+    python = program / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+    if not python.exists():
+        import sys
+        python = Path(sys.executable)
+
+    tresc = (
+        "This folder holds your data — the corpus, your presets, your exports.\n"
+        "It is NOT the program. If a command like `python -m kwerenda ...` said\n"
+        '"No module named kwerenda", you are probably standing here instead of\n'
+        "in the program folder.\n\n"
+        f"The program lives here:\n  {program}\n\n"
+        "Run commands like this instead (works from anywhere):\n"
+        f'  cd "{program}" && "{python}" -m kwerenda doctor\n'
+        f'  cd "{program}" && "{python}" -m kwerenda update\n'
+        f'  cd "{program}" && "{python}" -m kwerenda gui\n'
+    )
+    try:
+        (dane / NAZWA_WSKAZNIKA).write_text(tresc, encoding="utf-8")
+    except OSError:
+        pass                                      # never let this get in the way
+
+
 def przenies_stare_dane(log: Callable[[str], None] = print,
                         program: Path | None = None) -> List[str]:
     """Move work left inside the program folder by earlier versions.

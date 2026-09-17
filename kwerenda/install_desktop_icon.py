@@ -251,6 +251,13 @@ def main() -> int:
 
     sprawdzenie = diagnostyka(python)
 
+    try:
+        sys.path.insert(0, str(KATALOG))
+        from kwerenda.dane import zapisz_wskaznik_programu
+        zapisz_wskaznik_programu(KATALOG)
+    except Exception:
+        pass          # never let a diagnostic nicety block the install itself
+
     print(f"\nDone. Double-click {skrot}")
     print("It opens the interface at http://127.0.0.1:8765 in your browser.")
     print(f"\nIf it ever will not start, double-click {sprawdzenie}")

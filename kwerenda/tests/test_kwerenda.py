@@ -625,6 +625,43 @@ class TestRozdzielenieDanych(unittest.TestCase):
                 else:
                     os.environ["KWERENDA_HOME"] = stare
 
+    def test_zostawia_wskaznik_na_folder_programu(self):
+        """The data folder and the program folder are named closely enough that
+        opening a terminal in the wrong one is the single most common way to
+        see a bare "No module named kwerenda" — this is the way out of it."""
+        from kwerenda import dane
+        with tempfile.TemporaryDirectory() as katalog:
+            stare = os.environ.get("KWERENDA_HOME")
+            os.environ["KWERENDA_HOME"] = katalog
+            try:
+                dane.zapisz_wskaznik_programu(dane.katalog_programu())
+                wskaznik = Path(katalog) / dane.NAZWA_WSKAZNIKA
+                self.assertTrue(wskaznik.is_file())
+                tresc = wskaznik.read_text(encoding="utf-8")
+                self.assertIn(str(dane.katalog_programu()), tresc)
+                self.assertIn("kwerenda doctor", tresc)
+                self.assertIn("kwerenda update", tresc)
+            finally:
+                if stare is None:
+                    os.environ.pop("KWERENDA_HOME", None)
+                else:
+                    os.environ["KWERENDA_HOME"] = stare
+
+    def test_wskaznik_nie_powstaje_gdy_folder_danych_to_program(self):
+        """Pointing a folder at itself would be noise, not help."""
+        from kwerenda import dane
+        with tempfile.TemporaryDirectory() as katalog:
+            stare = os.environ.get("KWERENDA_HOME")
+            os.environ["KWERENDA_HOME"] = katalog
+            try:
+                dane.zapisz_wskaznik_programu(Path(katalog))
+                self.assertFalse((Path(katalog) / dane.NAZWA_WSKAZNIKA).exists())
+            finally:
+                if stare is None:
+                    os.environ.pop("KWERENDA_HOME", None)
+                else:
+                    os.environ["KWERENDA_HOME"] = stare
+
     def test_przenosi_stara_baze_i_moje_presety_ale_nie_przyklady(self):
         from kwerenda import dane
         with tempfile.TemporaryDirectory() as katalog:

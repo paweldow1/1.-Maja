@@ -250,6 +250,13 @@ It checks the Python version, every library, the PDF reader, whether your data
 folder is writable and whether the port is free, and prints what to do about
 anything that is wrong.
 
+**`No module named kwerenda`** almost always means the terminal is sitting in
+`~/Kwerenda` — your *data* folder — rather than the *program* folder, since the
+two names look alike. Every command below needs to run with the program folder
+as the working directory. If you are not sure where that is, open
+`~/Kwerenda/WHERE-IS-THE-PROGRAM.txt`: it names the program folder and gives
+ready-to-paste commands, and is rewritten every time Kwerenda starts.
+
 On macOS the desktop app also keeps `~/Kwerenda/launch.log` and puts a dialog on
 screen if it fails, rather than leaving you with *"the application is not open
 anymore"* and no reason.

@@ -83,8 +83,9 @@ def aktualizuj(url: str = "", katalog: Optional[Path] = None,
 
     # Rescue anything of the user's still sitting in the program folder before a
     # single file is overwritten.
-    from .dane import przenies_stare_dane
+    from .dane import przenies_stare_dane, zapisz_wskaznik_programu
     komunikaty.extend(przenies_stare_dane(log=lambda *_: None, program=katalog))
+    zapisz_wskaznik_programu(katalog)
 
     try:
         dane = _pobierz(url or ZRODLO, log)
