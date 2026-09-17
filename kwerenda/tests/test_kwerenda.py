@@ -3,11 +3,14 @@
 
 from __future__ import annotations
 
+import io
 import os
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 os.environ.setdefault("NO_PROXY", "127.0.0.1,localhost")
@@ -605,6 +608,72 @@ class TestPresety(unittest.TestCase):
                              "moja-kwerenda.yaml")
             with self.assertRaises(SystemExit):
                 _znajdz_preset(args, "nie-ma-takiego")
+
+
+def _zbuduj_archiwum_testowe(pliki: dict) -> bytes:
+    """A minimal in-memory zip standing in for the real GitHub archive.
+
+    `pliki` maps an archive-relative path to (content, unix_mode) — mirroring
+    how GitHub's own zip carries real permission bits in `external_attr`.
+    """
+    bufor = io.BytesIO()
+    korzen = "1.-Maja-test/kwerenda/"
+    with zipfile.ZipFile(bufor, "w") as archiwum:
+        for sciezka, (tresc, tryb) in pliki.items():
+            info = zipfile.ZipInfo(korzen + sciezka)
+            info.external_attr = (tryb & 0o777) << 16
+            archiwum.writestr(info, tresc)
+    return bufor.getvalue()
+
+
+class TestAktualizacja(unittest.TestCase):
+    """Updating in place must not silently break the very scripts it ships."""
+
+    ZNACZNIKI_TESC = {
+        "requirements.txt": ("requests\n", 0o644),
+        "kwerenda/__init__.py": ('__wersja__ = "9.9"\n', 0o644),
+        "kwerenda/silnik.py": ("# engine\n", 0o644),
+    }
+
+    def test_zachowuje_prawdziwe_uprawnienia_z_archiwum(self):
+        """A naive guess by file extension once forced *every* .py file to
+        non-executable on every update — including install_desktop_icon.py,
+        which needs to stay runnable. The archive's own mode is now trusted."""
+        from kwerenda.aktualizacja import aktualizuj
+
+        pliki = dict(self.ZNACZNIKI_TESC)
+        pliki["install_desktop_icon.py"] = ("#!/usr/bin/env python3\n", 0o755)
+        pliki["start.sh"] = ("#!/bin/bash\n", 0o755)
+        archiwum = _zbuduj_archiwum_testowe(pliki)
+
+        with tempfile.TemporaryDirectory() as katalog:
+            katalog = Path(katalog)
+            # A stale, non-executable copy — exactly what a previous update's
+            # extension-guessing bug would have left behind.
+            (katalog / "install_desktop_icon.py").write_text("old")
+            (katalog / "install_desktop_icon.py").chmod(0o644)
+
+            with patch("kwerenda.aktualizacja._pobierz", return_value=archiwum):
+                ok, _ = aktualizuj(katalog=katalog, instaluj_zaleznosci=False)
+
+            self.assertTrue(ok)
+            self.assertEqual(
+                (katalog / "install_desktop_icon.py").stat().st_mode & 0o777, 0o755)
+            self.assertEqual((katalog / "start.sh").stat().st_mode & 0o777, 0o755)
+            self.assertEqual(
+                (katalog / "kwerenda" / "silnik.py").stat().st_mode & 0o777, 0o644)
+
+    def test_odrzuca_archiwum_ktore_nie_wyglada_na_program(self):
+        from kwerenda.aktualizacja import aktualizuj
+
+        archiwum = _zbuduj_archiwum_testowe(
+            {"requirements.txt": ("requests\n", 0o644)})
+        with tempfile.TemporaryDirectory() as katalog:
+            with patch("kwerenda.aktualizacja._pobierz", return_value=archiwum):
+                ok, komunikaty = aktualizuj(katalog=Path(katalog),
+                                            instaluj_zaleznosci=False)
+        self.assertFalse(ok)
+        self.assertTrue(any("does not look like Kwerenda" in k for k in komunikaty))
 
 
 class TestStartSh(unittest.TestCase):

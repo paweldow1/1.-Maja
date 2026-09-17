@@ -123,8 +123,13 @@ def aktualizuj(url: str = "", katalog: Optional[Path] = None,
         cel.parent.mkdir(parents=True, exist_ok=True)
         with archiwum.open(wpis) as zrodlo, open(cel, "wb") as wyjscie:
             shutil.copyfileobj(zrodlo, wyjscie)
-        if wzgledna.endswith((".sh", ".command", ".py")):
-            cel.chmod(0o755 if wzgledna.endswith((".sh", ".command")) else 0o644)
+        # GitHub's archives carry the real Unix mode (so install_desktop_icon.py
+        # and start.sh keep their executable bit, and everything else does not)
+        # — a guess based on the extension once set every .py file, including
+        # install_desktop_icon.py, to non-executable on every single update.
+        tryb = (wpis.external_attr >> 16) & 0o777
+        if tryb:
+            cel.chmod(tryb)
         zapisane += 1
         dodane += 1 if nowy_plik else 0
 
