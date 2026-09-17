@@ -33,6 +33,9 @@ TABELA = BASE / "input/dzielnicowe.tsv"
 SERIE = BASE / "input/dzielnicowe_serie.tsv"
 # Cykle, ktorych obiekt juz jest na mapie -- tagujemy, zamiast dopisywac.
 NA_MAPIE = BASE / "input/cykle_na_mapie.tsv"
+# Wydarzenia z prasy, ktore nie sa dzielnicowkami -- ta sama mechanika,
+# tylko warstwe i charakter podaje sie wprost.
+RECZNE = BASE / "input/wydarzenia_reczne.tsv"
 
 
 def wczytaj_tsv(sciezka):
@@ -150,6 +153,34 @@ def main():
         wydarzenia.append(wiersz)
         dodane += 1
 
+    # to samo dla wydarzen recznych spoza dzielnicowek
+    reczne_dodane = 0
+    for n, d in enumerate(wczytaj_tsv(RECZNE)):
+        klucz = f"wydarzenia_reczne.tsv#{d['miasto']}#{d['rok']}#{n}"
+        if klucz in istniejace:
+            continue
+        wiersz = {k: "" for k in kolumny}
+        wiersz.update({
+            "rok": d["rok"], "rok_zrodlo": "wydarzenia_reczne.tsv", "miasto": d["miasto"],
+            "warstwa": d["warstwa"], "typ": d["typ"], "typ_zrodlo": "wydarzenia_reczne.tsv",
+            "aktor": d["aktor"], "aktor_zgadniety": "False",
+            "aktor_zrodlo": "wydarzenia_reczne.tsv",
+            "aktor_linia": LINIA if d["aktor"] in LINIA_LEWICY else d["aktor"],
+            "charakter": d["charakter"], "nazwa": d["nazwa"], "opis": d.get("zrodlo", ""),
+            "godzina": d.get("godzina_od", ""), "godzina_do": d.get("godzina_do", ""),
+            "miejsce": d.get("miejsce", ""), "osoby": d.get("osoby", ""),
+            "data": d.get("data", "01.05"),
+            "dzielnica_start": d.get("dzielnica", ""),
+            "bezirk_start": d.get("dzielnica", ""),
+            "zrodlo": d.get("zrodlo", ""), "cytat": d.get("cytat", ""),
+            "plik_zrodlowy": "wydarzenia_reczne.tsv", "klucz_zrodlowy": klucz,
+            "zrodlo_zlaczenia": "reczne", "wymaga_weryfikacji": "False",
+            "decyzja_notatka": "; ".join(
+                x for x in (d.get("pewnosc", ""), d.get("uwaga", "")) if x),
+        })
+        wydarzenia.append(wiersz)
+        reczne_dodane += 1
+
     # Cykl, ktorego obiekt jest juz na mapie: oznaczamy ten obiekt, zamiast
     # dopisywac rownolegle wiersze. Inaczej kazda edycja liczy sie dwa razy
     # -- Humannplatz mial tak przez chwile dziewiec duplikatow.
@@ -192,6 +223,7 @@ def main():
 
     print(f"dzielnicowe: +{dodane} wydarzen, {len(wydarzenia)} wierszy razem")
     print(f"  cykle juz na mapie: {otagowane} obiektow otagowanych")
+    print(f"wydarzenia_reczne.tsv: +{reczne_dodane} wydarzen spoza dzielnicowek")
     print("  wg daty: " + ", ".join(f"{d or '?'}: {n}" for d, n in sorted(wg_daty.items())))
     w_cyklu = sum(1 for w in wydarzenia
                   if w["warstwa"] == "Dzielnicowe" and w.get("seria"))
