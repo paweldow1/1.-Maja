@@ -22,8 +22,12 @@ def e(t):
 
 def main():
     with (OUT_DIR / "wydarzenia.csv").open(encoding="utf-8") as f:
+        # "dzielnicowe" == TRUE, nie warstwa -- Humannplatz siedzi na mapie w
+        # warstwie "East German Left" (dzielnicowe_dodaj.py go tam tylko
+        # oznacza, zeby nie dublowac obiektu), a mimo to nalezy do tego
+        # samego zestawu cykli co reszta.
         wyd = [x for x in csv.DictReader(f)
-               if x["warstwa"] == "Dzielnicowe" and OD <= int(x["rok"]) <= DO]
+               if x.get("dzielnicowe") == "TRUE" and OD <= int(x["rok"]) <= DO]
     with (OUT_DIR / "dzielnicowe_serie.csv").open(encoding="utf-8") as f:
         meta = {s["seria"]: s for s in csv.DictReader(f)}
 
