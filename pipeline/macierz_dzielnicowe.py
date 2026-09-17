@@ -95,7 +95,12 @@ def main():
                 if x["aktor_linia"] != "PDS/Die Linke":
                     bity.append(f'<span class="obcy">organizuje: {e(x["aktor"])}</span>')
                 if x["edycja"]:
-                    bity.append(f'<span class="edycja">edycja {e(x["edycja"])}</span>')
+                    granica = "gorna granica" in (x.get("edycja_zrodlo") or "")
+                    bity.append(
+                        '<span class="edycja"'
+                        + (' title="' + e(x["edycja_zrodlo"]) + '"' if granica else "")
+                        + ">edycja " + ("≤ " if granica else "") + e(x["edycja"])
+                        + "</span>")
                 if x.get("cytat"):
                     bity.append('<details class="dowod"><summary>'
                                 + e(x.get("zrodlo") or "źródło") + "</summary>"

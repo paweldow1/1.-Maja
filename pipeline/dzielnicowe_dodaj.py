@@ -54,6 +54,27 @@ def main():
     poczatki = {s["seria"]: int(s["od_roku"]) for s in serie
                 if s.get("od_roku", "").isdigit()}
 
+    # Numer edycji liczony od roku poczatkowego zaklada, ze cykl nie mial
+    # przerwy. Gdy zrodlo podaje numer konkretnej edycji, da sie to
+    # sprawdzic: dla Köpenick od 1991 do 2009 jest 19 lat kalendarzowych, a
+    # zrodlo mowi o 18. edycji -- czyli jeden rok wypadl. Numery sprzed
+    # kotwicy sa wtedy niepewne o tyle wlasnie lat.
+    kotwice, pominiete = {}, {}
+    for sr in serie:
+        pary = []
+        for kawalek in (sr.get("edycja_znana") or "").split(";"):
+            if "=" in kawalek:
+                rok, ed = kawalek.split("=")
+                if rok.strip().isdigit() and ed.strip().isdigit():
+                    pary.append((int(rok), int(ed)))
+        if not pary:
+            continue
+        kotwice[sr["seria"]] = sorted(pary)
+        od = poczatki.get(sr["seria"])
+        if od is not None:
+            rok_k, ed_k = sorted(pary)[0]
+            pominiete[sr["seria"]] = (rok_k - od + 1) - ed_k
+
     wpisy = wczytaj_tsv(TABELA)
     istniejace = {w["klucz_zrodlowy"] for w in wydarzenia}
     dodane = 0
@@ -98,15 +119,36 @@ def main():
         # edycji nie bylo. Zrodlo policzenia idzie obok liczby.
         seria_nazwa = d.get("seria", "")
         if seria_nazwa in poczatki:
-            wiersz["edycja"] = int(d["rok"]) - poczatki[seria_nazwa] + 1
-            wiersz["edycja_zrodlo"] = f"od {poczatki[seria_nazwa]}"
+            rok = int(d["rok"])
+            luk = pominiete.get(seria_nazwa, 0)
+            pary = kotwice.get(seria_nazwa)
+            if pary:
+                rok_k, ed_k = min(pary, key=lambda pr: abs(pr[0] - rok))
+                if luk and rok < rok_k:
+                    # Przerwa lezy miedzy poczatkiem cyklu a kotwica, wiec
+                    # liczenie wstecz od kotwicy daje za malo (dla Köpenick
+                    # wychodzilo zero). Dla lat sprzed kotwicy liczy sie od
+                    # poczatku i jest to gorna granica: rzeczywisty numer
+                    # jest taki albo o tyle mniejszy, ile lat wypadlo przed
+                    # nim.
+                    wiersz["edycja"] = rok - poczatki[seria_nazwa] + 1
+                    wiersz["edycja_zrodlo"] = (
+                        f"od {poczatki[seria_nazwa]}, gorna granica "
+                        f"(w cyklu jest {luk} rok bez festynu, nie wiadomo ktory)")
+                else:
+                    wiersz["edycja"] = ed_k + (rok - rok_k)
+                    wiersz["edycja_zrodlo"] = f"{rok_k}={ed_k} ze zrodla"
+            else:
+                wiersz["edycja"] = rok - poczatki[seria_nazwa] + 1
+                wiersz["edycja_zrodlo"] = f"od {poczatki[seria_nazwa]}"
         wydarzenia.append(wiersz)
         dodane += 1
 
     write_csv(OUT_DIR / "wydarzenia.csv", wydarzenia, kolumny)
 
     write_csv(OUT_DIR / "dzielnicowe_serie.csv", serie,
-              ["seria", "dzielnica", "aktor", "od_roku", "do_roku", "dowod"])
+              ["seria", "dzielnica", "aktor", "od_roku", "do_roku", "edycja_znana",
+               "dowod"])
 
     opisane = {(w["seria"], w["rok"]) for w in wydarzenia if w.get("seria")}
     from collections import Counter
