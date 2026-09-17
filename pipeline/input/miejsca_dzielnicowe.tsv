@@ -45,3 +45,10 @@ rathaus-wedding	Wedding	rathaus wedding	52.5495,13.3565	obiekt	Müllerstraße 14
 weddingstrasse	Wedding	weddingstrasse			
 parkstrasse-weissensee	Weißensee	parkstrasse	52.5545,13.4620	adres	Parkstraße 23; polozenie rozpoznane z nazwy miejsca, nie z geokodera
 herbert-baum-strasse	Weißensee	herbert baum	52.5510,13.4585	ulica	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+gethsemanekirche	Prenzlauer Berg	gethsemane	52.5490,13.4145	obiekt	Stargarder Straße; polozenie rozpoznane z nazwy miejsca, nie z geokodera
+kastanienallee-pberg	Prenzlauer Berg	kastanienallee	52.5385,13.4105	adres	Kastanienallee 7-9 w Prenzlauer Bergu -- inna ulica niz Kastanienallee w Hellersdorfie; polozenie rozpoznane z nazwy miejsca
+zingster-strasse	Hohenschönhausen	zingster|zinglster	52.5665,13.5085	ulica	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+jungfernheide	Charlottenburg	jungfernheide|heckerdamm	52.5350,13.3000	park	wejscie od Heckerdamm; polozenie rozpoznane z nazwy miejsca
+lausitzer-platz	Kreuzberg	lausitzer	52.5010,13.4340	plac	polozenie rozpoznane z nazwy miejsca, nie z geokodera
+rosa-luxemburg-haus	Schöneberg	rosa luxemburg haus|kurze strasse			nie rozpoznaje tego adresu na tyle pewnie, zeby go postawic
+schoenboerse	Köpenick	schoenboerse|schonborse|schonboerse			nazwa miejsca prawdopodobnie znieksztalcona w zrodle; nie rozpoznaje jej

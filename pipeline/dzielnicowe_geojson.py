@@ -209,7 +209,7 @@ def main():
 
     for nazwa_w, zbior, plik in (
             ("Festyny dzielnicowe PDS", cechy, "dzielnicowe.geojson"),
-            ("Festyny dzielnicowe -- inni organizatorzy", cechy_inne,
+            ("Festyny dzielnicowe -- inni i nieustaleni organizatorzy", cechy_inne,
              "dzielnicowe_inne.geojson")):
         (OUT_DIR / plik).write_text(json.dumps(
             {"type": "FeatureCollection", "name": nazwa_w,

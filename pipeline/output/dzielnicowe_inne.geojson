@@ -1,6 +1,6 @@
 {
  "type": "FeatureCollection",
- "name": "Festyny dzielnicowe -- inni organizatorzy",
+ "name": "Festyny dzielnicowe -- inni i nieustaleni organizatorzy",
  "features": [
   {
    "type": "Feature",
@@ -49,6 +49,27 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     13.3,
+     52.535
+    ]
+   },
+   "properties": {
+    "name": "Kinder- und Familienfest in der Jungfernheide",
+    "Lata": "1991",
+    "description": "1991: Kinder- und Familienfest in der Jungfernheide, 14:00–18:00\n   źródło: rocznik DE 1991\n   „14:00-18:00 - Kinder- und Familienfest in der Jungfernheide (Eingang Heckerdamm)”",
+    "Aktor": "nieustalony",
+    "Dzielnica": "Charlottenburg",
+    "Edycji opisanych": 1,
+    "Zrodla": "rocznik DE 1991",
+    "Precyzja": "park",
+    "Zrodlo punktu": "wejscie od Heckerdamm; polozenie rozpoznane z nazwy miejsca"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      13.496,
      52.5535
     ]
@@ -63,6 +84,27 @@
     "Zrodla": "nd 27.04.1994; rocznik DE",
     "Precyzja": "obiekt",
     "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera; poprawione po kontroli wielokatem dzielnicy"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4145,
+     52.549
+    ]
+   },
+   "properties": {
+    "name": "Maifeier hinter der Gethsemanekirche",
+    "Lata": "1991",
+    "description": "1991: Maifeier hinter der Gethsemanekirche, 13:00\n   źródło: rocznik DE 1991\n   „13:00 - Maifeier hinter der Gethsemanekirche”",
+    "Aktor": "nieustalony",
+    "Dzielnica": "Prenzlauer Berg",
+    "Edycji opisanych": 1,
+    "Zrodla": "rocznik DE 1991",
+    "Precyzja": "obiekt",
+    "Zrodlo punktu": "Stargarder Straße; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
   },
   {
@@ -154,6 +196,27 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     13.5085,
+     52.5665
+    ]
+   },
+   "properties": {
+    "name": "Maifest »von unten«",
+    "Lata": "1991",
+    "description": "1991: Maifest »von unten«, 14:00–20:00\n   źródło: rocznik DE 1991\n   „14:00-20:00 - Maifest \"von unten\", Zinglster Str/Am Berg Ahornhausen, Hohenschönhausen (mit Kulturprogramm, Kinderfest, Infostände)”",
+    "Aktor": "nieustalony",
+    "Dzielnica": "Hohenschönhausen",
+    "Edycji opisanych": 1,
+    "Zrodla": "rocznik DE 1991",
+    "Precyzja": "ulica",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      13.466,
      52.493
     ]
@@ -168,6 +231,27 @@
     "Zrodla": "ND 29.04.1995; rocznik DE",
     "Precyzja": "park",
     "Zrodlo punktu": "Rosengarten w Treptower Park; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.434,
+     52.501
+    ]
+   },
+   "properties": {
+    "name": "Straßenfest am Lausitzer Platz",
+    "Lata": "1991",
+    "description": "1991: Straßenfest am Lausitzer Platz, 15:00\n   źródło: rocznik DE 1991\n   „15:00 – Lausitzer Platz festival, pod hasłem »Gegen Rassismus und die Zerstörung Kreuzbergs« (BZ)”",
+    "Aktor": "nieustalony",
+    "Dzielnica": "Kreuzberg",
+    "Edycji opisanych": 1,
+    "Zrodla": "rocznik DE 1991",
+    "Precyzja": "plac",
+    "Zrodlo punktu": "polozenie rozpoznane z nazwy miejsca, nie z geokodera"
    }
   },
   {
@@ -210,6 +294,27 @@
     "Zrodla": "rocznik DE",
     "Precyzja": "obiekt",
     "Zrodlo punktu": "Müllerstraße 146; polozenie rozpoznane z nazwy miejsca, nie z geokodera"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.4105,
+     52.5385
+    ]
+   },
+   "properties": {
+    "name": "Tanz unterm Maibaum",
+    "Lata": "1991",
+    "description": "1991: Tanz unterm Maibaum, 14:00–20:00\n   źródło: rocznik DE 1991\n   „14:00-20:00 - Tanz unterm Maibaum in Prenzlauer Berg, Kastanienallee 7-9”",
+    "Aktor": "nieustalony",
+    "Dzielnica": "Prenzlauer Berg",
+    "Edycji opisanych": 1,
+    "Zrodla": "rocznik DE 1991",
+    "Precyzja": "adres",
+    "Zrodlo punktu": "Kastanienallee 7-9 w Prenzlauer Bergu -- inna ulica niz Kastanienallee w Hellersdorfie; polozenie rozpoznane z nazwy miejsca"
    }
   },
   {
