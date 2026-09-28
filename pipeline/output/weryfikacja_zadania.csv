@@ -1,0 +1,87 @@
+kolejka,klucz,akcja,lata,notatka
+brakujace,1991-Hellersdorf-15:00-0,dodać,,"Avendveranstaltung mit Gregor Gysi, Haus Kastanienallee 6/8"
+brakujace,1991-Hohenschönhausen-20:00-0,dodać,,
+brakujace,1991-Kreuzberg-15:45-0,dodać,,"zachować do oddzielnego zestawienia opisów zamieszek, mogą się przydać"
+brakujace,1991-Köpenick-18:00-0,dodać,,poprawka: od 14:30 do 18:00
+brakujace,1991-Marzahn-13:00-0,dodać,,"korekta: von der PDS-Geschäftsstelle. Kinderfest, Kremserfahrten, Disco, Plaudermöglichkeiten mit Gewerkschaftlern, Marzahner Abgeordneten. Um 20 Uhr Klubgespräch mit Michael Brie und Reinhold Andert ""Perestroika – letzter Akt Sozialismus"""
+brakujace,1991-Müggelheim-14:00-0,pomijam,,
+brakujace,1991-Prenzlauer Berg-20:00-0,dodać,,
+brakujace,1992-Kreuzberg-13:00-0,duplikat,,"ta demonstracja jest jako oddzielne wydarzenie na mapie, raczej duplikat"
+brakujace,1992-Kreuzberg-15:00-0,duplikat,,"opisane starcia z neonazi o 15:00, przy okazji FAP demonstration"
+brakujace,1993-Friedrichshain-14:00-0,duplikat,,
+brakujace,1993-Friedrichshain-14:00-1,duplikat,,
+brakujace,1993-Kreuzberg-15:00-0,duplikat,,
+brakujace,1993-Kreuzberg-19:00-0,duplikat,,
+brakujace,1993-Marzahn-13:00-0,duplikat,,
+brakujace,1993-Mitte-10:00-0,pomijam,,"miejsce zbiórki demonstracji związkowej, a nie wydarzenie"
+brakujace,1994-Friedrichshain-12:00-0,duplikat,,
+brakujace,1994-Hohenschönhausen-18:00-0,dodać,,
+brakujace,1994-Köpenick-14:00-0,dodać,,"dwa wydarzenia SPD: jedno to Volksfest Schlosshof w Köpenick, drugie na Breite Strasse w Pankow"
+brakujace,1994-Prenzlauer Berg-20:00-0,pomijam,,wydarzenie z 30.04; zachować do rezerwy jako pominięte
+brakujace,1994-Spandau-18:00-0,pomijam,,wydarzenie z 30.04; zachować do rezerwy jako pominięte
+brakujace,2019-Gatow-17:00-0,pomijam,,
+brakujace,2019-Grunewald-12:00-0,duplikat,,
+brakujace,2019-Grunewald-13:00-0,pomijam,,
+brakujace,2019-Grunewald-13:00-1,pomijam,,
+brakujace,2019-Grunewald-13:30-0,pomijam,,
+brakujace,2019-Grunewald-14:00-0,pomijam,,
+brakujace,2019-Grunewald-16:00-0,pomijam,,
+brakujace,2019-Hohenschönhausen-11:00-0,dodać,,
+brakujace,2019-Hohenschönhausen-18:00-0,dodać,,
+brakujace,2019-Kreuzberg-18:00-0,dodać,,
+brakujace,2019-Pankow-11:00-0,dodać,,ale to wydarzenie powinno już być wczesniej
+brakujace,2019-Steglitz-Zehlendorf-15:00-0,pomijam,,
+brakujace,2019-Tempelhof-14:00-0,pomijam,,
+brakujace,2019-Wedding-12:30-0,duplikat,,
+brakujace,2019-Wedding-17:00-0,pomijam,,"Walpurgisnacht Demo, powinno już być dlatego pomijam"
+tylko_rocznik,1989_PL_OPZZ,nie wydarzenie,,
+tylko_rocznik,1990_DE_FDGB,nie wydarzenie,,
+tylko_rocznik,1990_DE_IG Metall,odkładam,,jest na mapie
+tylko_rocznik,1990_DE_brak,odkładam,,jest na mapie
+tylko_rocznik,1990_DE_ÖTV,odkładam,,jest na mapie
+tylko_rocznik,1991_DE_FDGB,nie wydarzenie,,
+tylko_rocznik,1991_DE_IG Metall,odkładam,,jest na mapie
+tylko_rocznik,1991_DE_brak,odkładam,,jest na mapie
+tylko_rocznik,1991_DE_ÖTV,odkładam,,jest na mapie
+tylko_rocznik,1992_DE_IG Metall,odkładam,,jest na mapie
+tylko_rocznik,1992_DE_brak,odkładam,,jest na mapie
+tylko_rocznik,1992_DE_ÖTV,odkładam,,jest na mapie
+tylko_rocznik,1994_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,1995_DE_brak,odkładam,,jest na mapie
+tylko_rocznik,1995_DE_ÖTV,odkładam,,jest na mapie
+tylko_rocznik,1996_DE_BKG,nie wydarzenie,,
+tylko_rocznik,1996_PL_SLD,nie wydarzenie,,
+tylko_rocznik,1998_PL_brak,nie wydarzenie,,
+tylko_rocznik,2001_DE_ÖTV,odkładam,,jest na mapie
+tylko_rocznik,2002_DE_DGB Berlin-Brandenburg,nie wydarzenie,,jest na mapie
+tylko_rocznik,2003_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2003_DE_brak,nie wydarzenie,,
+tylko_rocznik,2004_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2004_DE_FDJ,nie wydarzenie,,
+tylko_rocznik,2005_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2006_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2007_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2008_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2008_PL_SLD,nie wydarzenie,,
+tylko_rocznik,2009_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2010_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2011_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2011_PL_OPZZ,odkładam,,jest na mapie; wiec przed budynkiem OPZZ
+tylko_rocznik,2012_PL_SLD,nie wydarzenie,,
+tylko_rocznik,2013_DE_DGB Berlin-Brandenburg,nie wydarzenie,,
+tylko_rocznik,2013_PL_SLD,nie wydarzenie,,
+tylko_rocznik,2015_PL_OPZZ,nie wydarzenie,,
+tylko_rocznik,2017_PL_Razem,nie wydarzenie,,
+tylko_rocznik,2018_PL_Razem,nie wydarzenie,,
+tylko_rocznik,2019_PL_OPZZ,nie wydarzenie,,jest na mapie skłądanie kwiatów
+tylko_rocznik,2020_PL_OPZZ,nie wydarzenie,,
+tylko_rocznik,2021_PL_OPZZ,nie wydarzenie,,
+tylko_rocznik,2022_PL_OPZZ,nie wydarzenie,,
+tylko_rocznik,2023_PL_OPZZ,nie wydarzenie,,
+tylko_rocznik,2024_PL_OPZZ,nie wydarzenie,,
+bez_lat,1__mai_berlin_aktualna_12_.geojson#0,odkładam,,
+bez_lat,1__mai_berlin_aktualna_12_.geojson#15,odkładam,,
+bez_lat,1__mai_berlin_aktualna_14_.geojson#1,odkładam,,
+bez_lat,1__mai_berlin_aktualna_14_.geojson#13,gotowe,1990,"źle zakwalifikowane: Ein paar hundert Meter weiter feierte die PDS inmitten wehender DDR-Fahnen ihr Maifest auf dem Werderschen Markt. Sie war die einzige Partei, die den Feiertag dazu nutzte, Wahlkampf in der Ostberliner Innenstadt zu machen. Ansonsten verkündeten nur einige Plakate der SPD davon, das am kommenden Sonntag der Magistrat gewählt werden soll."
+bez_lat,1__mai_berlin_aktualna_14_.geojson#9,odkładam,,
+bez_lat,umap_backup_1-mai-berlin_aktualna16.umap#4,odkładam,2026,
