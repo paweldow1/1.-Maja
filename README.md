@@ -16,7 +16,7 @@ routes/events, and (for Berlin) a riot/violence index.
 
 ```
 .
-├── index.html                # Berlin vs Warsaw attendance dashboard
+├── index.html                # attendance dashboard: Berlin, Warsaw, Kyiv (tabs incl. Events, Year, Violence)
 ├── data/                     # raw sources, observations, series map (see pipeline below)
 ├── scripts/                  # extract → compare → build decisions page
 ├── tools/                    # decisions page template
@@ -49,6 +49,12 @@ data/cells.json                          city × series × year: proposal + flag
         │  scripts/build_decisions_page.py
         ▼
 tools/decyzje.html                       decisions page (published as a claude.ai artifact)
+
+data/cells.json + maps/*.umap + berlin-violence/data.csv
+        │  scripts/inject_index_data.py
+        ▼
+index.html  generated blocks: extra-series (◦ preliminary map series, Kyiv),
+            violence (Violence (Berlin) tab), map-events (Year tab)
 ```
 
 - **Proposal per cell**: mean of the xlsx reports (this reproduces the current Berlin
@@ -62,7 +68,9 @@ tools/decyzje.html                       decisions page (published as a claude.a
   excluded, and which segment the number refers to). Next step: export them to
   `data/decisions.json` and generate the chart data from observations + decisions.
 
-To rebuild: `pip install -r requirements.txt`, then run the three scripts in order.
+To rebuild: `pip install -r requirements.txt`, then run `extract.py`, `compare.py`,
+`build_decisions_page.py` and `inject_index_data.py`. Only the `// <generated:…>` blocks of
+`index.html` are rewritten; the rest of the page is edited by hand.
 
 The working copy of the attendance spreadsheet lives in Google Drive as
 `1maja_frekwencje_MASTER` (created so the Drive connector can read it).
