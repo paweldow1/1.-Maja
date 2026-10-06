@@ -46,6 +46,9 @@ TYPES = [  # first match wins; the name is checked before the description
     ("festival", re.compile(r"fest\b|festyn|festival|Maifest|MyFest|Tanz in den Mai|Party|Rave|piknik|kiermasz|концерт|фестив", re.I)),
     ("rally", re.compile(r"Kundgebung|wiec|rally|mityng|мітинг|митинг|zgromadzen|pikiet|picket|happening", re.I)),
 ]
+# Blockades and counter-protests have their own map layers; a march whose description
+# mentions a blockade on its route is still a march.
+BLOCKADE_SERIES = {("warsaw", "prawica_kontra"), ("berlin", "antinazi")}
 GEOM_TYPE = {"route": "march", "point": "gathering", "area": "gathering"}
 
 
@@ -89,9 +92,11 @@ def find_time(text):
     return ""
 
 
-def event_type(name, text, geom):
+def event_type(city, series, name, text, geom):
+    allowed = [(label, pat) for label, pat in TYPES
+               if label != "blockade" or (city, series) in BLOCKADE_SERIES]
     for blob in (name, text[:300]):
-        for label, pat in TYPES:
+        for label, pat in allowed:
             if blob and pat.search(blob):
                 return label
     return GEOM_TYPE.get(geom, "")
@@ -134,4 +139,4 @@ def scenario_fields(city, series, name, desc, geom, years, raw_attendance):
         if a and a != raw_attendance:
             att[y] = a
     return {"t": times, "dy": days, "ay": att,
-            "k": event_type(name, desc, geom), "p": place(name, desc, geom)}
+            "k": event_type(city, series, name, desc, geom), "p": place(name, desc, geom)}
