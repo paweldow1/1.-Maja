@@ -11,7 +11,8 @@ them ◦ and, for Berlin and Warsaw, leaves them unchecked by default.
 
 2. violence: berlin-violence/data.csv (police figures) for the Violence (Berlin) tab.
 3. map-events: every feature of an event layer in maps/*.umap (name, years, slogan,
-   attendance, description, centre point) for the Year tab, with a link back to uMap.
+   attendance, description, centre point, and per year the time/day/type/place parsed by
+   scripts/scenario.py) for the Scenario tab, with a link back to uMap.
 """
 import csv
 import json
@@ -109,6 +110,7 @@ def map_events_payload():
     import sys
     sys.path.insert(0, str(ROOT / "scripts"))
     from extract import load_series, NAME_OVERRIDES, YEAR_RE  # same layer → series mapping as the pipeline
+    from scenario import scenario_fields
     by_layer, _, _ = load_series()
     labels = {}
     with open(ROOT / "data" / "series.csv", newline="", encoding="utf-8") as f:
@@ -137,13 +139,14 @@ def map_events_payload():
                         continue
                     desc = re.sub(r"\s+", " ", str(p.get("description") or "")).strip()
                     c = centre(feat["geometry"]) if feat.get("geometry") else None
-                    rows.append({"s": series, "y": years, "n": name,
-                                 "a": str(p.get("Frekwencja", p.get("Attendance")) or "").strip()[:80],
+                    geom = {"Point": "point", "LineString": "route", "MultiLineString": "route"}.get(
+                        feat["geometry"]["type"], "area") if feat.get("geometry") else ""
+                    att = str(p.get("Frekwencja", p.get("Attendance")) or "").strip()
+                    rows.append({"s": series, "y": years, "n": name, "a": att[:80],
                                  "h": str(p.get("Hasło") or "").strip(),
                                  "d": desc[:320] + ("…" if len(desc) > 320 else ""),
-                                 "g": {"Point": "point", "LineString": "route", "MultiLineString": "route"}.get(
-                                     feat["geometry"]["type"], "area") if feat.get("geometry") else "",
-                                 "c": c})
+                                 "g": geom, "c": c,
+                                 **scenario_fields(city, series, name, desc, geom, years, att)})
                 walk(layer.get("layers", []), full + " / ")
         walk(umap["layers"])
         out[city] = {"uri": umap.get("uri", "").replace("http://", "https://"), "labels": labels[city], "events": rows}
