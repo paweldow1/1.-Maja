@@ -11,7 +11,8 @@ Flags:
   rozjazd        the chart (index.html) shows a value >10% off the proposal
   tylko_wykres   the chart shows a value no source backs up
   poza_wykresem  sources have a number the chart does not show (Berlin/Warsaw only)
-  tylko_mapa     the only evidence is a number on the map
+  tylko_mapa     the only evidence is a number on the map and the chart does not show it
+                 (map numbers are often already the output of the averaging method)
   rozrzut        reports disagree by a factor of 2 or more
 """
 import csv
@@ -63,7 +64,7 @@ def main():
             flags.append("poza_wykresem")
         if chart and proposal is not None and abs(chart[0] - proposal) > 0.1 * max(proposal, 1):
             flags.append("rozjazd")
-        if parts and not estimates:
+        if parts and not estimates and not chart:
             flags.append("tylko_mapa")
         if len(estimates) > 1 and min(estimates) > 0 and max(estimates) / min(estimates) >= 2:
             flags.append("rozrzut")
