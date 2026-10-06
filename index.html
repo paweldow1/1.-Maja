@@ -27,14 +27,6 @@
     --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
   }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-    --bg: #161514; --bg2: #1d1c1a; --bg3: #262421; --border: #35322e; --border2: #4a4640;
-    --text: #efebe4; --text-dim: #8f877c; --text-mid: #bdb5aa; --surface: #1b1a18;
-    --berlin: #e46d5f; --warsaw: #6fa3d1; --kyiv: #c9a23a; --rule: #e47a6e; color-scheme: dark; } }
-  :root[data-theme="dark"] {
-    --bg: #161514; --bg2: #1d1c1a; --bg3: #262421; --border: #35322e; --border2: #4a4640;
-    --text: #efebe4; --text-dim: #8f877c; --text-mid: #bdb5aa; --surface: #1b1a18;
-    --berlin: #e46d5f; --warsaw: #6fa3d1; --kyiv: #c9a23a; --rule: #e47a6e; color-scheme: dark; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -576,7 +568,9 @@
     <button class="seg-btn active" id="evDetailBtn" onclick="setEventView('detail')">Detailed</button>
     <button class="seg-btn" id="evGroupBtn" onclick="setEventView('grouped')">Grouped</button>
     <button class="seg-btn" id="evDecBtn" onclick="setEventView('decades')">Decades</button>
+    <button class="seg-btn" id="evShareBtn" onclick="setEventView('share')">Share</button>
     <button class="seg-btn" id="evTypesBtn" onclick="setEventView('types')">Event types</button>
+    <select id="evShareSel" hidden onchange="renderEventTable(eventCity)" style="font:13px var(--sans);padding:4px 8px;border:1px solid var(--border);border-radius:4px;background:var(--surface);color:var(--text);"></select>
     <span id="evTypesMode" hidden style="display:inline-flex;gap:6px;margin-left:6px;">
       <button class="seg-btn active" id="evTypShare" onclick="setTypesMode('share')">% of events</button>
       <button class="seg-btn" id="evTypCount" onclick="setTypesMode('count')">Number</button>
@@ -1436,6 +1430,7 @@ function renderEventTable(city) {
   cfg.bind();
   if (eventViewMode === 'decades') return renderEventDecades(city, cfg);
   if (eventViewMode === 'types') return renderEventTypes(city);
+  if (eventViewMode === 'share') return renderEventShare(city, cfg);
   const mono = "'IBM Plex Mono', monospace";
   const visKeys = cfg.columnKeys.filter(k => evOn(city,k,cfg));
 
@@ -1498,7 +1493,7 @@ const EVENT_TYPES = {"berlin":{"types":["Demonstrations","Festivals","Commemorat
 // </generated:event-types>
 const TYPE_COLORS = {   // fixed per type in both cities (validated categorical order)
   'Demonstrations':'#2a78d6', 'Festivals':'#eb6834', 'Commemorations':'#1baf7a', 'Counter-demonstrations':'#eda100',
-  'Corsos (car parades)':'#e87ba4', 'Mass (Solidarity)':'#008300', 'Meetings':'#4a3aa7', 'Happenings':'#e34948', 'Rallies':'#8a8178' };
+  'Corsos (bike/motorcycle parades)':'#e87ba4', 'Mass (Solidarity)':'#008300', 'Meetings':'#4a3aa7', 'Happenings':'#e34948', 'Rallies':'#8a8178' };
 let typesMode = 'share';
 function setTypesMode(m) {
   typesMode = m;
@@ -1514,6 +1509,11 @@ const totalLabels = { id:'totalLabels', afterDatasetsDraw(chart, _, opts) {
   meta.data.forEach((bar, i) => { if (opts.totals[i]) ctx.fillText(opts.totals[i], bar.x, chart.chartArea.top - 4); });
   ctx.restore();
 } };
+const TYPE_LABEL_FIX = { 'Corsos (car parades)': 'Corsos (bike/motorcycle parades)' };   // the sheet's label is wrong
+Object.values(EVENT_TYPES).forEach(T => {
+  if (!T.types) return;
+  T.types = T.types.map(t => { const n = TYPE_LABEL_FIX[t] || t; if (n !== t) { T.counts[n] = T.counts[t]; delete T.counts[t]; } return n; });
+});
 function renderEventTypes(city) {
   if (_charts['cEvents']) { _charts['cEvents'].destroy(); delete _charts['cEvents']; }
   const T = EVENT_TYPES[city];
@@ -1651,6 +1651,48 @@ function exportEventTable() {
   a.click();
 }
 
+// ── Share: one group or series as a % of all attendance on the day, with MA-3 ──
+function fillShareSelect(city, cfg) {
+  const sel = document.getElementById('evShareSel'), keep = sel.dataset.city === city ? sel.value : 'g:union';
+  const groups = Object.keys(cfg.groupColors).map(g => `<option value="g:${g}">${cfg.groupColors[g].label}</option>`).join('');
+  const series = cfg.columnKeys.map(k => evMeta(cfg,k)).filter(m => !m.stub).map(m => `<option value="s:${m.key}">${m.label}${m.prelim?' ◦':''}</option>`).join('');
+  sel.innerHTML = `<optgroup label="Groups">${groups}</optgroup><optgroup label="Single events">${series}</optgroup>`;
+  sel.value = [...sel.options].some(o => o.value === keep) ? keep : sel.options[0].value;
+  sel.dataset.city = city;
+}
+function renderEventShare(city, cfg) {
+  fillShareSelect(city, cfg);
+  if (_charts['cEvents']) { _charts['cEvents'].destroy(); delete _charts['cEvents']; }
+  const sel = document.getElementById('evShareSel').value, [kind, id] = sel.split(':');
+  const on = cfg.columnKeys.filter(k => evOn(city,k,cfg) && !evMeta(cfg,k).stub);
+  const part = kind === 'g' ? on.filter(k => evMeta(cfg,k).group === id) : [id];
+  const label = kind === 'g' ? cfg.groupColors[id].label : evMeta(cfg,id).label;
+  const color = kind === 'g' ? cfg.groupColors[id].border : evMeta(cfg,id).border;
+  const yrs = years.filter(y => y >= eventFrom && y <= eventTo);
+  const v = (k, y) => (cfg.series[k] && cfg.series[k][y-1990]) || 0;
+  const tot = yrs.map(y => on.reduce((a,k) => a + v(k,y), 0));
+  const num = yrs.map(y => part.reduce((a,k) => a + v(k,y), 0));
+  const share = yrs.map((y,i) => tot[i] ? +(num[i] / tot[i] * 100).toFixed(1) : null);
+  const ma = movAvg(share, 3).map(x => x == null ? null : +x.toFixed(1));
+  _reg('cEvents', new Chart(document.getElementById('cEvents'), {
+    type:'bar', data:{ labels: yrs, datasets:[
+      { type:'line', label: label + ' · 3-year average', data: ma, borderColor: color, borderWidth: 2.5, pointRadius: 0, tension: 0.3, order: 1 },
+      { type:'bar', label: label, data: share, backgroundColor: color + '55', borderWidth: 0, borderRadius: 2, order: 2 } ] },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'bottom', align:'start', labels:{ color:tc } },
+        tooltip:{ ...TT, mode:'index', intersect:false, callbacks:{ title: c => `${CITY_NAMES[city]} ${c[0].label}`,
+          label: c => c.dataset.type === 'line' ? ` 3-year average: ${c.raw}%` : ` ${label}: ${c.raw}% (${fmt(num[c.dataIndex])} of ${fmt(tot[c.dataIndex])})` } } },
+      scales:{ x:{ ticks:{ color:tc, maxRotation:0, autoSkipPadding:10 }, grid:{ display:false } },
+               y:{ min:0, max:100, ticks:{ color:tc, callback: x => x + '%' }, grid:{ color:gc } } } }
+  }));
+  const dec = DECADES.map(([a,b]) => { const ii = yrs.map((y,i) => i).filter(i => yrs[i] >= a && yrs[i] <= b && tot[i]);
+    const n = ii.reduce((s,i) => s + num[i], 0), t = ii.reduce((s,i) => s + tot[i], 0); return t ? n / t * 100 : null; });
+  document.getElementById('evTabContainer').innerHTML = `<table class="ev-table" style="max-width:520px"><thead><tr><th class="yr" style="border-bottom:3px solid var(--border);">${label}</th>
+    ${DECADES.map(d => `<th style="border-bottom:3px solid var(--border);">${d[2]}</th>`).join('')}</tr></thead>
+    <tbody><tr><td class="yr">Share of all attendance</td>${dec.map(x => `<td>${x == null ? '—' : x.toFixed(0) + '%'}</td>`).join('')}</tr></tbody></table>`;
+  document.getElementById('evFootnote').innerHTML = 'Share = the selected group or event ÷ all events ticked in the list above (bars = single years, line = 3-year moving average). Decade figures pool the attendance of the decade. Tick ◦ series to include preliminary map figures in the total.';
+}
+
 function eventSelectCity(city) {
   eventCity = city;
   document.getElementById('evBtnBerlin').className = 'city-btn' + (city==='berlin'?' active-berlin':'');
@@ -1665,6 +1707,8 @@ function setEventView(v) {
   document.getElementById('evGroupBtn').classList.toggle('active', v==='grouped');
   document.getElementById('evDecBtn').classList.toggle('active', v==='decades');
   document.getElementById('evTypesBtn').classList.toggle('active', v==='types');
+  document.getElementById('evShareBtn').classList.toggle('active', v==='share');
+  document.getElementById('evShareSel').hidden = v !== 'share';
   document.getElementById('evTypesMode').hidden = v !== 'types';
   document.getElementById('evControls').hidden = v === 'types';   // series checkboxes don't apply to type counts
   renderEventTable(eventCity);
