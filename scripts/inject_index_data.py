@@ -10,6 +10,8 @@ These values are preliminary (mostly the largest map feature per year), so the p
 them ◦ and, for Berlin and Warsaw, leaves them unchecked by default.
 
 2. violence: berlin-violence/data.csv (police figures) for the Violence (Berlin) tab.
+4. event-types: yearly counts per event type and the main rally location, from the
+   "Event Types - Berlin/Warsaw" sheets of data/raw/1maja_MASTER.xlsx (Drive: 1maja_frekwencje_MASTER).
 3. map-events: every feature of an event layer in maps/*.umap (name, years, slogan,
    attendance, description, centre point, and per year the time/day/type/place parsed by
    scripts/scenario.py) for the Scenario tab, with a link back to uMap.
@@ -20,6 +22,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+RAW_MASTER = ROOT / "data" / "raw" / "1maja_MASTER.xlsx"
 YEARS = range(1990, 2020)
 
 # English labels for the page (series.csv labels are Polish working names).
@@ -153,6 +156,35 @@ def map_events_payload():
     return f"const MAP_EVENTS = {json.dumps(out, ensure_ascii=False, separators=(',', ':'))};"
 
 
+def event_types_payload():
+    import openpyxl
+    path = RAW_MASTER
+    out = {}
+    if not path.exists():
+        return "const EVENT_TYPES = {};"
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    for city, sheet in (("berlin", "Event Types - Berlin"), ("warsaw", "Event Types - Warsaw")):
+        rows = list(wb[sheet].iter_rows(values_only=True))
+        h = next(i for i, r in enumerate(rows) if r and r[0] == "Year")
+        header = [c for c in rows[h] if c]
+        types = [t for t in header[2:] if not str(t).startswith("Main")]
+        data = {"types": [str(t).rstrip("*") for t in types], "years": [], "total": [], "counts": {}, "main": []}
+        for r in rows[h + 1:]:
+            if not r or not isinstance(r[0], (int, float)):
+                break
+            data["years"].append(int(r[0]))
+            data["total"].append(int(r[1] or 0))
+            for i, t in enumerate(types):
+                data["counts"].setdefault(str(t).rstrip("*"), []).append(int(r[2 + i] or 0))
+            loc = r[2 + len(types)] if len(r) > 2 + len(types) else None
+            data["main"].append(loc or "")
+        # drop types that never occur in this city
+        data["types"] = [t for t in data["types"] if any(data["counts"][t])]
+        data["counts"] = {t: data["counts"][t] for t in data["types"]}
+        out[city] = data
+    return f"const EVENT_TYPES = {json.dumps(out, ensure_ascii=False, separators=(',', ':'))};"
+
+
 def main():
     cells = json.loads((ROOT / "data" / "cells.json").read_text(encoding="utf-8"))
     values = {}
@@ -187,11 +219,13 @@ def main():
                          f"const EXTRA = {json.dumps(extra, ensure_ascii=False, separators=(',', ':'))};")
     html = replace_block(html, "violence", violence_payload())
     html = replace_block(html, "map-events", map_events_payload())
+    html = replace_block(html, "event-types", event_types_payload())
     path.write_text(html, encoding="utf-8")
     for city, e in extra.items():
         print(f"{city}: {len(e['meta'])} serii → index.html")
     print("violence: berlin-violence/data.csv → index.html")
     print("map-events: maps/*.umap → index.html")
+    print("event-types: data/raw/1maja_MASTER.xlsx → index.html")
 
 
 if __name__ == "__main__":
