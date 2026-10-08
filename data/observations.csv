@@ -1,0 +1,957 @@
+city,year,series,value,source_type,source,source_category,event_name,note,ref
+berlin,1992,antinazi,200,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,1992,antinazi,200,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R2
+berlin,1994,antinazi,450,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,1994,antinazi,450,mapa,mapa berlin,mapa,1994 FAP blockade,,Neo-Nazi May Day / Anti-Nazi Blockades #1
+berlin,1994,antinazi,400,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R4
+berlin,1994,antinazi,500,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R5
+berlin,1996,antinazi,40,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,1996,antinazi,40,xlsx,Breitenbach (JW 3.05),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R6
+berlin,2000,antinazi,10000,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2000,antinazi,10000,mapa,mapa berlin,mapa,"2000 ""Kulturfest gegen Rechts"", 10 Uhr, Alice-Salomon-Platz in Hellersdorf",,Neo-Nazi May Day / Anti-Nazi Blockades #2
+berlin,2000,antinazi,10000,xlsx,ND,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R7
+berlin,2001,antinazi,475,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2001,antinazi,350,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R8
+berlin,2001,antinazi,600,xlsx,"Tsg, s. 11",prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R9
+berlin,2002,antinazi,1000,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2002,antinazi,1000,mapa,mapa berlin,mapa,2002 Counter-demonstration,,Neo-Nazi May Day / Anti-Nazi Blockades #3
+berlin,2002,antinazi,1000,mapa,mapa berlin,mapa,2002 Counter-demonstration,,Neo-Nazi May Day / Anti-Nazi Blockades #4
+berlin,2002,antinazi,500,mapa,mapa berlin,mapa,2015 – NPD Counterdemonstration,"jedna liczba dla lat 2002, 2015",Neo-Nazi May Day / Anti-Nazi Blockades #12
+berlin,2002,antinazi,1000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R10
+berlin,2003,antinazi,250,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2003,antinazi,250,mapa,mapa berlin,mapa,2003 Fegt die Nazis aus der Stadt,,Neo-Nazi May Day / Anti-Nazi Blockades #5
+berlin,2003,antinazi,200,xlsx,LÖPA,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R11
+berlin,2003,antinazi,300,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R12
+berlin,2004,antinazi,3400,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2004,antinazi,3400,mapa,mapa berlin,mapa,2004 Antifa Blockade,,Neo-Nazi May Day / Anti-Nazi Blockades #6
+berlin,2004,antinazi,2300,xlsx,LÖPA,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R13
+berlin,2004,antinazi,4500,xlsx,Umbruch,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R14
+berlin,2009,antinazi,3500,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2009,antinazi,3500,mapa,mapa berlin,mapa,2009 Counterdemonstration NPD (registered by SPD),,Neo-Nazi May Day / Anti-Nazi Blockades #7
+berlin,2009,antinazi,3500,xlsx,Polizeiliche darstellung,policja,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R15
+berlin,2010,antinazi,10000,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2010,antinazi,50,mapa,mapa berlin,mapa,2010 – Demonstration against Zum Henker,,Neo-Nazi May Day / Anti-Nazi Blockades #8
+berlin,2010,antinazi,500,mapa,mapa berlin,mapa,2010 – Demonstration against Zum Henker bar,,Neo-Nazi May Day / Anti-Nazi Blockades #9
+berlin,2010,antinazi,10000,mapa,mapa berlin,mapa,2010 Anti-NPD Blockade,,Neo-Nazi May Day / Anti-Nazi Blockades #10
+berlin,2010,antinazi,10000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R16
+berlin,2013,antinazi,2000,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2013,antinazi,2000,mapa,mapa berlin,mapa,2013 Anti-Nazi Demo,,Neo-Nazi May Day / Anti-Nazi Blockades #11
+berlin,2013,antinazi,2000,xlsx,ND,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R17
+berlin,2015,antinazi,500,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2015,antinazi,500,mapa,mapa berlin,mapa,2015 – NPD Counterdemonstration,"jedna liczba dla lat 2002, 2015",Neo-Nazi May Day / Anti-Nazi Blockades #12
+berlin,2015,antinazi,500,xlsx,BM,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R18
+berlin,2016,antinazi,900,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2016,antinazi,900,mapa,mapa berlin,mapa,"2016 – Kundgebung „1. Mai – Nazifrei!“ am Busbahnhof Schöneweide, Beginn 13 Uhr",,Neo-Nazi May Day / Anti-Nazi Blockades #13
+berlin,2016,antinazi,900,mapa,mapa berlin,mapa,2016 – Kundgebung „1. Mai – Nazifreiheit!“ am Cajamarcaplatz,,Neo-Nazi May Day / Anti-Nazi Blockades #14
+berlin,2016,antinazi,900,mapa,mapa berlin,mapa,"2016 – Kundgebung „Gemeinsam gegen Rassismus – Refugees Welcome“,",,Neo-Nazi May Day / Anti-Nazi Blockades #15
+berlin,2016,antinazi,900,mapa,mapa berlin,mapa,"2016 – Kundgebung „Schöner weiden ohne Nazis""",,Neo-Nazi May Day / Anti-Nazi Blockades #16
+berlin,2016,antinazi,900,mapa,mapa berlin,mapa,2016 Kundgebung Die Grünen „Pankow ist bunt und vielfältig“,,Neo-Nazi May Day / Anti-Nazi Blockades #17
+berlin,2016,antinazi,900,xlsx,police via taz,policja,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R19
+berlin,2017,antinazi,600,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2017,antinazi,600,xlsx,Berliner Bundnis gegen Rechts,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R20
+berlin,2018,antinazi,500,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2019,antinazi,500,index_html,index.html,wykres (obecny),antinazi,,index.html:berlinSeries.antinazi
+berlin,2019,antinazi,500,xlsx,nd,prasa,,,FrekwencjaDGB17.xlsx:Dane_Antinazi!R22
+berlin,1992,bkg,5500,mapa,mapa berlin,mapa,1992 – Zug der Widerspensigsten,,East German Left / Bündnis Kritischer Gewerkschafter #0
+berlin,1993,bkg,6000,mapa,mapa berlin,mapa,BKG Demonstration 1993,,East German Left / Bündnis Kritischer Gewerkschafter #1
+berlin,1990,dgb,50000,arkusz_dgb,organizatorzy,arkusz DGB – główna,,Wspólny wiec FDGB/DGB na Placu Republiki,dgb_berlin_brandenburgia__lata.csv:1990:berlin
+berlin,1990,dgb,56667,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1990,dgb,15000,mapa,mapa berlin,mapa,1990 East German Demonstration,,DGB / DGB demonstrations (1990-1995) #0
+berlin,1990,dgb,300,mapa,mapa berlin,mapa,1990-1991 DGB Demo,"jedna liczba dla lat 1990, 1991",DGB / DGB demonstrations (1990-1995) #3
+berlin,1990,dgb,60000,xlsx,Junge Welt,prasa,,,FrekwencjaDGB17.xlsx:Dane!R2
+berlin,1990,dgb,60000,xlsx,Neues Deutschland,prasa,,,FrekwencjaDGB17.xlsx:Dane!R3
+berlin,1990,dgb,50000,xlsx,TAZ,prasa,,,FrekwencjaDGB17.xlsx:Dane!R4
+berlin,1991,dgb,30000,arkusz_dgb,organizatorzy,arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:1991:berlin
+berlin,1991,dgb,10000,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1991,dgb,300,mapa,mapa berlin,mapa,1990-1991 DGB Demo,"jedna liczba dla lat 1990, 1991",DGB / DGB demonstrations (1990-1995) #3
+berlin,1991,dgb,100,mapa,mapa berlin,mapa,1991 DGB trade unionist demonstration,,DGB / DGB demonstrations (1990-1995) #4
+berlin,1991,dgb,1000,mapa,mapa berlin,mapa,1991 IG Metall,,DGB / DGB demonstrations (1990-1995) #5
+berlin,1991,dgb,300,mapa,mapa berlin,mapa,1991 ÖTV Demo,,DGB / DGB demonstrations (1990-1995) #6
+berlin,1991,dgb,10000,xlsx,rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane!R7
+berlin,1991,dgb,5000,xlsx,"""mehrere Tausend"" (taz)",prasa,,,FrekwencjaDGB17.xlsx:Dane!R8
+berlin,1991,dgb,15000,xlsx,"Christine Bretz, DGB Berlin (taz)",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R9
+berlin,1992,dgb,25000,arkusz_dgb,Vorlage GLBV 4.05.1992,arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:1992:berlin
+berlin,1992,dgb,23000,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1992,dgb,8000,xlsx,Kronika Berlina,policja,,,FrekwencjaDGB17.xlsx:Dane!R10
+berlin,1992,dgb,15000,xlsx,Berliner Morgenpost DGBG657,prasa,,,FrekwencjaDGB17.xlsx:Dane!R11
+berlin,1992,dgb,40000,xlsx,Neues Deutschland (Kritische Gewerkschaften s.71),prasa,,,FrekwencjaDGB17.xlsx:Dane!R12
+berlin,1992,dgb,25000,xlsx,DGBG000656,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R13
+berlin,1992,dgb,10000,xlsx,rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane!R14
+berlin,1992,dgb,40000,xlsx,Berliner Zeitung 2.05.1992,prasa,,,FrekwencjaDGB17.xlsx:Dane!R15
+berlin,1993,dgb,20000,arkusz_dgb,Geschäftsbericht,arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:1993:berlin
+berlin,1993,dgb,16667,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1993,dgb,700,mapa,mapa berlin,mapa,1992-94 IG Metall,,DGB / DGB demonstrations (1990-1995) #12
+berlin,1993,dgb,2000,mapa,mapa berlin,mapa,1993 ÖTV demonstration,,DGB / DGB demonstrations (1990-1995) #13
+berlin,1993,dgb,15000,xlsx,Taz 3.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R16
+berlin,1993,dgb,30000,xlsx,Neues Deutschland 3.05; Berliner Zeitung 3.05 za DGB,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R17
+berlin,1993,dgb,5000,xlsx,rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane!R18
+berlin,1994,dgb,8000,arkusz_dgb,DGBG664,arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:1994:berlin
+berlin,1994,dgb,6000,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1994,dgb,5000,xlsx,TAZ,prasa,,,FrekwencjaDGB17.xlsx:Dane!R19
+berlin,1994,dgb,5000,xlsx,rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane!R20
+berlin,1994,dgb,8000,xlsx,DGBG664,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R21
+berlin,1995,dgb,10000,arkusz_dgb,DGBG664,arkusz DGB – główna,,Alt. 6 000: rocznik 1995 – źródło niejasne,dgb_berlin_brandenburgia__lata.csv:1995:berlin
+berlin,1995,dgb,6000,arkusz_dgb,DGBG664,arkusz DGB – alternatywna,,Alt. 6 000: rocznik 1995 – źródło niejasne,dgb_berlin_brandenburgia__lata.csv:1995:berlin_alt
+berlin,1995,dgb,7400,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1995,dgb,5000,xlsx,TAZ 2.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R22
+berlin,1995,dgb,6000,xlsx,Kronika Berlina,prasa,,,FrekwencjaDGB17.xlsx:Dane!R23
+berlin,1995,dgb,10000,xlsx,DGBG664,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R24
+berlin,1995,dgb,6000,xlsx,Berliner Morgenpost (DGBB664),prasa,,,FrekwencjaDGB17.xlsx:Dane!R25
+berlin,1995,dgb,10000,xlsx,Berliner Zeitung (DGBB664),prasa,,,FrekwencjaDGB17.xlsx:Dane!R26
+berlin,1996,dgb,10000,arkusz_dgb,organizatorzy (44 400 razem),arkusz DGB – alternatywna,,Alt. 10 000: rocznik 1996 (średnia) – niespójne z resztą serii; nieużyte,dgb_berlin_brandenburgia__lata.csv:1996:berlin_alt
+berlin,1996,dgb,16667,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1996,dgb,300,mapa,mapa berlin,mapa,1996 – DGB Jugend Job Parade. Deine Einstellung zählt – Perspektive Jetzt,,DGB / DGB demonstrations (1996-2001) #0
+berlin,1996,dgb,500,mapa,mapa berlin,mapa,1996-1999 Demonstration,"jedna liczba dla lat 1996, 1997, 1998, 1999",DGB / DGB demonstrations (1996-2001) #1
+berlin,1996,dgb,500,mapa,mapa berlin,mapa,1996-1999 Demonstration,,DGB / DGB demonstrations (1996-2001) #11
+berlin,1996,dgb,20000,xlsx,TAZ 2.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R27
+berlin,1996,dgb,20000,xlsx,DPA,prasa,,,FrekwencjaDGB17.xlsx:Dane!R28
+berlin,1996,dgb,10000,xlsx,Junge Welt,prasa,,,FrekwencjaDGB17.xlsx:Dane!R29
+berlin,1997,dgb,25000,arkusz_dgb,DGBG1329 (organizatorzy),arkusz DGB – główna,,ROZBIEŻNOŚĆ: prasa ~5 000 na Alexanderplatz; użyte 25 000 od organizatorów,dgb_berlin_brandenburgia__lata.csv:1997:berlin
+berlin,1997,dgb,5000,arkusz_dgb,DGBG1329 (organizatorzy),arkusz DGB – alternatywna,,ROZBIEŻNOŚĆ: prasa ~5 000 na Alexanderplatz; użyte 25 000 od organizatorów,dgb_berlin_brandenburgia__lata.csv:1997:berlin_alt
+berlin,1997,dgb,9500,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1997,dgb,500,mapa,mapa berlin,mapa,1996-1999 Demonstration,"jedna liczba dla lat 1996, 1997, 1998, 1999",DGB / DGB demonstrations (1996-2001) #1
+berlin,1997,dgb,500,mapa,mapa berlin,mapa,1996-1999 Demonstration,,DGB / DGB demonstrations (1996-2001) #12
+berlin,1997,dgb,7500,xlsx,rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane!R30
+berlin,1997,dgb,5000,xlsx,TAZ,prasa,,,FrekwencjaDGB17.xlsx:Dane!R31
+berlin,1997,dgb,5000,xlsx,Kronika Berlina,prasa,,,FrekwencjaDGB17.xlsx:Dane!R32
+berlin,1997,dgb,25000,xlsx,DGBG1329,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R33
+berlin,1997,dgb,5000,xlsx,rbb B1 1. Mai Spezial,policja,,,FrekwencjaDGB17.xlsx:Dane!R34
+berlin,1998,dgb,17500,arkusz_dgb,DGBG1327 (przedział 15–20 tys.; środek),arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:1998:berlin
+berlin,1998,dgb,15000,arkusz_dgb,DGBG1327 (przedział 15–20 tys.; środek),arkusz DGB – alternatywna,,,dgb_berlin_brandenburgia__lata.csv:1998:berlin_alt
+berlin,1998,dgb,13875,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1998,dgb,500,mapa,mapa berlin,mapa,1996-1999 Demonstration,"jedna liczba dla lat 1996, 1997, 1998, 1999",DGB / DGB demonstrations (1996-2001) #1
+berlin,1998,dgb,500,mapa,mapa berlin,mapa,1996-1999 Demonstration,,DGB / DGB demonstrations (1996-2001) #13
+berlin,1998,dgb,8000,xlsx,Kronika Berlina,prasa,,,FrekwencjaDGB17.xlsx:Dane!R35
+berlin,1998,dgb,20000,xlsx,dpa,prasa,,,FrekwencjaDGB17.xlsx:Dane!R36
+berlin,1998,dgb,10000,xlsx,TAZ 2.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R37
+berlin,1998,dgb,17500,xlsx,"DGBG1327 (15000–20000, środek przedziału)",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R38
+berlin,1999,dgb,15000,arkusz_dgb,DGB (za Berliner Zeitung 3.05),arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:1999:berlin
+berlin,1999,dgb,10400,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,1999,dgb,500,mapa,mapa berlin,mapa,1996-1999 Demonstration,"jedna liczba dla lat 1996, 1997, 1998, 1999",DGB / DGB demonstrations (1996-2001) #1
+berlin,1999,dgb,10000,xlsx,Kronika Berlina,prasa,,,FrekwencjaDGB17.xlsx:Dane!R39
+berlin,1999,dgb,10000,xlsx,Tagesspiegel,prasa,,,FrekwencjaDGB17.xlsx:Dane!R40
+berlin,1999,dgb,10000,xlsx,TAZ 3.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R41
+berlin,1999,dgb,7000,xlsx,policja za taz,policja,,,FrekwencjaDGB17.xlsx:Dane!R42
+berlin,1999,dgb,15000,xlsx,DGB (za Berliner Zeitung 3.05),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R43
+berlin,2000,dgb,18000,arkusz_dgb,Tagesspiegel (organizatorzy),arkusz DGB – główna,,Alt. 12 000: DGBAI3702,dgb_berlin_brandenburgia__lata.csv:2000:berlin
+berlin,2000,dgb,12000,arkusz_dgb,Tagesspiegel (organizatorzy),arkusz DGB – alternatywna,,Alt. 12 000: DGBAI3702,dgb_berlin_brandenburgia__lata.csv:2000:berlin_alt
+berlin,2000,dgb,11400,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2000,dgb,4000,mapa,mapa berlin,mapa,2000 DGB/IG Bau Demonstration,,DGB / DGB demonstrations (1996-2001) #9
+berlin,2000,dgb,18000,xlsx,Organizatorzy (za Tagesspiegel),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R44
+berlin,2000,dgb,10000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane!R45
+berlin,2000,dgb,7000,xlsx,Poicja (za Tagsspl),policja,,,FrekwencjaDGB17.xlsx:Dane!R46
+berlin,2000,dgb,12000,xlsx,DGBAI3702,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R47
+berlin,2000,dgb,10000,xlsx,Berliner Kurier,prasa,,,FrekwencjaDGB17.xlsx:Dane!R48
+berlin,2000,dgb,10000,xlsx,Kronika Berlina,prasa,,,FrekwencjaDGB17.xlsx:Dane!R49
+berlin,2001,dgb,16833,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2001,dgb,10000,xlsx,Tagesspiegel,prasa,,,FrekwencjaDGB17.xlsx:Dane!R50
+berlin,2001,dgb,18000,xlsx,Kronika Berlina,prasa,,,FrekwencjaDGB17.xlsx:Dane!R51
+berlin,2001,dgb,18000,xlsx,Neues Deutschland,prasa,,,FrekwencjaDGB17.xlsx:Dane!R52
+berlin,2001,dgb,20000,xlsx,rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane!R53
+berlin,2001,dgb,25000,xlsx,Berliner Zeitung,prasa,,,FrekwencjaDGB17.xlsx:Dane!R54
+berlin,2001,dgb,10000,xlsx,TAZ 2.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R55
+berlin,2002,dgb,25000,arkusz_dgb,Tagesspiegel (organizatorzy),arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:2002:berlin
+berlin,2002,dgb,13500,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2002,dgb,10000,xlsx,rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane!R56
+berlin,2002,dgb,25000,xlsx,Tagesspiegel (za organizatorami),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R57
+berlin,2002,dgb,12000,xlsx,Taz 2.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R58
+berlin,2002,dgb,7000,xlsx,Helbrecht (za policją),policja,,,FrekwencjaDGB17.xlsx:Dane!R59
+berlin,2003,dgb,20000,arkusz_dgb,TAZ 2.05 s.21 (organizatorzy),arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:2003:berlin
+berlin,2003,dgb,13500,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2003,dgb,20000,xlsx,TAZ 2.05 s.21 za organizatorami,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R60
+berlin,2003,dgb,7000,xlsx,Helbrecht (za policją),policja,,,FrekwencjaDGB17.xlsx:Dane!R61
+berlin,2004,dgb,25000,arkusz_dgb,Die Welt 3.05 / Hamburger Abendblatt 3.05,arkusz DGB – główna,,Alt. 20 000: rocznik 2004,dgb_berlin_brandenburgia__lata.csv:2004:berlin
+berlin,2004,dgb,20000,arkusz_dgb,Die Welt 3.05 / Hamburger Abendblatt 3.05,arkusz DGB – alternatywna,,Alt. 20 000: rocznik 2004,dgb_berlin_brandenburgia__lata.csv:2004:berlin_alt
+berlin,2004,dgb,18500,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2004,dgb,4000,mapa,mapa berlin,mapa,2004 – DGB Demo,,DGB / DGB demonstration routes (2002-2011) #2
+berlin,2004,dgb,25000,xlsx,Die Welt 3.05 / Hamburger Abendblatt 3.05 (organizatorzy),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R62
+berlin,2004,dgb,12000,xlsx,Tagesspiegel (za policją),policja,,,FrekwencjaDGB17.xlsx:Dane!R63
+berlin,2005,dgb,12000,arkusz_dgb,rocznik 2005 (DGBBerlinBrandenburg12005),arkusz DGB – główna,,ROZBIEŻNOŚĆ regionów 12 100 vs 15 100,dgb_berlin_brandenburgia__lata.csv:2005:berlin
+berlin,2005,dgb,10500,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2005,dgb,5000,mapa,mapa berlin,mapa,2005 – DGB Demo,,DGB / DGB demonstration routes (2002-2011) #3
+berlin,2005,dgb,12000,xlsx,Strona arch. DGB,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R64
+berlin,2005,dgb,12000,xlsx,Berliner Zeitung,prasa,,,FrekwencjaDGB17.xlsx:Dane!R65
+berlin,2005,dgb,10000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane!R66
+berlin,2005,dgb,8000,xlsx,Tagesspiegel,prasa,,,FrekwencjaDGB17.xlsx:Dane!R67
+berlin,2006,dgb,25000,arkusz_dgb,Geschäftsbericht,arkusz DGB – główna,,Alt. 17 000: Petra Pau / Berliner Zeitung; rocznik: ~10 000 w pochodzie,dgb_berlin_brandenburgia__lata.csv:2006:berlin
+berlin,2006,dgb,17000,arkusz_dgb,Geschäftsbericht,arkusz DGB – alternatywna,,Alt. 17 000: Petra Pau / Berliner Zeitung; rocznik: ~10 000 w pochodzie,dgb_berlin_brandenburgia__lata.csv:2006:berlin_alt
+berlin,2006,dgb,10625,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2006,dgb,10000,mapa,mapa berlin,mapa,2006 – DGB Demo,,DGB / DGB demonstration routes (2002-2011) #4
+berlin,2006,dgb,17000,xlsx,Petra Pau i Berliner Zeitung (za DGB),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R68
+berlin,2006,dgb,8000,xlsx,ND,prasa,,,FrekwencjaDGB17.xlsx:Dane!R69
+berlin,2006,dgb,25000,xlsx,Geschäftsbericht,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R70
+berlin,2006,dgb,10000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane!R71
+berlin,2006,dgb,7500,xlsx,policja,policja,,,FrekwencjaDGB17.xlsx:Dane!R72
+berlin,2007,dgb,12000,arkusz_dgb,Geschäftsbericht,arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:2007:berlin
+berlin,2007,dgb,9750,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2007,dgb,7500,mapa,mapa berlin,mapa,2007 – DGB Demo,,DGB / DGB demonstration routes (2002-2011) #5
+berlin,2007,dgb,12000,xlsx,BK 2.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R73
+berlin,2007,dgb,12000,xlsx,Geschäftsbericht,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R74
+berlin,2007,dgb,7500,xlsx,Helbrecht (za policją),policja,,,FrekwencjaDGB17.xlsx:Dane!R75
+berlin,2008,dgb,20000,arkusz_dgb,Geschäftsbericht,arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:2008:berlin
+berlin,2008,dgb,5500,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2008,dgb,5500,mapa,mapa berlin,mapa,2008 – DGB Demo,,DGB / DGB demonstration routes (2002-2011) #6
+berlin,2008,dgb,5000,xlsx,TAZ / BK 2.05 (mehrere Tausend → ~3000),prasa,,,FrekwencjaDGB17.xlsx:Dane!R76
+berlin,2008,dgb,20000,xlsx,Geschäftsbericht,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R77
+berlin,2008,dgb,6500,xlsx,weit mehr als 6000 (BZ 2.05.2008),prasa,,,FrekwencjaDGB17.xlsx:Dane!R78
+berlin,2008,dgb,5000,xlsx,Helbrecht (weit weniger als 6000 → ~5000),policja,,,FrekwencjaDGB17.xlsx:Dane!R79
+berlin,2009,dgb,18000,arkusz_dgb,Geschäftsbericht,arkusz DGB – główna,,Alt. 20 000: TAZ liveticker,dgb_berlin_brandenburgia__lata.csv:2009:berlin
+berlin,2009,dgb,20000,arkusz_dgb,Geschäftsbericht,arkusz DGB – alternatywna,,Alt. 20 000: TAZ liveticker,dgb_berlin_brandenburgia__lata.csv:2009:berlin_alt
+berlin,2009,dgb,11250,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2009,dgb,2500,mapa,mapa berlin,mapa,2009 – DGB Demo,,DGB / DGB demonstration routes (2002-2011) #7
+berlin,2009,dgb,20000,xlsx,TAZ liveticker (za organizatorami),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R80
+berlin,2009,dgb,18000,xlsx,Geschäftsbericht,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R81
+berlin,2009,dgb,2500,xlsx,Helbrecht (za policją 2500; mało wiarygodne),policja,,,FrekwencjaDGB17.xlsx:Dane!R82
+berlin,2010,dgb,12000,arkusz_dgb,Tagesspiegel (organizatorzy),arkusz DGB – główna,,Alt. 6 000: rocznik 2010 – demo przez Mitte (nie wiec),dgb_berlin_brandenburgia__lata.csv:2010:berlin
+berlin,2010,dgb,6000,arkusz_dgb,Tagesspiegel (organizatorzy),arkusz DGB – alternatywna,,Alt. 6 000: rocznik 2010 – demo przez Mitte (nie wiec),dgb_berlin_brandenburgia__lata.csv:2010:berlin_alt
+berlin,2010,dgb,9750,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2010,dgb,5500,mapa,mapa berlin,mapa,2010 – DGB Demo,,DGB / DGB demonstration routes (2002-2011) #8
+berlin,2010,dgb,12000,xlsx,Tagesspiegel (za organizatorami),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R83
+berlin,2010,dgb,7500,xlsx,Helbrecht (za policją),policja,,,FrekwencjaDGB17.xlsx:Dane!R84
+berlin,2011,dgb,10000,arkusz_dgb,Berliner Morgenpost (organizatorzy),arkusz DGB – główna,,Alt. 15 000: rbb,dgb_berlin_brandenburgia__lata.csv:2011:berlin
+berlin,2011,dgb,15000,arkusz_dgb,Berliner Morgenpost (organizatorzy),arkusz DGB – alternatywna,,Alt. 15 000: rbb,dgb_berlin_brandenburgia__lata.csv:2011:berlin_alt
+berlin,2011,dgb,11500,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2011,dgb,1500,mapa,mapa berlin,mapa,2011 – DGB Demo,,DGB / DGB demonstration routes (2002-2011) #9
+berlin,2011,dgb,10000,xlsx,Berliner Morgenpost (za organizatorami),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R85
+berlin,2011,dgb,15000,xlsx,rbb za organizatorami,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R86
+berlin,2011,dgb,15000,xlsx,Neues Deutschland,prasa,,,FrekwencjaDGB17.xlsx:Dane!R87
+berlin,2011,dgb,6000,xlsx,Berliner Morgenpost (za policją),policja,,,FrekwencjaDGB17.xlsx:Dane!R88
+berlin,2012,dgb,15000,arkusz_dgb,DGB BB,arkusz DGB – główna,,Rocznik: 12–15 tys. pod Bramą Brandenburską,dgb_berlin_brandenburgia__lata.csv:2012:berlin
+berlin,2012,dgb,12625,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2012,dgb,5000,mapa,mapa berlin,mapa,2012 DGB,,DGB / DGB demonstration routes (2012-2019) #0
+berlin,2012,dgb,13500,xlsx,"Tagesspiegel 2.05 (12000–15000, środek)",prasa,,,FrekwencjaDGB17.xlsx:Dane!R89
+berlin,2012,dgb,12000,xlsx,taz 2.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R90
+berlin,2012,dgb,10000,xlsx,ND,prasa,,,FrekwencjaDGB17.xlsx:Dane!R91
+berlin,2012,dgb,15000,xlsx,DGB BB,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R92
+berlin,2013,dgb,9750,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2013,dgb,8000,mapa,mapa berlin,mapa,2013 DGB,,DGB / DGB demonstration routes (2012-2019) #1
+berlin,2013,dgb,9500,xlsx,"Welt 2.05 (7000–12000, środek)",prasa,,,FrekwencjaDGB17.xlsx:Dane!R93
+berlin,2013,dgb,10000,xlsx,TAZ 2.05,prasa,,,FrekwencjaDGB17.xlsx:Dane!R94
+berlin,2014,dgb,8667,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2014,dgb,8000,mapa,mapa berlin,mapa,2014 DGB,,DGB / DGB demonstration routes (2012-2019) #2
+berlin,2014,dgb,10000,xlsx,BZ,prasa,,,FrekwencjaDGB17.xlsx:Dane!R95
+berlin,2014,dgb,10000,xlsx,Neues Deutschland,prasa,,,FrekwencjaDGB17.xlsx:Dane!R96
+berlin,2015,dgb,15000,arkusz_dgb,rbb (za DGB),arkusz DGB – główna,,Rocznik: ~3 000 w pochodzie przez Mitte (część),dgb_berlin_brandenburgia__lata.csv:2015:berlin
+berlin,2015,dgb,15000,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2015,dgb,3000,mapa,mapa berlin,mapa,2015 DGB,,DGB / DGB demonstration routes (2012-2019) #3
+berlin,2015,dgb,15000,xlsx,rbb za DGB,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R98
+berlin,2016,dgb,14000,arkusz_dgb,TAZ liveticker 1.05 (organizatorzy),arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:2016:berlin
+berlin,2016,dgb,14000,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2016,dgb,2500,mapa,mapa berlin,mapa,2016 DGB,,DGB / DGB demonstration routes (2012-2019) #4
+berlin,2016,dgb,14000,xlsx,TAZ liveticker 1.05 za organizatorami,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R100
+berlin,2017,dgb,14000,arkusz_dgb,BZ / DGB BB (organizatorzy),arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:2017:berlin
+berlin,2017,dgb,14000,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2017,dgb,8000,mapa,mapa berlin,mapa,2017 DGB,,DGB / DGB demonstration routes (2012-2019) #5
+berlin,2017,dgb,14000,xlsx,BZ / DGB BB internet (za organizatorami),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R101
+berlin,2018,dgb,14000,arkusz_dgb,Neues Deutschland (organizatorzy),arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:2018:berlin
+berlin,2018,dgb,9500,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2018,dgb,6250,mapa,mapa berlin,mapa,2018 DGB,,DGB / DGB demonstration routes (2012-2019) #6
+berlin,2018,dgb,14000,xlsx,Neues Deutschland (za organizatorami),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R102
+berlin,2018,dgb,5000,xlsx,Policja,policja,,,FrekwencjaDGB17.xlsx:Dane!R103
+berlin,2019,dgb,13000,arkusz_dgb,DGB online,arkusz DGB – główna,,,dgb_berlin_brandenburgia__lata.csv:2019:berlin
+berlin,2019,dgb,13000,index_html,index.html,wykres (obecny),dgb,,index.html:berlinSeries.dgb
+berlin,2019,dgb,8000,mapa,mapa berlin,mapa,2019 DGB,,DGB / DGB demonstration routes (2012-2019) #7
+berlin,2019,dgb,13000,xlsx,DGB online,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R104
+berlin,2020,dgb,0,xlsx,odwołano,?,,,FrekwencjaDGB17.xlsx:Dane!R105
+berlin,2021,dgb,300,xlsx,Tylko na zaproszenie,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R106
+berlin,2022,dgb,7500,xlsx,BM,prasa,,,FrekwencjaDGB17.xlsx:Dane!R107
+berlin,2022,dgb,9500,xlsx,polizei Meldung,policja,,,FrekwencjaDGB17.xlsx:Dane!R108
+berlin,2023,dgb,6000,xlsx,polizei Meldung,policja,,,FrekwencjaDGB17.xlsx:Dane!R109
+berlin,2024,dgb,14000,xlsx,polizei Meldung,policja,,,FrekwencjaDGB17.xlsx:Dane!R110
+berlin,2024,dgb,7500,xlsx,BZ,prasa,,,FrekwencjaDGB17.xlsx:Dane!R111
+berlin,2024,dgb,12500,xlsx,Naturfreunde,prasa,,,FrekwencjaDGB17.xlsx:Dane!R112
+berlin,2025,dgb,6600,xlsx,polizei Meldung,policja,,,FrekwencjaDGB17.xlsx:Dane!R113
+berlin,2025,dgb,11000,xlsx,rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane!R114
+berlin,2026,dgb,7100,xlsx,polizei Meldung,policja,,,FrekwencjaDGB17.xlsx:Dane!R115
+berlin,2026,dgb,12000,xlsx,Naturfreunde,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane!R116
+berlin,1995,dgb_korso,2500,mapa,mapa berlin,mapa,1995 DGB Fahrradkorso,,DGB / DGB Fahrradkorso #0
+berlin,2000,dgb_korso,350,mapa,mapa berlin,mapa,"2000 DGB Inline-Skates Demo. ""Wir lassen uns nicht abhängen""",,DGB / DGB Inline Korso #0
+berlin,2003,dgb_korso,100,mapa,mapa berlin,mapa,2003 DGB Motorradkorso,,DGB / DGB Motorradkorso #0
+berlin,2004,dgb_korso,200,mapa,mapa berlin,mapa,2004-2005 DGB Motorcycle Demonstration,"jedna liczba dla lat 2004, 2005",DGB / DGB Motorradkorso #1
+berlin,2005,dgb_korso,150,mapa,mapa berlin,mapa,2005 Inline-skate Demo,,DGB / DGB Inline Korso #1
+berlin,2005,dgb_korso,200,mapa,mapa berlin,mapa,2004-2005 DGB Motorcycle Demonstration,"jedna liczba dla lat 2004, 2005",DGB / DGB Motorradkorso #1
+berlin,2005,dgb_korso,100,mapa,mapa berlin,mapa,2005 DGB Run,,DGB / DGB Lauf #0
+berlin,2006,dgb_korso,100,mapa,mapa berlin,mapa,2006 DGB Inline Skate Korso,,DGB / DGB Inline Korso #2
+berlin,2006,dgb_korso,80,mapa,mapa berlin,mapa,2006 DGB Motorradkorso,,DGB / DGB Motorradkorso #2
+berlin,2006,dgb_korso,100,mapa,mapa berlin,mapa,DGB Fahrrad Korso,"jedna liczba dla lat 2006, 2008, 2009, 2010",DGB / DGB Fahrradkorso #7
+berlin,2006,dgb_korso,23,mapa,mapa berlin,mapa,2006 DGB Lauf,,DGB / DGB Lauf #1
+berlin,2007,dgb_korso,100,mapa,mapa berlin,mapa,2007 DGB Inline Skate Korso,,DGB / DGB Inline Korso #3
+berlin,2007,dgb_korso,100,mapa,mapa berlin,mapa,2007 Motorradkorso,,DGB / DGB Motorradkorso #3
+berlin,2007,dgb_korso,100,mapa,mapa berlin,mapa,2007-2011 DGB Fahrrad Korso,,DGB / DGB Fahrradkorso #1
+berlin,2007,dgb_korso,50,mapa,mapa berlin,mapa,2007 DGB Lauf,,DGB / DGB Lauf #2
+berlin,2008,dgb_korso,80,mapa,mapa berlin,mapa,2008; 2010 Motorrad Demo,"jedna liczba dla lat 2008, 2010",DGB / DGB Motorradkorso #4
+berlin,2008,dgb_korso,100,mapa,mapa berlin,mapa,DGB Fahrrad Korso,"jedna liczba dla lat 2006, 2008, 2009, 2010",DGB / DGB Fahrradkorso #7
+berlin,2009,dgb_korso,100,mapa,mapa berlin,mapa,2009 DGB Inline Skate Korso,,DGB / DGB Inline Korso #4
+berlin,2009,dgb_korso,45,mapa,mapa berlin,mapa,2009;2011 Motorrad Demo,"jedna liczba dla lat 2009, 2011",DGB / DGB Motorradkorso #5
+berlin,2009,dgb_korso,100,mapa,mapa berlin,mapa,DGB Fahrrad Korso,"jedna liczba dla lat 2006, 2008, 2009, 2010",DGB / DGB Fahrradkorso #7
+berlin,2010,dgb_korso,80,mapa,mapa berlin,mapa,2008; 2010 Motorrad Demo,"jedna liczba dla lat 2008, 2010",DGB / DGB Motorradkorso #4
+berlin,2010,dgb_korso,100,mapa,mapa berlin,mapa,DGB Fahrrad Korso,"jedna liczba dla lat 2006, 2008, 2009, 2010",DGB / DGB Fahrradkorso #7
+berlin,2011,dgb_korso,100,mapa,mapa berlin,mapa,2011 DGB Inlineskate-Korso,,DGB / DGB Inline Korso #5
+berlin,2011,dgb_korso,45,mapa,mapa berlin,mapa,2009;2011 Motorrad Demo,"jedna liczba dla lat 2009, 2011",DGB / DGB Motorradkorso #5
+berlin,2011,dgb_korso,101,mapa,mapa berlin,mapa,2011 DGB Fahrrad-Korso,,DGB / DGB Fahrradkorso #2
+berlin,2012,dgb_korso,50,mapa,mapa berlin,mapa,2012-2016 Motorradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Motorradkorso #6
+berlin,2012,dgb_korso,100,mapa,mapa berlin,mapa,2012-2015 DGB Fahrradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Fahrradkorso #3
+berlin,2013,dgb_korso,50,mapa,mapa berlin,mapa,2012-2016 Motorradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Motorradkorso #6
+berlin,2013,dgb_korso,100,mapa,mapa berlin,mapa,2012-2015 DGB Fahrradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Fahrradkorso #3
+berlin,2014,dgb_korso,50,mapa,mapa berlin,mapa,2012-2016 Motorradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Motorradkorso #6
+berlin,2014,dgb_korso,100,mapa,mapa berlin,mapa,2012-2015 DGB Fahrradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Fahrradkorso #3
+berlin,2015,dgb_korso,50,mapa,mapa berlin,mapa,2012-2016 Motorradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Motorradkorso #6
+berlin,2015,dgb_korso,100,mapa,mapa berlin,mapa,2012-2015 DGB Fahrradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Fahrradkorso #3
+berlin,2016,dgb_korso,50,mapa,mapa berlin,mapa,2012-2016 Motorradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Motorradkorso #6
+berlin,2016,dgb_korso,100,mapa,mapa berlin,mapa,2012-2015 DGB Fahrradkorso,"jedna liczba dla lat 2012, 2013, 2014, 2015, 2016",DGB / DGB Fahrradkorso #3
+berlin,2017,dgb_korso,75,mapa,mapa berlin,mapa,2017-2018 Motorrad Demo,"jedna liczba dla lat 2017, 2018",DGB / DGB Motorradkorso #7
+berlin,2017,dgb_korso,100,mapa,mapa berlin,mapa,2017 DGB Fahrradkorso,,DGB / DGB Fahrradkorso #4
+berlin,2018,dgb_korso,75,mapa,mapa berlin,mapa,2017-2018 Motorrad Demo,"jedna liczba dla lat 2017, 2018",DGB / DGB Motorradkorso #7
+berlin,2018,dgb_korso,360,mapa,mapa berlin,mapa,2018 Fahrrad Demo,,DGB / DGB Fahrradkorso #5
+berlin,2019,dgb_korso,50,mapa,mapa berlin,mapa,2019 Motorrad Demo,,DGB / DGB Motorradkorso #8
+berlin,2019,dgb_korso,200,mapa,mapa berlin,mapa,2019 Fahrradkorso,,DGB / DGB Fahrradkorso #6
+berlin,1990,dgb_maifest,56667,mapa,mapa berlin,mapa,DGB Maifest 1990,,DGB / DGB Maifest #2
+berlin,1991,dgb_maifest,10000,mapa,mapa berlin,mapa,DGB Maifest 1991,,DGB / DGB Maifest #3
+berlin,1992,dgb_maifest,25600,mapa,mapa berlin,mapa,DGB Maifest 1992,,DGB / DGB Maifest #4
+berlin,1993,dgb_maifest,28333,mapa,mapa berlin,mapa,DGB Maifest 1993,,DGB / DGB Maifest #5
+berlin,1994,dgb_maifest,1500,mapa,mapa berlin,mapa,1994 DGB-Jugend Tanz in den Mai,,DGB / DGB Maifest #0
+berlin,1994,dgb_maifest,6000,mapa,mapa berlin,mapa,DGB Maifest 1994,,DGB / DGB Maifest #6
+berlin,1995,dgb_maifest,7400,mapa,mapa berlin,mapa,DGB Maifest 1995,,DGB / DGB Maifest #7
+berlin,1996,dgb_maifest,16667,mapa,mapa berlin,mapa,DGB Maifest 1996,,DGB / DGB Maifest #8
+berlin,1997,dgb_maifest,9500,mapa,mapa berlin,mapa,DGB Maifest 1997,,DGB / DGB Maifest #9
+berlin,1998,dgb_maifest,13875,mapa,mapa berlin,mapa,DGB Maifest 1998,,DGB / DGB Maifest #10
+berlin,1999,dgb_maifest,10400,mapa,mapa berlin,mapa,DGB Maifest 1999,,DGB / DGB Maifest #11
+berlin,2000,dgb_maifest,750,mapa,mapa berlin,mapa,2000-2003 DGB Tanz in den Mai,"jedna liczba dla lat 2000, 2001, 2002, 2003",DGB / DGB Maifest #1
+berlin,2000,dgb_maifest,11400,mapa,mapa berlin,mapa,DGB Maifest 2000,,DGB / DGB Maifest #12
+berlin,2001,dgb_maifest,750,mapa,mapa berlin,mapa,2000-2003 DGB Tanz in den Mai,"jedna liczba dla lat 2000, 2001, 2002, 2003",DGB / DGB Maifest #1
+berlin,2001,dgb_maifest,16683,mapa,mapa berlin,mapa,DGB Maifest 2001,,DGB / DGB Maifest #13
+berlin,2002,dgb_maifest,750,mapa,mapa berlin,mapa,2000-2003 DGB Tanz in den Mai,"jedna liczba dla lat 2000, 2001, 2002, 2003",DGB / DGB Maifest #1
+berlin,2002,dgb_maifest,13500,mapa,mapa berlin,mapa,DGB Maifest 2002,,DGB / DGB Maifest #14
+berlin,2003,dgb_maifest,750,mapa,mapa berlin,mapa,2000-2003 DGB Tanz in den Mai,"jedna liczba dla lat 2000, 2001, 2002, 2003",DGB / DGB Maifest #1
+berlin,2003,dgb_maifest,13500,mapa,mapa berlin,mapa,DGB Maifest 2003,,DGB / DGB Maifest #15
+berlin,2004,dgb_maifest,20667,mapa,mapa berlin,mapa,DGB Maifest 2004,,DGB / DGB Maifest #16
+berlin,2005,dgb_maifest,10667,mapa,mapa berlin,mapa,DGB Maifest 2005,,DGB / DGB Maifest #17
+berlin,2006,dgb_maifest,17000,mapa,mapa berlin,mapa,DGB Maifest 2006,,DGB / DGB Maifest #18
+berlin,2007,dgb_maifest,9750,mapa,mapa berlin,mapa,DGB Maifest 2007,,DGB / DGB Maifest #19
+berlin,2008,dgb_maifest,5500,mapa,mapa berlin,mapa,DGB Maifest 2008,,DGB / DGB Maifest #20
+berlin,2009,dgb_maifest,11250,mapa,mapa berlin,mapa,DGB Maifest 2009,,DGB / DGB Maifest #21
+berlin,2010,dgb_maifest,9750,mapa,mapa berlin,mapa,DGB Maifest 2010,,DGB / DGB Maifest #22
+berlin,2011,dgb_maifest,11500,mapa,mapa berlin,mapa,DGB Maifest 2011,,DGB / DGB Maifest #23
+berlin,2012,dgb_maifest,12625,mapa,mapa berlin,mapa,DGB Maifest 2012,,DGB / DGB Maifest #24
+berlin,2013,dgb_maifest,9750,mapa,mapa berlin,mapa,DGB Maifest 2013,,DGB / DGB Maifest #25
+berlin,2014,dgb_maifest,10000,mapa,mapa berlin,mapa,DGB Maifest 2014,,DGB / DGB Maifest #26
+berlin,2015,dgb_maifest,15000,mapa,mapa berlin,mapa,DGB Maifest 2015,,DGB / DGB Maifest #27
+berlin,2016,dgb_maifest,14000,mapa,mapa berlin,mapa,DGB Maifest 2016,,DGB / DGB Maifest #28
+berlin,2017,dgb_maifest,14000,mapa,mapa berlin,mapa,DGB Maifest 2017,,DGB / DGB Maifest #29
+berlin,2018,dgb_maifest,9500,mapa,mapa berlin,mapa,DGB Maifest 2018,,DGB / DGB Maifest #30
+berlin,2019,dgb_maifest,13000,mapa,mapa berlin,mapa,DGB Maifest 2019,,DGB / DGB Maifest #31
+berlin,2006,euro,4000,index_html,index.html,wykres (obecny),euro,,index.html:berlinSeries.euro
+berlin,2006,euro,4000,mapa,mapa berlin,mapa,2006 Euro May Day,,Euro May Day #0
+berlin,2006,euro,4000,xlsx,taz liveticker,prasa,,,FrekwencjaDGB17.xlsx:Euro MayDay!R2
+berlin,2007,euro,7000,index_html,index.html,wykres (obecny),euro,,index.html:berlinSeries.euro
+berlin,2007,euro,7000,mapa,mapa berlin,mapa,2007 Euro May Day Parade. Her mit dem schönen Leben– Solidarität statt Prekarität,,Euro May Day #1
+berlin,2007,euro,6000,xlsx,Berliner Kurier,prasa,,,FrekwencjaDGB17.xlsx:Euro MayDay!R3
+berlin,2007,euro,8000,xlsx,Berliner Morgenpost,prasa,,,FrekwencjaDGB17.xlsx:Euro MayDay!R4
+berlin,2008,euro,6500,index_html,index.html,wykres (obecny),euro,,index.html:berlinSeries.euro
+berlin,2008,euro,6500,mapa,mapa berlin,mapa,2008 MayDay Parade,,Euro May Day #2
+berlin,2008,euro,6500,xlsx,Umbruch,organizatorzy,,,FrekwencjaDGB17.xlsx:Euro MayDay!R5
+berlin,2009,euro,3500,index_html,index.html,wykres (obecny),euro,,index.html:berlinSeries.euro
+berlin,2009,euro,3500,mapa,mapa berlin,mapa,"2009 MayDay Parade – Ich krieg der Krise, und das nicht erst seit gestern",,Euro May Day #3
+berlin,2009,euro,3500,xlsx,Umbruch,organizatorzy,,,FrekwencjaDGB17.xlsx:Euro MayDay!R6
+berlin,1996,inne,49,mapa,mapa berlin,mapa,1996 Graue Panther,,Other events #0
+berlin,2011,inne,95,mapa,mapa berlin,mapa,FAU 2011. Spaziergang gegen Leiharbeit,,Other events #5
+berlin,1998,marian,1500,index_html,index.html,wykres (obecny),marian,,index.html:berlinSeries.marian
+berlin,1998,marian,1500,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Mariannenplatz!R3
+berlin,2000,marian,5000,index_html,index.html,wykres (obecny),marian,,index.html:berlinSeries.marian
+berlin,2000,marian,5000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Mariannenplatz!R5
+berlin,2001,marian,5000,index_html,index.html,wykres (obecny),marian,,index.html:berlinSeries.marian
+berlin,2001,marian,5000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Mariannenplatz!R6
+berlin,2003,marian,20000,xlsx,"taz; ta sama liczba, co MyFest",prasa,,,FrekwencjaDGB17.xlsx:Dane_Mariannenplatz!R8
+berlin,2003,myfest,20000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2003,myfest,20000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2003,myfest,20000,xlsx,taz 16.01,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R2
+berlin,2004,myfest,30000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2004,myfest,30000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2004,myfest,30000,xlsx,BZ 17.01,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R3
+berlin,2005,myfest,15000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2005,myfest,15000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2005,myfest,15000,xlsx,Helbrecht,policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R4
+berlin,2006,myfest,11000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2006,myfest,11000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2006,myfest,11000,xlsx,Helbrecht,policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R6
+berlin,2007,myfest,16000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2007,myfest,16000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2007,myfest,16000,xlsx,Helbrecht,policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R7
+berlin,2007,myfest,50000,xlsx,Berliner Kurier,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R8
+berlin,2007,myfest,60000,xlsx,organizatorzy via taz,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R9
+berlin,2008,myfest,20000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2008,myfest,20000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2008,myfest,20000,xlsx,Helbrecht,policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R10
+berlin,2009,myfest,35000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2009,myfest,35000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2009,myfest,35000,xlsx,Helbrecht,policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R11
+berlin,2010,myfest,29000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2010,myfest,29000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2010,myfest,29000,xlsx,Helbrecht,policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R12
+berlin,2011,myfest,27000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2011,myfest,27000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2011,myfest,30000,xlsx,"""mehrere zeintausend"" Franz Schulz (Grüne), za BZ 3.05",policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R13
+berlin,2011,myfest,24000,xlsx,policja via MAZ,policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R14
+berlin,2012,myfest,29500,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2012,myfest,29500,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2012,myfest,29000,xlsx,knapp 30 000 police via Stuttgarter Nachrichten,policja,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R15
+berlin,2012,myfest,30000,xlsx,BZ,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R16
+berlin,2012,myfest,35000,xlsx,taz 1.05.2013,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R17
+berlin,2013,myfest,40000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2013,myfest,40000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2013,myfest,40000,xlsx,BM,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R18
+berlin,2014,myfest,40000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2014,myfest,40000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2014,myfest,40000,xlsx,organizatorzy via taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R19
+berlin,2015,myfest,45000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2015,myfest,45000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2015,myfest,45000,xlsx,organisers via Tsg,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R20
+berlin,2016,myfest,30000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2016,myfest,30000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2016,myfest,30000,xlsx,Berliner Morgenpost,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R21
+berlin,2017,myfest,45000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2017,myfest,45000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2017,myfest,45000,xlsx,BZ,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R22
+berlin,2018,myfest,52000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2018,myfest,52000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2018,myfest,52000,xlsx,szacunki (MyFest + MaiGörli),prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R23
+berlin,2019,myfest,45000,index_html,index.html,wykres (obecny),myfest,,index.html:berlinSeries.myfest
+berlin,2019,myfest,45000,mapa,mapa berlin,mapa,MyFest,,Other events #11
+berlin,2019,myfest,45000,xlsx,szacunki,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyFest!R24
+berlin,2018,mygruni,1500,xlsx,taz ticker,prasa,,,FrekwencjaDGB17.xlsx:Dane_MyGruni!R2
+berlin,2018,mygruni,5000,xlsx,PM MyGruni,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_MyGruni!R3
+berlin,2019,mygruni,2500,xlsx,"Weit mehr als 2000 Menschen, BK 2.05.2019",prasa,,,FrekwencjaDGB17.xlsx:Dane_MyGruni!R4
+berlin,2019,mygruni,4500,xlsx,taz(4.05.2019),prasa,,,FrekwencjaDGB17.xlsx:Dane_MyGruni!R5
+berlin,2019,mygruni,7500,xlsx,(organisers via Berliner Zeitung 1.05.2019),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_MyGruni!R6
+berlin,2019,mygruni,3000,xlsx,"3000 (Berliner Zeitung, 2.05.2019)",prasa,,,FrekwencjaDGB17.xlsx:Dane_MyGruni!R7
+berlin,1992,nazi,50,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,1992,nazi,50,mapa,mapa berlin,mapa,"1992. FAP ""1. Mai – Chaoten Frei""",,Neo-Nazi May Day / Neo-Nazi May Day #0
+berlin,1992,nazi,50,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R2
+berlin,1993,nazi,100,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,1993,nazi,100,mapa,mapa berlin,mapa,1993 Friedrichsfelde,,Neo-Nazi May Day / Neo-Nazi May Day #1
+berlin,1993,nazi,100,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R3
+berlin,1994,nazi,5,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,1994,nazi,5,mapa,mapa berlin,mapa,1994 FAP Demo,,Neo-Nazi May Day / Neo-Nazi May Day #2
+berlin,1994,nazi,5,xlsx,Berliner Zeitung,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R4
+berlin,1996,nazi,350,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,1996,nazi,350,mapa,mapa berlin,mapa,1996 NPD + Junge Nationaldemokraten,,Neo-Nazi May Day / Neo-Nazi May Day #3
+berlin,1996,nazi,300,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R5
+berlin,1996,nazi,400,xlsx,jw,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R6
+berlin,2000,nazi,1000,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2000,nazi,1000,mapa,mapa berlin,mapa,2000 NPD Aufmarsch,,Neo-Nazi May Day / Neo-Nazi May Day #4
+berlin,2000,nazi,1000,mapa,mapa berlin,mapa,2000 NPD. Arbeit zuerst für Deutsche,,Neo-Nazi May Day / Neo-Nazi May Day #5
+berlin,2000,nazi,1000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R7
+berlin,2001,nazi,100,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2001,nazi,100,mapa,mapa berlin,mapa,2001 NPD Demo,,Neo-Nazi May Day / Neo-Nazi May Day #6
+berlin,2001,nazi,100,xlsx,"TsG, s. 11",prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R8
+berlin,2002,nazi,700,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2002,nazi,700,mapa,mapa berlin,mapa,2002 – NPD-Demonstration,,Neo-Nazi May Day / Neo-Nazi May Day #7
+berlin,2002,nazi,700,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R9
+berlin,2003,nazi,1675,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2003,nazi,1675,mapa,mapa berlin,mapa,2003. NPD Wir sind das Volk,,Neo-Nazi May Day / Neo-Nazi May Day #8
+berlin,2003,nazi,1350,xlsx,"taz, za policją",policja,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R10
+berlin,2003,nazi,2000,xlsx,TsG,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R11
+berlin,2004,nazi,2300,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2004,nazi,2300,mapa,mapa berlin,mapa,2004 NPD Demo (blocked),,Neo-Nazi May Day / Neo-Nazi May Day #9
+berlin,2004,nazi,2300,xlsx,LÖPA,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R12
+berlin,2009,nazi,200,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2009,nazi,280,mapa,mapa berlin,mapa,2009 NPD Strassenfest,,Neo-Nazi May Day / Neo-Nazi May Day #10
+berlin,2009,nazi,200,xlsx,taz liveticker,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R13
+berlin,2010,nazi,700,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2010,nazi,700,mapa,mapa berlin,mapa,2010 – planned route of NPD demonstration,,Neo-Nazi May Day / Neo-Nazi May Day #11
+berlin,2010,nazi,700,mapa,mapa berlin,mapa,2010 NPD Demo,,Neo-Nazi May Day / Neo-Nazi May Day #12
+berlin,2010,nazi,700,mapa,mapa berlin,mapa,2010 Spontan Nazi Demo,,Neo-Nazi May Day / Neo-Nazi May Day #13
+berlin,2010,nazi,700,xlsx,(TsG) – Prenzlauer Berg + Ku'Damm,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R14
+berlin,2013,nazi,300,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2013,nazi,300,mapa,mapa berlin,mapa,2013 NPD Demo,,Neo-Nazi May Day / Neo-Nazi May Day #14
+berlin,2013,nazi,300,mapa,mapa berlin,mapa,2013 NPD Kundgebung,,Neo-Nazi May Day / Neo-Nazi May Day #15
+berlin,2013,nazi,300,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R15
+berlin,2015,nazi,50,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2015,nazi,50,mapa,mapa berlin,mapa,2015 NPD Kundgebung,,Neo-Nazi May Day / Neo-Nazi May Day #16
+berlin,2015,nazi,50,mapa,mapa berlin,mapa,2015 NPD Kundgebung,,Neo-Nazi May Day / Neo-Nazi May Day #17
+berlin,2015,nazi,50,xlsx,apabiz.de,prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R16
+berlin,2016,nazi,50,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2016,nazi,50,mapa,mapa berlin,mapa,2016 NPD „Asylflut stoppen“,,Neo-Nazi May Day / Neo-Nazi May Day #18
+berlin,2016,nazi,50,mapa,mapa berlin,mapa,2016 NPD Kundgebung,,Neo-Nazi May Day / Neo-Nazi May Day #19
+berlin,2016,nazi,50,mapa,mapa berlin,mapa,2016 NPD Kundgebung,,Neo-Nazi May Day / Neo-Nazi May Day #20
+berlin,2016,nazi,50,xlsx,"Störungsmelder, blog.zeit.de",prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R17
+berlin,2017,nazi,50,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2017,nazi,50,mapa,mapa berlin,mapa,2017 AFD Maifest,,Neo-Nazi May Day / Neo-Nazi May Day #21
+berlin,2017,nazi,50,xlsx,rbb (AfD Fest),prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R18
+berlin,2018,nazi,30,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2018,nazi,30,mapa,mapa berlin,mapa,2018 AFD Maifest,,Neo-Nazi May Day / Neo-Nazi May Day #22
+berlin,2018,nazi,30,xlsx,taz (AfD Fest),prasa,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R19
+berlin,2019,nazi,100,index_html,index.html,wykres (obecny),nazi,,index.html:berlinSeries.nazi
+berlin,2019,nazi,100,mapa,mapa berlin,mapa,2019 AfD Maifest,,Neo-Nazi May Day / Neo-Nazi May Day #23
+berlin,2019,nazi,100,xlsx,AfD,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Nazi!R20
+berlin,1990,ost_radical,2000,mapa,mapa berlin,mapa,"1990. Ost-Gruppen 100 Jahre 1. Mai – Widerstand gegen Unterdrückung, Kapital und Faschismus",,East German Left / East German radical left #2
+berlin,1992,ost_radical,600,mapa,mapa berlin,mapa,"""The East strikes back"". East German left demonstration 1992",,East German Left / East German radical left #1
+berlin,1990,pds,15500,index_html,index.html,wykres (obecny),pds_u,,index.html:berlinSeries.pds_u
+berlin,1990,pds,16000,xlsx,ND (demo Ost),prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R2
+berlin,1990,pds,15000,xlsx,taz (demo Ost),prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R3
+berlin,1992,pds,6000,index_html,index.html,wykres (obecny),pds_u,,index.html:berlinSeries.pds_u
+berlin,1992,pds,6000,xlsx,Zug der Widerspensigsten (JW),prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R5
+berlin,1993,pds,6000,index_html,index.html,wykres (obecny),pds_u,,index.html:berlinSeries.pds_u
+berlin,1993,pds,6000,xlsx,ZdW (JW),prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R6
+berlin,1994,pds,1000,index_html,index.html,wykres (obecny),pds_u,,index.html:berlinSeries.pds_u
+berlin,1994,pds,1000,mapa,mapa berlin,mapa,1994 PDS Demo,,East German Left / PDS/Linke Events #5
+berlin,1994,pds,1000,xlsx,(Zug PDS) BZ,prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R7
+berlin,1996,pds,2200,index_html,index.html,wykres (obecny),pds_a,,index.html:berlinSeries.pds_a
+berlin,1996,pds,4000,mapa,mapa berlin,mapa,1996 PDS Kundgebung,,East German Left / PDS/Linke Events #8
+berlin,1996,pds,400,xlsx,"mehrere hundert, rbb",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R9
+berlin,1996,pds,4000,xlsx,"""mehrere Tausend"" PDS Kundgebung ~4000, ND",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R10
+berlin,1997,pds,7333,index_html,index.html,wykres (obecny),pds_a,,index.html:berlinSeries.pds_a
+berlin,1997,pds,7333,mapa,mapa berlin,mapa,"1997 PDS Kundgebung ""sozial und solidarisch""",,East German Left / PDS/Linke Events #9
+berlin,1997,pds,5000,xlsx,rbb B1 1. Mai Spezial,prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R11
+berlin,1997,pds,15000,xlsx,"PDS Kundgebung (organizatorzy, za ND)",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R12
+berlin,1997,pds,2000,xlsx,"Polizei, za ND PDS Kundgebung",policja,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R13
+berlin,1998,pds,6500,index_html,index.html,wykres (obecny),pds_a,,index.html:berlinSeries.pds_a
+berlin,1998,pds,6500,mapa,mapa berlin,mapa,1998 PDS Kundgebung,,East German Left / PDS/Linke Events #10
+berlin,1998,pds,1000,xlsx,"PDS Fest, BZ",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R14
+berlin,1998,pds,12000,xlsx,PDS Veranstaltung ND,prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R15
+berlin,1999,pds,10000,index_html,index.html,wykres (obecny),pds_a,,index.html:berlinSeries.pds_a
+berlin,1999,pds,10000,mapa,mapa berlin,mapa,1999 PDS Kundgebung,,East German Left / PDS/Linke Events #11
+berlin,1999,pds,10000,xlsx,"PDS Kundgebung, ND",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R16
+berlin,2000,pds,3667,index_html,index.html,wykres (obecny),pds_a,,index.html:berlinSeries.pds_a
+berlin,2000,pds,3666,mapa,mapa berlin,mapa,2000 PDS Kundgebung,,East German Left / PDS/Linke Events #12
+berlin,2000,pds,7000,xlsx,"PDS Kundgebung, ND",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R17
+berlin,2000,pds,3000,xlsx,"PDS Kundgebung, BZ",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R18
+berlin,2000,pds,1000,xlsx,"PDS Kundgebung, die Welt",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R19
+berlin,2001,pds,7250,index_html,index.html,wykres (obecny),pds_a,,index.html:berlinSeries.pds_a
+berlin,2001,pds,7250,mapa,mapa berlin,mapa,2001 PDS Kundgebung,,East German Left / PDS/Linke Events #13
+berlin,2001,pds,7000,xlsx,"PDS Kundgebung, Berliner Kurier",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R20
+berlin,2001,pds,7500,xlsx,"PDs Kundgebung, ND",prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R21
+berlin,2002,pds,2250,index_html,index.html,wykres (obecny),pds_a,,index.html:berlinSeries.pds_a
+berlin,2002,pds,2250,mapa,mapa berlin,mapa,2002 PDS Kundgebung,,East German Left / PDS/Linke Events #14
+berlin,2002,pds,3500,xlsx,PDS Kundgebung Rucht,prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R22
+berlin,2002,pds,1000,xlsx,PDS Kundgebung rbb,prasa,,,FrekwencjaDGB17.xlsx:Dane_Ost_PDS!R23
+berlin,1996,revo13,3000,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,1996,revo13,3000,mapa,mapa berlin,mapa,1996 R1M (ML) Demo,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #0
+berlin,1996,revo13,3000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R2
+berlin,1997,revo13,2000,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,1997,revo13,2000,mapa,mapa berlin,mapa,"1997 – R1M 13:00, Keine Befreiung Ohne Revolution",,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #1
+berlin,1997,revo13,2000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R3
+berlin,1998,revo13,1750,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,1998,revo13,1750,mapa,mapa berlin,mapa,1998 – 13:00 R1M,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #2
+berlin,1998,revo13,1750,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R4
+berlin,1999,revo13,1500,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,1999,revo13,1500,mapa,mapa berlin,mapa,1999 R1M  13:00,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #3
+berlin,1999,revo13,1500,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R5
+berlin,2000,revo13,1500,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2000,revo13,1500,mapa,mapa berlin,mapa,2000 R1M (Kommunistische Gruppen),,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #4
+berlin,2000,revo13,1000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R6
+berlin,2000,revo13,800,xlsx,Berliner Morgenpost,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R7
+berlin,2000,revo13,2000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R8
+berlin,2001,revo13,2250,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2001,revo13,2250,mapa,mapa berlin,mapa,2001 R1M (Kommunistische Gruppen),,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #5
+berlin,2001,revo13,150,mapa,mapa berlin,mapa,2001. Gegen das Verbot der 1. Mai Demo,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #19
+berlin,2001,revo13,2000,xlsx,stressfaktor,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R9
+berlin,2001,revo13,2500,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R10
+berlin,2002,revo13,4000,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2002,revo13,1000,mapa,mapa berlin,mapa,2002 R1M (R1M Bündnis),,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #6
+berlin,2002,revo13,4000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R11
+berlin,2003,revo13,6750,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2003,revo13,6750,mapa,mapa berlin,mapa,2003 Revolutionäre Komunisten/ALB. Nie wieder Frieden - fuck old europe,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #7
+berlin,2003,revo13,10000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R12
+berlin,2003,revo13,3500,xlsx,"Tsg, police",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R13
+berlin,2004,revo13,5000,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2004,revo13,5000,mapa,mapa berlin,mapa,2004 Keine Befreiung ohne Revolution (13 Uhr),,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #8
+berlin,2004,revo13,5000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R14
+berlin,2005,revo13,500,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2005,revo13,500,mapa,mapa berlin,mapa,2005 R1M (13:00),,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #9
+berlin,2005,revo13,500,xlsx,Berliner Zeitung,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R15
+berlin,2006,revo13,50,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2006,revo13,50,mapa,mapa berlin,mapa,2006 R1M (13:00),,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #10
+berlin,2006,revo13,50,xlsx,"mehr Menschen mit Kamera und Fotoapparat unterwegs als Demonstranten"" (taz)",prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R16
+berlin,2007,revo13,900,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2007,revo13,900,mapa,mapa berlin,mapa,2007 R1M 15:00,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #11
+berlin,2007,revo13,800,xlsx,Berliner Kurier,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R17
+berlin,2007,revo13,1000,xlsx,Berliner Zeitung,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R18
+berlin,2008,revo13,300,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2008,revo13,300,mapa,mapa berlin,mapa,2008 13Uhr R1M,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #12
+berlin,2008,revo13,300,xlsx,"""einige Hundert"" ~300 (taz)",prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R19
+berlin,2009,revo13,300,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2009,revo13,300,mapa,mapa berlin,mapa,2009 R1M 13:00,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #13
+berlin,2009,revo13,300,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R20
+berlin,2010,revo13,50,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2010,revo13,50,mapa,mapa berlin,mapa,2010 13:00 Demo,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #14
+berlin,2010,revo13,50,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R21
+berlin,2016,revo13,250,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2016,revo13,250,mapa,mapa berlin,mapa,2016 – 13 Uhr Demo „Neukölln bleibt rot – gegen Ausbetung und Unterdrückung“.,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #15
+berlin,2016,revo13,250,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R22
+berlin,2017,revo13,250,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2017,revo13,250,mapa,mapa berlin,mapa,2017 Rotes 1. Mai,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #16
+berlin,2017,revo13,250,xlsx,JugendWiderstand,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R23
+berlin,2018,revo13,200,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2018,revo13,200,mapa,mapa berlin,mapa,2018 Rotes 1. Mai,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #17
+berlin,2018,revo13,200,xlsx,JugendWiderstand,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R24
+berlin,2019,revo13,200,index_html,index.html,wykres (obecny),revo13,,index.html:berlinSeries.revo13
+berlin,2019,revo13,200,mapa,mapa berlin,mapa,2019 Rotes 1. Mai,,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016) #18
+berlin,2019,revo13,200,xlsx,JugendWiderstand,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo13!R25
+berlin,1994,revo18,2500,mapa,mapa berlin,mapa,1994 KDB/RZ Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #0
+berlin,1996,revo18,10000,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,1996,revo18,10000,mapa,mapa berlin,mapa,1996 RIM (AAB) Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #1
+berlin,1996,revo18,10000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R2
+berlin,1997,revo18,9000,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,1997,revo18,9000,mapa,mapa berlin,mapa,1997 R1M (AAB) Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #2
+berlin,1997,revo18,9000,xlsx,Glückspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R3
+berlin,1998,revo18,6667,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,1998,revo18,6667,mapa,mapa berlin,mapa,1998 RIM (AAB) Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #3
+berlin,1998,revo18,3000,xlsx,ND,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R4
+berlin,1998,revo18,6000,xlsx,Gluckspilz,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R5
+berlin,1998,revo18,11000,xlsx,Gluckspilz,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R6
+berlin,1999,revo18,14000,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,1999,revo18,14000,mapa,mapa berlin,mapa,1999 R1M 18:00,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #4
+berlin,1999,revo18,12000,xlsx,Tagesspiegel,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R7
+berlin,1999,revo18,15000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R8
+berlin,1999,revo18,15000,xlsx,Beliner Zeitung,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R9
+berlin,2000,revo18,13333,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2000,revo18,13333,mapa,mapa berlin,mapa,2000 R1M Demonstration,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #5
+berlin,2000,revo18,5000,xlsx,Gluckspilz,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R10
+berlin,2000,revo18,20000,xlsx,Gluckspilz,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R11
+berlin,2000,revo18,15000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R12
+berlin,2001,revo18,5500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2001,revo18,6000,xlsx,stressfaktor,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R13
+berlin,2001,revo18,5000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R14
+berlin,2002,revo18,9500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2002,revo18,9500,mapa,mapa berlin,mapa,"2002 –AAB, Bündnis linksradikaler und antifaschistischer Groups 2002",,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #7
+berlin,2002,revo18,4000,mapa,mapa berlin,mapa,2002 16:00 Zuschuss R1M,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #8
+berlin,2002,revo18,8000,xlsx,LÖPA,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R15
+berlin,2002,revo18,11000,xlsx,"10-12k (Gluckspilz, stressfaktor)",prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R16
+berlin,2003,revo18,3500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2003,revo18,3500,mapa,mapa berlin,mapa,2003 K&P R1M Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #9
+berlin,2003,revo18,3500,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R17
+berlin,2004,revo18,3500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2004,revo18,3500,mapa,mapa berlin,mapa,2004 16 Uhr Revolutionäre 1. Mai Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #10
+berlin,2004,revo18,3500,xlsx,Umbruch,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R18
+berlin,2005,revo18,0,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2005,revo18,750,mapa,mapa berlin,mapa,2005 Yorck59 Bleibt!,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #12
+berlin,2005,revo18,0,xlsx,,?,,,FrekwencjaDGB17.xlsx:Dane_Revo!R19
+berlin,2006,revo18,0,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2006,revo18,0,xlsx,,?,,,FrekwencjaDGB17.xlsx:Dane_Revo!R20
+berlin,2007,revo18,7667,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2007,revo18,7667,mapa,mapa berlin,mapa,2007 R1M 18:00,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #14
+berlin,2007,revo18,3000,xlsx,police,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R21
+berlin,2007,revo18,5000,xlsx,Berliner Kurier,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R22
+berlin,2007,revo18,15000,xlsx,organisers via BZ,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R23
+berlin,2008,revo18,11000,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2008,revo18,11000,mapa,mapa berlin,mapa,2008 R1M (18),,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #15
+berlin,2008,revo18,10000,xlsx,police via taz,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R24
+berlin,2008,revo18,12000,xlsx,"""mehr als 10.000"" ~ 12000 (Umbruch)",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R25
+berlin,2009,revo18,8500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2009,revo18,8500,mapa,mapa berlin,mapa,2009 Revolutionäre Demo 18:00,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #16
+berlin,2009,revo18,5000,xlsx,"police, via Tagesspiegel ticker 2010",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R26
+berlin,2009,revo18,12000,xlsx,"""über 10.000 TeilnehmerInnen"" ~ 12000 (Umbruch archiv)",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R27
+berlin,2010,revo18,12500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2010,revo18,12500,mapa,mapa berlin,mapa,2010 R1M 18:00. *Die Krise beenden – Kapitalismus abschaffen*,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #17
+berlin,2010,revo18,10000,xlsx,"police, via Tagesspiegel ticker",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R28
+berlin,2010,revo18,15000,xlsx,Umbruch Archiv,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R29
+berlin,2011,revo18,11333,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2011,revo18,11333,mapa,mapa berlin,mapa,2011 R1M – Heraus zum revolutionären 1. Mai - für die soziale Revolution weltweit,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #18
+berlin,2011,revo18,10000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R30
+berlin,2011,revo18,9000,xlsx,polica via BZ,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R31
+berlin,2011,revo18,15000,xlsx,Umbruch,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R32
+berlin,2012,revo18,18500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2012,revo18,18500,mapa,mapa berlin,mapa,2012 R1M,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #19
+berlin,2012,revo18,12000,xlsx,taz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R33
+berlin,2012,revo18,25000,xlsx,"organisers, via tagesspiegel",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R34
+berlin,2013,revo18,11667,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2013,revo18,11667,mapa,mapa berlin,mapa,2013 R1M,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #20
+berlin,2013,revo18,10000,xlsx,BZ,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R35
+berlin,2013,revo18,17000,xlsx,Umbruch (mehr als 15.000),organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R36
+berlin,2013,revo18,8000,xlsx,Police (za BM),policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R37
+berlin,2014,revo18,22000,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2014,revo18,22000,mapa,mapa berlin,mapa,2014 Revolutionäre 1. Mai Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #21
+berlin,2014,revo18,19000,xlsx,police,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R38
+berlin,2014,revo18,25000,xlsx,organisers,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R39
+berlin,2015,revo18,25500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2015,revo18,25500,mapa,mapa berlin,mapa,2015 R1MB Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #22
+berlin,2015,revo18,18000,xlsx,police via Tsg,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R40
+berlin,2015,revo18,33000,xlsx,"organisers, via taz",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R41
+berlin,2016,revo18,16500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2016,revo18,16500,mapa,mapa berlin,mapa,2016 Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #23
+berlin,2016,revo18,13000,xlsx,"police, taz liveticker",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R42
+berlin,2016,revo18,20000,xlsx,"organisers, taz liveticker",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R43
+berlin,2017,revo18,15000,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2017,revo18,15000,mapa,mapa berlin,mapa,2017 Hauptdemo 18,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #24
+berlin,2017,revo18,10000,xlsx,"police, Berliner Morgenpost ticker 2018",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R44
+berlin,2017,revo18,20000,xlsx,"organizers, umbruch archiv",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R45
+berlin,2018,revo18,12500,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2018,revo18,12500,mapa,mapa berlin,mapa,2018 Demo,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #27
+berlin,2018,revo18,7000,xlsx,"police, Berliner Morgenpost ticker 2018",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R46
+berlin,2018,revo18,18000,xlsx,"organisers, Umbruch Archiv",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R47
+berlin,2019,revo18,10000,index_html,index.html,wykres (obecny),revo18,,index.html:berlinSeries.revo18
+berlin,2019,revo18,10000,mapa,mapa berlin,mapa,2019 Demo. Gegen die Stadt der Reichen,,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration) #28
+berlin,2019,revo18,15000,xlsx,"organisers, Umbruch Archiv",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R48
+berlin,2019,revo18,10000,xlsx,"press, Perspektive",prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R49
+berlin,2019,revo18,5000,xlsx,"police, via Berliner Zeitung",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R50
+berlin,2020,revo18,3000,xlsx,mehrere tausend,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R51
+berlin,2020,revo18,3000,xlsx,mehrere tausend,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R52
+berlin,2021,revo18,9000,xlsx,"police, via BM",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R53
+berlin,2021,revo18,20000,xlsx,"organizatorzy, Umbruch Archiv",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R54
+berlin,2022,revo18,14000,xlsx,"police, via BM",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R55
+berlin,2022,revo18,20000,xlsx,"organizatorzy, via BM",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R56
+berlin,2023,revo18,12000,xlsx,police via BM,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R57
+berlin,2023,revo18,20000,xlsx,"organizatorzy, via BM",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R58
+berlin,2024,revo18,11800,xlsx,polizei Meldung,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R59
+berlin,2024,revo18,25000,xlsx,organizatorzy via Tsg,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R60
+berlin,2024,revo18,15000,xlsx,Umbruch Archiv,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo!R61
+berlin,2025,revo18,22000,xlsx,police via BM,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R62
+berlin,2025,revo18,30000,xlsx,organizatorzy,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R63
+berlin,2026,revo18,30000,xlsx,organizatorzy,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo!R64
+berlin,2026,revo18,11000,xlsx,police,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo!R65
+berlin,1988,revo_j,7000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R2
+berlin,1989,revo_j,10000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R3
+berlin,1990,revo_j,12500,index_html,index.html,wykres (obecny),revo_j,,index.html:berlinSeries.revo_j
+berlin,1990,revo_j,12500,mapa,mapa berlin,mapa,1990 Revolutionäre 1. Mai. Lieber raus auf die Straße als heim ins Reich,,Revolutionäre 1. Mai / Revolutionäre 1. Mai (1990-1995) #0
+berlin,1990,revo_j,10000,xlsx,"(police, Gluckspilz)",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R4
+berlin,1990,revo_j,15000,xlsx,"(organisers, Gluckspilz)",organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R5
+berlin,1991,revo_j,12667,index_html,index.html,wykres (obecny),revo_j,,index.html:berlinSeries.revo_j
+berlin,1991,revo_j,12667,mapa,mapa berlin,mapa,1991 Demo,,Revolutionäre 1. Mai / Revolutionäre 1. Mai (1990-1995) #1
+berlin,1991,revo_j,10000,xlsx,Gluckspilz,Gluckspilz,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R6
+berlin,1991,revo_j,8000,xlsx,Gluckspilz,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R7
+berlin,1991,revo_j,20000,xlsx,Gluckspilz,organizatorzy,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R8
+berlin,1992,revo_j,13500,index_html,index.html,wykres (obecny),revo_j,,index.html:berlinSeries.revo_j
+berlin,1992,revo_j,13500,mapa,mapa berlin,mapa,1992 Revolutionäre 1. Mai Demo,,Revolutionäre 1. Mai / Revolutionäre 1. Mai (1990-1995) #2
+berlin,1992,revo_j,12000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R9
+berlin,1992,revo_j,9000,xlsx,"policja, za rbb",policja,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R10
+berlin,1992,revo_j,15000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R11
+berlin,1993,revo_j,7750,index_html,index.html,wykres (obecny),revo_j,,index.html:berlinSeries.revo_j
+berlin,1993,revo_j,7750,mapa,mapa berlin,mapa,1993 Demo,,Revolutionäre 1. Mai / Revolutionäre 1. Mai (1990-1995) #3
+berlin,1993,revo_j,5500,xlsx,Gluckspilz,policja,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R12
+berlin,1993,revo_j,10000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R13
+berlin,1994,revo_j,900,index_html,index.html,wykres (obecny),revo_j,,index.html:berlinSeries.revo_j
+berlin,1994,revo_j,900,mapa,mapa berlin,mapa,1994 RIM Demo,,Revolutionäre 1. Mai / Revolutionäre 1. Mai (1990-1995) #4
+berlin,1994,revo_j,800,xlsx,Berliner Zeitung,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R14
+berlin,1994,revo_j,1000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R15
+berlin,1995,revo_j,2250,index_html,index.html,wykres (obecny),revo_j,,index.html:berlinSeries.revo_j
+berlin,1995,revo_j,2250,mapa,mapa berlin,mapa,1995 RIM Demo,,Revolutionäre 1. Mai / Revolutionäre 1. Mai (1990-1995) #5
+berlin,1995,revo_j,2500,xlsx,Berliner Zeitung,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R16
+berlin,1995,revo_j,2000,xlsx,Gluckspilz,prasa,,,FrekwencjaDGB17.xlsx:Dane_Revo_joint!R17
+berlin,2005,revo_spont,1400,mapa,mapa berlin,mapa,2005 Spontandemo,,Revolutionäre 1. Mai / Spontaneous Demonstrations #0
+berlin,2012,revo_spont,1000,mapa,mapa berlin,mapa,Sponti 2012,,Revolutionäre 1. Mai / Spontaneous Demonstrations #6
+berlin,2013,revo_spont,750,mapa,mapa berlin,mapa,2013 Spontandemo,,Revolutionäre 1. Mai / Spontaneous Demonstrations #2
+berlin,2014,revo_spont,2000,mapa,mapa berlin,mapa,2014 unauthorised demonstration,,Revolutionäre 1. Mai / Spontaneous Demonstrations #3
+berlin,1999,walpurgis_demo,100,mapa,mapa berlin,mapa,Walpurgisnacht 1999,,Walpurgisnacht / Walpurgisnacht Demonstrations #17
+berlin,2007,walpurgis_demo,1500,mapa,mapa berlin,mapa,2007 Walpurgisnacht Demo,,Walpurgisnacht / Walpurgisnacht Demonstrations #4
+berlin,2011,walpurgis_demo,700,mapa,mapa berlin,mapa,"2011 Walpurgisnacht ""Wir Bleiben Alle!""",,Walpurgisnacht / Walpurgisnacht Demonstrations #5
+berlin,2012,walpurgis_demo,4650,mapa,mapa berlin,mapa,2012 antikapitalistische Walpurgisnahcht,,Walpurgisnacht / Walpurgisnacht Demonstrations #6
+berlin,2013,walpurgis_demo,2500,mapa,mapa berlin,mapa,2013 Walpurgisnacht take back the city,,Walpurgisnacht / Walpurgisnacht Demonstrations #7
+berlin,2014,walpurgis_demo,3000,mapa,mapa berlin,mapa,2014 Antikapitalistische Walpurgisnacht,,Walpurgisnacht / Walpurgisnacht Demonstrations #8
+berlin,2015,walpurgis_demo,4000,mapa,mapa berlin,mapa,2015 Antikapitalistische Walpurgisnacht,,Walpurgisnacht / Walpurgisnacht Demonstrations #9
+berlin,2016,walpurgis_demo,2300,mapa,mapa berlin,mapa,2016 Walpurgisnacht Demo,,Walpurgisnacht / Walpurgisnacht Demonstrations #10
+berlin,2017,walpurgis_demo,3500,mapa,mapa berlin,mapa,2017 Walpurgisnacht Demo,,Walpurgisnacht / Walpurgisnacht Demonstrations #11
+berlin,2018,walpurgis_demo,3000,mapa,mapa berlin,mapa,2018 Walpurgisnacht Demo,,Walpurgisnacht / Walpurgisnacht Demonstrations #12
+berlin,1995,walpurgis_tanz,300,mapa,mapa berlin,mapa,1995 Demo (?),,Walpurgisnacht / Walpurgisnacht/Tanz in den Mai #9
+berlin,1996,walpurgis_tanz,10000,mapa,mapa berlin,mapa,1996 Walpurgisnacht at Kollwitzplatz,,Walpurgisnacht / Walpurgisnacht/Tanz in den Mai #1
+berlin,1999,walpurgis_tanz,10000,mapa,mapa berlin,mapa,1999. Walpurginsnacht,,Walpurgisnacht / Walpurgisnacht/Tanz in den Mai #2
+berlin,2001,walpurgis_tanz,10000,mapa,mapa berlin,mapa,2001. Tanz in den Mai auf dem Kolle,,Walpurgisnacht / Walpurgisnacht/Tanz in den Mai #4
+berlin,1990,walpurgis_ttbn,2500,mapa,mapa berlin,mapa,1990 Walpurgisnacht Frauendemo,,Walpurgisnacht / take back the night #0
+berlin,2000,walpurgis_ttbn,300,mapa,mapa berlin,mapa,"2000 – Frauen, Lesben Mädchen gegen Gewalt",,Walpurgisnacht / take back the night #10
+kyiv,2008,anarchi,100,mapa,mapa kyiv,mapa,2008. Anarchist Demonstration,,Anarchist #0
+kyiv,2009,fpu,1000,mapa,mapa kyiv,mapa,2009 FPU rally,,Trade Union events / FPU #0
+kyiv,2010,fpu,3000,mapa,mapa kyiv,mapa,2010 FPU Demonstration,,Trade Union events / FPU #1
+kyiv,2015,fpu,1500,mapa,mapa kyiv,mapa,2015 Forum of Trade Unions (?),,Trade Union events / FPU #3
+kyiv,2017,fpu,3500,mapa,mapa kyiv,mapa,FPU Demonstration 2017,,Trade Union events / FPU #5
+kyiv,2018,fpu,2000,mapa,mapa kyiv,mapa,FPU Demonstration 2018,,Trade Union events / FPU #6
+kyiv,2003,inne,32000,mapa,mapa kyiv,mapa,2003. Об'єднання за конституційні права проти правлячого режиму,,Other events #18
+kyiv,2004,inne,10000,mapa,mapa kyiv,mapa,2004. Party of Regions,,Other events #0
+kyiv,2004,inne,700,mapa,mapa kyiv,mapa,2004. SDPU(o),,Other events #1
+kyiv,2004,inne,700,mapa,mapa kyiv,mapa,2004. SDPU(o) concert,,Other events #2
+kyiv,2004,inne,200,mapa,mapa kyiv,mapa,2004. Караоке української пісні (Nasha Ukraiyna),,Other events #3
+kyiv,2006,inne,50,mapa,mapa kyiv,mapa,"2006. ініціативна група громадян ""Баста""",,Other events #13
+kyiv,2008,inne,200,mapa,mapa kyiv,mapa,2008. SDPU(o) rally,,Other events #4
+kyiv,1991,kpu,50000,mapa,mapa kyiv,mapa,1991 Official Demonstration,,Communist Party #1
+kyiv,1998,kpu,3000,mapa,mapa kyiv,mapa,1999 KPU Demonstration,,Communist Party #4
+kyiv,2002,kpu,3000,mapa,mapa kyiv,mapa,2002 KPU Demonstration,,Communist Party #5
+kyiv,2004,kpu,18333,mapa,mapa kyiv,mapa,2004. KPU demonstration,,Communist Party #6
+kyiv,2005,kpu,2750,mapa,mapa kyiv,mapa,2005. Communist Party Demonstration,,Communist Party #7
+kyiv,2007,kpu,2000,mapa,mapa kyiv,mapa,,,Communist Party #0
+kyiv,2008,kpu,7000,mapa,mapa kyiv,mapa,2008. KPU and PSPU demonstration,,Communist Party #8
+kyiv,2009,kpu,5000,mapa,mapa kyiv,mapa,2009 KPU Demonstration,,Communist Party #9
+kyiv,2010,kpu,4000,mapa,mapa kyiv,mapa,2010 KPU/SDPU(o) Demonstration,,Communist Party #11
+kyiv,2013,kpu,10000,mapa,mapa kyiv,mapa,2013. KPU demonstration,,Communist Party #12
+kyiv,2015,kpu,900,mapa,mapa kyiv,mapa,2015 – KPU rally,,Communist Party #13
+kyiv,2018,kpu,500,mapa,mapa kyiv,mapa,2018 KPU Demonstration,,Communist Party #16
+kyiv,2012,monstracja,30,mapa,mapa kyiv,mapa,2012. Монстрація,,Монстрація #0
+kyiv,2013,monstracja,30,mapa,mapa kyiv,mapa,2013. Монстрація,,Монстрація #1
+kyiv,2014,monstracja,30,mapa,mapa kyiv,mapa,Монстрація 2014,,Монстрація #2
+kyiv,2002,pspu,500,mapa,mapa kyiv,mapa,2002 PSPU Demonstration,,PSPU #1
+kyiv,2006,pspu,100,mapa,mapa kyiv,mapa,2006. PSPU demonstration,,PSPU #3
+kyiv,2009,pspu,2000,mapa,mapa kyiv,mapa,2009. Left PSPU led demonstration,,PSPU #4
+kyiv,1991,rukh,5500,mapa,mapa kyiv,mapa,1991 Rukh Demonstration,,Narodnyi Rukh #0
+kyiv,2015,sotsrukh,50,mapa,mapa kyiv,mapa,2015 – Марш за соціальні зміни,,Соціяльний Рух #0
+kyiv,2012,spu,25,mapa,mapa kyiv,mapa,2012. SPU rally,,Соціалістична партія України #1
+kyiv,2007,zwiazki_inne,50,mapa,mapa kyiv,mapa,2007. Нові Ліві,,Trade Union events / Other Trade unions #1
+kyiv,2009,zwiazki_inne,400,mapa,mapa kyiv,mapa,2009. Left-radical demonstration,,Trade Union events / Other Trade unions #2
+kyiv,2010,zwiazki_inne,500,mapa,mapa kyiv,mapa,2010. 1 ТРАВНЯ 2010 – “СВЯТО ПРАЦІ”,,Trade Union events / Other Trade unions #3
+kyiv,2011,zwiazki_inne,500,mapa,mapa kyiv,mapa,2011. “Марш колективної дії”,,Trade Union events / Other Trade unions #4
+kyiv,2012,zwiazki_inne,500,mapa,mapa kyiv,mapa,2012. Марш за соціальні зміни (FPPMSPU),,Trade Union events / Other Trade unions #6
+warsaw,1990,anarchi,50,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,1990,anarchi,50,mapa,mapa warsaw,mapa,1990. Międzynarodówka Anarchistyczna,,Anarchistyczny 1. Maja #0
+warsaw,1991,anarchi,30,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,1991,anarchi,30,mapa,mapa warsaw,mapa,1991 Międzymiastówka Anarchistyczna i Lewica Radykalna,,Anarchistyczny 1. Maja #1
+warsaw,1995,anarchi,400,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,1995,anarchi,400,mapa,mapa warsaw,mapa,1995. Demonstracja Anarchistyczna,,Anarchistyczny 1. Maja #2
+warsaw,1996,anarchi,500,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,1996,anarchi,500,mapa,mapa warsaw,mapa,1996. Młodzież Przeciwko Rasizmowi,,Anarchistyczny 1. Maja #3
+warsaw,2001,anarchi,300,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,2001,anarchi,300,mapa,mapa warsaw,mapa,2001 – Ogólnopolski Marsz Protestu,,Anarchistyczny 1. Maja #4
+warsaw,2003,anarchi,300,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,2003,anarchi,300,mapa,mapa warsaw,mapa,2003. M1 Demonstracja anarchistyczna,,Anarchistyczny 1. Maja #5
+warsaw,2007,anarchi,80,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,2007,anarchi,80,mapa,mapa warsaw,mapa,2007. 1 Maja – Odzyskaj swoje życie!,,Anarchistyczny 1. Maja #6
+warsaw,2008,anarchi,200,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,2008,anarchi,200,mapa,mapa warsaw,mapa,2008 – Lewicowa Alternatywa / OZZ IP – „Przeciwko dyskryminacji”,,Anarchistyczny 1. Maja #7
+warsaw,2009,anarchi,40,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,2009,anarchi,40,mapa,mapa warsaw,mapa,2009. ZSP. Nic o nas bez nas!,,Anarchistyczny 1. Maja #8
+warsaw,2012,anarchi,150,index_html,index.html,wykres (obecny),anarchi,,index.html:warsawSeries.anarchi
+warsaw,2012,anarchi,150,mapa,mapa warsaw,mapa,2012 ZSP. Zmowa powszechna przeciwko władzy,,Anarchistyczny 1. Maja #9
+warsaw,2015,fest_eu,30000,index_html,index.html,wykres (obecny),fest_eu,,index.html:warsawSeries.fest_eu
+warsaw,2011,inne,1000,mapa,mapa warsaw,mapa,2011 Beatification of John Paul II,,Inne wydarzenia #2
+warsaw,1990,lew_alt,250,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,1990,lew_alt,250,mapa,mapa warsaw,mapa,1990 PPS-RD/PPS-TKK/Anarchist Demonstration,,Lewica radykalna #1
+warsaw,2002,lew_alt,200,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2002,lew_alt,200,mapa,mapa warsaw,mapa,2002. Ręce Precz od Kodeksu Pracy,,Lewica radykalna #2
+warsaw,2003,lew_alt,500,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2003,lew_alt,300,mapa,mapa warsaw,mapa,2003 – Nowa Lewica + Inicjatywa Stop Wojnie pod ambasadę USA,,Lewica radykalna #3
+warsaw,2003,lew_alt,200,mapa,mapa warsaw,mapa,2003. Inicjatywa Stop Wojnie,,Lewica radykalna #4
+warsaw,2004,lew_alt,200,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2004,lew_alt,200,mapa,mapa warsaw,mapa,2004 Nowa Lewica,,Lewica radykalna #5
+warsaw,2005,lew_alt,300,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2005,lew_alt,300,mapa,mapa warsaw,mapa,2005. Nowa Lewica,,Lewica radykalna #6
+warsaw,2006,lew_alt,250,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2006,lew_alt,250,mapa,mapa warsaw,mapa,2006 Nowa Lewica,,Lewica radykalna #7
+warsaw,2007,lew_alt,300,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2007,lew_alt,300,mapa,mapa warsaw,mapa,2007 Nowa Lewica,,Lewica radykalna #8
+warsaw,2008,lew_alt,200,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2008,lew_alt,200,mapa,mapa warsaw,mapa,2008 Nowa Lewica,,Lewica radykalna #9
+warsaw,2009,lew_alt,300,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2009,lew_alt,300,mapa,mapa warsaw,mapa,2009. Nowa Lewica,,Lewica radykalna #10
+warsaw,2010,lew_alt,150,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2010,lew_alt,150,mapa,mapa warsaw,mapa,2010 – Pochód Nowej Lewicy / KSS / KPP,,Lewica radykalna #11
+warsaw,2011,lew_alt,150,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2011,lew_alt,150,mapa,mapa warsaw,mapa,"2011 – Marsz Pustych Garnków (KSS, KPP, Racja, PD, NLR)",,Lewica radykalna #12
+warsaw,2012,lew_alt,150,mapa,mapa warsaw,mapa,,,Lewica radykalna #0
+warsaw,2013,lew_alt,200,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2013,lew_alt,200,mapa,mapa warsaw,mapa,2013. KSS. Zasoby Ludzkie mają dość!,,Lewica radykalna #13
+warsaw,2014,lew_alt,400,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2014,lew_alt,400,mapa,mapa warsaw,mapa,2014-2015. Marsz Sprawiedliwości Społecznej (RSS Ikonowicza),"jedna liczba dla lat 2014, 2015",Lewica radykalna #14
+warsaw,2015,lew_alt,450,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2015,lew_alt,400,mapa,mapa warsaw,mapa,2014-2015. Marsz Sprawiedliwości Społecznej (RSS Ikonowicza),"jedna liczba dla lat 2014, 2015",Lewica radykalna #14
+warsaw,2015,lew_alt,50,mapa,mapa warsaw,mapa,2015 – Pochód Partii Zmiana,,Lewica radykalna #15
+warsaw,2016,lew_alt,400,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2016,lew_alt,400,mapa,mapa warsaw,mapa,2016-2018 RSS / KPP / Partia Socjaliści / WSL,"jedna liczba dla lat 2016, 2017, 2018",Lewica radykalna #16
+warsaw,2017,lew_alt,400,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2017,lew_alt,400,mapa,mapa warsaw,mapa,2016-2018 RSS / KPP / Partia Socjaliści / WSL,"jedna liczba dla lat 2016, 2017, 2018",Lewica radykalna #16
+warsaw,2018,lew_alt,400,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2018,lew_alt,400,mapa,mapa warsaw,mapa,2016-2018 RSS / KPP / Partia Socjaliści / WSL,"jedna liczba dla lat 2016, 2017, 2018",Lewica radykalna #16
+warsaw,2019,lew_alt,350,index_html,index.html,wykres (obecny),lew_alt,,index.html:warsawSeries.lew_alt
+warsaw,2019,lew_alt,350,mapa,mapa warsaw,mapa,2019 – Demonstracja społeczna (Strajk / Naprzód / SFWM / UZ),,Lewica radykalna #18
+warsaw,1990,opzz,14250,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1990,opzz,15000,mapa,mapa warsaw,mapa,1990. OPZZ Demonstration,,OPZZ #1
+warsaw,1991,opzz,12500,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1991,opzz,10000,mapa,mapa warsaw,mapa,Pochód OPZZ 1991,,OPZZ #2
+warsaw,1992,opzz,24000,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1992,opzz,24000,mapa,mapa warsaw,mapa,Pochód OPZZ 1992,,OPZZ #3
+warsaw,1993,opzz,8000,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1993,opzz,8000,mapa,mapa warsaw,mapa,Pochód OPZZ 1993,,OPZZ #4
+warsaw,1994,opzz,3000,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1994,opzz,3000,mapa,mapa warsaw,mapa,Pochód OPZZ 1994,,OPZZ #5
+warsaw,1995,opzz,4500,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1995,opzz,4500,mapa,mapa warsaw,mapa,Pochód OPZZ 1995,,OPZZ #6
+warsaw,1996,opzz,4500,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1996,opzz,4500,mapa,mapa warsaw,mapa,Pochód OPZZ 1996,,OPZZ #7
+warsaw,1997,opzz,2500,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1997,opzz,2500,mapa,mapa warsaw,mapa,Pochód OPZZ 1997,,OPZZ #8
+warsaw,1998,opzz,4000,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1998,opzz,4000,mapa,mapa warsaw,mapa,Pochód OPZZ 1998,,OPZZ #9
+warsaw,1999,opzz,9200,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,1999,opzz,9200,mapa,mapa warsaw,mapa,Pochód OPZZ 1999,,OPZZ #10
+warsaw,2000,opzz,2250,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2000,opzz,2250,mapa,mapa warsaw,mapa,Pochód OPZZ 2000,,OPZZ #11
+warsaw,2001,opzz,7500,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2001,opzz,7500,mapa,mapa warsaw,mapa,Pochód OPZZ 2001,,OPZZ #12
+warsaw,2002,opzz,2100,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2002,opzz,2100,mapa,mapa warsaw,mapa,Pochód OPZZ 2002,,OPZZ #13
+warsaw,2003,opzz,3333,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2003,opzz,3333,mapa,mapa warsaw,mapa,Pochód OPZZ 2003,,OPZZ #14
+warsaw,2004,opzz,667,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2004,opzz,667,mapa,mapa warsaw,mapa,Pochód OPZZ 2004,,OPZZ #15
+warsaw,2005,opzz,633,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2005,opzz,663,mapa,mapa warsaw,mapa,Pochód OPZZ 2005,,OPZZ #16
+warsaw,2006,opzz,1750,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2006,opzz,1750,mapa,mapa warsaw,mapa,Pochód OPZZ 2006,,OPZZ #17
+warsaw,2007,opzz,1400,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2007,opzz,1400,mapa,mapa warsaw,mapa,Pochód OPZZ 2007,,OPZZ #18
+warsaw,2008,opzz,2167,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2008,opzz,2167,mapa,mapa warsaw,mapa,Pochód OPZZ 2008,,OPZZ #19
+warsaw,2009,opzz,1357,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2009,opzz,1357,mapa,mapa warsaw,mapa,Pochód OPZZ 2009,,OPZZ #20
+warsaw,2010,opzz,440,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2010,opzz,440,mapa,mapa warsaw,mapa,Pochód OPZZ 2010,,OPZZ #21
+warsaw,2011,opzz,133,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2011,opzz,133,mapa,mapa warsaw,mapa,2011. Wiec pierwszomajowy OPZZ,,OPZZ #0
+warsaw,2012,opzz,11750,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2012,opzz,11750,mapa,mapa warsaw,mapa,Pochód OPZZ 2012,,OPZZ #22
+warsaw,2013,opzz,20000,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2013,opzz,20000,mapa,mapa warsaw,mapa,Pochód OPZZ 2013,,OPZZ #23
+warsaw,2014,opzz,7333,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2014,opzz,7333,mapa,mapa warsaw,mapa,Pochód OPZZ 2014,,OPZZ #24
+warsaw,2016,opzz,3667,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2016,opzz,3667,mapa,mapa warsaw,mapa,Pochód OPZZ 2016,,OPZZ #25
+warsaw,2017,opzz,650,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2017,opzz,650,mapa,mapa warsaw,mapa,Pochód OPZZ 2017,,OPZZ #26
+warsaw,2018,opzz,775,index_html,index.html,wykres (obecny),opzz,,index.html:warsawSeries.opzz
+warsaw,2018,opzz,775,mapa,mapa warsaw,mapa,Pochód OPZZ 2018,,OPZZ #27
+warsaw,2001,parada,200,index_html,index.html,wykres (obecny),parada,,index.html:warsawSeries.parada
+warsaw,2001,parada,200,mapa,mapa warsaw,mapa,Parada Równości 2001,,Parada Równości #0
+warsaw,2002,parada,1500,index_html,index.html,wykres (obecny),parada,,index.html:warsawSeries.parada
+warsaw,2002,parada,1500,mapa,mapa warsaw,mapa,Parada Równości 2002,,Parada Równości #1
+warsaw,2003,parada,3500,index_html,index.html,wykres (obecny),parada,,index.html:warsawSeries.parada
+warsaw,2003,parada,3500,mapa,mapa warsaw,mapa,Parada Równości 2003,,Parada Równości #2
+warsaw,1991,pps,200,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,1991,pps,200,mapa,mapa warsaw,mapa,1991 PPS,,PPS #0
+warsaw,1992,pps,200,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,1992,pps,200,mapa,mapa warsaw,mapa,1992 PPS,,PPS #2
+warsaw,1994,pps,100,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,1994,pps,100,mapa,mapa warsaw,mapa,1994 PPS,,PPS #4
+warsaw,1995,pps,80,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,1995,pps,80,mapa,mapa warsaw,mapa,1995 PPS,,PPS #5
+warsaw,1996,pps,100,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,1996,pps,100,mapa,mapa warsaw,mapa,1996 PPS,,PPS #6
+warsaw,1997,pps,150,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,1997,pps,150,mapa,mapa warsaw,mapa,1997 PPS,,PPS #7
+warsaw,1998,pps,150,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,1998,pps,150,mapa,mapa warsaw,mapa,1998 PPS,,PPS #8
+warsaw,1999,pps,150,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,1999,pps,150,mapa,mapa warsaw,mapa,1999 PPS,,PPS #9
+warsaw,2000,pps,150,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,2000,pps,150,mapa,mapa warsaw,mapa,2000 PPS,,PPS #10
+warsaw,2001,pps,150,index_html,index.html,wykres (obecny),pps,,index.html:warsawSeries.pps
+warsaw,2001,pps,150,mapa,mapa warsaw,mapa,2001 PPS,,PPS #11
+warsaw,1994,prawica_kontra,50,mapa,mapa warsaw,mapa,1994 Liga Republikańska happening,,Prawicowe kontry i blokady #0
+warsaw,1995,prawica_kontra,200,mapa,mapa warsaw,mapa,"1995. UPR ""Wolność, Równość, Sprawiedliwość""",,Prawicowe kontry i blokady #2
+warsaw,1997,prawica_kontra,50,mapa,mapa warsaw,mapa,1997 Liga Republikańska counterdemonstration,,Prawicowe kontry i blokady #5
+warsaw,1999,prawica_kontra,90,mapa,mapa warsaw,mapa,1999 – Liga Republikańska counterdemonstration – firecracker injures PPS member,,Prawicowe kontry i blokady #6
+warsaw,2000,prawica_kontra,50,mapa,mapa warsaw,mapa,2000. Happening Ligi Republikańskiej,,Prawicowe kontry i blokady #7
+warsaw,2009,prawica_kontra,6,mapa,mapa warsaw,mapa,2009 ONR Kontra,,Prawicowe kontry i blokady #13
+warsaw,1995,prawica_mayday,100,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2000,prawica_mayday,50,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2004,prawica_mayday,2000,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2004,prawica_mayday,2000,mapa,mapa warsaw,mapa,2004 – Marsz Niepodległości LPR (przeciwko UE),,Right-wing May Day #1
+warsaw,2009,prawica_mayday,6,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2012,prawica_mayday,500,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2012,prawica_mayday,500,mapa,mapa warsaw,mapa,2012-2013. Marsz Autonomicznych Nacjonalistów,"jedna liczba dla lat 2012, 2013",Right-wing May Day #2
+warsaw,2013,prawica_mayday,500,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2013,prawica_mayday,500,mapa,mapa warsaw,mapa,2012-2013. Marsz Autonomicznych Nacjonalistów,"jedna liczba dla lat 2012, 2013",Right-wing May Day #2
+warsaw,2014,prawica_mayday,450,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2014,prawica_mayday,450,mapa,mapa warsaw,mapa,2014. Marsz Autonomicznych Nacjonalistów,,Right-wing May Day #3
+warsaw,2015,prawica_mayday,250,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2015,prawica_mayday,250,mapa,mapa warsaw,mapa,2015. Praca w Polsce dla Polaków,,Right-wing May Day #5
+warsaw,2016,prawica_mayday,150,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2016,prawica_mayday,150,mapa,mapa warsaw,mapa,2016. Wyzysk? Imigracja? Upadek wartości? Nacjonalizm jest odpowiedzią,,Right-wing May Day #6
+warsaw,2018,prawica_mayday,50,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2018,prawica_mayday,50,mapa,mapa warsaw,mapa,2018. Szturmowe Święto Pracy,,Right-wing May Day #7
+warsaw,2019,prawica_mayday,3000,index_html,index.html,wykres (obecny),prawica,,index.html:warsawSeries.prawica
+warsaw,2019,prawica_mayday,3000,mapa,mapa warsaw,mapa,2019 – Marsz Suwerenności. Stop dyktatowi Berlina i Brukseli,,Right-wing May Day #8

@@ -1,0 +1,45 @@
+city,series,label,camp,map_layers,xlsx_sheets,index_keys
+berlin,dgb,DGB – wiec/demonstracja,union,DGB / DGB demonstrations (1990-1995)|DGB / DGB demonstrations (1996-2001)|DGB / DGB demonstration routes (2002-2011)|DGB / DGB demonstration routes (2012-2019)|DGB / (F)DGB rally sites,Dane,dgb
+berlin,dgb_maifest,DGB Maifest,fest,DGB / DGB Maifest,,
+berlin,dgb_korso,"DGB Korso / Lauf (rower, motor, rolki, bieg)",union,DGB / DGB Inline Korso|DGB / DGB Motorradkorso|DGB / DGB Fahrradkorso|DGB / DGB Lauf,,
+berlin,dag,DAG,union,DAG (1990-1997),,
+berlin,revo_j,Revolutionäre 1. Mai – wspólna (1987–1995),radical_left,Revolutionäre 1. Mai / Revolutionäre 1. Mai (1990-1995),Dane_Revo_joint,revo_j
+berlin,revo18,Revolutionäre 1. Mai 18 Uhr,radical_left,Revolutionäre 1. Mai / Revolutionare 1. Mai routes (18Uhr Demonstration),Dane_Revo,revo18
+berlin,revo13,Revolutionäre 1. Mai 13 Uhr,radical_left,Revolutionäre 1. Mai / Revolutionäre 1. Mai 13:00 (1996-2011;2016),Dane_Revo13,revo13
+berlin,revo_spont,Demonstracje spontaniczne,radical_left,Revolutionäre 1. Mai / Spontaneous Demonstrations,,
+berlin,revo_inne,Revolutionäre 1. Mai – inne punkty,radical_left,Revolutionäre 1. Mai / Revolutionäre 1. Mai,,
+berlin,pds,PDS/Linke (Ost),left_party,East German Left / PDS/Linke Events,Dane_Ost_PDS,pds_u|pds_a
+berlin,bkg,Bündnis Kritischer Gewerkschafter,union,East German Left / Bündnis Kritischer Gewerkschafter,,
+berlin,ost_radical,Wschodnioberlińska radykalna lewica,radical_left,East German Left / East German radical left,,
+berlin,euro,EuroMayDay,radical_left,Euro May Day,Euro MayDay,euro
+berlin,antinazi,Blokady antynazistowskie,counter,Neo-Nazi May Day / Anti-Nazi Blockades,Dane_Antinazi,antinazi
+berlin,nazi,Neonazistowski 1 Maja,right,Neo-Nazi May Day / Neo-Nazi May Day,Dane_Nazi,nazi
+berlin,myfest,MyFest Kreuzberg,fest,,Dane_MyFest,myfest
+berlin,marian,Mariannenplatzfest,fest,,Dane_Mariannenplatz,marian
+berlin,mygruni,MyGruni,radical_left,MyGruni,Dane_MyGruni,
+berlin,walpurgis_demo,Walpurgisnacht – demonstracje,radical_left,Walpurgisnacht / Walpurgisnacht Demonstrations,,
+berlin,walpurgis_ttbn,Take back the night,radical_left,Walpurgisnacht / take back the night,,
+berlin,walpurgis_tanz,Walpurgisnacht / Tanz in den Mai,fest,Walpurgisnacht / Walpurgisnacht/Tanz in den Mai,,
+berlin,inne,Inne wydarzenia,other,Other events,,
+warsaw,opzz,OPZZ,union,OPZZ,,opzz
+warsaw,solidarnosc,Solidarność,union,Solidarność,,
+warsaw,pps,PPS,left_party,PPS,,pps
+warsaw,lew_alt,Lewica radykalna,radical_left,Lewica radykalna,,lew_alt
+warsaw,anarchi,Anarchistyczny 1 Maja,radical_left,Anarchistyczny 1. Maja,,anarchi
+warsaw,prawica_kontra,Prawicowe kontry i blokady,right,Prawicowe kontry i blokady,,
+warsaw,prawica_mayday,Prawicowy 1 Maja,right,Right-wing May Day,,prawica
+warsaw,parada,Parada Równości,other,Parada Równości,,parada
+warsaw,festyny,Festyny,fest,Festyny,,
+warsaw,fest_eu,Rocznica akcesji do UE / festyn europejski,fest,European Union accession anniversary,,fest_eu
+warsaw,inne,Inne wydarzenia,other,Inne wydarzenia,,
+kyiv,kpu,Komunistyczna Partia Ukrainy,left_party,Communist Party,,
+kyiv,pspu,PSPU,left_party,PSPU,,
+kyiv,spu,Socjalistyczna Partia Ukrainy,left_party,Соціалістична партія України,,
+kyiv,rukh,Narodnyj Ruch,right,Narodnyi Rukh,,
+kyiv,sotsrukh,Socjalny Ruch,radical_left,Соціяльний Рух,,
+kyiv,monstracja,Monstracja,other,Монстрація,,
+kyiv,anarchi,Anarchiści,radical_left,Anarchist,,
+kyiv,nacjonal,Demonstracje nacjonalistyczne,right,Nationalist Demonstrations,,
+kyiv,fpu,FPU (federacja związków),union,Trade Union events / FPU,,
+kyiv,zwiazki_inne,Inne związki zawodowe,union,Trade Union events / Other Trade unions,,
+kyiv,inne,Inne wydarzenia,other,Other events,,

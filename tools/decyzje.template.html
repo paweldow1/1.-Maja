@@ -1,0 +1,544 @@
+<title>Frekwencje 1 Maja – decyzje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: archival ledger — one row per series, one cell per year; detail panel docks right (bottom on phones). */
+:root {
+  --bg: #f7f6f3; --surface: #ffffff; --line: #dcd8d0; --line-strong: #b9b2a6;
+  --fg: #1b1916; --fg-mid: #57514a; --fg-dim: #8a8379;
+  --accent: #8b1a1a;
+  --berlin: #c8483a; --warsaw: #3f78a8; --kyiv: #b08419;
+  --f-rozjazd: #c0392b; --f-rozrzut: #c98a12; --f-mapa: #2f7d9b; --f-poza: #7a4fa0; --f-wykres: #6b6b6b;
+  --ok: #3d8a5a; --ok-soft: #dcefe2; --decided: #1b1916;
+  --chip: #efece6;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #151413; --surface: #1e1c1a; --line: #34302c; --line-strong: #4d4740;
+  --fg: #ece8e1; --fg-mid: #b5ada2; --fg-dim: #857d72; --accent: #e0736a;
+  --berlin: #e46d5f; --warsaw: #6fa3d1; --kyiv: #d4ad4a;
+  --f-rozjazd: #ef6b5c; --f-rozrzut: #e3a93a; --f-mapa: #5bb0cf; --f-poza: #a983cf; --f-wykres: #9a9a9a;
+  --ok: #6cc48c; --ok-soft: #22382a; --decided: #ece8e1; --chip: #2a2724; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #151413; --surface: #1e1c1a; --line: #34302c; --line-strong: #4d4740;
+  --fg: #ece8e1; --fg-mid: #b5ada2; --fg-dim: #857d72; --accent: #e0736a;
+  --berlin: #e46d5f; --warsaw: #6fa3d1; --kyiv: #d4ad4a;
+  --f-rozjazd: #ef6b5c; --f-rozrzut: #e3a93a; --f-mapa: #5bb0cf; --f-poza: #a983cf; --f-wykres: #9a9a9a;
+  --ok: #6cc48c; --ok-soft: #22382a; --decided: #ece8e1; --chip: #2a2724; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 14px; line-height: 1.45; }
+.wrap { padding-inline: 16px; padding-block: 20px 48px; max-width: 1400px; margin: 0 auto; }
+header.top { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; border-bottom: 2px solid var(--accent); padding-bottom: 12px; }
+h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 3vw, 30px); margin: 0; text-wrap: balance; }
+.sub { color: var(--fg-mid); font-size: 13px; max-width: 70ch; margin: 6px 0 0; }
+.status { font-family: var(--mono); font-size: 12px; color: var(--fg-dim); }
+.status b { color: var(--fg); font-weight: 500; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin: 16px 0 12px; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; }
+.seg button { font: 500 12px var(--sans); letter-spacing: .04em; text-transform: uppercase; padding: 7px 12px; border: 0; background: var(--surface); color: var(--fg-mid); cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line-strong); }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.seg button:focus-visible, .cell:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--fg-mid); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 2px; border: 2px solid; display: inline-block; }
+
+.summary { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.chip { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--chip); color: var(--fg-mid); border: 1px solid transparent; cursor: pointer; font-family: var(--sans); }
+.chip b { font-family: var(--mono); font-weight: 500; color: var(--fg); margin-left: 4px; }
+.chip[aria-pressed="true"] { border-color: var(--fg); color: var(--fg); }
+
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 20px; align-items: start; }
+@media (max-width: 960px) { .main { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) {
+  .seg button { padding: 7px 9px; font-size: 11px; letter-spacing: .02em; }
+  .grid th.name { min-width: 130px; max-width: 150px; padding-inline: 8px; }
+  .sname { font-size: 12px; }
+}
+
+.ledger { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+table.grid { border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.grid th, .grid td { padding: 0; }
+.grid thead th { font: 400 10px var(--mono); color: var(--fg-dim); padding: 8px 0 6px; text-align: center; position: sticky; top: 0; background: var(--surface); }
+.grid thead th.yr-dec { color: var(--fg); }
+.grid th.name { text-align: left; position: sticky; left: 0; background: var(--surface); z-index: 1; padding: 6px 12px 6px 12px; min-width: 200px; max-width: 240px; border-right: 1px solid var(--line); }
+.grid tbody tr + tr th.name, .grid tbody tr + tr td { border-top: 1px solid var(--line); }
+.sname { font-weight: 600; font-size: 13px; display: block; }
+.smeta { font-size: 11px; color: var(--fg-dim); display: flex; gap: 8px; flex-wrap: wrap; }
+.camp { text-transform: uppercase; letter-spacing: .06em; font-size: 10px; }
+.rule-tag { font-family: var(--mono); font-size: 10px; color: var(--fg-mid); }
+.grid td { text-align: center; padding: 4px 1px; }
+.cell { width: 22px; height: 22px; border-radius: 3px; border: 2px solid transparent; background: transparent; cursor: pointer; display: inline-grid; place-items: center; font: 600 10px var(--mono); color: var(--bg); padding: 0; }
+.cell.empty { border: 1px dashed var(--line); }
+.cell.empty:hover { border-color: var(--fg-dim); }
+.cell.ok { background: var(--ok-soft); border-color: var(--ok); }
+.cell.flag { background: var(--surface); }
+.cell.decided { background: var(--decided); border-color: var(--decided); }
+.cell.sel { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent); }
+.city-row th.name { border-left: 4px solid var(--city); }
+.dim { opacity: .25; }
+
+aside.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); max-height: calc(100vh - 24px); overflow-y: auto; min-width: 0; }
+.panel h2 { font-family: var(--serif); font-size: 20px; margin: 0; }
+.panel .eyebrow { font: 500 11px var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--fg-dim); }
+.panel .empty-state { color: var(--fg-mid); font-size: 13px; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px; margin: 12px 0; }
+.kv dt { color: var(--fg-dim); }
+.kv dd { margin: 0; font-family: var(--mono); }
+.flags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.flag-pill { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.obs { width: 100%; border-collapse: collapse; font-size: 12px; margin: 8px 0 14px; }
+.obs th { text-align: left; font: 500 10px var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--fg-dim); border-bottom: 1px solid var(--line); padding: 4px 6px 4px 0; }
+.obs td { border-bottom: 1px solid var(--line); padding: 5px 6px 5px 0; vertical-align: top; }
+.obs td.num { font-family: var(--mono); text-align: right; white-space: nowrap; }
+.obs .src { color: var(--fg-mid); }
+.obs .note { color: var(--fg-dim); font-size: 11px; display: block; }
+.use { font: inherit; color: var(--fg); background: none; border: 0; border-bottom: 1px dotted var(--fg-dim); padding: 0; cursor: pointer; }
+.use:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.tag { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--fg-dim); }
+
+fieldset { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px 12px; margin: 0 0 12px; min-width: 0; }
+legend { font: 600 12px var(--sans); padding: 0 4px; }
+.opts { display: grid; gap: 6px; }
+.opts label { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; cursor: pointer; }
+.opts label small { color: var(--fg-dim); display: block; font-size: 11px; }
+.inline { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 0 24px; }
+input[type=number], select, textarea { font: 13px var(--mono); padding: 6px 8px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--bg); color: var(--fg); min-width: 0; }
+input[type=number] { width: 110px; }
+textarea { width: 100%; font-family: var(--sans); min-height: 52px; resize: vertical; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.btn { font: 600 13px var(--sans); padding: 8px 14px; border-radius: 4px; border: 1px solid var(--fg); background: var(--fg); color: var(--bg); cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--line-strong); }
+.btn:disabled { opacity: .4; cursor: default; }
+.msg { font-size: 12px; color: var(--fg-mid); min-height: 1.4em; }
+.msg.err { color: var(--f-rozjazd); }
+.banner { font-size: 12px; padding: 8px 12px; border-radius: 4px; background: var(--chip); color: var(--fg-mid); margin-bottom: 12px; }
+@media (prefers-reduced-motion: no-preference) { .cell { transition: transform .08s; } .cell:hover { transform: scale(1.12); } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Frekwencje 1 Maja – decyzje</h1>
+      <p class="sub">Każda kratka to jedna seria w jednym roku. Najpierw ustaw regułę dla całej serii, potem rozstrzygnij tylko wyjątki. Jeśli nie znasz dokładnej liczby, wybierz przedział albo rząd wielkości.</p>
+    </div>
+    <div class="status" id="status">Łączenie z bazą decyzji…</div>
+  </header>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Miasto" id="cityTabs"></div>
+    <div class="seg" role="group" aria-label="Pokaż" id="viewTabs">
+      <button type="button" data-view="todo" aria-pressed="true">Do rozstrzygnięcia</button>
+      <button type="button" data-view="all" aria-pressed="false">Wszystko</button>
+      <button type="button" data-view="done" aria-pressed="false">Rozstrzygnięte</button>
+    </div>
+    <div class="legend" aria-hidden="true">
+      <span><i class="sw" style="border-color:var(--f-rozjazd)"></i>wykres ≠ źródła</span>
+      <span><i class="sw" style="border-color:var(--f-rozrzut)"></i>źródła się kłócą</span>
+      <span><i class="sw" style="border-color:var(--f-mapa)"></i>tylko mapa</span>
+      <span><i class="sw" style="border-color:var(--f-poza)"></i>brak na wykresie</span>
+      <span><i class="sw" style="border-color:var(--f-wykres)"></i>tylko wykres</span>
+      <span><i class="sw" style="border-color:var(--ok);background:var(--ok-soft)"></i>zgodne</span>
+      <span><i class="sw" style="border-color:var(--decided);background:var(--decided)"></i>rozstrzygnięte</span>
+    </div>
+  </div>
+
+  <div class="summary" id="summary"></div>
+
+  <div class="main">
+    <div class="ledger"><table class="grid" id="grid"></table></div>
+    <aside class="panel" id="panel" aria-live="polite">
+      <p class="eyebrow">Szczegóły</p>
+      <h2>Wybierz kratkę</h2>
+      <p class="empty-state">Kliknij kratkę w tabeli, żeby zobaczyć wszystkie liczby ze źródeł i zapisać decyzję. Kliknij nazwę serii, żeby ustawić regułę dla wszystkich jej lat. Pusta kratka to rok bez żadnej liczby; też możesz ją uzupełnić, np. „odbyło się, frekwencja nieznana”.</p>
+    </aside>
+  </div>
+</div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script>
+(() => {
+  const DATA = JSON.parse(document.getElementById('data').textContent);
+  const CITIES = [
+    { id: 'berlin', label: 'Berlin', color: 'var(--berlin)' },
+    { id: 'warsaw', label: 'Warszawa', color: 'var(--warsaw)' },
+    { id: 'kyiv', label: 'Kijów', color: 'var(--kyiv)' },
+  ];
+  const CAMPS = { union: 'związki', radical_left: 'radykalna lewica', left_party: 'partie lewicy', right: 'prawica', fest: 'festyn', counter: 'kontra', other: 'inne' };
+  const FLAGS = {
+    rozjazd: { label: 'wykres ≠ źródła', color: 'var(--f-rozjazd)', rank: 0 },
+    rozrzut: { label: 'źródła się kłócą', color: 'var(--f-rozrzut)', rank: 1 },
+    tylko_wykres: { label: 'tylko wykres, brak źródła', color: 'var(--f-wykres)', rank: 2 },
+    poza_wykresem: { label: 'brak na wykresie', color: 'var(--f-poza)', rank: 3 },
+    tylko_mapa: { label: 'liczba tylko na mapie', color: 'var(--f-mapa)', rank: 4 },
+  };
+  const RULES = {
+    mean: { label: 'Średnia wszystkich relacji', hint: 'tak liczy obecny wykres Berlina' },
+    median: { label: 'Mediana relacji', hint: 'odporna na jedną skrajną liczbę' },
+    organizatorzy: { label: 'Liczba organizatorów', hint: 'gdy brak – średnia relacji' },
+    policja: { label: 'Liczba policji', hint: 'gdy brak – średnia relacji' },
+    prasa: { label: 'Średnia relacji prasowych', hint: 'gdy brak – średnia relacji' },
+    arkusz: { label: 'Wartość z arkusza DGB', hint: 'tylko DGB Berlin; gdy brak – średnia relacji' },
+  };
+  const MAGNITUDES = [
+    { id: 'dziesiatki', label: 'dziesiątki (10–99)', min: 10, max: 99 },
+    { id: 'setki', label: 'setki (100–999)', min: 100, max: 999 },
+    { id: 'tysiace', label: 'tysiące (1 000–9 999)', min: 1000, max: 9999 },
+    { id: 'dziesiatki_tys', label: 'dziesiątki tysięcy (10 000–99 999)', min: 10000, max: 99999 },
+    { id: 'setki_tys', label: 'setki tysięcy (100 000+)', min: 100000, max: 999999 },
+  ];
+  const fmt = n => n == null || n === '' ? '–' : Math.round(n).toLocaleString('pl-PL');
+
+  const cellsById = new Map(DATA.cells.map(c => [c.id, c]));
+  const seriesByCity = {};
+  for (const [key, meta] of Object.entries(DATA.series)) {
+    const [city, series] = key.split('__');
+    (seriesByCity[city] ||= []).push({ key, series, ...meta });
+  }
+  const yearRange = {};
+  for (const c of DATA.cells) {
+    const r = yearRange[c.city] ||= [Infinity, -Infinity];
+    r[0] = Math.min(r[0], c.year); r[1] = Math.max(r[1], c.year);
+  }
+  for (const k in yearRange) { yearRange[k][0] = Math.min(yearRange[k][0], 1990); yearRange[k][1] = Math.max(yearRange[k][1], 2019); }
+
+  const state = { city: 'berlin', view: 'todo', flag: null, sel: null, rules: {}, decisions: {}, db: null, canWrite: true };
+  try { const s = localStorage.getItem('decyzje.city'); if (s && yearRange[s]) state.city = s; } catch (e) {}
+
+  // ── value logic ────────────────────────────────────────────
+  const avg = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : null;
+  const med = a => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  function ruleValue(cell, rule) {
+    if (!cell) return null;
+    const rep = cell.obs.filter(o => o.source_type === 'xlsx');
+    const vals = rep.map(o => +o.value);
+    const byCat = cat => rep.filter(o => o.source_category === cat).map(o => +o.value);
+    let v = null;
+    if (rule === 'median') v = med(vals);
+    else if (rule === 'organizatorzy') v = avg(byCat('organizatorzy'));
+    else if (rule === 'policja') v = avg(byCat('policja'));
+    else if (rule === 'prasa') v = avg(byCat('prasa'));
+    else if (rule === 'arkusz') { const s = cell.obs.find(o => o.source_category === 'arkusz DGB – główna'); v = s ? +s.value : null; }
+    if (v == null) v = vals.length ? avg(vals) : cell.proposal;
+    return v;
+  }
+  function decisionText(d) {
+    if (!d) return '';
+    switch (d.kind) {
+      case 'rule': return 'wg reguły serii';
+      case 'value': return fmt(d.value);
+      case 'range': return `${fmt(d.min)}–${fmt(d.max)}`;
+      case 'magnitude': return (MAGNITUDES.find(m => m.id === d.magnitude) || {}).label || '';
+      case 'unknown': return 'odbyło się, liczba nieznana';
+      case 'exclude': return 'nie wchodzi';
+    }
+    return '';
+  }
+  function cellStatus(city, series, year) {
+    const id = `${city}__${series}__${year}`;
+    const cell = cellsById.get(id);
+    const d = state.decisions[id];
+    if (d) return { id, cell, kind: 'decided', d };
+    if (!cell) return { id, cell, kind: 'empty' };
+    if (cell.flags.length) {
+      const f = [...cell.flags].sort((a, b) => FLAGS[a].rank - FLAGS[b].rank)[0];
+      return { id, cell, kind: 'flag', flag: f };
+    }
+    return { id, cell, kind: 'ok' };
+  }
+
+  // ── rendering ──────────────────────────────────────────────
+  const $ = id => document.getElementById(id);
+  function renderTabs() {
+    $('cityTabs').innerHTML = '';
+    for (const c of CITIES) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = c.label; b.setAttribute('aria-pressed', String(state.city === c.id));
+      b.onclick = () => { state.city = c.id; state.flag = null; state.sel = null; try { localStorage.setItem('decyzje.city', c.id); } catch (e) {} render(); renderPanel(); };
+      $('cityTabs').append(b);
+    }
+    for (const b of $('viewTabs').querySelectorAll('button')) {
+      b.setAttribute('aria-pressed', String(b.dataset.view === state.view));
+      b.onclick = () => { state.view = b.dataset.view; render(); };
+    }
+  }
+  function renderSummary() {
+    const counts = {}; let todo = 0, done = 0;
+    for (const c of DATA.cells) {
+      if (c.city !== state.city) continue;
+      if (state.decisions[c.id]) { done++; continue; }
+      if (c.flags.length) todo++;
+      for (const f of c.flags) counts[f] = (counts[f] || 0) + 1;
+    }
+    for (const id in state.decisions) if (id.startsWith(state.city + '__') && !cellsById.has(id)) done++;
+    const el = $('summary'); el.innerHTML = '';
+    const mk = (label, n, flag) => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'chip';
+      b.setAttribute('aria-pressed', String(state.flag === flag));
+      b.innerHTML = `${label}<b>${n}</b>`;
+      if (flag) b.style.borderLeft = `4px solid ${FLAGS[flag].color}`;
+      b.onclick = () => { state.flag = state.flag === flag ? null : flag; render(); };
+      el.append(b);
+    };
+    mk('Do rozstrzygnięcia', todo, null);
+    for (const f of Object.keys(FLAGS)) if (counts[f]) mk(FLAGS[f].label, counts[f], f);
+    const s = document.createElement('span'); s.className = 'chip'; s.style.cursor = 'default';
+    s.innerHTML = `Rozstrzygnięte<b>${done}</b>`; el.append(s);
+  }
+  function renderGrid() {
+    const [y0, y1] = yearRange[state.city];
+    const years = []; for (let y = y0; y <= y1; y++) years.push(y);
+    const city = CITIES.find(c => c.id === state.city);
+    const t = $('grid'); t.innerHTML = '';
+    const head = document.createElement('thead');
+    head.innerHTML = '<tr><th class="name">Seria</th>' + years.map(y => `<th class="${y % 10 === 0 ? 'yr-dec' : ''}">${y % 10 === 0 || y === y0 ? y : String(y).slice(2)}</th>`).join('') + '</tr>';
+    t.append(head);
+    const body = document.createElement('tbody');
+    for (const s of seriesByCity[state.city] || []) {
+      const statuses = years.map(y => cellStatus(state.city, s.series, y));
+      const visible = statuses.some(st => matches(st));
+      if (!visible && state.view !== 'all') continue;
+      const tr = document.createElement('tr'); tr.className = 'city-row'; tr.style.setProperty('--city', city.color);
+      const rule = state.rules[s.key];
+      const th = document.createElement('th'); th.className = 'name'; th.scope = 'row';
+      th.innerHTML = `<button type="button" class="btn ghost" style="all:unset;cursor:pointer;display:block"><span class="sname"></span><span class="smeta"><span class="camp"></span><span class="rule-tag"></span></span></button>`;
+      th.querySelector('.sname').textContent = s.label;
+      th.querySelector('.camp').textContent = CAMPS[s.camp] || s.camp;
+      th.querySelector('.rule-tag').textContent = rule ? '§ ' + RULES[rule.method].label.toLowerCase() : '';
+      th.querySelector('button').onclick = () => { state.sel = { type: 'series', key: s.key }; renderPanel(); render(); };
+      tr.append(th);
+      statuses.forEach((st, i) => {
+        const td = document.createElement('td');
+        const b = document.createElement('button'); b.type = 'button';
+        b.className = 'cell ' + st.kind + (state.sel && state.sel.id === st.id ? ' sel' : '');
+        if (st.kind === 'flag') b.style.borderColor = FLAGS[st.flag].color;
+        if (!matches(st)) b.classList.add('dim');
+        if (st.kind === 'decided') b.textContent = '✓';
+        const val = st.d ? decisionText(st.d) : st.cell ? fmt(st.cell.proposal) : 'brak liczb';
+        b.title = `${s.label}, ${years[i]}: ${val}${st.flag ? ' · ' + FLAGS[st.flag].label : ''}`;
+        b.setAttribute('aria-label', b.title);
+        b.onclick = () => { state.sel = { type: 'cell', id: st.id, city: state.city, series: s.series, year: years[i] }; renderPanel(); render(); };
+        td.append(b); tr.append(td);
+      });
+      body.append(tr);
+    }
+    if (!body.children.length) body.innerHTML = `<tr><td colspan="${years.length + 1}" style="padding:24px;text-align:left;color:var(--fg-mid)">Nic do pokazania w tym widoku. Przełącz na „Wszystko”.</td></tr>`;
+    t.append(body);
+  }
+  function matches(st) {
+    if (state.flag) return st.kind === 'flag' && st.cell.flags.includes(state.flag);
+    if (state.view === 'todo') return st.kind === 'flag';
+    if (state.view === 'done') return st.kind === 'decided';
+    return true;
+  }
+  function render() { renderTabs(); renderSummary(); renderGrid(); }
+
+  // ── detail panel ───────────────────────────────────────────
+  function renderPanel() {
+    const p = $('panel');
+    if (!state.sel) return;
+    if (state.sel.type === 'series') return renderSeriesPanel(p, state.sel.key);
+    const { id, city, series, year } = state.sel;
+    const cell = cellsById.get(id);
+    const meta = DATA.series[`${city}__${series}`];
+    const d = state.decisions[id];
+    const rule = state.rules[`${city}__${series}`];
+    const ruleV = cell ? ruleValue(cell, rule ? rule.method : 'mean') : null;
+    p.innerHTML = '';
+    const h = document.createElement('div');
+    h.innerHTML = `<p class="eyebrow"></p><h2></h2>`;
+    h.querySelector('.eyebrow').textContent = `${CITIES.find(c => c.id === city).label} · ${CAMPS[meta.camp] || meta.camp}`;
+    h.querySelector('h2').textContent = `${meta.label}, ${year}`;
+    p.append(h);
+    const fl = document.createElement('div'); fl.className = 'flags';
+    for (const f of (cell ? cell.flags : [])) { const s = document.createElement('span'); s.className = 'flag-pill'; s.style.color = FLAGS[f].color; s.textContent = FLAGS[f].label; fl.append(s); }
+    p.append(fl);
+    const kv = document.createElement('dl'); kv.className = 'kv';
+    const add = (k, v) => { const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; kv.append(dt, dd); };
+    add('Na wykresie teraz', cell && cell.chart != null ? fmt(cell.chart) : '–');
+    add('Propozycja', cell && cell.proposal != null ? `${fmt(cell.proposal)} (${cell.basis})` : '–');
+    if (rule) add('Wg reguły serii', fmt(ruleV));
+    if (cell && cell.min != null && cell.min !== cell.max) add('Rozpiętość', `${fmt(cell.min)} – ${fmt(cell.max)}`);
+    if (d) add('Twoja decyzja', decisionText(d));
+    p.append(kv);
+
+    if (cell && cell.obs.length) {
+      const tb = document.createElement('table'); tb.className = 'obs';
+      tb.innerHTML = '<thead><tr><th>Źródło</th><th>Rodzaj</th><th style="text-align:right">Liczba</th></tr></thead>';
+      const body = document.createElement('tbody');
+      const order = { xlsx: 0, arkusz_dgb: 1, mapa: 2 };
+      for (const o of [...cell.obs].sort((a, b) => order[a.source_type] - order[b.source_type] || b.value - a.value)) {
+        const tr = document.createElement('tr');
+        const src = o.source_type === 'mapa' ? (o.event_name || 'obiekt na mapie') : o.source;
+        tr.innerHTML = `<td class="src"></td><td class="tag"></td><td class="num"></td>`;
+        tr.children[0].textContent = src;
+        if (o.note) { const n = document.createElement('span'); n.className = 'note'; n.textContent = o.note; tr.children[0].append(n); }
+        tr.children[1].textContent = o.source_type === 'mapa' ? 'mapa (fragment)' : o.source_category;
+        const use = document.createElement('button'); use.type = 'button'; use.className = 'use';
+        use.textContent = fmt(+o.value); use.title = 'Użyj tej liczby w decyzji';
+        use.onclick = () => { const f = p.querySelector('form'); if (!f) return; f.querySelector('#f-value').value = o.value; f.querySelector('input[name=kind][value="value"]').checked = true; f.querySelector('#f-note').value ||= `${src} (${tr.children[1].textContent})`; };
+        tr.children[2].append(use);
+        body.append(tr);
+      }
+      tb.append(body); p.append(tb);
+    } else {
+      const e = document.createElement('p'); e.className = 'empty-state';
+      e.textContent = 'Żadne źródło nie podaje liczby dla tego roku. Jeśli wydarzenie się odbyło, zaznacz to poniżej, ewentualnie z przedziałem albo rzędem wielkości.';
+      p.append(e);
+    }
+    p.append(decisionForm(id, d, cell));
+  }
+
+  function decisionForm(id, d, cell) {
+    const f = document.createElement('form');
+    const kind = d ? d.kind : (cell ? 'rule' : 'unknown');
+    const mag = MAGNITUDES.map(m => `<option value="${m.id}">${m.label}</option>`).join('');
+    f.innerHTML = `
+      <fieldset><legend>Decyzja dla tego roku</legend><div class="opts">
+        <label><input type="radio" name="kind" value="rule" ${cell ? '' : 'disabled'}><span>Przyjmij wg reguły serii<small>propozycja albo reguła ustawiona dla całej serii</small></span></label>
+        <label><input type="radio" name="kind" value="value"><span>Konkretna liczba</span></label>
+        <div class="inline"><input type="number" id="f-value" min="0" step="1" aria-label="Liczba uczestników"></div>
+        <label><input type="radio" name="kind" value="range"><span>Przedział<small>gdy wiesz tylko „od–do”</small></span></label>
+        <div class="inline"><input type="number" id="f-min" min="0" step="1" aria-label="Od"><input type="number" id="f-max" min="0" step="1" aria-label="Do"></div>
+        <label><input type="radio" name="kind" value="magnitude"><span>Rząd wielkości</span></label>
+        <div class="inline"><select id="f-mag" aria-label="Rząd wielkości">${mag}</select></div>
+        <label><input type="radio" name="kind" value="unknown"><span>Odbyło się, frekwencja nieznana<small>liczy się do liczby wydarzeń, nie do sumy uczestników</small></span></label>
+        <label><input type="radio" name="kind" value="exclude"><span>Nie wchodzi do analizy<small>np. nie spełnia kryteriów pola albo to duplikat</small></span></label>
+      </div></fieldset>
+      <label for="f-seg" class="eyebrow">Liczba dotyczy</label>
+      <select id="f-seg" style="width:100%;margin:4px 0 10px">
+        <option value="">nie wiadomo / nie dotyczy</option>
+        <option value="calosc">całe wydarzenie (największy moment)</option>
+        <option value="pochod">pochód / demonstracja</option>
+        <option value="wiec">wiec</option>
+        <option value="festyn">festyn</option>
+      </select>
+      <label for="f-note" class="eyebrow">Uzasadnienie / źródło</label>
+      <textarea id="f-note" placeholder="np. organizatorzy zawyżają, biorę policję; Gazeta Wyborcza 2.05.2004"></textarea>
+      <div class="row" style="margin-top:10px">
+        <button class="btn" type="submit">Zapisz decyzję</button>
+        ${d ? '<button class="btn ghost" type="button" id="f-clear">Usuń decyzję</button>' : ''}
+      </div>
+      <p class="msg" id="f-msg"></p>`;
+    const radio = f.querySelector(`input[name=kind][value="${kind}"]`); if (radio && !radio.disabled) radio.checked = true;
+    if (d) {
+      if (d.value != null) f.querySelector('#f-value').value = d.value;
+      if (d.min != null) f.querySelector('#f-min').value = d.min;
+      if (d.max != null) f.querySelector('#f-max').value = d.max;
+      if (d.magnitude) f.querySelector('#f-mag').value = d.magnitude;
+      f.querySelector('#f-note').value = d.note || '';
+      f.querySelector('#f-seg').value = d.segment || '';
+    } else if (cell && cell.proposal != null) {
+      f.querySelector('#f-value').value = cell.proposal;
+      if (cell.min != null && cell.min !== cell.max) { f.querySelector('#f-min').value = cell.min; f.querySelector('#f-max').value = cell.max; }
+    }
+    for (const sel of ['#f-value', '#f-min', '#f-max', '#f-mag']) f.querySelector(sel).addEventListener('focus', () => {
+      const k = sel === '#f-value' ? 'value' : sel === '#f-mag' ? 'magnitude' : 'range';
+      f.querySelector(`input[name=kind][value="${k}"]`).checked = true;
+    });
+    if (!state.db || !state.canWrite) f.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+    const msg = f.querySelector('#f-msg');
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const k = (f.querySelector('input[name=kind]:checked') || {}).value;
+      if (!k) { msg.className = 'msg err'; msg.textContent = 'Wybierz rodzaj decyzji.'; return; }
+      const num = sel => { const v = f.querySelector(sel).value; return v === '' ? null : Math.max(0, Math.round(+v)); };
+      const doc = { kind: k, segment: f.querySelector('#f-seg').value, note: f.querySelector('#f-note').value.trim(), updatedAt: new Date().toISOString() };
+      const [city, series, year] = id.split('__');
+      Object.assign(doc, { city, series, year: +year });
+      if (k === 'value') { doc.value = num('#f-value'); if (doc.value == null) { msg.className = 'msg err'; msg.textContent = 'Wpisz liczbę.'; return; } }
+      if (k === 'range') {
+        doc.min = num('#f-min'); doc.max = num('#f-max');
+        if (doc.min == null || doc.max == null || doc.min > doc.max) { msg.className = 'msg err'; msg.textContent = 'Podaj oba końce przedziału, „od” nie większe niż „do”.'; return; }
+      }
+      if (k === 'magnitude') { const m = MAGNITUDES.find(x => x.id === f.querySelector('#f-mag').value); doc.magnitude = m.id; doc.min = m.min; doc.max = m.max; }
+      if (k === 'rule' && cell) doc.value = Math.round(ruleValue(cell, (state.rules[`${city}__${series}`] || {}).method || 'mean'));
+      await save(`decisions/${id}`, doc, msg, 'Zapisano.');
+    });
+    const clr = f.querySelector('#f-clear');
+    if (clr) clr.onclick = async () => { await remove(`decisions/${id}`, msg); };
+    return f;
+  }
+
+  function renderSeriesPanel(p, key) {
+    const meta = DATA.series[key];
+    const [city, series] = key.split('__');
+    const rule = state.rules[key];
+    const cells = DATA.cells.filter(c => c.city === city && c.series === series);
+    const nRep = cells.filter(c => c.obs.some(o => o.source_type === 'xlsx')).length;
+    p.innerHTML = '';
+    const h = document.createElement('div'); h.innerHTML = '<p class="eyebrow">Reguła dla całej serii</p><h2></h2><p class="sub"></p>';
+    h.querySelector('h2').textContent = meta.label;
+    h.querySelector('.sub').textContent = `${cells.length} lat z liczbami, w tym ${nRep} z relacjami prasa/organizatorzy/policja. Reguła wybiera liczbę z tych relacji; lata tylko z mapą biorą największy obiekt z mapy (pochód i wiec to w dużej mierze ci sami ludzie). Pojedyncze lata możesz nadpisać decyzją.`;
+    p.append(h);
+    const f = document.createElement('form');
+    f.innerHTML = `<fieldset><legend>Jak liczyć frekwencję</legend><div class="opts">${Object.entries(RULES).map(([k, r]) => `<label><input type="radio" name="rule" value="${k}"><span>${r.label}<small>${r.hint}</small></span></label>`).join('')}</div></fieldset>
+      <label for="r-note" class="eyebrow">Uzasadnienie</label><textarea id="r-note"></textarea>
+      <div class="row" style="margin-top:10px"><button class="btn" type="submit">Zapisz regułę</button>${rule ? '<button class="btn ghost" type="button" id="r-clear">Wróć do domyślnej</button>' : ''}</div>
+      <p class="msg" id="r-msg"></p>
+      <fieldset style="margin-top:8px"><legend>Hurtem</legend>
+        <p class="sub" style="margin:0 0 8px">Zapisuje decyzję „wg reguły serii” dla każdego roku tej serii, który ma liczby i nie ma jeszcze Twojej decyzji. Lata już rozstrzygnięte zostają bez zmian.</p>
+        <button class="btn ghost" type="button" id="r-bulk"></button>
+      </fieldset>`;
+    f.querySelector(`input[value="${rule ? rule.method : 'mean'}"]`).checked = true;
+    f.querySelector('#r-note').value = rule ? rule.note || '' : '';
+    if (!state.db || !state.canWrite) f.querySelectorAll('input,textarea,button').forEach(el => el.disabled = true);
+    const msg = f.querySelector('#r-msg');
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const method = f.querySelector('input[name=rule]:checked').value;
+      await save(`rules/${key}`, { city, series, method, note: f.querySelector('#r-note').value.trim(), updatedAt: new Date().toISOString() }, msg, 'Reguła zapisana.');
+    });
+    const clr = f.querySelector('#r-clear'); if (clr) clr.onclick = () => remove(`rules/${key}`, msg);
+    const pending = cells.filter(c => !state.decisions[c.id]);
+    const bulk = f.querySelector('#r-bulk');
+    bulk.textContent = `Przyjmij dla ${pending.length} lat bez decyzji`;
+    bulk.disabled = !pending.length || !state.db || !state.canWrite;
+    bulk.onclick = async () => {
+      bulk.disabled = true;
+      const method = (state.rules[key] || {}).method || 'mean';
+      let done = 0;
+      for (const c of pending) {
+        const doc = { kind: 'rule', segment: '', city, series, year: c.year, value: Math.round(ruleValue(c, method)), note: `hurtem: ${RULES[method].label.toLowerCase()}`, updatedAt: new Date().toISOString() };
+        try { await state.db.doc(`decisions/${c.id}`).set(doc); done++; msg.className = 'msg'; msg.textContent = `Zapisano ${done} z ${pending.length}…`; }
+        catch (e) { msg.className = 'msg err'; msg.textContent = `Zatrzymano po ${done} z ${pending.length}: zapis się nie udał.`; return; }
+      }
+      msg.textContent = `Zapisano ${done} decyzji.`;
+    };
+    p.append(f);
+  }
+
+  async function save(path, doc, msg, ok) {
+    msg.className = 'msg'; msg.textContent = 'Zapisywanie…';
+    try { await state.db.doc(path).set(doc); msg.textContent = ok; }
+    catch (e) { msg.className = 'msg err'; msg.textContent = e && e.code === 'invalid_argument' ? 'Nie masz uprawnień do zapisu w tym artefakcie.' : 'Nie udało się zapisać. Spróbuj ponownie za chwilę.'; if (e && e.code === 'invalid_argument') state.canWrite = false; }
+  }
+  async function remove(path, msg) {
+    try { await state.db.doc(path).delete(); msg.textContent = 'Usunięto.'; }
+    catch (e) { msg.className = 'msg err'; msg.textContent = 'Nie udało się usunąć.'; }
+  }
+
+  // ── boot ───────────────────────────────────────────────────
+  render();
+  const setStatus = html => { $('status').innerHTML = html; };
+  (async () => {
+    const db = window.claude && await window.claude.use('db');
+    if (!db) { setStatus('Tryb tylko do odczytu: decyzji nie da się tu zapisać.'); return; }
+    state.db = db;
+    const update = () => {
+      const n = Object.keys(state.decisions).length, r = Object.keys(state.rules).length;
+      setStatus(`Zapis włączony · <b>${n}</b> decyzji · <b>${r}</b> reguł`);
+      render(); if (state.sel) renderPanel();
+    };
+    db.collection('decisions').onSnapshot(s => { state.decisions = Object.fromEntries(s.docs.map(d => [d.id, d.data()])); update(); },
+      () => setStatus('Utracono połączenie z bazą decyzji. Odśwież stronę.'));
+    db.collection('rules').onSnapshot(s => { state.rules = Object.fromEntries(s.docs.map(d => [d.id, d.data()])); update(); },
+      () => setStatus('Utracono połączenie z bazą decyzji. Odśwież stronę.'));
+  })();
+})();
+</script>
