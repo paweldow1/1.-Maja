@@ -156,6 +156,42 @@ def map_events_payload():
     return f"const MAP_EVENTS = {json.dumps(out, ensure_ascii=False, separators=(',', ':'))};"
 
 
+CORSO_KINDS = {"fahrradkorso": "bike", "motorradkorso": "motorcycle", "inline korso": "inline skates", "lauf": "run"}
+
+
+def apply_map_corsos(data):
+    """Berlin corsos from the map instead of the MASTER sheet.
+
+    The map has one DGB sublayer per kind (bike, motorcycle, inline skates, run). One kind
+    present in a year = one corso; the run counts as a corso (decision 2026-10-08). The
+    year's total is adjusted by the difference, so the other types keep the sheet's counts.
+    """
+    umap = json.loads((ROOT / "maps" / "berlin.umap").read_text(encoding="utf-8"))
+    kinds = {}
+    for layer in umap["layers"]:
+        if layer["properties"].get("name") != "DGB":
+            continue
+        for sub in layer.get("layers", []):
+            name = (sub["properties"].get("name") or "").lower()
+            kind = next((k for key, k in CORSO_KINDS.items() if key in name), None)
+            if not kind:
+                continue
+            for feat in sub.get("features", []):
+                p = feat["properties"]
+                years = {int(y) for y in re.findall(r"\b(19[89]\d|20[0-2]\d)\b", str(p.get("Lata") or ""))} \
+                    or {int(y) for y in re.findall(r"\b(19[89]\d|20[0-2]\d)\b", str(p.get("name") or ""))[:1]}
+                for y in years:
+                    kinds.setdefault(y, set()).add(kind)
+    key = next(t for t in data["counts"] if t.startswith("Corsos"))
+    data["detail"] = {}
+    for i, y in enumerate(data["years"]):
+        new = len(kinds.get(y, ()))
+        data["total"][i] += new - data["counts"][key][i]
+        data["counts"][key][i] = new
+        if new:
+            data["detail"][str(y)] = ", ".join(sorted(kinds[y]))
+
+
 def event_types_payload():
     import openpyxl
     path = RAW_MASTER
@@ -178,6 +214,8 @@ def event_types_payload():
                 data["counts"].setdefault(str(t).rstrip("*"), []).append(int(r[2 + i] or 0))
             loc = r[2 + len(types)] if len(r) > 2 + len(types) else None
             data["main"].append(loc or "")
+        if city == "berlin":
+            apply_map_corsos(data)
         # drop types that never occur in this city
         data["types"] = [t for t in data["types"] if any(data["counts"][t])]
         data["counts"] = {t: data["counts"][t] for t in data["types"]}
